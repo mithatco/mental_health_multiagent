@@ -7,6 +7,7 @@ from utils.rag_engine import RAGEngine
 from agents.mental_health_assistant import MentalHealthAssistant
 from agents.patient import Patient
 from utils.conversation_handler import ConversationHandler
+from utils.chat_logger import ChatLogger
 
 # Define default paths
 DEFAULT_DOCS_DIR = os.path.join(
@@ -25,7 +26,10 @@ def main():
                         help="Ollama model to use for the assistant (default: qwen2.5:3b)")
     parser.add_argument('--patient_model', type=str, default="qwen2.5:3b", 
                         help="Ollama model to use for the patient (default: qwen2.5:3b)")
+    parser.add_argument('--patient_profile', type=str, help="Profile to use for the patient")
     parser.add_argument('--refresh_cache', action='store_true', help="Refresh the document cache")
+    parser.add_argument('--no-save', action='store_true', help="Don't save conversation logs")
+    parser.add_argument('--logs-dir', type=str, help="Directory to save conversation logs")
     args = parser.parse_args()
     
     # Create documents directory if it doesn't exist
@@ -121,9 +125,32 @@ def main():
     
     print(f"Loaded {len(questions)} questions")
     
+    # Let user choose a patient profile if not specified
+    patient_profile = args.patient_profile
+    available_profiles = Patient.list_available_profiles()
+    
+    if not patient_profile and available_profiles:
+        print("\nAvailable patient profiles:")
+        for i, profile in enumerate(sorted(available_profiles), 1):
+            print(f"{i}. {profile}")
+        
+        try:
+            choice = int(input("\nSelect a patient profile (number): "))
+            if 1 <= choice <= len(available_profiles):
+                patient_profile = sorted(available_profiles)[choice-1]
+                print(f"Selected patient profile: {patient_profile}\n")
+            else:
+                print("Invalid selection. Using default profile.")
+        except (ValueError, IndexError):
+            print("Invalid selection. Using default profile.")
+    
     # Initialize agents
     assistant = MentalHealthAssistant(args.ollama_url, args.assistant_model, questions, rag_engine)
-    patient = Patient(args.ollama_url, args.patient_model)
+    patient = Patient(args.ollama_url, args.patient_model, patient_profile)
+    
+    # Initialize the chat logger
+    if not args.no_save:
+        chat_logger = ChatLogger(args.logs_dir)
     
     # Set up conversation handler
     conversation = ConversationHandler(assistant, patient)
@@ -133,6 +160,30 @@ def main():
     
     print("\n=== Final Diagnosis ===")
     print(diagnosis)
+    
+    # Save the conversation if requested
+    if not args.no_save:
+        # Fix the dict_keys not being subscriptable error
+        if isinstance(questionnaires, dict) and questionnaires:
+            # Convert dict_keys to list first, then access by index
+            selected_name = list(questionnaires.keys())[0]
+        else:
+            selected_name = "default_questionnaire"
+        
+        metadata = {
+            "assistant_model": args.assistant_model,
+            "patient_model": args.patient_model,
+            "patient_profile": patient_profile or "default",
+            "question_count": len(questions)
+        }
+        log_path = chat_logger.save_chat(
+            conversation.get_conversation_log(),
+            diagnosis,
+            questionnaire_name=selected_name,
+            metadata=metadata
+        )
+        print(f"\nConversation saved to: {log_path}")
+        print(f"You can find all conversation logs in: {chat_logger.log_dir}")
 
 if __name__ == "__main__":
     main()

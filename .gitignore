@@ -1,0 +1,59 @@
+# Python specific files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+.env
+.venv
+env.bak/
+venv.bak/
+
+# Project specific directories
+cache/
+chat_logs/
+
+# Ollama model files (if stored locally)
+*.bin
+*.gguf
+
+# PDF and document examples (optionally ignore - comment out if you want to include them in git)
+# documents/*.pdf
+# documents/*.txt
+# documents/*.docx
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Log files
+*.log
+*.json
+!requirements.json
+
+# Exclude pickle files from embeddings cache
+*.pkl

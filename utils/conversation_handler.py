@@ -1,4 +1,5 @@
 import time
+from typing import List, Dict, Any
 
 class ConversationHandler:
     def __init__(self, assistant, patient):
@@ -11,6 +12,7 @@ class ConversationHandler:
         """
         self.assistant = assistant
         self.patient = patient
+        self.conversation_log = []
     
     def run(self):
         """
@@ -23,6 +25,10 @@ class ConversationHandler:
         
         # Start with the assistant's first question
         question = self.assistant.get_next_message()
+        self.conversation_log.append({
+            "role": "assistant",
+            "content": question
+        })
         
         while True:
             print(f"Assistant: {question}")
@@ -33,6 +39,11 @@ class ConversationHandler:
             
             # Get patient's response
             patient_response = self.patient.respond_to_question(question)
+            self.conversation_log.append({
+                "role": "patient",
+                "content": patient_response
+            })
+            
             print(f"Patient: {patient_response}")
             
             # Small delay for more natural conversation flow
@@ -40,3 +51,16 @@ class ConversationHandler:
             
             # Get next question from assistant
             question = self.assistant.get_next_message(patient_response)
+            self.conversation_log.append({
+                "role": "assistant",
+                "content": question
+            })
+    
+    def get_conversation_log(self) -> List[Dict[str, str]]:
+        """
+        Get the conversation log.
+        
+        Returns:
+            List of conversation messages
+        """
+        return self.conversation_log
