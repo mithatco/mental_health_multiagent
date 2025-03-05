@@ -9,6 +9,11 @@ A sophisticated system that simulates mental health assessments using AI agents,
 - [Key Components](#key-components)
 - [Installation](#installation)
 - [Usage](#usage)
+  - [Basic Usage](#basic-usage)
+  - [Command-Line Options](#command-line-options)
+  - [Batch Processing](#batch-processing)
+  - [Viewing Saved Conversations](#viewing-saved-conversations)
+  - [Analyzing Batch Results](#analyzing-batch-results)
 - [Directory Structure](#directory-structure)
 - [How It Works](#how-it-works)
 - [Customization Options](#customization-options)
@@ -56,6 +61,13 @@ graph TD
         F --> I[Diagnosis]
         L --> S[Saved Conversations]
     end
+
+    subgraph "Batch Processing"
+        BP[Batch Processor] --> E
+        BP --> G
+        BP --> M[Multiple Conversations]
+        M --> BA[Batch Analysis]
+    end
 ```
 
 ## Key Components
@@ -78,6 +90,12 @@ graph TD
 - **Ollama Client**: Interfaces with locally deployed LLMs
 - **Chat Logger**: Records conversations and diagnoses
 - **Profile System**: Manages different patient profiles
+
+### 4. Analysis Tools
+
+- **Batch Processor**: Generates multiple conversations for research and analysis
+- **Batch Analyzer**: Analyzes patterns and statistics across multiple conversations
+- **PDF Debugger**: Helps diagnose issues with questionnaire extraction
 
 ## Installation
 
@@ -155,6 +173,21 @@ python main.py --no-save
 python main.py --logs-dir path/to/logs_folder
 ```
 
+### Batch Processing
+
+The batch processing feature allows you to generate multiple conversations automatically, which is useful for research, testing, or creating datasets.
+
+```bash
+# Generate 5 conversations using the same patient profile
+python main.py --batch 5 --patient_profile depression
+
+# Generate 10 conversations with randomized patient profiles
+python main.py --batch 10 --randomize-profiles
+
+# Generate 3 conversations and save them to a specific directory
+python main.py --batch 3 --logs-dir ./my_batch_results
+```
+
 ### Viewing Saved Conversations
 
 Use the provided chat viewer:
@@ -162,6 +195,20 @@ Use the provided chat viewer:
 ```bash
 python view_chats.py --list
 ```
+
+### Analyzing Batch Results
+
+After generating a batch of conversations, you can analyze the results to find patterns:
+
+```bash
+python analyze_batch.py chat_logs/batch_20231215_120000
+```
+
+This will provide:
+- Profile distribution statistics
+- Analysis of diagnoses across conversations 
+- Correlation between patient profiles and diagnoses
+- Conversation statistics (length, duration, etc.)
 
 ## Directory Structure
 
@@ -178,7 +225,8 @@ mental_health_multiagent/
 │   ├── ollama_client.py         # LLM interface
 │   ├── pdf_processor.py         # PDF extraction
 │   ├── rag_engine.py            # RAG functionality
-│   └── vector_store.py          # Vector database
+│   ├── vector_store.py          # Vector database
+│   └── batch_processor.py        # Batch conversation processing
 ├── prompts/                      # System prompts
 │   ├── mental_health_assistant_prompt.txt
 │   └── patient_prompt.txt
@@ -190,7 +238,10 @@ mental_health_multiagent/
 │   └── schizophrenia.txt
 ├── documents/                    # Store questionnaire PDFs here
 ├── chat_logs/                    # Saved conversations
-└── cache/                        # Embedding cache
+├── cache/                        # Embedding cache
+├── analyze_batch.py              # Batch analysis tool
+├── debug_pdf.py                  # PDF debugging tool
+└── create_profile.py             # Patient profile creation tool
 ```
 
 ## How It Works
@@ -272,6 +323,23 @@ Edit the files in the `prompts` directory to change the behavior of the agents:
 - `patient_prompt.txt`: Default patient behavior (if no profile is selected)
 
 ## Advanced Features
+
+### Batch Generation and Analysis
+
+The batch processing system allows you to:
+
+1. Generate multiple conversations automatically
+2. Use the same patient profile for all conversations or randomize profiles
+3. Save all conversations with metadata for analysis
+4. Generate statistical analyses across conversations
+5. Compare diagnoses between different patient profiles
+6. Identify patterns in the AI's diagnostic approach
+
+This is especially useful for:
+- Evaluating the consistency of the mental health assistant
+- Creating datasets for research or training
+- Testing system performance with different profiles
+- Analyzing how different symptoms lead to different diagnoses
 
 ### Embedding Model Selection
 

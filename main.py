@@ -8,6 +8,7 @@ from agents.mental_health_assistant import MentalHealthAssistant
 from agents.patient import Patient
 from utils.conversation_handler import ConversationHandler
 from utils.chat_logger import ChatLogger
+from utils.batch_processor import BatchProcessor
 
 # Define default paths
 DEFAULT_DOCS_DIR = os.path.join(
@@ -30,6 +31,12 @@ def main():
     parser.add_argument('--refresh_cache', action='store_true', help="Refresh the document cache")
     parser.add_argument('--no-save', action='store_true', help="Don't save conversation logs")
     parser.add_argument('--logs-dir', type=str, help="Directory to save conversation logs")
+    
+    # Add batch processing arguments
+    parser.add_argument('--batch', '-n', type=int, help="Number of conversations to generate in batch mode")
+    parser.add_argument('--randomize-profiles', action='store_true', 
+                        help="Randomize patient profiles for each conversation in batch mode")
+    
     args = parser.parse_args()
     
     # Create documents directory if it doesn't exist
@@ -143,6 +150,34 @@ def main():
                 print("Invalid selection. Using default profile.")
         except (ValueError, IndexError):
             print("Invalid selection. Using default profile.")
+    
+    # Check if we're in batch mode
+    if args.batch and args.batch > 0:
+        # Initialize RAG engine
+        print("Initializing RAG engine and processing documents...")
+        rag_engine = RAGEngine(args.docs_dir)
+        
+        # Process using batch mode
+        batch_processor = BatchProcessor(
+            args.ollama_url,
+            args.assistant_model,
+            args.patient_model,
+            rag_engine,
+            args.logs_dir
+        )
+        
+        print(f"Starting batch generation of {args.batch} conversations")
+        if args.randomize_profiles:
+            print("Using randomized patient profiles for each conversation")
+        
+        batch_processor.process_batch(
+            questions,
+            count=args.batch,
+            profile=args.patient_profile,
+            randomize_profiles=args.randomize_profiles
+        )
+        
+        return
     
     # Initialize agents
     assistant = MentalHealthAssistant(args.ollama_url, args.assistant_model, questions, rag_engine)
