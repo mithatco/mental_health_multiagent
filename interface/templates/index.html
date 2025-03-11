@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Log Viewer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Chat Logs</h2>
+            <div class="filters">
+                <label for="profile-filter">Patient Profile:</label>
+                <select id="profile-filter">
+                    <option value="All">All</option>
+                </select>
+                
+                <label for="date-filter">Date Range:</label>
+                <select id="date-filter">
+                    <option value="All time">All time</option>
+                    <option value="Today">Today</option>
+                    <option value="Last 7 days">Last 7 days</option>
+                    <option value="Last 30 days">Last 30 days</option>
+                </select>
+                
+                <label for="search-filter">Search:</label>
+                <input type="text" id="search-filter" placeholder="Search...">
+            </div>
+            
+            <div class="log-list" id="log-list">
+                <!-- Log items will be dynamically added here -->
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Loading logs...</p>
+                </div>
+            </div>
+            
+            <div class="buttons">
+                <button class="refresh-btn" id="refresh-btn">Refresh Logs</button>
+                <button class="export-btn" id="export-btn">Export as Text</button>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="metadata">
+                <div class="header">No chat selected</div>
+                <div class="metadata-grid" id="metadata-display">
+                    <!-- Metadata will be dynamically added here -->
+                </div>
+            </div>
+            
+            <div class="chat-container" id="chat-container">
+                <!-- Chat messages will be dynamically added here -->
+                <div class="no-logs">Select a chat log from the sidebar to view</div>
+            </div>
+            
+            <div class="diagnosis-container">
+                <h3>Diagnosis</h3>
+                <div id="diagnosis-content">No diagnosis available</div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/viewer.js') }}"></script>
+</body>
+</html>

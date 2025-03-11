@@ -238,11 +238,13 @@ mental_health_multiagent/
 │   └── schizophrenia.txt
 ├── documents/                    # Reference documents for knowledge retrieval
 │   └── questionnaires/           # Questionnaires used for assessment
+├── interface/                    # Components for the chat log viewer
 ├── chat_logs/                    # Saved conversations
 ├── cache/                        # Embedding cache
 ├── analyze_batch.py              # Batch analysis tool
 ├── debug_pdf.py                  # PDF debugging tool
-└── create_profile.py             # Patient profile creation tool
+├── create_profile.py             # Patient profile creation tool
+└── chat_viewer.py                # Chat log viewer entry point
 ```
 
 ## How It Works
@@ -351,6 +353,42 @@ This is especially useful for:
 ### Embedding Model Selection
 
 The system uses `nomic-embed-text` by default for embeddings, but you can modify the `vector_store.py` file to use a different model.
+
+### Chat Log Viewer
+
+The project includes a web-based chat log viewer to easily browse, filter, and analyze your conversations.
+
+#### Installation
+
+If you haven't already, install Flask:
+
+```bash
+pip install flask
+```
+
+#### Running the Chat Viewer
+
+To launch the chat viewer:
+
+```bash
+python chat_viewer.py
+```
+
+Additional options:
+- `--port`: Specify the port to run the server on (default: 5000)
+- `--logs-dir`: Directory containing chat logs (default: ./chat_logs)
+
+#### Usage
+
+1. Open your browser and navigate to http://127.0.0.1:5000
+2. You'll see the chat logs listed in the sidebar
+3. Use the filters to narrow down the log list:
+   - Select a patient profile from the dropdown
+   - Choose a date range
+   - Enter search terms
+4. Click on any log to view the full conversation
+5. The diagnosis is shown in a separate panel at the bottom
+6. Use the "Export as Text" button to download a text version of the conversatio
 
 ### Debugging PDF Extraction
 
