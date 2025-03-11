@@ -59,6 +59,11 @@ class ConversationHandler:
         # Track if we've gone through all questions
         all_questions_asked = False
         
+        # Check if the question is incomplete (missing a question mark or only fragments)
+        if not self._is_complete_question(question):
+            print("[DEBUG] Detected incomplete question. Fixing...")
+            question = self._fix_incomplete_question(question, self.assistant.current_question_idx - 1)
+        
         while True:
             # If we've already gone through all questions and received the patient's last response,
             # it's time to generate the diagnosis
@@ -114,6 +119,11 @@ class ConversationHandler:
             # Get next question from assistant
             question = self.assistant.get_next_message(patient_response)
             
+            # Check if the question is incomplete
+            if not all_questions_asked and not self._is_complete_question(question):
+                print("[DEBUG] Detected incomplete question. Fixing...")
+                question = self._fix_incomplete_question(question, self.assistant.current_question_idx - 1)
+            
             # Check if the response is a dictionary with RAG usage info
             if isinstance(question, dict) and "content" in question:
                 question_content = question["content"]
@@ -154,6 +164,51 @@ class ConversationHandler:
                 # If this is the diagnosis, return it
                 if all_questions_asked:
                     return question
+    
+    def _is_complete_question(self, text):
+        """Check if a question appears complete."""
+        if not text:
+            return False
+            
+        # Questions with complete sentences typically end with these punctuation marks
+        if text.strip().endswith('?'):
+            return True
+            
+        # Check if it's at least a complete sentence
+        if text.strip().endswith('.') or text.strip().endswith('!'):
+            # Make sure it has a reasonable length
+            words = text.split()
+            return len(words) >= 3
+            
+        # Check for fragments that are clearly incomplete
+        if text.strip().startswith(', ') or text.strip().startswith('or '):
+            return False
+            
+        # If it has reasonable length and structure, consider it complete
+        words = text.split()
+        return len(words) >= 5
+    
+    def _fix_incomplete_question(self, text, question_idx):
+        """Fix an incomplete question by referencing the original questionnaire."""
+        # If question index is valid, get the original question
+        if 0 <= question_idx < len(self.assistant.questions):
+            original = self.assistant.questions[question_idx]
+            print(f"[DEBUG] Using original question from questionnaire: {original}")
+            return original
+            
+        # If we can't get the original, try to make the fragment more question-like
+        if text.strip().startswith(', ') or text.strip().startswith('or '):
+            fixed = f"Do you experience {text.strip()}?"
+            print(f"[DEBUG] Fixed fragment to: {fixed}")
+            return fixed
+            
+        # Add a question mark if it's missing
+        if not text.strip().endswith('?'):
+            fixed = f"{text.strip()}?"
+            print(f"[DEBUG] Added question mark: {fixed}")
+            return fixed
+            
+        return text
     
     def get_conversation_log(self) -> List[Dict[str, str]]:
         """
