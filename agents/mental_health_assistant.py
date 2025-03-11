@@ -3,7 +3,7 @@ from utils.ollama_client import OllamaClient
 from utils.rag_engine import RAGEngine
 
 class MentalHealthAssistant:
-    def __init__(self, ollama_url, model, questions, rag_engine=None):
+    def __init__(self, ollama_url, model, questions, rag_engine=None, questionnaire_name=None):
         """
         Initialize the Mental Health Assistant agent.
         
@@ -12,6 +12,7 @@ class MentalHealthAssistant:
             model (str): Ollama model to use
             questions (list): List of questions from the questionnaire
             rag_engine (RAGEngine, optional): RAG engine for document retrieval
+            questionnaire_name (str, optional): Name of the questionnaire being used
         """
         self.client = OllamaClient(base_url=ollama_url)
         self.model = model
@@ -21,6 +22,7 @@ class MentalHealthAssistant:
         self.context = None
         self.rag_engine = rag_engine
         self.has_introduced = False  # Flag to track if introduction has been given
+        self.questionnaire_name = questionnaire_name
         
         # Load system prompt from file
         prompt_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 
@@ -50,9 +52,8 @@ class MentalHealthAssistant:
         if not self.has_introduced:
             self.has_introduced = True
             
-            # Generate introduction based on the number and nature of questions
-            questionnaire_type = self._determine_questionnaire_type()
-            intro_message = self._generate_introduction(questionnaire_type)
+            # Generate introduction based on the questionnaire content directly
+            intro_message = self._generate_introduction()
             
             # Add introduction to conversation history
             self.conversation_history.append({"role": "assistant", "content": intro_message})
@@ -78,59 +79,76 @@ class MentalHealthAssistant:
             print("[DEBUG] All questions asked. Generating final diagnosis with RAG assistance.")
             return self.generate_diagnosis()
     
-    def _determine_questionnaire_type(self):
-        """Determine the type of questionnaire based on the questions."""
-        # Look for keywords in the questions
-        keywords = {
-            "depression": ["depression", "mood", "sad", "interest", "pleasure", "hopeless"],
-            "anxiety": ["anxiety", "worry", "nervous", "panic", "fear", "edge"],
-            "general": ["mental health", "wellness", "well-being", "symptoms", "feelings"],
-            "psychiatric": ["hallucination", "psychosis", "delusion", "paranoid", "voices"]
-        }
+    def _generate_introduction(self):
+        """Generate a personalized introduction using the full questionnaire document."""
+        # Initialize questionnaire content variable
+        full_questionnaire_content = ""
+        questionnaire_identified = False
         
-        # Count occurrences of keywords
-        counts = {category: 0 for category in keywords}
-        for question in self.questions:
-            question_lower = question.lower()
-            for category, terms in keywords.items():
-                for term in terms:
-                    if term in question_lower:
-                        counts[category] += 1
+        print("[DEBUG] Retrieving full questionnaire document for introduction...")
         
-        # Return the category with the most matches, defaulting to general
-        max_count = 0
-        questionnaire_type = "general"
-        for category, count in counts.items():
-            if count > max_count:
-                max_count = count
-                questionnaire_type = category
+        # First, try to get the full questionnaire document if RAG is available
+        if self.rag_engine:
+            # If we have a questionnaire name, use it to find the exact document
+            if self.questionnaire_name:
+                query = f"full text of {self.questionnaire_name}"
+                specific_docs = self.rag_engine.retrieve(query, top_k=1)
+                if specific_docs:
+                    full_questionnaire_content = specific_docs[0]
+                    questionnaire_identified = True
+                    print(f"[DEBUG] Found specific questionnaire document: {self.questionnaire_name}")
+            
+            # If we couldn't find a specific document or don't have a name, try using the questions
+            if not questionnaire_identified:
+                # Join first few questions to create a search query
+                sample_questions = self.questions[:min(3, len(self.questions))]
+                query = " ".join(sample_questions)
+                
+                # Search for documents containing these questions
+                matching_docs = self.rag_engine.retrieve(query, top_k=1)
+                if matching_docs:
+                    full_questionnaire_content = matching_docs[0]
+                    questionnaire_identified = True
+                    print(f"[DEBUG] Found matching questionnaire document based on questions")
         
-        return questionnaire_type
-    
-    def _generate_introduction(self, questionnaire_type):
-        """Generate an appropriate introduction based on the questionnaire type."""
+        # If we still don't have the full questionnaire, we'll use the questions as fallback
+        if not questionnaire_identified:
+            print("[DEBUG] Could not find full questionnaire document, using extracted questions")
+            full_questionnaire_content = "\n".join(self.questions)
         
-        # Base introduction
-        intro = "Hello, I'm a mental health professional, and I'll be conducting an assessment today. "
+        # Create a prompt for the introduction generation
+        intro_prompt = f"""
+        You are a professional mental health clinician about to conduct an assessment using a mental health questionnaire.
         
-        # Add questionnaire-specific information
-        if questionnaire_type == "depression":
-            intro += "We'll be going through a depression screening questionnaire to better understand your mood and experiences. "
-        elif questionnaire_type == "anxiety":
-            intro += "Today we'll complete an anxiety assessment to help understand your experiences with worry and stress. "
-        elif questionnaire_type == "psychiatric":
-            intro += "I'll be asking you questions from a psychiatric evaluation to help us understand your experiences. "
-        else:  # general
-            intro += "Today we'll complete a general mental health assessment to understand how you've been feeling. "
+        Here is the full questionnaire document you will be administering:
         
-        # Add explanation of process
-        intro += "I'll ask you several questions, and your honest responses will help me provide a preliminary assessment. " 
-        intro += "Everything you share is confidential, and this is a safe space to discuss your concerns. "
+        ```
+        {full_questionnaire_content}
+        ```
         
-        # Add first question prompt
-        intro += "Let's begin with the first question:\n\n"
+        Based on this questionnaire document, please generate a warm, professional introduction to the patient that:
+        1. Introduces yourself as a mental health professional
+        2. Identifies the specific questionnaire you're using by name (from the document)
+        3. Explains the purpose of this specific assessment 
+        4. Reassures the patient about confidentiality and creating a safe space
+        5. Briefly explains how the assessment will proceed ({len(self.questions)} questions)
+        6. Indicates you're ready to begin with the first question
         
-        return intro
+        Keep your tone professional but warm, showing empathy while maintaining clinical objectivity.
+        Make sure to correctly identify and name the specific questionnaire you're administering.
+        """
+        
+        # Create a temporary conversation for generating the introduction
+        temp_conversation = [
+            {"role": "system", "content": self.system_prompt},
+            {"role": "user", "content": intro_prompt}
+        ]
+        
+        # Generate the introduction using the LLM
+        result = self.client.chat(self.model, temp_conversation)
+        introduction = result['response']
+        
+        return introduction
     
     def generate_diagnosis(self):
         """

@@ -118,6 +118,7 @@ def main():
             for i, name in enumerate(questionnaire_names, 1):
                 print(f"{i}. {name} ({len(questionnaires[name])} questions)")
             
+            selected_name = None
             try:
                 choice = int(input("\nSelect a questionnaire (number): "))
                 if 1 <= choice <= len(questionnaire_names):
@@ -189,7 +190,13 @@ def main():
         return
     
     # Initialize agents
-    assistant = MentalHealthAssistant(args.ollama_url, args.assistant_model, questions, rag_engine)
+    assistant = MentalHealthAssistant(
+        args.ollama_url, 
+        args.assistant_model, 
+        questions, 
+        rag_engine,
+        questionnaire_name=selected_name
+    )
     patient = Patient(args.ollama_url, args.patient_model, patient_profile)
     
     # Initialize the chat logger
