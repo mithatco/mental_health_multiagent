@@ -6,15 +6,17 @@ from .vector_store import SimpleVectorStore
 class RAGEngine:
     """Retrieval-Augmented Generation engine for the mental health assistant."""
     
-    def __init__(self, documents_dir: str, cache_dir: str = None):
+    def __init__(self, documents_dir: str, questionnaire_dir: str = None, cache_dir: str = None):
         """
         Initialize the RAG engine.
         
         Args:
-            documents_dir: Directory containing documents
+            documents_dir: Directory containing reference documents
+            questionnaire_dir: Directory containing questionnaires (if None, uses documents_dir)
             cache_dir: Directory to cache embeddings
         """
         self.documents_dir = documents_dir
+        self.questionnaire_dir = questionnaire_dir or documents_dir
         
         # Set default cache directory if not provided
         if cache_dir is None:
@@ -23,14 +25,15 @@ class RAGEngine:
         # Create vector store
         self.vector_store = SimpleVectorStore(cache_dir=cache_dir)
         
-        # Load and process documents
+        # Load and process all documents for RAG
         self.document_map = self._load_documents()
         
-        # Create a mapping of questionnaire names to questions
-        self.questionnaire_map = self._extract_questionnaires()
+        # Load questionnaires separately
+        self.questionnaire_map = self._load_questionnaires()
     
     def _load_documents(self) -> Dict[str, List[Document]]:
-        """Load documents from the documents directory."""
+        """Load reference documents from the documents directory."""
+        print(f"Loading reference documents from {self.documents_dir}")
         document_map = process_documents_directory(self.documents_dir)
         
         # Add all documents to vector store
@@ -42,23 +45,36 @@ class RAGEngine:
         
         return document_map
     
-    def _extract_questionnaires(self) -> Dict[str, List[str]]:
-        """Extract questionnaires from the documents."""
+    def _load_questionnaires(self) -> Dict[str, List[str]]:
+        """Load questionnaires from the questionnaire directory."""
         questionnaire_map = {}
         
-        # First check all document types, not just PDFs
-        for ext, docs in self.document_map.items():
-            print(f"Processing documents with extension: {ext}, count: {len(docs)}")
-            
-            for document in docs:
-                questions = extract_questions_from_text(document.content)
-                filename = document.metadata.get('filename', 'Unknown')
-                print(f"  - {filename}: Found {len(questions)} questions")
-                
-                if questions:
-                    questionnaire_map[filename] = questions
+        print(f"Loading questionnaires from {self.questionnaire_dir}")
         
-        # If no questionnaires found, but we have documents, use the first one
+        if self.questionnaire_dir == self.documents_dir:
+            # If using the same directory, we've already processed these documents
+            # Just extract questions from what we have
+            if '.pdf' in self.document_map:
+                for document in self.document_map['.pdf']:
+                    questions = extract_questions_from_text(document.content)
+                    filename = document.metadata.get('filename', 'Unknown')
+                    print(f"  - {filename}: Found {len(questions)} questions")
+                    if questions:
+                        questionnaire_map[filename] = questions
+        else:
+            # Process the questionnaire directory separately
+            questionnaire_docs = process_documents_directory(self.questionnaire_dir)
+            
+            # Extract questions from all document types
+            for ext, docs in questionnaire_docs.items():
+                for document in docs:
+                    questions = extract_questions_from_text(document.content)
+                    filename = document.metadata.get('filename', 'Unknown')
+                    print(f"  - {filename}: Found {len(questions)} questions")
+                    if questions:
+                        questionnaire_map[filename] = questions
+        
+        # If no questionnaires found but we have documents, try to create placeholder questions
         if not questionnaire_map and self.document_map:
             for ext, docs in self.document_map.items():
                 if docs:
@@ -125,4 +141,4 @@ class RAGEngine:
     def refresh_documents(self) -> None:
         """Refresh documents from the documents directory."""
         self.document_map = self._load_documents()
-        self.questionnaire_map = self._extract_questionnaires()
+        self.questionnaire_map = self._load_questionnaires()

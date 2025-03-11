@@ -18,6 +18,16 @@ class Patient:
         # Load system prompt from profile or default
         self.system_prompt = self._load_profile(profile_name)
         
+        # Add additional instructions to reinforce role boundaries
+        role_instructions = """
+        IMPORTANT REMINDER: Your role is to answer questions as a patient, not to ask them.
+        - Respond to the mental health professional's questions
+        - Do not try to lead the conversation or take on the professional's role
+        - You may ask for clarification if needed, but keep the focus on answering questions
+        - Do not fabricate conversation history or reference discussions that haven't happened
+        """
+        
+        self.system_prompt = self.system_prompt + "\n\n" + role_instructions
         self.conversation_history = [{"role": "system", "content": self.system_prompt}]
     
     def _load_profile(self, profile_name):
@@ -72,11 +82,21 @@ class Patient:
         # Add question to conversation history
         self.conversation_history.append({"role": "user", "content": question})
         
-        result = self.client.chat(self.model, self.conversation_history)
+        # Add specific instruction for this question to minimize question-asking
+        question_prompt = {
+            "role": "system", 
+            "content": "Remember to answer the question as the patient without asking questions back unless absolutely necessary for clarification. Focus on expressing your symptoms and experiences."
+        }
+        
+        # Create a temporary conversation history with the additional instruction
+        temp_conversation = self.conversation_history.copy()
+        temp_conversation.append(question_prompt)
+        
+        result = self.client.chat(self.model, temp_conversation)
         patient_response = result['response']
         self.context = result['context']
         
-        # Add response to conversation history
+        # Add response to conversation history (without the temporary instruction)
         self.conversation_history.append({"role": "assistant", "content": patient_response})
         
         return patient_response

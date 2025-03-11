@@ -220,12 +220,12 @@ mental_health_multiagent/
 │   └── patient.py
 ├── utils/                        # Utility modules
 │   ├── conversation_handler.py   # Handles agent interactions
-│   ├── chat_logger.py           # Conversation logging
-│   ├── document_processor.py    # Document handling
-│   ├── ollama_client.py         # LLM interface
-│   ├── pdf_processor.py         # PDF extraction
-│   ├── rag_engine.py            # RAG functionality
-│   ├── vector_store.py          # Vector database
+│   ├── chat_logger.py            # Conversation logging
+│   ├── document_processor.py     # Document handling
+│   ├── ollama_client.py          # LLM interface
+│   ├── pdf_processor.py          # PDF extraction
+│   ├── rag_engine.py             # RAG functionality
+│   ├── vector_store.py           # Vector database
 │   └── batch_processor.py        # Batch conversation processing
 ├── prompts/                      # System prompts
 │   ├── mental_health_assistant_prompt.txt
@@ -236,7 +236,8 @@ mental_health_multiagent/
 │   ├── depression.txt
 │   ├── ptsd.txt
 │   └── schizophrenia.txt
-├── documents/                    # Store questionnaire PDFs here
+├── documents/                    # Reference documents for knowledge retrieval
+│   └── questionnaires/           # Questionnaires used for assessment
 ├── chat_logs/                    # Saved conversations
 ├── cache/                        # Embedding cache
 ├── analyze_batch.py              # Batch analysis tool
@@ -308,13 +309,19 @@ Alternatively, use the provided script:
 python create_profile.py --interactive
 ```
 
-### Adding Reference Documents
+### Adding Reference Documents and Questionnaires
 
-Place any clinical reference materials in the `documents` directory for the RAG system to use:
-- DSM-5 excerpts
-- Clinical guidelines
-- Research papers
-- Treatment protocols
+The system now clearly separates two types of documents:
+
+1. **Questionnaires**: Place assessment questionnaires in the `documents/questionnaires/` directory. These are used to structure the conversation.
+
+2. **Reference Materials**: Place clinical reference materials in the main `documents/` directory. These are used by the RAG system to enhance the assistant's knowledge and improve diagnostic accuracy. Good examples include:
+   - DSM-5 excerpts
+   - Clinical guidelines
+   - Research papers
+   - Treatment protocols
+
+This separation makes it easier to manage your documents and ensures that only questionnaires appear in the selection menu when starting an assessment.
 
 ### Modifying System Prompts
 
@@ -376,14 +383,14 @@ If you prefer not to use PDF extraction, you can create a text file with questio
 
 ### Poor Quality Responses
 
-- Try a larger LLM model (`ollama pull llama2:13b`)
+- Try a larger LLM model
 - Add more detailed patient profiles
 - Provide more comprehensive reference materials in the documents directory
 - Adjust the system prompts to be more specific
 
 ### Out of Memory Errors
 
-- Use smaller models (e.g., `qwen2.5:3b` instead of `llama2:13b`)
+- Use smaller models
 - Reduce chunk size in `vector_store.py`
 - Limit the number of documents processed
 
