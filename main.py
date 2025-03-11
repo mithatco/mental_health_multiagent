@@ -143,20 +143,22 @@ def main():
     patient_profile = args.patient_profile
     available_profiles = Patient.list_available_profiles()
     
-    if not patient_profile and available_profiles:
-        print("\nAvailable patient profiles:")
-        for i, profile in enumerate(sorted(available_profiles), 1):
-            print(f"{i}. {profile}")
-        
-        try:
-            choice = int(input("\nSelect a patient profile (number): "))
-            if 1 <= choice <= len(available_profiles):
-                patient_profile = sorted(available_profiles)[choice-1]
-                print(f"Selected patient profile: {patient_profile}\n")
-            else:
+    # Skip profile selection if we're in batch mode with randomized profiles
+    if not (args.batch and args.batch > 0 and args.randomize_profiles):
+        if not patient_profile and available_profiles:
+            print("\nAvailable patient profiles:")
+            for i, profile in enumerate(sorted(available_profiles), 1):
+                print(f"{i}. {profile}")
+            
+            try:
+                choice = int(input("\nSelect a patient profile (number): "))
+                if 1 <= choice <= len(available_profiles):
+                    patient_profile = sorted(available_profiles)[choice-1]
+                    print(f"Selected patient profile: {patient_profile}\n")
+                else:
+                    print("Invalid selection. Using default profile.")
+            except (ValueError, IndexError):
                 print("Invalid selection. Using default profile.")
-        except (ValueError, IndexError):
-            print("Invalid selection. Using default profile.")
     
     # Check if we're in batch mode
     if args.batch and args.batch > 0:

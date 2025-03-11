@@ -30,6 +30,8 @@ class RAGEngine:
         
         # Load questionnaires separately
         self.questionnaire_map = self._load_questionnaires()
+        
+        self.accessed_documents = []  # Track accessed documents
     
     def _load_documents(self) -> Dict[str, List[Document]]:
         """Load reference documents from the documents directory."""
@@ -122,7 +124,19 @@ class RAGEngine:
         Returns:
             List of relevant document contents
         """
+        self.accessed_documents = []  # Reset accessed documents for this query
+        
         results = self.vector_store.search(query, top_k=top_k)
+        
+        # Store accessed document information
+        for doc, _ in results:
+            doc_info = {
+                "title": doc.metadata.get("source", "Unknown"),
+                "score": doc.metadata.get("score", 0),
+                "excerpt": doc.content[:100] + "..." if len(doc.content) > 100 else doc.content
+            }
+            self.accessed_documents.append(doc_info)
+        
         return [doc.content for doc, _ in results]
     
     def get_context_for_question(self, question: str) -> str:
@@ -142,3 +156,11 @@ class RAGEngine:
         """Refresh documents from the documents directory."""
         self.document_map = self._load_documents()
         self.questionnaire_map = self._load_questionnaires()
+    
+    def get_accessed_documents(self):
+        """Returns list of documents accessed in the last query"""
+        return self.accessed_documents
+    
+    def clear_accessed_documents(self):
+        """Clears the list of accessed documents"""
+        self.accessed_documents = []

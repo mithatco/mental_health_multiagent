@@ -38,7 +38,7 @@ class MentalHealthAssistant:
             patient_response (str): Response from the patient
             
         Returns:
-            str: Next message from the assistant
+            str or dict: Next message from the assistant, possibly with RAG info
         """
         if patient_response:
             # Add patient's response to conversation history
@@ -61,24 +61,21 @@ class MentalHealthAssistant:
         
         # Continue with regular question flow
         if self.current_question_idx < len(self.questions):
-            # Ask the next question
+            # Ask the next question - use the exact question from the questionnaire without RAG
             next_question = self.questions[self.current_question_idx]
             
-            # Enhance with RAG if available
-            enhanced_question = next_question
-            if self.rag_engine:
-                context = self.rag_engine.get_context_for_question(next_question)
-                if context:
-                    enhanced_question = f"{next_question}\n\nI have this additional context to consider: {context}"
+            print(f"[DEBUG] Asking questionnaire question #{self.current_question_idx + 1}: {next_question[:50]}...")
             
             self.current_question_idx += 1
             
             # Add question to conversation history
             self.conversation_history.append({"role": "assistant", "content": next_question})
             
+            # Return the exact question from the questionnaire without RAG enhancement
             return next_question
         else:
             # All questions have been asked, generate diagnosis
+            print("[DEBUG] All questions asked. Generating final diagnosis with RAG assistance.")
             return self.generate_diagnosis()
     
     def _determine_questionnaire_type(self):
@@ -159,13 +156,24 @@ class MentalHealthAssistant:
         Keep your tone professional but warm, showing empathy while maintaining clinical objectivity.
         """
         
-        # Enhance with RAG if available
+        # Enhance with RAG if available - ONLY use RAG during diagnosis phase
         if self.rag_engine:
+            print("[DEBUG] Now using RAG for diagnosis...")
+            
+            # Build a query based on the patient's symptoms from their responses
+            symptoms_query = self._extract_symptoms_for_query()
+            print(f"[DEBUG] Querying RAG using extracted symptoms: {symptoms_query[:100]}...")
+            
             # Get context for general mental health diagnosis
-            context = self.rag_engine.retrieve("mental health diagnosis criteria DSM-5", top_k=3)
+            context = self.rag_engine.retrieve(symptoms_query, top_k=5)
             if context:
-                context_str = "\n\n".join(context)
-                diagnosis_prompt += f"\n\nAdditional reference information:\n{context_str}"
+                print(f"[DEBUG] Found {len(context)} relevant documents for diagnosis")
+                
+                # Don't include raw context in the prompt, instead use system message
+                self.conversation_history.append({
+                    "role": "system", 
+                    "content": f"Use this additional reference information to help inform your diagnosis, but don't include raw reference text in your response: {' '.join(context)}"
+                })
         
         self.conversation_history.append({"role": "user", "content": diagnosis_prompt})
         
@@ -178,9 +186,85 @@ class MentalHealthAssistant:
         
         return diagnosis
     
+    def _extract_symptoms_for_query(self):
+        """Extract key symptoms from patient responses to create a better RAG query."""
+        symptoms = []
+        for question, response in self.responses:
+            # Add both question and response to get context
+            symptoms.append(f"{question} {response}")
+        
+        # Join all symptoms into one query string
+        combined = " ".join(symptoms)
+        
+        # Include common mental health terminology to improve RAG retrieval
+        query = f"mental health assessment for patient with symptoms: {combined}"
+        return query
+
     def _format_responses(self):
         """Format the patient's responses for diagnosis."""
         formatted = ""
         for i, (question, response) in enumerate(self.responses, 1):
             formatted += f"Q{i}: {question}\nA{i}: {response}\n\n"
         return formatted
+
+    def respond(self, message, conversation_history=None):
+        """
+        Generate a response to the patient's message.
+        
+        Args:
+            message: Message from the patient
+            conversation_history: Optional conversation history to use
+            
+        Returns:
+            dict: Response with content and RAG usage information
+        """
+        # Use provided conversation history or default to self.conversation_history
+        history = conversation_history or self.conversation_history
+        
+        # Create a copy to avoid modifying the original
+        history_copy = history.copy()
+        
+        # Add the user message
+        history_copy.append({"role": "user", "content": message})
+        
+        print(f"[DEBUG] Generating response to: {message[:50]}..." if len(message) > 50 else message)
+        
+        # Query RAG engine if available
+        if self.rag_engine:
+            print("[DEBUG] Querying RAG engine for relevant context")
+            context = self.rag_engine.retrieve(message, top_k=3)
+            
+            if context:
+                print(f"[DEBUG] Found {len(context)} relevant documents")
+                context_str = "\n\n".join(context)
+                # Add context to the message
+                system_message = {
+                    "role": "system", 
+                    "content": f"Consider this additional information when responding:\n{context_str}"
+                }
+                history_copy.append(system_message)
+        
+        # Generate response
+        result = self.client.chat(self.model, history_copy)
+        response = result['response']
+        
+        print(f"[DEBUG] Generated response: {response[:50]}..." if len(response) > 50 else response)
+        
+        # If RAG was used, get the accessed documents
+        rag_usage = None
+        if self.rag_engine and hasattr(self.rag_engine, 'get_accessed_documents'):
+            accessed_docs = self.rag_engine.get_accessed_documents()
+            if accessed_docs:
+                print(f"[DEBUG] RAG used: found {len(accessed_docs)} relevant documents")
+                rag_usage = {
+                    "accessed_documents": accessed_docs,
+                    "count": len(accessed_docs)
+                }
+                # Clear the accessed documents for next query
+                self.rag_engine.clear_accessed_documents()
+        
+        # Return both the response and RAG usage information
+        return {
+            "content": response,
+            "rag_usage": rag_usage
+        }
