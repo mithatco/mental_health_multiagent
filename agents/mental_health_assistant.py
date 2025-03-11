@@ -155,7 +155,7 @@ class MentalHealthAssistant:
         Generate a diagnosis based on the patient's responses.
         
         Returns:
-            str: Diagnosis from the assistant
+            dict: Diagnosis from the assistant with RAG usage information
         """
         # Create a prompt for diagnosis
         diagnosis_prompt = f"""
@@ -173,6 +173,9 @@ class MentalHealthAssistant:
         
         Keep your tone professional but warm, showing empathy while maintaining clinical objectivity.
         """
+        
+        # Initialize RAG usage information
+        rag_usage = None
         
         # Enhance with RAG if available - ONLY use RAG during diagnosis phase
         if self.rag_engine:
@@ -192,6 +195,18 @@ class MentalHealthAssistant:
                     "role": "system", 
                     "content": f"Use this additional reference information to help inform your diagnosis, but don't include raw reference text in your response: {' '.join(context)}"
                 })
+                
+                # Track RAG usage information
+                if hasattr(self.rag_engine, 'get_accessed_documents'):
+                    accessed_docs = self.rag_engine.get_accessed_documents()
+                    if accessed_docs:
+                        print(f"[DEBUG] RAG used: captured {len(accessed_docs)} relevant documents for diagnosis")
+                        rag_usage = {
+                            "accessed_documents": accessed_docs,
+                            "count": len(accessed_docs)
+                        }
+                        # Clear the accessed documents for next query
+                        self.rag_engine.clear_accessed_documents()
         
         self.conversation_history.append({"role": "user", "content": diagnosis_prompt})
         
@@ -202,8 +217,12 @@ class MentalHealthAssistant:
         # Add diagnosis to conversation history
         self.conversation_history.append({"role": "assistant", "content": diagnosis})
         
-        return diagnosis
-    
+        # Return both the diagnosis and RAG usage information
+        return {
+            "content": diagnosis,
+            "rag_usage": rag_usage
+        }
+
     def _extract_symptoms_for_query(self):
         """Extract key symptoms from patient responses to create a better RAG query."""
         symptoms = []
