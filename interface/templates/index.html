@@ -83,20 +83,40 @@
                     </div>
                 </div>
                 
-                <div class="chat-container" id="chat-container">
-                    <!-- Chat messages will be dynamically added here -->
-                    <div class="no-logs">Select a chat log from the sidebar to view</div>
+                <div id="chat-container-section" class="section">
+                    <div class="chat-container" id="chat-container">
+                        <!-- Chat messages will be dynamically added here -->
+                        <div class="no-logs">Select a chat log from the sidebar to view</div>
+                    </div>
                 </div>
                 
-                <div class="diagnosis-container">
-                    <h3>Diagnosis</h3>
-                    <div id="diagnosis-content">No diagnosis available</div>
+                <div id="diagnosis-section" class="section">
+                    <div class="diagnosis-container">
+                        <div id="diagnosis-content">No diagnosis available</div>
+                    </div>
                 </div>
                 
-                <div class="rag-summary-container">
-                    <h3>RAG Summary</h3>
-                    <div id="rag-summary-content">
-                        <p>No RAG summary available</p>
+                <div id="rag-summary-section" class="section">
+                    <div class="rag-summary-container">
+                        <div id="rag-summary-content">
+                            <p>No RAG summary available</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Add Evaluation section -->
+                <div id="evaluation-section" class="section">
+                    <div class="evaluation-container" id="evaluation-container">
+                        <div class="evaluation-header">
+                            <button id="evaluate-btn" class="evaluate-btn">Evaluate with Ollama</button>
+                        </div>
+                        <div id="evaluation-status" class="evaluation-status hidden">
+                            <div class="spinner"></div>
+                            <span>Running evaluation...</span>
+                        </div>
+                        <div id="evaluation-content">
+                            <p>No evaluation results available</p>
+                        </div>
                     </div>
                 </div>
             </div>

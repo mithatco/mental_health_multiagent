@@ -28,6 +28,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add event listener for export button
     document.getElementById('export-btn').addEventListener('click', exportData);
+
+    // Add section toggle functionality
+    setupSectionToggles();
 });
 
 // Switch between individual and batch views
@@ -439,7 +442,7 @@ function applyFilters() {
     }
 }
 
-// Load chat details
+// Fix the loadChat function to properly clear evaluation status
 function loadChat(chatId) {
     currentChatId = chatId;
     
@@ -455,6 +458,18 @@ function loadChat(chatId) {
     document.getElementById('chat-container').innerHTML = '<div class="loading"><div class="spinner"></div><p>Loading conversation...</p></div>';
     document.getElementById('metadata-display').innerHTML = '';
     document.getElementById('diagnosis-content').innerHTML = 'Loading...';
+    
+    // Clear any existing evaluation content and status
+    document.getElementById('evaluation-content').innerHTML = '<p>No evaluation results available</p>';
+    document.getElementById('evaluation-status').classList.add('hidden');
+    
+    // Enable evaluate button
+    const evaluateBtn = document.getElementById('evaluate-btn');
+    evaluateBtn.disabled = false;
+    
+    // Remove any existing event listeners by cloning and replacing the button
+    const newEvaluateBtn = evaluateBtn.cloneNode(true);
+    evaluateBtn.parentNode.replaceChild(newEvaluateBtn, evaluateBtn);
     
     // Fetch chat data
     fetch(`/api/logs/${chatId}`)
@@ -474,11 +489,124 @@ function loadChat(chatId) {
             
             // Update RAG summary
             displayRagSummary(data.rag_summary);
+            
+            // Check if evaluation exists and show it
+            if (data.evaluation) {
+                displayEvaluationResults(data.evaluation);
+            } else {
+                // Explicitly clear evaluation content if no evaluation exists
+                document.getElementById('evaluation-content').innerHTML = '<p>No evaluation results available</p>';
+                document.getElementById('evaluation-status').classList.add('hidden');
+            }
+            
+            // Add event listener for evaluate button (to the new button instance)
+            document.getElementById('evaluate-btn').addEventListener('click', () => {
+                startEvaluation(chatId);
+            });
+            
+            // Check if an evaluation is already in progress
+            // But only if the evaluate button is visible (not in a minimized section)
+            if (!document.getElementById('evaluation-container').classList.contains('section-minimized')) {
+                checkEvaluationStatus(chatId);
+            }
         })
         .catch(error => {
             console.error('Error loading chat:', error);
             document.getElementById('chat-container').innerHTML = '<div class="no-logs">Failed to load conversation</div>';
         });
+}
+
+// Add a function to check if evaluation is already in progress
+function checkEvaluationStatus(chatId) {
+    fetch(`/api/logs/${chatId}/evaluation?nocache=${Date.now()}`)
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'in_progress') {
+            // If an evaluation is already running, show spinner and disable button
+            document.getElementById('evaluate-btn').disabled = true;
+            const statusElement = document.getElementById('evaluation-status');
+            statusElement.classList.remove('hidden');
+            statusElement.querySelector('span').textContent = 'Running evaluation...';
+            
+            // Start polling
+            pollEvaluationStatus(chatId);
+        } else if (data.status === 'completed' && data.results) {
+            // If evaluation is already complete, show results
+            displayEvaluationResults(data.results);
+        } else {
+            // Ensure evaluation status is hidden for any other status
+            document.getElementById('evaluation-status').classList.add('hidden');
+        }
+    })
+    .catch(error => {
+        console.error('Error checking evaluation status:', error);
+        // Hide status on error
+        document.getElementById('evaluation-status').classList.add('hidden');
+    });
+}
+
+// Fix the evaluation polling to handle timeouts and errors better
+function pollEvaluationStatus(chatId) {
+    // Show progress message and keep updating it
+    let dots = 0;
+    const statusElement = document.getElementById('evaluation-status');
+    const statusSpan = statusElement.querySelector('span');
+    
+    // Update the dots animation
+    const updateDots = setInterval(() => {
+        dots = (dots + 1) % 4;
+        statusSpan.textContent = `Running evaluation${'.'.repeat(dots)}`;
+    }, 500);
+    
+    // Set a timeout counter to prevent infinite polling
+    let pollCount = 0;
+    const maxPolls = 60; // Max 2 minutes (at 2 second intervals)
+    
+    // Check evaluation status every 2 seconds
+    const statusCheck = setInterval(() => {
+        pollCount++;
+        
+        // Stop polling after maxPolls to prevent infinite polling
+        if (pollCount >= maxPolls) {
+            clearInterval(statusCheck);
+            clearInterval(updateDots);
+            showEvaluationError('Evaluation timed out. Please try again later.');
+            return;
+        }
+        
+        // Add cache-busting parameter to avoid cached responses
+        fetch(`/api/logs/${chatId}/evaluation?nocache=${Date.now()}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.status === 'completed') {
+                // Evaluation completed
+                clearInterval(statusCheck);
+                clearInterval(updateDots);
+                displayEvaluationResults(data.results);
+            } else if (data.status === 'error') {
+                // Evaluation failed
+                clearInterval(statusCheck);
+                clearInterval(updateDots);
+                showEvaluationError(data.message || 'Evaluation failed');
+            } else if (data.status !== 'in_progress') {
+                // Any other status means it's not running
+                clearInterval(statusCheck);
+                clearInterval(updateDots);
+                document.getElementById('evaluation-status').classList.add('hidden');
+                document.getElementById('evaluate-btn').disabled = false;
+            }
+            // If status is 'in_progress', continue polling
+        })
+        .catch(error => {
+            console.error('Error checking evaluation status:', error);
+            pollCount += 5; // Increment poll count more on error to timeout sooner
+        });
+    }, 2000);
 }
 
 // Update metadata display
@@ -608,4 +736,302 @@ function displayRagSummary(ragSummary) {
     }
     
     ragSummaryContent.innerHTML = html;
+}
+
+// Add these functions to your existing JavaScript file
+function startEvaluation(chatId) {
+    // Disable evaluate button and show status
+    document.getElementById('evaluate-btn').disabled = true;
+    const statusElement = document.getElementById('evaluation-status');
+    statusElement.classList.remove('hidden');
+    
+    // Call API to start evaluation
+    fetch(`/api/logs/${chatId}/evaluate`, {
+        method: 'POST'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'started' || data.status === 'in_progress') {
+            // Poll for evaluation status
+            pollEvaluationStatus(chatId);
+        } else {
+            // Show error
+            showEvaluationError(data.message || 'Failed to start evaluation');
+        }
+    })
+    .catch(error => {
+        console.error('Error starting evaluation:', error);
+        showEvaluationError('Failed to start evaluation');
+    });
+}
+
+// Fix the evaluation polling
+function pollEvaluationStatus(chatId) {
+    // Show progress message and keep updating it
+    let dots = 0;
+    const statusElement = document.getElementById('evaluation-status');
+    const statusSpan = statusElement.querySelector('span');
+    
+    // Update the dots animation
+    const updateDots = setInterval(() => {
+        dots = (dots + 1) % 4;
+        statusSpan.textContent = `Running evaluation${'.'.repeat(dots)}`;
+    }, 500);
+    
+    // Check evaluation status every 2 seconds
+    const statusCheck = setInterval(() => {
+        fetch(`/api/logs/${chatId}/evaluation`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'completed') {
+                // Evaluation completed
+                clearInterval(statusCheck);
+                clearInterval(updateDots);
+                displayEvaluationResults(data.results);
+            } else if (data.status === 'error') {
+                // Evaluation failed
+                clearInterval(statusCheck);
+                clearInterval(updateDots);
+                showEvaluationError(data.message || 'Evaluation failed');
+            }
+            // If status is 'in_progress', continue polling
+        })
+        .catch(error => {
+            console.error('Error checking evaluation status:', error);
+            clearInterval(statusCheck);
+            clearInterval(updateDots);
+            showEvaluationError('Failed to check evaluation status');
+        });
+    }, 2000);
+}
+
+function showEvaluationError(message) {
+    // Hide status spinner
+    document.getElementById('evaluation-status').classList.add('hidden');
+    
+    // Enable evaluate button
+    document.getElementById('evaluate-btn').disabled = false;
+    
+    // Show error message
+    document.getElementById('evaluation-content').innerHTML = `
+        <div class="error-message">
+            <p>Error: ${message}</p>
+            <p>Please try again later.</p>
+        </div>
+    `;
+}
+
+function displayEvaluationResults(results) {
+    // Hide status spinner
+    document.getElementById('evaluation-status').classList.add('hidden');
+    
+    // Enable evaluate button
+    document.getElementById('evaluate-btn').disabled = false;
+    
+    // Check if we have valid results
+    if (!results || results.error) {
+        showEvaluationError(results.error || 'Invalid evaluation results');
+        return;
+    }
+    
+    // Get metrics
+    const metrics = results.metrics;
+    if (!metrics) {
+        showEvaluationError('No metrics available in evaluation results');
+        return;
+    }
+    
+    // Format the evaluation time
+    const evalTime = results.evaluation_time ? 
+        `${Math.round(results.evaluation_time)} seconds` : 
+        'Unknown';
+    
+    // Generate HTML for evaluation results
+    let html = `
+        <div class="evaluation-summary">
+            <p><strong>Evaluation performed:</strong> ${results.timestamp || 'Unknown'}</p>
+            <p><strong>Model used:</strong> ${results.model || 'Unknown'}</p>
+            <p><strong>Questions analyzed:</strong> ${results.question_count || 'Unknown'}</p>
+            <p><strong>Evaluation time:</strong> ${evalTime}</p>
+        </div>
+        <h4>Metrics Summary</h4>
+        <div class="evaluation-metrics">
+    `;
+    
+    // Count available metrics
+    let metricCount = 0;
+    
+    // Add average metrics
+    for (const key in metrics) {
+        if (key.startsWith('avg_')) {
+            const metricName = key.replace('avg_', '');
+            const metricValue = parseFloat(metrics[key]).toFixed(2);
+            const description = getMetricDescription(metricName);
+            
+            metricCount++;
+            
+            // Add the metric card
+            html += `
+                <div class="metric-card">
+                    <div class="metric-header">${formatMetricName(metricName)}</div>
+                    <div class="metric-value">${metricValue}</div>
+                    <div class="metric-description">${description}</div>
+                </div>
+            `;
+        }
+    }
+    
+    // Close metrics grid
+    html += `</div>`;
+    
+    // Add note about metrics if we only got answer_relevancy
+    if (metricCount <= 1) {
+        html += `
+            <div class="metric-note">
+                <p><strong>Note:</strong> Only answer relevancy was evaluated. For more metrics like faithfulness and context precision, 
+                ensure that each message has proper context information.</p>
+            </div>
+        `;
+    }
+    
+    // Add detailed metrics if available
+    const detailedMetrics = [];
+    for (const key in metrics) {
+        if (!key.startsWith('avg_') && Array.isArray(metrics[key])) {
+            detailedMetrics.push(key);
+        }
+    }
+    
+    if (detailedMetrics.length > 0) {
+        html += `
+            <h4>Question-by-Question Analysis</h4>
+            <div class="metrics-chart">
+                <table class="metrics-table">
+                    <thead>
+                        <tr>
+                            <th>Question #</th>
+                            ${detailedMetrics.map(metric => `<th>${formatMetricName(metric)}</th>`).join('')}
+                        </tr>
+                    </thead>
+                    <tbody>
+        `;
+        
+        // Add rows for each question
+        const questionCount = metrics[detailedMetrics[0]].length;
+        for (let i = 0; i < questionCount; i++) {
+            html += `
+                <tr>
+                    <td>Question ${i+1}</td>
+                    ${detailedMetrics.map(metric => {
+                        const value = parseFloat(metrics[metric][i]).toFixed(2);
+                        return `<td>${value}</td>`;
+                    }).join('')}
+                </tr>
+            `;
+        }
+        
+        html += `
+                    </tbody>
+                </table>
+            </div>
+        `;
+    }
+    
+    // Update the content
+    document.getElementById('evaluation-content').innerHTML = html;
+}
+
+function formatMetricName(name) {
+    // Convert snake_case to Title Case
+    return name.split('_')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+}
+
+function getMetricDescription(metricName) {
+    // Return description for common metrics
+    const descriptions = {
+        'answer_relevancy': 'How relevant the response is to the question',
+        'faithfulness': 'Whether the response contains information supported by the context',
+        'context_precision': 'How relevant the context is to the question',
+        'context_recall': 'How much relevant information from the context is used in the response'
+    };
+    
+    return descriptions[metricName] || 'No description available';
+}
+
+function setupSectionToggles() {
+    // Add toggle elements to each section header
+    const sections = [
+        { 
+            id: 'chat-container-section', 
+            title: 'Conversation', 
+            container: 'chat-container' 
+        },
+        { 
+            id: 'diagnosis-section', 
+            title: 'Diagnosis', 
+            container: 'diagnosis-content' 
+        },
+        { 
+            id: 'rag-summary-section', 
+            title: 'RAG Summary', 
+            container: 'rag-summary-content' 
+        },
+        { 
+            id: 'evaluation-section', 
+            title: 'Conversation Evaluation', 
+            container: 'evaluation-container' 
+        }
+    ];
+    
+    sections.forEach(section => {
+        const container = document.getElementById(section.container);
+        if (!container) return; // Skip if container not found
+        
+        const header = document.createElement('div');
+        header.className = 'section-header';
+        
+        const title = document.createElement('h3');
+        title.textContent = section.title;
+        
+        const toggle = document.createElement('button');
+        toggle.className = 'section-toggle';
+        toggle.innerHTML = '−'; // Default to minus sign (expanded)
+        toggle.setAttribute('aria-label', 'Toggle section visibility');
+        toggle.setAttribute('data-section-id', section.id);
+        
+        header.appendChild(title);
+        header.appendChild(toggle);
+        
+        // Create a section wrapper if it doesn't exist
+        let wrapper = document.getElementById(section.id);
+        if (!wrapper) {
+            wrapper = document.createElement('div');
+            wrapper.id = section.id;
+            wrapper.className = 'section';
+            container.parentNode.insertBefore(wrapper, container);
+            wrapper.appendChild(container);
+        }
+        
+        // Insert header before the container within the wrapper
+        wrapper.insertBefore(header, wrapper.firstChild);
+        
+        // Add click event to toggle
+        toggle.addEventListener('click', () => {
+            wrapper.classList.toggle('section-minimized');
+            toggle.innerHTML = wrapper.classList.contains('section-minimized') ? '+' : '−';
+            
+            // Store section state in localStorage
+            localStorage.setItem(`section-${section.id}-minimized`, 
+                wrapper.classList.contains('section-minimized') ? 'true' : 'false');
+        });
+        
+        // Restore previously saved state
+        const isMinimized = localStorage.getItem(`section-${section.id}-minimized`) === 'true';
+        if (isMinimized) {
+            wrapper.classList.add('section-minimized');
+            toggle.innerHTML = '+';
+        }
+    });
 }

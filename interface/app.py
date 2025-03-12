@@ -5,6 +5,7 @@ A simple web interface for viewing mental health assessment chat logs.
 """
 import os
 import argparse
+import time
 from flask import Flask, render_template, jsonify, request, send_file, Response, send_from_directory
 from .chat_log_manager import ChatLogManager
 import io
@@ -12,11 +13,44 @@ import json
 import datetime
 import csv
 import re
+import threading
+
+# Add this import at the top
+from utils.chat_evaluator import ChatLogEvaluator
 
 app = Flask(__name__)
 
-# Create a singleton chat log manager
+# Create singletons
 chat_log_manager = None
+chat_evaluator = None
+
+# Track ongoing evaluations with timestamps for cleanup
+ongoing_evaluations = {}
+
+# Fix the cleanup_stale_evaluations function
+def cleanup_stale_evaluations():
+    """Clean up evaluations that have been running for too long."""
+    global ongoing_evaluations
+    
+    # Current time
+    current_time = time.time()
+    
+    # Find evaluations to remove (older than 5 minutes or completed/error)
+    to_remove = []
+    for log_id, eval_data in ongoing_evaluations.items():
+        # Remove if older than 5 minutes
+        if 'start_time' in eval_data and current_time - eval_data['start_time'] > 300:
+            to_remove.append(log_id)
+            print(f"Removing stale evaluation for {log_id} (timeout)")
+        # Remove if status is completed or error and older than 2 minutes
+        elif (eval_data.get('status') in ['completed', 'error'] and 
+              'finish_time' in eval_data and current_time - eval_data['finish_time'] > 120):
+            to_remove.append(log_id)
+            print(f"Removing completed evaluation for {log_id}")
+    
+    # Remove old evaluations
+    for log_id in to_remove:
+        del ongoing_evaluations[log_id]
 
 @app.route('/')
 def index():
@@ -334,10 +368,111 @@ def export_batch_summary(batch_id):
     
     return jsonify({'error': 'No batch summary or results found'}), 404
 
+# Improved function to run evaluation
+@app.route('/api/logs/<log_id>/evaluate', methods=['POST'])
+def evaluate_log(log_id):
+    """Evaluate a chat log using Ollama."""
+    global ongoing_evaluations
+    
+    # Clean up stale evaluations
+    cleanup_stale_evaluations()
+    
+    # Check if log_id contains .json extension
+    if not log_id.endswith('.json'):
+        log_id += '.json'
+    
+    # Check if evaluation is already in progress
+    if log_id in ongoing_evaluations and ongoing_evaluations[log_id].get('status') == 'in_progress':
+        return jsonify({
+            'status': 'in_progress',
+            'message': 'Evaluation already in progress'
+        })
+    
+    # Start evaluation in a background thread
+    def run_evaluation():
+        try:
+            # Run evaluation
+            results = chat_evaluator.evaluate_log(log_id.replace('.json', ''))
+            
+            # Store results
+            if 'error' in results:
+                ongoing_evaluations[log_id] = {
+                    'status': 'error',
+                    'message': results['error'],
+                    'details': results.get('details', ''),
+                    'finish_time': time.time()
+                }
+            else:
+                ongoing_evaluations[log_id] = {
+                    'status': 'completed',
+                    'results': results,
+                    'finish_time': time.time()
+                }
+        except Exception as e:
+            import traceback
+            error_details = traceback.format_exc()
+            ongoing_evaluations[log_id] = {
+                'status': 'error',
+                'message': str(e),
+                'details': error_details,
+                'finish_time': time.time()
+            }
+    
+    # Mark evaluation as in progress with start time
+    ongoing_evaluations[log_id] = {
+        'status': 'in_progress', 
+        'start_time': time.time(),
+        'progress': 0
+    }
+    
+    thread = threading.Thread(target=run_evaluation)
+    thread.daemon = True
+    thread.start()
+    
+    return jsonify({
+        'status': 'started',
+        'message': 'Evaluation started'
+    })
+
+# Improve the status endpoint to handle caching
+@app.route('/api/logs/<log_id>/evaluation', methods=['GET'])
+def get_evaluation(log_id):
+    """Get evaluation status and results for a chat log."""
+    # Clean up stale evaluations
+    cleanup_stale_evaluations()
+    
+    # Set cache control headers to prevent caching
+    response_headers = {
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0'
+    }
+    
+    # Check if log_id contains .json extension
+    if not log_id.endswith('.json'):
+        log_id += '.json'
+    
+    # Check if evaluation is in progress
+    if log_id in ongoing_evaluations:
+        return jsonify(ongoing_evaluations[log_id]), 200, response_headers
+    
+    # Check for existing evaluation in the log file
+    status = chat_evaluator.get_evaluation_status(log_id.replace('.json', ''))
+    return jsonify(status), 200, response_headers
+
 def create_app(logs_dir=None):
     """Create and configure the Flask application."""
-    global chat_log_manager
+    global chat_log_manager, chat_evaluator
+    
+    # Make sure time is imported
+    import time
+    
     chat_log_manager = ChatLogManager(logs_dir)
+    chat_evaluator = ChatLogEvaluator(
+        logs_dir=chat_log_manager.get_logs_directory(),
+        ollama_url="http://localhost:11434",
+        model="qwen2.5:3b"
+    )
     
     print(f"Using logs directory: {chat_log_manager.get_logs_directory()}")
     
