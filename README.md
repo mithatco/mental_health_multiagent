@@ -61,13 +61,6 @@ graph TD
         F --> I[Diagnosis]
         L --> S[Saved Conversations]
     end
-
-    subgraph "Batch Processing"
-        BP[Batch Processor] --> E
-        BP --> G
-        BP --> M[Multiple Conversations]
-        M --> BA[Batch Analysis]
-    end
 ```
 
 ## Key Components
