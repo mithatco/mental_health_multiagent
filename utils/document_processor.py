@@ -181,47 +181,149 @@ class Chunker:
         
         return chunks
 
-def extract_questions_from_text(text: str) -> List[str]:
-    """
-    Extract questions from text content.
+def extract_questions_from_text(text):
+    """Extract questions from text content."""
+    if not text:
+        return []
     
-    Args:
-        text: Text content to extract questions from
+    # Preprocess text to handle common issues
+    processed_text = text
+    
+    # Handle common questionnaire formatting patterns
+    # Replace line breaks within numbered items to help with pattern matching
+    processed_text = re.sub(r'(\d+\.?\s*[A-Za-z][^?]*?)\n\s*([^A-Z0-9\n][^?]*?\?)', r'\1 \2', processed_text)
+    
+    # Handle multi-line questions with parenthetical content
+    processed_text = re.sub(r'\(e\.g\.,\s*([^\)]*?)\n\s*([^\)]*?)\)', r'(e.g., \1 \2)', processed_text)
+    processed_text = re.sub(r'\(([^\)]*?)\n\s*([^\)]*?)\)', r'(\1 \2)', processed_text)
+    
+    # Replace common line break patterns within questions with spaces
+    processed_text = re.sub(r'(\S)\n\s*(\S)', r'\1 \2', processed_text)
+    
+    # Replace multiple spaces with a single space
+    processed_text = re.sub(r'\s+', ' ', processed_text)
+    
+    # Special handling for DSM-5 questionnaire format
+    dsm5_questions = []
+    
+    # First try to extract questions from DSM-5 format (numbered list with question marks)
+    dsm5_pattern = r'(\d+\.?\s*[A-Za-z][^.!?]*?\?)'
+    dsm5_matches = re.findall(dsm5_pattern, processed_text)
+    
+    if dsm5_matches and len(dsm5_matches) >= 15:  # DSM-5 usually has many questions
+        dsm5_questions = dsm5_matches
+    
+    # Look for questions containing "e.g." or parenthetical content
+    complex_pattern = r'([A-Za-z][^.!?]*?e\.g\.,.*?\)?[^.!?]*?\?)'
+    complex_matches = re.findall(complex_pattern, processed_text)
+    
+    # Merge the results, prioritizing more specific matches
+    if complex_matches:
+        # Map to identify duplicates
+        question_map = {}
+        for q in dsm5_questions:
+            # Extract just the start of the question to use as a key
+            key = re.sub(r'^(\d+\.?\s*)', '', q.strip()).lower()[:30]
+            question_map[key] = q
+            
+        # Add complex matches if they're not duplicates
+        for q in complex_matches:
+            key = q.lower()[:30]
+            if key not in question_map:
+                question_map[key] = q
+                
+        dsm5_questions = list(question_map.values())
+    
+    # If DSM-5 specific extraction worked well, use those results
+    if len(dsm5_questions) >= 15:
+        questions = dsm5_questions
+    else:
+        # Otherwise fall back to generic question extraction
+        # Pattern 1: Look for sentences ending with question marks
+        questions = re.findall(r'([A-Z][^.!?]*?\?)', processed_text)
         
-    Returns:
-        List of questions found in the text
-    """
-    questions = []
+        # If the above pattern doesn't find enough questions, try alternative patterns
+        if len(questions) < 10:  # Threshold for a typical questionnaire
+            # Pattern 2: Look for numbered questions
+            numbered_questions = re.findall(r'(?:\d+\.?\s*)([A-Za-z][^.!?]*?\?)', processed_text)
+            if len(numbered_questions) > len(questions):
+                questions = numbered_questions
+        
+        # Pattern 3: Look for questions in a questionnaire format with possible multi-line content
+        if len(questions) < 10:
+            complex_questions = []
+            lines = text.split('\n')
+            question_buffer = ""
+            in_question = False
+            
+            for line in lines:
+                clean_line = line.strip()
+                if not clean_line:
+                    if question_buffer and ('?' in question_buffer or in_question):
+                        complex_questions.append(question_buffer.strip())
+                        question_buffer = ""
+                        in_question = False
+                    continue
+                
+                # Check if this line is likely part of a question
+                has_question_marker = '?' in clean_line
+                is_numbered_item = re.match(r'^\d+\.?\s*[A-Z]', clean_line)
+                continues_previous = not clean_line[0].isupper() and not is_numbered_item
+                
+                if is_numbered_item:
+                    # If we already have a question in buffer, save it
+                    if question_buffer and (in_question or '?' in question_buffer):
+                        complex_questions.append(question_buffer.strip())
+                    question_buffer = clean_line
+                    in_question = True
+                elif continues_previous and (in_question or question_buffer):
+                    # This line continues a previous question
+                    question_buffer += " " + clean_line
+                    if has_question_marker:
+                        in_question = False  # Question is complete
+                elif has_question_marker or clean_line.endswith(':'):
+                    # This might be a standalone question
+                    if question_buffer and (in_question or '?' in question_buffer):
+                        complex_questions.append(question_buffer.strip())
+                    question_buffer = clean_line
+                    in_question = not has_question_marker
+                else:
+                    # Not sure what this is - if it starts with a capital, treat as new item
+                    if clean_line[0].isupper():
+                        if question_buffer and (in_question or '?' in question_buffer):
+                            complex_questions.append(question_buffer.strip())
+                            question_buffer = ""
+                            in_question = False
+                        question_buffer = clean_line
+                    else:
+                        question_buffer += " " + clean_line
+            
+            # Don't forget the last question
+            if question_buffer and (in_question or '?' in question_buffer):
+                complex_questions.append(question_buffer.strip())
+                
+            if len(complex_questions) > len(questions):
+                questions = complex_questions
     
-    # Split text into lines
-    for line in text.split('\n'):
-        line = line.strip()
-        # Find lines that end with question marks
-        if line.endswith('?'):
-            questions.append(line)
+    # Final processing to clean up questions
+    cleaned_questions = []
+    for q in questions:
+        # Remove leading numbers and whitespace
+        q = re.sub(r'^(\d+\.?\s*)', '', q.strip())
+        
+        # Make sure it starts with a capital letter
+        if q and not q[0].isupper():
+            q = q[0].upper() + q[1:]
+            
+        # Make sure it ends with a question mark
+        if q and not q.endswith('?'):
+            q += '?'
+            
+        # Validate that it's actually a question and not just a fragment
+        if q and len(q) > 10 and '?' in q:
+            cleaned_questions.append(q)
     
-    # If no questions found with simple method, try more aggressive regex approach
-    if not questions:
-        # Use regex to find questions (any text ending with a question mark)
-        question_pattern = re.compile(r'([^.!?\n]+\?)')
-        additional_questions = question_pattern.findall(text)
-        questions.extend([q.strip() for q in additional_questions if q.strip()])
-    
-    # If still no questions, try to split by numbers (common in questionnaires)
-    if not questions:
-        # Look for numbered items which might be questions
-        numbered_pattern = re.compile(r'(\d+\.\s*[^.!?\n]+)')
-        numbered_items = numbered_pattern.findall(text)
-        questions.extend([item.strip() for item in numbered_items if item.strip()])
-    
-    # If still nothing, just split by newlines and take non-empty lines
-    # This is a fallback so we at least have something to work with
-    if not questions:
-        questions = [line.strip() for line in text.split('\n') if line.strip() and len(line.strip()) > 20]
-        # Limit to 20 items maximum in this case
-        questions = questions[:20]
-    
-    return questions
+    return cleaned_questions
 
 def process_documents_directory(directory_path: str) -> Dict[str, List[Document]]:
     """

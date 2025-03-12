@@ -400,9 +400,47 @@ python debug_pdf.py path/to/your/questionnaire.pdf
 
 This will analyze the PDF and show what text and questions are being extracted.
 
-### Creating Custom Questionnaires
+### Debugging Question Extraction
 
-If you prefer not to use PDF extraction, you can create a text file with questions (one per line) and place it in the documents directory.
+If you're having issues with questionnaire parsing or want to verify how questions are being extracted from your documents, use the `debug_question_extraction.py` utility:
+
+```bash
+python -m utils.debug_question_extraction path/to/your/questionnaire.pdf
+```
+
+This will display:
+1. Basic document information
+2. The first 200 characters of content
+3. A list of all extracted questions
+4. If no questions were found, the full document content for manual inspection
+
+Example output:
+
+```
+Document: documents/questionnaires/dsm5.pdf
+Content length: 9843 characters
+First 200 characters of content:
+DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure—Adult
+
+Instructions
+
+For each question below, circle the number that best describes how much (or how often) you have been bothered by each proble
+
+Extracted 23 questions:
+1. Little interest or pleasure in doing things?
+2. Feeling down, depressed, or hopeless?
+...
+23. Using any of the following medicines ON YOUR OWN (without a doctor's prescription) in greater amounts or longer than prescribed (e.g., painkillers like Vicodin, stimulants like Ritalin or Adderall, sedatives like sleeping pills or Valium, or drugs such as marijuana, cocaine, crack, ecstasy, hallucinogens, heroin, inhalants, or methamphetamine)?
+```
+
+### Troubleshooting Question Extraction
+
+If questions are not being extracted properly:
+
+1. Check if the document is properly formatted with clear question marks
+2. Try preprocessing the document (e.g., convert PDF to text)
+3. For multi-line questions, ensure they follow standard formatting
+4. Run the test suite to verify the extraction logic: `python -m tests.test_question_extraction`
 
 ## Troubleshooting
 
