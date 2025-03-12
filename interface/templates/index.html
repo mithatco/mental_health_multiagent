@@ -10,29 +10,60 @@
     <div class="container">
         <div class="sidebar">
             <h2>Chat Logs</h2>
-            <div class="filters">
-                <label for="profile-filter">Patient Profile:</label>
-                <select id="profile-filter">
-                    <option value="All">All</option>
-                </select>
-                
-                <label for="date-filter">Date Range:</label>
-                <select id="date-filter">
-                    <option value="All time">All time</option>
-                    <option value="Today">Today</option>
-                    <option value="Last 7 days">Last 7 days</option>
-                    <option value="Last 30 days">Last 30 days</option>
-                </select>
-                
-                <label for="search-filter">Search:</label>
-                <input type="text" id="search-filter" placeholder="Search...">
+            
+            <div class="view-toggle">
+                <button class="toggle-btn active" id="individual-logs-btn">Individual Logs</button>
+                <button class="toggle-btn" id="batch-logs-btn">Batch Logs</button>
             </div>
             
-            <div class="log-list" id="log-list">
-                <!-- Log items will be dynamically added here -->
-                <div class="loading">
-                    <div class="spinner"></div>
-                    <p>Loading logs...</p>
+            <div id="individual-logs-view">
+                <div class="filters">
+                    <label for="profile-filter">Patient Profile:</label>
+                    <select id="profile-filter">
+                        <option value="All">All</option>
+                    </select>
+                    
+                    <label for="date-filter">Date Range:</label>
+                    <select id="date-filter">
+                        <option value="All time">All time</option>
+                        <option value="Today">Today</option>
+                        <option value="Last 7 days">Last 7 days</option>
+                        <option value="Last 30 days">Last 30 days</option>
+                    </select>
+                    
+                    <label for="search-filter">Search:</label>
+                    <input type="text" id="search-filter" placeholder="Search...">
+                </div>
+                
+                <div class="log-list" id="log-list">
+                    <!-- Log items will be dynamically added here -->
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <p>Loading logs...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="batch-logs-view" class="hidden">
+                <div class="filters">
+                    <label for="batch-date-filter">Date Range:</label>
+                    <select id="batch-date-filter">
+                        <option value="All time">All time</option>
+                        <option value="Today">Today</option>
+                        <option value="Last 7 days">Last 7 days</option>
+                        <option value="Last 30 days">Last 30 days</option>
+                    </select>
+                    
+                    <label for="batch-search-filter">Search:</label>
+                    <input type="text" id="batch-search-filter" placeholder="Search...">
+                </div>
+                
+                <div class="batch-list" id="batch-list">
+                    <!-- Batch items will be dynamically added here -->
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <p>Loading batches...</p>
+                    </div>
                 </div>
             </div>
             
@@ -43,27 +74,67 @@
         </div>
         
         <div class="main-content">
-            <div class="metadata">
-                <div class="header">No chat selected</div>
-                <div class="metadata-grid" id="metadata-display">
-                    <!-- Metadata will be dynamically added here -->
+            <!-- Individual Chat View -->
+            <div id="chat-view">
+                <div class="metadata">
+                    <div class="header">No chat selected</div>
+                    <div class="metadata-grid" id="metadata-display">
+                        <!-- Metadata will be dynamically added here -->
+                    </div>
+                </div>
+                
+                <div class="chat-container" id="chat-container">
+                    <!-- Chat messages will be dynamically added here -->
+                    <div class="no-logs">Select a chat log from the sidebar to view</div>
+                </div>
+                
+                <div class="diagnosis-container">
+                    <h3>Diagnosis</h3>
+                    <div id="diagnosis-content">No diagnosis available</div>
+                </div>
+                
+                <div class="rag-summary-container">
+                    <h3>RAG Summary</h3>
+                    <div id="rag-summary-content">
+                        <p>No RAG summary available</p>
+                    </div>
                 </div>
             </div>
             
-            <div class="chat-container" id="chat-container">
-                <!-- Chat messages will be dynamically added here -->
-                <div class="no-logs">Select a chat log from the sidebar to view</div>
-            </div>
-            
-            <div class="diagnosis-container">
-                <h3>Diagnosis</h3>
-                <div id="diagnosis-content">No diagnosis available</div>
-            </div>
-            
-            <div class="rag-summary-container">
-                <h3>RAG Summary</h3>
-                <div id="rag-summary-content">
-                    <p>No RAG summary available</p>
+            <!-- Batch View -->
+            <div id="batch-view" class="hidden">
+                <div class="metadata">
+                    <div class="header">No batch selected</div>
+                    <div class="metadata-grid" id="batch-metadata-display">
+                        <!-- Batch metadata will be dynamically added here -->
+                    </div>
+                </div>
+                
+                <div class="batch-summary-container">
+                    <h3>Batch Summary</h3>
+                    <div id="batch-summary-content">
+                        <p>No batch summary available</p>
+                    </div>
+                </div>
+                
+                <div class="batch-results-container">
+                    <h3>Batch Conversations</h3>
+                    <div id="batch-results-content">
+                        <table id="batch-results-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Profile</th>
+                                    <th>Questions</th>
+                                    <th>Duration</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Batch results will be dynamically added here -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
