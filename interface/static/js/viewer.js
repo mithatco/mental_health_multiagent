@@ -172,6 +172,9 @@ function loadChat(chatId) {
             
             // Update diagnosis
             document.getElementById('diagnosis-content').innerHTML = formatText(data.diagnosis || 'No diagnosis available');
+            
+            // Update RAG summary
+            displayRagSummary(data.rag_summary);
         })
         .catch(error => {
             console.error('Error loading chat:', error);
@@ -264,4 +267,46 @@ function exportChat() {
     }
     
     window.open(`/api/logs/${currentChatId}/export`, '_blank');
+}
+
+// Add this function to your existing JavaScript file
+function displayRagSummary(ragSummary) {
+    const ragSummaryContent = document.getElementById('rag-summary-content');
+    
+    if (!ragSummary || Object.keys(ragSummary).length === 0) {
+        ragSummaryContent.innerHTML = '<p>No RAG summary available</p>';
+        return;
+    }
+    
+    let html = `
+        <div class="rag-stats">
+            <p><strong>Total RAG Queries:</strong> ${ragSummary.total_rag_queries}</p>
+            <p><strong>Total Documents Accessed:</strong> ${ragSummary.total_documents_accessed}</p>
+        </div>
+        <h4>Documents Accessed:</h4>
+    `;
+    
+    if (ragSummary.documents_accessed && Object.keys(ragSummary.documents_accessed).length > 0) {
+        html += '<div class="documents-list">';
+        
+        for (const [path, info] of Object.entries(ragSummary.documents_accessed)) {
+            html += `
+                <div class="document-item">
+                    <div class="document-path">${path}</div>
+                    <div class="access-count">Accessed ${info.access_count} time${info.access_count !== 1 ? 's' : ''}</div>
+                    ${info.example_excerpt ? `
+                        <div class="document-excerpt">
+                            <strong>Example excerpt:</strong> "${info.example_excerpt}"
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+        }
+        
+        html += '</div>';
+    } else {
+        html += '<p>No documents were accessed</p>';
+    }
+    
+    ragSummaryContent.innerHTML = html;
 }
