@@ -1,426 +1,234 @@
 """
-Evaluation utilities using local Ollama models instead of OpenAI API.
-This module provides Ragas-like metrics but uses local models via Ollama.
+Evaluation utilities using Ollama models when Ragas is not available.
+This is a fallback evaluator for basic metrics.
 """
 
-import re
+import time
+from typing import List, Dict, Any, Optional
 import json
-import pandas as pd
-import numpy as np
-from typing import List, Dict, Any, Optional, Union, Tuple
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
+import os
 
 class OllamaEvaluator:
-    """Evaluate mental health agent responses using local Ollama models."""
+    """Evaluate agent responses using Ollama models without Ragas."""
     
     def __init__(self, ollama_url="http://localhost:11434", model="qwen2.5:3b"):
         """
         Initialize the evaluator with an Ollama model.
         
         Args:
-            ollama_url: URL for the Ollama API (default: http://localhost:11434)
-            model: Name of the model to use (default: qwen2.5:3b)
+            ollama_url: URL for the Ollama API
+            model: Name of the model to use
         """
         self.ollama_url = ollama_url
         self.model = model
-        self.client = self._initialize_client()
-    
-    def _initialize_client(self):
-        """Initialize the Ollama client."""
+        
+        # Import here to avoid dependency issues
         try:
-            # Try to import from the utils folder first
-            try:
-                from utils.ollama_client import OllamaClient
-                return OllamaClient(base_url=self.ollama_url)
-            except ImportError:
-                # Try importing from parent directory
-                import sys
-                import os
-                sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-                from utils.ollama_client import OllamaClient
-                return OllamaClient(base_url=self.ollama_url)
-        except ImportError as e:
-            print(f"Error importing OllamaClient: {e}")
-            print("Using requests library as fallback")
-            # Fallback to using requests directly
             import requests
+            self.requests = requests
+        except ImportError:
+            raise ImportError("The requests library is required for OllamaEvaluator")
+    
+    def chat(self, messages):
+        """Send a request to Ollama chat API."""
+        try:
+            # Set stream=false to ensure we get a complete response, not streaming
+            response = self.requests.post(
+                f"{self.ollama_url}/api/chat",
+                json={"model": self.model, "messages": messages, "stream": False},
+                headers={"Content-Type": "application/json"}
+            )
             
-            class SimpleOllamaClient:
-                def __init__(self, base_url):
-                    self.base_url = base_url
+            # Check if response is valid
+            if not response.ok:
+                print(f"Error from Ollama API: {response.status_code} - {response.text}")
+                return {"error": f"HTTP error: {response.status_code}", "content": ""}
+            
+            # Try to parse the response as JSON
+            try:
+                return response.json()
+            except json.JSONDecodeError as e:
+                # If JSON parsing fails, try to extract just the first valid JSON object
+                print(f"JSON decode error: {e}")
+                text = response.text.strip()
                 
-                def chat(self, model, messages):
-                    response = requests.post(
-                        f"{self.base_url}/api/chat",
-                        json={"model": model, "messages": messages}
-                    )
-                    return response.json()
-            
-            return SimpleOllamaClient(base_url=self.ollama_url)
-    
-    def _generate_with_ollama(self, prompt: str, system_prompt: str = None) -> str:
-        """
-        Generate text with Ollama.
-        
-        Args:
-            prompt: The prompt to send to the model
-            system_prompt: Optional system prompt for the model
-        
-        Returns:
-            The generated text
-        """
-        messages = []
-        if system_prompt:
-            messages.append({"role": "system", "content": system_prompt})
-        
-        messages.append({"role": "user", "content": prompt})
-        
-        try:
-            response = self.client.chat(self.model, messages)
-            return response.get('response', '')
+                # Debug the response
+                print(f"Response from Ollama (first 100 chars): {text[:100]}...")
+                
+                # Try to find and parse just the first complete JSON object
+                try:
+                    # Look for first { and matching }
+                    start = text.find('{')
+                    if start >= 0:
+                        # Simple approach: count braces to find matching end
+                        brace_count = 0
+                        for i, char in enumerate(text[start:]):
+                            if char == '{':
+                                brace_count += 1
+                            elif char == '}':
+                                brace_count -= 1
+                                if brace_count == 0:
+                                    # Found complete JSON object
+                                    json_text = text[start:start+i+1]
+                                    return json.loads(json_text)
+                
+                    # If no valid JSON found, look for the content directly
+                    if '"content":' in text:
+                        content_start = text.find('"content":') + 10
+                        quote_type = text[content_start]  # " or '
+                        content_value_start = content_start + 1
+                        content_end = text.find(quote_type, content_value_start)
+                        if content_end > content_value_start:
+                            content = text[content_value_start:content_end]
+                            return {"message": {"content": content}}
+                except Exception as nested_e:
+                    print(f"Failed to extract JSON: {nested_e}")
+                
+                # Return a fallback response
+                return {"message": {"content": "0.5", "role": "assistant"}}
+                
         except Exception as e:
-            print(f"Error generating with Ollama: {e}")
-            return ""
+            print(f"Error calling Ollama API: {str(e)}")
+            # Return a fallback response with 0.5 (neutral score)
+            return {"message": {"content": "0.5", "role": "assistant"}}
     
-    def evaluate_answer_relevancy(self, question: str, answer: str) -> float:
-        """
-        Evaluate how relevant an answer is to the question using Ollama.
-        
-        Args:
-            question: The question
-            answer: The answer to evaluate
-        
-        Returns:
-            Score between 0 and 1 representing relevancy
-        """
-        system_prompt = """You are an objective evaluator assessing how relevant an answer is to a question.
-        Score the relevancy on a scale from 0 to 1, where:
-        - 0 means completely irrelevant
-        - 0.5 means somewhat relevant
-        - 1 means perfectly relevant and directly addresses the question
-        Provide only a single decimal number as your response, nothing else."""
-        
-        prompt = f"""Question: {question}
-        
-        Answer: {answer}
-        
-        How relevant is this answer to the question on a scale from 0 to 1?
-        Your response must be a single number between 0 and 1."""
-        
-        response = self._generate_with_ollama(prompt, system_prompt)
-        
-        # Extract the score from the response
-        try:
-            # Extract first number between 0 and 1
-            matches = re.findall(r'0\.\d+|[01]', response)
-            if matches:
-                return float(matches[0])
-            else:
-                # If no decimal found, check for integer 0 or 1
-                if "0" in response:
-                    return 0.0
-                elif "1" in response:
-                    return 1.0
-                else:
-                    print(f"Could not extract score from response: {response}")
-                    return 0.5  # Default middle value
-        except Exception as e:
-            print(f"Error extracting score: {e}")
-            return 0.5  # Default middle value
-    
-    def evaluate_faithfulness(self, context: str, answer: str) -> float:
-        """
-        Evaluate how faithful an answer is to the provided context.
-        
-        Args:
-            context: The context information
-            answer: The answer to evaluate
-        
-        Returns:
-            Score between 0 and 1 representing faithfulness
-        """
-        system_prompt = """You are an objective evaluator assessing how faithful an answer is to the provided context.
-        Faithfulness measures whether the answer contains information that is supported by the context.
-        
-        Score the faithfulness on a scale from 0 to 1, where:
-        - 0 means the answer contains primarily information NOT found in the context
-        - 0.5 means about half of the answer is supported by the context
-        - 1 means the answer is entirely supported by the context
-        
-        Provide only a single decimal number as your response, nothing else."""
-        
-        prompt = f"""Context: {context}
-        
-        Answer: {answer}
-        
-        How faithful is this answer to the provided context on a scale from 0 to 1?
-        Your response must be a single number between 0 and 1."""
-        
-        response = self._generate_with_ollama(prompt, system_prompt)
-        
-        # Extract the score from the response
-        try:
-            matches = re.findall(r'0\.\d+|[01]', response)
-            if matches:
-                return float(matches[0])
-            else:
-                if "0" in response:
-                    return 0.0
-                elif "1" in response:
-                    return 1.0
-                else:
-                    print(f"Could not extract score from response: {response}")
-                    return 0.5
-        except Exception as e:
-            print(f"Error extracting score: {e}")
-            return 0.5
-    
-    def evaluate_context_precision(self, question: str, context: str) -> float:
-        """
-        Evaluate how relevant the context is to the question.
-        
-        Args:
-            question: The question
-            context: The context to evaluate
-        
-        Returns:
-            Score between 0 and 1 representing context precision
-        """
-        system_prompt = """You are an objective evaluator assessing how relevant a context is to a question.
-        Context precision measures whether the context contains information relevant to answering the question.
-        
-        Score the context precision on a scale from 0 to 1, where:
-        - 0 means the context is completely irrelevant to the question
-        - 0.5 means the context has some relevant information
-        - 1 means the context is perfectly relevant to answering the question
-        
-        Provide only a single decimal number as your response, nothing else."""
-        
-        prompt = f"""Question: {question}
-        
-        Context: {context}
-        
-        How relevant is this context to the question on a scale from 0 to 1?
-        Your response must be a single number between 0 and 1."""
-        
-        response = self._generate_with_ollama(prompt, system_prompt)
-        
-        # Extract the score from the response
-        try:
-            matches = re.findall(r'0\.\d+|[01]', response)
-            if matches:
-                return float(matches[0])
-            else:
-                if "0" in response:
-                    return 0.0
-                elif "1" in response:
-                    return 1.0
-                else:
-                    print(f"Could not extract score from response: {response}")
-                    return 0.5
-        except Exception as e:
-            print(f"Error extracting score: {e}")
-            return 0.5
-    
-    def evaluate_context_recall(self, context: str, answer: str) -> float:
-        """
-        Evaluate how much of the relevant information from the context is used in the answer.
-        
-        Args:
-            context: The context information
-            answer: The answer to evaluate
-        
-        Returns:
-            Score between 0 and 1 representing context recall
-        """
-        system_prompt = """You are an objective evaluator assessing how much of the relevant information from the context is used in the answer.
-        Context recall measures whether the answer includes the important information from the context.
-        
-        Score the context recall on a scale from 0 to 1, where:
-        - 0 means none of the important information from the context is used in the answer
-        - 0.5 means about half of the important information is used
-        - 1 means all important information from the context is used in the answer
-        
-        Provide only a single decimal number as your response, nothing else."""
-        
-        prompt = f"""Context: {context}
-        
-        Answer: {answer}
-        
-        How much of the important information from the context is used in the answer on a scale from 0 to 1?
-        Your response must be a single number between 0 and 1."""
-        
-        response = self._generate_with_ollama(prompt, system_prompt)
-        
-        # Extract the score from the response
-        try:
-            matches = re.findall(r'0\.\d+|[01]', response)
-            if matches:
-                return float(matches[0])
-            else:
-                if "0" in response:
-                    return 0.0
-                elif "1" in response:
-                    return 1.0
-                else:
-                    print(f"Could not extract score from response: {response}")
-                    return 0.5
-        except Exception as e:
-            print(f"Error extracting score: {e}")
-            return 0.5
-
     def evaluate_responses(
-        self,
-        questions: List[str],
-        responses: List[str],
-        context: Optional[List[str]] = None
+        self, 
+        questions: List[str], 
+        responses: List[str], 
+        context: Optional[List[str]] = None,
+        **kwargs  # Added to maintain compatibility with Ragas evaluator
     ) -> Dict[str, Any]:
         """
-        Evaluate responses from a mental health agent using Ollama models.
+        Evaluate responses from a mental health agent.
         
         Args:
             questions: List of questions posed to the agent
             responses: List of responses from the agent
-            context: Optional list of context information used for responses
-                    (e.g. patient profiles or therapeutic guidelines)
+            context: Optional list of context information
+            **kwargs: Extra parameters (for compatibility with Ragas evaluator)
         
         Returns:
             Dictionary containing evaluation results with metrics
         """
+        if not questions or not responses:
+            return {
+                "error": "No questions or responses provided for evaluation"
+            }
+        
+        if len(questions) != len(responses):
+            return {
+                "error": f"Number of questions ({len(questions)}) does not match number of responses ({len(responses)})"
+            }
+        
+        # Ensure context is available for all QA pairs
+        if context and len(context) < len(questions):
+            context.extend([context[-1]] * (len(questions) - len(context)))
+        elif not context:
+            context = [""] * len(questions)
+        
+        # Basic metrics we'll calculate
+        answer_relevancy_scores = []
+        faithfulness_scores = []
+        context_precision_scores = []
+        context_recall_scores = []
+        
+        # Process each question-answer pair
+        print(f"Evaluating {len(questions)} question-answer pairs...")
+        for i, (question, response, ctx) in enumerate(zip(questions, responses, context)):
+            print(f"Evaluating pair {i+1}/{len(questions)}...")
+            
+            # For answer relevancy (how relevant the response is to the question)
+            relevancy_prompt = [
+                {"role": "system", "content": "You are an evaluator assessing how relevant an answer is to a question. Score from 0 (completely irrelevant) to 1 (perfectly relevant)."},
+                {"role": "user", "content": f"Question: {question}\n\nResponse: {response}\n\nHow relevant is this response to the question on a scale from 0 to 1? Provide just the number."}
+            ]
+            relevancy_result = self.chat(relevancy_prompt)
+            try:
+                relevancy_score = self._extract_score(relevancy_result.get("message", {}).get("content", "0"))
+                answer_relevancy_scores.append(relevancy_score)
+            except:
+                answer_relevancy_scores.append(0)
+            
+            # For faithfulness (whether answer is supported by context)
+            if ctx:
+                faithfulness_prompt = [
+                    {"role": "system", "content": "You are an evaluator assessing if a response contains only information from the provided context. Score from 0 (not supported) to 1 (fully supported)."},
+                    {"role": "user", "content": f"Context: {ctx}\n\nQuestion: {question}\n\nResponse: {response}\n\nIs this response faithful to the context on a scale from 0 to 1? Provide just the number."}
+                ]
+                faithfulness_result = self.chat(faithfulness_prompt)
+                try:
+                    faithfulness_score = self._extract_score(faithfulness_result.get("message", {}).get("content", "0"))
+                    faithfulness_scores.append(faithfulness_score)
+                except:
+                    faithfulness_scores.append(0)
+                    
+                # For context precision (how relevant the context is to the question)
+                precision_prompt = [
+                    {"role": "system", "content": "You are an evaluator assessing how relevant the context is to answering a question. Score from 0 (irrelevant) to 1 (highly relevant)."},
+                    {"role": "user", "content": f"Context: {ctx}\n\nQuestion: {question}\n\nHow relevant is this context to the question on a scale from 0 to 1? Provide just the number."}
+                ]
+                precision_result = self.chat(precision_prompt)
+                try:
+                    precision_score = self._extract_score(precision_result.get("message", {}).get("content", "0"))
+                    context_precision_scores.append(precision_score)
+                except:
+                    context_precision_scores.append(0)
+                
+                # For context recall (how much of the relevant context is in the answer)
+                recall_prompt = [
+                    {"role": "system", "content": "You are an evaluator assessing how much relevant information from the context appears in the answer. Score from 0 (none) to 1 (all relevant info)."},
+                    {"role": "user", "content": f"Context: {ctx}\n\nQuestion: {question}\n\nResponse: {response}\n\nHow much relevant information from context is used in the response? Score from 0 to 1."}
+                ]
+                recall_result = self.chat(recall_prompt)
+                try:
+                    recall_score = self._extract_score(recall_result.get("message", {}).get("content", "0"))
+                    context_recall_scores.append(recall_score)
+                except:
+                    context_recall_scores.append(0)
+            else:
+                # No context provided
+                faithfulness_scores.append(0)
+                context_precision_scores.append(0)
+                context_recall_scores.append(0)
+        
+        # Return results
         results = {
-            'answer_relevancy': []
+            "answer_relevancy": answer_relevancy_scores,
+            "avg_answer_relevancy": sum(answer_relevancy_scores) / len(answer_relevancy_scores) if answer_relevancy_scores else 0,
         }
         
-        # Always evaluate answer relevancy for each question-response pair
-        print(f"Evaluating answer relevancy for {len(questions)} questions...")
-        for i, (q, r) in enumerate(zip(questions, responses)):
-            print(f"  Question {i+1}/{len(questions)}...")
-            relevancy = self.evaluate_answer_relevancy(q, r)
-            results['answer_relevancy'].append(relevancy)
-        
-        # Add context-based metrics if context is provided
-        if context and len(context) > 0:
-            results['faithfulness'] = []
-            results['context_precision'] = []
-            results['context_recall'] = []
-            
-            print(f"Evaluating context-based metrics for {len(questions)} questions...")
-            for i, (q, r) in enumerate(zip(questions, responses)):
-                print(f"  Question {i+1}/{len(questions)}...")
-                # Use corresponding context or last one if fewer contexts than responses
-                ctx = context[min(i, len(context) - 1)] if context else ""
-                
-                if ctx:  # Only evaluate if we have valid context
-                    # Evaluate faithfulness
-                    print(f"    Evaluating faithfulness...")
-                    faithfulness = self.evaluate_faithfulness(ctx, r)
-                    results['faithfulness'].append(faithfulness)
-                    
-                    # Evaluate context precision
-                    print(f"    Evaluating context precision...")
-                    ctx_precision = self.evaluate_context_precision(q, ctx)
-                    results['context_precision'].append(ctx_precision)
-                    
-                    # Evaluate context recall
-                    print(f"    Evaluating context recall...")
-                    ctx_recall = self.evaluate_context_recall(ctx, r)
-                    results['context_recall'].append(ctx_recall)
-                else:
-                    # If context is empty for this item, use default values
-                    results['faithfulness'].append(0.5)  # Neutral score
-                    results['context_precision'].append(0.5)  # Neutral score
-                    results['context_recall'].append(0.5)  # Neutral score
-        
-        # Calculate aggregated metrics - Fix: Create a copy of keys first to avoid modifying during iteration
-        metric_keys = list(results.keys())
-        for metric in metric_keys:
-            if results[metric]:  # Only calculate if we have values
-                results[f'avg_{metric}'] = sum(results[metric]) / len(results[metric])
+        # Only include other metrics if we have context
+        if any(context):
+            results["faithfulness"] = faithfulness_scores
+            results["avg_faithfulness"] = sum(faithfulness_scores) / len(faithfulness_scores) if faithfulness_scores else 0
+            results["context_precision"] = context_precision_scores
+            results["avg_context_precision"] = sum(context_precision_scores) / len(context_precision_scores) if context_precision_scores else 0
+            results["context_recall"] = context_recall_scores
+            results["avg_context_recall"] = sum(context_recall_scores) / len(context_recall_scores) if context_recall_scores else 0
         
         return results
     
-    @staticmethod
-    def get_metric_descriptions() -> Dict[str, str]:
-        """Return descriptions of metrics."""
-        return {
-            'answer_relevancy': "Measures how relevant the response is to the question",
-            'faithfulness': "Measures if the response contains information not supported by context",
-            'context_precision': "Measures how relevant the context is to the question",
-            'context_recall': "Measures how much relevant info from context is used in the response"
-        }
-
-
-def example_usage():
-    """Example of how to use the Ollama evaluator with the Patient agent."""
-    try:
-        import sys
-        import os
-        sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-        from agents.patient import Patient
-    except ImportError as e:
-        print(f"Error importing Patient agent: {e}")
-        # Use mock data for example
-        questions = [
-            "How have you been sleeping lately?",
-            "Do you ever feel anxious in social situations?",
-            "Have you had any changes in appetite?"
-        ]
-        responses = [
-            "I've been having trouble sleeping. I keep waking up in the middle of the night with racing thoughts.",
-            "Yes, I get very anxious in crowds. Sometimes I avoid going to social events because of it.",
-            "I've lost my appetite recently. Food just doesn't seem appealing anymore."
-        ]
-        context = ["Patient has moderate anxiety with sleep disturbances and social anxiety."]
+    def _extract_score(self, text):
+        """Extract a numeric score from text response."""
+        # Try to find a number between 0 and 1 in the text
+        import re
+        matches = re.findall(r'0\.\d+|[01]\.0|[01]', text)
+        if matches:
+            try:
+                return float(matches[0])
+            except:
+                pass
         
-        # Evaluate
-        print("Using mock data for example...")
-        evaluator = OllamaEvaluator(model="qwen2.5:3b")
-        results = evaluator.evaluate_responses(questions, responses, context)
-        
-        print("\nEvaluation results:")
-        for metric, values in results.items():
-            if isinstance(values, list):
-                print(f"  {metric}: {', '.join([f'{v:.3f}' for v in values])}")
-            else:
-                print(f"  {metric}: {values:.3f}")
-        
-        return
-    
-    # Setup
-    patient = Patient(ollama_url="http://localhost:11434", 
-                      model="qwen2.5:3b", 
-                      profile_name="anxiety_moderate")
-    
-    # Generate some responses
-    questions = [
-        "How have you been sleeping lately?",
-        "Do you ever feel anxious in social situations?",
-        "Have you had any changes in appetite?"
-    ]
-    
-    responses = []
-    for q in questions:
-        responses.append(patient.respond_to_question(q))
-    
-    # Get the patient profile as context
-    context = [patient.profile] if patient.profile else None
-    
-    # Evaluate using same Ollama model
-    evaluator = OllamaEvaluator(
-        ollama_url="http://localhost:11434",
-        model="qwen2.5:3b"
-    )
-    results = evaluator.evaluate_responses(questions, responses, context)
-    
-    print("\nEvaluation results using Ollama:")
-    for metric, values in results.items():
-        if isinstance(values, list):
-            print(f"  {metric}: {', '.join([f'{v:.3f}' for v in values])}")
+        # If no match, try to analyze the text
+        text_lower = text.lower()
+        if any(word in text_lower for word in ["excellent", "perfect", "completely", "fully"]):
+            return 1.0
+        elif any(word in text_lower for word in ["good", "mostly", "largely"]):
+            return 0.75
+        elif any(word in text_lower for word in ["moderate", "partial", "somewhat"]):
+            return 0.5
+        elif any(word in text_lower for word in ["poor", "minimal", "barely"]):
+            return 0.25
         else:
-            print(f"  {metric}: {values:.3f}")
-
-
-if __name__ == "__main__":
-    print("Running evaluation example using local Ollama models...")
-    example_usage()
+            return 0.0

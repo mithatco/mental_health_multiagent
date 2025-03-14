@@ -854,87 +854,110 @@ function displayEvaluationResults(results) {
             <p><strong>Questions analyzed:</strong> ${results.question_count || 'Unknown'}</p>
             <p><strong>Evaluation time:</strong> ${evalTime}</p>
         </div>
-        <h4>Metrics Summary</h4>
-        <div class="evaluation-metrics">
     `;
-    
-    // Count available metrics
-    let metricCount = 0;
-    
-    // Add average metrics
-    for (const key in metrics) {
-        if (key.startsWith('avg_')) {
-            const metricName = key.replace('avg_', '');
-            const metricValue = parseFloat(metrics[key]).toFixed(2);
-            const description = getMetricDescription(metricName);
-            
-            metricCount++;
-            
-            // Add the metric card
-            html += `
-                <div class="metric-card">
-                    <div class="metric-header">${formatMetricName(metricName)}</div>
-                    <div class="metric-value">${metricValue}</div>
-                    <div class="metric-description">${description}</div>
-                </div>
-            `;
+
+    // Check for rubric scores first as they're more important for mental health evaluations
+    if (metrics.rubric_scores && Object.keys(metrics.rubric_scores).length > 0) {
+        html += `<h4>Mental Health Evaluation Scores</h4>
+        <div class="evaluation-metrics">`;
+        
+        // Add rubric averages to metrics display
+        for (const key in metrics.rubric_scores) {
+            if (key.startsWith('avg_')) {
+                const rubricName = key.replace('avg_', '');
+                const score = parseFloat(metrics.rubric_scores[key]).toFixed(2);
+                const description = metrics.rubric_descriptions[rubricName]?.description || 'No description available';
+                
+                // Add the metric card
+                html += `
+                    <div class="metric-card">
+                        <div class="metric-header">${formatMetricName(rubricName)}</div>
+                        <div class="metric-value">${score}</div>
+                        <div class="metric-description">${description}</div>
+                    </div>
+                `;
+            }
         }
-    }
-    
-    // Close metrics grid
-    html += `</div>`;
-    
-    // Add note about metrics if we only got answer_relevancy
-    if (metricCount <= 1) {
+        html += `</div>`;
+
+        // Add question by question rubric analysis
         html += `
-            <div class="metric-note">
-                <p><strong>Note:</strong> Only answer relevancy was evaluated. For more metrics like faithfulness and context precision, 
-                ensure that each message has proper context information.</p>
-            </div>
-        `;
-    }
-    
-    // Add detailed metrics if available
-    const detailedMetrics = [];
-    for (const key in metrics) {
-        if (!key.startsWith('avg_') && Array.isArray(metrics[key])) {
-            detailedMetrics.push(key);
-        }
-    }
-    
-    if (detailedMetrics.length > 0) {
-        html += `
-            <h4>Question-by-Question Analysis</h4>
+            <h4>Question-by-Question Rubric Analysis</h4>
             <div class="metrics-chart">
                 <table class="metrics-table">
                     <thead>
                         <tr>
                             <th>Question #</th>
-                            ${detailedMetrics.map(metric => `<th>${formatMetricName(metric)}</th>`).join('')}
-                        </tr>
-                    </thead>
-                    <tbody>
         `;
         
-        // Add rows for each question
-        const questionCount = metrics[detailedMetrics[0]].length;
-        for (let i = 0; i < questionCount; i++) {
-            html += `
-                <tr>
-                    <td>Question ${i+1}</td>
-                    ${detailedMetrics.map(metric => {
-                        const value = parseFloat(metrics[metric][i]).toFixed(2);
-                        return `<td>${value}</td>`;
-                    }).join('')}
-                </tr>
-            `;
+        // Add column headers for each rubric
+        const rubrics = Object.keys(metrics.rubric_scores).filter(key => !key.startsWith('avg_'));
+        rubrics.forEach(rubric => {
+            html += `<th>${formatMetricName(rubric)}</th>`;
+        });
+        
+        html += `</tr></thead><tbody>`;
+        
+        // Calculate number of questions from first rubric's array length
+        if (rubrics.length > 0 && metrics.rubric_scores[rubrics[0]]) {
+            const questionCount = metrics.rubric_scores[rubrics[0]].length;
+            
+            // Add a row for each question
+            for (let i = 0; i < questionCount; i++) {
+                html += `<tr><td>Question ${i+1}</td>`;
+                
+                // Add score for each rubric
+                rubrics.forEach(rubric => {
+                    const value = metrics.rubric_scores[rubric][i];
+                    html += `<td>${value ? parseFloat(value).toFixed(1) : 'N/A'}</td>`;
+                });
+                
+                html += `</tr>`;
+            }
         }
         
-        html += `
-                    </tbody>
-                </table>
-            </div>
-        `;
+        html += `</tbody></table></div>`;
+    }
+    
+    // Add standard Ragas metrics if available
+    const standardMetrics = [];
+    for (const key in metrics) {
+        if (key.startsWith('avg_') && key !== 'avg_harmfulness' && !key.includes('rubric')) {
+            standardMetrics.push({
+                name: key.replace('avg_', ''),
+                value: metrics[key]
+            });
+        }
+    }
+    
+    if (standardMetrics.length > 0) {
+        html += `<h4>Standard Evaluation Metrics</h4>
+        <div class="evaluation-metrics">`;
+        
+        standardMetrics.forEach(metric => {
+            const metricValue = parseFloat(metric.value).toFixed(2);
+            const description = getMetricDescription(metric.name);
+            
+            html += `
+                <div class="metric-card">
+                    <div class="metric-header">${formatMetricName(metric.name)}</div>
+                    <div class="metric-value">${metricValue}</div>
+                    <div class="metric-description">${description}</div>
+                </div>
+            `;
+        });
+        
+        html += `</div>`;
+        
+        // Add note if we only have answer_relevancy
+        if (standardMetrics.length === 1 && standardMetrics[0].name === 'answer_relevancy') {
+            html += `
+                <div class="metric-note">
+                    <p><strong>Note:</strong> Only answer relevancy was evaluated. For more metrics like faithfulness and context precision, 
+                    ensure that each message has proper context information.</p>
+                </div>
+            `;
+        }
     }
     
     // Update the content

@@ -1,15 +1,24 @@
 """
-Utility for evaluating chat logs using Ollama models.
+Utility for evaluating chat logs using Ragas with Ollama models.
 """
 
 import os
 import json
 import time
 from typing import Dict, Any, List, Optional, Tuple
-from .ollama_evaluation import OllamaEvaluator
+
+# Try importing the Ragas evaluator, fall back to Ollama evaluator if not available
+try:
+    from .ragas_evaluation import RagasEvaluator as Evaluator
+    USING_RAGAS = True
+    print("Using Ragas for evaluation")
+except ImportError:
+    from .ollama_evaluation import OllamaEvaluator as Evaluator
+    USING_RAGAS = False
+    print("Ragas not available, falling back to OllamaEvaluator")
 
 class ChatLogEvaluator:
-    """Evaluate chat logs using Ollama models."""
+    """Evaluate chat logs using Ragas with Ollama models."""
     
     def __init__(self, logs_dir: str, ollama_url: str = "http://localhost:11434", model: str = "qwen2.5:3b"):
         """
@@ -21,7 +30,17 @@ class ChatLogEvaluator:
             model: Name of the model to use for evaluation
         """
         self.logs_dir = logs_dir
-        self.evaluator = OllamaEvaluator(ollama_url=ollama_url, model=model)
+        try:
+            self.evaluator = Evaluator(ollama_url=ollama_url, model=model)
+            self.using_ragas = USING_RAGAS
+        except Exception as e:
+            print(f"Error initializing evaluator: {e}")
+            # If Ragas fails, try to fall back to OllamaEvaluator
+            if USING_RAGAS:
+                print("Falling back to OllamaEvaluator")
+                from .ollama_evaluation import OllamaEvaluator
+                self.evaluator = OllamaEvaluator(ollama_url=ollama_url, model=model)
+                self.using_ragas = False
     
     def get_log_path(self, log_id: str) -> str:
         """
@@ -85,6 +104,21 @@ class ChatLogEvaluator:
                 if 'profile' in content.lower() and len(content) < 2000:  # Not too long
                     context = content
                     break
+            
+        # Extract relevant conversation information as additional context
+        diagnosis = ""
+        for message in conversation:
+            if message.get('role') == 'assistant' and len(message.get('content', '')) > 500:
+                # This is likely the diagnosis which provides useful context
+                content = message.get('content', '')
+                if "diagnosis" in content.lower() or "assessment" in content.lower():
+                    diagnosis = content
+                    break
+        
+        if diagnosis and not context:
+            context = diagnosis
+        elif diagnosis and context:
+            context = context + "\n\n" + diagnosis
         
         # Extract question-answer pairs
         for i in range(len(conversation) - 1):
@@ -120,9 +154,14 @@ class ChatLogEvaluator:
                     if context:
                         contexts.append(context)
         
-        # If we found questions but no context, create a simple context
-        if questions and not context:
-            default_context = "This is a mental health conversation. The patient is describing their symptoms and experiences."
+        # If we found questions but no context, create a more meaningful default context
+        if questions and not contexts:
+            default_context = """
+This is a mental health assessment conversation between a clinician and a patient. 
+The clinician is asking standardized assessment questions, and the patient is describing 
+their symptoms and experiences. The goal is to evaluate the patient's mental health condition 
+and provide appropriate support and treatment recommendations.
+"""
             contexts = [default_context] * len(questions)
         
         return questions, responses, contexts if contexts else None
@@ -180,7 +219,8 @@ class ChatLogEvaluator:
             eval_results = {
                 'log_id': log_id,
                 'timestamp': time.strftime('%Y-%m-%d %H:%M:%S'),
-                'model': self.evaluator.model,
+                'model': getattr(self.evaluator, 'model', 'unknown'),
+                'using_ragas': self.using_ragas,
                 'metrics': results,
                 'evaluation_time': evaluation_time,
                 'question_count': len(questions)

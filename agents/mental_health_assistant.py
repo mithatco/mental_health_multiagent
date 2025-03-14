@@ -172,6 +172,7 @@ class MentalHealthAssistant:
         5. Close with an empathetic statement that validates the patient's experiences
         
         Keep your tone professional but warm, showing empathy while maintaining clinical objectivity.
+        Only output the diagnosis without additional intros, summaries, or sign-offs.
         """
         
         # Initialize RAG usage information
