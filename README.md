@@ -17,6 +17,10 @@ A sophisticated system that simulates mental health assessments using AI agents,
 - [Directory Structure](#directory-structure)
 - [How It Works](#how-it-works)
 - [Customization Options](#customization-options)
+- [Evaluation System](#evaluation-system)
+  - [Standard Metrics](#standard-metrics)
+  - [Rubric-Based Evaluation](#rubric-based-evaluation)
+  - [Running Evaluations](#running-evaluations)
 - [Advanced Features](#advanced-features)
 - [Troubleshooting](#troubleshooting)
 
@@ -60,6 +64,7 @@ graph TD
         F --> L[Chat Logger]
         F --> I[Diagnosis]
         L --> S[Saved Conversations]
+        S --> EV[Conversation Evaluator]
     end
 ```
 
@@ -88,6 +93,7 @@ graph TD
 
 - **Batch Processor**: Generates multiple conversations for research and analysis
 - **Batch Analyzer**: Analyzes patterns and statistics across multiple conversations
+- **Conversation Evaluator**: Assesses quality and clinical validity of conversations
 - **PDF Debugger**: Helps diagnose issues with questionnaire extraction
 
 ## Installation
@@ -219,7 +225,10 @@ mental_health_multiagent/
 │   ├── pdf_processor.py          # PDF extraction
 │   ├── rag_engine.py             # RAG functionality
 │   ├── vector_store.py           # Vector database
-│   └── batch_processor.py        # Batch conversation processing
+│   ├── batch_processor.py        # Batch conversation processing
+│   ├── chat_evaluator.py         # Conversation evaluation
+│   ├── ragas_evaluation.py       # Ragas-based evaluation
+│   ├── ollama_evaluation.py      # Fallback evaluator
 ├── prompts/                      # System prompts
 │   ├── mental_health_assistant_prompt.txt
 │   └── patient_prompt.txt
@@ -229,6 +238,8 @@ mental_health_multiagent/
 │   ├── depression.txt
 │   ├── ptsd.txt
 │   └── schizophrenia.txt
+├── rubrics/                      # Evaluation rubrics
+│   ├── rubrics.py
 ├── documents/                    # Reference documents for knowledge retrieval
 │   └── questionnaires/           # Questionnaires used for assessment
 ├── interface/                    # Components for the chat log viewer
@@ -279,6 +290,11 @@ The system functions through the following workflow:
    - Includes metadata about models and profiles used
    - Enables review and analysis of past sessions
 
+8. **Conversation Evaluation**
+   - The system can evaluate the quality of conversations
+   - Provides metrics on clinical accuracy, empathy, and therapeutic approach
+   - Offers quantitative insights into conversation effectiveness
+
 ## Customization Options
 
 ### Adding New Patient Profiles
@@ -323,6 +339,44 @@ This separation makes it easier to manage your documents and ensures that only q
 Edit the files in the `prompts` directory to change the behavior of the agents:
 - `mental_health_assistant_prompt.txt`: Controls the assistant's approach
 - `patient_prompt.txt`: Default patient behavior (if no profile is selected)
+
+### Customizing Evaluation Rubrics
+
+The system uses customizable rubrics for evaluating conversation quality, stored in `utils/rubrics.py`. You can modify existing rubrics or add new ones to match your specific evaluation needs.
+
+## Evaluation System
+
+The Mental Health Multi-Agent System includes a sophisticated conversation evaluation capability that analyzes the quality, clinical accuracy, and therapeutic approach of the mental health assistant's responses.
+
+### Standard Metrics
+
+The evaluation system can provide several standard metrics when context information is available:
+
+1. **Answer/Response Relevancy** - Measures how directly the assistant's responses address the patient's questions or statements
+2. **Faithfulness** - Assesses whether the assistant's responses contain information that is supported by the available context
+3. **Context Precision** - Evaluates how relevant the context information is to the patient's questions
+4. **Context Recall** - Measures how effectively the assistant incorporates relevant context information in their responses
+
+### Rubric-Based Evaluation
+
+The system also performs specialized mental health evaluation using clinical rubrics:
+
+1. **Empathy & Rapport** - Evaluates how well the responses demonstrate empathy and build rapport with the patient
+2. **Clinical Accuracy** - Assesses the clinical accuracy and appropriateness of responses
+3. **Therapeutic Approach** - Evaluates the appropriate use of therapeutic techniques 
+4. **Safety & Risk Assessment** - Measures how well responses address safety concerns or risk factors
+5. **Communication Clarity** - Evaluates the clarity and accessibility of language used
+
+Each rubric uses a 5-point scale with detailed criteria for each level, allowing for nuanced assessment of conversation quality.
+
+### Running Evaluations
+
+You can evaluate conversations in several ways:
+
+- Launch the chat viewer: `python chat_viewer.py`
+- Open a conversation and click "Evaluate with Ollama"
+- Results will appear in the evaluation panel
+
 
 ## Advanced Features
 
@@ -381,7 +435,8 @@ Additional options:
    - Enter search terms
 4. Click on any log to view the full conversation
 5. The diagnosis is shown in a separate panel at the bottom
-6. Use the "Export as Text" button to download a text version of the conversatio
+6. Use the "Export as Text" button to download a text version of the conversation
+7. Click "Evaluate with Ollama" to run an automated evaluation of the conversation
 
 ### Debugging PDF Extraction
 
