@@ -834,134 +834,126 @@ function displayEvaluationResults(results) {
         return;
     }
     
-    // Get metrics
-    const metrics = results.metrics;
-    if (!metrics) {
-        showEvaluationError('No metrics available in evaluation results');
+    // Extract evaluation data from the proper location in the results structure
+    let evaluationData = null;
+    
+    if (results.evaluation) {
+        // If the results contain an 'evaluation' field (from the API)
+        evaluationData = results.evaluation;
+    } else if (results.results && results.results.evaluation) {
+        // If the results are nested as results.results.evaluation (from polling)
+        evaluationData = results.results.evaluation;
+    } else {
+        // Otherwise, use the results object directly
+        evaluationData = results;
+    }
+    
+    // Add debugging to see the structure of the results
+    console.log("Evaluation Results Structure:", JSON.stringify(results, null, 2));
+    
+    // Check if we have rubric scores to display
+    if (!evaluationData || (!evaluationData.rubric_scores && !evaluationData.average_score)) {
+        showEvaluationError('No evaluation metrics found in results');
         return;
     }
     
     // Format the evaluation time
-    const evalTime = results.evaluation_time ? 
-        `${Math.round(results.evaluation_time)} seconds` : 
+    const evalTime = evaluationData.evaluation_time ? 
+        `${Math.round(evaluationData.evaluation_time)} seconds` : 
         'Unknown';
     
     // Generate HTML for evaluation results
     let html = `
         <div class="evaluation-summary">
-            <p><strong>Evaluation performed:</strong> ${results.timestamp || 'Unknown'}</p>
-            <p><strong>Model used:</strong> ${results.model || 'Unknown'}</p>
-            <p><strong>Questions analyzed:</strong> ${results.question_count || 'Unknown'}</p>
+            <p><strong>Evaluation performed:</strong> ${evaluationData.timestamp || 'Unknown'}</p>
+            <p><strong>Model used:</strong> ${evaluationData.model || 'Unknown'}</p>
             <p><strong>Evaluation time:</strong> ${evalTime}</p>
+            <p><strong>Average score:</strong> ${evaluationData.average_score || 'Unknown'}</p>
         </div>
     `;
 
-    // Check for rubric scores first as they're more important for mental health evaluations
-    if (metrics.rubric_scores && Object.keys(metrics.rubric_scores).length > 0) {
+    // Check for rubric scores
+    if (evaluationData.rubric_scores && Object.keys(evaluationData.rubric_scores).length > 0) {
         html += `<h4>Mental Health Evaluation Scores</h4>
         <div class="evaluation-metrics">`;
         
-        // Add rubric averages to metrics display
-        for (const key in metrics.rubric_scores) {
-            if (key.startsWith('avg_')) {
-                const rubricName = key.replace('avg_', '');
-                const score = parseFloat(metrics.rubric_scores[key]).toFixed(2);
-                const description = metrics.rubric_descriptions[rubricName]?.description || 'No description available';
-                
-                // Add the metric card
-                html += `
-                    <div class="metric-card">
-                        <div class="metric-header">${formatMetricName(rubricName)}</div>
-                        <div class="metric-value">${score}</div>
-                        <div class="metric-description">${description}</div>
-                    </div>
-                `;
-            }
-        }
-        html += `</div>`;
-
-        // Add question by question rubric analysis
-        html += `
-            <h4>Question-by-Question Rubric Analysis</h4>
-            <div class="metrics-chart">
-                <table class="metrics-table">
-                    <thead>
-                        <tr>
-                            <th>Question #</th>
-        `;
-        
-        // Add column headers for each rubric
-        const rubrics = Object.keys(metrics.rubric_scores).filter(key => !key.startsWith('avg_'));
-        rubrics.forEach(rubric => {
-            html += `<th>${formatMetricName(rubric)}</th>`;
-        });
-        
-        html += `</tr></thead><tbody>`;
-        
-        // Calculate number of questions from first rubric's array length
-        if (rubrics.length > 0 && metrics.rubric_scores[rubrics[0]]) {
-            const questionCount = metrics.rubric_scores[rubrics[0]].length;
-            
-            // Add a row for each question
-            for (let i = 0; i < questionCount; i++) {
-                html += `<tr><td>Question ${i+1}</td>`;
-                
-                // Add score for each rubric
-                rubrics.forEach(rubric => {
-                    const value = metrics.rubric_scores[rubric][i];
-                    html += `<td>${value ? parseFloat(value).toFixed(1) : 'N/A'}</td>`;
-                });
-                
-                html += `</tr>`;
-            }
-        }
-        
-        html += `</tbody></table></div>`;
-    }
-    
-    // Add standard Ragas metrics if available
-    const standardMetrics = [];
-    for (const key in metrics) {
-        if (key.startsWith('avg_') && key !== 'avg_harmfulness' && !key.includes('rubric')) {
-            standardMetrics.push({
-                name: key.replace('avg_', ''),
-                value: metrics[key]
-            });
-        }
-    }
-    
-    if (standardMetrics.length > 0) {
-        html += `<h4>Standard Evaluation Metrics</h4>
-        <div class="evaluation-metrics">`;
-        
-        standardMetrics.forEach(metric => {
-            const metricValue = parseFloat(metric.value).toFixed(2);
-            const description = getMetricDescription(metric.name);
+        // Display each rubric score
+        for (const key in evaluationData.rubric_scores) {
+            const score = evaluationData.rubric_scores[key];
+            const explanation = evaluationData.explanations && evaluationData.explanations[key] 
+                ? evaluationData.explanations[key] 
+                : 'No explanation provided';
             
             html += `
                 <div class="metric-card">
-                    <div class="metric-header">${formatMetricName(metric.name)}</div>
-                    <div class="metric-value">${metricValue}</div>
-                    <div class="metric-description">${description}</div>
-                </div>
-            `;
-        });
-        
-        html += `</div>`;
-        
-        // Add note if we only have answer_relevancy
-        if (standardMetrics.length === 1 && standardMetrics[0].name === 'answer_relevancy') {
-            html += `
-                <div class="metric-note">
-                    <p><strong>Note:</strong> Only answer relevancy was evaluated. For more metrics like faithfulness and context precision, 
-                    ensure that each message has proper context information.</p>
+                    <div class="metric-header">${formatMetricName(key)}</div>
+                    <div class="metric-value">${score}</div>
+                    <div class="metric-description">${explanation}</div>
                 </div>
             `;
         }
+        html += `</div>`;
+    }
+    
+    // Add overall comments if available
+    if (evaluationData.overall_comments) {
+        html += `
+            <h4>Overall Assessment</h4>
+            <div class="overall-comments">
+                ${evaluationData.overall_comments}
+            </div>
+        `;
+    }
+    
+    // Add diagnosis accuracy if available - improved visual display
+    if (evaluationData.diagnosis_accuracy) {
+        const accuracy = evaluationData.diagnosis_accuracy;
+        const matchStatus = accuracy.matches_profile ? "matches" : "does not match";
+        const matchClass = accuracy.matches_profile ? "match-success" : "match-failure";
+        const confidenceScore = parseInt(accuracy.confidence) || 0;
+        
+        html += `
+            <h4>Diagnosis Accuracy</h4>
+            <div class="diagnosis-accuracy ${matchClass}">
+                <div class="match-indicator">
+                    <div class="match-status">
+                        <span class="match-icon">${accuracy.matches_profile ? '✓' : '✗'}</span>
+                        <span class="match-text">Diagnosis ${matchStatus} expected profile</span>
+                    </div>
+                    <div class="confidence-meter">
+                        <div class="confidence-label">Confidence:</div>
+                        <div class="confidence-stars">
+                            ${generateStars(confidenceScore, 5)}
+                        </div>
+                        <div class="confidence-value">${confidenceScore}/5</div>
+                    </div>
+                </div>
+                <div class="match-explanation">
+                    <strong>Explanation:</strong> ${accuracy.explanation || 'No explanation provided'}
+                </div>
+            </div>
+        `;
     }
     
     // Update the content
     document.getElementById('evaluation-content').innerHTML = html;
+}
+
+// Helper function to generate star ratings for confidence
+function generateStars(count, total) {
+    let stars = '';
+    
+    // Add filled stars
+    for (let i = 0; i < count; i++) {
+        stars += '<span class="star filled">★</span>';
+    }
+    
+    // Add empty stars
+    for (let i = count; i < total; i++) {
+        stars += '<span class="star empty">☆</span>';
+    }
+    
+    return stars;
 }
 
 function formatMetricName(name) {

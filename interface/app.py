@@ -15,7 +15,7 @@ import csv
 import re
 import threading
 
-# Add this import at the top
+# Update the import to use our ChatLogEvaluator directly
 from utils.chat_evaluator import ChatLogEvaluator
 
 app = Flask(__name__)
@@ -452,12 +452,24 @@ def get_evaluation(log_id):
     if not log_id.endswith('.json'):
         log_id += '.json'
     
+    # Add debug logging
+    print(f"Getting evaluation status for {log_id}")
+    
     # Check if evaluation is in progress
     if log_id in ongoing_evaluations:
-        return jsonify(ongoing_evaluations[log_id]), 200, response_headers
+        evaluation_data = ongoing_evaluations[log_id]
+        print(f"Found ongoing evaluation: {evaluation_data}")
+        return jsonify(evaluation_data), 200, response_headers
     
     # Check for existing evaluation in the log file
     status = chat_evaluator.get_evaluation_status(log_id.replace('.json', ''))
+    print(f"Evaluation status from file: {status}")
+    
+    # If the evaluation is completed, include the results directly
+    if status.get('status') == 'completed' and 'results' in status:
+        # Log the structure of the results to help debugging
+        print(f"Returning completed evaluation with results")
+        
     return jsonify(status), 200, response_headers
 
 def create_app(logs_dir=None):

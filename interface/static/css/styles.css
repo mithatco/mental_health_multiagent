@@ -599,3 +599,95 @@ button:hover {
     border-radius: 4px;
     margin-bottom: 0;
 }
+
+/* Diagnosis Accuracy Styles */
+.diagnosis-accuracy {
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+    background-color: #f5f5f5;
+}
+
+.match-indicator {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.match-status {
+    display: flex;
+    align-items: center;
+    font-size: 1.1em;
+}
+
+.match-icon {
+    font-size: 1.5em;
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.match-success .match-icon {
+    background-color: #4caf50;
+}
+
+.match-failure .match-icon {
+    background-color: #f44336;
+}
+
+.match-text {
+    font-weight: bold;
+}
+
+.confidence-meter {
+    display: flex;
+    align-items: center;
+}
+
+.confidence-label {
+    margin-right: 8px;
+}
+
+.confidence-stars {
+    margin-right: 8px;
+}
+
+.star {
+    font-size: 1.2em;
+}
+
+.star.filled {
+    color: #ffc107;
+}
+
+.star.empty {
+    color: #e0e0e0;
+}
+
+.confidence-value {
+    font-weight: bold;
+}
+
+.match-explanation {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 4px;
+    font-size: 0.95em;
+    line-height: 1.4;
+}
+
+/* Additional styling for diagnosis sections */
+.match-success {
+    border-left: 5px solid #4caf50;
+}
+
+.match-failure {
+    border-left: 5px solid #f44336;
+}
