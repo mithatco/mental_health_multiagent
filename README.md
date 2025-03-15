@@ -373,10 +373,27 @@ Each rubric uses a 5-point scale with detailed criteria for each level, allowing
 
 You can evaluate conversations in several ways:
 
-- Launch the chat viewer: `python chat_viewer.py`
-- Open a conversation and click "Evaluate with Ollama"
-- Results will appear in the evaluation panel
+1. Launch the chat viewer: `python chat_viewer.py`
+2. Open a conversation from the sidebar
+3. Select an evaluation model from the dropdown menu
+   - The system will automatically detect all available Ollama models on your system
+   - Smaller models (like Qwen 3B or Gemma 2B) are preferred for faster evaluation
+   - Larger models may provide more detailed analysis but take longer to process
+4. Click "Evaluate with Ollama" to begin the evaluation
+5. Results will appear in the evaluation panel showing:
+   - Overall scores across different evaluation dimensions
+   - Detailed explanations for each score
+   - Diagnosis accuracy assessment (when applicable)
+   - Overall assessment of the conversation quality
 
+### Customizing the Evaluation Model
+
+The evaluation system allows you to choose which locally installed Ollama model to use:
+
+1. Install models via Ollama CLI: `ollama pull model_name`
+2. They will automatically appear in the model selection dropdown
+
+If no specific model is selected, the system will default to using qwen2.5:3b for evaluation.
 
 ## Advanced Features
 
