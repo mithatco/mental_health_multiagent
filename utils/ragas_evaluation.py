@@ -14,7 +14,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 
 # Import rubrics from separate file
-from ..rubrics.rubrics import MENTAL_HEALTH_RUBRICS, METRIC_DESCRIPTIONS
+from rubrics.rubrics import MENTAL_HEALTH_RUBRICS, METRIC_DESCRIPTIONS
 
 # Try to import directly first
 try:
@@ -23,23 +23,16 @@ try:
     from tqdm import tqdm
     
     # Import Ragas components
+    from ragas import SingleTurnSample  # Add this import
     from ragas.metrics import (
-        faithfulness, 
-        context_precision, 
-        context_recall
+        Faithfulness, 
+        ContextPrecision, 
+        ContextRecall,
+        ResponseRelevancy,
     )
-    
-    # Handle the renamed metric
-    try:
-        from ragas.metrics import answer_relevancy
-        print("Using answer_relevancy from ragas.metrics")
-    except (ImportError, AttributeError):
-        try:
-            from ragas.metrics import response_relevancy as answer_relevancy
-            print("Using response_relevancy as answer_relevancy")
-        except ImportError:
-            answer_relevancy = None
-            print("Could not import answer_relevancy or response_relevancy")
+
+    from langchain_ollama import OllamaLLM
+    from langchain_ollama import OllamaEmbeddings  # Add this import for embeddings
     
     # Import RubricsScore for custom evaluation
     try:
@@ -51,88 +44,84 @@ try:
             RubricsScore = None
             print("Could not import RubricsScore")
         
-    from ragas.dataset_schema import SingleTurnSample
     RAGAS_AVAILABLE = True
 except ImportError as e:
     print(f"Warning: Direct import failed - {e}")
     RAGAS_AVAILABLE = False
 
-# If direct import fails, try using absolute imports
-if not RAGAS_AVAILABLE:
-    try:
-        print("Trying absolute imports...")
-        import pandas as pd
-        import numpy as np
-        from tqdm import tqdm
+# Add this class to make OllamaLLM compatible with Ragas
+class RagasCompatibleLLM:
+    """A wrapper around OllamaLLM to make it compatible with Ragas expectations."""
+    
+    def __init__(self, base_llm):
+        """Initialize with a base LLM."""
+        self.base_llm = base_llm
+    
+    async def generate(self, prompts, stop=None, callbacks=None, **kwargs):
+        """
+        Handle the generation request in a way that works with Ragas.
         
-        # Updated import for newer Ragas versions
-        from ragas.metrics import (
-            faithfulness, 
-            context_precision, 
-            context_recall
-        )
+        Args:
+            prompts: The prompt(s) to generate from. Could be StringPromptValue or other types.
+            stop: Optional stop sequences
+            callbacks: Optional callbacks
+            **kwargs: Additional arguments
+            
+        Returns:
+            A generation response that Ragas can process
+        """
+        from langchain_core.outputs import LLMResult, Generation
         
-        # Handle the renamed metric
+        # Convert StringPromptValue to string if needed
+        if hasattr(prompts, "to_string"):
+            prompt_str = prompts.to_string()
+        elif isinstance(prompts, list) and len(prompts) > 0:
+            # If it's a list, take the first item (Ragas usually sends a list with one item)
+            if hasattr(prompts[0], "to_string"):
+                prompt_str = prompts[0].to_string()
+            else:
+                prompt_str = str(prompts[0])
+        else:
+            prompt_str = str(prompts)
+        
+        # Call the base LLM
         try:
-            from ragas.metrics import answer_relevancy
-            AnswerRelevancyClass = answer_relevancy  # Old version
-        except (ImportError, AttributeError):
-            try:
-                from ragas.metrics import response_relevancy
-                AnswerRelevancyClass = response_relevancy  # New version
-            except ImportError:
-                AnswerRelevancyClass = None
+            # Use invoke for simple string response
+            response = self.base_llm.invoke(prompt_str)
+            
+            # Create a properly formatted result that matches what Ragas expects
+            generations = [[Generation(text=response)]]
+            result = LLMResult(generations=generations)
+            return result
+        except Exception as e:
+            print(f"Error in RagasCompatibleLLM: {e}")
+            # Return an empty result on error
+            return LLMResult(generations=[[Generation(text="")]])
+    
+    # Add minimal required methods to mimic an LLM
+    def bind(self, **kwargs):
+        """Support binding like a regular LLM."""
+        return self
         
-        from ragas.metrics import RubricsScore
-        from ragas.dataset_schema import SingleTurnSample
-        RAGAS_AVAILABLE = True
-        print("Absolute imports successful")
-    except ImportError as e:
-        print(f"Warning: Ragas library not available: {e}")
-        print("Install with: pip install ragas langchain")
-        RAGAS_AVAILABLE = False
-
-# Try to import LangChain components separately, as they might have different import paths
-if RAGAS_AVAILABLE:
-    try:
-        # Use updated imports from langchain_ollama
-        from langchain_ollama import ChatOllama
-        from langchain_ollama import OllamaLLM  # Renamed from Ollama
-        print("Successfully imported from langchain_ollama")
-        
-        # Also try importing the specific LangChain components needed for Ragas
-        from langchain.schema import SystemMessage, HumanMessage, AIMessage
-        from langchain.schema.output_parser import StrOutputParser
-    except ImportError:
-        try:
-            # Fall back to community imports if needed
-            from langchain_community.chat_models import ChatOllama
-            from langchain_community.llms import Ollama
-            print("Warning: Using langchain_community imports. Consider installing langchain_ollama.")
-        except ImportError as e:
-            try:
-                # Fall back to old imports if needed, but with a warning
-                print("Warning: Using deprecated langchain imports. Please install langchain_ollama.")
-                from langchain.chat_models import ChatOllama
-                from langchain.llms import Ollama
-            except ImportError as e:
-                print(f"Warning: LangChain imports failed: {e}")
-                print("Install with: pip install langchain-ollama")
-                RAGAS_AVAILABLE = False
+    def __getattr__(self, name):
+        """Pass through any other attributes to the base LLM."""
+        return getattr(self.base_llm, name)
 
 class RagasEvaluator:
     """Evaluate mental health agent responses using Ragas metrics with local Ollama models."""
     
-    def __init__(self, ollama_url="http://localhost:11434", model="qwen2.5:3b"):
+    def __init__(self, ollama_url="http://localhost:11434", model="qwen2.5:3b", embedding_model="nomic-embed-text"):
         """
         Initialize the evaluator with an Ollama model.
         
         Args:
             ollama_url: URL for the Ollama API (default: http://localhost:11434)
             model: Name of the model to use (default: qwen2.5:3b)
+            embedding_model: Name of the embedding model to use (default: nomic-embed-text)
         """
         self.ollama_url = ollama_url
         self.model = model
+        self.embedding_model = embedding_model
         
         if not RAGAS_AVAILABLE:
             raise ImportError(
@@ -154,20 +143,23 @@ class RagasEvaluator:
         # Set base URL for Ollama API
         os.environ["OLLAMA_API_BASE"] = self.ollama_url
         
-        # Create LLM instances for different metrics
-        # Configure temperature=0 for more reliable evaluation results
-        self.chat_model = ChatOllama(model=self.model, temperature=0)
+        # Create the base LLM
+        base_llm = OllamaLLM(model=self.model, temperature=0)
         
-        # Use OllamaLLM instead of Ollama if available
-        try:
-            # New import
-            self.llm = OllamaLLM(model=self.model, temperature=0)
-        except NameError:
-            # Fallback to old import
-            self.llm = Ollama(model=self.model, temperature=0)
+        # Create the embeddings model
+        self.embeddings = OllamaEmbeddings(
+            model=self.embedding_model,
+            base_url=self.ollama_url
+        )
+        
+        # Wrap the LLM with our compatible wrapper for Ragas
+        self.llm = RagasCompatibleLLM(base_llm)
+        
+        # Keep a reference to the original LLM for other uses
+        self.base_llm = base_llm
     
     def _init_metrics(self):
-        """Initialize Ragas metrics with our models."""
+        """Initialize Ragas metrics with our compatible LLM wrapper."""
         # Configure metrics with local models
         self.metrics = {}
         
@@ -178,29 +170,30 @@ class RagasEvaluator:
         
         # Add the metrics based on Ragas version
         try:
-            # Try to initialize metrics with newer Ragas API
-            if answer_relevancy:
-                self.metrics["answer_relevancy"] = answer_relevancy.AnswerRelevancy(llm=self.llm)
-                print(f"Initialized answer_relevancy metric")
+            print(f"Initializing metrics with compatible LLM wrapper: {self.model}")
             
-            self.metrics["faithfulness"] = faithfulness.Faithfulness(llm=self.llm)
-            print(f"Initialized faithfulness metric")
+            # Use debug prints to track initialization
+            print("Initializing Response Relevancy...")
+            # Note: Now we pass both the LLM and embeddings
+            self.metrics["answer_relevancy"] = ResponseRelevancy(llm=self.llm, embeddings=self.embeddings)
+            print("  Success!")
             
-            self.metrics["context_precision"] = context_precision.ContextPrecision(llm=self.llm)
-            print(f"Initialized context_precision metric")
+            print("Initializing Faithfulness...")
+            self.metrics["faithfulness"] = Faithfulness(llm=self.llm)
+            print("  Success!")
             
-            self.metrics["context_recall"] = context_recall.ContextRecall(llm=self.llm)
-            print(f"Initialized context_recall metric")
+            print("Initializing Context Precision...")
+            self.metrics["context_precision"] = ContextPrecision(llm=self.llm)
+            print("  Success!")
             
-            # Try to initialize harmfulness metric if available
-            try:
-                from ragas.metrics.critique import harmfulness
-                self.metrics["harmfulness"] = harmfulness.Harmfulness(llm=self.llm)
-                print(f"Initialized harmfulness metric")
-            except ImportError:
-                print(f"Harmfulness metric not available in this version of Ragas")
+            print("Initializing Context Recall...")
+            self.metrics["context_recall"] = ContextRecall(llm=self.llm)
+            print("  Success!")
+            
         except Exception as e:
             print(f"Error initializing standard metrics: {e}")
+            import traceback
+            traceback.print_exc()
             print("No metrics initialized. Evaluations will only use custom rubrics if enabled.")
     
     def _init_rubric_scorers(self):
@@ -236,12 +229,78 @@ class RagasEvaluator:
             print(f"Warning: Could not initialize rubric scorers: {e}")
             self.rubric_scorers = {}
     
+    def _evaluate_metric_safely(self, metric, metric_name, question, response, context=None):
+        """
+        Safely evaluate a metric using the SingleTurnSample API.
+        
+        Args:
+            metric: The Ragas metric object
+            metric_name: Name of the metric (for logging)
+            question: The question/prompt
+            response: The response to evaluate
+            context: Optional context information
+            
+        Returns:
+            Float score or None if evaluation fails
+        """
+        try:
+            # Import needed for async operations
+            import asyncio
+            
+            # Function to run async evaluation with SingleTurnSample
+            async def run_async_eval():
+                try:
+                    # Create the appropriate SingleTurnSample with the required reference field
+                    contexts = [context] if context and context.strip() else []
+                    sample = SingleTurnSample(
+                        user_input=question,
+                        response=response,
+                        retrieved_contexts=contexts,
+                        reference=""  # Required field even though we don't have a reference answer
+                    )
+                    
+                    # Call the single_turn_ascore with the sample
+                    result = await metric.single_turn_ascore(sample)
+                    return result
+                except Exception as e:
+                    print(f"  Error in async evaluation: {e}")
+                    import traceback
+                    traceback.print_exc()
+                    return None
+            
+            # Run the async function and get the result
+            try:
+                loop = asyncio.get_event_loop()
+            except RuntimeError:
+                loop = asyncio.new_event_loop()
+                asyncio.set_event_loop(loop)
+            
+            result = loop.run_until_complete(run_async_eval())
+            
+            # Handle different return types
+            if isinstance(result, pd.Series):
+                return float(result.iloc[0])
+            elif isinstance(result, list) and result:
+                return float(result[0]) 
+            elif result is not None:
+                return float(result)
+            
+            return None
+        except Exception as e:
+            print(f"  Error evaluating {metric_name}: {e}")
+            import traceback
+            traceback.print_exc()
+            return None
+
     def evaluate_responses(
         self,
         questions: List[str],
         responses: List[str],
         context: Optional[List[str]] = None,
-        use_rubrics: bool = True
+        use_rubrics: bool = True,
+        use_standard_metrics: bool = True,
+        diagnosis_index: Optional[int] = None,  # New parameter to identify the diagnosis response
+        rag_context: Optional[List[Dict[str, Any]]] = None  # New parameter for RAG context
     ) -> Dict[str, Any]:
         """
         Evaluate responses from a mental health agent using Ragas metrics.
@@ -252,6 +311,11 @@ class RagasEvaluator:
             context: Optional list of context information used for responses
                     (e.g. patient profiles or therapeutic guidelines)
             use_rubrics: Whether to include rubric-based evaluation
+            use_standard_metrics: Whether to include standard Ragas metrics
+            diagnosis_index: Optional index of the diagnosis response in the responses list
+                            (if None, standard metrics applied to all responses)
+            rag_context: Optional RAG context used for the diagnosis
+                        (list of dicts with 'title', 'excerpt', etc.)
         
         Returns:
             Dictionary containing evaluation results with metrics
@@ -274,45 +338,103 @@ class RagasEvaluator:
             # Create empty contexts if none provided
             context = [""] * len(questions)
         
-        # Create dataframe for evaluation
-        data = {
-            "question": questions,
-            "answer": responses,
-            "contexts": [[c] for c in context]  # Ragas expects a list of passages
-        }
-        
-        eval_df = pd.DataFrame(data)
+        # Check if any context has actual content
+        has_meaningful_context = any(c.strip() for c in context)
         
         # Initialize results dict
         results = {}
         
-        # Run standard metrics and collect results
-        print("Running standard Ragas evaluations...")
-        for metric_name, metric in self.metrics.items():
-            print(f"  Evaluating {metric_name}...")
-            try:
-                # Skip context-based metrics if no meaningful context is provided
-                if metric_name in ["context_precision", "context_recall", "faithfulness"] and not any(context):
-                    print(f"    Skipping {metric_name} due to empty context")
+        # Run standard metrics and collect results - only for diagnosis or for all responses
+        if use_standard_metrics:
+            print("Running standard Ragas evaluations...")
+            
+            # Define metrics to evaluate
+            metrics_to_evaluate = [
+                {"name": "answer_relevancy", "requires_context": True},
+                {"name": "faithfulness", "requires_context": True},
+                {"name": "context_precision", "requires_context": True},
+                {"name": "context_recall", "requires_context": True}
+            ]
+            
+            # Prepare indices to evaluate based on diagnosis_index
+            if diagnosis_index is not None and 0 <= diagnosis_index < len(responses):
+                # Only evaluate the diagnosis
+                indices_to_evaluate = [diagnosis_index]
+                print(f"Evaluating only the diagnosis (response #{diagnosis_index+1})")
+            else:
+                # Evaluate all responses
+                indices_to_evaluate = range(len(questions))
+                print(f"Evaluating all {len(questions)} responses")
+            
+            # Process each selected response
+            for i in indices_to_evaluate:
+                q = questions[i]
+                r = responses[i]
+                
+                # For the diagnosis, use the RAG context if provided
+                if i == diagnosis_index and rag_context:
+                    # Format the RAG context as a single string
+                    ctx = self._format_rag_context_for_evaluation(rag_context)
+                    print(f"Using RAG context for diagnosis evaluation ({len(ctx)} characters)")
+                else:
+                    ctx = context[i] if i < len(context) else ""
+                
+                # Only evaluate with metrics if there's proper context
+                if not ctx.strip() and diagnosis_index is not None:
+                    print(f"Skipping metrics for response {i+1} (no context)")
                     continue
                 
-                # Run the metric
-                scores = metric.score(eval_df)
-                if isinstance(scores, pd.Series):
-                    # Convert series to list
-                    results[metric_name] = scores.tolist()
-                    # Calculate average
-                    results[f"avg_{metric_name}"] = np.mean(scores)
-                else:
-                    # Handle case where metric returns a single value
-                    results[metric_name] = [scores] * len(questions)
-                    results[f"avg_{metric_name}"] = scores
-            except Exception as e:
-                print(f"    Error evaluating {metric_name}: {e}")
-                import traceback
-                traceback.print_exc()
+                print(f"Evaluating response {i+1}/{len(responses)}...")
+                
+                # Evaluate each metric
+                for metric_info in metrics_to_evaluate:
+                    metric_name = metric_info["name"]
+                    requires_context = metric_info["requires_context"]
+                    
+                    # Skip context-based metrics if no context
+                    if requires_context and not ctx.strip():
+                        print(f"  Skipping {metric_name} (no context)")
+                        continue
+                    
+                    # Skip metrics that aren't available
+                    if metric_name not in self.metrics:
+                        print(f"  Skipping {metric_name} (not available)")
+                        continue
+                    
+                    try:
+                        print(f"  Evaluating {metric_name}...")
+                        
+                        # Evaluate metric using SingleTurnSample
+                        result = self._evaluate_metric_safely(
+                            metric=self.metrics[metric_name],
+                            metric_name=metric_name,
+                            question=q,
+                            response=r,
+                            context=ctx
+                        )
+                        
+                        # Store result
+                        if result is not None:
+                            if metric_name not in results:
+                                results[metric_name] = []
+                            results[metric_name].append(result)
+                            print(f"    Score: {result:.3f}")
+                        else:
+                            print(f"    Failed to evaluate {metric_name}")
+                    except Exception as e:
+                        print(f"    Error evaluating {metric_name}: {str(e)}")
+                        import traceback
+                        traceback.print_exc()
+            
+            # Calculate average scores
+            for metric_name in list(results.keys()):
+                if isinstance(results[metric_name], list) and results[metric_name]:
+                    scores = [score for score in results[metric_name] if score is not None]
+                    if scores:
+                        results[f"avg_{metric_name}"] = sum(scores) / len(scores)
+                        print(f"Average {metric_name}: {results[f'avg_{metric_name}']:.3f}")
         
-        # Custom rubric evaluation implementation
+        # Custom rubric evaluation implementation - always applied to all responses
         if use_rubrics and self.rubric_scorers:
             print("Running rubric-based evaluations...")
             results["rubric_scores"] = {}
@@ -364,8 +486,12 @@ class RagasEvaluator:
                 for key, data in MENTAL_HEALTH_RUBRICS.items()
             }
         
+        # For diagnosis mode, include standard metric descriptions if any were calculated
+        if any(k.startswith("avg_") and k != "avg_harmfulness" and not k.startswith("avg_rubric") for k in results):
+            results["metric_descriptions"] = self.get_metric_descriptions()
+        
         return results
-    
+
     def _evaluate_with_rubric_manually(self, rubric_key, rubric_data, question, answer, context):
         """
         Manually evaluate a response using a rubric by crafting our own LLM prompt.
@@ -404,7 +530,7 @@ Provide your score as a single number between 1 and 5, with no other text.
 """
         try:
             # Use the raw LLM for direct completion
-            result = self.llm.invoke(rubric_prompt)
+            result = self.base_llm.invoke(rubric_prompt)
             
             # Extract the score
             score_match = re.search(r'([1-5](\.\d+)?)', str(result))
@@ -435,6 +561,29 @@ Provide your score as a single number between 1 and 5, with no other text.
         return {k: {"name": v["name"], "description": v["description"]} 
                 for k, v in MENTAL_HEALTH_RUBRICS.items()}
 
+    def _format_rag_context_for_evaluation(self, rag_context: List[Dict[str, Any]]) -> str:
+        """
+        Format RAG context into a string for evaluation purposes.
+        
+        Args:
+            rag_context: List of context documents used by RAG
+            
+        Returns:
+            Formatted string representation of the RAG context
+        """
+        if not rag_context:
+            return ""
+        
+        # Format each document with title and excerpt
+        formatted_context = []
+        for doc in rag_context:
+            doc_title = doc.get("title", "Untitled Document")
+            doc_excerpt = doc.get("excerpt", "").strip()
+            if doc_excerpt:
+                formatted_context.append(f"Document: {doc_title}\n{doc_excerpt}\n")
+        
+        # Join all formatted documents
+        return "\n".join(formatted_context)
 
 def example_usage():
     """Example of how to use the Ragas evaluator."""

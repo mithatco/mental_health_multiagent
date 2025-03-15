@@ -210,9 +210,41 @@ and provide appropriate support and treatment recommendations.
             if not questions or not responses:
                 return {'error': 'No question-answer pairs found in conversation'}
             
+            # Find the diagnosis message (typically the last message from the assistant)
+            diagnosis_index = None
+            rag_context = None
+            
+            for i in range(len(conversation) - 1, -1, -1):
+                msg = conversation[i]
+                if msg.get('role') == 'assistant' and 'rag_usage' in msg:
+                    # Found the diagnosis with RAG context
+                    rag_context = msg.get('rag_usage', {}).get('accessed_documents', [])
+                    
+                    # Find the corresponding index in our responses list
+                    # This is a bit tricky since extract_qa_pairs might filter some messages
+                    # For simplicity, assume diagnosis is the last response
+                    diagnosis_index = len(responses) - 1
+                    break
+            
             # Run evaluation with progress tracking
             start_time = time.time()
-            results = self.evaluator.evaluate_responses(questions, responses, contexts)
+            try:
+                # Pass diagnosis index and RAG context to evaluation
+                results = self.evaluator.evaluate_responses(
+                    questions, responses, contexts, 
+                    use_rubrics=True,
+                    use_standard_metrics=True,
+                    diagnosis_index=diagnosis_index,
+                    rag_context=rag_context
+                )
+            except Exception as e:
+                import traceback
+                error_details = traceback.format_exc()
+                return {
+                    'error': f'Error evaluating log: {str(e)}', 
+                    'details': error_details
+                }
+                    
             evaluation_time = time.time() - start_time
             
             # Add metadata
@@ -232,7 +264,7 @@ and provide appropriate support and treatment recommendations.
                 json.dump(log_data, f, indent=2)
             
             return eval_results
-            
+                
         except Exception as e:
             import traceback
             error_details = traceback.format_exc()
