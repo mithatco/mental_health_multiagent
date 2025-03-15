@@ -23,6 +23,8 @@ class ChatLogEvaluator:
             model: Name of the model to use for evaluation
         """
         self.logs_dir = logs_dir
+        self.ollama_url = ollama_url
+        self.default_model = model
         try:
             # Use LLM evaluator directly
             self.llm_evaluator = LLMChatLogEvaluator(logs_dir=logs_dir, ollama_url=ollama_url, model=model)
@@ -62,17 +64,35 @@ class ChatLogEvaluator:
         
         return filepath
     
-    def evaluate_log(self, log_id: str) -> Dict[str, Any]:
+    def evaluate_log(self, log_id: str, model: str = None) -> Dict[str, Any]:
         """
         Evaluate a chat log.
         
         Args:
             log_id: ID of the log file
+            model: Optional model to use for evaluation
         
         Returns:
             Evaluation results
         """
-        # Simply use the LLM evaluator's evaluate_log method
+        # If no model specified, use the default
+        eval_model = model if model else self.default_model
+        
+        # If model is different from default, create a temporary evaluator
+        if self.llm_evaluator and eval_model != self.default_model:
+            print(f"Creating temporary evaluator with model {eval_model}")
+            try:
+                temp_evaluator = LLMChatLogEvaluator(
+                    logs_dir=self.logs_dir,
+                    ollama_url=self.ollama_url,
+                    model=eval_model
+                )
+                return temp_evaluator.evaluate_log(log_id)
+            except Exception as e:
+                print(f"Error with temporary evaluator: {e}")
+                # Fall back to default evaluator
+        
+        # Use the default evaluator
         if self.llm_evaluator:
             return self.llm_evaluator.evaluate_log(log_id)
         

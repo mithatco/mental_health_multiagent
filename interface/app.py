@@ -14,6 +14,7 @@ import datetime
 import csv
 import re
 import threading
+import requests
 
 # Update the import to use our ChatLogEvaluator directly
 from utils.chat_evaluator import ChatLogEvaluator
@@ -388,11 +389,22 @@ def evaluate_log(log_id):
             'message': 'Evaluation already in progress'
         })
     
+    # Get model from request data, default to the evaluator's default model if not provided
+    try:
+        request_data = request.get_json() or {}
+    except:
+        request_data = {}
+    
+    model = request_data.get('model')
+    
     # Start evaluation in a background thread
     def run_evaluation():
         try:
-            # Run evaluation
-            results = chat_evaluator.evaluate_log(log_id.replace('.json', ''))
+            # Run evaluation with specified model if provided
+            if model:
+                results = chat_evaluator.evaluate_log(log_id.replace('.json', ''), model=model)
+            else:
+                results = chat_evaluator.evaluate_log(log_id.replace('.json', ''))
             
             # Store results
             if 'error' in results:
@@ -418,11 +430,12 @@ def evaluate_log(log_id):
                 'finish_time': time.time()
             }
     
-    # Mark evaluation as in progress with start time
+    # Mark evaluation as in progress with start time and model
     ongoing_evaluations[log_id] = {
         'status': 'in_progress', 
         'start_time': time.time(),
-        'progress': 0
+        'progress': 0,
+        'model': model
     }
     
     thread = threading.Thread(target=run_evaluation)
@@ -431,7 +444,7 @@ def evaluate_log(log_id):
     
     return jsonify({
         'status': 'started',
-        'message': 'Evaluation started'
+        'message': f'Evaluation started' + (f' with model {model}' if model else '')
     })
 
 # Improve the status endpoint to handle caching
@@ -487,6 +500,19 @@ def get_evaluation(log_id):
                         status['results'][key] = value
     
     return jsonify(status), 200, response_headers
+
+@app.route('/api/models', methods=['GET'])
+def get_models():
+    """Get available Ollama models."""
+    try:
+        response = requests.get("http://localhost:11434/api/tags")
+        if response.status_code == 200:
+            models = [model['name'] for model in response.json().get('models', [])]
+            return jsonify({'models': models})
+        else:
+            return jsonify({'error': f'Failed to fetch models from Ollama API: {response.status_code}'}), 500
+    except Exception as e:
+        return jsonify({'error': f'Error fetching models: {str(e)}'}), 500
 
 def create_app(logs_dir=None):
     """Create and configure the Flask application."""

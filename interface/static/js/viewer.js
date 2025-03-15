@@ -31,6 +31,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add section toggle functionality
     setupSectionToggles();
+    
+    // Fetch available models for evaluation
+    fetchAvailableModels();
 });
 
 // Switch between individual and batch views
@@ -471,6 +474,9 @@ function loadChat(chatId) {
     const newEvaluateBtn = evaluateBtn.cloneNode(true);
     evaluateBtn.parentNode.replaceChild(newEvaluateBtn, evaluateBtn);
     
+    // Refresh available models
+    fetchAvailableModels();
+    
     // Fetch chat data
     fetch(`/api/logs/${chatId}`)
         .then(response => response.json())
@@ -754,9 +760,17 @@ function startEvaluation(chatId) {
     evaluateBtn.disabled = true;
     evaluateBtn.textContent = "Evaluating...";
     
-    // Call API to start evaluation
+    // Get selected model
+    const modelSelect = document.getElementById('model-select');
+    const selectedModel = modelSelect.value;
+    
+    // Call API to start evaluation with the selected model
     fetch(`/api/logs/${chatId}/evaluate`, {
-        method: 'POST'
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ model: selectedModel })
     })
     .then(response => response.json())
     .then(data => {
@@ -1101,4 +1115,58 @@ function setupSectionToggles() {
             toggle.innerHTML = '+';
         }
     });
+}
+
+// Function to fetch available models from Ollama
+function fetchAvailableModels() {
+    fetch('/api/models')
+        .then(response => response.json())
+        .then(data => {
+            const modelSelect = document.getElementById('model-select');
+            modelSelect.innerHTML = ''; // Clear existing options
+            
+            if (data.error) {
+                console.error('Error fetching models:', data.error);
+                addDefaultModelOption(modelSelect);
+                return;
+            }
+            
+            // Add models to dropdown
+            if (data.models && data.models.length > 0) {
+                data.models.forEach(model => {
+                    const option = document.createElement('option');
+                    option.value = model;
+                    option.textContent = model;
+                    modelSelect.appendChild(option);
+                });
+                
+                // Set default selection (prefer smaller models for evaluation)
+                const preferredModels = [
+                    'qwen2.5:3b', 'gemma:2b', 'llama2:7b', 'mistral:7b', 'phi3:3b'
+                ];
+                
+                for (const modelName of preferredModels) {
+                    if (data.models.includes(modelName)) {
+                        modelSelect.value = modelName;
+                        break;
+                    }
+                }
+            } else {
+                addDefaultModelOption(modelSelect);
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching models:', error);
+            const modelSelect = document.getElementById('model-select');
+            addDefaultModelOption(modelSelect);
+        });
+}
+
+// Helper function to add default model option
+function addDefaultModelOption(selectElement) {
+    selectElement.innerHTML = ''; // Clear existing options
+    const option = document.createElement('option');
+    option.value = 'qwen2.5:3b';
+    option.textContent = 'qwen2.5:3b (default)';
+    selectElement.appendChild(option);
 }

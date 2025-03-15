@@ -104,10 +104,16 @@
                     </div>
                 </div>
                 
-                <!-- Update the evaluation container section to ensure it's simplified -->
+                <!-- Update the evaluation container section to include model selection -->
                 <div id="evaluation-section" class="section">
                     <div class="evaluation-container" id="evaluation-container">
                         <div class="evaluation-header">
+                            <div class="evaluation-model-selector">
+                                <label for="model-select">Model:</label>
+                                <select id="model-select">
+                                    <option value="loading">Loading models...</option>
+                                </select>
+                            </div>
                             <button id="evaluate-btn" class="evaluate-btn">Evaluate with Ollama</button>
                         </div>
                         <div id="evaluation-content">

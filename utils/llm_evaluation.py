@@ -442,6 +442,8 @@ class ChatLogEvaluator:
             model: Name of the model to use for evaluation
         """
         self.logs_dir = logs_dir
+        self.ollama_url = ollama_url
+        self.model = model
         self.evaluator = LLMEvaluator(ollama_url=ollama_url, model=model)
         
     def get_log_path(self, log_id: str) -> str:
@@ -473,12 +475,13 @@ class ChatLogEvaluator:
         
         return filepath
     
-    def evaluate_log(self, log_id: str) -> Dict[str, Any]:
+    def evaluate_log(self, log_id: str, model: str = None) -> Dict[str, Any]:
         """
         Evaluate a chat log using the LLM evaluator.
         
         Args:
             log_id: ID of the log file
+            model: Optional model override to use for this evaluation
         
         Returns:
             Evaluation results
@@ -493,14 +496,21 @@ class ChatLogEvaluator:
             with open(filepath, 'r') as f:
                 log_data = json.load(f)
             
-            # Run LLM evaluation
-            results = self.evaluator.evaluate_log(log_data)
+            # Use specified model if provided, otherwise use the default
+            eval_model = model if model else self.model
+            
+            # Create temporary evaluator if needed
+            if eval_model != self.model:
+                temp_evaluator = LLMEvaluator(ollama_url=self.ollama_url, model=eval_model)
+                results = temp_evaluator.evaluate_log(log_data)
+            else:
+                results = self.evaluator.evaluate_log(log_data)
             
             # Add metadata
             eval_results = {
                 'log_id': log_id,
                 'timestamp': time.strftime('%Y-%m-%d %H:%M:%S'),
-                'model': self.evaluator.model,
+                'model': eval_model,
                 'evaluation': results
             }
             
