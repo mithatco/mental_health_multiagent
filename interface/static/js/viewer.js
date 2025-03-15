@@ -442,7 +442,7 @@ function applyFilters() {
     }
 }
 
-// Fix the loadChat function to properly clear evaluation status
+// Fix the loadChat function to properly check for the element before accessing it
 function loadChat(chatId) {
     currentChatId = chatId;
     
@@ -459,13 +459,13 @@ function loadChat(chatId) {
     document.getElementById('metadata-display').innerHTML = '';
     document.getElementById('diagnosis-content').innerHTML = 'Loading...';
     
-    // Clear any existing evaluation content and status
+    // Clear any existing evaluation content
     document.getElementById('evaluation-content').innerHTML = '<p>No evaluation results available</p>';
-    document.getElementById('evaluation-status').classList.add('hidden');
     
-    // Enable evaluate button
+    // Reset evaluate button to default state when loading a chat
     const evaluateBtn = document.getElementById('evaluate-btn');
     evaluateBtn.disabled = false;
+    evaluateBtn.textContent = "Evaluate with Ollama";
     
     // Remove any existing event listeners by cloning and replacing the button
     const newEvaluateBtn = evaluateBtn.cloneNode(true);
@@ -496,7 +496,6 @@ function loadChat(chatId) {
             } else {
                 // Explicitly clear evaluation content if no evaluation exists
                 document.getElementById('evaluation-content').innerHTML = '<p>No evaluation results available</p>';
-                document.getElementById('evaluation-status').classList.add('hidden');
             }
             
             // Add event listener for evaluate button (to the new button instance)
@@ -521,41 +520,35 @@ function checkEvaluationStatus(chatId) {
     fetch(`/api/logs/${chatId}/evaluation?nocache=${Date.now()}`)
     .then(response => response.json())
     .then(data => {
+        const evaluateBtn = document.getElementById('evaluate-btn');
+        
         if (data.status === 'in_progress') {
-            // If an evaluation is already running, show spinner and disable button
-            document.getElementById('evaluate-btn').disabled = true;
-            const statusElement = document.getElementById('evaluation-status');
-            statusElement.classList.remove('hidden');
-            statusElement.querySelector('span').textContent = 'Running evaluation...';
+            // If an evaluation is already running, update button
+            evaluateBtn.disabled = true;
+            evaluateBtn.textContent = "Evaluating...";
             
             // Start polling
             pollEvaluationStatus(chatId);
         } else if (data.status === 'completed' && data.results) {
             // If evaluation is already complete, show results
             displayEvaluationResults(data.results);
-        } else {
-            // Ensure evaluation status is hidden for any other status
-            document.getElementById('evaluation-status').classList.add('hidden');
         }
+        // For any other status, leave the button as-is
     })
     .catch(error => {
         console.error('Error checking evaluation status:', error);
-        // Hide status on error
-        document.getElementById('evaluation-status').classList.add('hidden');
     });
 }
 
 // Fix the evaluation polling to handle timeouts and errors better
 function pollEvaluationStatus(chatId) {
-    // Show progress message and keep updating it
+    const evaluateBtn = document.getElementById('evaluate-btn');
     let dots = 0;
-    const statusElement = document.getElementById('evaluation-status');
-    const statusSpan = statusElement.querySelector('span');
     
-    // Update the dots animation
+    // Update the dots animation on the button
     const updateDots = setInterval(() => {
         dots = (dots + 1) % 4;
-        statusSpan.textContent = `Running evaluation${'.'.repeat(dots)}`;
+        evaluateBtn.textContent = `Evaluating${'.'.repeat(dots)}`;
     }, 500);
     
     // Set a timeout counter to prevent infinite polling
@@ -571,6 +564,9 @@ function pollEvaluationStatus(chatId) {
             clearInterval(statusCheck);
             clearInterval(updateDots);
             showEvaluationError('Evaluation timed out. Please try again later.');
+            // Reset button
+            evaluateBtn.disabled = false;
+            evaluateBtn.textContent = "Evaluate with Ollama";
             return;
         }
         
@@ -583,22 +579,35 @@ function pollEvaluationStatus(chatId) {
             return response.json();
         })
         .then(data => {
+            // Add debugging to see exactly what's coming back
+            console.log("Evaluation status response:", data);
+            
             if (data.status === 'completed') {
                 // Evaluation completed
                 clearInterval(statusCheck);
                 clearInterval(updateDots);
-                displayEvaluationResults(data.results);
+                // Reset button
+                evaluateBtn.disabled = false;
+                evaluateBtn.textContent = "Evaluate with Ollama";
+                
+                // FIX: Use loadChat to reload the chat with fresh evaluation data
+                // This ensures we get the full data structure
+                loadChat(chatId);
             } else if (data.status === 'error') {
                 // Evaluation failed
                 clearInterval(statusCheck);
                 clearInterval(updateDots);
+                // Reset button
+                evaluateBtn.disabled = false;
+                evaluateBtn.textContent = "Evaluate with Ollama";
                 showEvaluationError(data.message || 'Evaluation failed');
             } else if (data.status !== 'in_progress') {
                 // Any other status means it's not running
                 clearInterval(statusCheck);
                 clearInterval(updateDots);
-                document.getElementById('evaluation-status').classList.add('hidden');
-                document.getElementById('evaluate-btn').disabled = false;
+                // Reset button
+                evaluateBtn.disabled = false;
+                evaluateBtn.textContent = "Evaluate with Ollama";
             }
             // If status is 'in_progress', continue polling
         })
@@ -740,10 +749,10 @@ function displayRagSummary(ragSummary) {
 
 // Add these functions to your existing JavaScript file
 function startEvaluation(chatId) {
-    // Disable evaluate button and show status
-    document.getElementById('evaluate-btn').disabled = true;
-    const statusElement = document.getElementById('evaluation-status');
-    statusElement.classList.remove('hidden');
+    // Disable evaluate button and update text to show progress
+    const evaluateBtn = document.getElementById('evaluate-btn');
+    evaluateBtn.disabled = true;
+    evaluateBtn.textContent = "Evaluating...";
     
     // Call API to start evaluation
     fetch(`/api/logs/${chatId}/evaluate`, {
@@ -757,25 +766,29 @@ function startEvaluation(chatId) {
         } else {
             // Show error
             showEvaluationError(data.message || 'Failed to start evaluation');
+            // Reset button
+            evaluateBtn.disabled = false;
+            evaluateBtn.textContent = "Evaluate with Ollama";
         }
     })
     .catch(error => {
         console.error('Error starting evaluation:', error);
         showEvaluationError('Failed to start evaluation');
+        // Reset button
+        evaluateBtn.disabled = false;
+        evaluateBtn.textContent = "Evaluate with Ollama";
     });
 }
 
 // Fix the evaluation polling
 function pollEvaluationStatus(chatId) {
-    // Show progress message and keep updating it
+    const evaluateBtn = document.getElementById('evaluate-btn');
     let dots = 0;
-    const statusElement = document.getElementById('evaluation-status');
-    const statusSpan = statusElement.querySelector('span');
     
-    // Update the dots animation
+    // Update the dots animation on the button
     const updateDots = setInterval(() => {
         dots = (dots + 1) % 4;
-        statusSpan.textContent = `Running evaluation${'.'.repeat(dots)}`;
+        evaluateBtn.textContent = `Evaluating${'.'.repeat(dots)}`;
     }, 500);
     
     // Check evaluation status every 2 seconds
@@ -787,11 +800,17 @@ function pollEvaluationStatus(chatId) {
                 // Evaluation completed
                 clearInterval(statusCheck);
                 clearInterval(updateDots);
+                // Reset button
+                evaluateBtn.disabled = false;
+                evaluateBtn.textContent = "Evaluate with Ollama";
                 displayEvaluationResults(data.results);
             } else if (data.status === 'error') {
                 // Evaluation failed
                 clearInterval(statusCheck);
                 clearInterval(updateDots);
+                // Reset button
+                evaluateBtn.disabled = false;
+                evaluateBtn.textContent = "Evaluate with Ollama";
                 showEvaluationError(data.message || 'Evaluation failed');
             }
             // If status is 'in_progress', continue polling
@@ -806,11 +825,10 @@ function pollEvaluationStatus(chatId) {
 }
 
 function showEvaluationError(message) {
-    // Hide status spinner
-    document.getElementById('evaluation-status').classList.add('hidden');
-    
-    // Enable evaluate button
-    document.getElementById('evaluate-btn').disabled = false;
+    // Enable evaluate button and reset text
+    const evaluateBtn = document.getElementById('evaluate-btn');
+    evaluateBtn.disabled = false;
+    evaluateBtn.textContent = "Evaluate with Ollama";
     
     // Show error message
     document.getElementById('evaluation-content').innerHTML = `
@@ -822,11 +840,10 @@ function showEvaluationError(message) {
 }
 
 function displayEvaluationResults(results) {
-    // Hide status spinner
-    document.getElementById('evaluation-status').classList.add('hidden');
-    
-    // Enable evaluate button
-    document.getElementById('evaluate-btn').disabled = false;
+    // Enable evaluate button and reset text
+    const evaluateBtn = document.getElementById('evaluate-btn');
+    evaluateBtn.disabled = false;
+    evaluateBtn.textContent = "Evaluate with Ollama";
     
     // Check if we have valid results
     if (!results || results.error) {
@@ -834,28 +851,63 @@ function displayEvaluationResults(results) {
         return;
     }
     
+    // Debug log the complete results structure first
+    console.log("Full evaluation results:", JSON.stringify(results, null, 2));
+    
     // Extract evaluation data from the proper location in the results structure
     let evaluationData = null;
     
     if (results.evaluation) {
         // If the results contain an 'evaluation' field (from the API)
+        console.log("Using results.evaluation");
         evaluationData = results.evaluation;
     } else if (results.results && results.results.evaluation) {
         // If the results are nested as results.results.evaluation (from polling)
+        console.log("Using results.results.evaluation");
         evaluationData = results.results.evaluation;
     } else {
         // Otherwise, use the results object directly
+        console.log("Using results directly");
         evaluationData = results;
     }
     
-    // Add debugging to see the structure of the results
-    console.log("Evaluation Results Structure:", JSON.stringify(results, null, 2));
+    // Log the extracted evaluation data
+    console.log("Extracted evaluation data:", evaluationData);
     
     // Check if we have rubric scores to display
-    if (!evaluationData || (!evaluationData.rubric_scores && !evaluationData.average_score)) {
-        showEvaluationError('No evaluation metrics found in results');
+    if (!evaluationData) {
+        showEvaluationError('No evaluation data found in results');
         return;
     }
+    
+    // Handle different field names/locations for scores
+    const rubricScores = evaluationData.rubric_scores || 
+                        (evaluationData.evaluation && evaluationData.evaluation.rubric_scores) ||
+                        {};
+    
+    const averageScore = evaluationData.average_score || 
+                        (evaluationData.evaluation && evaluationData.evaluation.average_score) ||
+                        "N/A";
+                        
+    const explanations = evaluationData.explanations || 
+                        (evaluationData.evaluation && evaluationData.evaluation.explanations) ||
+                        {};
+                        
+    const overallComments = evaluationData.overall_comments || 
+                        (evaluationData.evaluation && evaluationData.evaluation.overall_comments) ||
+                        "No overall comments available";
+                        
+    const diagnosisAccuracy = evaluationData.diagnosis_accuracy || 
+                            (evaluationData.evaluation && evaluationData.evaluation.diagnosis_accuracy);
+    
+    // Log what we found
+    console.log("Extracted components:", {
+        rubricScores,
+        averageScore,
+        explanations,
+        overallComments,
+        diagnosisAccuracy
+    });
     
     // Format the evaluation time
     const evalTime = evaluationData.evaluation_time ? 
@@ -868,20 +920,20 @@ function displayEvaluationResults(results) {
             <p><strong>Evaluation performed:</strong> ${evaluationData.timestamp || 'Unknown'}</p>
             <p><strong>Model used:</strong> ${evaluationData.model || 'Unknown'}</p>
             <p><strong>Evaluation time:</strong> ${evalTime}</p>
-            <p><strong>Average score:</strong> ${evaluationData.average_score || 'Unknown'}</p>
+            <p><strong>Average score:</strong> ${averageScore}</p>
         </div>
     `;
 
     // Check for rubric scores
-    if (evaluationData.rubric_scores && Object.keys(evaluationData.rubric_scores).length > 0) {
+    if (rubricScores && Object.keys(rubricScores).length > 0) {
         html += `<h4>Mental Health Evaluation Scores</h4>
         <div class="evaluation-metrics">`;
         
         // Display each rubric score
-        for (const key in evaluationData.rubric_scores) {
-            const score = evaluationData.rubric_scores[key];
-            const explanation = evaluationData.explanations && evaluationData.explanations[key] 
-                ? evaluationData.explanations[key] 
+        for (const key in rubricScores) {
+            const score = rubricScores[key];
+            const explanation = explanations && explanations[key] 
+                ? explanations[key] 
                 : 'No explanation provided';
             
             html += `
@@ -896,18 +948,18 @@ function displayEvaluationResults(results) {
     }
     
     // Add overall comments if available
-    if (evaluationData.overall_comments) {
+    if (overallComments) {
         html += `
             <h4>Overall Assessment</h4>
             <div class="overall-comments">
-                ${evaluationData.overall_comments}
+                ${overallComments}
             </div>
         `;
     }
     
     // Add diagnosis accuracy if available - improved visual display
-    if (evaluationData.diagnosis_accuracy) {
-        const accuracy = evaluationData.diagnosis_accuracy;
+    if (diagnosisAccuracy) {
+        const accuracy = diagnosisAccuracy;
         const matchStatus = accuracy.matches_profile ? "matches" : "does not match";
         const matchClass = accuracy.matches_profile ? "match-success" : "match-failure";
         const confidenceScore = parseInt(accuracy.confidence) || 0;

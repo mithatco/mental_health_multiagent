@@ -467,9 +467,25 @@ def get_evaluation(log_id):
     
     # If the evaluation is completed, include the results directly
     if status.get('status') == 'completed' and 'results' in status:
-        # Log the structure of the results to help debugging
-        print(f"Returning completed evaluation with results")
+        # Add detailed logging of the results structure
+        print(f"Returning completed evaluation")
+        print(f"Results structure: {type(status['results'])}")
         
+        # Ensure results are properly returned
+        if isinstance(status['results'], dict):
+            for key in status['results']:
+                print(f"Top-level key in results: {key}")
+            
+            # Fix: If the result has a nested evaluation field, flatten it
+            if 'evaluation' in status['results'] and isinstance(status['results']['evaluation'], dict):
+                print("Found nested evaluation structure")
+                evaluation_data = status['results']['evaluation']
+                
+                # Add evaluation keys to the top level
+                for key, value in evaluation_data.items():
+                    if key not in status['results']:
+                        status['results'][key] = value
+    
     return jsonify(status), 200, response_headers
 
 def create_app(logs_dir=None):
