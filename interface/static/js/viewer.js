@@ -663,7 +663,25 @@ function displayChat(conversation) {
         return;
     }
     
-    conversation.forEach(message => {
+    // Create a copy of the conversation to avoid modifying the original
+    const conversationCopy = [...conversation];
+    
+    // Find the last diagnosis message from assistant (typically the last assistant message)
+    let lastAssistantIndex = -1;
+    for (let i = conversationCopy.length - 1; i >= 0; i--) {
+        if (conversationCopy[i].role === 'assistant') {
+            lastAssistantIndex = i;
+            break;
+        }
+    }
+    
+    // Remove the last assistant message (diagnosis) if found
+    if (lastAssistantIndex >= 0) {
+        conversationCopy.splice(lastAssistantIndex, 1);
+    }
+    
+    // Display the filtered conversation
+    conversationCopy.forEach(message => {
         const role = message.role;
         const content = message.content;
         
