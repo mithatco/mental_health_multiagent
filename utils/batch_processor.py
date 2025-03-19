@@ -1,164 +1,166 @@
 """
-Batch processing utility for generating multiple conversations.
+Batch processing utility for mental health conversations.
 """
-
 import os
 import time
-import random
-import csv
-import json
-from datetime import datetime
-from pathlib import Path
+import datetime
+from typing import List, Optional, Dict, Any
+import logging
+from utils.batch_runner import BatchRunner
 
-from agents.mental_health_assistant import MentalHealthAssistant
-from agents.patient import Patient
-from utils.conversation_handler import ConversationHandler
-from utils.chat_logger import ChatLogger
-
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger("BatchProcessor")
 
 class BatchProcessor:
-    """Process multiple conversations in batch mode."""
+    """Process batches of conversations using the specified models."""
     
-    def __init__(self, 
-                ollama_url: str, 
-                assistant_model: str, 
-                patient_model: str, 
-                rag_engine=None, 
-                logs_dir=None):
+    def __init__(self, ollama_url, assistant_model, patient_model, rag_engine, logs_dir=None):
         """
         Initialize the batch processor.
         
         Args:
-            ollama_url: URL for the Ollama API
-            assistant_model: Model to use for the assistant agent
-            patient_model: Model to use for the patient agent
-            rag_engine: RAG engine for document retrieval
-            logs_dir: Directory to save logs
+            ollama_url: URL to the Ollama API
+            assistant_model: Model to use for the assistant
+            patient_model: Model to use for the patient
+            rag_engine: RAG engine to use for document retrieval
+            logs_dir: Directory to save logs to
         """
         self.ollama_url = ollama_url
         self.assistant_model = assistant_model
         self.patient_model = patient_model
         self.rag_engine = rag_engine
+        self.logs_dir = logs_dir or "chat_logs"
         
-        # Set up chat logger
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        if logs_dir:
-            self.logs_dir = os.path.join(logs_dir, f"batch_{timestamp}")
-        else:
-            self.logs_dir = os.path.join(
-                os.path.dirname(os.path.dirname(__file__)), 
-                "chat_logs", 
-                f"batch_{timestamp}"
-            )
+        # Ensure logs directory exists
         os.makedirs(self.logs_dir, exist_ok=True)
         
-        self.chat_logger = ChatLogger(self.logs_dir)
+        logger.info(f"BatchProcessor initialized with models: {assistant_model} (assistant), {patient_model} (patient)")
+        logger.info(f"Logs directory: {self.logs_dir}")
+    
+    def _get_conversation_runner(self):
+        """Get a function to run a single conversation."""
+        # Import here to avoid circular imports
+        from main import run_conversation
         
-        # Get available profiles
-        self.available_profiles = Patient.list_available_profiles()
-        
-    def process_batch(self, questions, count=5, profile=None, randomize_profiles=False):
+        return run_conversation
+    
+    def process_batch(self, questions: List[str], count: int = 5, profile: Optional[str] = None, 
+                      randomize_profiles: bool = False) -> Dict[str, Any]:
         """
         Process a batch of conversations.
         
         Args:
-            questions: List of questions for the assistant to ask
+            questions: List of questions to ask
             count: Number of conversations to generate
-            profile: Specific profile to use (None for default)
+            profile: Profile to use for the patient (or None to use default)
             randomize_profiles: Whether to randomize profiles for each conversation
             
         Returns:
-            List of result summaries
+            Dict with batch results
         """
-        results = []
+        # Get temp file name to save questions
+        from tempfile import NamedTemporaryFile
+        import json
+        import traceback
         
-        print(f"Starting batch processing of {count} conversations")
-        print(f"Saving results to: {self.logs_dir}")
+        logger.info(f"Starting batch of {count} conversations with {len(questions)} questions")
         
-        # Create a CSV file for the summary
-        summary_path = os.path.join(self.logs_dir, "batch_summary.csv")
-        with open(summary_path, 'w', newline='') as csvfile:
-            writer = csv.writer(csvfile)
-            writer.writerow(['Conversation', 'Profile', 'Questions', 'Duration (s)', 'Log File'])
+        # Create batch directory if not exists - use the provided logs_dir directly
+        timestamp = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
+        batch_id = f"batch_{timestamp}"
+        batch_dir = self.logs_dir
         
-        for i in range(1, count + 1):
-            print(f"\nProcessing conversation {i} of {count}")
+        # Ensure batch directory exists
+        os.makedirs(batch_dir, exist_ok=True)
+        
+        # Create a status file to track progress
+        status_file = os.path.join(batch_dir, 'batch_status.json')
+        logger.info(f"Status will be tracked in: {status_file}")
+        
+        # Write questions to a temporary file
+        temp_file_path = None
+        try:
+            with NamedTemporaryFile(suffix='.json', delete=False, mode='w+') as temp_file:
+                # Format for easy debugging
+                json_data = {
+                    "questions": questions,
+                    "timestamp": datetime.datetime.now().isoformat(),
+                    "count": len(questions)
+                }
+                json.dump(json_data, temp_file)
+                temp_file_path = temp_file.name
+                
+            logger.info(f"Created temporary questions file: {temp_file_path}")
             
-            # Select profile for this conversation
-            current_profile = self._select_profile(profile, randomize_profiles, i)
+            # Verify the file was written correctly
+            try:
+                with open(temp_file_path, 'r') as f:
+                    data = json.load(f)
+                    logger.info(f"Successfully loaded temporary file with {len(data['questions'])} questions")
+            except Exception as e:
+                logger.error(f"Error verifying temporary file: {e}")
+                raise ValueError(f"Failed to create valid temporary questions file: {e}")
             
-            # Run the conversation
+            # Get conversation runner
+            conversation_runner = self._get_conversation_runner()
+            logger.info("Obtained conversation runner")
+            
+            # Initialize batch runner
+            batch_runner = BatchRunner(conversation_runner, batch_dir, status_file)
+            logger.info("Initialized batch runner")
+            
+            # Run the batch
             start_time = time.time()
+            logger.info(f"Running batch with {count} conversations...")
             
-            # Initialize agents
-            assistant = MentalHealthAssistant(self.ollama_url, self.assistant_model, questions.copy(), self.rag_engine)
-            patient = Patient(self.ollama_url, self.patient_model, current_profile)
-            
-            # Set up conversation handler
-            conversation = ConversationHandler(assistant, patient)
-            
-            # Run the conversation
-            print(f"Running conversation with profile: {current_profile}")
-            diagnosis = conversation.run()
-            
-            duration = time.time() - start_time
-            
-            # Save conversation
-            metadata = {
-                "batch_id": i,
-                "assistant_model": self.assistant_model,
-                "patient_model": self.patient_model,
-                "patient_profile": current_profile or "default",
-                "question_count": len(questions),
-                "duration": duration
-            }
-            
-            log_path = self.chat_logger.save_chat(
-                conversation.get_conversation_log(),
-                diagnosis,
-                questionnaire_name=f"batch_{i}",
-                metadata=metadata
-            )
-            
-            # Add to results
-            result = {
-                "conversation_id": i,
-                "profile": current_profile,
-                "question_count": len(questions),
-                "duration": duration,
-                "log_path": log_path,
-                "diagnosis": diagnosis[:200] + "..." if len(diagnosis) > 200 else diagnosis  # Truncated diagnosis
-            }
-            results.append(result)
-            
-            # Add to CSV summary
-            with open(summary_path, 'a', newline='') as csvfile:
-                writer = csv.writer(csvfile)
-                writer.writerow([i, current_profile, len(questions), f"{duration:.2f}", os.path.basename(log_path)])
-            
-            print(f"Conversation {i} completed in {duration:.2f} seconds")
-            
-            # Add a small delay between conversations to avoid rate limiting
-            if i < count:
-                time.sleep(1)
-        
-        # Save full results as JSON
-        with open(os.path.join(self.logs_dir, "batch_results.json"), 'w') as f:
-            json.dump({"results": results}, f, indent=2)
-        
-        print(f"\nBatch processing complete. Generated {count} conversations.")
-        print(f"Results saved to: {self.logs_dir}")
-        
-        return results
-    
-    def _select_profile(self, specified_profile, randomize, conversation_index):
-        """Select a profile based on the specified options."""
-        if randomize:
-            # Randomize profile selection
-            if self.available_profiles:
-                return random.choice(self.available_profiles)
-            else:
-                return None
-        else:
-            # Use the specified profile or default
-            return specified_profile
+            # Add a try/except block to capture errors during batch processing
+            try:
+                results = batch_runner.run_batch(
+                    batch_size=count,
+                    pdf_path=temp_file_path,
+                    patient_profile=profile,
+                    randomize_profiles=randomize_profiles,
+                    assistant_model=self.assistant_model,
+                    patient_model=self.patient_model,
+                    logs_dir=batch_dir,
+                    disable_output=True
+                )
+                
+                # Log results
+                duration = time.time() - start_time
+                logger.info(f"Batch completed in {duration:.2f} seconds")
+                logger.info(f"Generated {len(results)} conversations")
+                
+                # Return results
+                return {
+                    "batch_id": batch_id,
+                    "count": len(results),
+                    "duration": duration,
+                    "results": results
+                }
+            except Exception as e:
+                logger.error(f"Error during batch processing: {e}")
+                logger.error(traceback.format_exc())
+                
+                # Save error details to a file for debugging
+                error_file = os.path.join(batch_dir, "batch_error.log")
+                try:
+                    with open(error_file, 'w') as f:
+                        f.write(f"Error during batch processing: {e}\n\n")
+                        f.write(traceback.format_exc())
+                except Exception as write_error:
+                    logger.error(f"Failed to write error log: {write_error}")
+                
+                raise
+        finally:
+            # Clean up temp file
+            try:
+                if temp_file_path and os.path.exists(temp_file_path):
+                    os.unlink(temp_file_path)
+                    logger.info(f"Removed temporary file: {temp_file_path}")
+            except Exception as e:
+                logger.warning(f"Failed to remove temporary file: {e}")

@@ -6,7 +6,7 @@ from .vector_store import SimpleVectorStore
 class RAGEngine:
     """Retrieval-Augmented Generation engine for the mental health assistant."""
     
-    def __init__(self, documents_dir: str, questionnaire_dir: str = None, cache_dir: str = None):
+    def __init__(self, documents_dir: str, questionnaire_dir: str = None, cache_dir: str = None, refresh_cache: bool = False):
         """
         Initialize the RAG engine.
         
@@ -14,9 +14,11 @@ class RAGEngine:
             documents_dir: Directory containing reference documents
             questionnaire_dir: Directory containing questionnaires (if None, uses documents_dir)
             cache_dir: Directory to cache embeddings
+            refresh_cache: Whether to refresh the document cache
         """
         self.documents_dir = documents_dir
         self.questionnaire_dir = questionnaire_dir or documents_dir
+        self.refresh_cache = refresh_cache
         
         # Set default cache directory if not provided
         if cache_dir is None:
@@ -164,3 +166,38 @@ class RAGEngine:
     def clear_accessed_documents(self):
         """Clears the list of accessed documents"""
         self.accessed_documents = []
+
+    def get_questions_from_file(self, file_path: str) -> List[str]:
+        """
+        Get questions from a file.
+        
+        Args:
+            file_path: Path to the file to get questions from
+            
+        Returns:
+            List of questions
+        """
+        # If it's a JSON file, try to load questions directly
+        if file_path.endswith('.json'):
+            try:
+                with open(file_path, 'r') as f:
+                    data = json.load(f)
+                
+                if 'questions' in data and isinstance(data['questions'], list):
+                    return data['questions']
+            except Exception as e:
+                raise ValueError(f"Failed to load questions from JSON file: {e}")
+        
+        # Otherwise, load as document and extract questions
+        try:
+            document = DocumentProcessor.load_document(file_path)
+            if not document:
+                raise ValueError(f"Failed to load document: {file_path}")
+            
+            questions = extract_questions_from_text(document.content)
+            if not questions:
+                raise ValueError(f"No questions found in document: {file_path}")
+            
+            return questions
+        except Exception as e:
+            raise ValueError(f"Error extracting questions from file {file_path}: {e}")

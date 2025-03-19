@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Conversation - Mental Health Multi-Agent System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container app-container">
+        <div class="navbar">
+            <div class="nav-logo">Mental Health Multi-Agent</div>
+            <div class="nav-links">
+                <a href="/" class="nav-link">Chat Logs</a>
+                <a href="/conversation" class="nav-link active">Start Conversation</a>
+            </div>
+        </div>
+
+        <div class="main-layout">
+            <!-- Left side: Configuration form -->
+            <div class="config-panel" id="config-panel">                
+                <!-- Add mode toggle -->
+                <div class="mode-toggle">
+                    <button class="toggle-btn active" id="single-mode-btn">Single Conversation</button>
+                    <button class="toggle-btn" id="batch-mode-btn">Batch Generation</button>
+                </div>
+
+                <form id="conversation-form">
+                    <div class="form-section">
+                        <div class="form-group">
+                            <label for="questionnaire-select">Select Questionnaire:</label>
+                            <select id="questionnaire-select" name="questionnaire" required>
+                                <option value="" disabled selected>Loading questionnaires...</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="form-group">
+                            <label for="profile-select">Select Profile:</label>
+                            <select id="profile-select" name="profile">
+                                <option value="" disabled selected>Loading profiles...</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Add batch mode option for randomizing profiles -->
+                        <div class="form-group checkbox-group batch-only" style="display: none;">
+                            <input type="checkbox" id="randomize-profiles" name="randomize_profiles">
+                            <label for="randomize-profiles">Randomize profiles for each conversation</label>
+                        </div>
+                    </div>
+
+                    <!-- Add batch count option -->
+                    <div class="form-section batch-only" style="display: none;">
+                        <h3>Batch Settings</h3>
+                        <div class="form-group">
+                            <label for="batch-count">Number of Conversations:</label>
+                            <input type="number" id="batch-count" name="batch_count" min="1" max="100" value="5">
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Model Selection</h3>
+                        <div class="form-group">
+                            <label for="assistant-model-select">Assistant Model:</label>
+                            <select id="assistant-model-select" name="assistant_model">
+                                <option value="" disabled selected>Loading models...</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="patient-model-select">Patient Model:</label>
+                            <select id="patient-model-select" name="patient_model">
+                                <option value="" disabled selected>Loading models...</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Advanced Options</h3>
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="save-logs" name="save_logs" checked>
+                            <label for="save-logs">Save conversation logs</label>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="refresh-cache" name="refresh_cache">
+                            <label for="refresh-cache">Refresh document cache</label>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" id="start-btn" class="start-btn">Start Conversation</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Right side: Conversation display -->
+            <div class="conversation-panel" id="conversation-panel">
+                <!-- Single conversation view -->
+                <div id="single-conversation-view">
+                    <div class="conversation-header">
+                        <h2>Conversation</h2>
+                        <div class="status" id="status">Ready to start</div>
+                    </div>
+                    
+                    <div class="conversation-display" id="conversation-display">
+                        <div class="conversation-placeholder">
+                            <p>Your conversation will appear here.</p>
+                            <p>Configure settings on the left and click "Start Conversation".</p>
+                        </div>
+                    </div>
+                    
+                    <div class="diagnosis-panel" id="diagnosis-panel">
+                        <h3>Diagnosis</h3>
+                        <div class="diagnosis-content" id="diagnosis-content">
+                            <p>The diagnosis will appear here after the conversation completes.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="conversation-actions">
+                        <button id="stop-btn" class="stop-btn" disabled>Stop Conversation</button>
+                        <button id="view-log-btn" class="view-log-btn" disabled>View Saved Log</button>
+                    </div>
+                </div>
+                
+                <!-- Batch generation view -->
+                <div id="batch-conversation-view" style="display: none;">
+                    <div class="conversation-header">
+                        <h2>Batch Generation</h2>
+                        <div class="status" id="batch-status">Ready to start</div>
+                    </div>
+                    
+                    <div class="batch-progress">
+                        <h3>Progress</h3>
+                        <div class="progress-container">
+                            <div class="progress-bar" id="batch-progress-bar"></div>
+                        </div>
+                        <div class="progress-text" id="batch-progress-text">0 / 0 conversations completed</div>
+                        <div class="progress-details" id="batch-progress-details">Waiting to start batch generation...</div>
+                    </div>
+                    
+                    <div class="batch-results">
+                        <h3>Batch Results</h3>
+                        <div id="batch-results-container">
+                            <p>Batch results will appear here after generation completes.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="conversation-actions">
+                        <button id="stop-batch-btn" class="stop-btn" disabled>Stop Batch</button>
+                        <button id="view-batch-btn" class="view-log-btn" disabled>View Batch Results</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/conversation.js') }}"></script>
+</body>
+</html>

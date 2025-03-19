@@ -1,6 +1,7 @@
 import os
 import argparse
 import sys
+import json
 from pathlib import Path
 from utils.document_processor import extract_questions_from_text, DocumentProcessor
 from utils.rag_engine import RAGEngine
@@ -16,6 +17,202 @@ DEFAULT_DOCS_DIR = os.path.join(
     "documents"
 )
 DEFAULT_QUESTIONNAIRES_DIR = os.path.join(DEFAULT_DOCS_DIR, "questionnaires")
+
+def load_questions_from_json(file_path):
+    """
+    Load questions from a JSON file (used for batch processing).
+    
+    Args:
+        file_path: Path to the JSON file containing questions
+        
+    Returns:
+        List of questions or None if file couldn't be loaded
+    """
+    try:
+        with open(file_path, 'r') as f:
+            data = json.load(f)
+        
+        # Check if it has a 'questions' field with a list
+        if 'questions' in data and isinstance(data['questions'], list):
+            return data['questions']
+        
+        return None
+    except Exception as e:
+        print(f"Error loading questions from JSON: {e}")
+        return None
+
+def run_conversation(pdf_path, patient_profile=None, assistant_model="qwen2.5:3b", 
+                    patient_model="qwen2.5:3b", disable_output=False, logs_dir=None,
+                    log_filename=None, refresh_cache=False, no_save=False, state_file=None):
+    """
+    Run a simulated mental health assessment conversation between an AI assistant and an AI patient.
+    
+    Args:
+        pdf_path: Path to PDF document containing mental health assessment questions
+        patient_profile: Name of the patient profile to use
+        assistant_model: Name of the model to use for the assistant
+        patient_model: Name of the model to use for the patient
+        disable_output: Whether to disable console output
+        logs_dir: Directory to save logs to
+        log_filename: Specific filename to use for the log (overrides default naming)
+        refresh_cache: Whether to refresh the document cache
+        no_save: Whether to disable saving logs
+        state_file: Path to file for updating state during conversation
+        
+    Returns:
+        Dict containing conversation results
+    """
+    # Import required modules
+    import time
+    from datetime import datetime
+    from utils.rag_engine import RAGEngine
+    from agents.mental_health_assistant import MentalHealthAssistant
+    from agents.patient import Patient
+    from utils.conversation_handler import ConversationHandler
+    from utils.chat_logger import ChatLogger
+    from utils.debug_logger import debug_logger
+    
+    start_time = time.time()
+    
+    # Add detailed debugging for file paths
+    debug_logger.log_file_operation('input_check', pdf_path, 
+                                   result=f"PDF path exists: {os.path.exists(pdf_path)}")
+    if logs_dir:
+        debug_logger.log_file_operation('input_check', logs_dir, 
+                                       result=f"Logs dir exists: {os.path.exists(logs_dir)}")
+    if log_filename:
+        debug_logger.log_file_operation('input_check', log_filename, 
+                                      result=f"Log file parent exists: {os.path.exists(os.path.dirname(log_filename))}")
+    
+    # If no logs directory specified but log_filename is, extract dir from there
+    if not logs_dir and log_filename:
+        logs_dir = os.path.dirname(log_filename)
+        debug_logger.log_file_operation('derived', logs_dir, 
+                                      result=f"Derived logs dir from filename: {logs_dir}")
+    
+    # Initialize RAG engine
+    if not disable_output:
+        print("Initializing RAG engine...")
+    
+    # Determine project root and set up RAG engine
+    project_root = os.path.dirname(os.path.abspath(__file__))
+    docs_dir = os.path.join(project_root, "documents")
+    rag_engine = RAGEngine(docs_dir, refresh_cache=refresh_cache)
+    
+    # If the file is a JSON file, we're in batch mode with a temporary questions file
+    if pdf_path.endswith('.json'):
+        # Try to load questions directly from JSON
+        questions = load_questions_from_json(pdf_path)
+        questionnaire_name = "batch_questionnaire"
+        
+        if not questions:
+            print("Error: Failed to load questions from JSON file")
+            return {"error": "Failed to load questions from JSON file"}
+    else:
+        # Regular PDF processing
+        if not disable_output:
+            print(f"Processing PDF: {pdf_path}")
+        
+        try:
+            questions = rag_engine.get_questions_from_file(pdf_path)
+            questionnaire_name = os.path.basename(pdf_path)
+        except Exception as e:
+            print(f"Error extracting questions from PDF: {str(e)}")
+            return {"error": f"Failed to extract questions: {str(e)}"}
+    
+    if not questions:
+        print("No questions extracted from the PDF")
+        return {"error": "No questions found in the PDF"}
+    
+    if not disable_output:
+        print(f"Extracted {len(questions)} questions")
+    
+    # Initialize agents
+    assistant = MentalHealthAssistant(
+        "http://localhost:11434", 
+        assistant_model, 
+        questions, 
+        rag_engine,
+        questionnaire_name=questionnaire_name
+    )
+    
+    patient = Patient("http://localhost:11434", patient_model, patient_profile)
+    
+    # Set up conversation handler with state tracking for API mode
+    conversation = ConversationHandler(assistant, patient, state_file=state_file)
+    
+    # Run the conversation
+    if not disable_output:
+        print("\nStarting conversation...\n")
+    
+    diagnosis = conversation.run(disable_output=disable_output)
+    
+    if not disable_output:
+        print("\n=== Final Diagnosis ===")
+        print(diagnosis)
+    
+    # If in API mode, update the state file with the diagnosis
+    if state_file:
+        try:
+            with open(state_file, 'r') as f:
+                state = json.load(f)
+            
+            state['status'] = 'completed'
+            state['diagnosis'] = diagnosis
+            
+            with open(state_file, 'w') as f:
+                json.dump(state, f)
+        except Exception as e:
+            print(f"Error updating state file: {str(e)}")
+    
+    # Calculate duration
+    duration = time.time() - start_time
+    
+    # Save the conversation if requested
+    if not no_save:
+        # Initialize the chat logger
+        chat_logger = ChatLogger(logs_dir)
+        
+        # Create metadata
+        metadata = {
+            "assistant_model": assistant_model,
+            "patient_model": patient_model,
+            "patient_profile": patient_profile or "default",
+            "question_count": len(questions),
+            "duration": duration
+        }
+        
+        # Save using specified log_filename if provided
+        try:
+            if log_filename:
+                log_path = chat_logger.save_chat(
+                    conversation.get_conversation_log(),
+                    diagnosis,
+                    questionnaire_name=questionnaire_name,
+                    metadata=metadata,
+                    log_path=log_filename
+                )
+                if not disable_output:
+                    print(f"\nConversation saved to: {log_path}")
+            else:
+                log_path = chat_logger.save_chat(
+                    conversation.get_conversation_log(),
+                    diagnosis,
+                    questionnaire_name=questionnaire_name,
+                    metadata=metadata
+                )
+                if not disable_output:
+                    print(f"\nConversation saved to: {log_path}")
+        except Exception as e:
+            print(f"Error saving conversation log: {str(e)}")
+    
+    # Return result
+    return {
+        "conversation_id": f"chat_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
+        "question_count": len(questions),
+        "diagnosis": diagnosis,
+        "duration": duration
+    }
 
 def main():
     parser = argparse.ArgumentParser(description="Multi-agent Mental Health Assistant Application")
@@ -39,6 +236,9 @@ def main():
     parser.add_argument('--batch', '-n', type=int, help="Number of conversations to generate in batch mode")
     parser.add_argument('--randomize-profiles', action='store_true', 
                         help="Randomize patient profiles for each conversation in batch mode")
+    
+    # Add state file argument for API mode
+    parser.add_argument('--state-file', type=str, help="Path to a state file for API mode")
     
     args = parser.parse_args()
     
@@ -69,6 +269,7 @@ def main():
     
     # Define questions variable before using it
     questions = []
+    selected_name = None
     
     if not questionnaires:
         # If no questionnaires found, but PDF was specified, try to process it directly
@@ -81,58 +282,61 @@ def main():
                     print(f"Successfully extracted {len(questions)} questions from {args.pdf_path}")
                     # Create a manual questionnaire
                     filename = os.path.basename(args.pdf_path)
+                    selected_name = filename
                     questionnaires = {filename: questions}
         
-        # If still no questionnaires, create a default one
+        # If still no questionnaires, exit
         if not questionnaires:
             print("No questionnaires found. Exiting application.")
             sys.exit(1)
-            # print("No questionnaires found. Creating a default questionnaire.")
-            # default_questions = [
-            #     "How have you been feeling emotionally over the past two weeks?",
-            #     "Have you been experiencing difficulty sleeping? If so, please describe.",
-            #     "Have you noticed any changes in your appetite or weight recently?",
-            #     "How would you rate your energy levels throughout the day?",
-            #     "Do you find yourself feeling sad, down, or hopeless?",
-            #     "How is your concentration when trying to perform tasks or activities?",
-            #     "Do you find yourself feeling anxious, nervous, or on edge?",
-            #     "Have you experienced any unusual thoughts or perceptions?",
-            #     "Have your symptoms affected your daily activities or work?",
-            #     "Do you have thoughts of harming yourself or others?"
-            # ]
-            # questions = default_questions
-            # questionnaires = {"default_questionnaire.pdf": questions}
     else:
-        # If we have questionnaires, let user choose one
+        # If we have questionnaires, let user choose one or use the specified one
         if args.pdf_path:
             # If specific PDF specified, use that
-            document = DocumentProcessor.load_document(args.pdf_path)
-            if document:
-                questions = extract_questions_from_text(document.content)
+            filename = os.path.basename(args.pdf_path)
+            if filename in questionnaires:
+                selected_name = filename
+                questions = questionnaires[selected_name]
                 print(f"Using specified PDF: {args.pdf_path} with {len(questions)} questions")
+            else:
+                # Try to load it directly
+                document = DocumentProcessor.load_document(args.pdf_path)
+                if document:
+                    questions = extract_questions_from_text(document.content)
+                    if questions:
+                        print(f"Using specified PDF: {args.pdf_path} with {len(questions)} questions")
+                        selected_name = os.path.basename(args.pdf_path)
+                    else:
+                        print(f"No questions found in specified PDF: {args.pdf_path}")
+                        sys.exit(1)
         else:
-            # Let user choose from available questionnaires
-            print("\nAvailable questionnaires:")
-            questionnaire_names = list(questionnaires.keys())
-            
-            for i, name in enumerate(questionnaire_names, 1):
-                print(f"{i}. {name} ({len(questionnaires[name])} questions)")
-            
-            selected_name = None
-            try:
-                choice = int(input("\nSelect a questionnaire (number): "))
-                if 1 <= choice <= len(questionnaire_names):
-                    selected_name = questionnaire_names[choice-1]
-                    questions = questionnaires[selected_name]
-                    print(f"Selected: {selected_name} ({len(questions)} questions)\n")
-                else:
+            # API mode or batch mode - just use first questionnaire if we're not in interactive mode
+            if args.state_file or (args.batch and args.batch > 0):
+                selected_name = list(questionnaires.keys())[0]
+                questions = questionnaires[selected_name]
+                print(f"Auto-selected: {selected_name} ({len(questions)} questions)")
+            else:
+                # Let user choose from available questionnaires in interactive mode
+                print("\nAvailable questionnaires:")
+                questionnaire_names = list(questionnaires.keys())
+                
+                for i, name in enumerate(questionnaire_names, 1):
+                    print(f"{i}. {name} ({len(questionnaires[name])} questions)")
+                
+                try:
+                    choice = int(input("\nSelect a questionnaire (number): "))
+                    if 1 <= choice <= len(questionnaire_names):
+                        selected_name = questionnaire_names[choice-1]
+                        questions = questionnaires[selected_name]
+                        print(f"Selected: {selected_name} ({len(questions)} questions)\n")
+                    else:
+                        print("Invalid selection. Using first questionnaire.")
+                        selected_name = questionnaire_names[0]
+                        questions = questionnaires[selected_name]
+                except (ValueError, IndexError):
                     print("Invalid selection. Using first questionnaire.")
                     selected_name = questionnaire_names[0]
                     questions = questionnaires[selected_name]
-            except (ValueError, IndexError):
-                print("Invalid selection. Using first questionnaire.")
-                selected_name = questionnaire_names[0]
-                questions = questionnaires[selected_name]
     
     if not questions:
         print("No questions found in the selected questionnaire.")
@@ -145,7 +349,8 @@ def main():
     available_profiles = Patient.list_available_profiles()
     
     # Skip profile selection if we're in batch mode with randomized profiles
-    if not (args.batch and args.batch > 0 and args.randomize_profiles):
+    # or if we're in API mode (state_file is specified)
+    if not (args.batch and args.batch > 0 and args.randomize_profiles) and not args.state_file:
         if not patient_profile and available_profiles:
             print("\nAvailable patient profiles:")
             for i, profile in enumerate(sorted(available_profiles), 1):
@@ -189,6 +394,10 @@ def main():
         
         return
     
+    # Check if we're in API mode (state file is specified)
+    state_file = args.state_file
+    state = {"conversation": [], "status": "starting"}
+    
     # Initialize agents
     assistant = MentalHealthAssistant(
         args.ollama_url, 
@@ -203,8 +412,8 @@ def main():
     if not args.no_save:
         chat_logger = ChatLogger(args.logs_dir)
     
-    # Set up conversation handler
-    conversation = ConversationHandler(assistant, patient)
+    # Set up conversation handler with state tracking for API mode
+    conversation = ConversationHandler(assistant, patient, state_file=state_file)
     
     # Run the conversation
     diagnosis = conversation.run()
@@ -212,12 +421,27 @@ def main():
     print("\n=== Final Diagnosis ===")
     print(diagnosis)
     
+    # If in API mode, update the state file with the diagnosis
+    if state_file:
+        try:
+            with open(state_file, 'r') as f:
+                state = json.load(f)
+            
+            state['status'] = 'completed'
+            state['diagnosis'] = diagnosis
+            
+            with open(state_file, 'w') as f:
+                json.dump(state, f)
+        except Exception as e:
+            print(f"Error updating state file: {str(e)}")
+    
     # Save the conversation if requested
     if not args.no_save:
         # Fix the dict_keys not being subscriptable error
         if isinstance(questionnaires, dict) and questionnaires:
-            # Convert dict_keys to list first, then access by index
-            selected_name = list(questionnaires.keys())[0]
+            # If selected_name is not set, use the first questionnaire
+            if not selected_name:
+                selected_name = list(questionnaires.keys())[0]
         else:
             selected_name = "default_questionnaire"
         
