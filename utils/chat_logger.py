@@ -60,6 +60,9 @@ class ChatLogger:
         if metadata:
             log_data["metadata"] = metadata
         
+        # Add RAG summary information
+        log_data["rag_summary"] = self._generate_rag_summary(conversation)
+        
         # Save to file atomically
         temp_path = file_path + '.tmp'
         try:
@@ -108,3 +111,50 @@ class ChatLogger:
         except Exception as e:
             print(f"Error loading chat log: {str(e)}")
             raise
+
+    def _generate_rag_summary(self, conversation_log):
+        """Generate a summary of RAG usage from the conversation log."""
+        rag_summary = {
+            "total_rag_queries": 0,
+            "total_documents_accessed": 0,
+            "documents_accessed": {}
+        }
+        
+        # Process all messages looking for RAG usage
+        for message in conversation_log:
+            if "rag_usage" in message:
+                rag_usage = message.get("rag_usage", {})
+                
+                # Count this as a RAG query if documents were accessed
+                documents = rag_usage.get("documents", rag_usage.get("accessed_documents", []))
+                if documents:
+                    rag_summary["total_rag_queries"] += 1
+                    
+                    # Add document counts
+                    for doc in documents:
+                        title = doc.get("title", "Unknown")
+                        score = doc.get("score", 0.0)
+                        rag_summary["total_documents_accessed"] += 1
+                        
+                        if title in rag_summary["documents_accessed"]:
+                            # Update access count
+                            rag_summary["documents_accessed"][title]["access_count"] += 1
+                            
+                            # Track highest score
+                            if score > rag_summary["documents_accessed"][title]["highest_score"]:
+                                rag_summary["documents_accessed"][title]["highest_score"] = score
+                                
+                            # Track average score
+                            current_count = rag_summary["documents_accessed"][title]["access_count"]
+                            current_avg = rag_summary["documents_accessed"][title]["average_score"]
+                            new_avg = ((current_avg * (current_count - 1)) + score) / current_count
+                            rag_summary["documents_accessed"][title]["average_score"] = round(new_avg, 4)
+                        else:
+                            rag_summary["documents_accessed"][title] = {
+                                "access_count": 1,
+                                "highest_score": score,
+                                "average_score": score,
+                                "example_excerpt": doc.get("excerpt", doc.get("highlight", "No excerpt available"))
+                            }
+        
+        return rag_summary

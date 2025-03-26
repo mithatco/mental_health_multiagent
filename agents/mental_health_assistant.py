@@ -30,6 +30,8 @@ class MentalHealthAssistant:
         with open(prompt_path, 'r') as f:
             self.system_prompt = f.read()
         
+        # Track documents that have already been seen to avoid duplication
+        self.seen_documents = set()
         self.conversation_history = [{"role": "system", "content": self.system_prompt}]
     
     def get_next_message(self, patient_response=None):
@@ -80,41 +82,26 @@ class MentalHealthAssistant:
             return self.generate_diagnosis()
     
     def _generate_introduction(self):
-        """Generate a personalized introduction using the full questionnaire document."""
-        # Initialize questionnaire content variable
-        full_questionnaire_content = ""
-        questionnaire_identified = False
-        
+        """Generate an introduction for the mental health assessment."""
         print("[DEBUG] Retrieving full questionnaire document for introduction...")
         
-        # First, try to get the full questionnaire document if RAG is available
-        if self.rag_engine:
-            # If we have a questionnaire name, use it to find the exact document
-            if self.questionnaire_name:
-                query = f"full text of {self.questionnaire_name}"
-                specific_docs = self.rag_engine.retrieve(query, top_k=1)
-                if specific_docs:
-                    full_questionnaire_content = specific_docs[0]
-                    questionnaire_identified = True
-                    print(f"[DEBUG] Found specific questionnaire document: {self.questionnaire_name}")
+        # Get the full questionnaire document if available
+        if self.questionnaire_name:
+            specific_docs = self.rag_engine.get_context_for_question(f"full text of {self.questionnaire_name}")
             
-            # If we couldn't find a specific document or don't have a name, try using the questions
-            if not questionnaire_identified:
-                # Join first few questions to create a search query
-                sample_questions = self.questions[:min(3, len(self.questions))]
-                query = " ".join(sample_questions)
-                
-                # Search for documents containing these questions
-                matching_docs = self.rag_engine.retrieve(query, top_k=1)
-                if matching_docs:
-                    full_questionnaire_content = matching_docs[0]
-                    questionnaire_identified = True
-                    print(f"[DEBUG] Found matching questionnaire document based on questions")
-        
-        # If we still don't have the full questionnaire, we'll use the questions as fallback
-        if not questionnaire_identified:
-            print("[DEBUG] Could not find full questionnaire document, using extracted questions")
-            full_questionnaire_content = "\n".join(self.questions)
+            # Handle both old format (list) and new format (dictionary)
+            full_questionnaire_content = ""
+            if isinstance(specific_docs, dict) and "content" in specific_docs:
+                # New format from enhanced RAG engine
+                full_questionnaire_content = specific_docs["content"]
+            elif isinstance(specific_docs, list) and len(specific_docs) > 0:
+                # Old format (list of strings)
+                full_questionnaire_content = specific_docs[0]
+            else:
+                # Default empty string if no content found
+                full_questionnaire_content = ""
+        else:
+            full_questionnaire_content = ""
         
         # Create a prompt for the introduction generation
         intro_prompt = f"""
@@ -157,19 +144,25 @@ class MentalHealthAssistant:
         Returns:
             dict: Diagnosis from the assistant with RAG usage information
         """
-        # Create a prompt for diagnosis
+        # First, use AI to summarize observations from the patient responses
+        observations = self._summarize_observations()
+        print(f"[DEBUG] Generated clinical observations: {observations[:100]}...")
+        
+        # Create a prompt for diagnosis that includes the observations
         diagnosis_prompt = f"""
         Based on the questionnaire responses, please provide a comprehensive mental health assessment.
         
         Questionnaire responses:
         {self._format_responses()}
         
-        Please analyze these responses and provide a professional assessment that includes:
+        Clinical observations and potential concerns:
+        {observations}
+        
+        Please analyze these responses and observations and provide a professional assessment that includes:
         1. A compassionate summary of what you've heard from the patient
         2. A potential diagnosis or clinical impression based on the symptoms
         3. Explanation of the reasoning behind this assessment
         4. Recommended next steps or treatment options
-        5. Close with an empathetic statement that validates the patient's experiences
         
         Keep your tone professional but warm, showing empathy while maintaining clinical objectivity.
         Only output the diagnosis without additional intros, summaries, or sign-offs.
@@ -182,32 +175,68 @@ class MentalHealthAssistant:
         if self.rag_engine:
             print("[DEBUG] Now using RAG for diagnosis...")
             
-            # Build a query based on the patient's symptoms from their responses
-            symptoms_query = self._extract_symptoms_for_query()
-            print(f"[DEBUG] Querying RAG using extracted symptoms: {symptoms_query[:100]}...")
+            # Query RAG using the observations instead of raw responses
+            print(f"[DEBUG] Querying RAG using clinical observations...")
+            
+            # Create a more focused query using the observations
+            rag_query = f"mental health diagnosis for patient with symptoms: {observations}"
             
             # Get context for general mental health diagnosis
-            context = self.rag_engine.retrieve(symptoms_query, top_k=5)
-            if context:
-                print(f"[DEBUG] Found {len(context)} relevant documents for diagnosis")
+            rag_result = self.rag_engine.retrieve(rag_query, top_k=5)
+            
+            if isinstance(rag_result, dict) and "content_list" in rag_result:
+                # New RAG format
+                documents = rag_result.get("documents", [])
+                filtered_content = []
+                newly_accessed_docs = []
                 
-                # Don't include raw context in the prompt, instead use system message
-                self.conversation_history.append({
-                    "role": "system", 
-                    "content": f"Use this additional reference information to help inform your diagnosis, but don't include raw reference text in your response: {' '.join(context)}"
-                })
+                # Only use documents we haven't seen before
+                for i, doc in enumerate(documents):
+                    doc_id = doc.get("title", "") + "|" + doc.get("highlight", "")[:50]
+                    if doc_id not in self.seen_documents:
+                        self.seen_documents.add(doc_id)
+                        # Add content only if it's new
+                        if i < len(rag_result["content_list"]):
+                            filtered_content.append(rag_result["content_list"][i])
+                        newly_accessed_docs.append(doc)
                 
-                # Track RAG usage information
-                if hasattr(self.rag_engine, 'get_accessed_documents'):
-                    accessed_docs = self.rag_engine.get_accessed_documents()
-                    if accessed_docs:
-                        print(f"[DEBUG] RAG used: captured {len(accessed_docs)} relevant documents for diagnosis")
-                        rag_usage = {
-                            "accessed_documents": accessed_docs,
-                            "count": len(accessed_docs)
-                        }
-                        # Clear the accessed documents for next query
-                        self.rag_engine.clear_accessed_documents()
+                if filtered_content:
+                    print(f"[DEBUG] Found {len(filtered_content)} new relevant documents for diagnosis")
+                    # Don't include raw context in the prompt, instead use system message
+                    self.conversation_history.append({
+                        "role": "system", 
+                        "content": f"Use this additional reference information to help inform your diagnosis, but don't include raw reference text in your response: {' '.join(filtered_content)}"
+                    })
+                    
+                    # Track RAG usage information for new documents only
+                    rag_usage = {
+                        "documents": newly_accessed_docs,
+                        "stats": rag_result.get("stats", {}),
+                        "count": len(newly_accessed_docs)
+                    }
+            else:
+                # Legacy format
+                context = rag_result
+                if context:
+                    print(f"[DEBUG] Found {len(context)} relevant documents for diagnosis")
+                    
+                    # Don't include raw context in the prompt, instead use system message
+                    self.conversation_history.append({
+                        "role": "system", 
+                        "content": f"Use this additional reference information to help inform your diagnosis, but don't include raw reference text in your response: {' '.join(context)}"
+                    })
+                    
+                    # Track RAG usage information
+                    if hasattr(self.rag_engine, 'get_accessed_documents'):
+                        accessed_docs = self.rag_engine.get_accessed_documents()
+                        if accessed_docs:
+                            print(f"[DEBUG] RAG used: captured {len(accessed_docs)} relevant documents for diagnosis")
+                            rag_usage = {
+                                "accessed_documents": accessed_docs,
+                                "count": len(accessed_docs)
+                            }
+                            # Clear the accessed documents for next query
+                            self.rag_engine.clear_accessed_documents()
         
         self.conversation_history.append({"role": "user", "content": diagnosis_prompt})
         
@@ -223,9 +252,51 @@ class MentalHealthAssistant:
             "content": diagnosis,
             "rag_usage": rag_usage
         }
+    
+    def _summarize_observations(self) -> str:
+        """
+        Summarize clinical observations from patient responses.
+        
+        Returns:
+            str: Clinical observations and potential concerns
+        """
+        # Create formatted responses for the summarization
+        formatted_responses = self._format_responses()
+        
+        # Create a prompt for the observation summarization
+        summarization_prompt = f"""
+        You are a mental health professional reviewing patient responses to a questionnaire.
+        
+        Here are the patient's responses:
+        {formatted_responses}
+        
+        Based on these responses, please:
+        1. Identify the main symptoms and concerns
+        2. Note patterns in the patient's responses
+        3. List potential areas of clinical significance
+        4. Highlight any risk factors or warning signs
+        5. Summarize your observations in clinical language
+        
+        Format your response as a concise clinical observation summary using professional terminology.
+        Focus on extracting the most relevant clinical information while avoiding speculation.
+        """
+        
+        # Create a temporary conversation for generating the observations
+        temp_conversation = [
+            {"role": "system", "content": "You are a clinical mental health professional conducting an assessment."},
+            {"role": "user", "content": summarization_prompt}
+        ]
+        
+        # Generate the clinical observations using the LLM
+        result = self.client.chat(self.model, temp_conversation)
+        observations = result['response']
+        
+        return observations
 
     def _extract_symptoms_for_query(self):
         """Extract key symptoms from patient responses to create a better RAG query."""
+        # This method is kept for backwards compatibility
+        # The preferred approach is now to use _summarize_observations() for RAG queries
         symptoms = []
         for question, response in self.responses:
             # Add both question and response to get context
@@ -270,17 +341,55 @@ class MentalHealthAssistant:
         # Query RAG engine if available
         if self.rag_engine:
             print("[DEBUG] Querying RAG engine for relevant context")
-            context = self.rag_engine.retrieve(message, top_k=3)
+            rag_result = self.rag_engine.retrieve(message, top_k=3)
             
-            if context:
-                print(f"[DEBUG] Found {len(context)} relevant documents")
-                context_str = "\n\n".join(context)
-                # Add context to the message
-                system_message = {
-                    "role": "system", 
-                    "content": f"Consider this additional information when responding:\n{context_str}"
-                }
-                history_copy.append(system_message)
+            if isinstance(rag_result, dict) and "content_list" in rag_result:
+                # New RAG format
+                documents = rag_result.get("documents", [])
+                filtered_content = []
+                newly_accessed_docs = []
+                
+                # Only use documents we haven't seen before
+                for i, doc in enumerate(documents):
+                    doc_id = doc.get("title", "") + "|" + doc.get("highlight", "")[:50]
+                    if doc_id not in self.seen_documents:
+                        self.seen_documents.add(doc_id)
+                        # Add content only if it's new
+                        if i < len(rag_result["content_list"]):
+                            filtered_content.append(rag_result["content_list"][i])
+                        newly_accessed_docs.append(doc)
+                
+                if filtered_content:
+                    context_str = "\n\n".join(filtered_content)
+                    # Add context to the message
+                    system_message = {
+                        "role": "system", 
+                        "content": f"Consider this additional information when responding:\n{context_str}"
+                    }
+                    history_copy.append(system_message)
+                    
+                    rag_usage = {
+                        "documents": newly_accessed_docs,
+                        "stats": rag_result.get("stats", {}),
+                        "count": len(newly_accessed_docs)
+                    }
+            else:
+                # Legacy format handling
+                context = rag_result
+                if context:
+                    print(f"[DEBUG] Found {len(context)} relevant documents")
+                    context_str = "\n\n".join(context)
+                    # Add context to the message
+                    system_message = {
+                        "role": "system", 
+                        "content": f"Consider this additional information when responding:\n{context_str}"
+                    }
+                    history_copy.append(system_message)
+                    
+                    rag_usage = {
+                        "accessed_documents": [{"title": "Unknown"}] if context else [],
+                        "count": 1 if context else 0
+                    }
         
         # Generate response
         result = self.client.chat(self.model, history_copy)
@@ -289,7 +398,6 @@ class MentalHealthAssistant:
         print(f"[DEBUG] Generated response: {response[:50]}..." if len(response) > 50 else response)
         
         # If RAG was used, get the accessed documents
-        rag_usage = None
         if self.rag_engine and hasattr(self.rag_engine, 'get_accessed_documents'):
             accessed_docs = self.rag_engine.get_accessed_documents()
             if accessed_docs:
@@ -304,5 +412,36 @@ class MentalHealthAssistant:
         # Return both the response and RAG usage information
         return {
             "content": response,
+            "rag_usage": rag_usage
+        }
+
+def get_context_for_question(self, question: str) -> dict:
+    """Get relevant context for a question from the RAG engine."""
+    # Get context from RAG engine
+    context = self.rag_engine.get_context_for_question(question)
+    
+    # Handle both old format (string/list) and new format (dictionary)
+    if isinstance(context, dict) and "content" in context:
+        # New format - already has all we need
+        rag_usage = {
+            "documents": context.get("documents", []),
+            "stats": context.get("stats", {}),
+        }
+        return {
+            "content": context["content"],
+            "rag_usage": rag_usage
+        }
+    else:
+        # Old format - convert to new format
+        rag_usage = {
+            "count": 1 if context else 0,
+            "accessed_documents": [{"title": "Unknown"}] if context else []
+        }
+        # If it's a list, join items with newlines
+        if isinstance(context, list):
+            context = "\n\n".join(context)
+            
+        return {
+            "content": context,
             "rag_usage": rag_usage
         }

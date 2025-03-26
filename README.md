@@ -74,7 +74,7 @@ graph TD
 
 - **PDF Processor**: Extracts questions from questionnaire PDFs
 - **Document Processor**: Processes various document types (PDF, TXT, DOCX, JSON)
-- **RAG Engine**: Provides relevant context from medical literature for the assistant's responses
+- **RAG Engine**: Provides relevant context from medical literature
 - **Vector Store**: Stores document embeddings for semantic search
 
 ### 2. Agent System
@@ -276,9 +276,12 @@ The system functions through the following workflow:
    - The conversation handler manages this exchange
 
 5. **RAG Enhancement**
-   - The RAG engine retrieves relevant information from documents
-   - This provides context for the assistant's responses
-   - Improves the quality of the diagnosis
+   - The RAG engine retrieves relevant information from documents:
+     1. Patient responses are summarized into clinical observations using AI
+     2. These observations form the basis for a focused RAG query
+     3. Documents are retrieved based on semantic similarity to this query
+     4. Retrieved documents' content is provided to the assistant for diagnosis generation
+   - This improves the quality and relevance of the diagnosis
 
 6. **Diagnosis Generation**
    - After all questions are asked, the assistant generates a diagnosis
@@ -288,6 +291,10 @@ The system functions through the following workflow:
 7. **Conversation Logging**
    - The entire conversation is saved as JSON and plain text
    - Includes metadata about models and profiles used
+   - **Enhanced RAG Metrics**:
+     - Document access counts and relevance scores
+     - Per-document highest and average relevance scores 
+     - Example excerpts showing why documents were retrieved
    - Enables review and analysis of past sessions
 
 8. **Conversation Evaluation**
@@ -534,6 +541,42 @@ If questions are not being extracted properly:
 - Use smaller models
 - Reduce chunk size in `vector_store.py`
 - Limit the number of documents processed
+
+## Understanding RAG Logs
+
+The system now produces comprehensive RAG metrics in conversation logs:
+
+```json
+"rag_summary": {
+  "total_rag_queries": 5,
+  "total_documents_accessed": 12,
+  "documents_accessed": {
+    "APA_DSM-5-Schizophrenia.pdf": {
+      "access_count": 4,
+      "highest_score": 0.7449,
+      "average_score": 0.6823,
+      "example_excerpt": "Schizophrenia The upcoming fifth edition of the Diagnostic and Statistical..."
+    },
+    "APA_DSM-5-Substance-Use-Disorder.pdf": {
+      "access_count": 3,
+      "highest_score": 0.7272,
+      "average_score": 0.6853,
+      "example_excerpt": "Substance-Related and Addictive Disorders In the fifth edition of..."
+    }
+  }
+}
+```
+
+This format provides:
+- Count of queries where RAG was used
+- Total document access instances
+- Per-document statistics:
+  - Access frequency
+  - Highest relevance score achieved
+  - Average relevance score
+  - Example text showing why the document was deemed relevant
+
+During execution, the system will also display RAG information:
 
 ## License
 

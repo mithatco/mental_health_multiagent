@@ -16,6 +16,11 @@ class ConversationHandler:
         self.patient = patient
         self.conversation_log = []
         self.state_file = state_file
+        self.rag_metrics = {
+            "total_queries": 0,
+            "avg_impact_score": 0.0,
+            "document_usage": {}
+        }
     
     def run(self, disable_output: bool = False) -> str:
         """
@@ -38,7 +43,11 @@ class ConversationHandler:
         # Check if the response is a dictionary with RAG usage info
         if isinstance(question, dict) and "content" in question:
             question_content = question["content"]
-            rag_usage = question.get("rag_usage")
+            rag_usage = question.get("rag_usage", {})
+            
+            # Enhanced RAG metrics handling
+            if rag_usage:
+                self._update_rag_metrics(question_content, rag_usage)
             
             # Add to conversation log with RAG info
             self.conversation_log.append({
@@ -50,12 +59,16 @@ class ConversationHandler:
             if not disable_output:
                 print(f"Assistant: {question_content}")
             
-            # Display RAG usage info if available
-            if rag_usage and rag_usage.get("count", 0) > 0:
-                if not disable_output:
-                    print(f"\n[RAG Engine accessed {rag_usage['count']} documents]")
-                    for i, doc in enumerate(rag_usage['accessed_documents']):
-                        print(f"  - Doc {i+1}: {doc.get('title', 'Unknown')}")
+            # Display enhanced RAG usage info if available
+            if rag_usage and rag_usage.get("documents", []):
+                documents = rag_usage.get("documents", [])
+                stats = rag_usage.get("stats", {})
+                if not disable_output and documents:
+                    print(f"\n[RAG Engine accessed {len(documents)} documents, avg relevance: {stats.get('avg_score', 0):.2f}]")
+                    for i, doc in enumerate(documents[:3]):  # Limit display to top 3
+                        print(f"  - Doc {i+1}: {doc.get('title', 'Unknown')} (score: {doc.get('score', 0):.2f})")
+                        if 'highlight' in doc:
+                            print(f"     Highlight: \"{doc['highlight']}\"")
                 
             question = question_content  # Use just the content for patient interaction
         else:
@@ -74,7 +87,7 @@ class ConversationHandler:
         if not self._is_complete_question(question):
             if not disable_output:
                 print("[DEBUG] Detected incomplete question. Fixing...")
-            question = self._fix_incomplete_question(question, self.assistant.current_question_idx - 1)
+            question = self._fix_incomplete_question(question, self.assistant.current_question_idx - 1, disable_output)
         
         while True:
             # If we've already gone through all questions and received the patient's last response,
@@ -88,7 +101,11 @@ class ConversationHandler:
                 # Check if the diagnosis is a dictionary with RAG usage info
                 if isinstance(diagnosis, dict) and "content" in diagnosis:
                     diagnosis_content = diagnosis["content"]
-                    rag_usage = diagnosis.get("rag_usage")
+                    rag_usage = diagnosis.get("rag_usage", {})
+                    
+                    # Enhanced RAG metrics handling for diagnosis
+                    if rag_usage:
+                        self._update_rag_metrics(diagnosis_content, rag_usage)
                     
                     # Add to conversation log with RAG info
                     self.conversation_log.append({
@@ -100,6 +117,20 @@ class ConversationHandler:
                     if not disable_output:
                         print(f"\n=== Final Diagnosis ===\n")
                         print(f"Assistant: {diagnosis_content}")
+                        
+                        # Display enhanced RAG usage for diagnosis
+                        if rag_usage and rag_usage.get("documents", []):
+                            documents = rag_usage.get("documents", [])
+                            stats = rag_usage.get("stats", {})
+                            impact = rag_usage.get("impact", {})
+                            
+                            print(f"\n[Diagnosis used {len(documents)} reference documents]")
+                            print(f"[RAG impact score: {impact.get('impact_score', 0):.2f}]")
+                            for i, doc in enumerate(documents[:3]):  # Limit display to top 3
+                                print(f"  - Doc {i+1}: {doc.get('title', 'Unknown')} (score: {doc.get('score', 0):.2f})")
+                    
+                    # Add RAG summary to the state file
+                    self._add_rag_summary_to_state()
                     
                     return diagnosis_content
                 else:
@@ -141,12 +172,16 @@ class ConversationHandler:
             if not all_questions_asked and not self._is_complete_question(question):
                 if not disable_output:
                     print("[DEBUG] Detected incomplete question. Fixing...")
-                question = self._fix_incomplete_question(question, self.assistant.current_question_idx - 1)
+                question = self._fix_incomplete_question(question, self.assistant.current_question_idx - 1, disable_output)
             
             # Check if the response is a dictionary with RAG usage info
             if isinstance(question, dict) and "content" in question:
                 question_content = question["content"]
-                rag_usage = question.get("rag_usage")
+                rag_usage = question.get("rag_usage", {})
+                
+                # Enhanced RAG metrics handling
+                if rag_usage:
+                    self._update_rag_metrics(question_content, rag_usage)
                 
                 if not disable_output:
                     print("[DEBUG] Assistant response includes RAG info")
@@ -162,15 +197,25 @@ class ConversationHandler:
                 if not disable_output:
                     print(f"Assistant: {question_content}")
                 
-                # Display RAG usage info if available
-                if rag_usage and rag_usage.get("count", 0) > 0:
-                    if not disable_output:
-                        print(f"\n[RAG Engine accessed {rag_usage['count']} documents]")
-                        for i, doc in enumerate(rag_usage['accessed_documents']):
-                            print(f"  - Doc {i+1}: {doc.get('title', 'Unknown')}")
+                # Display enhanced RAG usage info if available
+                if rag_usage and rag_usage.get("documents", []):
+                    documents = rag_usage.get("documents", [])
+                    stats = rag_usage.get("stats", {})
+                    impact = rag_usage.get("impact", {})
+                    
+                    if not disable_output and documents:
+                        print(f"\n[RAG Engine accessed {len(documents)} documents, avg relevance: {stats.get('avg_score', 0):.2f}]")
+                        if impact:
+                            print(f"[RAG impact score: {impact.get('impact_score', 0):.2f}]")
+                        for i, doc in enumerate(documents[:3]):  # Limit display to top 3
+                            print(f"  - Doc {i+1}: {doc.get('title', 'Unknown')} (score: {doc.get('score', 0):.2f})")
+                            if 'highlight' in doc:
+                                print(f"     Highlight: \"{doc['highlight']}\"")
                 
                 # If this is the diagnosis, return it
                 if all_questions_asked:
+                    # Add RAG summary to the state file
+                    self._add_rag_summary_to_state()
                     return question_content
                 
                 question = question_content  # Use just the content for next iteration
@@ -191,6 +236,58 @@ class ConversationHandler:
 
             # Update state file if provided
             self._update_state_file()
+    
+    def _update_rag_metrics(self, response: str, rag_usage: Dict[str, Any]) -> None:
+        """Update RAG metrics based on usage data."""
+        documents = rag_usage.get("documents", [])
+        impact = rag_usage.get("impact", {})
+        
+        if documents:
+            # Update total queries
+            self.rag_metrics["total_queries"] += 1
+            
+            # Update impact score
+            impact_score = impact.get("impact_score", 0)
+            current_avg = self.rag_metrics["avg_impact_score"]
+            total_queries = self.rag_metrics["total_queries"]
+            
+            # Calculate running average
+            self.rag_metrics["avg_impact_score"] = ((current_avg * (total_queries - 1)) + impact_score) / total_queries
+            
+            # Update document usage stats
+            for doc in documents:
+                doc_title = doc.get("title", "Unknown")
+                if doc_title in self.rag_metrics["document_usage"]:
+                    self.rag_metrics["document_usage"][doc_title] += 1
+                else:
+                    self.rag_metrics["document_usage"][doc_title] = 1
+    
+    def _add_rag_summary_to_state(self) -> None:
+        """Add RAG usage summary to state file if it exists."""
+        if not self.state_file:
+            return
+            
+        try:
+            # Load existing state
+            with open(self.state_file, 'r') as f:
+                state = json.load(f)
+                
+            # Add RAG metrics
+            state["rag_metrics"] = {
+                "total_queries": self.rag_metrics["total_queries"],
+                "avg_impact_score": round(self.rag_metrics["avg_impact_score"], 4),
+                "top_documents": dict(sorted(
+                    self.rag_metrics["document_usage"].items(),
+                    key=lambda x: x[1],
+                    reverse=True
+                )[:5])  # Top 5 documents
+            }
+            
+            # Write updated state
+            with open(self.state_file, 'w') as f:
+                json.dump(state, f)
+        except Exception as e:
+            print(f"Error updating RAG metrics in state file: {str(e)}")
     
     def _is_complete_question(self, text):
         """Check if a question appears complete."""
@@ -215,7 +312,7 @@ class ConversationHandler:
         words = text.split()
         return len(words) >= 5
     
-    def _fix_incomplete_question(self, text, question_idx):
+    def _fix_incomplete_question(self, text, question_idx, disable_output=False):
         """Fix an incomplete question by referencing the original questionnaire."""
         # If question index is valid, get the original question
         if 0 <= question_idx < len(self.assistant.questions):
@@ -248,6 +345,23 @@ class ConversationHandler:
             List of conversation messages
         """
         return self.conversation_log
+
+    def get_rag_metrics(self) -> Dict[str, Any]:
+        """
+        Get RAG usage metrics for the conversation.
+        
+        Returns:
+            Dictionary of RAG metrics
+        """
+        return {
+            "total_queries": self.rag_metrics["total_queries"],
+            "avg_impact_score": round(self.rag_metrics["avg_impact_score"], 4),
+            "top_documents": dict(sorted(
+                self.rag_metrics["document_usage"].items(),
+                key=lambda x: x[1],
+                reverse=True
+            )[:5])  # Top 5 documents
+        }
 
     def _update_state_file(self):
         """Update the state file with the current conversation if provided."""

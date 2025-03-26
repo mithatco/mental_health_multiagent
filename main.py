@@ -2,6 +2,7 @@ import os
 import argparse
 import sys
 import json
+import time
 from pathlib import Path
 from utils.document_processor import extract_questions_from_text, DocumentProcessor
 from utils.rag_engine import RAGEngine
@@ -17,6 +18,16 @@ DEFAULT_DOCS_DIR = os.path.join(
     "documents"
 )
 DEFAULT_QUESTIONNAIRES_DIR = os.path.join(DEFAULT_DOCS_DIR, "questionnaires")
+DEFAULT_LOGS_DIR = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)),
+    "chat_logs"
+)
+
+# Add global debug log function
+def debug_log(message):
+    """Print debug message with timestamp"""
+    timestamp = time.strftime("%H:%M:%S", time.localtime())
+    print(f"[DEBUG {timestamp}] {message}")
 
 def load_questions_from_json(file_path):
     """
@@ -72,6 +83,7 @@ def run_conversation(pdf_path, patient_profile=None, assistant_model="qwen2.5:3b
     from utils.chat_logger import ChatLogger
     from utils.debug_logger import debug_logger
     
+    debug_log("Starting run_conversation function")
     start_time = time.time()
     
     # Add detailed debugging for file paths
@@ -94,13 +106,22 @@ def run_conversation(pdf_path, patient_profile=None, assistant_model="qwen2.5:3b
     if not disable_output:
         print("Initializing RAG engine...")
     
+    debug_log("About to initialize RAG engine")
     # Determine project root and set up RAG engine
     project_root = os.path.dirname(os.path.abspath(__file__))
     docs_dir = os.path.join(project_root, "documents")
-    rag_engine = RAGEngine(docs_dir, refresh_cache=refresh_cache)
+    
+    try:
+        debug_log(f"Creating RAG engine with docs_dir={docs_dir}")
+        rag_engine = RAGEngine(docs_dir, refresh_cache=refresh_cache)
+        debug_log("RAG engine initialized successfully")
+    except Exception as e:
+        debug_log(f"ERROR initializing RAG engine: {str(e)}")
+        raise
     
     # If the file is a JSON file, we're in batch mode with a temporary questions file
     if pdf_path.endswith('.json'):
+        debug_log("Processing JSON questions file")
         # Try to load questions directly from JSON
         questions = load_questions_from_json(pdf_path)
         questionnaire_name = "batch_questionnaire"
@@ -113,10 +134,13 @@ def run_conversation(pdf_path, patient_profile=None, assistant_model="qwen2.5:3b
         if not disable_output:
             print(f"Processing PDF: {pdf_path}")
         
+        debug_log(f"Extracting questions from PDF: {pdf_path}")
         try:
             questions = rag_engine.get_questions_from_file(pdf_path)
             questionnaire_name = os.path.basename(pdf_path)
+            debug_log(f"Successfully extracted {len(questions)} questions")
         except Exception as e:
+            debug_log(f"ERROR extracting questions: {str(e)}")
             print(f"Error extracting questions from PDF: {str(e)}")
             return {"error": f"Failed to extract questions: {str(e)}"}
     
@@ -128,24 +152,45 @@ def run_conversation(pdf_path, patient_profile=None, assistant_model="qwen2.5:3b
         print(f"Extracted {len(questions)} questions")
     
     # Initialize agents
-    assistant = MentalHealthAssistant(
-        "http://localhost:11434", 
-        assistant_model, 
-        questions, 
-        rag_engine,
-        questionnaire_name=questionnaire_name
-    )
+    debug_log("Initializing assistant agent")
+    try:
+        assistant = MentalHealthAssistant(
+            "http://localhost:11434", 
+            assistant_model, 
+            questions, 
+            rag_engine,
+            questionnaire_name=questionnaire_name
+        )
+        debug_log("Assistant agent initialized successfully")
+    except Exception as e:
+        debug_log(f"ERROR initializing assistant: {str(e)}")
+        raise
     
-    patient = Patient("http://localhost:11434", patient_model, patient_profile)
+    debug_log("Initializing patient agent")
+    try:
+        patient = Patient("http://localhost:11434", patient_model, patient_profile)
+        debug_log("Patient agent initialized successfully")
+    except Exception as e:
+        debug_log(f"ERROR initializing patient: {str(e)}")
+        raise
     
     # Set up conversation handler with state tracking for API mode
+    debug_log("Initializing conversation handler")
     conversation = ConversationHandler(assistant, patient, state_file=state_file)
     
     # Run the conversation
     if not disable_output:
         print("\nStarting conversation...\n")
     
-    diagnosis = conversation.run(disable_output=disable_output)
+    debug_log("Starting conversation.run()")
+    try:
+        diagnosis = conversation.run(disable_output=disable_output)
+        debug_log("Conversation completed successfully")
+    except Exception as e:
+        debug_log(f"ERROR during conversation: {str(e)}")
+        import traceback
+        debug_log(f"Traceback: {traceback.format_exc()}")
+        raise
     
     if not disable_output:
         print("\n=== Final Diagnosis ===")
@@ -230,7 +275,8 @@ def main():
     parser.add_argument('--patient_profile', type=str, help="Profile to use for the patient")
     parser.add_argument('--refresh_cache', action='store_true', help="Refresh the document cache")
     parser.add_argument('--no-save', action='store_true', help="Don't save conversation logs")
-    parser.add_argument('--logs-dir', type=str, help="Directory to save conversation logs")
+    parser.add_argument('--logs-dir', type=str, default=DEFAULT_LOGS_DIR,
+                       help=f"Directory to save conversation logs (default: {DEFAULT_LOGS_DIR})")
     
     # Add batch processing arguments
     parser.add_argument('--batch', '-n', type=int, help="Number of conversations to generate in batch mode")
@@ -240,7 +286,17 @@ def main():
     # Add state file argument for API mode
     parser.add_argument('--state-file', type=str, help="Path to a state file for API mode")
     
+    # Add option to skip sentence transformer loading
+    parser.add_argument('--skip-transformers', action='store_true', 
+                       help="Skip loading SentenceTransformer models (faster startup)")
+    
     args = parser.parse_args()
+    debug_log("Starting main function with args: " + str(vars(args)))
+    
+    # Set environment variable to skip transformers if requested
+    if args.skip_transformers:
+        os.environ['SKIP_TRANSFORMERS'] = '1'
+        debug_log("Setting SKIP_TRANSFORMERS=1 in environment")
     
     # Create documents and questionnaires directories if they don't exist
     os.makedirs(args.docs_dir, exist_ok=True)
@@ -262,10 +318,21 @@ def main():
     
     # Initialize RAG engine with both directories
     print("Initializing RAG engine and processing documents...")
-    rag_engine = RAGEngine(args.docs_dir, questionnaire_dir=args.questionnaires_dir)
+    debug_log("About to initialize main RAG engine")
+    try:
+        rag_engine = RAGEngine(args.docs_dir, questionnaire_dir=args.questionnaires_dir)
+        debug_log("Main RAG engine initialized successfully")
+    except Exception as e:
+        debug_log(f"ERROR initializing main RAG engine: {str(e)}")
+        import traceback
+        debug_log(f"Traceback: {traceback.format_exc()}")
+        print(f"Error initializing RAG engine: {e}")
+        sys.exit(1)
     
     # Get questionnaires
+    debug_log("Getting questionnaires from RAG engine")
     questionnaires = rag_engine.get_questionnaires()
+    debug_log(f"Found {len(questionnaires)} questionnaires")
     
     # Define questions variable before using it
     questions = []
@@ -410,6 +477,9 @@ def main():
     
     # Initialize the chat logger
     if not args.no_save:
+        # Ensure logs directory exists
+        os.makedirs(args.logs_dir, exist_ok=True)
+        debug_log(f"Using logs directory: {args.logs_dir}")
         chat_logger = ChatLogger(args.logs_dir)
     
     # Set up conversation handler with state tracking for API mode
@@ -461,4 +531,11 @@ def main():
         print(f"You can find all conversation logs in: {chat_logger.log_dir}")
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        debug_log(f"FATAL ERROR: {str(e)}")
+        import traceback
+        debug_log(f"Traceback: {traceback.format_exc()}")
+        print(f"Error: {e}")
+        sys.exit(1)

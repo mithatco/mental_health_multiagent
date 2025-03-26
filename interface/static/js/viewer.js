@@ -752,8 +752,13 @@ function displayRagSummary(ragSummary) {
         for (const [path, info] of Object.entries(ragSummary.documents_accessed)) {
             html += `
                 <div class="document-item">
-                    <div class="document-path">${path}</div>
-                    <div class="access-count">Accessed ${info.access_count} time${info.access_count !== 1 ? 's' : ''}</div>
+                    <div class="document-header">
+                        <div class="document-path">${path}</div>
+                        <div class="access-count">Accessed ${info.access_count} time${info.access_count !== 1 ? 's' : ''}</div>
+                    </div>
+                    <div class="document-scores">
+                        ${info.average_score ? `<div class="score"><strong>Average Score:</strong> ${info.average_score.toFixed(4)}</div>` : ''}
+                    </div>
                     ${info.example_excerpt ? `
                         <div class="document-excerpt">
                             <strong>Example excerpt:</strong> "${info.example_excerpt}"
