@@ -738,13 +738,63 @@ function displayRagSummary(ragSummary) {
         return;
     }
     
-    let html = `
-        <div class="rag-stats">
-            <p><strong>Total RAG Queries:</strong> ${ragSummary.total_rag_queries}</p>
-            <p><strong>Total Documents Accessed:</strong> ${ragSummary.total_documents_accessed}</p>
-        </div>
-        <h4>Documents Accessed:</h4>
-    `;
+    // let html = `
+    //     <div class="rag-stats">
+    //         <p><strong>Total RAG Queries:</strong> ${ragSummary.total_rag_queries}</p>
+    //         <p><strong>Total Documents Accessed:</strong> ${ragSummary.total_documents_accessed}</p>
+    //     </div>
+    // `;
+
+    let html = ``;
+    
+    // Add evaluation metrics section if available
+    if (ragSummary.evaluation_metrics && Object.keys(ragSummary.evaluation_metrics).length > 0) {
+        html += `<h4>RAG Evaluation Metrics</h4>
+        <div class="evaluation-metrics-summary">`;
+        
+        for (const [metric, data] of Object.entries(ragSummary.evaluation_metrics)) {
+            if (data.average_score !== null) {
+                html += `
+                <div class="metric-item">
+                    <div class="metric-name">${formatMetricName(metric)}</div>
+                    <div class="metric-score">Avg. Score: ${data.average_score.toFixed(4)}</div>
+                    <div class="metric-count">(${data.count || 0} evaluations)</div>
+                    ${metric !== "overall" ? `<button class="show-reasons-btn" data-metric="${metric}">Show Explanations</button>` : ''}
+                </div>`;
+            }
+        }
+        
+        html += `</div>`;
+        
+        // Add section for metric reasons that will be shown/hidden on demand
+        html += `<div id="metric-reasons-container" class="metric-reasons-container">`;
+        for (const [metric, data] of Object.entries(ragSummary.evaluation_metrics)) {
+            if (data.reasons && data.reasons.length > 0) {
+                html += `
+                <div id="reasons-${metric}" class="metric-reasons hidden">
+                    <h5>${formatMetricName(metric)} Explanations</h5>
+                    <div class="reasons-list">`;
+                
+                // Add each reason with its score
+                data.reasons.forEach((item, index) => {
+                    const scoreClass = item.passed ? 'score-passed' : 'score-failed';
+                    html += `
+                    <div class="reason-item">
+                        <div class="reason-header">
+                            <span class="reason-score ${scoreClass}">${item.score.toFixed(2)}</span>
+                            <span class="reason-index">Evaluation #${index + 1}</span>
+                        </div>
+                        <div class="reason-content">${item.reason}</div>
+                    </div>`;
+                });
+                
+                html += `</div></div>`;
+            }
+        }
+        html += `</div>`;
+    }
+    
+    html += `<h4>Documents Accessed:</h4>`;
     
     if (ragSummary.documents_accessed && Object.keys(ragSummary.documents_accessed).length > 0) {
         html += '<div class="documents-list">';
@@ -774,6 +824,28 @@ function displayRagSummary(ragSummary) {
     }
     
     ragSummaryContent.innerHTML = html;
+    
+    // Add event listeners for show reasons buttons
+    document.querySelectorAll('.show-reasons-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const metric = this.dataset.metric;
+            const reasonsDiv = document.getElementById(`reasons-${metric}`);
+            
+            // Hide all other reason divs
+            document.querySelectorAll('.metric-reasons').forEach(div => {
+                div.classList.add('hidden');
+            });
+            
+            // Show this one
+            reasonsDiv.classList.remove('hidden');
+            
+            // Update button text
+            document.querySelectorAll('.show-reasons-btn').forEach(b => {
+                b.textContent = "Show Explanations";
+            });
+            this.textContent = "Hide Explanations";
+        });
+    });
 }
 
 // Add these functions to your existing JavaScript file

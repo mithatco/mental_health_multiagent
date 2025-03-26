@@ -1,6 +1,9 @@
 import json
 import time
 from typing import List, Dict, Any
+from collections import defaultdict
+
+from .rag_evaluator import RAGEvaluator
 
 class ConversationHandler:
     def __init__(self, assistant, patient, state_file=None):
@@ -21,6 +24,22 @@ class ConversationHandler:
             "avg_impact_score": 0.0,
             "document_usage": {}
         }
+        
+        # Initialize RAG evaluator if deepeval is available
+        try:
+            from .rag_evaluator import RAGEvaluator
+            self.rag_evaluator = RAGEvaluator()
+            self.has_evaluator = self.rag_evaluator.is_available
+            
+            if not self.has_evaluator:
+                print("RAG evaluation disabled: deepeval library is not available in this environment")
+        except ImportError:
+            print("RAG evaluation disabled: couldn't import RAGEvaluator")
+            self.has_evaluator = False
+            self.rag_evaluator = None
+        
+        # Add rag_evaluation_results to track metrics
+        self.rag_evaluation_results = []
     
     def run(self, disable_output: bool = False) -> str:
         """
@@ -261,6 +280,67 @@ class ConversationHandler:
                     self.rag_metrics["document_usage"][doc_title] += 1
                 else:
                     self.rag_metrics["document_usage"][doc_title] = 1
+        
+        # Add RAG evaluation if deepeval is available and we have enough context
+        if self.has_evaluator and len(self.conversation_log) >= 2:
+            try:
+                documents = rag_usage.get("documents", [])
+                
+                if documents:
+                    # Get the last user query (input to RAG)
+                    last_user_message = None
+                    for msg in reversed(self.conversation_log):
+                        if msg.get("role") == "patient":  # Note: changed from "user" to "patient"
+                            last_user_message = msg.get("content")
+                            break
+                    
+                    if last_user_message:
+                        # Extract context content from documents
+                        context = []
+                        for doc in documents:
+                            if "content" in doc:
+                                context.append(doc["content"])
+                            elif "highlight" in doc:
+                                context.append(doc["highlight"])
+                        
+                        # Skip evaluation if we don't have enough context
+                        if not context:
+                            return
+                        
+                        # Evaluate RAG performance
+                        eval_results = self.rag_evaluator.evaluate_rag(
+                            query=last_user_message,
+                            response=response,
+                            context=context
+                        )
+                        
+                        # Handle case where evaluation returns an error
+                        if "error" in eval_results:
+                            print(f"RAG Evaluation error: {eval_results['error']}")
+                            # Don't stop the conversation, just log the error and continue
+                            
+                            # If we still have metrics despite the error, we'll use those
+                            if "metrics" not in eval_results or not eval_results["metrics"]:
+                                return
+                        
+                        # Store evaluation results
+                        self.rag_evaluation_results.append(eval_results)
+                        
+                        # Add evaluation results to the rag_usage to be included in logs
+                        rag_usage["evaluation"] = {
+                            "contextual_relevancy": eval_results.get("metrics", {}).get("contextual_relevancy", {}),
+                            "faithfulness": eval_results.get("metrics", {}).get("faithfulness", {}),
+                            "answer_relevancy": eval_results.get("metrics", {}).get("answer_relevancy", {}),
+                            "average_score": eval_results.get("average_score", 0)
+                        }
+                        
+                        # Print summary of evaluation results
+                        print(f"[RAG Evaluation] Average Score: {eval_results.get('average_score', 'N/A')}")
+                        for metric_name, metric_results in eval_results.get("metrics", {}).items():
+                            print(f"[RAG Evaluation] {metric_name}: {metric_results.get('score', 'N/A')}")
+            except Exception as e:
+                print(f"Error during RAG evaluation: {str(e)}")
+                # Continue with the conversation even if evaluation fails
     
     def _add_rag_summary_to_state(self) -> None:
         """Add RAG usage summary to state file if it exists."""
@@ -353,7 +433,7 @@ class ConversationHandler:
         Returns:
             Dictionary of RAG metrics
         """
-        return {
+        metrics = {
             "total_queries": self.rag_metrics["total_queries"],
             "avg_impact_score": round(self.rag_metrics["avg_impact_score"], 4),
             "top_documents": dict(sorted(
@@ -362,6 +442,26 @@ class ConversationHandler:
                 reverse=True
             )[:5])  # Top 5 documents
         }
+        
+        # Add deepeval metrics if available
+        if self.rag_evaluation_results:
+            # Calculate average scores across all evaluations
+            eval_totals = defaultdict(list)
+            for result in self.rag_evaluation_results:
+                for metric_name, metric_data in result.get("metrics", {}).items():
+                    if "score" in metric_data:
+                        eval_totals[metric_name].append(metric_data["score"])
+            
+            # Add average scores to metrics
+            metrics["deepeval_metrics"] = {
+                metric: {
+                    "avg_score": round(sum(scores) / len(scores), 4),
+                    "evaluations": len(scores)
+                }
+                for metric, scores in eval_totals.items()
+            }
+            
+        return metrics
 
     def _update_state_file(self):
         """Update the state file with the current conversation if provided."""

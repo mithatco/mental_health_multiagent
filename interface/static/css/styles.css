@@ -1454,3 +1454,159 @@ table tbody tr:hover {
     font-size: 12px;
     color: #555;
 }
+
+/* RAG Evaluation Metrics */
+.evaluation-metrics-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.metric-item {
+    background-color: #f0f7ff;
+    border-left: 3px solid #3498db;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.metric-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.metric-score {
+    font-size: 1.1em;
+    color: #3498db;
+}
+
+.metric-count {
+    font-size: 0.8em;
+    color: #7f8c8d;
+    margin-top: 3px;
+}
+
+/* RAG Evaluation Metrics with Reasons */
+.evaluation-metrics-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.metric-item {
+    background-color: #f0f7ff;
+    border-left: 3px solid #3498db;
+    padding: 10px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+}
+
+.metric-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.metric-score {
+    font-size: 1.1em;
+    color: #3498db;
+}
+
+.metric-count {
+    font-size: 0.8em;
+    color: #7f8c8d;
+    margin-top: 3px;
+    margin-bottom: 8px;
+}
+
+.show-reasons-btn {
+    background-color: #e0f2fd;
+    color: #3498db;
+    border: 1px solid #bedcf3;
+    border-radius: 3px;
+    padding: 3px 8px;
+    font-size: 0.8em;
+    cursor: pointer;
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+.show-reasons-btn:hover {
+    background-color: #c4e6fc;
+}
+
+.metric-reasons-container {
+    margin-bottom: 20px;
+}
+
+.metric-reasons {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+}
+
+.metric-reasons h5 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #2c3e50;
+    font-size: 1em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.reasons-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.reason-item {
+    background-color: white;
+    border-radius: 4px;
+    padding: 10px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.reason-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+.reason-score {
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 12px;
+}
+
+.score-passed {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.score-failed {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.reason-index {
+    color: #6c757d;
+    font-size: 0.9em;
+}
+
+.reason-content {
+    font-size: 0.9em;
+    line-height: 1.5;
+    color: #333;
+    white-space: pre-line;
+}
+
+.hidden {
+    display: none;
+}

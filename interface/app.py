@@ -549,7 +549,7 @@ def get_evaluation(log_id):
     # Check if evaluation is in progress
     if log_id in ongoing_evaluations:
         evaluation_data = ongoing_evaluations[log_id]
-        print(f"Found ongoing evaluation: {evaluation_data}")
+        # print(f"Found ongoing evaluation: {evaluation_data}")
         return jsonify(evaluation_data), 200, response_headers
     
     # Check for existing evaluation in the log file

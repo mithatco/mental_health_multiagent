@@ -2,6 +2,7 @@ import os
 import json
 import datetime
 from typing import List, Dict, Any, Optional
+from collections import defaultdict
 
 class ChatLogger:
     """Class for handling chat log saving and loading."""
@@ -117,7 +118,13 @@ class ChatLogger:
         rag_summary = {
             "total_rag_queries": 0,
             "total_documents_accessed": 0,
-            "documents_accessed": {}
+            "documents_accessed": {},
+            "evaluation_metrics": {
+                "contextual_relevancy": {"total_score": 0, "count": 0, "reasons": []},
+                "faithfulness": {"total_score": 0, "count": 0, "reasons": []},
+                "answer_relevancy": {"total_score": 0, "count": 0, "reasons": []},
+                "overall": {"total_score": 0, "count": 0}
+            }
         }
         
         # Process all messages looking for RAG usage
@@ -156,5 +163,49 @@ class ChatLogger:
                                 "average_score": score,
                                 "example_excerpt": doc.get("excerpt", doc.get("highlight", "No excerpt available"))
                             }
+                    
+                    # Track evaluation metrics if available
+                    if "evaluation" in rag_usage:
+                        eval_data = rag_usage["evaluation"]
+                        
+                        # Track individual metrics
+                        for metric_name in ["contextual_relevancy", "faithfulness", "answer_relevancy"]:
+                            if metric_name in eval_data and "score" in eval_data[metric_name]:
+                                metric_data = eval_data[metric_name]
+                                score = metric_data.get("score", 0)
+                                reason = metric_data.get("reason", "No reason provided")
+                                
+                                # Add score to total
+                                rag_summary["evaluation_metrics"][metric_name]["total_score"] += score
+                                rag_summary["evaluation_metrics"][metric_name]["count"] += 1
+                                
+                                # Store reason with score for context
+                                reason_entry = {
+                                    "score": score,
+                                    "reason": reason,
+                                    "passed": metric_data.get("passed", False)
+                                }
+                                rag_summary["evaluation_metrics"][metric_name]["reasons"].append(reason_entry)
+                        
+                        # Track overall score
+                        if "average_score" in eval_data:
+                            rag_summary["evaluation_metrics"]["overall"]["total_score"] += eval_data["average_score"]
+                            rag_summary["evaluation_metrics"]["overall"]["count"] += 1
+        
+        # Calculate averages for all metrics
+        for metric, data in rag_summary["evaluation_metrics"].items():
+            if data["count"] > 0:
+                data["average_score"] = round(data["total_score"] / data["count"], 4)
+                
+                # Limit to most recent 5 reasons to avoid huge logs
+                if "reasons" in data:
+                    data["reasons"] = data["reasons"][-5:]
+            else:
+                # Remove metrics with no data
+                data.pop("total_score", None)
+                data.pop("count", None)
+                data["average_score"] = None
+                if "reasons" in data:
+                    data.pop("reasons", None)
         
         return rag_summary
