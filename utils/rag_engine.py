@@ -245,12 +245,21 @@ class RAGEngine:
                 # Extract and highlight the most relevant portion of the document
                 highlighted_content = self._extract_highlight(doc.content, query)
                 
+                # Generate a relevance explanation for why this document was returned
+                relevance_explanation = self._generate_relevance_explanation(
+                    query=query, 
+                    document_content=doc.content, 
+                    score=score, 
+                    highlighted_excerpt=highlighted_content
+                )
+                
                 # Prepare document data
                 doc_info = {
                     "title": source,
                     "score": round(score, 4),
                     "highlight": highlighted_content,
-                    "excerpt": doc.content[:100] + "..." if len(doc.content) > 100 else doc.content
+                    "excerpt": doc.content[:100] + "..." if len(doc.content) > 100 else doc.content,
+                    "relevance_explanation": relevance_explanation
                 }
                 documents.append(doc_info)
                 self.accessed_documents.append(doc_info)
@@ -310,6 +319,68 @@ class RAGEngine:
         
         # Fallback to first part of content
         return content[:context_size] + "..."
+    
+    def _generate_relevance_explanation(self, query: str, document_content: str, 
+                                        score: float, highlighted_excerpt: str) -> str:
+        """
+        Generate an explanation of why a document is relevant to the query.
+        
+        Args:
+            query: The original query
+            document_content: The document content
+            score: The relevance score
+            highlighted_excerpt: The highlighted excerpt from the document
+            
+        Returns:
+            A brief explanation of document relevance
+        """
+        # Extract key terms from the query
+        query_terms = set(self._extract_key_terms(query))
+        
+        # Extract key terms from the highlighted excerpt
+        excerpt_terms = set(self._extract_key_terms(highlighted_excerpt))
+        
+        # Find matching terms
+        matching_terms = query_terms.intersection(excerpt_terms)
+        
+        if matching_terms:
+            # We found matching terms
+            term_list = ", ".join(f'"{term}"' for term in list(matching_terms)[:3])
+            if len(matching_terms) > 3:
+                term_list += f", and {len(matching_terms) - 3} more"
+            
+            if score > 0.8:
+                return f"High relevance: Contains key terms {term_list} that directly match your query."
+            elif score > 0.6:
+                return f"Moderate relevance: Contains related terms {term_list} matching aspects of your query."
+            else:
+                return f"Some relevance: Contains terms {term_list} that have contextual connection to your query."
+        else:
+            # No direct term matches, but still semantically relevant
+            if score > 0.8:
+                return "High semantic relevance despite no direct term matches. Contains conceptually related information."
+            elif score > 0.6:
+                return "Moderate semantic relevance based on conceptual similarity to your query."
+            else:
+                return "Included based on broader contextual relevance to your query topic."
+    
+    def _extract_key_terms(self, text: str) -> List[str]:
+        """Extract important terms from text, removing stopwords."""
+        # Simple stopword list - could be expanded
+        stopwords = {'a', 'an', 'the', 'and', 'or', 'but', 'if', 'because', 'as', 'what',
+                    'when', 'where', 'how', 'is', 'are', 'was', 'were', 'be', 'been', 'being',
+                    'have', 'has', 'had', 'do', 'does', 'did', 'to', 'at', 'by', 'for', 'with',
+                    'about', 'against', 'between', 'into', 'through', 'during', 'before', 'after',
+                    'above', 'below', 'from', 'up', 'down', 'in', 'out', 'on', 'off', 'over', 'under'}
+        
+        # Convert to lowercase, remove punctuation, and split into words
+        words = ''.join([c.lower() if c.isalnum() else ' ' for c in text]).split()
+        
+        # Filter out stopwords and short words
+        key_terms = [word for word in words if word not in stopwords and len(word) > 2]
+        
+        # Return unique terms
+        return list(set(key_terms))
     
     def get_context_for_question(self, question: str, top_k: int = 3) -> Dict[str, Any]:
         """

@@ -157,11 +157,15 @@ class ChatLogger:
                             new_avg = ((current_avg * (current_count - 1)) + score) / current_count
                             rag_summary["documents_accessed"][title]["average_score"] = round(new_avg, 4)
                         else:
+                            # Get relevance explanation if available
+                            relevance_explanation = doc.get("relevance_explanation", "")
+                            
                             rag_summary["documents_accessed"][title] = {
                                 "access_count": 1,
                                 "highest_score": score,
                                 "average_score": score,
-                                "example_excerpt": doc.get("excerpt", doc.get("highlight", "No excerpt available"))
+                                "example_excerpt": doc.get("excerpt", doc.get("highlight", "No excerpt available")),
+                                "relevance_explanation": relevance_explanation
                             }
                     
                     # Track evaluation metrics if available

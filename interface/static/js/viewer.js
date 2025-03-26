@@ -810,8 +810,13 @@ function displayRagSummary(ragSummary) {
                         ${info.average_score ? `<div class="score"><strong>Average Score:</strong> ${info.average_score.toFixed(4)}</div>` : ''}
                     </div>
                     ${info.example_excerpt ? `
-                        <div class="document-excerpt">
+                        <!-- <div class="document-excerpt">
                             <strong>Example excerpt:</strong> "${info.example_excerpt}"
+                        </div> -->
+                    ` : ''}
+                    ${info.relevance_explanation ? `
+                        <div class="relevance-explanation">
+                            <strong>Why it's relevant:</strong> ${info.relevance_explanation}
                         </div>
                     ` : ''}
                 </div>
