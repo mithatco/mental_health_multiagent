@@ -158,14 +158,39 @@ class MentalHealthAssistant:
         Clinical observations and potential concerns:
         {observations}
         
-        Please analyze these responses and observations and provide a professional assessment that includes:
-        1. A compassionate summary of what you've heard from the patient
-        2. A potential diagnosis or clinical impression based on the symptoms
-        3. Explanation of the reasoning behind this assessment
-        4. Recommended next steps or treatment options
+        Please analyze these responses and observations and provide a professional assessment that MUST follow this EXACT structure:
+
+        1. First paragraph: Write a compassionate summary of what you've heard from the patient, showing empathy for their situation.
         
+        2. After that, include a section with the heading "**Diagnosis:**" (exactly as shown, with the asterisks)
+           - On the same line, immediately after the heading, provide the specific diagnosis or clinical impression
+           - Do not add extra newlines between the heading and the diagnosis
+        
+        3. Next, include a section with the heading "**Reasoning:**" (exactly as shown, with the asterisks)
+           - Immediately after this heading, explain your rationale for the diagnosis/impression
+           - Do not add extra newlines between the heading and your explanation
+        
+        4. Finally, include a section with the heading "**Recommended Next Steps/Treatment Options:**" (exactly as shown, with the asterisks)
+           - List specific numbered recommendations (1., 2., 3., etc.)
+           - Make each recommendation clear and actionable
+        
+        When writing your assessment, use these special tags:
+        - Wrap medical terms and conditions in <med>medical term</med> tags (e.g., <med>Major Depressive Disorder</med>)
+        - Wrap symptoms in <sym>symptom</sym> tags (e.g., <sym>persistent low mood</sym>)
+        - Wrap patient quotes or paraphrases in <quote>patient quote</quote> tags (e.g., <quote>I can't seem to get out of bed</quote>, <quote>trapped</quote>)
+        
+        EXTREMELY IMPORTANT:
+        1. Do NOT include any introductory statements answering the prompt" 
+        2. Do NOT begin with phrases like "Okay, here's a clinical assessment..."
+        3. Start DIRECTLY with the compassionate summary paragraph without any preamble
+        4. Never include meta-commentary about what you're about to write
+        5. Include all four components in the exact order specified
+        6. Format section headings consistently with double asterisks
+        7. Maintain proper spacing between sections (one blank line)
+        8. Do not add extra newlines within sections
+        9. Always wrap medical terms, symptoms, and quotes in the specified tags
+
         Keep your tone professional but warm, showing empathy while maintaining clinical objectivity.
-        Only output the diagnosis without additional intros, summaries, or sign-offs.
         """
         
         # Initialize RAG usage information

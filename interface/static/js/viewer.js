@@ -490,8 +490,8 @@ function loadChat(chatId) {
             // Update chat messages
             displayChat(data.conversation);
             
-            // Update diagnosis
-            document.getElementById('diagnosis-content').innerHTML = formatText(data.diagnosis || 'No diagnosis available');
+            // Update diagnosis with new function
+            updateDiagnosis(data.diagnosis || 'No diagnosis available');
             
             // Update RAG summary
             displayRagSummary(data.rag_summary);
@@ -711,12 +711,154 @@ function displayChat(conversation) {
     chatContainer.scrollTop = 0;
 }
 
-// Format text with line breaks
+// Format text with Markdown support
 function formatText(text) {
     if (!text) return '';
     
-    // Replace newlines with <br> tags
-    return text.split('\n').join('<br>');
+    // Check if marked.js is loaded, if not use basic formatting
+    if (typeof marked === 'undefined') {
+        // Basic formatting - just replace newlines with <br> tags
+        return text.split('\n').join('<br>');
+    }
+    
+    // First, process our custom tags and replace them with HTML
+    // This must be done before Markdown processing to prevent tag interference
+    text = processCustomTags(text);
+    
+    // Configure marked options for security and GitHub flavor
+    marked.setOptions({
+        breaks: true,           // Add <br> on single line breaks
+        gfm: true,              // Use GitHub Flavored Markdown
+        headerIds: false,       // Don't add IDs to headers (for security)
+        mangle: false,          // Don't mangle email links
+        sanitize: false,        // Let DOMPurify handle sanitization
+        smartLists: true,       // Use smarter list behavior
+        smartypants: true,      // Use smart typography like quotes and dashes
+    });
+    
+    // Parse markdown
+    let html = marked.parse(text);
+    
+    // Return parsed HTML with special handling for diagnosis content
+    return html;
+}
+
+// Process custom tags for medical terms, symptoms, and quotes
+function processCustomTags(text) {
+    // Replace medical term tags
+    text = text.replace(/<med>(.*?)<\/med>/g, '<span class="medical-term">$1</span>');
+    
+    // Replace symptom tags
+    text = text.replace(/<sym>(.*?)<\/sym>/g, '<span class="symptom">$1</span>');
+    
+    // Replace patient quote tags
+    text = text.replace(/<quote>(.*?)<\/quote>/g, '<span class="patient-quote">$1</span>');
+    
+    return text;
+}
+
+// Update diagnosis display with better markdown handling
+function updateDiagnosis(diagnosisText) {
+    const diagnosisContent = document.getElementById('diagnosis-content');
+    
+    if (!diagnosisText || diagnosisText === 'No diagnosis available') {
+        diagnosisContent.innerHTML = '<p>No diagnosis available</p>';
+        return;
+    }
+    
+    // Add diagnosis content with markdown support
+    diagnosisContent.innerHTML = formatText(diagnosisText);
+    
+    // Add special class to diagnosis content for styling
+    diagnosisContent.classList.add('markdown-content');
+    
+    // Add color coding to diagnosis sections
+    colorCodeDiagnosisSections(diagnosisContent);
+    
+    // Add collapsible behavior to sections
+    setupCollapsibleSections(diagnosisContent);
+}
+
+// Color code diagnosis sections by content
+function colorCodeDiagnosisSections(container) {
+    // Apply color coding to Clinical Impression section
+    applyColorToElements(container, ['h2', 'h3', 'strong'], 
+                        ['Clinical Impression', 'clinical impression'], 
+                        'clinical-impression-section');
+    
+    // Apply color coding to Reasoning section
+    applyColorToElements(container, ['h2', 'h3', 'strong'], 
+                        ['Reasoning', 'reasoning'], 
+                        'reasoning-section');
+    
+    // Apply color coding to Recommendations section
+    applyColorToElements(container, ['h2', 'h3', 'strong'], 
+                        ['Recommend', 'recommend', 'Treatment', 'treatment', 'Next Steps'], 
+                        'recommendations-section');
+}
+
+// Apply color coding class to elements containing specific text
+function applyColorToElements(container, selectors, textPhrases, className) {
+    // Query for all specified elements
+    selectors.forEach(selector => {
+        const elements = container.querySelectorAll(selector);
+        
+        elements.forEach(element => {
+            const content = element.textContent.toLowerCase();
+            
+            // Check if element text contains any of the specified phrases
+            if (textPhrases.some(phrase => content.includes(phrase.toLowerCase()))) {
+                element.classList.add(className);
+            }
+        });
+    });
+}
+
+// Setup collapsible sections in diagnosis content
+function setupCollapsibleSections(container) {
+    // Find all headings that might represent sections
+    const headings = container.querySelectorAll('h1, h2, h3, h4');
+    
+    headings.forEach(heading => {
+        // Only process headings that have content following them
+        let sectionContent = [];
+        let nextEl = heading.nextElementSibling;
+        
+        // Collect elements until we hit another heading or run out of siblings
+        while (nextEl && !nextEl.matches('h1, h2, h3, h4')) {
+            sectionContent.push(nextEl);
+            nextEl = nextEl.nextElementSibling;
+        }
+        
+        if (sectionContent.length > 0) {
+            // Make the heading clickable
+            heading.classList.add('collapsible-heading');
+            
+            // Add expand/collapse icon
+            const icon = document.createElement('span');
+            icon.className = 'collapse-icon';
+            icon.innerHTML = '▼';
+            heading.appendChild(icon);
+            
+            // Create a container for the section content
+            const sectionDiv = document.createElement('div');
+            sectionDiv.className = 'collapsible-section';
+            
+            // Move content into the container
+            sectionContent.forEach(el => {
+                sectionDiv.appendChild(el);
+            });
+            
+            // Insert the container after the heading
+            heading.after(sectionDiv);
+            
+            // Add click event to toggle section visibility
+            heading.addEventListener('click', () => {
+                sectionDiv.classList.toggle('collapsed');
+                icon.innerHTML = sectionDiv.classList.contains('collapsed') ? '►' : '▼';
+            });
+        }
+    });
 }
 
 // Export current chat as text
