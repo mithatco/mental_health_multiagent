@@ -175,9 +175,9 @@ class MentalHealthAssistant:
            - Make each recommendation clear and actionable
         
         When writing your assessment, use these special tags:
-        - Wrap medical terms and conditions in <med>medical term</med> tags (e.g., <med>Major Depressive Disorder</med>)
-        - Wrap symptoms in <sym>symptom</sym> tags (e.g., <sym>persistent low mood</sym>)
-        - Wrap patient quotes or paraphrases in <quote>patient quote</quote> tags (e.g., <quote>I can't seem to get out of bed</quote>, <quote>trapped</quote>)
+        - Wrap medical terms and conditions in <med>medical term</med> tags
+        - Wrap symptoms in <sym>symptom</sym> tags
+        - Wrap patient quotes or paraphrases in <quote>patient quote</quote> tags
         
         EXTREMELY IMPORTANT:
         1. Do NOT include any introductory statements answering the prompt" 

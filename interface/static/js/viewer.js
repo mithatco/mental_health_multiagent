@@ -941,24 +941,36 @@ function displayRagSummary(ragSummary) {
     if (ragSummary.documents_accessed && Object.keys(ragSummary.documents_accessed).length > 0) {
         html += '<div class="documents-list">';
         
-        for (const [path, info] of Object.entries(ragSummary.documents_accessed)) {
+        // Convert object to array and sort by average_score (highest first)
+        const sortedDocuments = Object.entries(ragSummary.documents_accessed)
+            .map(([path, info]) => ({ path, ...info }))
+            .sort((a, b) => {
+                // Handle missing scores (null, undefined) by placing them at the end
+                if (!a.average_score) return 1;
+                if (!b.average_score) return -1;
+                // Sort in descending order (highest score first)
+                return b.average_score - a.average_score;
+            });
+        
+        // Generate HTML for sorted documents
+        for (const doc of sortedDocuments) {
             html += `
                 <div class="document-item">
                     <div class="document-header">
-                        <div class="document-path">${path}</div>
-                        <div class="access-count">Accessed ${info.access_count} time${info.access_count !== 1 ? 's' : ''}</div>
+                        <div class="document-path">${doc.path}</div>
+                        <div class="access-count">Accessed ${doc.access_count} time${doc.access_count !== 1 ? 's' : ''}</div>
                     </div>
                     <div class="document-scores">
-                        ${info.average_score ? `<div class="score"><strong>Average Score:</strong> ${info.average_score.toFixed(4)}</div>` : ''}
+                        ${doc.average_score ? `<div class="score"><strong>Average Score:</strong> ${doc.average_score.toFixed(4)}</div>` : ''}
                     </div>
-                    ${info.example_excerpt ? `
+                    ${doc.example_excerpt ? `
                         <!-- <div class="document-excerpt">
-                            <strong>Example excerpt:</strong> "${info.example_excerpt}"
+                            <strong>Example excerpt:</strong> "${doc.example_excerpt}"
                         </div> -->
                     ` : ''}
-                    ${info.relevance_explanation ? `
+                    ${doc.relevance_explanation ? `
                         <div class="relevance-explanation">
-                            <strong>Why it's relevant:</strong> ${info.relevance_explanation}
+                            <strong>Why it's relevant:</strong> ${doc.relevance_explanation}
                         </div>
                     ` : ''}
                 </div>
