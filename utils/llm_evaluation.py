@@ -75,110 +75,144 @@ class LLMEvaluator:
     
     def __init__(self, ollama_url="http://localhost:11434", model="qwen2.5:3b"):
         """
-        Initialize the LLM evaluator.
+        Initialize the LLM-based evaluator.
         
         Args:
-            ollama_url: URL for the Ollama API
+            ollama_url: URL of the Ollama API
             model: Name of the model to use for evaluation
         """
-        self.ollama_url = ollama_url
+        from ollama import Client as OllamaClient
+        self.client = OllamaClient(host=ollama_url)
         self.model = model
-        self.client = OllamaClient(base_url=ollama_url)
+        print(f"Initialized LLM evaluator with model {model}")
     
     def evaluate_log(self, log_data: Dict[str, Any]) -> Dict[str, Any]:
         """
         Evaluate a conversation log using the LLM.
         
         Args:
-            log_data: Dictionary containing the conversation log
+            log_data: Dictionary containing conversation data
         
         Returns:
-            Dictionary containing evaluation results
+            Dictionary with evaluation results
         """
-        start_time = time.time()
-        
-        # Extract conversation and diagnosis
-        conversation = log_data.get('conversation', [])
-        diagnosis = log_data.get('diagnosis', '')
-        
-        # Extract questionnaire information and try to load the content
-        questionnaire_name = log_data.get('questionnaire', 'Unknown questionnaire')
-        questionnaire_content = self._load_questionnaire_content(questionnaire_name)
-        
-        # Extract patient profile if available
-        patient_profile = None
-        if 'metadata' in log_data and 'patient_profile' in log_data['metadata']:
-            patient_profile = log_data['metadata']['patient_profile']
-        
-        # Format conversation for evaluation
-        formatted_conversation = self._format_conversation(conversation)
-        
-        # Evaluate based on rubric
-        rubric_results = self._evaluate_with_rubric(formatted_conversation, diagnosis, questionnaire_content)
-        
-        # Check diagnosis accuracy if patient profile is available
-        diagnosis_accuracy = None
-        if patient_profile:
+        try:
+            start_time = time.time()
+            # Extract necessary components from log data
+            conversation = log_data.get('conversation', [])
+            diagnosis = log_data.get('diagnosis', 'No diagnosis provided')
+            questionnaire = log_data.get('questionnaire', 'Unknown questionnaire')
+            
+            # Extract patient profile from metadata
+            patient_profile = 'unknown'
+            if 'metadata' in log_data and 'patient_profile' in log_data['metadata']:
+                patient_profile = log_data['metadata']['patient_profile']
+            
+            # Format conversation for evaluation
+            formatted_conversation = self._format_conversation(conversation)
+
+            print(f"Formatted conversation")
+            
+            # Load questionnaire content
+            questionnaire_content = self._load_questionnaire_content(questionnaire)
+
+            print(f"Loaded questionnaire content")
+            
+            # Evaluate based on rubric
+            rubric_results = self._evaluate_with_rubric(formatted_conversation, diagnosis, questionnaire_content)
+            
+            print(f"Evaluated based on rubric")
+            
+            # Evaluate questions coverage and quality
+            question_results = self._evaluate_questions(formatted_conversation, questionnaire_content)
+
+            print(f"Evaluated questions coverage and quality")
+
+            # Evaluate diagnosis accuracy against patient profile
             diagnosis_accuracy = self._evaluate_diagnosis_accuracy(diagnosis, patient_profile)
-        
-        # Format results
-        results = {
-            'timestamp': time.strftime('%Y-%m-%d %H:%M:%S'),
-            'model': self.model,
-            'evaluation_time': time.time() - start_time,
-            'rubric_scores': rubric_results.get('scores', {}),
-            'explanations': rubric_results.get('explanations', {}),
-            'overall_comments': rubric_results.get('overall_comments', ''),
-            'average_score': rubric_results.get('average_score', 0),
-            'rubric': EVALUATION_RUBRIC
-        }
-        
-        if diagnosis_accuracy:
-            results['diagnosis_accuracy'] = diagnosis_accuracy
-        
-        return results
+
+            print(f"Evaluated diagnosis accuracy")
+            
+            # Combine results
+            results = {
+                'timestamp': time.strftime('%Y-%m-%d %H:%M:%S'),
+                'model': self.model,
+                'rubric_scores': rubric_results.get('scores', {}),
+                'explanations': rubric_results.get('explanations', {}),
+                'overall_comments': rubric_results.get('overall_comments', ''),
+                'average_score': rubric_results.get('average_score', 0),
+                'diagnosis_accuracy': diagnosis_accuracy,
+                'question_evaluation': question_results,
+                'evaluation_time': time.time() - start_time
+            }
+
+            return results
+        except Exception as e:
+            print(f"Error in evaluation: {e}")
+            import traceback
+            traceback.print_exc()
+            return {
+                'error': str(e),
+                'timestamp': time.strftime('%Y-%m-%d %H:%M:%S')
+            }
     
     def _load_questionnaire_content(self, questionnaire_name: str) -> str:
         """
-        Load questionnaire content from file.
+        Load the content of the specified questionnaire.
         
         Args:
-            questionnaire_name: Name of the questionnaire file
-        
-        Returns:
-            Content of the questionnaire file or a placeholder if not found
-        """
-        # Define possible directories where questionnaires might be stored
-        possible_dirs = [
-            "documents/questionnaires",
-            "documents",
-            "questionnaires"
-        ]
-        
-        # Try to find the questionnaire file
-        for dir_path in possible_dirs:
-            # Check relative to current directory
-            file_path = os.path.join(dir_path, questionnaire_name)
-            if os.path.isfile(file_path):
-                try:
-                    with open(file_path, 'r') as f:
-                        return f.read()
-                except Exception as e:
-                    print(f"Error reading questionnaire file {file_path}: {e}")
-                    break
+            questionnaire_name: Name or path of the questionnaire file
             
-            # Check relative to project root (assuming we're in a subdirectory)
-            root_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), dir_path, questionnaire_name)
-            if os.path.isfile(root_file_path):
-                try:
-                    with open(root_file_path, 'r') as f:
-                        return f.read()
-                except Exception as e:
-                    print(f"Error reading questionnaire file {root_file_path}: {e}")
-                    break
+        Returns:
+            String containing the questionnaire content
+        """
+        questionnaire_content = "No questionnaire content available"
         
-        # If questionnaire file not found, return a description of what would be expected
-        return f"Questionnaire '{questionnaire_name}' (specific content not available)"
+        try:
+            # Get project root path
+            import os
+            script_dir = os.path.dirname(os.path.realpath(__file__))
+            project_root = os.path.dirname(script_dir)
+            
+            # Try different possible locations for the questionnaire
+            possible_paths = [
+                questionnaire_name,  # Direct path
+                os.path.join(project_root, questionnaire_name),  # Relative to project root
+                os.path.join(project_root, "documents", "questionnaires", questionnaire_name),  # In questionnaires dir
+                os.path.join(project_root, "documents", "questionnaires", os.path.basename(questionnaire_name))  # Just the filename
+            ]
+            
+            # Also try adding .txt extension if not already present
+            for path in list(possible_paths):  # Create a copy to avoid modifying during iteration
+                if not path.endswith(('.txt', '.pdf')):
+                    possible_paths.append(f"{path}.txt")
+            
+            # Try each path
+            for path in possible_paths:
+                if os.path.exists(path):
+                    print(f"Found questionnaire at: {path}")
+                    
+                    if path.endswith('.pdf'):
+                        # Use the DocumentProcessor for PDF files
+                        try:
+                            from utils.document_processor import DocumentProcessor
+                            document = DocumentProcessor.load_document(path)
+                            if document and document.content:
+                                return document.content
+                        except Exception as e:
+                            print(f"Error loading PDF questionnaire: {e}")
+                    else:
+                        # Regular text file
+                        with open(path, 'r') as f:
+                            return f.read()
+            
+            print(f"Questionnaire not found: {questionnaire_name}")
+            print(f"Tried paths: {possible_paths}")
+            
+        except Exception as e:
+            print(f"Error loading questionnaire content: {e}")
+        
+        return questionnaire_content
     
     def _format_conversation(self, conversation: List[Dict[str, Any]]) -> str:
         """
@@ -428,6 +462,175 @@ Format your response as valid JSON:
                 "confidence": 0,
                 "explanation": f"Error occurred during evaluation: {str(e)}"
             }
+
+    def _evaluate_questions(self, conversation: str, questionnaire_content: str) -> Dict[str, Any]:
+        """
+        Evaluate how well the assistant covered the questions from the questionnaire.
+        
+        Args:
+            conversation: Formatted conversation
+            questionnaire_content: Content of the questionnaire used
+            
+        Returns:
+            Dictionary containing percentage of questions asked and quality score
+        """
+        # Use the existing extract_questions_from_text function to get all questions
+        try:
+            from utils.document_processor import extract_questions_from_text
+            extracted_questions = extract_questions_from_text(questionnaire_content)
+            
+            # Log the extracted questions for debugging
+            print(f"Extracted {len(extracted_questions)} questions from questionnaire:")
+            for i, q in enumerate(extracted_questions):
+                print(f"  Question {i+1}: {q}")
+            
+            if not extracted_questions or len(extracted_questions) < 5:
+                print("Warning: Couldn't extract enough questions from the questionnaire. Falling back to LLM extraction.")
+                return self.fallback_evaluation(conversation, questionnaire_content)
+            
+            # Extract therapist lines from the conversation
+            therapist_lines = []
+            lines = conversation.split('\n')
+            
+            # Skip the first line if it's from the therapist (introduction)
+            start_index = 1 if lines and lines[0].lower().startswith('therapist:') else 0
+            
+            # Process all lines except possibly the first and last
+            for i, line in enumerate(lines[start_index:], start_index):
+                if line.lower().startswith('therapist:'):
+                    # Skip the last therapist line if it looks like a closing statement
+                    if i == len(lines) - 1 or i == len(lines) - 2:
+                        # Check if it's a closing remark (shorter and contains certain keywords)
+                        content = line[line.index(':') + 1:].strip().lower()
+                        closing_keywords = ['thank', 'appreciation', 'recommend', 'follow up', 'follow-up', 
+                                          'appointment', 'session', 'goodbye', 'diagnosis']
+                        
+                        if any(keyword in content for keyword in closing_keywords) or len(content) < 100:
+                            continue  # Skip this line as it's likely a closing remark
+                    
+                    # Extract the content after "Therapist:"
+                    content = line[line.index(':') + 1:].strip()
+                    therapist_lines.append(content)
+            
+            print(f"Extracted {len(therapist_lines)} therapist lines from conversation")
+            
+            # Now let the LLM evaluate the question coverage
+            prompt = f"""
+You are an expert clinical supervisor evaluating how well a mental health professional covered a standardized questionnaire in a patient interview.
+
+I need you to:
+1. Analyze which questions from the questionnaire were asked during the conversation
+2. Calculate what percentage of the questionnaire was covered
+3. Rate the quality of how questions were asked on a scale of 1-5
+
+QUESTIONNAIRE QUESTIONS:
+---
+{chr(10).join([f"{i+1}. {q}" for i, q in enumerate(extracted_questions)])}
+---
+
+THERAPIST'S QUESTIONS/STATEMENTS:
+---
+{chr(10).join([f"- {line}" for line in therapist_lines])}
+---
+
+For your evaluation, please:
+
+1. For EACH question in the questionnaire, determine if the therapist asked it (or a reasonable equivalent).
+   - A question counts as "asked" if the therapist conveyed the same intent, even if phrased differently
+   - If you're unsure, mark it as not asked
+
+2. Rate the quality of how questions were asked on a scale of 1-5:
+   1: Poor (questions were significantly altered in ways that changed their meaning)
+   2: Fair (questions were recognizable but lost important nuance)
+   3: Good (questions preserved the essential meaning but had minor changes)
+   4: Very Good (questions were asked with minimal alterations)
+   5: Excellent (questions were asked verbatim or with appropriate clinical adaptation)
+
+3. Provide a brief explanation of your assessment
+
+FORMAT YOUR RESPONSE AS VALID JSON:
+{{
+  "questions_asked": [integer number of questions correctly asked],
+  "quality_score": [integer 1-5],
+  "explanation": [string - your explanation],
+  "question_analysis": [
+    {{
+      "original": "Original question text",
+      "asked": true/false,
+      "therapist_version": "How the therapist phrased it (if asked)" or "Not asked"
+    }},
+    ... MAKE SURE TO INCLUDE ALL QUESTIONS ...
+  ]
+}}
+"""
+            
+            try:
+                # Generate response using the LLM
+                response = self.client.generate(
+                    model=self.model,
+                    prompt=prompt
+                )
+                
+                # Extract text from response
+                response_text = response.get('response', '')
+                
+                # Extract JSON from the response
+                json_match = re.search(r'({[\s\S]*})', response_text)
+                if json_match:
+                    json_str = json_match.group(1)
+                    try:
+                        results = json.loads(json_str)
+                        
+                        # Extract the key metrics
+                        questions_asked = int(results.get("questions_asked", 0))
+                        quality_score = int(results.get("quality_score", 0))
+                        explanation = results.get("explanation", "")
+                        question_analysis = results.get("question_analysis", [])
+                        
+                        # Calculate percentage
+                        percentage_asked = (questions_asked / len(extracted_questions)) * 100
+                        
+                        # Log the calculation details
+                        # print(f"Question analysis calculation from LLM:")
+                        # print(f"Total questions: {len(extracted_questions)}")
+                        # print(f"Questions asked: {questions_asked}")
+                        # print(f"Percentage asked: {percentage_asked:.2f}%")
+                        
+                        return {
+                            "total_questions": len(extracted_questions),
+                            "questions_asked": questions_asked,
+                            "percentage_asked": percentage_asked,
+                            "quality_score": quality_score,
+                            "explanation": explanation,
+                            "question_analysis": question_analysis
+                        }
+                        
+                    except json.JSONDecodeError as e:
+                        print(f"Error parsing question evaluation JSON: {e}")
+                        print(f"Response was: {json_str}")
+                        return self.fallback_evaluation(conversation, questionnaire_content)
+                else:
+                    print("Could not extract JSON from question evaluation response")
+                    print(f"Response was: {response_text}")
+                    return self.fallback_evaluation(conversation, questionnaire_content)
+                    
+            except Exception as e:
+                print(f"Error during LLM evaluation: {e}")
+                return self.fallback_evaluation(conversation, questionnaire_content)
+                
+        except Exception as e:
+            print(f"Error in question evaluation: {e}")
+            import traceback
+            traceback.print_exc()
+        
+        return {
+            "total_questions": len(extracted_questions),
+            "questions_asked": 0,
+            "percentage_asked": 0,
+            "quality_score": 0,
+            "explanation": "",
+            "question_analysis": []
+        }
 
 class ChatLogEvaluator:
     """Evaluate chat logs using the LLM-based evaluator."""

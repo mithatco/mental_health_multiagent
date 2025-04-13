@@ -790,11 +790,44 @@ table tbody tr:hover {
 }
 
 .error-message {
-    background-color: #ffebee;
-    border-left: 4px solid #f44336;
-    padding: 10px;
-    margin: 10px 0;
+    background-color: #ffeaea;
+    border: 1px solid #ffb7b7;
     border-radius: 4px;
+    padding: 15px;
+    margin: 15px 0;
+    color: #d32f2f;
+}
+
+.error-message h3 {
+    margin-top: 0;
+    color: #d32f2f;
+}
+
+.details-button {
+    background-color: #f5f5f5;
+    color: #555;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    font-size: 0.9em;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.details-button:hover {
+    background-color: #e0e0e0;
+}
+
+.error-details {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 10px;
+    font-family: monospace;
+    font-size: 0.9em;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    color: #555;
 }
 
 /* Section header and toggle styles */
@@ -1861,5 +1894,277 @@ table tbody tr:hover {
     display: inline-block;
 }
 
-
 /* ...existing code... */
+
+/* Add styles for info icon and tooltip */
+.info-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    line-height: 16px;
+    border-radius: 50%;
+    background-color: #ddd;
+    color: #666;
+    font-size: 12px;
+    cursor: help;
+    margin-left: 4px;
+}
+
+.tooltip {
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    z-index: 1000;
+    max-width: 300px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+}
+
+.tooltip.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.timing-tooltip p {
+    margin: 4px 0;
+    font-size: 13px;
+}
+
+/* Styles for question evaluation */
+.question-evaluation {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.question-metrics {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+
+.question-metric {
+    text-align: center;
+    width: 45%;
+}
+
+.question-metric .metric-header {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.percentage-circle {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+}
+
+.percentage-circle svg {
+    width: 100%;
+    height: 100%;
+}
+
+.circle-bg {
+    fill: none;
+    stroke: #eee;
+    stroke-width: 3.8;
+}
+
+.circle {
+    fill: none;
+    stroke-width: 3.8;
+    stroke: #4CAF50;
+    stroke-linecap: round;
+    animation: progress 1s ease-out forwards;
+}
+
+.percentage {
+    fill: #444;
+    font-size: 0.5em;
+    text-anchor: middle;
+    font-weight: bold;
+}
+
+@keyframes progress {
+    0% {
+        stroke-dasharray: 0 100;
+    }
+}
+
+.quality-score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 120px;
+}
+
+.quality-stars {
+    margin-bottom: 8px;
+    font-size: 24px;
+}
+
+.quality-value {
+    font-weight: bold;
+    font-size: 18px;
+    color: #555;
+}
+
+.question-explanation {
+    background-color: #fff;
+    border-radius: 6px;
+    padding: 12px;
+    border-left: 4px solid #4CAF50;
+}
+
+.question-count {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #555;
+    font-weight: 500;
+}
+
+.question-details-toggle {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.show-questions-btn {
+    padding: 6px 12px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #555;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.show-questions-btn:hover {
+    background-color: #e7e7e7;
+}
+
+.question-details {
+    margin-top: 15px;
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+.question-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.question-table th,
+.question-table td {
+    padding: 8px 10px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.question-table th {
+    background-color: #f5f5f5;
+    font-weight: 600;
+    color: #444;
+}
+
+.question-asked {
+    background-color: #f0f7f0;
+}
+
+.question-not-asked {
+    background-color: #fff0f0;
+}
+
+.question-asked td:nth-child(2) {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.question-not-asked td:nth-child(2) {
+    color: #f44336;
+    font-weight: bold;
+}
+
+/* Info box */
+.info-box {
+    background-color: #f8f9fa;
+    border-left: 4px solid #4a69bd;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.info-box p {
+    margin: 0.5em 0;
+}
+
+.info-box p:first-child {
+    margin-top: 0;
+}
+
+.info-box p:last-child {
+    margin-bottom: 0;
+}
+
+.info-box strong {
+    color: #4a69bd;
+}
+
+.chat-input-container {
+    display: flex;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-top: 1px solid #e1e4e8;
+    padding-top: 15px;
+}
+
+.chat-input-container textarea {
+    flex: 1;
+    border: 1px solid #d1d5da;
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 14px;
+    resize: vertical;
+    min-height: 60px;
+    font-family: inherit;
+}
+
+.chat-input-container textarea:focus {
+    outline: none;
+    border-color: #4a69bd;
+    box-shadow: 0 0 0 3px rgba(74, 105, 189, 0.1);
+}
+
+.send-btn {
+    background-color: #4a69bd;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 15px;
+    margin-left: 10px;
+    cursor: pointer;
+    align-self: flex-end;
+    height: 40px;
+    transition: background-color 0.2s;
+}
+
+.send-btn:hover {
+    background-color: #3b5998;
+}
+
+.send-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}

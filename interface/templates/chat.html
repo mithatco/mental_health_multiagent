@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with Assistant - Mental Health Multi-Agent System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container app-container">
+        <div class="navbar">
+            <div class="nav-logo">Mental Health Multi-Agent</div>
+            <div class="nav-links">
+                <a href="/" class="nav-link">Logs</a>
+                <a href="/conversation" class="nav-link">Generate</a>
+                <a href="/chat" class="nav-link active">Chat</a>
+            </div>
+        </div>
+
+        <div class="main-layout">
+            <!-- Left side: Configuration form -->
+            <div class="config-panel" id="config-panel">
+                <h2>Chat Settings</h2>
+                <form id="chat-form">
+                    <div class="form-section">
+                        <div class="form-group">
+                            <label for="questionnaire-select">Select Questionnaire:</label>
+                            <select id="questionnaire-select" name="questionnaire" required>
+                                <option value="" disabled selected>Loading questionnaires...</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Model Selection</h3>
+                        <div class="form-group">
+                            <label for="assistant-model-select">Assistant Model:</label>
+                            <select id="assistant-model-select" name="assistant_model">
+                                <option value="" disabled selected>Loading models...</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Options</h3>
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="save-logs" name="save_logs" checked>
+                            <label for="save-logs">Save conversation logs</label>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="refresh-cache" name="refresh_cache">
+                            <label for="refresh-cache">Refresh document cache</label>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="use-rag" name="use_rag" checked>
+                            <label for="use-rag">Use RAG for enhanced responses</label>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" id="start-btn" class="start-btn">Start Chat</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Right side: Chat interface -->
+            <div class="conversation-panel" id="conversation-panel">
+                <div id="chat-view" style="display: block;">
+                    <div class="conversation-header">
+                        <h2>Chat as Client</h2>
+                        <div class="status" id="status">Ready to start</div>
+                    </div>
+                    
+                    <div class="info-box">
+                        <p><strong>Chat mode:</strong> You are the client, interacting with an AI mental health assistant.</p>
+                        <p>The assistant will conduct the assessment based on the selected questionnaire.</p>
+                    </div>
+                    
+                    <div class="conversation-display" id="conversation-display">
+                        <div class="conversation-placeholder">
+                            <p>Your conversation will appear here.</p>
+                            <p>Configure settings on the left and click "Start Chat".</p>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-input-container" id="chat-input-container" style="display: none;">
+                        <textarea id="user-input" placeholder="Type your response here..." rows="3"></textarea>
+                        <button id="send-btn" class="send-btn">Send</button>
+                    </div>
+                    
+                    <div class="diagnosis-panel" id="diagnosis-panel" style="display: none;">
+                        <h3>Diagnosis</h3>
+                        <div class="diagnosis-content" id="diagnosis-content">
+                            <p>The diagnosis will appear here after the conversation completes.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="conversation-actions">
+                        <button id="stop-btn" class="stop-btn" disabled>End Chat</button>
+                        <button id="view-log-btn" class="view-log-btn" disabled>View Saved Log</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+</body>
+</html> 

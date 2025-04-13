@@ -54,61 +54,374 @@ class ConversationHandler:
         if not disable_output:
             print("=== Starting Mental Health Assessment ===\n")
         
-        # Start with the assistant's first question
-        if not disable_output:
-            print("[DEBUG] Getting first message from assistant")
-        question = self.assistant.get_next_message()
+        # Check if we're in interactive mode with a human user
+        interactive_mode = False
+        human_user = False
+        if self.state_file:
+            try:
+                with open(self.state_file, 'r') as f:
+                    state = json.load(f)
+                    interactive_mode = state.get('interactive_mode', False)
+                    human_user = state.get('human_user', False)
+                    
+                    # If there are already messages in the state, load them
+                    if state.get('conversation', []):
+                        self.conversation_log = state.get('conversation', [])
+                        
+                        # Check if there's already a patient response waiting
+                        if len(self.conversation_log) > 0:
+                            # Check if the assistant has introduced itself
+                            self.assistant.has_introduced = any(
+                                msg.get('role') == 'assistant' for msg in self.conversation_log
+                            )
+                            
+                            if not disable_output:
+                                for msg in self.conversation_log:
+                                    role = msg.get('role', '')
+                                    content = msg.get('content', '')
+                                    print(f"{role.capitalize()}: {content}")
+                    
+                    if interactive_mode and human_user:
+                        if not disable_output:
+                            print("[DEBUG] Running in interactive mode with human user as patient")
+            except Exception as e:
+                if not disable_output:
+                    print(f"Warning: Could not read state file: {str(e)}")
         
-        # Check if the response is a dictionary with RAG usage info
-        if isinstance(question, dict) and "content" in question:
-            question_content = question["content"]
-            rag_usage = question.get("rag_usage", {})
-            
-            # Enhanced RAG metrics handling
-            if rag_usage:
-                self._update_rag_metrics(question_content, rag_usage)
-            
-            # Add to conversation log with RAG info
-            self.conversation_log.append({
-                "role": "assistant",
-                "content": question_content,
-                "rag_usage": rag_usage
-            })
-            
+        # Start with the assistant's first question or introduction if there's no conversation yet
+        if not self.conversation_log:
             if not disable_output:
-                print(f"Assistant: {question_content}")
+                print("[DEBUG] Getting first message from assistant")
+            question = self.assistant.get_next_message()
             
-            # Display enhanced RAG usage info if available
-            if rag_usage and rag_usage.get("documents", []):
-                documents = rag_usage.get("documents", [])
-                stats = rag_usage.get("stats", {})
-                if not disable_output and documents:
-                    print(f"\n[RAG Engine accessed {len(documents)} documents, avg relevance: {stats.get('avg_score', 0):.2f}]")
-                    for i, doc in enumerate(documents[:3]):  # Limit display to top 3
-                        print(f"  - Doc {i+1}: {doc.get('title', 'Unknown')} (score: {doc.get('score', 0):.2f})")
-                        if 'highlight' in doc:
-                            print(f"     Highlight: \"{doc['highlight']}\"")
+            # Check if the response is a dictionary with RAG usage info
+            if isinstance(question, dict) and "content" in question:
+                question_content = question["content"]
+                rag_usage = question.get("rag_usage", {})
                 
-            question = question_content  # Use just the content for patient interaction
-        else:
-            # Legacy format support
-            self.conversation_log.append({
-                "role": "assistant",
-                "content": question
-            })
-            if not disable_output:
-                print(f"Assistant: {question}")
+                # Enhanced RAG metrics handling
+                if rag_usage:
+                    self._update_rag_metrics(question_content, rag_usage)
+                
+                # Add to conversation log with RAG info
+                self.conversation_log.append({
+                    "role": "assistant",
+                    "content": question_content,
+                    "rag_usage": rag_usage
+                })
+                
+                if not disable_output:
+                    print(f"Assistant: {question_content}")
+                
+                # Display enhanced RAG usage info if available
+                if rag_usage and rag_usage.get("documents", []):
+                    documents = rag_usage.get("documents", [])
+                    stats = rag_usage.get("stats", {})
+                    if not disable_output and documents:
+                        print(f"\n[RAG Engine accessed {len(documents)} documents, avg relevance: {stats.get('avg_score', 0):.2f}]")
+                        for i, doc in enumerate(documents[:3]):  # Limit display to top 3
+                            print(f"  - Doc {i+1}: {doc.get('title', 'Unknown')} (score: {doc.get('score', 0):.2f})")
+                            if 'highlight' in doc:
+                                print(f"     Highlight: \"{doc['highlight']}\"")
+                    
+                question = question_content  # Use just the content for patient interaction
+            else:
+                # Legacy format support
+                self.conversation_log.append({
+                    "role": "assistant",
+                    "content": question
+                })
+                if not disable_output:
+                    print(f"Assistant: {question}")
+            
+            # Update state file to show we're waiting for user input
+            if interactive_mode and human_user:
+                self._update_state_file('waiting_for_user')
+                if not disable_output:
+                    print("[DEBUG] Waiting for human user input. Conversation will continue through the web interface.")
+                # For interactive mode with human user, we enter a polling loop to wait for responses
+                # from the web interface rather than returning immediately
+                
+                # We'll set up a special flag in the state file to indicate we're in interactive mode
+                # and waiting for responses through the interface
+                try:
+                    with open(self.state_file, 'r') as f:
+                        state_data = json.load(f)
+                    
+                    state_data['interactive_waiting'] = True
+                    state_data['status'] = 'waiting_for_user'
+                    
+                    with open(self.state_file, 'w') as f:
+                        json.dump(state_data, f)
+                    
+                    # At this point, the state file indicates we're waiting for user input
+                    # The conversation will continue through the web interface
+                    # We'll return a placeholder diagnosis that the interface will recognize
+                    # Instead of treating this as a diagnosis signal, the chat interface should
+                    # recognize this special value and continue listening for user input
+                    
+                    # Wait indefinitely for responses through the web interface
+                    while True:
+                        time.sleep(0.5)  # Check for updates every half second
+                        
+                        with open(self.state_file, 'r') as f:
+                            state_data = json.load(f)
+                        
+                        # If the conversation is ending or completed, break out of the loop
+                        if state_data.get('status') in ['ending', 'completed']:
+                            # Return the diagnosis if available
+                            if 'diagnosis' in state_data:
+                                return state_data['diagnosis']
+                            break
+                        
+                        # If we have a new patient message, process it
+                        conv = state_data.get('conversation', [])
+                        if len(conv) > len(self.conversation_log):
+                            # Get the new messages
+                            new_msgs = conv[len(self.conversation_log):]
+                            
+                            # Process each new message
+                            for msg in new_msgs:
+                                if msg.get('role') == 'patient':
+                                    patient_response = msg.get('content')
+                                    if not disable_output:
+                                        print(f"Patient: {patient_response}")
+                                    
+                                    # Update our local conversation log
+                                    self.conversation_log.append(msg)
+                                    
+                                    # Generate response from assistant
+                                    assistant_response = self.assistant.get_next_message(patient_response)
+                                    
+                                    # Format the response
+                                    if isinstance(assistant_response, dict) and "content" in assistant_response:
+                                        assistant_content = assistant_response["content"]
+                                        rag_usage = assistant_response.get("rag_usage", {})
+                                        
+                                        # Add to conversation log
+                                        assistant_msg = {
+                                            "role": "assistant",
+                                            "content": assistant_content,
+                                            "rag_usage": rag_usage
+                                        }
+                                        
+                                        self.conversation_log.append(assistant_msg)
+                                        
+                                        if not disable_output:
+                                            print(f"Assistant: {assistant_content}")
+                                    else:
+                                        # Legacy format support
+                                        assistant_msg = {
+                                            "role": "assistant",
+                                            "content": assistant_response
+                                        }
+                                        
+                                        self.conversation_log.append(assistant_msg)
+                                        
+                                        if not disable_output:
+                                            print(f"Assistant: {assistant_response}")
+                                    
+                                    # Check if we're at the end of the questionnaire
+                                    if self.assistant.current_question_idx >= len(self.assistant.questions):
+                                        if not disable_output:
+                                            print("[DEBUG] All questions asked. Generating diagnosis...")
+                                        
+                                        # Generate diagnosis
+                                        diagnosis = self.assistant.generate_diagnosis()
+                                        
+                                        # Add diagnosis to conversation log
+                                        if isinstance(diagnosis, dict) and "content" in diagnosis:
+                                            diagnosis_content = diagnosis["content"]
+                                            self.conversation_log.append({
+                                                "role": "assistant",
+                                                "content": diagnosis_content
+                                            })
+                                            
+                                            # Update state with diagnosis
+                                            state_data['diagnosis'] = diagnosis_content
+                                            state_data['status'] = 'completed'
+                                            
+                                            with open(self.state_file, 'w') as f:
+                                                json.dump(state_data, f)
+                                            
+                                            return diagnosis_content
+                                        else:
+                                            self.conversation_log.append({
+                                                "role": "assistant",
+                                                "content": diagnosis
+                                            })
+                                            
+                                            # Update state with diagnosis
+                                            state_data['diagnosis'] = diagnosis
+                                            state_data['status'] = 'completed'
+                                            
+                                            with open(self.state_file, 'w') as f:
+                                                json.dump(state_data, f)
+                                            
+                                            return diagnosis
+                                    
+                                    # Update the state file with our new conversation log
+                                    state_data['conversation'] = self.conversation_log
+                                    state_data['status'] = 'waiting_for_user'
+                                    
+                                    with open(self.state_file, 'w') as f:
+                                        json.dump(state_data, f)
+                
+                except KeyboardInterrupt:
+                    # Allow graceful interruption
+                    if not disable_output:
+                        print("[DEBUG] Conversation interrupted by user")
+                    return "Conversation interrupted by user"
+                except Exception as e:
+                    if not disable_output:
+                        print(f"[ERROR] Exception in interactive mode: {e}")
+                    return f"Error in conversation: {str(e)}"
         
         # Track if we've gone through all questions
         all_questions_asked = False
         
+        # Get the latest assistant message to use as the current question
+        current_question = None
+        for msg in reversed(self.conversation_log):
+            if msg.get('role') == 'assistant':
+                current_question = msg.get('content')
+                break
+        
         # Check if the question is incomplete (missing a question mark or only fragments)
-        if not self._is_complete_question(question):
+        if current_question and not self._is_complete_question(current_question):
             if not disable_output:
                 print("[DEBUG] Detected incomplete question. Fixing...")
-            question = self._fix_incomplete_question(question, self.assistant.current_question_idx - 1, disable_output)
+            current_question = self._fix_incomplete_question(current_question, 
+                                                          self.assistant.current_question_idx - 1, 
+                                                          disable_output)
         
         while True:
+            # If we're in interactive mode with human user, we check for new messages from state file
+            if interactive_mode and human_user:
+                # Read state file to get latest conversation
+                try:
+                    with open(self.state_file, 'r') as f:
+                        state = json.load(f)
+                        new_conversation = state.get('conversation', [])
+                        status = state.get('status', 'in_progress')
+                        
+                        # Check if the conversation is ending
+                        if status == 'ending':
+                            if not disable_output:
+                                print("[DEBUG] User requested to end conversation. Generating diagnosis...")
+                            
+                            # Generate diagnosis based on conversation so far
+                            diagnosis = self.assistant.generate_diagnosis()
+                            
+                            # Update state file with diagnosis
+                            if isinstance(diagnosis, dict) and "content" in diagnosis:
+                                diagnosis_content = diagnosis["content"]
+                                if self.state_file:
+                                    state['diagnosis'] = diagnosis_content
+                                    state['status'] = 'completed'
+                                    with open(self.state_file, 'w') as f:
+                                        json.dump(state, f)
+                                return diagnosis_content
+                            else:
+                                if self.state_file:
+                                    state['diagnosis'] = diagnosis
+                                    state['status'] = 'completed'
+                                    with open(self.state_file, 'w') as f:
+                                        json.dump(state, f)
+                                return diagnosis
+                        
+                        # Check if there's a new patient message
+                        if len(new_conversation) > len(self.conversation_log):
+                            # Find the new message(s)
+                            new_messages = new_conversation[len(self.conversation_log):]
+                            for new_msg in new_messages:
+                                if new_msg.get('role') == 'patient':
+                                    # Process the new patient message
+                                    patient_response = new_msg.get('content')
+                                    if not disable_output:
+                                        print(f"Patient: {patient_response}")
+                                    
+                                    # Get next question from assistant
+                                    question = self.assistant.get_next_message(patient_response)
+                                    
+                                    # Check if we've asked the last question
+                                    if self.assistant.current_question_idx >= len(self.assistant.questions):
+                                        if not disable_output:
+                                            print("[DEBUG] Just asked the final question. Next step will be diagnosis.")
+                                        all_questions_asked = True
+                                    
+                                    # Format assistant's response and add to the conversation log
+                                    if isinstance(question, dict) and "content" in question:
+                                        question_content = question["content"]
+                                        rag_usage = question.get("rag_usage", {})
+                                        
+                                        # Add to conversation log with RAG info
+                                        new_conversation.append({
+                                            "role": "assistant",
+                                            "content": question_content,
+                                            "rag_usage": rag_usage
+                                        })
+                                        
+                                        if not disable_output:
+                                            print(f"Assistant: {question_content}")
+                                        
+                                        # Update state with new messages
+                                        state['conversation'] = new_conversation
+                                        state['status'] = 'waiting_for_user' if not all_questions_asked else 'generating_diagnosis'
+                                        
+                                        with open(self.state_file, 'w') as f:
+                                            json.dump(state, f)
+                                        
+                                        self.conversation_log = new_conversation
+                                        
+                                        # If this was the last question, generate diagnosis
+                                        if all_questions_asked:
+                                            diagnosis = self.assistant.generate_diagnosis()
+                                            
+                                            # Update state file with diagnosis
+                                            if isinstance(diagnosis, dict) and "content" in diagnosis:
+                                                diagnosis_content = diagnosis["content"]
+                                                state['diagnosis'] = diagnosis_content
+                                                state['status'] = 'completed'
+                                                
+                                                with open(self.state_file, 'w') as f:
+                                                    json.dump(state, f)
+                                                
+                                                return diagnosis_content
+                                            else:
+                                                state['diagnosis'] = diagnosis
+                                                state['status'] = 'completed'
+                                                
+                                                with open(self.state_file, 'w') as f:
+                                                    json.dump(state, f)
+                                                
+                                                return diagnosis
+                                    else:
+                                        # Legacy format support
+                                        new_conversation.append({
+                                            "role": "assistant",
+                                            "content": question
+                                        })
+                                        
+                                        if not disable_output:
+                                            print(f"Assistant: {question}")
+                                        
+                                        # Update state with new messages
+                                        state['conversation'] = new_conversation
+                                        state['status'] = 'waiting_for_user'
+                                        
+                                        with open(self.state_file, 'w') as f:
+                                            json.dump(state, f)
+                                        
+                                        self.conversation_log = new_conversation
+                except Exception as e:
+                    if not disable_output:
+                        print(f"Error reading state file: {str(e)}")
+                
+                # Sleep briefly and continue waiting for user input
+                time.sleep(1)
+                continue
+                
             # If we've already gone through all questions and received the patient's last response,
             # it's time to generate the diagnosis
             if all_questions_asked:
@@ -162,9 +475,10 @@ class ConversationHandler:
                         print(f"\n=== Final Diagnosis ===\n")
                         print(f"Assistant: {diagnosis}")
                     return diagnosis
-            
+
+            # For non-interactive mode - continue with AI patient
             # Get patient's response to the current question
-            patient_response = self.patient.respond_to_question(question)
+            patient_response = self.patient.respond_to_question(current_question)
             self.conversation_log.append({
                 "role": "patient",
                 "content": patient_response
@@ -237,7 +551,7 @@ class ConversationHandler:
                     self._add_rag_summary_to_state()
                     return question_content
                 
-                question = question_content  # Use just the content for next iteration
+                current_question = question_content  # Use just the content for next iteration
             else:
                 # Legacy format support
                 if not disable_output:
@@ -252,6 +566,8 @@ class ConversationHandler:
                 # If this is the diagnosis, return it
                 if all_questions_asked:
                     return question
+                
+                current_question = question
 
             # Update state file if provided
             self._update_state_file()
@@ -463,18 +779,24 @@ class ConversationHandler:
             
         return metrics
 
-    def _update_state_file(self):
+    def _update_state_file(self, status: str = 'in_progress'):
         """Update the state file with the current conversation if provided."""
         if not self.state_file:
             return
         
         try:
-            # Prepare state data
-            state_data = {
-                "conversation": self.conversation_log,
-                "status": "in_progress",
-                "timestamp": time.time()
-            }
+            # Load existing state data if available
+            try:
+                with open(self.state_file, 'r') as f:
+                    state_data = json.load(f)
+            except:
+                # If no file or error reading, create a new state
+                state_data = {}
+            
+            # Update fields
+            state_data["conversation"] = self.conversation_log
+            state_data["status"] = status
+            state_data["timestamp"] = time.time()
             
             # Write to file
             with open(self.state_file, 'w') as f:

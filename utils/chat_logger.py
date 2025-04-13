@@ -22,7 +22,8 @@ class ChatLogger:
                   diagnosis: str,
                   questionnaire_name: str = "unknown",
                   metadata: Optional[Dict[str, Any]] = None,
-                  log_path: Optional[str] = None) -> str:
+                  log_path: Optional[str] = None,
+                  timing_metrics: Optional[Dict[str, float]] = None) -> str:
         """
         Save a chat log to a JSON file.
         
@@ -32,6 +33,7 @@ class ChatLogger:
             questionnaire_name: Name of the questionnaire used
             metadata: Additional metadata to include
             log_path: Optional explicit path for the log file
+            timing_metrics: Optional timing metrics for performance analysis
             
         Returns:
             Path to the saved log file
@@ -60,6 +62,10 @@ class ChatLogger:
         # Add metadata if provided
         if metadata:
             log_data["metadata"] = metadata
+        
+        # Add timing metrics if provided
+        if timing_metrics:
+            log_data["timing_metrics"] = timing_metrics
         
         # Add RAG summary information
         log_data["rag_summary"] = self._generate_rag_summary(conversation)

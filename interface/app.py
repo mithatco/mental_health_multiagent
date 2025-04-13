@@ -138,6 +138,7 @@ def conversation():
 
 @app.route('/api/logs', methods=['GET'])
 def get_logs():
+    """Get all available chat logs."""
     logs = []
     profiles = set()
     
@@ -762,12 +763,15 @@ def start_conversation():
         profile = data.get('profile')
         assistant_model = data.get('assistant_model', 'qwen2.5:3b')
         patient_model = data.get('patient_model', 'qwen2.5:3b')
+        agent_model = data.get('agent_model', 'qwen2.5:3b')  # For one-shot mode
         save_logs = data.get('save_logs', True)
         refresh_cache = data.get('refresh_cache', False)
+        full_conversation = data.get('full_conversation', False)  # For one-shot mode
         
         print(f"Extracted parameters: questionnaire={questionnaire}, profile={profile}, "
               f"assistant_model={assistant_model}, patient_model={patient_model}, "
-              f"save_logs={save_logs}, refresh_cache={refresh_cache}")
+              f"agent_model={agent_model}, save_logs={save_logs}, refresh_cache={refresh_cache}, "
+              f"full_conversation={full_conversation}")
         
         if not questionnaire:
             return jsonify({"error": "No questionnaire selected"}), 400
@@ -788,9 +792,15 @@ def start_conversation():
             sys.executable,
             main_script,
             '--pdf_path', questionnaire,
-            '--assistant_model', assistant_model,
-            '--patient_model', patient_model,
         ]
+        
+        # Use appropriate model parameter based on mode
+        if full_conversation:
+            cmd.extend(['--assistant_model', agent_model])
+            cmd.append('--full_conversation')
+        else:
+            cmd.extend(['--assistant_model', assistant_model])
+            cmd.extend(['--patient_model', patient_model])
         
         if profile:
             cmd.extend(['--patient_profile', profile])
@@ -815,7 +825,10 @@ def start_conversation():
         conversation_state = {
             "conversation": [],
             "status": "starting",
-            "timestamp": datetime.datetime.now().isoformat()
+            "timestamp": datetime.datetime.now().isoformat(),
+            "interactive_mode": True,  # Flag to indicate interactive mode with a real user
+            "chat_mode": True,  # Flag to indicate chat where user is patient
+            "human_user": True  # Add explicit flag to tell the system this is a human user
         }
         
         with open(state_path, 'w') as f:
@@ -1337,6 +1350,542 @@ def get_batch_status(batch_id):
             "error": str(e),
             "traceback": error_trace
         })
+
+# Add new route for the chat page
+@app.route('/chat')
+def chat():
+    """Render the chat page."""
+    return render_template('chat.html')
+
+# New API endpoints for chat functionality
+@app.route('/api/chat/start', methods=['POST'])
+def start_chat():
+    """Start a new chat session where the user is the patient."""
+    global active_conversations
+    
+    # Clean up any stale conversations
+    cleanup_stale_conversations()
+    
+    try:
+        # Get request data
+        data = request.get_json(force=True)
+        
+        if not data:
+            return jsonify({"error": "No data provided"}), 400
+        
+        # Extract parameters
+        questionnaire = data.get('questionnaire')
+        assistant_model = data.get('assistant_model', 'qwen2.5:3b')
+        save_logs = data.get('save_logs', True)
+        refresh_cache = data.get('refresh_cache', False)
+        use_rag = data.get('use_rag', True)
+        
+        print(f"Starting chat - questionnaire={questionnaire}, "
+              f"assistant_model={assistant_model}, save_logs={save_logs}, "
+              f"refresh_cache={refresh_cache}, use_rag={use_rag}")
+        
+        if not questionnaire:
+            return jsonify({"error": "No questionnaire selected"}), 400
+        
+        # Generate a unique chat ID
+        chat_id = str(uuid.uuid4())
+        
+        # Create a temporary directory for logs if not saving
+        logs_dir = chat_log_manager.get_logs_directory()
+        if not save_logs:
+            logs_dir = tempfile.mkdtemp()
+        
+        # Prepare command to run main.py in a subprocess
+        project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        main_script = os.path.join(project_root, "main.py")
+        
+        # Create a file to store conversation state
+        state_file = tempfile.NamedTemporaryFile(delete=False, mode='w+', suffix='.json')
+        state_path = state_file.name
+        state_file.close()
+        
+        # Initialize conversation state
+        conversation_state = {
+            "conversation": [],
+            "status": "starting",
+            "timestamp": datetime.datetime.now().isoformat(),
+            "interactive_mode": True,  # Flag to indicate interactive mode with a real user
+            "chat_mode": True,  # Flag to indicate chat where user is patient
+            "human_user": True  # Add explicit flag to tell the system this is a human user
+        }
+        
+        with open(state_path, 'w') as f:
+            json.dump(conversation_state, f)
+        
+        # Start the subprocess for the assistant
+        cmd = [
+            sys.executable,
+            main_script,
+            '--pdf_path', questionnaire,
+            '--assistant_model', assistant_model,
+            '--state-file', state_path,
+            '--interactive', 'true'  # Explicitly add the interactive flag
+        ]
+        
+        if refresh_cache:
+            cmd.append('--refresh_cache')
+        
+        if not save_logs:
+            cmd.append('--no-save')
+        else:
+            cmd.extend(['--logs-dir', logs_dir])
+        
+        if not use_rag:
+            cmd.append('--disable-rag')
+        
+        # Log the command for debugging
+        print(f"Starting chat with command: {' '.join(cmd)}")
+        
+        # Create a file to capture output
+        output_file = tempfile.NamedTemporaryFile(delete=False, mode='w+')
+        
+        # Start the subprocess
+        process = subprocess.Popen(
+            cmd,
+            stdout=output_file,
+            stderr=subprocess.STDOUT,
+            text=True
+        )
+        
+        # Store process information
+        active_conversations[chat_id] = {
+            'process': process,
+            'output_file': output_file,
+            'state_file': state_path,
+            'questionnaire': questionnaire,
+            'assistant_model': assistant_model,
+            'save_logs': save_logs,
+            'logs_dir': logs_dir,
+            'status': 'in_progress',
+            'start_time': time.time(),
+            'interactive': True
+        }
+        
+        # Give the assistant a moment to initialize
+        time.sleep(1)
+        
+        # Read state file to get initial message if available
+        initial_message = None
+        try:
+            with open(state_path, 'r') as f:
+                state = json.load(f)
+                conversation = state.get('conversation', [])
+                if conversation and len(conversation) > 0:
+                    # Find the first assistant message
+                    for msg in conversation:
+                        if msg.get('role') == 'assistant':
+                            initial_message = msg.get('content')
+                            break
+        except Exception as e:
+            print(f"Error reading initial state: {str(e)}")
+        
+        return jsonify({
+            "chat_id": chat_id,
+            "message": "Chat started",
+            "initial_message": initial_message
+        })
+    except Exception as e:
+        import traceback
+        return jsonify({
+            "error": str(e),
+            "traceback": traceback.format_exc()
+        }), 500
+
+@app.route('/api/chat/<chat_id>/message', methods=['POST'])
+def send_chat_message(chat_id):
+    """Send a user message to the chat."""
+    global active_conversations
+    
+    if chat_id not in active_conversations:
+        return jsonify({"error": "Chat not found"}), 404
+    
+    conv_data = active_conversations[chat_id]
+    
+    try:
+        # Get message from request - handle both JSON and form data
+        try:
+            data = request.get_json(silent=True)
+            if data is None:
+                # Try to get form data if JSON parsing failed
+                message = request.form.get('message')
+                if message is None:
+                    # Last resort: try to read raw data
+                    message = request.data.decode('utf-8')
+                    if not message:
+                        return jsonify({"error": "No message provided"}), 400
+            else:
+                message = data.get('message')
+        except Exception as e:
+            print(f"Error parsing request data: {str(e)}")
+            # Fall back to checking request.form and request.data
+            message = request.form.get('message')
+            if message is None:
+                try:
+                    message = request.data.decode('utf-8')
+                except:
+                    pass
+        
+        # Final check to ensure we have a message
+        if not message:
+            return jsonify({"error": "No message provided"}), 400
+            
+        print(f"Received message for chat {chat_id}: {message[:50]}..." if len(message) > 50 else message)
+        
+        # Check if the process is still running
+        process = conv_data['process']
+        if process.poll() is not None:
+            return jsonify({
+                "error": "Chat process has ended",
+                "status": "completed"
+            }), 400
+        
+        # Read state file
+        with open(conv_data['state_file'], 'r') as f:
+            state = json.load(f)
+        
+        # Add patient message to conversation
+        state['conversation'].append({
+            "role": "patient",
+            "content": message
+        })
+        
+        # Update status to indicate we're waiting for assistant response
+        state['status'] = 'waiting_for_assistant'
+        state['last_user_message_time'] = time.time()
+        
+        # Write updated state
+        with open(conv_data['state_file'], 'w') as f:
+            json.dump(state, f)
+        
+        return jsonify({
+            "success": True,
+            "message": "Message sent successfully"
+        })
+    except Exception as e:
+        import traceback
+        return jsonify({
+            "error": str(e),
+            "traceback": traceback.format_exc()
+        }), 500
+
+@app.route('/api/chat/<chat_id>/response', methods=['GET'])
+def get_chat_response(chat_id):
+    """Get the next response from the assistant."""
+    global active_conversations
+    
+    if chat_id not in active_conversations:
+        return jsonify({"error": "Chat not found"}), 404
+    
+    conv_data = active_conversations[chat_id]
+    
+    try:
+        # Check if the process is still running
+        process = conv_data['process']
+        if process.poll() is not None:
+            # Process has ended
+            return_code = process.returncode
+            
+            if return_code != 0:
+                # Process ended with error
+                try:
+                    with open(conv_data['output_file'].name, 'r') as f:
+                        error_output = f.read()
+                    
+                    # Print the error to server logs for debugging
+                    print(f"Chat process error (return code {return_code}):")
+                    print(error_output)
+                    
+                    # Look for specific error patterns
+                    error_message = "An unknown error occurred"
+                    if "No such file or directory" in error_output:
+                        error_message = "File not found error. Check if questionnaire file exists."
+                    elif "argument" in error_output and "--interactive" in error_output:
+                        error_message = "Command line argument error. Check if all required arguments are supported."
+                    elif "KeyError" in error_output:
+                        error_message = "Key error. A required configuration value may be missing."
+                    elif "ImportError" in error_output or "ModuleNotFoundError" in error_output:
+                        error_message = "Missing module. Ensure all dependencies are installed."
+                    elif "ValueError" in error_output:
+                        error_message = "Value error. Check if all parameters have valid values."
+                    
+                    return jsonify({
+                        "status": "error",
+                        "error": f"Chat process ended with return code {return_code}: {error_message}",
+                        "output": error_output[:1000]  # Limit output size
+                    })
+                except Exception as e:
+                    print(f"Error reading output file: {str(e)}")
+                    return jsonify({
+                        "status": "error",
+                        "error": f"Chat process ended with return code {return_code}",
+                        "detail": str(e)
+                    })
+            
+            # Process completed normally
+            # Read the final state
+            with open(conv_data['state_file'], 'r') as f:
+                state = json.load(f)
+            
+            conversation = state.get('conversation', [])
+            diagnosis = state.get('diagnosis', None)
+            
+            # If diagnosis is the special interactive mode signal, the process likely exited early
+            # Let's check if this is really a completed conversation
+            if diagnosis == "INTERACTIVE_MODE_RUNNING" or state.get('interactive_waiting', False):
+                # This is not a diagnosis but a signal that the conversation is in interactive mode
+                # The process exited, but the conversation should continue through the web interface
+                
+                # Look for the last assistant message
+                last_message = None
+                for msg in reversed(conversation):
+                    if msg.get('role') == 'assistant':
+                        last_message = msg.get('content')
+                        break
+                
+                # Update status to show we're still waiting for user input
+                state['status'] = 'waiting_for_user'
+                with open(conv_data['state_file'], 'w') as f:
+                    json.dump(state, f)
+                
+                # Start a new process to continue the conversation
+                project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+                main_script = os.path.join(project_root, "main.py")
+                
+                # Create a new output file
+                new_output_file = tempfile.NamedTemporaryFile(delete=False, mode='w+')
+                
+                # Restart the process with the same state file
+                new_cmd = [
+                    sys.executable,
+                    main_script,
+                    '--pdf_path', conv_data['questionnaire'],
+                    '--assistant_model', conv_data['assistant_model'],
+                    '--state-file', conv_data['state_file'],
+                    '--interactive', 'true'
+                ]
+                
+                if conv_data.get('save_logs', True):
+                    new_cmd.extend(['--logs-dir', conv_data['logs_dir']])
+                else:
+                    new_cmd.append('--no-save')
+                
+                # Start the new process
+                new_process = subprocess.Popen(
+                    new_cmd,
+                    stdout=new_output_file,
+                    stderr=subprocess.STDOUT,
+                    text=True
+                )
+                
+                # Update the conversation data with the new process
+                conv_data['process'] = new_process
+                conv_data['output_file'] = new_output_file
+                
+                # Return the last message and status
+                return jsonify({
+                    "status": "waiting_for_user",
+                    "message": last_message
+                })
+            
+            # Not an interactive mode signal, proceed with normal completion
+            # Find the log ID if available
+            log_id = None
+            if conv_data['save_logs']:
+                logs_dir = conv_data['logs_dir']
+                log_files = [f for f in os.listdir(logs_dir) 
+                           if os.path.isfile(os.path.join(logs_dir, f)) and f.endswith('.json')]
+                
+                if log_files:
+                    # Sort by creation time (newest first)
+                    log_files.sort(key=lambda f: os.path.getctime(os.path.join(logs_dir, f)), reverse=True)
+                    log_id = log_files[0].replace('.json', '')
+            
+            # Find the last assistant message
+            last_message = None
+            for msg in reversed(conversation):
+                if msg.get('role') == 'assistant':
+                    last_message = msg.get('content')
+                    break
+            
+            return jsonify({
+                "status": "completed",
+                "message": last_message,
+                "diagnosis": diagnosis,
+                "log_id": log_id
+            })
+        
+        # Process is still running - check state
+        with open(conv_data['state_file'], 'r') as f:
+            state = json.load(f)
+        
+        status = state.get('status', 'in_progress')
+        conversation = state.get('conversation', [])
+        interactive_waiting = state.get('interactive_waiting', False)
+        
+        print(f"Chat {chat_id} status: {status}, messages: {len(conversation)}, interactive_waiting: {interactive_waiting}")
+        
+        # Handle interactive waiting mode
+        if interactive_waiting and status == 'waiting_for_user':
+            # Find the last assistant message
+            last_message = None
+            for msg in reversed(conversation):
+                if msg.get('role') == 'assistant':
+                    last_message = msg.get('content')
+                    break
+            
+            if last_message:
+                return jsonify({
+                    "status": "waiting_for_user",
+                    "message": last_message
+                })
+        
+        # Find the last message and its role
+        last_message = None
+        last_role = None
+        if conversation:
+            last_msg_obj = conversation[-1]
+            last_message = last_msg_obj.get('content')
+            last_role = last_msg_obj.get('role')
+            print(f"Last message from {last_role}: {last_message[:50]}..." if last_message and len(last_message) > 50 else last_message)
+        
+        # Check specifically for the welcome message
+        first_assistant_message = None
+        for msg in conversation:
+            if msg.get('role') == 'assistant':
+                first_assistant_message = msg.get('content')
+                break
+        
+        # If the conversation just started and the first assistant message is available,
+        # return it even if we don't have explicit 'waiting_for_user' status yet
+        if status in ['starting', 'in_progress'] and first_assistant_message and not any(msg.get('role') == 'patient' for msg in conversation):
+            print(f"Returning first assistant message for chat {chat_id}")
+            return jsonify({
+                "status": "waiting_for_user",
+                "message": first_assistant_message
+            })
+        
+        # If the last message is from the assistant and we're waiting for the user,
+        # return the message and update the status
+        if last_role == 'assistant' and (status == 'waiting_for_user' or 
+                                         (status == 'in_progress' and len(conversation) > 0)):
+            return jsonify({
+                "status": "waiting_for_user",
+                "message": last_message
+            })
+        
+        # If the process is still generating a response
+        if status == 'waiting_for_assistant' or status == 'in_progress':
+            # Check if there's been an assistant message that we can return
+            if first_assistant_message and not any(msg.get('role') == 'patient' for msg in conversation):
+                # If there's an initial message but no patient responses yet, we're waiting for user
+                return jsonify({
+                    "status": "waiting_for_user",
+                    "message": first_assistant_message
+                })
+            return jsonify({
+                "status": "thinking"
+            })
+        
+        # Default - pending state
+        return jsonify({
+            "status": status
+        })
+    except Exception as e:
+        import traceback
+        error_traceback = traceback.format_exc()
+        print(f"Error in get_chat_response: {str(e)}\n{error_traceback}")
+        return jsonify({
+            "error": str(e),
+            "traceback": error_traceback,
+            "status": "error"
+        }), 500
+
+@app.route('/api/chat/<chat_id>/end', methods=['POST'])
+def end_chat(chat_id):
+    """End a chat session and generate a diagnosis."""
+    global active_conversations
+    
+    if chat_id not in active_conversations:
+        return jsonify({"error": "Chat not found"}), 404
+    
+    conv_data = active_conversations[chat_id]
+    
+    try:
+        # Check if process is still running
+        process = conv_data['process']
+        if process.poll() is None:
+            # Read state file
+            with open(conv_data['state_file'], 'r') as f:
+                state = json.load(f)
+            
+            # Set status to indicate the chat is ending
+            state['status'] = 'ending'
+            
+            # Write updated state
+            with open(conv_data['state_file'], 'w') as f:
+                json.dump(state, f)
+            
+            # Wait a bit for the process to finish the diagnosis
+            time.sleep(2)
+            
+            # If still running after waiting, terminate it
+            if process.poll() is None:
+                process.terminate()
+                try:
+                    process.wait(timeout=5)
+                except subprocess.TimeoutExpired:
+                    process.kill()
+        
+        # Read final state
+        try:
+            with open(conv_data['state_file'], 'r') as f:
+                state = json.load(f)
+            
+            diagnosis = state.get('diagnosis', 'No diagnosis generated')
+        except Exception as e:
+            print(f"Error reading final state: {str(e)}")
+            diagnosis = "No diagnosis available due to error."
+        
+        # Find the log ID if available
+        log_id = None
+        if conv_data['save_logs']:
+            logs_dir = conv_data['logs_dir']
+            try:
+                log_files = [f for f in os.listdir(logs_dir) 
+                           if os.path.isfile(os.path.join(logs_dir, f)) and f.endswith('.json')]
+                
+                if log_files:
+                    # Sort by creation time (newest first)
+                    log_files.sort(key=lambda f: os.path.getctime(os.path.join(logs_dir, f)), reverse=True)
+                    log_id = log_files[0].replace('.json', '')
+            except Exception as e:
+                print(f"Error finding log file: {str(e)}")
+        
+        # Close output file if open
+        if 'output_file' in conv_data and not conv_data['output_file'].closed:
+            conv_data['output_file'].close()
+        
+        # Remove from active conversations
+        active_conversations.pop(chat_id, None)
+        
+        return jsonify({
+            "success": True,
+            "message": "Chat ended successfully",
+            "diagnosis": diagnosis,
+            "log_id": log_id
+        })
+    except Exception as e:
+        import traceback
+        return jsonify({
+            "success": False,
+            "error": str(e),
+            "traceback": traceback.format_exc()
+        }), 500
 
 def create_app(logs_dir=None):
     """Create and configure the Flask application."""

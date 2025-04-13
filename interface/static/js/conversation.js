@@ -4,7 +4,7 @@ let conversationInterval = null;
 let lastMessageCount = 0;
 
 // Add mode toggle variables
-let currentMode = 'single'; // 'single' or 'batch'
+let currentMode = 'single'; // 'single', 'oneshot', or 'batch'
 let batchId = null;
 let batchInterval = null;
 
@@ -18,21 +18,26 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         if (currentMode === 'single') {
             startConversation();
+        } else if (currentMode === 'oneshot') {
+            startOneshotConversation();
         } else {
             startBatchGeneration();
         }
     });
     
-    // Add event listener for stop button
+    // Add event listener for stop buttons
     document.getElementById('stop-btn').addEventListener('click', stopConversation);
+    document.getElementById('stop-oneshot-btn').addEventListener('click', stopOneshotConversation);
     document.getElementById('stop-batch-btn').addEventListener('click', stopBatchGeneration);
     
-    // Add event listener for view log button
+    // Add event listener for view log buttons
     document.getElementById('view-log-btn').addEventListener('click', viewConversationLog);
+    document.getElementById('view-oneshot-log-btn').addEventListener('click', viewOneshotLog);
     document.getElementById('view-batch-btn').addEventListener('click', viewBatchResults);
     
     // Add mode toggle handlers
     document.getElementById('single-mode-btn').addEventListener('click', () => switchMode('single'));
+    document.getElementById('oneshot-mode-btn').addEventListener('click', () => switchMode('oneshot'));
     document.getElementById('batch-mode-btn').addEventListener('click', () => switchMode('batch'));
 });
 
@@ -155,12 +160,14 @@ function initializeForm() {
         .then(data => {
             const assistantSelect = document.getElementById('assistant-model-select');
             const patientSelect = document.getElementById('patient-model-select');
+            const agentSelect = document.getElementById('agent-model-select');
             
             assistantSelect.innerHTML = '';
             patientSelect.innerHTML = '';
+            agentSelect.innerHTML = '';
             
             if (data.models && data.models.length) {
-                // Add models to both selects
+                // Add models to selects
                 data.models.forEach(model => {
                     // Assistant select
                     const assistantOption = document.createElement('option');
@@ -181,8 +188,19 @@ function initializeForm() {
                         patientOption.selected = true;
                     }
                     patientSelect.appendChild(patientOption);
+                    
+                    // Agent select for one-shot mode
+                    const agentOption = document.createElement('option');
+                    agentOption.value = model;
+                    agentOption.textContent = model;
+                    // Default to qwen2.5:3b if available
+                    if (model === 'qwen2.5:3b') {
+                        agentOption.selected = true;
+                    }
+                    agentSelect.appendChild(agentOption);
                 });
             } else {
+                // Error options
                 const option1 = document.createElement('option');
                 option1.value = '';
                 option1.textContent = 'No models available';
@@ -194,15 +212,23 @@ function initializeForm() {
                 option2.textContent = 'No models available';
                 option2.disabled = true;
                 patientSelect.appendChild(option2);
+                
+                const option3 = document.createElement('option');
+                option3.value = '';
+                option3.textContent = 'No models available';
+                option3.disabled = true;
+                agentSelect.appendChild(option3);
             }
         })
         .catch(error => {
             console.error('Error fetching models:', error);
             const assistantSelect = document.getElementById('assistant-model-select');
             const patientSelect = document.getElementById('patient-model-select');
+            const agentSelect = document.getElementById('agent-model-select');
             
             assistantSelect.innerHTML = '<option value="" disabled selected>Error loading models</option>';
             patientSelect.innerHTML = '<option value="" disabled selected>Error loading models</option>';
+            agentSelect.innerHTML = '<option value="" disabled selected>Error loading models</option>';
         });
 }
 
@@ -493,26 +519,39 @@ function viewConversationLog() {
     }
 }
 
-// Function to switch between single and batch modes
+// Function to switch between modes
 function switchMode(mode) {
     currentMode = mode;
     
     // Update button states
     document.getElementById('single-mode-btn').classList.toggle('active', mode === 'single');
+    document.getElementById('oneshot-mode-btn').classList.toggle('active', mode === 'oneshot');
     document.getElementById('batch-mode-btn').classList.toggle('active', mode === 'batch');
     
-    // Show/hide appropriate view
+    // Show/hide appropriate views
     document.getElementById('single-conversation-view').style.display = mode === 'single' ? 'block' : 'none';
+    document.getElementById('oneshot-conversation-view').style.display = mode === 'oneshot' ? 'block' : 'none';
     document.getElementById('batch-conversation-view').style.display = mode === 'batch' ? 'block' : 'none';
     
     // Show/hide batch-only form elements
     const batchOnlyElements = document.querySelectorAll('.batch-only');
     batchOnlyElements.forEach(element => {
-        element.style.display = mode === 'batch' ? 'block' : 'none';
+        element.style.display = (mode === 'batch') ? 'block' : 'none';
+    });
+    
+    // Show/hide oneshot-only form elements
+    const oneshotOnlyElements = document.querySelectorAll('.oneshot-only');
+    oneshotOnlyElements.forEach(element => {
+        element.style.display = (mode === 'oneshot') ? 'block' : 'none';
+    });
+    
+    // Show/hide turn-based-only form elements
+    const turnBasedOnlyElements = document.querySelectorAll('.turn-based-only');
+    turnBasedOnlyElements.forEach(element => {
+        element.style.display = (mode === 'single' || mode === 'batch') ? 'block' : 'none';
     });
     
     // Ensure form fields maintain their values when switching modes
-    // This prevents the questionnaire selection from being lost
     const questionnaireSelect = document.getElementById('questionnaire-select');
     if (questionnaireSelect.selectedIndex > 0) {
         console.log(`Current questionnaire selection: ${questionnaireSelect.value}`);
@@ -520,7 +559,13 @@ function switchMode(mode) {
     
     // Update form submit button text
     const startBtn = document.getElementById('start-btn');
-    startBtn.textContent = mode === 'single' ? 'Start Conversation' : 'Start Batch Generation';
+    if (mode === 'single') {
+        startBtn.textContent = 'Start Turn-based Conversation';
+    } else if (mode === 'oneshot') {
+        startBtn.textContent = 'Generate One-shot Conversation';
+    } else {
+        startBtn.textContent = 'Start Full Simulation';
+    }
 }
 
 // Start batch generation
@@ -540,15 +585,15 @@ function startBatchGeneration() {
         return;
     }
     
-    console.log(`Starting batch with questionnaire: ${questionnaire} and count: ${batchCount}`);
+    console.log(`Starting full simulation with questionnaire: ${questionnaire} and count: ${batchCount}`);
     
     // Disable form and show loading state
     setFormEnabled(false);
-    updateBatchStatus('Starting batch generation...', 'loading');
+    updateBatchStatus('Starting full simulation...', 'loading');
     
     // Clear previous batch results
     document.getElementById('batch-results-container').innerHTML = 
-        '<p>Processing batch generation...</p>';
+        '<p>Processing full simulation...</p>';
     document.getElementById('batch-progress-bar').style.width = '0%';
     document.getElementById('batch-progress-text').textContent = '0 / 0 conversations completed';
     
@@ -591,7 +636,7 @@ function startBatchGeneration() {
     .then(data => {
         if (data.batch_id) {
             batchId = data.batch_id;
-            updateBatchStatus(`Batch generation started (${batchCount} conversations)`, 'active');
+            updateBatchStatus(`Full simulation started (${batchCount} conversations)`, 'active');
             
             // Enable stop button
             document.getElementById('stop-batch-btn').disabled = false;
@@ -599,13 +644,13 @@ function startBatchGeneration() {
             // Start polling for updates
             startBatchPolling(data.batch_id, data.total_conversations);
         } else {
-            updateBatchStatus(`Error: ${data.error || 'Failed to start batch generation'}`, 'error');
+            updateBatchStatus(`Error: ${data.error || 'Failed to start full simulation'}`, 'error');
             setFormEnabled(true);
         }
     })
     .catch(error => {
-        console.error('Error starting batch generation:', error);
-        updateBatchStatus('Error starting batch generation: ' + error.message, 'error');
+        console.error('Error starting full simulation:', error);
+        updateBatchStatus('Error starting full simulation: ' + error.message, 'error');
         setFormEnabled(true);
     });
 }
@@ -617,7 +662,7 @@ function startBatchPolling(batchId, totalConversations) {
     }
     
     // Add console log when polling starts
-    console.log(`Starting batch polling for batch ID: ${batchId}, total: ${totalConversations}`);
+    console.log(`Starting full simulation polling for batch ID: ${batchId}, total: ${totalConversations}`);
     
     let consecutiveErrors = 0;
     
@@ -685,7 +730,7 @@ function startBatchPolling(batchId, totalConversations) {
                     `${completed} / ${total} conversations completed`;
                 
                 // Add more detailed progress information
-                let detailsText = 'Batch generation in progress...';
+                let detailsText = 'Full simulation in progress...';
                 if (inProgressIdx !== null && inProgressIdx !== undefined) {
                     detailsText = `Processing conversation ${inProgressIdx + 1} of ${total}`;
                 } else if (completed === total) {
@@ -700,7 +745,7 @@ function startBatchPolling(batchId, totalConversations) {
                 
                 if (data.status === 'completed') {
                     // Batch is complete
-                    updateBatchStatus('Batch generation completed', 'completed');
+                    updateBatchStatus('Full simulation completed', 'completed');
                     updateBatchResults(data.results);
                     stopBatchPolling();
                     
@@ -717,7 +762,7 @@ function startBatchPolling(batchId, totalConversations) {
                     setFormEnabled(true);
                 } else if (data.status === 'in_progress') {
                     // Update batch status
-                    updateBatchStatus('Batch generation in progress...', 'active');
+                    updateBatchStatus('Full simulation in progress...', 'active');
                 }
             })
             .catch(error => {
@@ -750,7 +795,7 @@ function stopBatchPolling() {
 function stopBatchGeneration() {
     if (!batchId) return;
     
-    updateBatchStatus('Stopping batch generation...', 'loading');
+    updateBatchStatus('Stopping full simulation...', 'loading');
     
     fetch(`/api/batches/${batchId}/stop`, {
         method: 'POST'
@@ -758,18 +803,18 @@ function stopBatchGeneration() {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            updateBatchStatus('Batch generation stopped', 'inactive');
+            updateBatchStatus('Full simulation stopped', 'inactive');
             stopBatchPolling();
             
             // Re-enable form
             setFormEnabled(true);
         } else {
-            updateBatchStatus(`Error: ${data.error || 'Failed to stop batch generation'}`, 'error');
+            updateBatchStatus(`Error: ${data.error || 'Failed to stop full simulation'}`, 'error');
         }
     })
     .catch(error => {
-        console.error('Error stopping batch generation:', error);
-        updateBatchStatus('Error stopping batch generation', 'error');
+        console.error('Error stopping full simulation:', error);
+        updateBatchStatus('Error stopping full simulation', 'error');
     });
 }
 
@@ -789,18 +834,42 @@ function updateBatchStatus(message, state) {
 
 // Update batch results display
 function updateBatchResults(results) {
-    const container = document.getElementById('batch-results-container');
+    console.log('Updating full simulation results:', results);
     
-    if (!results || results.length === 0) {
-        container.innerHTML = '<p>No results available.</p>';
+    if (!results || !results.conversations) {
+        document.getElementById('batch-results-container').innerHTML = `
+            <div class="notice-message">
+                <p>No results available for this full simulation.</p>
+            </div>
+        `;
+        return;
+    }
+    
+    // Sort conversations by timestamp (newest first)
+    const conversations = [...results.conversations].sort((a, b) => {
+        // Sort by timestamp if available
+        const timeA = a.timestamp || '';
+        const timeB = b.timestamp || '';
+        if (timeA < timeB) return 1;
+        if (timeA > timeB) return -1;
+        return 0; // timestamps are equal
+    });
+    
+    // Check if batch has any conversations
+    if (conversations.length === 0) {
+        document.getElementById('batch-results-container').innerHTML = `
+            <div class="notice-message">
+                <p>This full simulation did not generate any conversations.</p>
+            </div>
+        `;
         return;
     }
     
     let html = '<div class="batch-summary">';
-    html += `<p><strong>Total Conversations:</strong> ${results.length}</p>`;
+    html += `<p><strong>Total Conversations:</strong> ${conversations.length}</p>`;
     
     // Calculate average duration
-    const durations = results.filter(r => r.duration).map(r => r.duration);
+    const durations = conversations.filter(c => c.duration).map(c => c.duration);
     const avgDuration = durations.length > 0 
         ? (durations.reduce((a, b) => a + b, 0) / durations.length).toFixed(2) 
         : 'N/A';
@@ -813,18 +882,18 @@ function updateBatchResults(results) {
     html += '<thead><tr><th>ID</th><th>Profile</th><th>Duration</th><th>Status</th></tr></thead>';
     html += '<tbody>';
     
-    results.forEach(result => {
+    conversations.forEach(conversation => {
         html += `<tr>
-            <td>${result.conversation_id || 'Unknown'}</td>
-            <td>${result.profile || 'Default'}</td>
-            <td>${result.duration ? result.duration.toFixed(2) + 's' : 'N/A'}</td>
-            <td>${result.status || 'Unknown'}</td>
+            <td>${conversation.conversation_id || 'Unknown'}</td>
+            <td>${conversation.profile || 'Default'}</td>
+            <td>${conversation.duration ? conversation.duration.toFixed(2) + 's' : 'N/A'}</td>
+            <td>${conversation.status || 'Unknown'}</td>
         </tr>`;
     });
     
     html += '</tbody></table>';
     
-    container.innerHTML = html;
+    document.getElementById('batch-results-container').innerHTML = html;
 }
 
 // View batch results
@@ -834,5 +903,247 @@ function viewBatchResults() {
     
     if (batchId) {
         window.location.href = `/?batch=${batchId}`;
+    }
+}
+
+// Start a one-shot conversation
+function startOneshotConversation() {
+    // First check if a questionnaire is selected
+    const questionnaire = document.getElementById('questionnaire-select').value;
+    if (!questionnaire) {
+        updateOneshotStatus('Error: No questionnaire selected', 'error');
+        return;
+    }
+    
+    // Check if agent model is selected
+    const agentModel = document.getElementById('agent-model-select').value;
+    if (!agentModel) {
+        updateOneshotStatus('Error: No agent model selected', 'error');
+        return;
+    }
+    
+    // Disable form and show loading state
+    setFormEnabled(false);
+    updateOneshotStatus('Generating one-shot conversation...', 'loading');
+    
+    // Clear previous conversation
+    document.getElementById('oneshot-conversation-display').innerHTML = 
+        '<div class="loading-indicator"><div class="spinner"></div>Generating full conversation...</div>';
+    document.getElementById('oneshot-diagnosis-content').innerHTML = 
+        '<p>The diagnosis will appear here after generation completes.</p>';
+    
+    // Create data object with only the necessary parameters
+    const data = {
+        questionnaire: questionnaire,
+        profile: document.getElementById('profile-select').value,
+        agent_model: agentModel,
+        save_logs: document.getElementById('save-logs').checked,
+        refresh_cache: document.getElementById('refresh-cache').checked,
+        full_conversation: true // Signal that this is a full conversation
+    };
+    
+    console.log("One-shot data to be sent:", data);
+    
+    // Send request to start conversation
+    fetch('/api/conversations/start', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        credentials: 'same-origin',
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.text().then(text => {
+                console.error(`Server returned ${response.status}: ${text}`);
+                throw new Error(`HTTP error! Status: ${response.status}. Details: ${text}`);
+            });
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.conversation_id) {
+            conversationId = data.conversation_id;
+            updateOneshotStatus('Generating conversation...', 'active');
+            
+            // Enable stop button
+            document.getElementById('stop-oneshot-btn').disabled = false;
+            
+            // Start polling for conversation updates
+            startOneshotPolling();
+        } else {
+            updateOneshotStatus(`Error: ${data.error || 'Failed to start generation'}`, 'error');
+            setFormEnabled(true);
+        }
+    })
+    .catch(error => {
+        console.error('Error starting one-shot generation:', error);
+        updateOneshotStatus('Error starting generation: ' + error.message, 'error');
+        setFormEnabled(true);
+        
+        // Display error in conversation panel
+        document.getElementById('oneshot-conversation-display').innerHTML = `
+            <div class="error-message">
+                <h3>Error Starting Generation</h3>
+                <p>${error.message}</p>
+            </div>
+        `;
+    });
+}
+
+// Stop one-shot conversation
+function stopOneshotConversation() {
+    if (!conversationId) return;
+    
+    updateOneshotStatus('Stopping generation...', 'loading');
+    
+    fetch(`/api/conversations/${conversationId}/stop`, {
+        method: 'POST'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            updateOneshotStatus('Generation stopped', 'inactive');
+            stopOneshotPolling();
+            
+            // Re-enable form
+            setFormEnabled(true);
+        } else {
+            updateOneshotStatus(`Error: ${data.error || 'Failed to stop generation'}`, 'error');
+        }
+    })
+    .catch(error => {
+        console.error('Error stopping one-shot generation:', error);
+        updateOneshotStatus('Error stopping generation', 'error');
+    });
+}
+
+// Start polling for one-shot conversation updates
+function startOneshotPolling() {
+    if (conversationInterval) {
+        clearInterval(conversationInterval);
+    }
+    
+    lastMessageCount = 0;
+    
+    conversationInterval = setInterval(() => {
+        if (!conversationId) return;
+        
+        fetch(`/api/conversations/${conversationId}/status`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'completed') {
+                    // Conversation is complete
+                    updateOneshotConversation(data.conversation);
+                    updateOneshotDiagnosis(data.diagnosis);
+                    updateOneshotStatus('Generation completed', 'completed');
+                    stopOneshotPolling();
+                    
+                    // Enable view log button if log is saved
+                    if (data.log_saved) {
+                        document.getElementById('view-oneshot-log-btn').disabled = false;
+                        document.getElementById('view-oneshot-log-btn').dataset.logId = data.log_id;
+                    }
+                    
+                    // Re-enable form
+                    setFormEnabled(true);
+                } else if (data.status === 'error') {
+                    // Conversation had an error
+                    updateOneshotStatus(`Error: ${data.error || 'An error occurred'}`, 'error');
+                    stopOneshotPolling();
+                    setFormEnabled(true);
+                } else if (data.status === 'in_progress') {
+                    // Update status to show progress
+                    updateOneshotStatus('Generation in progress...', 'active');
+                }
+            })
+            .catch(error => {
+                console.error('Error polling one-shot status:', error);
+            });
+    }, 1000);  // Poll every second
+}
+
+// Stop polling for one-shot updates
+function stopOneshotPolling() {
+    if (conversationInterval) {
+        clearInterval(conversationInterval);
+        conversationInterval = null;
+    }
+    
+    // Disable stop button
+    document.getElementById('stop-oneshot-btn').disabled = true;
+}
+
+// Update the one-shot conversation display with messages
+function updateOneshotConversation(conversation) {
+    if (!conversation || !conversation.length) return;
+    
+    const display = document.getElementById('oneshot-conversation-display');
+    
+    // Clear placeholder if it exists
+    const placeholder = display.querySelector('.conversation-placeholder');
+    if (placeholder) {
+        display.innerHTML = '';
+    } else if (display.querySelector('.loading-indicator')) {
+        display.innerHTML = '';
+    }
+    
+    // Add all messages at once
+    conversation.forEach(message => {
+        // Skip system messages
+        if (message.role === 'system') return;
+        
+        // Create message element
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message message-${message.role} clearfix`;
+        
+        const roleLabel = document.createElement('div');
+        roleLabel.className = 'role-label';
+        roleLabel.textContent = message.role.charAt(0).toUpperCase() + message.role.slice(1);
+        
+        const contentDiv = document.createElement('div');
+        contentDiv.className = `message-content ${message.role}-bubble`;
+        contentDiv.innerHTML = formatText(message.content);
+        
+        messageDiv.appendChild(roleLabel);
+        messageDiv.appendChild(contentDiv);
+        display.appendChild(messageDiv);
+    });
+    
+    // Scroll to bottom
+    display.scrollTop = display.scrollHeight;
+}
+
+// Update one-shot diagnosis display
+function updateOneshotDiagnosis(diagnosis) {
+    if (!diagnosis) return;
+    
+    const diagnosisContent = document.getElementById('oneshot-diagnosis-content');
+    diagnosisContent.innerHTML = formatText(diagnosis);
+}
+
+// Update one-shot status message
+function updateOneshotStatus(message, state) {
+    const status = document.getElementById('oneshot-status');
+    status.textContent = message;
+    
+    // Remove all state classes
+    status.classList.remove('loading', 'active', 'completed', 'error', 'inactive');
+    
+    // Add appropriate state class
+    if (state) {
+        status.classList.add(state);
+    }
+}
+
+// View saved one-shot conversation log
+function viewOneshotLog() {
+    const viewLogBtn = document.getElementById('view-oneshot-log-btn');
+    const logId = viewLogBtn.dataset.logId;
+    
+    if (logId) {
+        window.location.href = `/?log=${logId}`;
     }
 }

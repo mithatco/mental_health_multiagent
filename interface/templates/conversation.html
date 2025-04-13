@@ -11,8 +11,9 @@
         <div class="navbar">
             <div class="nav-logo">Mental Health Multi-Agent</div>
             <div class="nav-links">
-                <a href="/" class="nav-link">Chat Logs</a>
-                <a href="/conversation" class="nav-link active">Generate Conversation</a>
+                <a href="/" class="nav-link">Logs</a>
+                <a href="/conversation" class="nav-link active">Generate</a>
+                <a href="/chat" class="nav-link">Chat</a>
             </div>
         </div>
 
@@ -21,8 +22,9 @@
             <div class="config-panel" id="config-panel">                
                 <!-- Add mode toggle -->
                 <div class="mode-toggle">
-                    <button class="toggle-btn active" id="single-mode-btn">Single Conversation</button>
-                    <button class="toggle-btn" id="batch-mode-btn">Batch Generation</button>
+                    <button class="toggle-btn active" id="single-mode-btn">Turn-based</button>
+                    <button class="toggle-btn" id="oneshot-mode-btn">One-shot</button>
+                    <button class="toggle-btn" id="batch-mode-btn">Full Simulation</button>
                 </div>
 
                 <form id="conversation-form">
@@ -52,7 +54,7 @@
 
                     <!-- Add batch count option -->
                     <div class="form-section batch-only" style="display: none;">
-                        <h3>Batch Settings</h3>
+                        
                         <div class="form-group">
                             <label for="batch-count">Number of Conversations:</label>
                             <input type="number" id="batch-count" name="batch_count" min="1" max="100" value="5">
@@ -61,15 +63,21 @@
 
                     <div class="form-section">
                         <h3>Model Selection</h3>
-                        <div class="form-group">
+                        <div class="form-group turn-based-only batch-only">
                             <label for="assistant-model-select">Assistant Model:</label>
                             <select id="assistant-model-select" name="assistant_model">
                                 <option value="" disabled selected>Loading models...</option>
                             </select>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group turn-based-only batch-only">
                             <label for="patient-model-select">Patient Model:</label>
                             <select id="patient-model-select" name="patient_model">
+                                <option value="" disabled selected>Loading models...</option>
+                            </select>
+                        </div>
+                        <div class="form-group oneshot-only" style="display: none;">
+                            <label for="agent-model-select">Agent Model:</label>
+                            <select id="agent-model-select" name="agent_model">
                                 <option value="" disabled selected>Loading models...</option>
                             </select>
                         </div>
@@ -95,17 +103,22 @@
 
             <!-- Right side: Conversation display -->
             <div class="conversation-panel" id="conversation-panel">
-                <!-- Single conversation view -->
-                <div id="single-conversation-view">
+                <!-- Turn-based conversation view -->
+                <div id="single-conversation-view" style="display: block;">
                     <div class="conversation-header">
-                        <h2>Conversation</h2>
+                        <h2>Turn-based Conversation</h2>
                         <div class="status" id="status">Ready to start</div>
+                    </div>
+                    
+                    <div class="info-box">
+                        <p><strong>Turn-based mode:</strong> Simulates a conversation one message at a time.</p>
+                        <p>This mode allows you to observe the back-and-forth dialogue as it unfolds step by step.</p>
                     </div>
                     
                     <div class="conversation-display" id="conversation-display">
                         <div class="conversation-placeholder">
                             <p>Your conversation will appear here.</p>
-                            <p>Configure settings on the left and click "Start Conversation".</p>
+                            <p>Configure settings on the left and click "Start Turn-based Conversation".</p>
                         </div>
                     </div>
                     
@@ -122,11 +135,49 @@
                     </div>
                 </div>
                 
+                <!-- One-shot conversation view -->
+                <div id="oneshot-conversation-view" style="display: none;">
+                    <div class="conversation-header">
+                        <h2>One-shot Conversation</h2>
+                        <div class="status" id="oneshot-status">Ready to generate</div>
+                    </div>
+                    
+                    <div class="info-box">
+                        <p><strong>One-shot mode:</strong> Generates the entire conversation automatically in a single step.</p>
+                        <p>This mode is useful for quickly generating complete assessment conversations for evaluation or review.</p>
+                    </div>
+                    
+                    <div class="conversation-display" id="oneshot-conversation-display">
+                        <div class="conversation-placeholder">
+                            <p>A complete conversation will be generated at once.</p>
+                            <p>Configure settings on the left and click "Generate One-shot Conversation".</p>
+                            <p>Generation may take 1-2 minutes to complete.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="diagnosis-panel" id="oneshot-diagnosis-panel">
+                        <h3>Diagnosis</h3>
+                        <div class="diagnosis-content" id="oneshot-diagnosis-content">
+                            <p>The diagnosis will appear here after generation completes.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="conversation-actions">
+                        <button id="stop-oneshot-btn" class="stop-btn" disabled>Stop Generation</button>
+                        <button id="view-oneshot-log-btn" class="view-log-btn" disabled>View Saved Log</button>
+                    </div>
+                </div>
+                
                 <!-- Batch generation view -->
                 <div id="batch-conversation-view" style="display: none;">
                     <div class="conversation-header">
-                        <h2>Batch Generation</h2>
+                        <h2>Full Simulation</h2>
                         <div class="status" id="batch-status">Ready to start</div>
+                    </div>
+                    
+                    <div class="info-box">
+                        <p><strong>Full Simulation mode:</strong> Generates multiple complete conversations automatically.</p>
+                        <p>This mode is useful for running many simulations in a row and analyzing patterns across conversations.</p>
                     </div>
                     
                     <div class="batch-progress">
@@ -135,19 +186,19 @@
                             <div class="progress-bar" id="batch-progress-bar"></div>
                         </div>
                         <div class="progress-text" id="batch-progress-text">0 / 0 conversations completed</div>
-                        <div class="progress-details" id="batch-progress-details">Waiting to start batch generation...</div>
+                        <div class="progress-details" id="batch-progress-details">Waiting to start simulation...</div>
                     </div>
                     
                     <div class="batch-results">
-                        <h3>Batch Results</h3>
+                        <h3>Simulation Results</h3>
                         <div id="batch-results-container">
-                            <p>Batch results will appear here after generation completes.</p>
+                            <p>Simulation results will appear here after completion.</p>
                         </div>
                     </div>
                     
                     <div class="conversation-actions">
-                        <button id="stop-batch-btn" class="stop-btn" disabled>Stop Batch</button>
-                        <button id="view-batch-btn" class="view-log-btn" disabled>View Batch Results</button>
+                        <button id="stop-batch-btn" class="stop-btn" disabled>Stop Simulation</button>
+                        <button id="view-batch-btn" class="view-log-btn" disabled>View Simulation Results</button>
                     </div>
                 </div>
             </div>

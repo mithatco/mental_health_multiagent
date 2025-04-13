@@ -123,6 +123,9 @@ class MentalHealthAssistant:
         
         Keep your tone professional but warm, showing empathy while maintaining clinical objectivity.
         Make sure to correctly identify and name the specific questionnaire you're administering.
+        For the first interaction, provide a complete introduction followed by your first question.
+        
+        This is real-time conversation with a human patient, so make your introduction engaging, natural, and conversational.
         """
         
         # Create a temporary conversation for generating the introduction

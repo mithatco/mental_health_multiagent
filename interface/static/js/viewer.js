@@ -635,21 +635,96 @@ function updateMetadata(data) {
         dateStr = new Date(data.timestamp).toLocaleString();
     } catch (e) {}
     
+    // Check if this is a full conversation (single agent) or a multi-agent conversation
+    const isFullConversation = data.metadata?.hasOwnProperty('full_conversation') ? 
+                              data.metadata.full_conversation : false;
+    
     // Create metadata fields
     const fields = [
         { label: 'Date', value: dateStr },
         { label: 'Questionnaire', value: data.questionnaire || 'Unknown' },
-        { label: 'Patient Profile', value: data.metadata?.patient_profile || 'Unknown' },
-        { label: 'Assistant Model', value: data.metadata?.assistant_model || 'Unknown' },
-        { label: 'Patient Model', value: data.metadata?.patient_model || 'Unknown' },
-        { label: 'Question Count', value: data.metadata?.question_count || 'Unknown' }
+        { label: 'Patient Profile', value: data.metadata?.patient_profile || 'Unknown' }
     ];
     
+    // Add appropriate model information based on conversation type
+    if (isFullConversation) {
+        // For full conversations, show just the agent model
+        fields.push({ label: 'Agent Model', value: data.metadata?.assistant_model || 'Unknown' });
+        fields.push({ label: 'Conversation Type', value: 'Full Conversation (Single Agent)' });
+    } else {
+        // For multi-agent conversations, show both models
+        fields.push({ label: 'Assistant Model', value: data.metadata?.assistant_model || 'Unknown' });
+        fields.push({ label: 'Patient Model', value: data.metadata?.patient_model || 'Unknown' });
+    }
+    
+    // Add timing information if available
+    if (data.timing_metrics && data.timing_metrics.total_time) {
+        const totalTime = parseFloat(data.timing_metrics.total_time).toFixed(2);
+        
+        // Create tooltip content with timing breakdown
+        let tooltipContent = `
+            <div class="timing-tooltip">
+                <p>Conversation: ${parseFloat(data.timing_metrics.conversation_generation_time || 0).toFixed(2)}s</p>
+                <p>Diagnosis: ${parseFloat(data.timing_metrics.diagnosis_generation_time || 0).toFixed(2)}s</p>
+                ${data.timing_metrics.rag_evaluation_time ? 
+                  `<p>RAG Evaluation: ${parseFloat(data.timing_metrics.rag_evaluation_time).toFixed(2)}s</p>` : ''}
+            </div>
+        `;
+        
+        // Add timing field with info icon
+        fields.push({ 
+            label: 'Total Time', 
+            value: `${totalTime}s <span class="info-icon" data-tooltip="${encodeURIComponent(tooltipContent)}">ⓘ</span>` 
+        });
+    }
+    
+    // Add question count if available
+    fields.push({ label: 'Question Count', value: data.metadata?.question_count || 'Unknown' });
+    
+    // Create and append each metadata item
     fields.forEach(field => {
         const item = document.createElement('div');
         item.className = 'metadata-item';
         item.innerHTML = `<strong>${field.label}:</strong> ${field.value}`;
         metadataDisplay.appendChild(item);
+    });
+    
+    // Initialize tooltips for any info icons
+    initializeTooltips();
+}
+
+// Add tooltip initialization function
+function initializeTooltips() {
+    document.querySelectorAll('.info-icon').forEach(icon => {
+        icon.addEventListener('mouseenter', function(e) {
+            // Create tooltip element if it doesn't exist
+            let tooltip = document.getElementById('tooltip');
+            if (!tooltip) {
+                tooltip = document.createElement('div');
+                tooltip.id = 'tooltip';
+                tooltip.className = 'tooltip';
+                document.body.appendChild(tooltip);
+            }
+            
+            // Set tooltip content and position
+            tooltip.innerHTML = decodeURIComponent(this.dataset.tooltip);
+            
+            // Position tooltip near the icon
+            const rect = this.getBoundingClientRect();
+            tooltip.style.top = `${rect.bottom + 5}px`;
+            tooltip.style.left = `${rect.left}px`;
+            
+            // Show tooltip
+            tooltip.classList.add('visible');
+        });
+        
+        icon.addEventListener('mouseleave', function() {
+            // Hide tooltip
+            const tooltip = document.getElementById('tooltip');
+            if (tooltip) {
+                tooltip.classList.remove('visible');
+            }
+        });
     });
 }
 
@@ -1168,13 +1243,18 @@ function displayEvaluationResults(results) {
     const diagnosisAccuracy = evaluationData.diagnosis_accuracy || 
                             (evaluationData.evaluation && evaluationData.evaluation.diagnosis_accuracy);
     
+    // Get question evaluation data if available
+    const questionEvaluation = evaluationData.question_evaluation || 
+                             (evaluationData.evaluation && evaluationData.evaluation.question_evaluation);
+    
     // Log what we found
     console.log("Extracted components:", {
         rubricScores,
         averageScore,
         explanations,
         overallComments,
-        diagnosisAccuracy
+        diagnosisAccuracy,
+        questionEvaluation
     });
     
     // Format the evaluation time
@@ -1191,6 +1271,92 @@ function displayEvaluationResults(results) {
             <p><strong>Average score:</strong> ${averageScore}</p>
         </div>
     `;
+
+    // Add question evaluation section if available
+    if (questionEvaluation) {
+        const percentageAsked = parseFloat(questionEvaluation.percentage_asked).toFixed(1);
+        const qualityScore = parseInt(questionEvaluation.quality_score);
+        const totalQuestions = questionEvaluation.total_questions || 0;
+        const questionsAsked = questionEvaluation.questions_asked || 0;
+        
+        html += `
+            <h4>Question Coverage Analysis</h4>
+            <div class="question-evaluation">
+                <div class="question-metrics">
+                    <div class="question-metric">
+                        <div class="metric-header">Questions Asked</div>
+                        <div class="percentage-circle">
+                            <svg viewBox="0 0 36 36">
+                                <path class="circle-bg"
+                                    d="M18 2.0845
+                                    a 15.9155 15.9155 0 0 1 0 31.831
+                                    a 15.9155 15.9155 0 0 1 0 -31.831"
+                                />
+                                <path class="circle"
+                                    stroke-dasharray="${percentageAsked}, 100"
+                                    d="M18 2.0845
+                                    a 15.9155 15.9155 0 0 1 0 31.831
+                                    a 15.9155 15.9155 0 0 1 0 -31.831"
+                                />
+                                <text x="18" y="20.35" class="percentage">${percentageAsked}%</text>
+                            </svg>
+                        </div>
+                        <div class="question-count">${questionsAsked} of ${totalQuestions}</div>
+                    </div>
+                    <div class="question-metric">
+                        <div class="metric-header">Question Quality</div>
+                        <div class="quality-score">
+                            <div class="quality-stars">
+                                ${generateStars(qualityScore, 5)}
+                            </div>
+                            <div class="quality-value">${qualityScore}/5</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="question-explanation">
+                    <p>${questionEvaluation.explanation}</p>
+                </div>
+                <div class="question-details-toggle">
+                    <button class="show-questions-btn">Show Question Details</button>
+                </div>
+                <div class="question-details hidden">
+                    <table class="question-table">
+                        <thead>
+                            <tr>
+                                <th>Original Question</th>
+                                <th>Asked</th>
+                                <th>Therapist Version</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${questionEvaluation.question_analysis ? questionEvaluation.question_analysis.map(q => `
+                                <tr class="${q.asked ? 'question-asked' : 'question-not-asked'}">
+                                    <td>${q.original}</td>
+                                    <td>${q.asked ? '✓' : '✗'}</td>
+                                    <td>${q.asked ? q.therapist_version || '-' : '-'}</td>
+                                </tr>
+                            `).join('') : ''}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        `;
+        
+        // Add event listener for the show details button after HTML is added to DOM
+        setTimeout(() => {
+            const showQuestionsBtn = document.querySelector('.show-questions-btn');
+            if (showQuestionsBtn) {
+                showQuestionsBtn.addEventListener('click', function() {
+                    const questionDetails = document.querySelector('.question-details');
+                    if (questionDetails) {
+                        questionDetails.classList.toggle('hidden');
+                        this.textContent = questionDetails.classList.contains('hidden') ? 
+                            'Show Question Details' : 'Hide Question Details';
+                    }
+                });
+            }
+        }, 100);
+    }
 
     // Check for rubric scores
     if (rubricScores && Object.keys(rubricScores).length > 0) {

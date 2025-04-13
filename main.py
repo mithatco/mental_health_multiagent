@@ -8,7 +8,9 @@ from utils.document_processor import extract_questions_from_text, DocumentProces
 from utils.rag_engine import RAGEngine
 from agents.mental_health_assistant import MentalHealthAssistant
 from agents.patient import Patient
+from agents.full_conversation_agent import FullConversationAgent
 from utils.conversation_handler import ConversationHandler
+from utils.full_conversation_handler import FullConversationHandler
 from utils.chat_logger import ChatLogger
 from utils.batch_processor import BatchProcessor
 
@@ -53,7 +55,7 @@ def load_questions_from_json(file_path):
         return None
 
 def run_conversation(pdf_path, patient_profile=None, assistant_model="qwen2.5:3b", 
-                    patient_model="qwen2.5:3b", disable_output=False, logs_dir=None,
+                    patient_model="qwen2.5:3b", full_conversation=False, disable_output=False, logs_dir=None,
                     log_filename=None, refresh_cache=False, no_save=False, state_file=None):
     """
     Run a simulated mental health assessment conversation between an AI assistant and an AI patient.
@@ -63,6 +65,7 @@ def run_conversation(pdf_path, patient_profile=None, assistant_model="qwen2.5:3b
         patient_profile: Name of the patient profile to use
         assistant_model: Name of the model to use for the assistant
         patient_model: Name of the model to use for the patient
+        full_conversation: Whether to generate the entire conversation in a single LLM call
         disable_output: Whether to disable console output
         logs_dir: Directory to save logs to
         log_filename: Specific filename to use for the log (overrides default naming)
@@ -224,8 +227,14 @@ def run_conversation(pdf_path, patient_profile=None, assistant_model="qwen2.5:3b
             "patient_model": patient_model,
             "patient_profile": patient_profile or "default",
             "question_count": len(questions),
-            "duration": duration
+            "duration": duration,
+            "full_conversation": full_conversation
         }
+        
+        # Extract timing metrics if available (FullConversationHandler)
+        timing_metrics = None
+        if hasattr(conversation, 'timing_metrics'):
+            timing_metrics = conversation.timing_metrics
         
         # Save using specified log_filename if provided
         try:
@@ -235,6 +244,7 @@ def run_conversation(pdf_path, patient_profile=None, assistant_model="qwen2.5:3b
                     diagnosis,
                     questionnaire_name=questionnaire_name,
                     metadata=metadata,
+                    timing_metrics=timing_metrics,
                     log_path=log_filename
                 )
                 if not disable_output:
@@ -244,7 +254,8 @@ def run_conversation(pdf_path, patient_profile=None, assistant_model="qwen2.5:3b
                     conversation.get_conversation_log(),
                     diagnosis,
                     questionnaire_name=questionnaire_name,
-                    metadata=metadata
+                    metadata=metadata,
+                    timing_metrics=timing_metrics
                 )
                 if not disable_output:
                     print(f"\nConversation saved to: {log_path}")
@@ -289,6 +300,18 @@ def main():
     # Add option to skip sentence transformer loading
     parser.add_argument('--skip-transformers', action='store_true', 
                        help="Skip loading SentenceTransformer models (faster startup)")
+    
+    # Add option to generate full conversation in a single LLM call
+    parser.add_argument('--full_conversation', action='store_true', 
+                       help="Generate the entire conversation in a single LLM call")
+    
+    # Add interactive mode option
+    parser.add_argument('--interactive', type=str, choices=['true', 'false'], default='false',
+                       help="Whether the chat is in interactive mode with a real user")
+    
+    # Add option to disable RAG
+    parser.add_argument('--disable-rag', action='store_true',
+                       help="Disable the use of RAG for retrieving information")
     
     args = parser.parse_args()
     debug_log("Starting main function with args: " + str(vars(args)))
@@ -464,16 +487,50 @@ def main():
     # Check if we're in API mode (state file is specified)
     state_file = args.state_file
     state = {"conversation": [], "status": "starting"}
+    interactive_mode = False  # Default to non-interactive mode
+    human_user = False  # Default to AI patient
     
-    # Initialize agents
-    assistant = MentalHealthAssistant(
-        args.ollama_url, 
-        args.assistant_model, 
-        questions, 
-        rag_engine,
-        questionnaire_name=selected_name
-    )
-    patient = Patient(args.ollama_url, args.patient_model, patient_profile)
+    # Parse interactive mode flag
+    if args.interactive.lower() == 'true':
+        interactive_mode = True
+    
+    # If a state file is provided, read it to check for interactive mode
+    if state_file:
+        try:
+            with open(state_file, 'r') as f:
+                state = json.load(f)
+                # Check if we're in interactive mode (user is the patient)
+                interactive_mode = state.get('interactive_mode', False)
+                human_user = state.get('human_user', False)
+                
+                if interactive_mode:
+                    debug_log("Running in interactive mode with real user as patient")
+                
+                if human_user:
+                    debug_log("Human user is acting as the patient")
+        except Exception as e:
+            debug_log(f"Error reading state file: {str(e)}")
+            print(f"Warning: Could not read state file: {str(e)}")
+
+    if args.full_conversation:
+        agent = FullConversationAgent(
+            args.ollama_url,
+            args.assistant_model,
+            patient_profile,
+            questions,
+            rag_engine,
+            questionnaire_name=selected_name
+        )
+    else:
+        # Initialize agents
+        assistant = MentalHealthAssistant(
+            args.ollama_url, 
+            args.assistant_model, 
+            questions, 
+            rag_engine,
+            questionnaire_name=selected_name
+        )
+        patient = Patient(args.ollama_url, args.patient_model, patient_profile)
     
     # Initialize the chat logger
     if not args.no_save:
@@ -483,52 +540,99 @@ def main():
         chat_logger = ChatLogger(args.logs_dir)
     
     # Set up conversation handler with state tracking for API mode
-    conversation = ConversationHandler(assistant, patient, state_file=state_file)
+    if not args.full_conversation:
+        conversation = ConversationHandler(assistant, patient, state_file=state_file)
+    else:
+        conversation = FullConversationHandler(agent, state_file=state_file)
     
     # Run the conversation
-    diagnosis = conversation.run()
-    
-    print("\n=== Final Diagnosis ===")
-    print(diagnosis)
-    
-    # If in API mode, update the state file with the diagnosis
-    if state_file:
-        try:
-            with open(state_file, 'r') as f:
-                state = json.load(f)
-            
-            state['status'] = 'completed'
-            state['diagnosis'] = diagnosis
-            
-            with open(state_file, 'w') as f:
-                json.dump(state, f)
-        except Exception as e:
-            print(f"Error updating state file: {str(e)}")
-    
-    # Save the conversation if requested
-    if not args.no_save:
-        # Fix the dict_keys not being subscriptable error
-        if isinstance(questionnaires, dict) and questionnaires:
-            # If selected_name is not set, use the first questionnaire
-            if not selected_name:
-                selected_name = list(questionnaires.keys())[0]
-        else:
-            selected_name = "default_questionnaire"
+    try:
+        diagnosis = conversation.run()
         
-        metadata = {
-            "assistant_model": args.assistant_model,
-            "patient_model": args.patient_model,
-            "patient_profile": patient_profile or "default",
-            "question_count": len(questions)
-        }
-        log_path = chat_logger.save_chat(
-            conversation.get_conversation_log(),
-            diagnosis,
-            questionnaire_name=selected_name,
-            metadata=metadata
-        )
-        print(f"\nConversation saved to: {log_path}")
-        print(f"You can find all conversation logs in: {chat_logger.log_dir}")
+        # Check if the diagnosis is a special signal for interactive mode
+        if interactive_mode and human_user and diagnosis == "INTERACTIVE_MODE_RUNNING":
+            print("\nContinuing interactive conversation through web interface...")
+            # For interactive mode with human user, we just exit the script here
+            # as the conversation will continue through the web interface
+            return
+        
+        print("\n=== Final Diagnosis ===")
+        print(diagnosis)
+        
+        # If in API mode, update the state file with the diagnosis
+        if state_file:
+            try:
+                with open(state_file, 'r') as f:
+                    state = json.load(f)
+                
+                state['status'] = 'completed'
+                state['diagnosis'] = diagnosis
+                
+                with open(state_file, 'w') as f:
+                    json.dump(state, f)
+            except Exception as e:
+                print(f"Error updating state file: {str(e)}")
+        
+        # Save the conversation if requested
+        if not args.no_save:
+            # Fix the dict_keys not being subscriptable error
+            if isinstance(questionnaires, dict) and questionnaires:
+                # If selected_name is not set, use the first questionnaire
+                if not selected_name:
+                    selected_name = list(questionnaires.keys())[0]
+            else:
+                selected_name = "default_questionnaire"
+            
+            metadata = {
+                "assistant_model": args.assistant_model,
+                "patient_model": args.patient_model,
+                "patient_profile": patient_profile or "default",
+                "question_count": len(questions),
+                "full_conversation": args.full_conversation
+            }
+            
+            # Extract timing metrics if available (FullConversationHandler)
+            timing_metrics = None
+            if hasattr(conversation, 'timing_metrics'):
+                timing_metrics = conversation.timing_metrics
+            
+            log_path = chat_logger.save_chat(
+                conversation.get_conversation_log(),
+                diagnosis,
+                questionnaire_name=selected_name,
+                metadata=metadata,
+                timing_metrics=timing_metrics
+            )
+            print(f"\nConversation saved to: {log_path}")
+            print(f"You can find all conversation logs in: {chat_logger.log_dir}")
+    except KeyboardInterrupt:
+        print("\nConversation interrupted by user.")
+        if state_file:
+            try:
+                with open(state_file, 'r') as f:
+                    state = json.load(f)
+                
+                state['status'] = 'interrupted'
+                
+                with open(state_file, 'w') as f:
+                    json.dump(state, f)
+            except Exception as e:
+                print(f"Error updating state file: {str(e)}")
+    except Exception as e:
+        print(f"\nError during conversation: {str(e)}")
+        if state_file:
+            try:
+                with open(state_file, 'r') as f:
+                    state = json.load(f)
+                
+                state['status'] = 'error'
+                state['error'] = str(e)
+                
+                with open(state_file, 'w') as f:
+                    json.dump(state, f)
+            except Exception as err:
+                print(f"Error updating state file: {str(err)}")
+        raise
 
 if __name__ == "__main__":
     try:
