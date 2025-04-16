@@ -56,7 +56,7 @@ def load_questions_from_json(file_path):
 
 def run_conversation(pdf_path, patient_profile=None, assistant_model="qwen2.5:3b", 
                     patient_model="qwen2.5:3b", full_conversation=False, disable_output=False, logs_dir=None,
-                    log_filename=None, refresh_cache=False, no_save=False, state_file=None):
+                    log_filename=None, refresh_cache=False, no_save=False, state_file=None, disable_rag=False, disable_rag_evaluation=False):
     """
     Run a simulated mental health assessment conversation between an AI assistant and an AI patient.
     
@@ -72,6 +72,8 @@ def run_conversation(pdf_path, patient_profile=None, assistant_model="qwen2.5:3b
         refresh_cache: Whether to refresh the document cache
         no_save: Whether to disable saving logs
         state_file: Path to file for updating state during conversation
+        disable_rag: Whether to disable RAG document retrieval completely
+        disable_rag_evaluation: Whether to disable RAG evaluation but keep document retrieval
         
     Returns:
         Dict containing conversation results
@@ -115,9 +117,13 @@ def run_conversation(pdf_path, patient_profile=None, assistant_model="qwen2.5:3b
     docs_dir = os.path.join(project_root, "documents")
     
     try:
-        debug_log(f"Creating RAG engine with docs_dir={docs_dir}")
-        rag_engine = RAGEngine(docs_dir, refresh_cache=refresh_cache)
-        debug_log("RAG engine initialized successfully")
+        if disable_rag:
+            debug_log("RAG engine disabled by user setting")
+            rag_engine = None
+        else:
+            debug_log(f"Creating RAG engine with docs_dir={docs_dir}")
+            rag_engine = RAGEngine(docs_dir, refresh_cache=refresh_cache)
+            debug_log("RAG engine initialized successfully")
     except Exception as e:
         debug_log(f"ERROR initializing RAG engine: {str(e)}")
         raise
@@ -179,7 +185,7 @@ def run_conversation(pdf_path, patient_profile=None, assistant_model="qwen2.5:3b
     
     # Set up conversation handler with state tracking for API mode
     debug_log("Initializing conversation handler")
-    conversation = ConversationHandler(assistant, patient, state_file=state_file)
+    conversation = ConversationHandler(assistant, patient, state_file=state_file, disable_rag_evaluation=disable_rag_evaluation)
     
     # Run the conversation
     if not disable_output:
@@ -312,6 +318,10 @@ def main():
     # Add option to disable RAG
     parser.add_argument('--disable-rag', action='store_true',
                        help="Disable the use of RAG for retrieving information")
+    
+    # Add option to disable just RAG evaluation
+    parser.add_argument('--disable-rag-evaluation', action='store_true',
+                       help="Disable only the RAG evaluation after responses, but keep RAG document retrieval")
     
     args = parser.parse_args()
     debug_log("Starting main function with args: " + str(vars(args)))
@@ -518,7 +528,7 @@ def main():
             args.assistant_model,
             patient_profile,
             questions,
-            rag_engine,
+            None if args.disable_rag else rag_engine,  # Pass None if RAG is disabled
             questionnaire_name=selected_name
         )
     else:
@@ -527,7 +537,7 @@ def main():
             args.ollama_url, 
             args.assistant_model, 
             questions, 
-            rag_engine,
+            None if args.disable_rag else rag_engine,  # Pass None if RAG is disabled
             questionnaire_name=selected_name
         )
         patient = Patient(args.ollama_url, args.patient_model, patient_profile)
@@ -541,9 +551,9 @@ def main():
     
     # Set up conversation handler with state tracking for API mode
     if not args.full_conversation:
-        conversation = ConversationHandler(assistant, patient, state_file=state_file)
+        conversation = ConversationHandler(assistant, patient, state_file=state_file, disable_rag_evaluation=args.disable_rag_evaluation)
     else:
-        conversation = FullConversationHandler(agent, state_file=state_file)
+        conversation = FullConversationHandler(agent, state_file=state_file, disable_rag_evaluation=args.disable_rag_evaluation)
     
     # Run the conversation
     try:

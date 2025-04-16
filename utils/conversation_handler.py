@@ -6,7 +6,7 @@ from collections import defaultdict
 from .rag_evaluator import RAGEvaluator
 
 class ConversationHandler:
-    def __init__(self, assistant, patient, state_file=None):
+    def __init__(self, assistant, patient, state_file=None, disable_rag_evaluation=False):
         """
         Initialize the conversation handler.
         
@@ -14,29 +14,36 @@ class ConversationHandler:
             assistant (MentalHealthAssistant): The mental health assistant agent
             patient (Patient): The patient agent
             state_file: Optional path to a file to write conversation state to (for API mode)
+            disable_rag_evaluation: Whether to disable RAG evaluation (but keep document retrieval)
         """
         self.assistant = assistant
         self.patient = patient
         self.conversation_log = []
         self.state_file = state_file
+        self.disable_rag_evaluation = disable_rag_evaluation
         self.rag_metrics = {
             "total_queries": 0,
             "avg_impact_score": 0.0,
             "document_usage": {}
         }
         
-        # Initialize RAG evaluator if deepeval is available
-        try:
-            from .rag_evaluator import RAGEvaluator
-            self.rag_evaluator = RAGEvaluator()
-            self.has_evaluator = self.rag_evaluator.is_available
-            
-            if not self.has_evaluator:
-                print("RAG evaluation disabled: deepeval library is not available in this environment")
-        except ImportError:
-            print("RAG evaluation disabled: couldn't import RAGEvaluator")
+        # Initialize RAG evaluator if deepeval is available and evaluation not explicitly disabled
+        if disable_rag_evaluation:
+            print("RAG evaluation explicitly disabled by user")
             self.has_evaluator = False
             self.rag_evaluator = None
+        else:
+            try:
+                from .rag_evaluator import RAGEvaluator
+                self.rag_evaluator = RAGEvaluator()
+                self.has_evaluator = self.rag_evaluator.is_available
+                
+                if not self.has_evaluator:
+                    print("RAG evaluation disabled: deepeval library is not available in this environment")
+            except ImportError:
+                print("RAG evaluation disabled: couldn't import RAGEvaluator")
+                self.has_evaluator = False
+                self.rag_evaluator = None
         
         # Add rag_evaluation_results to track metrics
         self.rag_evaluation_results = []

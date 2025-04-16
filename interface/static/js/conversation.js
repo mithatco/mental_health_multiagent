@@ -257,7 +257,7 @@ function startConversation() {
     for (let [key, value] of formData.entries()) {
         console.log(`Processing form field: ${key} = ${value}`);
         
-        if (key === 'save_logs' || key === 'refresh_cache') {
+        if (key === 'save_logs' || key === 'refresh_cache' || key === 'disable_rag' || key === 'disable_rag_evaluation') {
             data[key] = value === 'on';  // Convert checkbox to boolean
         } else {
             data[key] = value;
@@ -280,6 +280,8 @@ function startConversation() {
         const patientModel = document.getElementById('patient-model-select').value;
         const saveLogs = document.getElementById('save-logs').checked;
         const refreshCache = document.getElementById('refresh-cache').checked;
+        const disableRag = document.getElementById('disable-rag').checked;
+        const disableRagEvaluation = document.getElementById('disable-rag-evaluation').checked;
         
         // Create data object manually
         data.questionnaire = questionnaire;
@@ -288,6 +290,8 @@ function startConversation() {
         data.patient_model = patientModel;
         data.save_logs = saveLogs;
         data.refresh_cache = refreshCache;
+        data.disable_rag = disableRag;
+        data.disable_rag_evaluation = disableRagEvaluation;
         
         console.log("Created fallback data:", data);
     }
@@ -605,6 +609,8 @@ function startBatchGeneration() {
         patient_model: document.getElementById('patient-model-select').value,
         save_logs: document.getElementById('save-logs').checked,
         refresh_cache: document.getElementById('refresh-cache').checked,
+        disable_rag: document.getElementById('disable-rag').checked,
+        disable_rag_evaluation: document.getElementById('disable-rag-evaluation').checked,
         randomize_profiles: document.getElementById('randomize-profiles')?.checked || false,
         batch_count: batchCount // Explicitly use the parsed integer
     };
@@ -939,6 +945,8 @@ function startOneshotConversation() {
         agent_model: agentModel,
         save_logs: document.getElementById('save-logs').checked,
         refresh_cache: document.getElementById('refresh-cache').checked,
+        disable_rag: document.getElementById('disable-rag').checked,
+        disable_rag_evaluation: document.getElementById('disable-rag-evaluation').checked,
         full_conversation: true // Signal that this is a full conversation
     };
     

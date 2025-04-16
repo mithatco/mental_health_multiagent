@@ -767,11 +767,14 @@ def start_conversation():
         save_logs = data.get('save_logs', True)
         refresh_cache = data.get('refresh_cache', False)
         full_conversation = data.get('full_conversation', False)  # For one-shot mode
+        disable_rag = data.get('disable_rag', False)  # Parameter to disable RAG completely
+        disable_rag_evaluation = data.get('disable_rag_evaluation', False)  # Parameter to disable RAG evaluation only
         
         print(f"Extracted parameters: questionnaire={questionnaire}, profile={profile}, "
               f"assistant_model={assistant_model}, patient_model={patient_model}, "
               f"agent_model={agent_model}, save_logs={save_logs}, refresh_cache={refresh_cache}, "
-              f"full_conversation={full_conversation}")
+              f"full_conversation={full_conversation}, disable_rag={disable_rag}, "
+              f"disable_rag_evaluation={disable_rag_evaluation}")
         
         if not questionnaire:
             return jsonify({"error": "No questionnaire selected"}), 400
@@ -812,6 +815,12 @@ def start_conversation():
             cmd.append('--no-save')
         else:
             cmd.extend(['--logs-dir', logs_dir])
+        
+        if disable_rag:
+            cmd.append('--disable-rag')
+        
+        if disable_rag_evaluation:
+            cmd.append('--disable-rag-evaluation')
         
         # Create a file to capture output
         output_file = tempfile.NamedTemporaryFile(delete=False, mode='w+')
@@ -1050,6 +1059,8 @@ def start_batch():
         save_logs = bool(data.get('save_logs', True))
         refresh_cache = bool(data.get('refresh_cache', False))
         randomize_profiles = bool(data.get('randomize_profiles', False))
+        disable_rag = bool(data.get('disable_rag', False))
+        disable_rag_evaluation = bool(data.get('disable_rag_evaluation', False))
         
         # Handle batch count with validation
         try:
@@ -1064,7 +1075,8 @@ def start_batch():
         print(f"Extracted batch parameters: questionnaire={questionnaire}, profile={profile}, "
               f"batch_count={batch_count}, randomize_profiles={randomize_profiles}, "
               f"assistant_model={assistant_model}, patient_model={patient_model}, "
-              f"save_logs={save_logs}, refresh_cache={refresh_cache}")
+              f"save_logs={save_logs}, refresh_cache={refresh_cache}, disable_rag={disable_rag}, "
+              f"disable_rag_evaluation={disable_rag_evaluation}")
         
         # Generate a unique batch ID
         batch_id = f"batch_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}"
@@ -1103,6 +1115,12 @@ def start_batch():
         if refresh_cache:
             cmd.append('--refresh_cache')
             
+        if disable_rag:
+            cmd.append('--disable-rag')
+        
+        if disable_rag_evaluation:
+            cmd.append('--disable-rag-evaluation')
+        
         # Log the full command for debugging
         print(f"Executing batch command: {' '.join(cmd)}")
         
