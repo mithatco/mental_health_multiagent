@@ -176,6 +176,14 @@
         </div>
     </div>
     
+    <!-- Load the JavaScript file -->
     <script src="{{ url_for('static', filename='js/viewer.js') }}"></script>
+    
+    <!-- Initialize data from server -->
+    <script>
+    // Initialize the data from Flask
+    var models = {% if models is string %}{{ models|safe }}{% else %}{{ models|tojson|safe }}{% endif %};
+    var providersData = {% if providers is string %}{{ providers|safe }}{% else %}{{ providers|tojson|safe }}{% endif %};
+    </script>
 </body>
 </html>

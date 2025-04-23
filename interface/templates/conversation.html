@@ -101,6 +101,16 @@
                             <input type="checkbox" id="disable-rag-evaluation" name="disable_rag_evaluation">
                             <label for="disable-rag-evaluation">Disable RAG evaluation (keep document retrieval)</label>
                         </div>
+                        
+                        <!-- Add Groq API Key input -->
+                        <div class="form-group groq-api-section" id="groq-api-section" style="display: none; margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc;">
+                            <label for="groq-api-key">Groq API Key:</label>
+                            <div style="display: flex; gap: 5px;">
+                                <input type="password" id="groq-api-key" name="groq_api_key" placeholder="Enter your Groq API key">
+                                <button type="button" id="toggle-api-key-btn" style="flex: 0 0 auto; padding: 5px 8px;">Show</button>
+                            </div>
+                            <small>Required when using Groq models. Get your key at <a href="https://console.groq.com/" target="_blank">console.groq.com</a></small>
+                        </div>
                     </div>
 
                     <div class="form-actions">
@@ -214,5 +224,10 @@
     </div>
     
     <script src="{{ url_for('static', filename='js/conversation.js') }}"></script>
+    <!-- Initialize data from server, no JSON.parse needed since Jinja tojson already produces JSON -->
+    <script>
+        var models = {{ models_data|tojson|safe }};
+        var providersData = {{ providers_data|tojson|safe }};
+    </script>
 </body>
 </html>

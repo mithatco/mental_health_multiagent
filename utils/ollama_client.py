@@ -1,7 +1,8 @@
 import requests
 import json
+from utils.llm_client_base import LLMClient
 
-class OllamaClient:
+class OllamaClient(LLMClient):
     def __init__(self, base_url="http://localhost:11434"):
         """
         Initialize the Ollama client.

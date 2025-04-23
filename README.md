@@ -31,7 +31,11 @@ The Mental Health Multi-Agent System is designed to simulate psychiatric assessm
 1. **Mental Health Assistant**: Uses clinical knowledge to ask questions, interpret responses, and provide a diagnosis based on a questionnaire
 2. **Patient**: Responds to questions based on a simulated psychiatric condition profile
 
-The system leverages large language models (LLMs) running locally through Ollama, employs Retrieval-Augmented Generation (RAG) to enhance responses with domain knowledge, and stores conversations for further analysis.
+The system can leverage large language models (LLMs) from multiple providers:
+- **Ollama**: Run models locally through Ollama
+- **Groq**: Access models through the cloud-based Groq API for faster inference
+
+The system employs Retrieval-Augmented Generation (RAG) to enhance responses with domain knowledge and stores conversations for further analysis.
 
 ## Architecture Diagram
 
@@ -55,9 +59,11 @@ graph TD
         R <--> V
     end
 
-    subgraph "Ollama LLM Service"
-        F <--> O[Local LLM Models]
+    subgraph "LLM Providers"
+        F <--> O[Ollama - Local Models]
+        F <--> GR[Groq - Cloud API]
         R <--> O
+        R <--> GR
     end
 
     subgraph "Outputs"
@@ -85,7 +91,9 @@ graph TD
 
 ### 3. Infrastructure
 
-- **Ollama Client**: Interfaces with locally deployed LLMs
+- **LLM Client System**: Provides unified interface to multiple LLM providers
+  - **Ollama Client**: Interfaces with locally deployed LLMs
+  - **Groq Client**: Interfaces with Groq API for cloud-based inference
 - **Chat Logger**: Records conversations and diagnoses
 - **Profile System**: Manages different patient profiles
 
@@ -137,18 +145,27 @@ mkdir -p documents chat_logs cache
 
 ### Basic Usage
 
-Run the application with default settings:
+Run the application with default settings (using Ollama):
 
 ```bash
 python main.py
 ```
 
-This will:
-1. Look for questionnaires in the `documents` directory
-2. Allow you to select a patient profile
-3. Start a conversation between the mental health assistant and patient
-4. Generate a diagnosis
-5. Save the conversation to the `chat_logs` directory
+Using Groq instead of Ollama:
+
+```bash
+# Set Groq API key as environment variable
+export GROQ_API_KEY=your_groq_api_key
+
+# Run with Groq for both assistant and patient
+python main.py --assistant_provider groq --patient_provider groq --assistant_model llama3-70b-8192 --patient_model llama3-70b-8192
+```
+
+Or pass the API key directly:
+
+```bash
+python main.py --assistant_provider groq --patient_provider groq --groq_api_key your_groq_api_key --assistant_model llama3-70b-8192 --patient_model llama3-70b-8192
+```
 
 ### Command-Line Options
 
@@ -162,14 +179,43 @@ python main.py --docs_dir path/to/docs_folder
 # Choose a specific patient profile
 python main.py --patient_profile depression
 
+# LLM Provider options
+python main.py --assistant_provider groq --patient_provider ollama
+
 # Use different models for the agents
 python main.py --assistant_model llama2:13b --patient_model llama2:13b
+
+# Using Groq models
+python main.py --assistant_provider groq --assistant_model llama3-70b-8192
 
 # Don't save the conversation log
 python main.py --no-save
 
 # Specify a different logs directory
 python main.py --logs-dir path/to/logs_folder
+```
+
+### Supported LLM Providers
+
+The system currently supports two LLM providers:
+
+1. **Ollama** (default)
+   - Runs models locally on your machine
+   - No API key required
+   - Configure with `--ollama_url` (default: http://localhost:11434)
+   - Recommended models: `qwen2.5:3b`, `llama2:13b`, `mistral:7b`
+
+2. **Groq**
+   - Cloud-based API with extremely fast inference
+   - Requires API key (get one at https://console.groq.com/)
+   - Set with `--groq_api_key` or environment variable `GROQ_API_KEY`
+   - Recommended models: `llama3-70b-8192`, `llama3-8b-8192`, `mixtral-8x7b-32768`
+
+You can mix providers, using Groq for one agent and Ollama for another:
+
+```bash
+# Use Groq for assistant (higher quality) and Ollama for patient (cost savings)
+python main.py --assistant_provider groq --patient_provider ollama --assistant_model llama3-70b-8192 --patient_model qwen2.5:3b --groq_api_key your_groq_api_key
 ```
 
 ### Batch Processing
@@ -221,7 +267,9 @@ mental_health_multiagent/
 │   ├── conversation_handler.py   # Handles agent interactions
 │   ├── chat_logger.py            # Conversation logging
 │   ├── document_processor.py     # Document handling
-│   ├── ollama_client.py          # LLM interface
+│   ├── llm_client_base.py        # Base LLM client interface
+│   ├── ollama_client.py          # Ollama LLM interface
+│   ├── groq_client.py            # Groq API interface
 │   ├── pdf_processor.py          # PDF extraction
 │   ├── rag_engine.py             # RAG functionality
 │   ├── vector_store.py           # Vector database

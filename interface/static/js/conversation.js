@@ -39,6 +39,17 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('single-mode-btn').addEventListener('click', () => switchMode('single'));
     document.getElementById('oneshot-mode-btn').addEventListener('click', () => switchMode('oneshot'));
     document.getElementById('batch-mode-btn').addEventListener('click', () => switchMode('batch'));
+    
+    // Store providers data from the server
+    window.providersData = providersData || {};
+    
+    // Add event listeners for model selection changes
+    document.getElementById('assistant-model-select').addEventListener('change', checkForGroqModels);
+    document.getElementById('patient-model-select').addEventListener('change', checkForGroqModels);
+    document.getElementById('agent-model-select').addEventListener('change', checkForGroqModels);
+    
+    // Check initially
+    checkForGroqModels();
 });
 
 // Initialize form with available questionnaires, profiles and models
@@ -167,38 +178,173 @@ function initializeForm() {
             agentSelect.innerHTML = '';
             
             if (data.models && data.models.length) {
-                // Add models to selects
+                // Create option groups for each provider
+                const ollamaAssistantGroup = document.createElement('optgroup');
+                ollamaAssistantGroup.label = 'Ollama (Local)';
+                
+                const ollamaPatientGroup = document.createElement('optgroup');
+                ollamaPatientGroup.label = 'Ollama (Local)';
+                
+                const ollamaAgentGroup = document.createElement('optgroup');
+                ollamaAgentGroup.label = 'Ollama (Local)';
+                
+                const groqAssistantGroup = document.createElement('optgroup');
+                groqAssistantGroup.label = 'Groq (Cloud API)';
+                
+                const groqPatientGroup = document.createElement('optgroup');
+                groqPatientGroup.label = 'Groq (Cloud API)';
+                
+                const groqAgentGroup = document.createElement('optgroup');
+                groqAgentGroup.label = 'Groq (Cloud API)';
+                
+                // Add models to appropriate groups
                 data.models.forEach(model => {
-                    // Assistant select
-                    const assistantOption = document.createElement('option');
-                    assistantOption.value = model;
-                    assistantOption.textContent = model;
-                    // Default to qwen2.5:3b if available
-                    if (model === 'qwen2.5:3b') {
-                        assistantOption.selected = true;
-                    }
-                    assistantSelect.appendChild(assistantOption);
+                    // Get the provider and model name
+                    const provider = model.provider;
+                    const name = model.name;
+                    const displayName = model.display_name || name;
                     
-                    // Patient select
-                    const patientOption = document.createElement('option');
-                    patientOption.value = model;
-                    patientOption.textContent = model;
-                    // Default to qwen2.5:3b if available
-                    if (model === 'qwen2.5:3b') {
-                        patientOption.selected = true;
+                    // Create option elements for each select
+                    if (provider === 'ollama') {
+                        // Assistant select
+                        const assistantOption = document.createElement('option');
+                        assistantOption.value = name;
+                        assistantOption.textContent = displayName;
+                        assistantOption.dataset.provider = provider;
+                        // Default to qwen2.5:3b if available
+                        if (name === 'qwen2.5:3b') {
+                            assistantOption.selected = true;
+                        }
+                        ollamaAssistantGroup.appendChild(assistantOption);
+                        
+                        // Patient select
+                        const patientOption = document.createElement('option');
+                        patientOption.value = name;
+                        patientOption.textContent = displayName;
+                        patientOption.dataset.provider = provider;
+                        // Default to qwen2.5:3b if available
+                        if (name === 'qwen2.5:3b') {
+                            patientOption.selected = true;
+                        }
+                        ollamaPatientGroup.appendChild(patientOption);
+                        
+                        // Agent select for one-shot mode
+                        const agentOption = document.createElement('option');
+                        agentOption.value = name;
+                        agentOption.textContent = displayName;
+                        agentOption.dataset.provider = provider;
+                        // Default to qwen2.5:3b if available
+                        if (name === 'qwen2.5:3b') {
+                            agentOption.selected = true;
+                        }
+                        ollamaAgentGroup.appendChild(agentOption);
+                    } else if (provider === 'groq') {
+                        // Assistant select
+                        const assistantOption = document.createElement('option');
+                        assistantOption.value = name;
+                        assistantOption.textContent = displayName;
+                        assistantOption.dataset.provider = provider;
+                        groqAssistantGroup.appendChild(assistantOption);
+                        
+                        // Patient select
+                        const patientOption = document.createElement('option');
+                        patientOption.value = name;
+                        patientOption.textContent = displayName;
+                        patientOption.dataset.provider = provider;
+                        groqPatientGroup.appendChild(patientOption);
+                        
+                        // Agent select for one-shot mode
+                        const agentOption = document.createElement('option');
+                        agentOption.value = name;
+                        agentOption.textContent = displayName;
+                        agentOption.dataset.provider = provider;
+                        groqAgentGroup.appendChild(agentOption);
                     }
-                    patientSelect.appendChild(patientOption);
-                    
-                    // Agent select for one-shot mode
-                    const agentOption = document.createElement('option');
-                    agentOption.value = model;
-                    agentOption.textContent = model;
-                    // Default to qwen2.5:3b if available
-                    if (model === 'qwen2.5:3b') {
-                        agentOption.selected = true;
-                    }
-                    agentSelect.appendChild(agentOption);
                 });
+                
+                // Add option groups to selects if they have children
+                if (ollamaAssistantGroup.children.length > 0) {
+                    assistantSelect.appendChild(ollamaAssistantGroup);
+                }
+                
+                if (ollamaPatientGroup.children.length > 0) {
+                    patientSelect.appendChild(ollamaPatientGroup);
+                }
+                
+                if (ollamaAgentGroup.children.length > 0) {
+                    agentSelect.appendChild(ollamaAgentGroup);
+                }
+                
+                if (groqAssistantGroup.children.length > 0) {
+                    assistantSelect.appendChild(groqAssistantGroup);
+                }
+                
+                if (groqPatientGroup.children.length > 0) {
+                    patientSelect.appendChild(groqPatientGroup);
+                }
+                
+                if (groqAgentGroup.children.length > 0) {
+                    agentSelect.appendChild(groqAgentGroup);
+                }
+                
+                // Check if any models were added
+                if (assistantSelect.children.length === 0) {
+                    const option = document.createElement('option');
+                    option.value = '';
+                    option.textContent = 'No models available';
+                    option.disabled = true;
+                    assistantSelect.appendChild(option);
+                    patientSelect.appendChild(option.cloneNode(true));
+                    agentSelect.appendChild(option.cloneNode(true));
+                }
+                
+                // Add change listeners to check for Groq models
+                assistantSelect.addEventListener('change', checkForGroqModels);
+                patientSelect.addEventListener('change', checkForGroqModels);
+                agentSelect.addEventListener('change', checkForGroqModels);
+                
+                // Initial check for Groq models
+                checkForGroqModels();
+                
+                // Add API key toggle button functionality
+                document.getElementById('toggle-api-key-btn').addEventListener('click', function() {
+                    const apiKeyField = document.getElementById('groq-api-key');
+                    const btnText = this.textContent;
+                    
+                    if (apiKeyField.type === 'password') {
+                        apiKeyField.type = 'text';
+                        this.textContent = 'Hide';
+                    } else {
+                        apiKeyField.type = 'password';
+                        this.textContent = 'Show';
+                    }
+                });
+                
+                // Add providers info
+                if (data.providers) {
+                    // Check Ollama availability
+                    if (data.providers.ollama && !data.providers.ollama.available) {
+                        document.getElementById('conversation-display').innerHTML += `
+                            <div class="notice-message">
+                                <h3>Ollama Not Available</h3>
+                                <p>The Ollama server doesn't appear to be running.</p>
+                                <p>Please make sure to start Ollama locally before using Ollama models.</p>
+                            </div>
+                        `;
+                    }
+                    
+                    // Check Groq availability
+                    if (data.providers.groq && !data.providers.groq.available) {
+                        document.getElementById('groq-api-section').style.display = 'block';
+                        document.getElementById('conversation-display').innerHTML += `
+                            <div class="notice-message">
+                                <h3>Groq API Key Required</h3>
+                                <p>To use Groq models, you need to provide an API key.</p>
+                                <p>You can enter it in the "Advanced Options" section.</p>
+                            </div>
+                        `;
+                    }
+                }
             } else {
                 // Error options
                 const option1 = document.createElement('option');
@@ -246,98 +392,98 @@ function startConversation() {
     const form = document.getElementById('conversation-form');
     const formData = new FormData(form);
     
-    // Debug log form entries
-    console.log("Form entries:");
-    for (let entry of formData.entries()) {
-        console.log(entry[0] + ": " + entry[1]);
-    }
+    // Get provider data from data attributes
+    const assistantSelect = document.getElementById('assistant-model-select');
+    const patientSelect = document.getElementById('patient-model-select');
     
-    // Convert FormData to JSON object - improved implementation
-    const data = {};
-    for (let [key, value] of formData.entries()) {
-        console.log(`Processing form field: ${key} = ${value}`);
-        
-        if (key === 'save_logs' || key === 'refresh_cache' || key === 'disable_rag' || key === 'disable_rag_evaluation') {
-            data[key] = value === 'on';  // Convert checkbox to boolean
-        } else {
-            data[key] = value;
-        }
-    }
+    const assistantOption = assistantSelect.options[assistantSelect.selectedIndex];
+    const patientOption = patientSelect.options[patientSelect.selectedIndex];
     
-    // Debug log the final data object
-    console.log("Data object to be sent:", data);
-    const jsonData = JSON.stringify(data);
-    console.log("JSON string to be sent:", jsonData);
+    const assistantProvider = assistantOption ? assistantOption.dataset.provider || 'ollama' : 'ollama';
+    const patientProvider = patientOption ? patientOption.dataset.provider || 'ollama' : 'ollama'; 
     
-    // Add fallback for empty data (this shouldn't normally happen)
-    if (Object.keys(data).length === 0) {
-        console.error("Form data is empty! Using fallback values.");
-        
-        // Get values directly from form elements
-        const questionnaire = document.getElementById('questionnaire-select').value;
-        const profile = document.getElementById('profile-select').value;
-        const assistantModel = document.getElementById('assistant-model-select').value;
-        const patientModel = document.getElementById('patient-model-select').value;
-        const saveLogs = document.getElementById('save-logs').checked;
-        const refreshCache = document.getElementById('refresh-cache').checked;
-        const disableRag = document.getElementById('disable-rag').checked;
-        const disableRagEvaluation = document.getElementById('disable-rag-evaluation').checked;
-        
-        // Create data object manually
-        data.questionnaire = questionnaire;
-        data.profile = profile;
-        data.assistant_model = assistantModel;
-        data.patient_model = patientModel;
-        data.save_logs = saveLogs;
-        data.refresh_cache = refreshCache;
-        data.disable_rag = disableRag;
-        data.disable_rag_evaluation = disableRagEvaluation;
-        
-        console.log("Created fallback data:", data);
-    }
+    const groqApiKey = document.getElementById('groq-api-key').value;
     
-    // Verify we have a questionnaire selected
-    if (!data.questionnaire) {
-        updateStatus('Error: No questionnaire selected', 'error');
+    // Validate Groq API key if needed
+    if ((assistantProvider === 'groq' || patientProvider === 'groq') && !groqApiKey) {
+        updateStatus('Error: Groq API key is required for Groq models', 'error');
         setFormEnabled(true);
+        
+        // Show error message in conversation display
+        document.getElementById('conversation-display').innerHTML = `
+            <div class="error-message">
+                <h3>Groq API Key Required</h3>
+                <p>Please enter your Groq API key in the Advanced Options section.</p>
+                <p>You can get a key from <a href="https://console.groq.com/" target="_blank">console.groq.com</a></p>
+            </div>
+        `;
         return;
     }
     
-    // Send request to start conversation
+    // Debug log form entries
+    console.log("Form entries:");
+    for (const pair of formData.entries()) {
+        console.log(pair[0] + ': ' + pair[1]);
+    }
+    
+    // Build JSON payload
+    const payload = {
+        questionnaire: formData.get('questionnaire'),
+        profile: formData.get('profile'),
+        assistant_model: formData.get('assistant_model'),
+        patient_model: formData.get('patient_model'),
+        save_logs: formData.get('save_logs') === 'on',
+        refresh_cache: formData.get('refresh_cache') === 'on',
+        disable_rag: formData.get('disable_rag') === 'on',
+        disable_rag_evaluation: formData.get('disable_rag_evaluation') === 'on',
+        // Add provider information
+        assistant_provider: assistantProvider,
+        patient_provider: patientProvider,
+        groq_api_key: groqApiKey
+    };
+    
+    console.log('Request payload:', payload);
+    
+    // Send the request
     fetch('/api/conversations/start', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
+            'Content-Type': 'application/json'
         },
-        credentials: 'same-origin',
-        body: JSON.stringify(data),
+        body: JSON.stringify(payload)
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
+            return response.json().then(data => {
+                throw new Error(data.error || `HTTP error! Status: ${response.status}`);
+            });
         }
         return response.json();
     })
     .then(data => {
-        if (data.conversation_id) {
-            conversationId = data.conversation_id;
-            updateStatus('Conversation started', 'active');
-            
-            // Enable stop button
-            document.getElementById('stop-btn').disabled = false;
-            
-            // Start polling for updates
-            startPolling();
-        } else {
-            updateStatus(`Error: ${data.error || 'Failed to start conversation'}`, 'error');
-            setFormEnabled(true);
-        }
+        conversationId = data.conversation_id;
+        console.log(`Conversation started with ID: ${conversationId}`);
+        updateStatus('Conversation in progress...', 'loading');
+        
+        // Start polling for updates
+        startPolling();
+        
+        // Enable stop button
+        document.getElementById('stop-btn').disabled = false;
     })
     .catch(error => {
         console.error('Error starting conversation:', error);
-        updateStatus('Error starting conversation: ' + error.message, 'error');
+        updateStatus(`Error: ${error.message}`, 'error');
         setFormEnabled(true);
+        
+        // Show error message in conversation display
+        document.getElementById('conversation-display').innerHTML = `
+            <div class="error-message">
+                <h3>Error Starting Conversation</h3>
+                <p>${error.message}</p>
+                <p>Please check your settings and try again.</p>
+            </div>
+        `;
     });
 }
 
@@ -574,90 +720,112 @@ function switchMode(mode) {
 
 // Start batch generation
 function startBatchGeneration() {
-    // First check if a questionnaire is selected - do this explicitly before anything else
-    const questionnaire = document.getElementById('questionnaire-select').value;
-    if (!questionnaire) {
-        updateBatchStatus('Error: No questionnaire selected', 'error');
-        return;
-    }
-    
-    // Check batch count before proceeding
-    const batchCountInput = document.getElementById('batch-count');
-    const batchCount = parseInt(batchCountInput.value, 10);
-    if (isNaN(batchCount) || batchCount < 1) {
-        updateBatchStatus('Error: Invalid batch count', 'error');
-        return;
-    }
-    
-    console.log(`Starting full simulation with questionnaire: ${questionnaire} and count: ${batchCount}`);
-    
     // Disable form and show loading state
     setFormEnabled(false);
-    updateBatchStatus('Starting full simulation...', 'loading');
+    updateBatchStatus('Starting simulation...', 'loading');
     
-    // Clear previous batch results
-    document.getElementById('batch-results-container').innerHTML = 
-        '<p>Processing full simulation...</p>';
+    // Reset progress bar
     document.getElementById('batch-progress-bar').style.width = '0%';
     document.getElementById('batch-progress-text').textContent = '0 / 0 conversations completed';
+    document.getElementById('batch-progress-details').textContent = 'Initializing simulation...';
     
-    // Manually construct the data payload instead of using FormData
-    const data = {
-        questionnaire: questionnaire,
-        profile: document.getElementById('profile-select').value,
-        assistant_model: document.getElementById('assistant-model-select').value,
-        patient_model: document.getElementById('patient-model-select').value,
-        save_logs: document.getElementById('save-logs').checked,
-        refresh_cache: document.getElementById('refresh-cache').checked,
-        disable_rag: document.getElementById('disable-rag').checked,
-        disable_rag_evaluation: document.getElementById('disable-rag-evaluation').checked,
-        randomize_profiles: document.getElementById('randomize-profiles')?.checked || false,
-        batch_count: batchCount // Explicitly use the parsed integer
+    // Clear previous results
+    document.getElementById('batch-results-container').innerHTML = '<p>Simulation results will appear here after completion.</p>';
+    
+    // Get form data
+    const form = document.getElementById('conversation-form');
+    const formData = new FormData(form);
+    
+    // Get provider data from data attributes
+    const assistantSelect = document.getElementById('assistant-model-select');
+    const patientSelect = document.getElementById('patient-model-select');
+    
+    const assistantOption = assistantSelect.options[assistantSelect.selectedIndex];
+    const patientOption = patientSelect.options[patientSelect.selectedIndex];
+    
+    const assistantProvider = assistantOption ? assistantOption.dataset.provider || 'ollama' : 'ollama';
+    const patientProvider = patientOption ? patientOption.dataset.provider || 'ollama' : 'ollama'; 
+    
+    const groqApiKey = document.getElementById('groq-api-key').value;
+    
+    // Validate Groq API key if needed
+    if ((assistantProvider === 'groq' || patientProvider === 'groq') && !groqApiKey) {
+        updateBatchStatus('Error: Groq API key is required for Groq models', 'error');
+        setFormEnabled(true);
+        
+        // Show error message in batch results
+        document.getElementById('batch-results-container').innerHTML = `
+            <div class="error-message">
+                <h3>Groq API Key Required</h3>
+                <p>Please enter your Groq API key in the Advanced Options section.</p>
+                <p>You can get a key from <a href="https://console.groq.com/" target="_blank">console.groq.com</a></p>
+            </div>
+        `;
+        return;
+    }
+    
+    // Build JSON payload
+    const payload = {
+        questionnaire: formData.get('questionnaire'),
+        profile: formData.get('profile'),
+        batch_count: parseInt(formData.get('batch_count'), 10) || 5,
+        randomize_profiles: formData.get('randomize_profiles') === 'on',
+        assistant_model: formData.get('assistant_model'),
+        patient_model: formData.get('patient_model'),
+        save_logs: formData.get('save_logs') === 'on',
+        refresh_cache: formData.get('refresh_cache') === 'on',
+        disable_rag: formData.get('disable_rag') === 'on',
+        disable_rag_evaluation: formData.get('disable_rag_evaluation') === 'on',
+        // Add provider information
+        assistant_provider: assistantProvider,
+        patient_provider: patientProvider,
+        groq_api_key: groqApiKey
     };
     
-    // Log the data we're about to send
-    console.log("Batch data to be sent:", data);
-    console.log("JSON string to be sent:", JSON.stringify(data));
+    console.log('Batch generation payload:', payload);
     
-    // Send request to start batch generation
+    // Send the request
     fetch('/api/batches/start', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
+            'Content-Type': 'application/json'
         },
-        credentials: 'same-origin',
-        body: JSON.stringify(data),
+        body: JSON.stringify(payload)
     })
     .then(response => {
         if (!response.ok) {
-            // For better debugging, try to get the error message from the response
-            return response.text().then(text => {
-                console.error(`Server returned ${response.status}: ${text}`);
-                throw new Error(`HTTP error! Status: ${response.status}. Details: ${text}`);
+            return response.json().then(data => {
+                throw new Error(data.error || `HTTP error! Status: ${response.status}`);
             });
         }
         return response.json();
     })
     .then(data => {
-        if (data.batch_id) {
-            batchId = data.batch_id;
-            updateBatchStatus(`Full simulation started (${batchCount} conversations)`, 'active');
-            
-            // Enable stop button
-            document.getElementById('stop-batch-btn').disabled = false;
-            
-            // Start polling for updates
-            startBatchPolling(data.batch_id, data.total_conversations);
-        } else {
-            updateBatchStatus(`Error: ${data.error || 'Failed to start full simulation'}`, 'error');
-            setFormEnabled(true);
-        }
+        batchId = data.batch_id;
+        const totalConversations = data.total_conversations || payload.batch_count;
+        
+        console.log(`Batch generation started with ID: ${batchId}, total: ${totalConversations} conversations`);
+        updateBatchStatus('Simulation in progress...', 'loading');
+        
+        // Start polling for updates
+        startBatchPolling(batchId, totalConversations);
+        
+        // Enable stop button
+        document.getElementById('stop-batch-btn').disabled = false;
     })
     .catch(error => {
-        console.error('Error starting full simulation:', error);
-        updateBatchStatus('Error starting full simulation: ' + error.message, 'error');
+        console.error('Error starting batch generation:', error);
+        updateBatchStatus(`Error: ${error.message}`, 'error');
         setFormEnabled(true);
+        
+        // Show error message in batch results
+        document.getElementById('batch-results-container').innerHTML = `
+            <div class="error-message">
+                <h3>Error Starting Simulation</h3>
+                <p>${error.message}</p>
+                <p>Please check your settings and try again.</p>
+            </div>
+        `;
     });
 }
 
@@ -912,90 +1080,105 @@ function viewBatchResults() {
     }
 }
 
-// Start a one-shot conversation
+// Start a one-shot conversation (generate entire conversation in one call)
 function startOneshotConversation() {
-    // First check if a questionnaire is selected
-    const questionnaire = document.getElementById('questionnaire-select').value;
-    if (!questionnaire) {
-        updateOneshotStatus('Error: No questionnaire selected', 'error');
-        return;
-    }
-    
-    // Check if agent model is selected
-    const agentModel = document.getElementById('agent-model-select').value;
-    if (!agentModel) {
-        updateOneshotStatus('Error: No agent model selected', 'error');
-        return;
-    }
-    
     // Disable form and show loading state
     setFormEnabled(false);
-    updateOneshotStatus('Generating one-shot conversation...', 'loading');
+    updateOneshotStatus('Starting generation...', 'loading');
     
     // Clear previous conversation
-    document.getElementById('oneshot-conversation-display').innerHTML = 
-        '<div class="loading-indicator"><div class="spinner"></div>Generating full conversation...</div>';
-    document.getElementById('oneshot-diagnosis-content').innerHTML = 
-        '<p>The diagnosis will appear here after generation completes.</p>';
+    document.getElementById('oneshot-conversation-display').innerHTML = '';
+    document.getElementById('oneshot-diagnosis-content').innerHTML = '<p>The diagnosis will appear after generation completes.</p>';
     
-    // Create data object with only the necessary parameters
-    const data = {
-        questionnaire: questionnaire,
-        profile: document.getElementById('profile-select').value,
-        agent_model: agentModel,
-        save_logs: document.getElementById('save-logs').checked,
-        refresh_cache: document.getElementById('refresh-cache').checked,
-        disable_rag: document.getElementById('disable-rag').checked,
-        disable_rag_evaluation: document.getElementById('disable-rag-evaluation').checked,
-        full_conversation: true // Signal that this is a full conversation
+    // Get form data
+    const form = document.getElementById('conversation-form');
+    const formData = new FormData(form);
+    
+    // Get provider data from data attributes for agent model (one-shot mode only uses one model)
+    const agentSelect = document.getElementById('agent-model-select');
+    const agentOption = agentSelect.options[agentSelect.selectedIndex];
+    const agentProvider = agentOption ? agentOption.dataset.provider || 'ollama' : 'ollama';
+    
+    const groqApiKey = document.getElementById('groq-api-key').value;
+    
+    // Validate Groq API key if needed
+    if (agentProvider === 'groq' && !groqApiKey) {
+        updateOneshotStatus('Error: Groq API key is required for Groq models', 'error');
+        setFormEnabled(true);
+        
+        // Show error message in conversation display
+        document.getElementById('oneshot-conversation-display').innerHTML = `
+            <div class="error-message">
+                <h3>Groq API Key Required</h3>
+                <p>Please enter your Groq API key in the Advanced Options section.</p>
+                <p>You can get a key from <a href="https://console.groq.com/" target="_blank">console.groq.com</a></p>
+            </div>
+        `;
+        return;
+    }
+    
+    // Debug log form entries
+    console.log("Form entries for one-shot mode:");
+    for (const pair of formData.entries()) {
+        console.log(pair[0] + ': ' + pair[1]);
+    }
+    
+    // Build JSON payload
+    const payload = {
+        questionnaire: formData.get('questionnaire'),
+        profile: formData.get('profile'),
+        agent_model: formData.get('agent_model'),  // For one-shot mode, we use the agent model
+        save_logs: formData.get('save_logs') === 'on',
+        refresh_cache: formData.get('refresh_cache') === 'on',
+        full_conversation: true,  // This is what makes it one-shot
+        disable_rag: formData.get('disable_rag') === 'on',
+        disable_rag_evaluation: formData.get('disable_rag_evaluation') === 'on',
+        // Add provider information
+        assistant_provider: agentProvider,  // For one-shot, assistant_provider is used
+        patient_provider: agentProvider,    // Use same provider for consistency
+        groq_api_key: groqApiKey
     };
     
-    console.log("One-shot data to be sent:", data);
+    console.log('One-shot payload:', payload);
     
-    // Send request to start conversation
+    // Send the request
     fetch('/api/conversations/start', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
+            'Content-Type': 'application/json'
         },
-        credentials: 'same-origin',
-        body: JSON.stringify(data)
+        body: JSON.stringify(payload)
     })
     .then(response => {
         if (!response.ok) {
-            return response.text().then(text => {
-                console.error(`Server returned ${response.status}: ${text}`);
-                throw new Error(`HTTP error! Status: ${response.status}. Details: ${text}`);
+            return response.json().then(data => {
+                throw new Error(data.error || `HTTP error! Status: ${response.status}`);
             });
         }
         return response.json();
     })
     .then(data => {
-        if (data.conversation_id) {
-            conversationId = data.conversation_id;
-            updateOneshotStatus('Generating conversation...', 'active');
-            
-            // Enable stop button
-            document.getElementById('stop-oneshot-btn').disabled = false;
-            
-            // Start polling for conversation updates
-            startOneshotPolling();
-        } else {
-            updateOneshotStatus(`Error: ${data.error || 'Failed to start generation'}`, 'error');
-            setFormEnabled(true);
-        }
+        conversationId = data.conversation_id;
+        console.log(`One-shot conversation started with ID: ${conversationId}`);
+        updateOneshotStatus('Generating full conversation...', 'loading');
+        
+        // Start polling for updates
+        startOneshotPolling();
+        
+        // Enable stop button
+        document.getElementById('stop-oneshot-btn').disabled = false;
     })
     .catch(error => {
-        console.error('Error starting one-shot generation:', error);
-        updateOneshotStatus('Error starting generation: ' + error.message, 'error');
+        console.error('Error starting one-shot conversation:', error);
+        updateOneshotStatus(`Error: ${error.message}`, 'error');
         setFormEnabled(true);
         
-        // Display error in conversation panel
+        // Show error message in conversation display
         document.getElementById('oneshot-conversation-display').innerHTML = `
             <div class="error-message">
                 <h3>Error Starting Generation</h3>
                 <p>${error.message}</p>
+                <p>Please check your settings and try again.</p>
             </div>
         `;
     });
@@ -1153,5 +1336,59 @@ function viewOneshotLog() {
     
     if (logId) {
         window.location.href = `/?log=${logId}`;
+    }
+}
+
+// Function to check if any of the selected models uses Groq provider
+function checkForGroqModels() {
+    const assistantModel = document.getElementById('assistant-model-select').value;
+    const patientModel = document.getElementById('patient-model-select').value;
+    const agentModel = document.getElementById('agent-model-select').value;
+    
+    const assistantModelData = models.find(model => model.name === assistantModel);
+    const patientModelData = models.find(model => model.name === patientModel);
+    const agentModelData = models.find(model => model.name === agentModel);
+    
+    const usesGroq = (assistantModelData && assistantModelData.provider === "groq") || 
+                    (patientModelData && patientModelData.provider === "groq") ||
+                    (agentModelData && agentModelData.provider === "groq");
+    
+    const groqKeySection = document.getElementById('groq-api-section');
+    const groqNoteElement = document.getElementById('groq_api_key_env_note');
+    
+    if (usesGroq) {
+        groqKeySection.style.display = 'block';
+        
+        // Check if the key is available from environment variable
+        if (window.providersData && window.providersData.groq && window.providersData.groq.available) {
+            document.getElementById('groq-api-key').disabled = true;
+            document.getElementById('groq-api-key').placeholder = "API Key from environment variable";
+            
+            // Create or show the note element
+            if (!groqNoteElement) {
+                const noteElement = document.createElement('div');
+                noteElement.id = 'groq_api_key_env_note';
+                noteElement.className = 'text-info small mt-1';
+                noteElement.textContent = "Using Groq API key from environment variable";
+                groqKeySection.appendChild(noteElement);
+            } else {
+                groqNoteElement.style.display = 'block';
+            }
+        } else {
+            document.getElementById('groq-api-key').disabled = false;
+            document.getElementById('groq-api-key').placeholder = "Enter your Groq API key";
+            
+            // Hide the note if it exists
+            if (groqNoteElement) {
+                groqNoteElement.style.display = 'none';
+            }
+        }
+    } else {
+        groqKeySection.style.display = 'none';
+        
+        // Hide the note if it exists
+        if (groqNoteElement) {
+            groqNoteElement.style.display = 'none';
+        }
     }
 }

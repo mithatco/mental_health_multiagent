@@ -126,15 +126,128 @@ def cleanup_stale_batches():
     for batch_id in to_remove:
         del active_batches[batch_id]
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index():
-    """Render the main page."""
-    return render_template('index.html')
+    # Get models directly instead of calling the route function
+    # This avoids the Response object issue
+    models_data = {}
+    
+    # Get Ollama models
+    ollama_models = []
+    try:
+        response = requests.get("http://localhost:11434/api/tags")
+        if response.status_code == 200:
+            data = response.json()
+            if 'models' in data:
+                ollama_models = [model['name'] for model in data['models']]
+    except Exception as e:
+        print(f"Error fetching Ollama models: {str(e)}")
+        try:
+            response = requests.get("http://localhost:11434/api/list")
+            if response.status_code == 200:
+                data = response.json()
+                if 'models' in data:
+                    ollama_models = [model['name'] for model in data['models']]
+        except Exception:
+            pass
+    
+    # Format Ollama models
+    model_index = 0
+    for model in ollama_models:
+        models_data[model_index] = {
+            'name': model,
+            'display_name': model,
+            'provider': 'ollama',
+            'context_size': '4K',  # Default value
+            'selected': 'selected' if model_index == 0 else ''
+        }
+        model_index += 1
+    
+    # Add Groq models
+    has_groq_key = os.environ.get('GROQ_API_KEY') is not None
+    if has_groq_key:
+        groq_models = [
+            {"name": "llama3-8b-8192", "display_name": "llama3-8b-8192", "context_size": "8K"},
+            {"name": "llama3-70b-8192", "display_name": "llama3-70b-8192", "context_size": "8K"},
+            {"name": "mixtral-8x7b-32768", "display_name": "mixtral-8x7b-32768", "context_size": "32K"},
+            {"name": "gemma-7b-it", "display_name": "gemma-7b-it", "context_size": "8K"}
+        ]
+        
+        for model in groq_models:
+            models_data[model_index] = {
+                'name': model["name"],
+                'display_name': model["display_name"] + " (" + model["context_size"] + " context)",
+                'provider': 'groq',
+                'context_size': model["context_size"],
+                'selected': ''
+            }
+            model_index += 1
+    
+    # Set the first model as selected if no model is selected
+    if len(models_data) > 0 and not any(model.get('selected') for model in models_data.values()):
+        models_data[0]['selected'] = 'selected'
+    
+    # Set provider availability
+    providers_data = {
+        'ollama': {'available': len(ollama_models) > 0},
+        'groq': {'available': has_groq_key}
+    }
+    
+    return render_template('index.html', models=models_data, providers=providers_data)
 
 @app.route('/conversation')
 def conversation():
     """Render the conversation page."""
-    return render_template('conversation.html')
+    # Get models directly instead of calling the route function
+    # This avoids the Response object issue
+    models_data = []
+    providers_data = {}
+    
+    # Get Ollama models
+    ollama_models = []
+    try:
+        response = requests.get("http://localhost:11434/api/tags")
+        if response.status_code == 200:
+            data = response.json()
+            if 'models' in data:
+                ollama_models = [model['name'] for model in data['models']]
+    except Exception as e:
+        print(f"Error fetching Ollama models: {str(e)}")
+        try:
+            response = requests.get("http://localhost:11434/api/list")
+            if response.status_code == 200:
+                data = response.json()
+                if 'models' in data:
+                    ollama_models = [model['name'] for model in data['models']]
+        except Exception:
+            pass
+    
+    # Format Ollama models
+    for model in ollama_models:
+        models_data.append({
+            "name": model,
+            "display_name": model,
+            "provider": "ollama"
+        })
+    
+    # Add Groq models
+    has_groq_key = os.environ.get('GROQ_API_KEY') is not None
+    if has_groq_key:
+        groq_models = [
+            {"name": "llama3-8b-8192", "display_name": "llama3-8b-8192 (8K context)", "provider": "groq"},
+            {"name": "llama3-70b-8192", "display_name": "llama3-70b-8192 (8K context)", "provider": "groq"},
+            {"name": "mixtral-8x7b-32768", "display_name": "mixtral-8x7b-32768 (32K context)", "provider": "groq"},
+            {"name": "gemma-7b-it", "display_name": "gemma-7b-it (8K context)", "provider": "groq"}
+        ]
+        models_data.extend(groq_models)
+    
+    # Set provider availability
+    providers_data = {
+        'ollama': {'available': len(ollama_models) > 0},
+        'groq': {'available': has_groq_key}
+    }
+    
+    return render_template('conversation.html', models_data=models_data, providers_data=providers_data)
 
 @app.route('/api/logs', methods=['GET'])
 def get_logs():
@@ -582,16 +695,103 @@ def get_evaluation(log_id):
 
 @app.route('/api/models', methods=['GET'])
 def get_models():
-    """Get available Ollama models."""
+    """Get available models from both Ollama and Groq."""
+    # Initialize lists for models
+    ollama_models = []
+    groq_models = []
+    has_groq_key = False
+    
+    # Check if Groq API key is available in environment variables
+    groq_api_key = os.environ.get("GROQ_API_KEY")
+    if groq_api_key:
+        has_groq_key = True
+        print("Groq API key is available from environment variable")
+    
+    # Get Ollama models - try both new and old API endpoints
     try:
+        # Try new API endpoint first
         response = requests.get("http://localhost:11434/api/tags")
         if response.status_code == 200:
-            models = [model['name'] for model in response.json().get('models', [])]
-            return jsonify({'models': models})
+            data = response.json()
+            if 'models' in data:
+                ollama_models = [model['name'] for model in data['models']]
+                print(f"Found {len(ollama_models)} Ollama models using /api/tags endpoint")
+            else:
+                print("No models found in Ollama response")
         else:
-            return jsonify({'error': f'Failed to fetch models from Ollama API: {response.status_code}'}), 500
+            print(f"Failed to fetch models from Ollama API tags endpoint: {response.status_code}")
+            
+            # Try alternative endpoint
+            try:
+                response = requests.get("http://localhost:11434/api/list")
+                if response.status_code == 200:
+                    data = response.json()
+                    if 'models' in data:
+                        ollama_models = [model['name'] for model in data['models']]
+                        print(f"Found {len(ollama_models)} Ollama models using /api/list endpoint")
+                    else:
+                        print("No models found in Ollama list response")
+            except Exception as e:
+                print(f"Error fetching Ollama models from list endpoint: {str(e)}")
     except Exception as e:
-        return jsonify({'error': f'Error fetching models: {str(e)}'}), 500
+        print(f"Error fetching Ollama models: {str(e)}")
+        
+        # Try one more alternative if the first attempt failed
+        try:
+            # Some versions use this endpoint instead
+            response = requests.get("http://localhost:11434/api/list")
+            if response.status_code == 200:
+                models_data = response.json()
+                if isinstance(models_data, dict) and 'models' in models_data:
+                    ollama_models = [model['name'] for model in models_data['models']]
+                elif isinstance(models_data, list):
+                    ollama_models = [model['name'] for model in models_data]
+                print(f"Found {len(ollama_models)} Ollama models using fallback method")
+        except Exception as e2:
+            print(f"Error fetching Ollama models with fallback: {str(e2)}")
+    
+    # Add common Groq models with their max token contexts
+    groq_models = [
+        {"name": "llama3-8b-8192", "context": "8K", "type": "Llama 3"},
+        {"name": "llama3-70b-8192", "context": "8K", "type": "Llama 3"},
+        {"name": "mixtral-8x7b-32768", "context": "32K", "type": "Mixtral"},
+        {"name": "gemma-7b-it", "context": "8K", "type": "Gemma"},
+        {"name": "llama-3.1-70b-versatile", "context": "8K", "type": "Llama 3.1"},
+        {"name": "llama-3.1-8b-versatile", "context": "8K", "type": "Llama 3.1"},
+        # Add the requested additional models
+        {"name": "meta-llama/llama-4-scout-17b-16e-instruct", "context": "16K", "type": "Llama 4 Scout"},
+        {"name": "meta-llama/llama-4-maverick-17b-128e-instruct", "context": "128K", "type": "Llama 4 Maverick"},
+        {"name": "deepseek-r1-distill-llama-70b", "context": "16K", "type": "Deepseek"},
+        {"name": "qwen-qwq-32b", "context": "32K", "type": "Qwen"}
+    ]
+    
+    # Format the model names for display
+    groq_display_models = []
+    for model in groq_models:
+        display_name = f"{model['name']} ({model['context']} context)"
+        groq_display_models.append({
+            "name": model['name'],
+            "display_name": display_name,
+            "provider": "groq"
+        })
+    
+    # Format Ollama models for consistency
+    ollama_display_models = []
+    for model in ollama_models:
+        ollama_display_models.append({
+            "name": model,
+            "display_name": model,
+            "provider": "ollama"
+        })
+    
+    # Return all models with their providers and info about Groq API key
+    return jsonify({
+        'models': ollama_display_models + groq_display_models,
+        'providers': {
+            'ollama': {'available': len(ollama_models) > 0},
+            'groq': {'available': has_groq_key}
+        }
+    })
 
 @app.route('/api/questionnaires', methods=['GET'])
 def get_questionnaires():
@@ -764,6 +964,12 @@ def start_conversation():
         assistant_model = data.get('assistant_model', 'qwen2.5:3b')
         patient_model = data.get('patient_model', 'qwen2.5:3b')
         agent_model = data.get('agent_model', 'qwen2.5:3b')  # For one-shot mode
+        
+        # Extract provider parameters
+        assistant_provider = data.get('assistant_provider', 'ollama')
+        patient_provider = data.get('patient_provider', 'ollama')
+        groq_api_key = data.get('groq_api_key', os.environ.get('GROQ_API_KEY', ''))
+        
         save_logs = data.get('save_logs', True)
         refresh_cache = data.get('refresh_cache', False)
         full_conversation = data.get('full_conversation', False)  # For one-shot mode
@@ -772,12 +978,20 @@ def start_conversation():
         
         print(f"Extracted parameters: questionnaire={questionnaire}, profile={profile}, "
               f"assistant_model={assistant_model}, patient_model={patient_model}, "
-              f"agent_model={agent_model}, save_logs={save_logs}, refresh_cache={refresh_cache}, "
-              f"full_conversation={full_conversation}, disable_rag={disable_rag}, "
-              f"disable_rag_evaluation={disable_rag_evaluation}")
+              f"agent_model={agent_model}, assistant_provider={assistant_provider}, "
+              f"patient_provider={patient_provider}, save_logs={save_logs}, "
+              f"refresh_cache={refresh_cache}, full_conversation={full_conversation}, "
+              f"disable_rag={disable_rag}, disable_rag_evaluation={disable_rag_evaluation}")
         
         if not questionnaire:
             return jsonify({"error": "No questionnaire selected"}), 400
+            
+        # Validate provider-related parameters
+        if assistant_provider == "groq" and not groq_api_key:
+            return jsonify({"error": "Groq API key is required when using Groq provider"}), 400
+            
+        if patient_provider == "groq" and not groq_api_key:
+            return jsonify({"error": "Groq API key is required when using Groq provider"}), 400
         
         # Generate a unique conversation ID
         conversation_id = str(uuid.uuid4())
@@ -796,6 +1010,16 @@ def start_conversation():
             main_script,
             '--pdf_path', questionnaire,
         ]
+        
+        # Add provider parameters
+        if assistant_provider:
+            cmd.extend(['--assistant_provider', assistant_provider])
+            
+        if patient_provider:
+            cmd.extend(['--patient_provider', patient_provider])
+            
+        if groq_api_key and (assistant_provider == 'groq' or patient_provider == 'groq'):
+            cmd.extend(['--groq_api_key', groq_api_key])
         
         # Use appropriate model parameter based on mode
         if full_conversation:
@@ -863,6 +1087,8 @@ def start_conversation():
             'profile': profile,
             'assistant_model': assistant_model,
             'patient_model': patient_model,
+            'assistant_provider': assistant_provider,
+            'patient_provider': patient_provider,
             'save_logs': save_logs,
             'logs_dir': logs_dir,
             'status': 'in_progress',
@@ -1055,12 +1281,24 @@ def start_batch():
         assistant_model = data.get('assistant_model', 'qwen2.5:3b')
         patient_model = data.get('patient_model', 'qwen2.5:3b')
         
+        # Extract provider parameters
+        assistant_provider = data.get('assistant_provider', 'ollama')
+        patient_provider = data.get('patient_provider', 'ollama') 
+        groq_api_key = data.get('groq_api_key', os.environ.get('GROQ_API_KEY', ''))
+        
         # Convert boolean values with explicit checks
         save_logs = bool(data.get('save_logs', True))
         refresh_cache = bool(data.get('refresh_cache', False))
         randomize_profiles = bool(data.get('randomize_profiles', False))
         disable_rag = bool(data.get('disable_rag', False))
         disable_rag_evaluation = bool(data.get('disable_rag_evaluation', False))
+        
+        # Validate provider-related parameters
+        if assistant_provider == "groq" and not groq_api_key:
+            return jsonify({"error": "Groq API key is required when using Groq provider"}), 400
+            
+        if patient_provider == "groq" and not groq_api_key:
+            return jsonify({"error": "Groq API key is required when using Groq provider"}), 400
         
         # Handle batch count with validation
         try:
@@ -1075,6 +1313,7 @@ def start_batch():
         print(f"Extracted batch parameters: questionnaire={questionnaire}, profile={profile}, "
               f"batch_count={batch_count}, randomize_profiles={randomize_profiles}, "
               f"assistant_model={assistant_model}, patient_model={patient_model}, "
+              f"assistant_provider={assistant_provider}, patient_provider={patient_provider}, "
               f"save_logs={save_logs}, refresh_cache={refresh_cache}, disable_rag={disable_rag}, "
               f"disable_rag_evaluation={disable_rag_evaluation}")
         
@@ -1103,6 +1342,16 @@ def start_batch():
             '--batch', str(batch_count),
             '--logs-dir', str(logs_dir)
         ]
+        
+        # Add provider parameters
+        if assistant_provider:
+            cmd.extend(['--assistant_provider', assistant_provider])
+            
+        if patient_provider:
+            cmd.extend(['--patient_provider', patient_provider])
+            
+        if groq_api_key and (assistant_provider == 'groq' or patient_provider == 'groq'):
+            cmd.extend(['--groq_api_key', groq_api_key])
         
         # Add profile only if specified and not using randomize profiles
         if profile and not randomize_profiles:
@@ -1165,6 +1414,8 @@ def start_batch():
             'profile': profile,
             'assistant_model': assistant_model,
             'patient_model': patient_model,
+            'assistant_provider': assistant_provider,
+            'patient_provider': patient_provider,
             'randomize_profiles': randomize_profiles,
             'batch_count': batch_count,
             'logs_dir': logs_dir,

@@ -18,27 +18,39 @@ logger = logging.getLogger("BatchProcessor")
 class BatchProcessor:
     """Process batches of conversations using the specified models."""
     
-    def __init__(self, ollama_url, assistant_model, patient_model, rag_engine, logs_dir=None):
+    def __init__(self, provider="ollama", provider_options=None, model="qwen2.5:3b", 
+                 patient_provider="ollama", patient_provider_options=None, patient_model="qwen2.5:3b", 
+                 rag_engine=None, logs_dir=None, full_conversation=False):
         """
         Initialize the batch processor.
         
         Args:
-            ollama_url: URL to the Ollama API
-            assistant_model: Model to use for the assistant
+            provider: LLM provider to use for the assistant ("ollama" or "groq")
+            provider_options: Options to pass to the provider client
+            model: Model to use for the assistant
+            patient_provider: LLM provider to use for the patient ("ollama" or "groq")
+            patient_provider_options: Options to pass to the patient provider client
             patient_model: Model to use for the patient
             rag_engine: RAG engine to use for document retrieval
             logs_dir: Directory to save logs to
+            full_conversation: Whether to use full conversation mode
         """
-        self.ollama_url = ollama_url
-        self.assistant_model = assistant_model
+        self.provider = provider
+        self.provider_options = provider_options or {}
+        self.model = model
+        self.patient_provider = patient_provider
+        self.patient_provider_options = patient_provider_options or {}
         self.patient_model = patient_model
         self.rag_engine = rag_engine
         self.logs_dir = logs_dir or "chat_logs"
+        self.full_conversation = full_conversation
         
         # Ensure logs directory exists
         os.makedirs(self.logs_dir, exist_ok=True)
         
-        logger.info(f"BatchProcessor initialized with models: {assistant_model} (assistant), {patient_model} (patient)")
+        logger.info(f"BatchProcessor initialized with providers: {provider} (assistant), {patient_provider} (patient)")
+        logger.info(f"Models: {model} (assistant), {patient_model} (patient)")
+        logger.info(f"Full conversation mode: {full_conversation}")
         logger.info(f"Logs directory: {self.logs_dir}")
     
     def _get_conversation_runner(self):
@@ -68,6 +80,7 @@ class BatchProcessor:
         import traceback
         
         logger.info(f"Starting batch of {count} conversations with {len(questions)} questions")
+        logger.info(f"Full conversation mode: {self.full_conversation}")
         
         # Create batch directory if not exists - use the provided logs_dir directly
         timestamp = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
@@ -119,15 +132,26 @@ class BatchProcessor:
             
             # Add a try/except block to capture errors during batch processing
             try:
+                # Extract Groq API key from provider options if it exists
+                groq_api_key = None
+                if self.provider == "groq" and "api_key" in self.provider_options:
+                    groq_api_key = self.provider_options["api_key"]
+                elif self.patient_provider == "groq" and "api_key" in self.patient_provider_options:
+                    groq_api_key = self.patient_provider_options["api_key"]
+                
                 results = batch_runner.run_batch(
                     batch_size=count,
                     pdf_path=temp_file_path,
                     patient_profile=profile,
                     randomize_profiles=randomize_profiles,
-                    assistant_model=self.assistant_model,
+                    assistant_provider=self.provider,
+                    assistant_model=self.model,
+                    patient_provider=self.patient_provider,
                     patient_model=self.patient_model,
                     logs_dir=batch_dir,
-                    disable_output=True
+                    disable_output=True,
+                    groq_api_key=groq_api_key,
+                    full_conversation=self.full_conversation
                 )
                 
                 # Log results

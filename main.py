@@ -54,16 +54,19 @@ def load_questions_from_json(file_path):
         print(f"Error loading questions from JSON: {e}")
         return None
 
-def run_conversation(pdf_path, patient_profile=None, assistant_model="qwen2.5:3b", 
-                    patient_model="qwen2.5:3b", full_conversation=False, disable_output=False, logs_dir=None,
-                    log_filename=None, refresh_cache=False, no_save=False, state_file=None, disable_rag=False, disable_rag_evaluation=False):
+def run_conversation(pdf_path, patient_profile=None, assistant_provider="ollama", assistant_model="qwen2.5:3b", 
+                    patient_provider="ollama", patient_model="qwen2.5:3b", full_conversation=False, disable_output=False, logs_dir=None,
+                    log_filename=None, refresh_cache=False, no_save=False, state_file=None, disable_rag=False, disable_rag_evaluation=False,
+                    groq_api_key=None):
     """
     Run a simulated mental health assessment conversation between an AI assistant and an AI patient.
     
     Args:
         pdf_path: Path to PDF document containing mental health assessment questions
         patient_profile: Name of the patient profile to use
+        assistant_provider: Provider for the assistant LLM ("ollama" or "groq")
         assistant_model: Name of the model to use for the assistant
+        patient_provider: Provider for the patient LLM ("ollama" or "groq")
         patient_model: Name of the model to use for the patient
         full_conversation: Whether to generate the entire conversation in a single LLM call
         disable_output: Whether to disable console output
@@ -74,6 +77,7 @@ def run_conversation(pdf_path, patient_profile=None, assistant_model="qwen2.5:3b
         state_file: Path to file for updating state during conversation
         disable_rag: Whether to disable RAG document retrieval completely
         disable_rag_evaluation: Whether to disable RAG evaluation but keep document retrieval
+        groq_api_key: API key for Groq (if using Groq provider)
         
     Returns:
         Dict containing conversation results
@@ -160,14 +164,29 @@ def run_conversation(pdf_path, patient_profile=None, assistant_model="qwen2.5:3b
     if not disable_output:
         print(f"Extracted {len(questions)} questions")
     
+    # Set up provider options for the assistant
+    assistant_provider_options = {}
+    if assistant_provider == "ollama":
+        assistant_provider_options["base_url"] = "http://localhost:11434"
+    elif assistant_provider == "groq":
+        assistant_provider_options["api_key"] = groq_api_key
+    
+    # Set up provider options for the patient
+    patient_provider_options = {}
+    if patient_provider == "ollama":
+        patient_provider_options["base_url"] = "http://localhost:11434"
+    elif patient_provider == "groq":
+        patient_provider_options["api_key"] = groq_api_key
+    
     # Initialize agents
     debug_log("Initializing assistant agent")
     try:
         assistant = MentalHealthAssistant(
-            "http://localhost:11434", 
-            assistant_model, 
-            questions, 
-            rag_engine,
+            provider=assistant_provider,
+            provider_options=assistant_provider_options,
+            model=assistant_model, 
+            questions=questions, 
+            rag_engine=rag_engine,
             questionnaire_name=questionnaire_name
         )
         debug_log("Assistant agent initialized successfully")
@@ -177,7 +196,12 @@ def run_conversation(pdf_path, patient_profile=None, assistant_model="qwen2.5:3b
     
     debug_log("Initializing patient agent")
     try:
-        patient = Patient("http://localhost:11434", patient_model, patient_profile)
+        patient = Patient(
+            provider=patient_provider,
+            provider_options=patient_provider_options,
+            model=patient_model, 
+            profile_name=patient_profile
+        )
         debug_log("Patient agent initialized successfully")
     except Exception as e:
         debug_log(f"ERROR initializing patient: {str(e)}")
@@ -185,7 +209,31 @@ def run_conversation(pdf_path, patient_profile=None, assistant_model="qwen2.5:3b
     
     # Set up conversation handler with state tracking for API mode
     debug_log("Initializing conversation handler")
-    conversation = ConversationHandler(assistant, patient, state_file=state_file, disable_rag_evaluation=disable_rag_evaluation)
+    
+    # Use FullConversationHandler if full_conversation flag is set
+    if full_conversation:
+        from utils.full_conversation_handler import FullConversationHandler
+        from agents.full_conversation_agent import FullConversationAgent
+        
+        debug_log("Initializing full conversation agent")
+        try:
+            agent = FullConversationAgent(
+                provider=assistant_provider,
+                provider_options=assistant_provider_options,
+                model=assistant_model,
+                patient_profile=patient_profile,
+                questions=questions,
+                rag_engine=rag_engine,
+                questionnaire_name=questionnaire_name,
+                disable_rag_evaluation=disable_rag_evaluation
+            )
+            debug_log("Full conversation agent initialized successfully")
+            conversation = FullConversationHandler(agent, state_file=state_file, disable_rag_evaluation=disable_rag_evaluation)
+        except Exception as e:
+            debug_log(f"ERROR initializing full conversation agent: {str(e)}")
+            raise
+    else:
+        conversation = ConversationHandler(assistant, patient, state_file=state_file, disable_rag_evaluation=disable_rag_evaluation)
     
     # Run the conversation
     if not disable_output:
@@ -276,6 +324,229 @@ def run_conversation(pdf_path, patient_profile=None, assistant_model="qwen2.5:3b
         "duration": duration
     }
 
+def process_batch_with_optimization(batch_size, questions, questionnaire_name, patient_profile=None, assistant_provider="ollama", assistant_model="qwen2.5:3b", 
+                  patient_provider="ollama", patient_model="qwen2.5:3b", full_conversation=False, disable_rag=False, disable_rag_evaluation=False,
+                  groq_api_key=None, logs_dir=None, randomize_profiles=False):
+    """
+    Optimized batch processor that pre-initializes shared resources once instead of per conversation.
+    
+    Args:
+        batch_size: Number of conversations to run
+        questions: Pre-loaded list of questions to use (avoids reloading for each conversation)
+        questionnaire_name: Name of the questionnaire
+        patient_profile: Profile to use for the patient
+        assistant_provider: Provider for the assistant LLM
+        assistant_model: Model name for the assistant
+        patient_provider: Provider for the patient LLM
+        patient_model: Model name for the patient
+        full_conversation: Whether to use full conversation mode
+        disable_rag: Whether to disable RAG completely
+        disable_rag_evaluation: Whether to disable just RAG evaluation
+        groq_api_key: API key for Groq
+        logs_dir: Directory to save logs
+        randomize_profiles: Whether to randomize patient profiles
+        
+    Returns:
+        Dictionary with batch results
+    """
+    print(f"Starting optimized batch generation of {batch_size} conversations")
+    
+    # Import required modules
+    import os
+    import time
+    import datetime
+    from utils.batch_runner import BatchRunner
+    from agents.patient import Patient
+    from utils.debug_logger import debug_logger
+    
+    debug_log("Starting optimized batch processing")
+    start_time = time.time()
+    
+    # Pre-initialize RAG engine once for all conversations
+    rag_engine = None
+    if not disable_rag:
+        from utils.rag_engine import RAGEngine
+        debug_log("Initializing shared RAG engine for batch")
+        try:
+            project_root = os.path.dirname(os.path.abspath(__file__))
+            docs_dir = os.path.join(project_root, "documents")
+            rag_engine = RAGEngine(docs_dir)
+            debug_log("Shared RAG engine initialized successfully")
+        except Exception as e:
+            debug_log(f"ERROR initializing shared RAG engine: {str(e)}")
+            raise
+    
+    # Set up shared provider options for the assistant
+    assistant_provider_options = {}
+    if assistant_provider == "ollama":
+        assistant_provider_options["base_url"] = "http://localhost:11434"
+    elif assistant_provider == "groq":
+        assistant_provider_options["api_key"] = groq_api_key
+    
+    # Set up shared provider options for the patient
+    patient_provider_options = {}
+    if patient_provider == "ollama":
+        patient_provider_options["base_url"] = "http://localhost:11434"
+    elif patient_provider == "groq":
+        patient_provider_options["api_key"] = groq_api_key
+    
+    # Define optimized conversation runner that uses pre-loaded resources
+    def optimized_conversation_runner(pdf_path, patient_profile=None, log_filename=None, **kwargs):
+        """Optimized runner that skips redundant loading"""
+        debug_log(f"Running optimized conversation with pre-loaded resources")
+        
+        # Initialize agents - we still need to do this per conversation
+        try:
+            if full_conversation:
+                from agents.full_conversation_agent import FullConversationAgent
+                from utils.full_conversation_handler import FullConversationHandler
+                
+                debug_log("Initializing full conversation agent with pre-loaded resources")
+                agent = FullConversationAgent(
+                    provider=assistant_provider,
+                    provider_options=assistant_provider_options,
+                    model=assistant_model,
+                    patient_profile=patient_profile,
+                    questions=questions,
+                    rag_engine=rag_engine,
+                    questionnaire_name=questionnaire_name,
+                    disable_rag_evaluation=disable_rag_evaluation
+                )
+                conversation = FullConversationHandler(agent, disable_rag_evaluation=disable_rag_evaluation)
+            else:
+                from agents.mental_health_assistant import MentalHealthAssistant
+                from agents.patient import Patient
+                from utils.conversation_handler import ConversationHandler
+                
+                debug_log("Initializing assistant and patient agents with pre-loaded resources")
+                assistant = MentalHealthAssistant(
+                    provider=assistant_provider,
+                    provider_options=assistant_provider_options,
+                    model=assistant_model, 
+                    questions=questions, 
+                    rag_engine=rag_engine,
+                    questionnaire_name=questionnaire_name
+                )
+                
+                patient = Patient(
+                    provider=patient_provider,
+                    provider_options=patient_provider_options,
+                    model=patient_model, 
+                    profile_name=patient_profile
+                )
+                
+                conversation = ConversationHandler(assistant, patient, disable_rag_evaluation=disable_rag_evaluation)
+            
+            # Run the conversation
+            debug_log("Starting conversation.run() with optimized resources")
+            diagnosis = conversation.run(disable_output=True)
+            
+            # Save the conversation log
+            if log_filename:
+                from utils.chat_logger import ChatLogger
+                from datetime import datetime
+                
+                # Extract the directory from the log filename
+                log_dir = os.path.dirname(log_filename)
+                chat_logger = ChatLogger(log_dir)
+                
+                # Create metadata
+                metadata = {
+                    "assistant_model": assistant_model,
+                    "patient_model": patient_model,
+                    "patient_profile": patient_profile or "default",
+                    "question_count": len(questions),
+                    "duration": time.time() - start_time,
+                    "full_conversation": full_conversation
+                }
+                
+                # Extract timing metrics if available
+                timing_metrics = None
+                if hasattr(conversation, 'timing_metrics'):
+                    timing_metrics = conversation.timing_metrics
+                
+                # Save the log
+                log_path = chat_logger.save_chat(
+                    conversation.get_conversation_log(),
+                    diagnosis,
+                    questionnaire_name=questionnaire_name,
+                    metadata=metadata,
+                    timing_metrics=timing_metrics,
+                    log_path=log_filename
+                )
+                debug_log(f"Conversation saved to: {log_path}")
+            
+            # Return result
+            return {
+                "conversation_id": f"chat_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
+                "question_count": len(questions),
+                "diagnosis": diagnosis,
+                "duration": time.time() - start_time
+            }
+            
+        except Exception as e:
+            debug_log(f"ERROR in optimized conversation runner: {str(e)}")
+            import traceback
+            debug_log(f"Traceback: {traceback.format_exc()}")
+            raise
+    
+    # Create batch directory with timestamp
+    timestamp = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
+    batch_id = f"batch_{timestamp}"
+    
+    # If logs_dir is provided, create batch_TIMESTAMP subdirectory inside it
+    # Otherwise use the default chat_logs location
+    if logs_dir:
+        batch_dir = os.path.join(logs_dir, batch_id)
+    else:
+        batch_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "chat_logs", batch_id)
+    
+    os.makedirs(batch_dir, exist_ok=True)
+    
+    # Create status file path
+    status_file = os.path.join(batch_dir, 'batch_status.json')
+    
+    # Initialize batch runner with our optimized conversation runner
+    batch_runner = BatchRunner(optimized_conversation_runner, batch_dir, status_file)
+    debug_log("Initialized batch runner with optimized conversation runner")
+    
+    # Run the batch using a dummy PDF path since we've already loaded the questions
+    dummy_pdf_path = "dummy_path.json"  # We won't actually load this
+    try:
+        debug_log(f"Running batch with optimized runner")
+        results = batch_runner.run_batch(
+            batch_size=batch_size,
+            pdf_path=dummy_pdf_path,  # Dummy path, not used in our optimized runner
+            patient_profile=patient_profile,
+            randomize_profiles=randomize_profiles,
+            assistant_provider=assistant_provider,
+            assistant_model=assistant_model,
+            patient_provider=patient_provider,
+            patient_model=patient_model,
+            disable_output=True,
+            groq_api_key=groq_api_key,
+            full_conversation=full_conversation,
+            disable_rag_evaluation=disable_rag_evaluation
+        )
+        
+        # Calculate duration
+        duration = time.time() - start_time
+        debug_log(f"Optimized batch completed in {duration:.2f} seconds")
+        
+        # Return results
+        return {
+            "batch_id": batch_id,
+            "count": len(results),
+            "duration": duration,
+            "results": results,
+            "batch_dir": batch_dir
+        }
+    except Exception as e:
+        debug_log(f"ERROR during optimized batch processing: {str(e)}")
+        import traceback
+        debug_log(f"Traceback: {traceback.format_exc()}")
+        raise
+
 def main():
     parser = argparse.ArgumentParser(description="Multi-agent Mental Health Assistant Application")
     parser.add_argument('--pdf_path', type=str, help="Path to a specific questionnaire PDF")
@@ -283,12 +554,23 @@ def main():
                         help=f"Directory containing reference documents (default: {DEFAULT_DOCS_DIR})")
     parser.add_argument('--questionnaires_dir', type=str, default=DEFAULT_QUESTIONNAIRES_DIR,
                         help=f"Directory containing questionnaires (default: {DEFAULT_QUESTIONNAIRES_DIR})")
+    
+    # LLM provider options
+    parser.add_argument('--assistant_provider', type=str, default="ollama", choices=["ollama", "groq"],
+                        help="LLM provider to use for the assistant (default: ollama)")
+    parser.add_argument('--patient_provider', type=str, default="ollama", choices=["ollama", "groq"],
+                        help="LLM provider to use for the patient (default: ollama)")
     parser.add_argument('--ollama_url', type=str, default="http://localhost:11434", 
                         help="URL for the Ollama API (default: http://localhost:11434)")
+    parser.add_argument('--groq_api_key', type=str, help="API key for Groq (can also be set via GROQ_API_KEY env var)")
+    
+    # Model options
     parser.add_argument('--assistant_model', type=str, default="qwen2.5:3b", 
-                        help="Ollama model to use for the assistant (default: qwen2.5:3b)")
+                        help="Model to use for the assistant (default: qwen2.5:3b)")
     parser.add_argument('--patient_model', type=str, default="qwen2.5:3b", 
-                        help="Ollama model to use for the patient (default: qwen2.5:3b)")
+                        help="Model to use for the patient (default: qwen2.5:3b)")
+    
+    # Other options remain the same
     parser.add_argument('--patient_profile', type=str, help="Profile to use for the patient")
     parser.add_argument('--refresh_cache', action='store_true', help="Refresh the document cache")
     parser.add_argument('--no-save', action='store_true', help="Don't save conversation logs")
@@ -470,27 +752,94 @@ def main():
     if args.batch and args.batch > 0:
         # Initialize RAG engine
         print("Initializing RAG engine and processing documents...")
-        rag_engine = RAGEngine(args.docs_dir)
+        rag_engine = None if args.disable_rag else RAGEngine(args.docs_dir)
         
-        # Process using batch mode
-        batch_processor = BatchProcessor(
-            args.ollama_url,
-            args.assistant_model,
-            args.patient_model,
-            rag_engine,
-            args.logs_dir
-        )
+        # Print a status message about loading questions
+        print(f"Loading questions for batch processing...")
+        
+        # If we already have questions loaded, use them directly
+        if 'questions' in locals() and questions:
+            print(f"Using {len(questions)} pre-loaded questions from {selected_name}")
+        else:
+            # Otherwise we need to extract them from the specified questionnaire
+            if args.pdf_path:
+                print(f"Extracting questions from {args.pdf_path}...")
+                # If using a specific PDF, load questions from it
+                try:
+                    document = DocumentProcessor.load_document(args.pdf_path)
+                    if document:
+                        questions = extract_questions_from_text(document.content)
+                        selected_name = os.path.basename(args.pdf_path)
+                except Exception as e:
+                    print(f"Error loading document: {e}")
+                    print("Falling back to first available questionnaire...")
+                    selected_name = list(questionnaires.keys())[0]
+                    questions = questionnaires[selected_name]
+            else:
+                # Otherwise use the first available questionnaire
+                print(f"Using first available questionnaire...")
+                selected_name = list(questionnaires.keys())[0]
+                questions = questionnaires[selected_name]
+        
+        print(f"Using {len(questions)} questions for batch processing")
+        
+        # Set up provider options for the assistant
+        assistant_provider_options = {}
+        if args.assistant_provider == "ollama":
+            assistant_provider_options["base_url"] = args.ollama_url
+        elif args.assistant_provider == "groq":
+            assistant_provider_options["api_key"] = args.groq_api_key or os.environ.get("GROQ_API_KEY")
+            if not assistant_provider_options["api_key"]:
+                print("Error: Groq API key required. Set with --groq_api_key or GROQ_API_KEY environment variable.")
+                sys.exit(1)
+        
+        # Set up provider options for the patient
+        patient_provider_options = {}
+        if args.patient_provider == "ollama":
+            patient_provider_options["base_url"] = args.ollama_url
+        elif args.patient_provider == "groq":
+            patient_provider_options["api_key"] = args.groq_api_key or os.environ.get("GROQ_API_KEY")
+            if not patient_provider_options["api_key"]:
+                print("Error: Groq API key required. Set with --groq_api_key or GROQ_API_KEY environment variable.")
+                sys.exit(1)
         
         print(f"Starting batch generation of {args.batch} conversations")
         if args.randomize_profiles:
             print("Using randomized patient profiles for each conversation")
+        if args.full_conversation:
+            print("Using full conversation mode for batch generation")
+        if args.disable_rag_evaluation:
+            print("RAG evaluation disabled")
         
-        batch_processor.process_batch(
-            questions,
-            count=args.batch,
-            profile=args.patient_profile,
-            randomize_profiles=args.randomize_profiles
-        )
+        # Use the new optimized batch processing
+        try:
+            batch_result = process_batch_with_optimization(
+                batch_size=args.batch,
+                questions=questions,
+                questionnaire_name=selected_name,
+                patient_profile=args.patient_profile,
+                assistant_provider=args.assistant_provider,
+                assistant_model=args.assistant_model,
+                patient_provider=args.patient_provider,
+                patient_model=args.patient_model,
+                full_conversation=args.full_conversation,
+                disable_rag=args.disable_rag,
+                disable_rag_evaluation=args.disable_rag_evaluation,
+                groq_api_key=args.groq_api_key or os.environ.get("GROQ_API_KEY"),
+                logs_dir=args.logs_dir,
+                randomize_profiles=args.randomize_profiles
+            )
+            
+            print(f"Batch processing completed: {batch_result['count']} conversations")
+            print(f"Total duration: {batch_result['duration']:.2f} seconds")
+            print(f"Average duration per conversation: {batch_result['duration'] / batch_result['count']:.2f} seconds")
+            print(f"Results saved to: {batch_result['results']}")
+            
+        except Exception as e:
+            print(f"Error during batch processing: {e}")
+            import traceback
+            print(traceback.format_exc())
+            sys.exit(1)
         
         return
     
@@ -522,25 +871,52 @@ def main():
             debug_log(f"Error reading state file: {str(e)}")
             print(f"Warning: Could not read state file: {str(e)}")
 
+    # Initialize agents
+    assistant_provider_options = {}
+    if args.assistant_provider == "ollama":
+        assistant_provider_options["base_url"] = args.ollama_url
+    elif args.assistant_provider == "groq":
+        assistant_provider_options["api_key"] = args.groq_api_key or os.environ.get("GROQ_API_KEY")
+        if not assistant_provider_options["api_key"]:
+            print("Error: Groq API key required. Set with --groq_api_key or GROQ_API_KEY environment variable.")
+            sys.exit(1)
+    
+    patient_provider_options = {}
+    if args.patient_provider == "ollama":
+        patient_provider_options["base_url"] = args.ollama_url
+    elif args.patient_provider == "groq":
+        patient_provider_options["api_key"] = args.groq_api_key or os.environ.get("GROQ_API_KEY")
+        if not patient_provider_options["api_key"]:
+            print("Error: Groq API key required. Set with --groq_api_key or GROQ_API_KEY environment variable.")
+            sys.exit(1)
+    
     if args.full_conversation:
+        from agents.full_conversation_agent import FullConversationAgent
         agent = FullConversationAgent(
-            args.ollama_url,
-            args.assistant_model,
-            patient_profile,
-            questions,
-            None if args.disable_rag else rag_engine,  # Pass None if RAG is disabled
+            provider=args.assistant_provider,
+            provider_options=assistant_provider_options,
+            model=args.assistant_model,
+            patient_profile=patient_profile,
+            questions=questions,
+            rag_engine=None if args.disable_rag else rag_engine,  # Pass None if RAG is disabled
             questionnaire_name=selected_name
         )
     else:
         # Initialize agents
         assistant = MentalHealthAssistant(
-            args.ollama_url, 
-            args.assistant_model, 
-            questions, 
-            None if args.disable_rag else rag_engine,  # Pass None if RAG is disabled
+            provider=args.assistant_provider,
+            provider_options=assistant_provider_options,
+            model=args.assistant_model, 
+            questions=questions, 
+            rag_engine=None if args.disable_rag else rag_engine,  # Pass None if RAG is disabled
             questionnaire_name=selected_name
         )
-        patient = Patient(args.ollama_url, args.patient_model, patient_profile)
+        patient = Patient(
+            provider=args.patient_provider,
+            provider_options=patient_provider_options,
+            model=args.patient_model, 
+            profile_name=patient_profile
+        )
     
     # Initialize the chat logger
     if not args.no_save:

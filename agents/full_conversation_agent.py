@@ -1,27 +1,43 @@
 import os
-from utils.ollama_client import OllamaClient
+from utils.llm_client_base import LLMClient
 from utils.rag_engine import RAGEngine
 
 class FullConversationAgent:
-    def __init__(self, ollama_url, model, patient_profile, questions, rag_engine=None, questionnaire_name=None):
+    def __init__(self, provider="ollama", provider_options=None, model="qwen2.5:3b", 
+                 patient_profile=None, questions=None, rag_engine=None, questionnaire_name=None,
+                 disable_rag_evaluation=False):
         """
         Initialize the Full Conversation Agent.
         
         Args:
-            ollama_url (str): URL for the Ollama API
-            model (str): Ollama model to use
+            provider (str): LLM provider to use (ollama or groq)
+            provider_options (dict, optional): Options to pass to the provider client
+            model (str): Model to use with the provider
             patient_profile (dict): Patient profile
             questions (list): List of questions from the questionnaire
             rag_engine (RAGEngine, optional): RAG engine for document retrieval
             questionnaire_name (str, optional): Name of the questionnaire being used
+            disable_rag_evaluation (bool): Whether to disable RAG evaluation
         """
-
-        self.client = OllamaClient(base_url=ollama_url)
+        # Initialize default provider options
+        if provider_options is None:
+            provider_options = {}
+            
+            # Set default options based on provider
+            if provider == "ollama":
+                provider_options["base_url"] = "http://localhost:11434"
+                
+        # Create the client using the factory method
+        self.client = LLMClient.create(provider, **provider_options)
         self.model = model
         self.patient_profile = patient_profile
         self.questions = questions
         self.rag_engine = rag_engine
         self.questionnaire_name = questionnaire_name
+        self.disable_rag_evaluation = disable_rag_evaluation
+        
+        # Store the provider name for special handling
+        self.provider = provider
         
         # Track documents that have already been seen to avoid duplication
         self.seen_documents = set()
@@ -52,7 +68,7 @@ class FullConversationAgent:
             full_questionnaire_content = ""
         
         # Create a prompt for the conversation generation
-        conversation_prompt = f"""
+        base_conversation_prompt = f"""
         You are a professional mental health clinician about to conduct an assessment using a mental health questionnaire.
         
         Here is the full questionnaire document you will be administering:
@@ -100,11 +116,37 @@ class FullConversationAgent:
             {self.patient_profile}
         """
         
+        # Special handling for Groq provider - more structured prompt
+        if hasattr(self, 'provider') and self.provider == "groq":
+            conversation_prompt = base_conversation_prompt + """
+            
+            YOUR RESPONSE MUST BE STRUCTURED AS A VALID JSON ARRAY OF OBJECTS.
+            Each object must have 'role' and 'content' fields.
+            The 'role' must be either 'assistant' for the mental health professional or 'patient' for the patient.
+            The 'content' field must contain the actual message.
+            
+            You MUST adhere to proper JSON syntax with double quotes around property names and string values.
+            Do not include any explanatory text, commentary, or code blocks around the JSON.
+            
+            Example format:
+            [
+                {"role": "assistant", "content": "Hello, I'm Dr. Smith, a mental health professional..."},
+                {"role": "patient", "content": "Hi Dr. Smith, nice to meet you."},
+                {"role": "assistant", "content": "I'd like to start with the first question: How have you been feeling lately?"},
+                {"role": "patient", "content": "I've been feeling pretty down for the past few weeks."}
+            ]
+            """
+        else:
+            conversation_prompt = base_conversation_prompt
+        
         # Define a specific user prompt that clearly asks for JSON format
-        user_prompt = f"""
+        base_user_prompt = f"""
         Please generate a full conversation between the mental health professional and the patient.
         
-        Ensure that your response follows this specific JSON format:
+        YOUR RESPONSE MUST BE A VALID JSON ARRAY of objects, each with 'role' and 'content' fields.
+        
+        The format MUST be exactly as follows, with proper JSON syntax:
+        ```json
         [
             {{
                 "role": "assistant",
@@ -116,9 +158,27 @@ class FullConversationAgent:
             }},
             ...and so on until all questions are asked and answered
         ]
+        ```
+        
+        DO NOT include any text before or after the JSON array.
+        DO NOT include backticks or "json" markers.
+        ONLY return the JSON array itself.
         
         Make sure all {len(self.questions)} questions from the questionnaire are covered in the conversation.
         """
+        
+        # Special handling for Groq provider
+        if hasattr(self, 'provider') and self.provider == "groq":
+            user_prompt = f"""
+            Generate a full conversation between the mental health professional and patient as a JSON array.
+            
+            CRITICAL: Return ONLY a raw JSON array with no text before or after. 
+            Each object must have 'role' and 'content' fields. Include all {len(self.questions)} questions.
+            
+            Format: [{{\"role\":\"assistant\",\"content\":\"...\"}},{{\"role\":\"patient\",\"content\":\"...\"}},...]
+            """
+        else:
+            user_prompt = base_user_prompt
         
         # Create a temporary conversation for generating the introduction
         temp_conversation = [
@@ -137,110 +197,130 @@ class FullConversationAgent:
         # Clear existing conversation history
         self.conversation_history = []
         
-        # First try to extract the JSON array using regex
-        json_match = re.search(r'\[\s*\{.*\}\s*\]', conversation_text, re.DOTALL)
+        # Enhanced JSON extraction and cleaning
+        def extract_and_clean_json(text):
+            print(f"DEBUG: Raw conversation text length: {len(text)}")
+            # Log the first and last 100 characters to see start/end format
+            if len(text) > 200:
+                print(f"DEBUG: Text starts with: {text[:100]}")
+                print(f"DEBUG: Text ends with: {text[-100:]}")
+            else:
+                print(f"DEBUG: Full text: {text}")
+            
+            # Clean the response text to get valid JSON
+            cleaned_text = text.strip()
+            
+            # Remove backticks, "json" markers, and other common prefixes/suffixes
+            cleaned_text = re.sub(r'^```json\s*', '', cleaned_text)
+            cleaned_text = re.sub(r'^```\s*', '', cleaned_text)
+            cleaned_text = re.sub(r'\s*```$', '', cleaned_text)
+            
+            # First approach: Try to extract array with regex
+            # Remove any text before the first '[' and after the last ']'
+            array_match = re.search(r'\[.*\]', cleaned_text, re.DOTALL)
+            if array_match:
+                cleaned_text = array_match.group(0)
+                print(f"DEBUG: Found JSON array with regex")
+            
+            # Clean control characters and Unicode quotes
+            cleaned_text = re.sub(r'[\x00-\x1F\x7F]', '', cleaned_text)
+            cleaned_text = cleaned_text.replace('\u201c', '"').replace('\u201d', '"')
+            cleaned_text = cleaned_text.replace('\u2018', "'").replace('\u2019', "'")
+            
+            # Fix common JSON syntax errors
+            # Replace single quotes with double quotes (only for keys and string values)
+            cleaned_text = re.sub(r'([{,])\s*\'([^\']+)\'\s*:', r'\1"\2":', cleaned_text)
+            cleaned_text = re.sub(r':\s*\'([^\']+)\'\s*([,}])', r':"\1"\2', cleaned_text)
+            
+            # If there's still no proper JSON array structure, try harder to extract one
+            if not (cleaned_text.startswith('[') and cleaned_text.endswith(']')):
+                print("DEBUG: No proper JSON array found, trying harder extraction")
+                # Try to find anything that looks like JSON objects and build an array
+                objects = re.findall(r'{.*?}', cleaned_text, re.DOTALL)
+                if objects:
+                    cleaned_text = "[" + ",".join(objects) + "]"
+                    print(f"DEBUG: Built JSON array from {len(objects)} extracted objects")
+            
+            return cleaned_text
+            
+        # Clean and try to parse JSON
+        cleaned_text = extract_and_clean_json(conversation_text)
         
-        if json_match:
-            try:
-                # Clean the JSON string
-                json_str = json_match.group(0)
-                json_str = re.sub(r'[\x00-\x1F\x7F]', '', json_str)
-                json_str = json_str.replace('\u201c', '"').replace('\u201d', '"')
-                json_str = json_str.replace('\u2018', "'").replace('\u2019', "'")
+        try:
+            # Try to parse the cleaned JSON
+            print(f"DEBUG: Attempting to parse JSON of length {len(cleaned_text)}")
+            conversation_data = json.loads(cleaned_text)
+            print(f"DEBUG: Successfully parsed JSON with {len(conversation_data)} items")
+            
+            # Validate that it's a list of properly structured messages
+            if isinstance(conversation_data, list):
+                for i, message in enumerate(conversation_data):
+                    if not isinstance(message, dict):
+                        print(f"DEBUG: Item {i} is not a dictionary: {message}")
+                        continue
+                    
+                    if "role" not in message or "content" not in message:
+                        print(f"DEBUG: Item {i} missing role or content: {message}")
+                        continue
+                    
+                    role = message.get("role", "")
+                    content = message.get("content", "")
+                    
+                    # Validate and standardize roles
+                    if any(r in role.lower() for r in ["assistant", "clinician", "therapist", "professional", "mental health"]):
+                        role = "assistant"
+                    elif any(r in role.lower() for r in ["user", "patient"]):
+                        role = "patient"
+                    else:
+                        print(f"DEBUG: Invalid role '{role}' at item {i}, defaulting to 'assistant'")
+                        role = "assistant"
+                    
+                    # Ensure content is a string
+                    if not isinstance(content, str):
+                        content = str(content)
+                    
+                    # Add the message to the conversation history
+                    self.conversation_history.append({
+                        "role": role,
+                        "content": content
+                    })
                 
-                # Parse the JSON
-                conversation_data = json.loads(json_str)
-                
-                # Extract conversations and add to conversation_history
-                if isinstance(conversation_data, list):
-                    for message in conversation_data:
-                        role = message.get("role", "")
-                        content = message.get("content", message.get("text", ""))
+                print(f"DEBUG: Added {len(self.conversation_history)} messages to conversation history")
+            else:
+                print(f"DEBUG: Parsed JSON is not a list: {type(conversation_data)}")
+                # Try to handle single message case
+                if isinstance(conversation_data, dict) and "role" in conversation_data and "content" in conversation_data:
+                    print(f"DEBUG: Found single message dict, adding to conversation")
+                    self.conversation_history.append({
+                        "role": conversation_data["role"],
+                        "content": conversation_data["content"]
+                    })
+                elif isinstance(conversation_data, dict):
+                    # Try to extract role-content pairs from flat dict structure
+                    for role_key, content in conversation_data.items():
+                        role = role_key.lower()
+                        if "assistant" in role or "clinician" in role or "therapist" in role:
+                            std_role = "assistant"
+                        elif "patient" in role or "user" in role or "client" in role:
+                            std_role = "patient"
+                        else:
+                            continue
                         
-                        # Map roles to standard formats
-                        if any(r in role.lower() for r in ["assistant", "clinician", "therapist", "professional", "mental health"]):
-                            role = "assistant"
-                        elif any(r in role.lower() for r in ["user", "patient"]):
-                            role = "patient"
-                        
-                        # Add message to conversation history
-                        if role and content:
+                        if isinstance(content, str):
+                            print(f"DEBUG: Adding message with role {std_role} from dict")
                             self.conversation_history.append({
-                                "role": role,
+                                "role": std_role,
                                 "content": content
                             })
-                
-                # Extract question-answer pairs for diagnosis
-                self._extract_responses_from_conversation(conversation_text)
-                
-                print(f"[DEBUG] Successfully extracted {len(self.conversation_history)} messages from conversation")
-                return conversation_text
-            
-            except json.JSONDecodeError as e:
-                print(f"[DEBUG] Error parsing JSON: {e}")
+        except json.JSONDecodeError as e:
+            print(f"Warning: Could not parse conversation as JSON: {e}")
+            # If JSON parsing fails completely, try text-based extraction
+            self._extract_conversation_from_text(conversation_text)
         
-        # If JSON parsing fails, try to extract turn-by-turn conversation
+        # If we didn't get any messages, try to extract turn-by-turn conversation as a last resort
         if not self.conversation_history:
-            print("[DEBUG] Attempting to extract conversation from text format")
-            
-            # Look for patterns like "Clinician/Assistant: [message]" followed by "Patient: [message]"
-            conversation_pattern = re.compile(r'(?:clinician|assistant|therapist|professional|mental health professional|doctor)\s*:\s*([^\n]+)(?:\n|$).*?(?:patient|user)\s*:\s*([^\n]+)(?:\n|$)', 
-                                     re.IGNORECASE | re.DOTALL)
-            
-            matches = conversation_pattern.findall(conversation_text)
-            for clinician_msg, patient_msg in matches:
-                # Add clinician message
-                self.conversation_history.append({
-                    "role": "assistant",
-                    "content": clinician_msg.strip()
-                })
-                
-                # Add patient message
-                self.conversation_history.append({
-                    "role": "patient",
-                    "content": patient_msg.strip()
-                })
-            
-            # Extract question-answer pairs for diagnosis
+            print("Warning: Could not parse conversation in standard format, attempting fallback extraction")
             self._extract_responses_from_conversation(conversation_text)
-            
-            print(f"[DEBUG] Extracted {len(self.conversation_history)} messages using pattern matching")
-            return conversation_text
-        
-        # If all else fails, create a minimal conversation history
-        if not self.conversation_history:
-            print("[DEBUG] Creating minimal conversation history from questions")
-            
-            # Add introduction
-            self.conversation_history.append({
-                "role": "assistant",
-                "content": "Hello, I'm a mental health professional. I'll be asking you a series of questions to assess your current mental state."
-            })
-            
-            # Add patient acknowledgment
-            self.conversation_history.append({
-                "role": "patient",
-                "content": "I understand. Let's proceed."
-            })
-            
-            # Add questions and default answers
-            for question in self.questions:
-                self.conversation_history.append({
-                    "role": "assistant",
-                    "content": question
-                })
-                
-                self.conversation_history.append({
-                    "role": "patient",
-                    "content": "I prefer not to answer this question."
-                })
-            
-            # Extract question-answer pairs for diagnosis (use questions with default answers)
-            self.responses = [(q, "No response provided") for q in self.questions]
-            
-            print(f"[DEBUG] Created minimal conversation with {len(self.conversation_history)} messages")
-        
-        return conversation_text
         
     def _extract_responses_from_conversation(self, conversation):
         """
@@ -256,53 +336,83 @@ class FullConversationAgent:
         self.responses = []
         
         try:
-            # First, try to clean up the JSON string by removing any invalid control characters
-            # This helps handle common JSON parsing issues
+            # First, try to clean up the JSON string to handle common parsing issues
             def clean_json_string(json_str):
+                # Start with basic whitespace cleanup
+                json_str = json_str.strip()
+                
+                # Remove markdown code markers
+                json_str = re.sub(r'^```json\s*', '', json_str)
+                json_str = re.sub(r'^```\s*', '', json_str)
+                json_str = re.sub(r'\s*```$', '', json_str)
+                
+                # Extract just the JSON array if there's other text
+                match = re.search(r'\[.*\]', json_str, re.DOTALL)
+                if match:
+                    json_str = match.group(0)
+                
                 # Remove or replace common problematic characters
                 json_str = re.sub(r'[\x00-\x1F\x7F]', '', json_str)
+                
                 # Replace any Unicode quotes with standard quotes
                 json_str = json_str.replace('\u201c', '"').replace('\u201d', '"')
                 json_str = json_str.replace('\u2018', "'").replace('\u2019', "'")
+                
                 return json_str
             
-            # Try to parse the response as JSON
-            # Look for JSON array in the text
-            json_match = re.search(r'\[\s*\{.*\}\s*\]', conversation, re.DOTALL)
-            if json_match:
-                json_str = json_match.group(0)
-                # Clean the JSON string before parsing
-                json_str = clean_json_string(json_str)
+            # Clean and try to parse as JSON
+            cleaned_text = clean_json_string(conversation)
+            
+            try:
+                conversation_data = json.loads(cleaned_text)
                 
-                try:
-                    conversation_data = json.loads(json_str)
+                # Extract questions and answers
+                current_question = None
+                
+                for msg in conversation_data:
+                    # Handle different formats of role/content fields
+                    role = msg.get("role", "")
+                    # Also try 'text' field if 'content' is not found
+                    content = msg.get("content", msg.get("text", ""))
                     
-                    # Extract questions and answers
-                    current_question = None
+                    # Convert role to lowercase for case-insensitive comparison
+                    role_lower = role.lower()
                     
-                    for msg in conversation_data:
-                        # Handle different formats of role/content fields
-                        role = msg.get("role", "")
-                        # Also try 'text' field if 'content' is not found
-                        content = msg.get("content", msg.get("text", ""))
+                    if any(r in role_lower for r in ["assistant", "clinician", "therapist", "professional", "mental health"]):
+                        # Check if this looks like a question (ends with ? or contains a question)
+                        if "?" in content:
+                            current_question = content
+                    elif any(r in role_lower for r in ["user", "patient"]) and current_question:
+                        # This is an answer to the previous question
+                        self.responses.append((current_question, content))
+                        current_question = None
                         
-                        # Convert role to lowercase for case-insensitive comparison
-                        role_lower = role.lower()
-                        
-                        if any(r in role_lower for r in ["assistant", "clinician", "therapist", "professional", "mental health"]):
-                            # Check if this looks like a question (ends with ? or contains a question)
-                            if "?" in content:
-                                current_question = content
-                        elif any(r in role_lower for r in ["user", "patient"]) and current_question:
-                            # This is an answer to the previous question
-                            self.responses.append((current_question, content))
-                            current_question = None
-                except json.JSONDecodeError as e:
-                    print(f"[DEBUG] JSON parsing failed after cleaning: {str(e)}")
-                    # Fall through to regex approach
+                print(f"[DEBUG] Successfully parsed JSON and extracted {len(self.responses)} Q&A pairs")
+                
+            except json.JSONDecodeError as e:
+                print(f"[DEBUG] JSON parsing failed after cleaning: {str(e)}")
+                print(f"[DEBUG] Attempted to parse: {cleaned_text[:100]}...")
+                # Fall through to regex approach below
         
         except Exception as e:
             print(f"[DEBUG] Error extracting responses from conversation: {str(e)}")
+        
+        # If we couldn't extract responses from JSON, try pattern matching
+        if not self.responses:
+            try:
+                print("[DEBUG] Trying pattern matching to extract question-answer pairs")
+                
+                # Try to find pairs of assistant/patient messages
+                # Pattern for "Assistant/Clinician: [question]" followed by "Patient: [answer]"
+                qa_pattern = re.compile(r'(?:assistant|clinician|therapist|professional|doctor)\s*:\s*([^\n]+\?)[^\n]*\n+(?:patient|user)\s*:\s*([^\n]+)', re.IGNORECASE)
+                
+                matches = qa_pattern.findall(conversation)
+                for question, answer in matches:
+                    self.responses.append((question.strip(), answer.strip()))
+                    
+                print(f"[DEBUG] Extracted {len(self.responses)} Q&A pairs using pattern matching")
+            except Exception as e:
+                print(f"[DEBUG] Error in pattern matching: {str(e)}")
         
         # If all else fails, use the questions from the questionnaire and empty responses
         if not self.responses and self.questions:
@@ -310,7 +420,7 @@ class FullConversationAgent:
             for question in self.questions:
                 self.responses.append((question, "No response provided"))
         
-        print(f"[DEBUG] Extracted {len(self.responses)} question-answer pairs from conversation")
+        print(f"[DEBUG] Final extraction result: {len(self.responses)} question-answer pairs")
 
     def generate_diagnosis(self):
         """
@@ -371,7 +481,7 @@ class FullConversationAgent:
         # Initialize RAG usage information
         rag_usage = None
         
-        # Enhance with RAG if available - ONLY use RAG during diagnosis phase
+        # Enhance with RAG if available and not disabled - ONLY use RAG during diagnosis phase
         if self.rag_engine:
             print("[DEBUG] Now using RAG for diagnosis...")
             
@@ -437,12 +547,16 @@ class FullConversationAgent:
                             }
                             # Clear the accessed documents for next query
                             self.rag_engine.clear_accessed_documents()
+        else:
+            # Skip RAG if it's disabled
+            if self.disable_rag_evaluation:
+                print("[DEBUG] RAG evaluation disabled for diagnosis generation")
         
         self.conversation_history.append({"role": "user", "content": diagnosis_prompt})
         
         result = self.client.chat(self.model, self.conversation_history)
         diagnosis = result['response']
-        self.context = result['context']
+        self.context = result.get('context')
         
         # Add diagnosis to conversation history
         self.conversation_history.append({"role": "assistant", "content": diagnosis})
@@ -515,3 +629,51 @@ class FullConversationAgent:
         for i, (question, response) in enumerate(self.responses, 1):
             formatted += f"Q{i}: {question}\nA{i}: {response}\n\n"
         return formatted
+
+    def _extract_conversation_from_text(self, text):
+        """Extract conversation turns from plain text when JSON parsing fails."""
+        import re
+        print("DEBUG: Attempting text-based conversation extraction")
+        
+        # Define patterns to identify speaker turns
+        patterns = [
+            # Look for patterns like "Assistant: message" or "Patient: message"
+            r'(?:^|\n)(assistant|patient|clinician|therapist|doctor|user|client):\s*(.*?)(?=\n(?:assistant|patient|clinician|therapist|doctor|user|client):|$)',
+            # Alternative pattern with quotes or brackets
+            r'(?:^|\n)[\'"]?(assistant|patient|clinician|therapist|doctor|user|client)[\'"]?\s*[:\-]\s*[\'"]?(.*?)[\'"]?(?=\n|$)',
+            # JSON-like format without proper syntax
+            r'role[\'"]?\s*:\s*[\'"]?(assistant|patient|clinician|therapist|doctor|user|client)[\'"]?[,\s]+[\'"]?content[\'"]?\s*:\s*[\'"]?(.*?)[\'"]?(?=[,\}]|$)'
+        ]
+        
+        # Try each pattern until we get some results
+        for pattern in patterns:
+            matches = re.findall(pattern, text, re.IGNORECASE | re.DOTALL)
+            if matches:
+                print(f"DEBUG: Found {len(matches)} conversation turns with pattern")
+                
+                for role_text, content in matches:
+                    # Standardize role
+                    role = role_text.lower()
+                    if role in ["assistant", "clinician", "therapist", "doctor"]:
+                        std_role = "assistant"
+                    else:
+                        std_role = "patient"
+                    
+                    # Clean up content
+                    content = content.strip()
+                    if content:
+                        self.conversation_history.append({
+                            "role": std_role,
+                            "content": content
+                        })
+                
+                print(f"DEBUG: Extracted {len(self.conversation_history)} messages from text")
+                return
+        
+        # Last resort: just treat the whole thing as a single assistant message
+        if not self.conversation_history:
+            print("DEBUG: No patterns matched, treating entire text as assistant message")
+            self.conversation_history.append({
+                "role": "assistant",
+                "content": text
+            })

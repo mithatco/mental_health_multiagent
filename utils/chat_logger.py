@@ -17,6 +17,257 @@ class ChatLogger:
         self.log_dir = log_dir
         os.makedirs(log_dir, exist_ok=True)
     
+    def validate_conversation_log(self, conversation_log):
+        """
+        Validate and fix the conversation log if needed to ensure it's properly formatted.
+        
+        Args:
+            conversation_log: List of conversation entries
+            
+        Returns:
+            Validated and fixed conversation log
+        """
+        validated_log = []
+        
+        # If conversation_log is None or empty, return empty list
+        if not conversation_log:
+            print("[DEBUG] Empty conversation log received")
+            return []
+        
+        # Log the type and size of conversation log for debugging
+        print(f"[DEBUG] Validating conversation log of type {type(conversation_log)} with {len(conversation_log) if hasattr(conversation_log, '__len__') else 'unknown'} entries")
+        
+        # Handle case where the entire conversation is accidentally a single string
+        if isinstance(conversation_log, str):
+            print("[DEBUG] Entire conversation log is a string, attempting to extract")
+            conversation_log = [conversation_log]
+            
+        # First check if all entries are properly formatted objects
+        if isinstance(conversation_log, list):
+            all_objects = all(
+                isinstance(entry, dict) and 
+                "role" in entry and 
+                "content" in entry 
+                for entry in conversation_log
+            )
+            
+            if all_objects:
+                print("[DEBUG] Conversation log already properly formatted as list of dicts with role and content")
+                return conversation_log
+        else:
+            print(f"[DEBUG] Conversation log is not a list but a {type(conversation_log)}")
+            # Try to convert to list if it's some other iterable
+            try:
+                conversation_log = list(conversation_log)
+                print(f"[DEBUG] Converted conversation log to list with {len(conversation_log)} entries")
+            except:
+                print("[DEBUG] Could not convert conversation log to list")
+                # Return empty list as fallback
+                return []
+            
+        # Process entries to fix any string representations
+        for i, entry in enumerate(conversation_log):
+            # If entry is a string, try to parse it
+            if isinstance(entry, str):
+                import json
+                import re
+                
+                print(f"[DEBUG] Found string entry at position {i}, attempting to parse")
+                
+                # Clean the string to handle common formatting issues
+                cleaned = entry.strip()
+                
+                # Remove code blocks markers
+                cleaned = re.sub(r'^```json\s*', '', cleaned)
+                cleaned = re.sub(r'^```\s*', '', cleaned)
+                cleaned = re.sub(r'\s*```$', '', cleaned)
+                
+                # Special handling for Groq-like outputs: if the string is very long,
+                # it's likely the entire conversation in one string
+                if len(cleaned) > 1000:  # Arbitrary threshold to identify long strings
+                    print(f"[DEBUG] Found long string entry ({len(cleaned)} chars), may be entire conversation")
+                    
+                    # First, try to find and extract a JSON array
+                    json_pattern = re.compile(r'\[(.*)\]', re.DOTALL)
+                    json_match = json_pattern.search(cleaned)
+                    
+                    if json_match:
+                        json_text = f"[{json_match.group(1)}]"
+                        try:
+                            parsed_json = json.loads(json_text)
+                            print(f"[DEBUG] Successfully extracted JSON array with {len(parsed_json)} items")
+                            
+                            # Process each entry in the parsed JSON
+                            for parsed_entry in parsed_json:
+                                if isinstance(parsed_entry, dict) and 'role' in parsed_entry and 'content' in parsed_entry:
+                                    validated_log.append({
+                                        'role': parsed_entry['role'],
+                                        'content': parsed_entry['content']
+                                    })
+                            
+                            if validated_log:
+                                print(f"[DEBUG] Added {len(validated_log)} entries from extracted JSON array")
+                                continue  # Skip to next entry
+                        except json.JSONDecodeError:
+                            print("[DEBUG] JSON array extraction failed, trying turn-based parsing")
+                    
+                    # If JSON parsing failed, try to parse conversation turns
+                    # Look for patterns like "Assistant: message" and "Patient: message"
+                    turn_pattern = re.compile(r'(assistant|patient|clinician|therapist|doctor|user):\s*(.*?)(?=(?:\n\s*|\r\n\s*|\r\s*)(?:assistant|patient|clinician|therapist|doctor|user):|$)', re.IGNORECASE | re.DOTALL)
+                    turn_matches = turn_pattern.findall(cleaned)
+                    
+                    if turn_matches:
+                        print(f"[DEBUG] Found {len(turn_matches)} conversation turns")
+                        for role, content in turn_matches:
+                            if role.lower() in ["assistant", "clinician", "therapist", "doctor"]:
+                                std_role = "assistant"
+                            else:
+                                std_role = "patient"
+                                
+                            content = content.strip()
+                            if content:  # Skip empty content
+                                validated_log.append({
+                                    'role': std_role,
+                                    'content': content
+                                })
+                        
+                        print(f"[DEBUG] Added {len(validated_log)} structured messages from turn parsing")
+                        continue  # Skip to next entry
+                
+                # Attempt to extract a JSON array from shorter text
+                matches = re.findall(r'\[(.*?)\]', cleaned, re.DOTALL)
+                if matches:
+                    # Get the largest match (most likely to be our conversation array)
+                    largest_match = max(matches, key=len)
+                    json_array_text = f"[{largest_match}]"
+                    
+                    try:
+                        # Try to parse the JSON array
+                        parsed_entries = json.loads(json_array_text)
+                        
+                        if isinstance(parsed_entries, list) and parsed_entries:
+                            print(f"[DEBUG] Successfully parsed entry as JSON array with {len(parsed_entries)} items")
+                            
+                            # Process each entry in the parsed JSON
+                            for parsed_entry in parsed_entries:
+                                if isinstance(parsed_entry, dict) and 'role' in parsed_entry and 'content' in parsed_entry:
+                                    validated_log.append({
+                                        'role': parsed_entry['role'],
+                                        'content': parsed_entry['content']
+                                    })
+                                else:
+                                    print(f"[DEBUG] Skipping invalid entry in parsed JSON: {parsed_entry}")
+                            
+                            continue  # Skip to the next entry in the outer loop
+                    except json.JSONDecodeError as e:
+                        print(f"[DEBUG] Failed to parse as JSON array: {e}")
+                        
+                # If array extraction failed, try to look for patterns like "Role: Content"
+                if not validated_log:
+                    print("[DEBUG] Trying to extract conversation from text using patterns")
+                    
+                    # Look for patterns like "Assistant: [message]" and "Patient: [message]"
+                    pattern = re.compile(r'(assistant|patient|clinician|therapist|user):\s*([^\n]+)(?:\n|$)', re.IGNORECASE)
+                    matches = pattern.findall(cleaned)
+                    
+                    for role, content in matches:
+                        # Standardize roles
+                        if role.lower() in ["assistant", "clinician", "therapist"]:
+                            std_role = "assistant"
+                        else:
+                            std_role = "patient"
+                            
+                        validated_log.append({
+                            'role': std_role,
+                            'content': content.strip()
+                        })
+                    
+                    if matches:
+                        print(f"[DEBUG] Extracted {len(matches)} messages using pattern matching")
+                        continue
+                
+                # If all parsing attempts failed for this string, just include it as is
+                print(f"[DEBUG] Unable to parse string entry, using it as assistant message")
+                validated_log.append({
+                    'role': 'assistant', 
+                    'content': entry
+                })
+            elif isinstance(entry, dict):
+                # Handle dictionary entries
+                if 'role' in entry and 'content' in entry:
+                    # Entry is already correctly formatted
+                    validated_log.append(entry)
+                elif 'text' in entry:
+                    # Some models use 'text' instead of 'content'
+                    role = entry.get('role', 'assistant')
+                    validated_log.append({
+                        'role': role,
+                        'content': entry['text']
+                    })
+                else:
+                    # Cannot determine what this entry should be
+                    print(f"[DEBUG] Skipping invalid dict entry: {entry}")
+            else:
+                # Entry is neither string nor dict
+                print(f"[DEBUG] Skipping entry of unsupported type: {type(entry)}")
+        
+        # If we didn't manage to validate anything but had input, log a warning
+        if not validated_log and conversation_log:
+            print(f"[WARNING] Failed to validate any entries from a log with {len(conversation_log)} entries")
+            
+            # Last resort: try to parse the entire conversation_log as one unit
+            if len(conversation_log) == 1 and isinstance(conversation_log[0], str):
+                print("[DEBUG] Attempting to parse single string as entire conversation")
+                # Try to extract turn-by-turn conversation from the entire string
+                text = conversation_log[0]
+                
+                # Look for alternating assistant/patient patterns
+                turn_pattern = re.compile(r'(assistant|patient|clinician|therapist|doctor|user):\s*(.*?)(?=(?:\n\s*|\r\n\s*|\r\s*)(?:assistant|patient|clinician|therapist|doctor|user):|$)', re.IGNORECASE | re.DOTALL)
+                turn_matches = turn_pattern.findall(text)
+                
+                if turn_matches:
+                    print(f"[DEBUG] Found {len(turn_matches)} conversation turns in full text")
+                    for role, content in turn_matches:
+                        if role.lower() in ["assistant", "clinician", "therapist", "doctor"]:
+                            std_role = "assistant"
+                        else:
+                            std_role = "patient"
+                            
+                        content = content.strip()
+                        if content:  # Skip empty content
+                            validated_log.append({
+                                'role': std_role,
+                                'content': content
+                            })
+            
+        # Apply a final validation pass to ensure all entries have role and content
+        final_validated = []
+        for entry in validated_log:
+            if isinstance(entry, dict) and 'role' in entry and 'content' in entry:
+                # Ensure role is standardized
+                role = entry['role'].lower()
+                if role in ["assistant", "clinician", "therapist", "doctor"]:
+                    entry['role'] = "assistant"
+                elif role in ["patient", "user", "client"]:
+                    entry['role'] = "patient"
+                
+                # Ensure content is a string
+                if not isinstance(entry['content'], str):
+                    entry['content'] = str(entry['content'])
+                    
+                final_validated.append(entry)
+        
+        if len(final_validated) != len(validated_log):
+            print(f"[DEBUG] Final validation removed {len(validated_log) - len(final_validated)} entries")
+            
+        if final_validated:
+            print(f"[DEBUG] Successfully validated {len(final_validated)} conversation entries")
+            return final_validated
+        
+        # If still empty, return the original log as a last resort
+        print("[DEBUG] Validation produced no valid entries, returning original log")
+        return conversation_log
+
     def save_chat(self, 
                   conversation: List[Dict[str, str]], 
                   diagnosis: str,
@@ -38,6 +289,11 @@ class ChatLogger:
         Returns:
             Path to the saved log file
         """
+        # Validate the conversation log
+        validated_conversation = self.validate_conversation_log(conversation)
+        if len(validated_conversation) != len(conversation):
+            print(f"[WARNING] Conversation log was fixed from {len(conversation)} to {len(validated_conversation)} entries")
+        
         # Generate a timestamp for the filename if not provided
         timestamp = datetime.datetime.now().isoformat()
         
@@ -55,7 +311,7 @@ class ChatLogger:
         log_data = {
             "timestamp": timestamp,
             "questionnaire": questionnaire_name,
-            "conversation": conversation,
+            "conversation": validated_conversation,
             "diagnosis": diagnosis,
         }
         
@@ -68,7 +324,7 @@ class ChatLogger:
             log_data["timing_metrics"] = timing_metrics
         
         # Add RAG summary information
-        log_data["rag_summary"] = self._generate_rag_summary(conversation)
+        log_data["rag_summary"] = self._generate_rag_summary(validated_conversation)
         
         # Save to file atomically
         temp_path = file_path + '.tmp'
@@ -125,6 +381,7 @@ class ChatLogger:
             "total_rag_queries": 0,
             "total_documents_accessed": 0,
             "documents_accessed": {},
+            "rag_disabled": False,
             "evaluation_metrics": {
                 "contextual_relevancy": {"total_score": 0, "count": 0, "reasons": []},
                 "faithfulness": {"total_score": 0, "count": 0, "reasons": []},
@@ -136,7 +393,12 @@ class ChatLogger:
         # Process all messages looking for RAG usage
         for message in conversation_log:
             if "rag_usage" in message:
-                rag_usage = message.get("rag_usage", {})
+                rag_usage = message.get("rag_usage")
+                
+                # Check if RAG usage is None (disabled)
+                if rag_usage is None:
+                    rag_summary["rag_disabled"] = True
+                    continue
                 
                 # Count this as a RAG query if documents were accessed
                 documents = rag_usage.get("documents", rag_usage.get("accessed_documents", []))

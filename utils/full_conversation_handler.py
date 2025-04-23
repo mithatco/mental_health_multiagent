@@ -16,6 +16,10 @@ class FullConversationHandler:
             disable_rag_evaluation: Whether to disable RAG evaluation (but keep document retrieval)
         """
         self.agent = agent
+        # Pass the disable_rag_evaluation flag to the agent if it's available
+        if hasattr(agent, 'disable_rag_evaluation'):
+            agent.disable_rag_evaluation = disable_rag_evaluation
+        
         self.conversation_log = []
         self.state_file = state_file
         self.disable_rag_evaluation = disable_rag_evaluation

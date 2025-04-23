@@ -1,20 +1,30 @@
 import os
 import random
-from utils.ollama_client import OllamaClient
+from utils.llm_client_base import LLMClient
 
 class Patient:
     """Agent representing a patient with mental health concerns."""
     
-    def __init__(self, ollama_url, model, profile_name=None):
+    def __init__(self, provider="ollama", provider_options=None, model="qwen2.5:3b", profile_name=None):
         """
         Initialize the patient agent.
         
         Args:
-            ollama_url (str): URL for the Ollama API
-            model (str): Ollama model to use
+            provider (str): LLM provider to use (ollama or groq)
+            provider_options (dict, optional): Options to pass to the provider client
+            model (str): Model to use with the provider
             profile_name (str, optional): Name of the patient profile to use
         """
-        self.client = OllamaClient(base_url=ollama_url)
+        # Initialize default provider options
+        if provider_options is None:
+            provider_options = {}
+            
+            # Set default options based on provider
+            if provider == "ollama":
+                provider_options["base_url"] = "http://localhost:11434"
+                
+        # Create the client using the factory method
+        self.client = LLMClient.create(provider, **provider_options)
         self.model = model
         
         # Set up patient profile

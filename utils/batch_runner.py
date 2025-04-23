@@ -65,6 +65,9 @@ class BatchRunner:
         logger.info(f"Patient profile: {patient_profile if not randomize_profiles else 'randomized'}")
         logger.info(f"Logs directory: {self.logs_dir}")
         
+        # Log the kwargs for debugging
+        logger.info(f"Conversation runner kwargs: {kwargs}")
+        
         # List available profiles for randomization
         available_profiles = None
         if randomize_profiles:
@@ -118,8 +121,14 @@ class BatchRunner:
                 # Set disable_output=True to suppress console output
                 run_kwargs['disable_output'] = True
                 
+                # Log the exact arguments being passed to the conversation runner
+                logger.info(f"Running conversation {i+1}/{batch_size} with exact parameters:")
+                logger.info(f"  - Profile: {current_profile}")
+                logger.info(f"  - Log file: {log_filename}")
+                logger.info(f"  - Full conversation mode: {run_kwargs.get('full_conversation', False)}")
+                logger.info(f"  - RAG evaluation disabled: {run_kwargs.get('disable_rag_evaluation', False)}")
+                
                 # Run the conversation with the specified log filename
-                logger.info(f"Running conversation with profile: {current_profile}")
                 conversation_result = self.conversation_runner(
                     pdf_path=pdf_path,
                     patient_profile=current_profile,
@@ -134,6 +143,10 @@ class BatchRunner:
                     logger.info(f"Verified log file was saved: {log_filename}")
                 else:
                     logger.warning(f"Log file was not found at expected location: {log_filename}")
+                    # Try to create the directory again and force retry the save
+                    log_dir = os.path.dirname(log_filename)
+                    os.makedirs(log_dir, exist_ok=True)
+                    logger.info(f"Created log directory: {log_dir}")
                 
                 # Collect result metadata
                 result = {
