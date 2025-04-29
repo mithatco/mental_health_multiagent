@@ -13,16 +13,12 @@ from typing import Dict, Any, List, Tuple, Optional
 # Add parent directory to Python path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-# Import the Ollama client
+# Import the Groq client
 try:
-    from utils.ollama_client import OllamaClient
+    from utils.groq_client import GroqClient
 except ImportError:
-    print("Could not import OllamaClient, trying relative import...")
-    try:
-        from .ollama_client import OllamaClient
-    except ImportError:
-        print("ERROR: Could not import OllamaClient")
-        OllamaClient = None
+    print("Could not import GroqClient")
+    GroqClient = None
 
 # Define the evaluation rubric as a constant
 EVALUATION_RUBRIC = """
@@ -73,18 +69,28 @@ Rate each conversation based on the following criteria (scale 1–5):
 class LLMEvaluator:
     """Evaluate mental health conversations using an LLM with a custom rubric."""
     
-    def __init__(self, ollama_url="http://localhost:11434", model="qwen2.5:3b"):
+    def __init__(self, ollama_url: str = "http://localhost:11434", model: str = "qwen2.5:3b", client=None):
         """
         Initialize the LLM-based evaluator.
         
         Args:
-            ollama_url: URL of the Ollama API
+            ollama_url: URL of the Ollama API (used if client is None)
             model: Name of the model to use for evaluation
+            client: Optional custom client (GroqClient or OllamaClient)
         """
-        from ollama import Client as OllamaClient
-        self.client = OllamaClient(host=ollama_url)
         self.model = model
-        print(f"Initialized LLM evaluator with model {model}")
+        
+        # Use provided client or initialize default Ollama client
+        if client is not None:
+            self.client = client
+            print(f"Initialized LLM evaluator with custom client and model {model}")
+        else:
+            try:
+                from ollama import Client as OllamaClient
+                self.client = OllamaClient(host=ollama_url)
+                print(f"Initialized LLM evaluator with Ollama client and model {model}")
+            except ImportError:
+                raise ImportError("Neither custom client provided nor Ollama client available")
     
     def evaluate_log(self, log_data: Dict[str, Any]) -> Dict[str, Any]:
         """
@@ -124,7 +130,15 @@ class LLMEvaluator:
             print(f"Evaluated based on rubric")
             
             # Evaluate questions coverage and quality
-            question_results = self._evaluate_questions(formatted_conversation, questionnaire_content)
+            # question_results = self._evaluate_questions(formatted_conversation, questionnaire_content)
+            question_results = {
+                                "total_questions": 0,
+                                "questions_asked": 0,
+                                "percentage_asked": 0,
+                                "quality_score": 0,
+                                "explanation": "Could not evaluate question coverage due to technical issues.",
+                                "question_analysis": []
+                            }
 
             print(f"Evaluated questions coverage and quality")
 
@@ -132,6 +146,23 @@ class LLMEvaluator:
             diagnosis_accuracy = self._evaluate_diagnosis_accuracy(diagnosis, patient_profile)
 
             print(f"Evaluated diagnosis accuracy")
+            
+            # Extract classification information
+            diagnosis_classification = {
+                "expected_profile": patient_profile,
+                "classified_as": diagnosis_accuracy.get("classification", "unknown"),
+                "match": diagnosis_accuracy.get("matches_profile", False),
+                "confidence": diagnosis_accuracy.get("confidence", 0)
+            }
+            
+            # Log classification results
+            if diagnosis_classification["classified_as"] != "unknown":
+                print(f"Diagnosis classified as: {diagnosis_classification['classified_as']}")
+                if patient_profile != "unknown":
+                    match = (diagnosis_classification["expected_profile"].lower().replace("_", "") == 
+                             diagnosis_classification["classified_as"].lower().replace("_", ""))
+                    if not match and diagnosis_classification["classified_as"] != "other":
+                        print(f"NOTE: Classification ({diagnosis_classification['classified_as']}) differs from expected profile ({patient_profile})")
             
             # Combine results
             results = {
@@ -142,6 +173,7 @@ class LLMEvaluator:
                 'overall_comments': rubric_results.get('overall_comments', ''),
                 'average_score': rubric_results.get('average_score', 0),
                 'diagnosis_accuracy': diagnosis_accuracy,
+                'diagnosis_classification': diagnosis_classification,
                 'question_evaluation': question_results,
                 'evaluation_time': time.time() - start_time
             }
@@ -297,9 +329,55 @@ DIAGNOSIS:
 
 {EVALUATION_RUBRIC}
 
+CRITICAL EVALUATION GUIDANCE:
+1. DSM-5 Dimension Coverage:
+   - Check if ALL 23 questions from the DSM-5 Level1 Cross-Cutting measure were addressed
+   - A score of 5 should only be given if every dimension was thoroughly explored with appropriate follow-up
+   - Look for missed opportunities to explore symptoms in greater depth
+   - Note any dimensions that were completely omitted or only superficially addressed
+
+2. Clinical Relevance:
+   - Examine if questions were phrased in clinically accurate ways that align with DSM-5 terminology
+   - Check if the therapist altered questions in ways that changed their clinical meaning
+   - Identify any instances where the therapist used vague or imprecise language
+   - A score of 5 should only be given if questions were precisely aligned with clinical criteria
+
+3. Consistency:
+   - Identify any abrupt topic changes or non-sequiturs in the conversation
+   - Note if the therapist failed to follow up on concerning disclosures
+   - Check if questions logically build on previous responses
+   - A high score requires smooth transitions and a coherent conversational arc
+
+4. Diagnostic Justification:
+   - Verify that diagnostic conclusions directly cite specific symptoms mentioned by the patient
+   - Check if the diagnosis explicitly links to DSM-5 criteria
+   - Look for alternative diagnoses that weren't adequately ruled out
+   - High scores require comprehensive differential diagnosis consideration
+
+5. Empathy:
+   - Look for missed opportunities to acknowledge patient distress
+   - Identify any instances of clinical detachment or overly technical language
+   - Note if the therapist tailors responses to the patient's emotional state
+   - Perfect scores should be rare and only for consistently warm, personalized interactions
+
+SCORING CALIBRATION EXAMPLES:
+Below are examples of how to calibrate your scoring for DSM-5 Coverage as a demonstration:
+
+Score 5 (Exceptional) - The therapist explored all 23 dimensions from the DSM-5 Level1 Cross-Cutting measure with appropriate depth. Each question was followed up when needed, and no dimensions were skipped. Example: "The therapist systematically addressed all domains, asking about depression, anxiety, mania, psychosis, substance use, sleep, etc., and followed up with appropriate probing when the patient mentioned concerning symptoms."
+
+Score 4 (Very Good) - The therapist covered most dimensions thoroughly but missed 1-2 areas or didn't provide sufficient follow-up in some areas. Example: "The therapist covered most DSM-5 domains well, but didn't adequately explore personality functioning and only superficially addressed substance use without appropriate follow-up questions."
+
+Score 3 (Adequate) - Several dimensions were covered adequately, but 3-5 important areas were missed or only minimally addressed. Example: "While depression and anxiety were explored thoroughly, the therapist failed to adequately address psychosis, repetitive thoughts/behaviors, and substance use concerns."
+
+Score 2 (Poor) - Many important dimensions were missed, with only a few domains receiving adequate attention. Example: "The therapist focused almost exclusively on depression and anxiety, neglecting to assess for mania, psychosis, substance use, personality functioning, and several other key dimensions."
+
+Score 1 (Inadequate) - The therapist failed to systematically assess most DSM-5 dimensions, with haphazard or minimal coverage. Example: "The conversation lacked any structured approach to assessment, missing most key DSM-5 dimensions and failing to address even basic symptom domains adequately."
+
+Please calibrate your scoring for all criteria using a similar level of critical analysis.
+
 INSTRUCTIONS:
 - Provide your evaluation in a structured JSON format
-- For each criterion, include a "score" (numeric, 1-5) and "explanation" (text)
+- For each criterion, include a "score" (numeric, 1-5) and "explanation" (text), be critical and objective
 - Include an "overall_comments" section with your general assessment
 
 Please format your response as valid JSON with the following structure:
@@ -315,16 +393,31 @@ Please format your response as valid JSON with the following structure:
 }}
 
 Your evaluation should be objective, fair, and based solely on the provided conversation, questionnaire, and rubric.
+
+IMPORTANT:
+- Make sure to keep the criteria names as they are in the rubric.
+- Do NOT rename, shorten, or modify the criteria names in any way - they must match exactly: "dsm_coverage", "clinical_relevance", "consistency", "diagnostic_justification", and "empathy".
+- Be highly critical and stringent in your assessment. Perfect scores (5/5) should be rare and reserved only for truly exceptional performance with no flaws.
+- A score of 4 should indicate excellent performance with minor issues.
+- A score of 3 should indicate average performance with some notable issues.
+- Consider the full range of the scoring scale (1-5) and don't hesitate to use lower scores when appropriate.
+- For each criterion, actively look for flaws, omissions, or weaknesses before assigning scores.
+- Provide specific examples of flaws or strengths in your explanations to justify your scores.
+- Do not inflate scores due to politeness - this evaluation is meant to identify areas for improvement.
+- Make sure to include all criteria in your evaluation.
+- Include detailed justifications for each score, pointing out specific strengths and weaknesses.
+
+FINAL REMINDER: Previous evaluations have been overly lenient, with most scores clustering around 4-5. Your task is to apply more critical standards. A conversation with NO clear issues or flaws deserves a 4, not a 5. Only truly exceptional conversations that go above and beyond in every aspect should receive a 5 in any category. Most real-world conversations should score in the 2-4 range for various criteria.
 """
         
         try:
-            # Fixed: Pass parameters in the correct order for OllamaClient.generate
+            # Generate response using the client
             response = self.client.generate(
                 model=self.model,
                 prompt=prompt
             )
             
-            # The client returns a dict with 'response' key, so extract that
+            # Extract response text
             response_text = response.get('response', '')
             
             # Extract JSON from the response
@@ -393,6 +486,9 @@ Your evaluation should be objective, fair, and based solely on the provided conv
         Returns:
             Dictionary containing accuracy assessment
         """
+        # Define available profiles for classification
+        available_profiles = ["anxiety", "bipolar", "depression", "ptsd", "schizophrenia", "adjustment", "substance_abuse", "ocd", "panic", "social_anxiety", "other"]
+        
         prompt = f"""
 You are an expert psychiatrist EVALUATING a diagnosis's accuracy compared to a known condition.
 
@@ -409,29 +505,43 @@ Your task:
 1. Determine if the diagnosis EXPLICITLY identifies or aligns with the expected profile ({patient_profile}).
 2. Rate your confidence in this assessment (on a scale of 1-5)
 3. Provide a brief explanation for why they match or don't match
+4. CLASSIFY the diagnosis into ONE of the following categories based on what condition is being diagnosed:
+   - anxiety
+   - bipolar
+   - depression
+   - ptsd
+   - schizophrenia
+   - adjustment
+   - substance_abuse
+   - ocd
+   - panic
+   - social_anxiety
+   - other (if it doesn't fit any of the above categories)
 
 IMPORTANT:
 - This is purely a matching task, NOT a diagnostic assessment
 - Focus only on whether the diagnosis correctly identifies {patient_profile} as the primary condition
 - Do NOT perform your own diagnosis of symptoms
 - If the diagnosis mentions {patient_profile} or equivalent clinical terms for this condition, it's a match
+- For the classification, focus on what condition is actually being diagnosed in the text, regardless of the expected profile
 
 Format your response as valid JSON:
 {{
   "matches_profile": true/false,
   "confidence": X,
-  "explanation": "your explanation here"
+  "explanation": "your explanation here",
+  "classification": "one of the profile categories listed above"
 }}
 """
         
         try:
-            # Fixed: Pass parameters in the correct order for OllamaClient.generate
+            # Generate response using the client
             response = self.client.generate(
                 model=self.model,
                 prompt=prompt
             )
             
-            # The client returns a dict with 'response' key, so extract that
+            # Extract response text
             response_text = response.get('response', '')
             
             # Extract JSON from the response
@@ -440,27 +550,35 @@ Format your response as valid JSON:
                 json_str = json_match.group(1)
                 try:
                     results = json.loads(json_str)
+                    
+                    # Ensure classification is one of the valid profiles
+                    if "classification" in results and results["classification"] not in available_profiles:
+                        results["classification"] = "other"
+                    
                     return results
                 except json.JSONDecodeError as e:
                     print(f"Error parsing diagnosis accuracy JSON: {e}")
                     return {
                         "matches_profile": False,
                         "confidence": 0,
-                        "explanation": "Error parsing evaluation results."
+                        "explanation": "Error parsing evaluation results.",
+                        "classification": "other"
                     }
             else:
                 print("Could not extract JSON from LLM response")
                 return {
                     "matches_profile": False,
                     "confidence": 0,
-                    "explanation": "Error extracting structured evaluation from LLM response."
+                    "explanation": "Error extracting structured evaluation from LLM response.",
+                    "classification": "other"
                 }
         except Exception as e:
             print(f"Error during diagnosis accuracy evaluation: {e}")
             return {
                 "matches_profile": False,
                 "confidence": 0,
-                "explanation": f"Error occurred during evaluation: {str(e)}"
+                "explanation": f"Error occurred during evaluation: {str(e)}",
+                "classification": "other"
             }
 
     def _evaluate_questions(self, conversation: str, questionnaire_content: str) -> Dict[str, Any]:
@@ -558,62 +676,77 @@ FORMAT YOUR RESPONSE AS VALID JSON:
       "original": "Original question text",
       "asked": true/false,
       "therapist_version": "How the therapist phrased it (if asked)" or "Not asked"
-    }},
-    ... MAKE SURE TO INCLUDE ALL QUESTIONS ...
+    }}
   ]
 }}
+
+IMPORTANT: Ensure your JSON is well-formed and valid. Escape any quotes in strings. Do not use trailing commas.
 """
             
             try:
-                # Generate response using the LLM
+                # Generate response using the client
                 response = self.client.generate(
                     model=self.model,
                     prompt=prompt
                 )
                 
-                # Extract text from response
+                # Extract response text
                 response_text = response.get('response', '')
                 
-                # Extract JSON from the response
-                json_match = re.search(r'({[\s\S]*})', response_text)
-                if json_match:
-                    json_str = json_match.group(1)
-                    try:
-                        results = json.loads(json_str)
-                        
-                        # Extract the key metrics
-                        questions_asked = int(results.get("questions_asked", 0))
-                        quality_score = int(results.get("quality_score", 0))
-                        explanation = results.get("explanation", "")
-                        question_analysis = results.get("question_analysis", [])
-                        
-                        # Calculate percentage
-                        percentage_asked = (questions_asked / len(extracted_questions)) * 100
-                        
-                        # Log the calculation details
-                        # print(f"Question analysis calculation from LLM:")
-                        # print(f"Total questions: {len(extracted_questions)}")
-                        # print(f"Questions asked: {questions_asked}")
-                        # print(f"Percentage asked: {percentage_asked:.2f}%")
-                        
-                        return {
-                            "total_questions": len(extracted_questions),
-                            "questions_asked": questions_asked,
-                            "percentage_asked": percentage_asked,
-                            "quality_score": quality_score,
-                            "explanation": explanation,
-                            "question_analysis": question_analysis
-                        }
-                        
-                    except json.JSONDecodeError as e:
-                        print(f"Error parsing question evaluation JSON: {e}")
-                        print(f"Response was: {json_str}")
+                # Improved JSON extraction for better robustness
+                try:
+                    # First, try to find JSON with regex
+                    import re
+                    json_match = re.search(r'(\{[\s\S]*\})', response_text)
+                    if json_match:
+                        json_str = json_match.group(1)
+                        import json
+                        try:
+                            results = json.loads(json_str)
+                        except json.JSONDecodeError as e:
+                            print(f"Initial JSON parsing failed, attempting to clean JSON: {e}")
+                            # Try to clean and fix common JSON issues
+                            # Replace unescaped quotes within JSON values
+                            json_str = re.sub(r'(?<!")(")((?:[^"\\]|\\.)*?")(?!")', r'\1\\\2', json_str)
+                            # Remove trailing commas in arrays and objects
+                            json_str = re.sub(r',\s*}', '}', json_str)
+                            json_str = re.sub(r',\s*]', ']', json_str)
+                            try:
+                                results = json.loads(json_str)
+                            except json.JSONDecodeError as e2:
+                                print(f"JSON cleaning also failed: {e2}")
+                                return self.fallback_evaluation(conversation, questionnaire_content)
+                    else:
+                        print("Could not locate JSON in the response")
                         return self.fallback_evaluation(conversation, questionnaire_content)
-                else:
-                    print("Could not extract JSON from question evaluation response")
+                    
+                    # Extract the key metrics
+                    questions_asked = int(results.get("questions_asked", 0))
+                    quality_score = int(results.get("quality_score", 0))
+                    explanation = results.get("explanation", "")
+                    question_analysis = results.get("question_analysis", [])
+                    
+                    # Safety check on question_analysis 
+                    if not isinstance(question_analysis, list):
+                        question_analysis = []
+                    
+                    # Calculate percentage
+                    percentage_asked = (questions_asked / len(extracted_questions)) * 100 if extracted_questions else 0
+                    
+                    return {
+                        "total_questions": len(extracted_questions),
+                        "questions_asked": questions_asked,
+                        "percentage_asked": percentage_asked,
+                        "quality_score": quality_score,
+                        "explanation": explanation,
+                        "question_analysis": question_analysis
+                    }
+                    
+                except Exception as e:
+                    print(f"Error extracting or processing JSON: {e}")
                     print(f"Response was: {response_text}")
                     return self.fallback_evaluation(conversation, questionnaire_content)
-                    
+                
             except Exception as e:
                 print(f"Error during LLM evaluation: {e}")
                 return self.fallback_evaluation(conversation, questionnaire_content)
@@ -624,30 +757,54 @@ FORMAT YOUR RESPONSE AS VALID JSON:
             traceback.print_exc()
         
         return {
-            "total_questions": len(extracted_questions),
+            "total_questions": len(extracted_questions) if 'extracted_questions' in locals() else 0,
             "questions_asked": 0,
             "percentage_asked": 0,
             "quality_score": 0,
-            "explanation": "",
+            "explanation": "Error in question evaluation process",
+            "question_analysis": []
+        }
+
+    def fallback_evaluation(self, conversation: str, questionnaire_content: str) -> Dict[str, Any]:
+        """Fallback method for evaluating question coverage."""
+        # Just a placeholder - implement more robust fallback if needed
+        return {
+            "total_questions": 0,
+            "questions_asked": 0,
+            "percentage_asked": 0,
+            "quality_score": 0,
+            "explanation": "Could not evaluate question coverage due to technical issues.",
             "question_analysis": []
         }
 
 class ChatLogEvaluator:
     """Evaluate chat logs using the LLM-based evaluator."""
     
-    def __init__(self, logs_dir: str, ollama_url: str = "http://localhost:11434", model: str = "qwen2.5:3b"):
+    def __init__(self, logs_dir: str, llm_evaluator: Optional[LLMEvaluator] = None, 
+                 provider: str = "ollama", model: str = "qwen2.5:3b", api_key: Optional[str] = None):
         """
         Initialize the chat log evaluator.
         
         Args:
             logs_dir: Directory containing chat logs
-            ollama_url: URL for the Ollama API
-            model: Name of the model to use for evaluation
+            llm_evaluator: Optional preconfigured LLM evaluator instance
+            provider: LLM provider to use if evaluator not provided
+            model: Model to use if evaluator not provided
+            api_key: API key for cloud providers
         """
         self.logs_dir = logs_dir
-        self.ollama_url = ollama_url
-        self.model = model
-        self.evaluator = LLMEvaluator(ollama_url=ollama_url, model=model)
+        
+        # Use provided evaluator or create a new one
+        if llm_evaluator:
+            self.evaluator = llm_evaluator
+        else:
+            # Use the factory to create an evaluator
+            from utils.llm_evaluator_factory import LLMEvaluatorFactory
+            self.evaluator = LLMEvaluatorFactory.create_evaluator(
+                provider=provider,
+                model=model,
+                api_key=api_key
+            )
         
     def get_log_path(self, log_id: str) -> str:
         """
@@ -678,13 +835,12 @@ class ChatLogEvaluator:
         
         return filepath
     
-    def evaluate_log(self, log_id: str, model: str = None) -> Dict[str, Any]:
+    def evaluate_log(self, log_id: str) -> Dict[str, Any]:
         """
         Evaluate a chat log using the LLM evaluator.
         
         Args:
             log_id: ID of the log file
-            model: Optional model override to use for this evaluation
         
         Returns:
             Evaluation results
@@ -699,21 +855,14 @@ class ChatLogEvaluator:
             with open(filepath, 'r') as f:
                 log_data = json.load(f)
             
-            # Use specified model if provided, otherwise use the default
-            eval_model = model if model else self.model
-            
-            # Create temporary evaluator if needed
-            if eval_model != self.model:
-                temp_evaluator = LLMEvaluator(ollama_url=self.ollama_url, model=eval_model)
-                results = temp_evaluator.evaluate_log(log_data)
-            else:
-                results = self.evaluator.evaluate_log(log_data)
+            # Evaluate using the evaluator
+            results = self.evaluator.evaluate_log(log_data)
             
             # Add metadata
             eval_results = {
                 'log_id': log_id,
                 'timestamp': time.strftime('%Y-%m-%d %H:%M:%S'),
-                'model': eval_model,
+                'model': self.evaluator.model,
                 'evaluation': results
             }
             
@@ -768,12 +917,23 @@ def example_usage():
     parser = argparse.ArgumentParser(description="Evaluate mental health conversations")
     parser.add_argument("log_id", help="ID of the log file to evaluate")
     parser.add_argument("--logs-dir", type=str, default="./chat_logs", help="Directory containing chat logs")
+    parser.add_argument("--provider", type=str, default="ollama", choices=["ollama", "groq"], help="LLM provider to use")
     parser.add_argument("--model", type=str, default="qwen2.5:3b", help="Model to use for evaluation")
+    parser.add_argument("--api-key", type=str, help="API key for cloud providers (required for Groq)")
     args = parser.parse_args()
     
+    # Use factory to create appropriate evaluator
+    from utils.llm_evaluator_factory import LLMEvaluatorFactory
+    llm_evaluator = LLMEvaluatorFactory.create_evaluator(
+        provider=args.provider,
+        model=args.model,
+        api_key=args.api_key
+    )
+    
+    # Create chat log evaluator with the LLM evaluator
     evaluator = ChatLogEvaluator(
         logs_dir=args.logs_dir,
-        model=args.model
+        llm_evaluator=llm_evaluator
     )
     
     print(f"Evaluating log {args.log_id}...")

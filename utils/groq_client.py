@@ -222,7 +222,7 @@ class GroqClient(LLMClient):
                         # Enhance the system message with JSON formatting instructions
                         formatted_messages.append({
                             "role": "system",
-                            "content": msg.get("content", "") + "\n\nIMPORTANT: Your response MUST be a valid JSON array of objects. Each object MUST have 'role' and 'content' fields. The 'role' must be either 'assistant' for the mental health professional or 'patient' for the patient. Format: [{\"role\":\"assistant\",\"content\":\"message\"},{\"role\":\"patient\",\"content\":\"message\"}]. Do NOT include any text before or after the JSON array."
+                            "content": msg.get("content", "") + "\n\nIMPORTANT: Your response MUST be a valid JSON array of objects. Each object MUST have 'role' and 'content' fields. The 'role' must be either 'assistant' for the mental health professional or 'patient' for the patient. Format: [{\"role\":\"assistant\",\"content\":\"message\"},{\"role\":\"patient\",\"content\":\"message\"}]. Do NOT include any text before or after the JSON array.\n\nCRITICAL: DO NOT introduce the mental health assessment as a \"Somatic Symptom Disorder questionnaire\" or any specific disorder questionnaire unless explicitly named as such in the instructions. Simply use the actual questionnaire name as provided."
                         })
                     else:
                         # Copy other messages as-is
@@ -234,7 +234,7 @@ class GroqClient(LLMClient):
                 # Add new system message at the beginning
                 formatted_messages.append({
                     "role": "system",
-                    "content": "IMPORTANT: Your response MUST be a valid JSON array of objects. Each object MUST have 'role' and 'content' fields. The 'role' must be either 'assistant' for the mental health professional or 'patient' for the patient. Format: [{\"role\":\"assistant\",\"content\":\"message\"},{\"role\":\"patient\",\"content\":\"message\"}]. Do NOT include any text before or after the JSON array."
+                    "content": "IMPORTANT: Your response MUST be a valid JSON array of objects. Each object MUST have 'role' and 'content' fields. The 'role' must be either 'assistant' for the mental health professional or 'patient' for the patient. Format: [{\"role\":\"assistant\",\"content\":\"message\"},{\"role\":\"patient\",\"content\":\"message\"}]. Do NOT include any text before or after the JSON array.\n\nCRITICAL: DO NOT introduce the mental health assessment as a \"Somatic Symptom Disorder questionnaire\" or any specific disorder questionnaire unless explicitly named as such in the instructions. Simply use the actual questionnaire name as provided."
                 })
                 # Add all other messages
                 for msg in messages:

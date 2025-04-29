@@ -124,6 +124,13 @@ class MentalHealthAssistant:
         {full_questionnaire_content}
         ```
         
+        IMPORTANT INSTRUCTIONS:
+        - Use ONLY the actual name of the questionnaire as shown in the document above
+        - DO NOT introduce this as a "Somatic Symptom Disorder questionnaire" unless that is explicitly the name in the document
+        - DO NOT assume what specific condition is being assessed
+        - The questionnaire may be a general mental health assessment or focused on various conditions
+        - Your role is to administer the questionnaire without making diagnostic assumptions up front
+        
         Based on this questionnaire document, please generate a warm, professional introduction to the patient that:
         1. Introduces yourself as a mental health professional
         2. Identifies the specific questionnaire you're using by name (from the document)
@@ -171,6 +178,13 @@ class MentalHealthAssistant:
         
         Clinical observations and potential concerns:
         {observations}
+        
+        IMPORTANT DIAGNOSTIC CONSIDERATIONS:
+        - Consider multiple possible diagnoses that could explain the symptoms
+        - Do not default to Somatic Symptom Disorder unless clearly warranted by the symptoms
+        - Be open to various diagnostic possibilities including anxiety disorders, mood disorders, trauma-related disorders, etc.
+        - Make your diagnosis based solely on the symptoms presented, not on assumptions
+        - If symptoms are insufficient for a definitive diagnosis, indicate this is a provisional impression
         
         Please analyze these responses and observations and provide a professional assessment that MUST follow this EXACT structure:
 

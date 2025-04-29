@@ -1,6 +1,9 @@
 import os
+import time
 from utils.llm_client_base import LLMClient
 from utils.rag_engine import RAGEngine
+import json
+import re
 
 class FullConversationAgent:
     def __init__(self, provider="ollama", provider_options=None, model="qwen2.5:3b", 
@@ -13,7 +16,7 @@ class FullConversationAgent:
             provider (str): LLM provider to use (ollama or groq)
             provider_options (dict, optional): Options to pass to the provider client
             model (str): Model to use with the provider
-            patient_profile (dict): Patient profile
+            patient_profile (str): Name of the patient profile to use
             questions (list): List of questions from the questionnaire
             rag_engine (RAGEngine, optional): RAG engine for document retrieval
             questionnaire_name (str, optional): Name of the questionnaire being used
@@ -30,7 +33,10 @@ class FullConversationAgent:
         # Create the client using the factory method
         self.client = LLMClient.create(provider, **provider_options)
         self.model = model
-        self.patient_profile = patient_profile
+        # Store the original profile name
+        self.profile_name = patient_profile
+        # Load the actual profile content from file
+        self.patient_profile = self._load_profile(patient_profile)
         self.questions = questions
         self.rag_engine = rag_engine
         self.questionnaire_name = questionnaire_name
@@ -45,53 +51,72 @@ class FullConversationAgent:
         # Initialize responses attribute
         self.responses = []
         
+    def _load_profile(self, profile_name):
+        """Load a patient profile from file."""
+        if not profile_name:
+            return "No specific patient profile provided."
+        
+        profiles_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "profiles")
+        
+        # Try to load from the profiles directory
+        profile_path = os.path.join(profiles_dir, f"{profile_name}.txt")
+        
+        if os.path.exists(profile_path):
+            with open(profile_path, 'r') as f:
+                profile_content = f.read()
+            return profile_content
+        else:
+            print(f"Warning: Profile '{profile_name}' not found. Using default profile.")
+            return f"Profile named {profile_name} (profile details not found)"
+        
     def generate_conversation(self):
         """Generate a full conversation between the full conversation agent and patient."""
         print("[DEBUG] Retrieving full questionnaire document")
         
         # Get the full questionnaire document if available
+        full_questionnaire_content = ""
         if self.questionnaire_name:
-            specific_docs = self.rag_engine.get_context_for_question(f"full text of {self.questionnaire_name}")
+            # Try direct file reading approach first if this is a filename with .txt extension
+            if self.questionnaire_name.endswith('.txt'):
+                try:
+                    # Construct path to questionnaire file
+                    questionnaire_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "documents", "questionnaires")
+                    questionnaire_path = os.path.join(questionnaire_dir, self.questionnaire_name)
+                    
+                    # Read file directly
+                    if os.path.exists(questionnaire_path):
+                        print(f"[DEBUG] Reading questionnaire directly from file: {questionnaire_path}")
+                        with open(questionnaire_path, 'r') as f:
+                            full_questionnaire_content = f.read()
+                        print(f"[DEBUG] Successfully loaded questionnaire file ({len(full_questionnaire_content)} chars)")
+                except Exception as e:
+                    print(f"[DEBUG] Error reading questionnaire file directly: {str(e)}")
             
-            # Handle both old format (list) and new format (dictionary)
-            full_questionnaire_content = ""
-            if isinstance(specific_docs, dict) and "content" in specific_docs:
-                # New format from enhanced RAG engine
-                full_questionnaire_content = specific_docs["content"]
-            elif isinstance(specific_docs, list) and len(specific_docs) > 0:
-                # Old format (list of strings)
-                full_questionnaire_content = specific_docs[0]
-            else:
-                # Default empty string if no content found
-                full_questionnaire_content = ""
-        else:
-            full_questionnaire_content = ""
+            # Fall back to RAG if direct file read failed or if not a .txt file
+            if not full_questionnaire_content and self.rag_engine:
+                print("[DEBUG] Falling back to RAG engine for questionnaire retrieval")
+                specific_docs = self.rag_engine.get_context_for_question(f"full text of {self.questionnaire_name}")
+                
+                # Handle both old format (list) and new format (dictionary)
+                if isinstance(specific_docs, dict) and "content" in specific_docs:
+                    # New format from enhanced RAG engine
+                    full_questionnaire_content = specific_docs["content"]
+                elif isinstance(specific_docs, list) and len(specific_docs) > 0:
+                    # Old format (list of strings)
+                    full_questionnaire_content = specific_docs[0]
+                else:
+                    # Default empty string if no content found
+                    full_questionnaire_content = ""
         
         # Create a prompt for the conversation generation
         base_conversation_prompt = f"""
-        You are a professional mental health clinician about to conduct an assessment using a mental health questionnaire.
+        You are an agent which generates a full conversation between a mental health professional and a patient according to a questionnaire.
         
-        Here is the full questionnaire document you will be administering:
+        IMPORTANT INSTRUCTIONS:
+        - Use ONLY the actual name of the questionnaire as provided in the user message
+        - The questionnaire may be a general mental health assessment or focused on various conditions
+        - Your role is to administer the questionnaire without making diagnostic assumptions up front
         
-        ```
-        {full_questionnaire_content}
-        ```
-        
-        Based on this questionnaire document, please generate a warm, professional conversation between you and the patient.
-        The conversation should be in the following format:
-
-        1. You start with an introduction from the mental health professional
-        2. You continue with a turn taking conversation between the mental health professional and the patient
-        3. You end with a closing statement from the mental health professional
-
-        The introduction should:
-        - Introduces yourself as a mental health professional
-        - Identifies the specific questionnaire you're using by name (from the document)
-        - Explains the purpose of this specific assessment 
-        - Reassures the patient about confidentiality and creating a safe space
-        - Briefly explains how the assessment will proceed ({len(self.questions)} questions)
-        - Indicates you're ready to begin with the first question
-
         Profile for the Mental Health Professional:
             You are a professional mental health assistant tasked with conducting a psychological assessment interview. Your job is to:
 
@@ -111,9 +136,6 @@ class FullConversationAgent:
             Only output the exact question without additional intros, summaries, or sign-offs.
             Keep your tone professional but warm, showing empathy while maintaining clinical objectivity.
             Make sure to correctly identify and name the specific questionnaire you're administering.
-        
-        Profile for the Patient:
-            {self.patient_profile}
         """
         
         # Special handling for Groq provider - more structured prompt
@@ -127,21 +149,32 @@ class FullConversationAgent:
             
             You MUST adhere to proper JSON syntax with double quotes around property names and string values.
             Do not include any explanatory text, commentary, or code blocks around the JSON.
-            
-            Example format:
-            [
-                {"role": "assistant", "content": "Hello, I'm Dr. Smith, a mental health professional..."},
-                {"role": "patient", "content": "Hi Dr. Smith, nice to meet you."},
-                {"role": "assistant", "content": "I'd like to start with the first question: How have you been feeling lately?"},
-                {"role": "patient", "content": "I've been feeling pretty down for the past few weeks."}
-            ]
             """
         else:
             conversation_prompt = base_conversation_prompt
-        
+
         # Define a specific user prompt that clearly asks for JSON format
         base_user_prompt = f"""
         Please generate a full conversation between the mental health professional and the patient.
+        
+        Here is the full questionnaire document you will be administering:
+        
+        ```
+        {full_questionnaire_content}
+        ```
+        
+        Profile for the Patient:
+        {self.patient_profile}
+        
+        EXTREMELY IMPORTANT:
+        - The mental health professional MUST ask ALL the questions from the questionnaire in order
+        - Use the EXACT wording of the questions as they appear in the questionnaire
+        - Do NOT skip any questions or add additional diagnostic questions
+        - Do not stop after the first question
+        - Make sure all {len(self.questions)} questions from the questionnaire are covered in the conversation
+        - The patient should respond in NATURAL CONVERSATIONAL LANGUAGE, not with numerical ratings
+        - Patient responses should be descriptive and elaborate on their experiences, not just "3" or "4"
+        - Patient should describe their symptoms in their own words while addressing the severity implied by the questionnaire
         
         YOUR RESPONSE MUST BE A VALID JSON ARRAY of objects, each with 'role' and 'content' fields.
         
@@ -154,7 +187,7 @@ class FullConversationAgent:
             }},
             {{
                 "role": "patient",
-                "content": "Patient response"
+                "content": "Patient response in natural language, NOT numerical ratings"
             }},
             ...and so on until all questions are asked and answered
         ]
@@ -164,7 +197,13 @@ class FullConversationAgent:
         DO NOT include backticks or "json" markers.
         ONLY return the JSON array itself.
         
-        Make sure all {len(self.questions)} questions from the questionnaire are covered in the conversation.
+        The introduction should:
+        - Introduces yourself as a mental health professional
+        - Identifies the specific questionnaire you're using by name (from the document)
+        - Explains the purpose of this specific assessment 
+        - Reassures the patient about confidentiality and creating a safe space
+        - Briefly explains how the assessment will proceed ({len(self.questions)} questions)
+        - Indicates you're ready to begin with the first question
         """
         
         # Special handling for Groq provider
@@ -172,10 +211,36 @@ class FullConversationAgent:
             user_prompt = f"""
             Generate a full conversation between the mental health professional and patient as a JSON array.
             
+            Here is the full questionnaire document you will be administering:
+            
+            ```
+            {full_questionnaire_content}
+            ```
+            
+            Profile for the Patient:
+            {self.patient_profile}
+            
+            EXTREMELY IMPORTANT:
+            - The mental health professional MUST ask ALL the questions from the questionnaire in order
+            - Use the EXACT wording of the questions as they appear in the questionnaire
+            - Do NOT skip any questions or add additional diagnostic questions
+            - Make sure all {len(self.questions)} questions from the questionnaire are covered in the conversation
+            - The patient should respond in NATURAL CONVERSATIONAL LANGUAGE, not with numerical ratings
+            - Patient responses should be descriptive and elaborate on their experiences, not just "3" or "4"
+            - Patient should describe their symptoms in their own words while addressing the severity implied by the questionnaire
+            
+            The introduction should:
+            - Introduces yourself as a mental health professional
+            - Identifies the specific questionnaire you're using by name (from the document above)
+            - Explains the purpose of this specific assessment 
+            - Reassures the patient about confidentiality and creating a safe space
+            - Briefly explains how the assessment will proceed ({len(self.questions)} questions)
+            - Indicates you're ready to begin with the first question
+            
             CRITICAL: Return ONLY a raw JSON array with no text before or after. 
             Each object must have 'role' and 'content' fields. Include all {len(self.questions)} questions.
             
-            Format: [{{\"role\":\"assistant\",\"content\":\"...\"}},{{\"role\":\"patient\",\"content\":\"...\"}},...]
+            Format: [{{\"role\":\"assistant\",\"content\":\"...\"}},{{\"role\":\"patient\",\"content\":\"Patient response in natural language, NOT numerical ratings\"}},...]
             """
         else:
             user_prompt = base_user_prompt
@@ -189,10 +254,6 @@ class FullConversationAgent:
         # Generate the conversation using the LLM
         result = self.client.chat(self.model, temp_conversation)
         conversation_text = result['response']
-        
-        # Extract JSON conversation from the response
-        import json
-        import re
         
         # Clear existing conversation history
         self.conversation_history = []
@@ -286,6 +347,9 @@ class FullConversationAgent:
                     })
                 
                 print(f"DEBUG: Added {len(self.conversation_history)} messages to conversation history")
+                
+                # Extract responses from conversation history after successful parsing
+                self._extract_responses_from_conversation_history()
             else:
                 print(f"DEBUG: Parsed JSON is not a list: {type(conversation_data)}")
                 # Try to handle single message case
@@ -316,11 +380,105 @@ class FullConversationAgent:
             print(f"Warning: Could not parse conversation as JSON: {e}")
             # If JSON parsing fails completely, try text-based extraction
             self._extract_conversation_from_text(conversation_text)
+            # Extract responses from the conversation history after text extraction
+            if self.conversation_history:
+                self._extract_responses_from_conversation_history()
         
         # If we didn't get any messages, try to extract turn-by-turn conversation as a last resort
         if not self.conversation_history:
             print("Warning: Could not parse conversation in standard format, attempting fallback extraction")
             self._extract_responses_from_conversation(conversation_text)
+        
+        # Check if we have sufficient question-answer pairs
+        # If not, regenerate the conversation
+        MAX_REGENERATION_ATTEMPTS = 2
+        regeneration_attempts = 0
+        
+        while len(self.responses) < 5 and regeneration_attempts < MAX_REGENERATION_ATTEMPTS:
+            print(f"WARNING: Generated conversation only has {len(self.responses)} Q&A pairs, fewer than the required 5. Regenerating...")
+            regeneration_attempts += 1
+            
+            # Clear existing data before regenerating
+            self.conversation_history = []
+            self.responses = []
+            
+            # Regenerate with a more explicit prompt
+            enhanced_prompt = user_prompt + f"""
+            
+            CRITICAL REQUIREMENT: Your response MUST include a FULL conversation covering ALL {len(self.questions)} questions from the questionnaire. 
+            The current generation only produced {len(self.responses)} question-answer pairs, which is insufficient.
+            Make sure the mental health professional asks ALL questions and the patient responds to each one.
+            """
+            
+            # Create a temporary conversation for regeneration
+            regeneration_conversation = [
+                {"role": "system", "content": conversation_prompt},
+                {"role": "user", "content": enhanced_prompt}
+            ]
+            
+            # Generate a new conversation
+            result = self.client.chat(self.model, regeneration_conversation)
+            conversation_text = result['response']
+            
+            try:
+                # Clean and try to parse JSON
+                cleaned_text = extract_and_clean_json(conversation_text)
+                
+                # Try to parse the cleaned JSON
+                conversation_data = json.loads(cleaned_text)
+                
+                # Validate and process the conversation data
+                if isinstance(conversation_data, list):
+                    # Process the conversation data as before
+                    for i, message in enumerate(conversation_data):
+                        if not isinstance(message, dict):
+                            continue
+                        
+                        if "role" not in message or "content" not in message:
+                            continue
+                        
+                        role = message.get("role", "")
+                        content = message.get("content", "")
+                        
+                        # Validate and standardize roles
+                        if any(r in role.lower() for r in ["assistant", "clinician", "therapist", "professional", "mental health"]):
+                            role = "assistant"
+                        elif any(r in role.lower() for r in ["user", "patient"]):
+                            role = "patient"
+                        else:
+                            role = "assistant"
+                        
+                        # Ensure content is a string
+                        if not isinstance(content, str):
+                            content = str(content)
+                        
+                        # Add the message to the conversation history
+                        self.conversation_history.append({
+                            "role": role,
+                            "content": content
+                        })
+                    
+                    # Extract responses from conversation history after parsing
+                    self._extract_responses_from_conversation_history()
+                else:
+                    # Try text-based extraction as a fallback
+                    self._extract_conversation_from_text(conversation_text)
+                    if self.conversation_history:
+                        self._extract_responses_from_conversation_history()
+            except json.JSONDecodeError:
+                # If JSON parsing fails, try text-based extraction
+                self._extract_conversation_from_text(conversation_text)
+                if self.conversation_history:
+                    self._extract_responses_from_conversation_history()
+            
+            # If we still don't have enough responses, try another method
+            if not self.conversation_history or len(self.responses) < 5:
+                self._extract_responses_from_conversation(conversation_text)
+            
+            print(f"Regeneration attempt {regeneration_attempts}: now have {len(self.responses)} Q&A pairs")
+        
+        if len(self.responses) < 5:
+            print(f"WARNING: After {MAX_REGENERATION_ATTEMPTS} attempts, still only generated {len(self.responses)} Q&A pairs. Skipping this conversation attempt as instructed.")
         
     def _extract_responses_from_conversation(self, conversation):
         """
@@ -379,9 +537,9 @@ class FullConversationAgent:
                     role_lower = role.lower()
                     
                     if any(r in role_lower for r in ["assistant", "clinician", "therapist", "professional", "mental health"]):
-                        # Check if this looks like a question (ends with ? or contains a question)
-                        if "?" in content:
-                            current_question = content
+                        # Consider all assistant messages as potential questions
+                        # Rather than requiring a question mark which excludes prompts/statements
+                        current_question = content
                     elif any(r in role_lower for r in ["user", "patient"]) and current_question:
                         # This is an answer to the previous question
                         self.responses.append((current_question, content))
@@ -403,8 +561,9 @@ class FullConversationAgent:
                 print("[DEBUG] Trying pattern matching to extract question-answer pairs")
                 
                 # Try to find pairs of assistant/patient messages
-                # Pattern for "Assistant/Clinician: [question]" followed by "Patient: [answer]"
-                qa_pattern = re.compile(r'(?:assistant|clinician|therapist|professional|doctor)\s*:\s*([^\n]+\?)[^\n]*\n+(?:patient|user)\s*:\s*([^\n]+)', re.IGNORECASE)
+                # Pattern for "Assistant/Clinician: [content]" followed by "Patient: [answer]"
+                # No longer requiring content to end with a question mark
+                qa_pattern = re.compile(r'(?:assistant|clinician|therapist|professional|doctor)\s*:\s*([^\n]+)[^\n]*\n+(?:patient|user)\s*:\s*([^\n]+)', re.IGNORECASE)
                 
                 matches = qa_pattern.findall(conversation)
                 for question, answer in matches:
@@ -429,6 +588,13 @@ class FullConversationAgent:
         Returns:
             dict: Diagnosis from the assistant with RAG usage information
         """
+
+        # print("--------------------------------")
+        # print("Responses:")
+        # print(self.responses)
+        # print(f"Number of Q&A pairs extracted: {len(self.responses)}")
+        # print("--------------------------------")
+
         # First, use AI to summarize observations from the patient responses
         observations = self._summarize_observations()
         print(f"[DEBUG] Generated clinical observations: {observations[:100]}...")
@@ -442,6 +608,13 @@ class FullConversationAgent:
         
         Clinical observations and potential concerns:
         {observations}
+        
+        IMPORTANT DIAGNOSTIC CONSIDERATIONS:
+        - Consider multiple possible diagnoses that could explain the symptoms
+        - Do not default to Somatic Symptom Disorder unless clearly warranted by the symptoms
+        - Be open to various diagnostic possibilities including anxiety disorders, mood disorders, trauma-related disorders, etc.
+        - Make your diagnosis based solely on the symptoms presented, not on assumptions
+        - If symptoms are insufficient for a definitive diagnosis, indicate this is a provisional impression
         
         Please analyze these responses and observations and provide a professional assessment that MUST follow this EXACT structure:
 
@@ -677,3 +850,29 @@ class FullConversationAgent:
                 "role": "assistant",
                 "content": text
             })
+            
+    def _extract_responses_from_conversation_history(self):
+        """
+        Extract question-answer pairs directly from the parsed conversation history.
+        This method is called after successful JSON parsing to populate the responses.
+        """
+        # Clear existing responses
+        self.responses = []
+        
+        print("DEBUG: Extracting responses from conversation history...")
+        
+        current_question = None
+        
+        # Process conversation history to extract Q&A pairs
+        for i in range(len(self.conversation_history)):
+            msg = self.conversation_history[i]
+            
+            if msg["role"] == "assistant":
+                # This is a potential question/prompt from the assistant
+                current_question = msg["content"]
+            elif msg["role"] == "patient" and current_question:
+                # This is an answer to the previous question/prompt
+                self.responses.append((current_question, msg["content"]))
+                current_question = None
+        
+        print(f"DEBUG: Extracted {len(self.responses)} Q&A pairs from conversation history")
