@@ -268,6 +268,27 @@ class ChatLogger:
         print("[DEBUG] Validation produced no valid entries, returning original log")
         return conversation_log
 
+    def clean_diagnosis(self, diagnosis: str) -> str:
+        """
+        Clean diagnosis text by removing special tags like <think></think>.
+        
+        Args:
+            diagnosis: The diagnosis text to clean
+            
+        Returns:
+            Cleaned diagnosis text
+        """
+        import re
+        
+        # Remove <think> blocks
+        diagnosis = re.sub(r'<think>.*?</think>', '', diagnosis, flags=re.DOTALL)
+        
+        # Remove any potential markdown code blocks
+        diagnosis = re.sub(r'```(json|python)?\s*', '', diagnosis)
+        diagnosis = re.sub(r'\s*```', '', diagnosis)
+        
+        return diagnosis.strip()
+
     def save_chat(self, 
                   conversation: List[Dict[str, str]], 
                   diagnosis: str,
@@ -294,6 +315,9 @@ class ChatLogger:
         if len(validated_conversation) != len(conversation):
             print(f"[WARNING] Conversation log was fixed from {len(conversation)} to {len(validated_conversation)} entries")
         
+        # Clean the diagnosis text to remove <think> tags and other special tags
+        cleaned_diagnosis = self.clean_diagnosis(diagnosis)
+        
         # Generate a timestamp for the filename if not provided
         timestamp = datetime.datetime.now().isoformat()
         
@@ -312,7 +336,7 @@ class ChatLogger:
             "timestamp": timestamp,
             "questionnaire": questionnaire_name,
             "conversation": validated_conversation,
-            "diagnosis": diagnosis,
+            "diagnosis": cleaned_diagnosis,
         }
         
         # Add metadata if provided

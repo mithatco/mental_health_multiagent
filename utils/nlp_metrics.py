@@ -59,14 +59,14 @@ def _get_fallback_embedding(text: str) -> np.ndarray:
     """
     # Ensure text is a string
     if not isinstance(text, str):
-        return np.zeros(384)
+        return np.zeros(768)
     
     # Clean and normalize text
     text = text.lower()
     
     # Create a simple hash-based embedding
     # This is not semantically meaningful but provides a consistent vector
-    embedding = np.zeros(384)
+    embedding = np.zeros(768)
     
     # Use character and word n-grams as features
     words = text.split()
@@ -74,7 +74,7 @@ def _get_fallback_embedding(text: str) -> np.ndarray:
     # Simple word embedding
     for i, word in enumerate(words):
         # Use hash of word to determine indices to modify
-        word_hash = hash(word) % 384
+        word_hash = hash(word) % 768
         # Set values based on word position and length
         embedding[word_hash] += 1.0 / (i + 1)
     
@@ -82,7 +82,7 @@ def _get_fallback_embedding(text: str) -> np.ndarray:
     for i in range(len(text) - 2):
         trigram = text[i:i+3]
         if len(trigram.strip()) > 0:
-            tri_hash = hash(trigram) % 384
+            tri_hash = hash(trigram) % 768
             embedding[tri_hash] += 0.5
     
     # Normalize the vector
@@ -94,12 +94,11 @@ def _get_fallback_embedding(text: str) -> np.ndarray:
 
 def get_embedding(text: str, model=None) -> np.ndarray:
     """
-    Get embeddings for text using a model. Uses a local model by default.
-    For production, you might want to use a more powerful model.
+    Get embeddings for text using a model. Uses nomic-embed-text through Ollama by default.
     
     Args:
         text: Text to embed
-        model: Embedding model to use (default: local model)
+        model: Embedding model to use (default: nomic-embed-text through Ollama)
         
     Returns:
         Embedding vector
@@ -107,7 +106,7 @@ def get_embedding(text: str, model=None) -> np.ndarray:
     # Handle empty text
     if not text or len(text.strip()) == 0:
         # Return zero vector of appropriate dimension
-        return np.zeros(384)  # Default dimension for all-MiniLM-L6-v2
+        return np.zeros(768)  # Default dimension for nomic-embed-text
     
     # Use hash of text for caching
     text_hash = hash(text)
@@ -116,37 +115,83 @@ def get_embedding(text: str, model=None) -> np.ndarray:
     if text_hash in _embedding_cache:
         return _embedding_cache[text_hash]
     
-    global _sentence_transformer_model
+    # Directly use fallback embedding if the text is very short - avoid transformer issues
+    if len(text.strip().split()) < 3:
+        print(f"Text too short, using fallback embedding: '{text}'")
+        embedding = _get_fallback_embedding(text)
+        _embedding_cache[text_hash] = embedding
+        return embedding
     
-    # Try using sentence-transformers with multiple fallback options
+    # Try using Ollama with nomic-embed-text with fallback options
     for attempt in range(3):  # Try up to 3 different approaches
         try:
             if attempt == 0:
-                # First attempt: Standard approach
-                from sentence_transformers import SentenceTransformer
-                import torch
+                # First attempt: Use Ollama with nomic-embed-text
+                print("Using nomic-embed-text via Ollama for embedding...")
+                import requests
+                import json
                 
-                # Initialize model if needed
-                if _sentence_transformer_model is None and model is None:
-                    # Force CPU to avoid Meta tensor issues
-                    os.environ["CUDA_VISIBLE_DEVICES"] = ""  # Temporarily disable CUDA
-                    _sentence_transformer_model = SentenceTransformer("all-MiniLM-L6-v2", device='cpu')
-                    print("Initialized embedding model on CPU (CUDA disabled)")
-                
-                # Use the provided model or the global one
-                embedding_model = model if model is not None else _sentence_transformer_model
-                
-                # Get embeddings
-                embedding = embedding_model.encode(text)
+                # Call Ollama API
+                try:
+                    response = requests.post(
+                        'http://localhost:11434/api/embeddings',
+                        json={
+                            'model': 'nomic-embed-text',
+                            'prompt': text
+                        },
+                        timeout=10  # 10 seconds timeout to avoid hanging
+                    )
+                    
+                    if response.status_code == 200:
+                        embedding_data = response.json()
+                        if 'embedding' in embedding_data:
+                            # Get the embedding from the response
+                            embedding = np.array(embedding_data['embedding'])
+                            print(f"Successfully generated embedding with shape: {embedding.shape}")
+                        else:
+                            raise ValueError(f"No embedding found in response: {embedding_data}")
+                    else:
+                        raise ValueError(f"Error from Ollama API: {response.text} (Status: {response.status_code})")
+                    
+                except requests.RequestException as e:
+                    raise ConnectionError(f"Error connecting to Ollama: {e}")
                 
             elif attempt == 1:
-                # Second attempt: Try with alternative model
-                print("Trying alternative embedding model...")
-                from sentence_transformers import SentenceTransformer
+                # Second attempt: Direct approach using transformers AutoModel
+                print("Trying direct transformers approach...")
+                import torch
+                from transformers import AutoModel, AutoTokenizer
                 
-                # Use a different model that might be more compatible
-                alt_model = SentenceTransformer('paraphrase-MiniLM-L3-v2', device='cpu')
-                embedding = alt_model.encode(text)
+                # Load base model components separately
+                tokenizer = AutoTokenizer.from_pretrained('sentence-transformers/all-MiniLM-L6-v2')
+                base_model = AutoModel.from_pretrained('sentence-transformers/all-MiniLM-L6-v2')
+                
+                # Move to CPU explicitly
+                base_model = base_model.to('cpu')
+                
+                # Process text directly
+                encoded_input = tokenizer(text, padding=True, truncation=True, return_tensors='pt')
+                # Move inputs to CPU
+                encoded_input = {k: v.to('cpu') for k, v in encoded_input.items()}
+                
+                # Get model outputs
+                with torch.no_grad():
+                    model_output = base_model(**encoded_input)
+                    
+                # Use mean pooling to get the sentence embedding
+                token_embeddings = model_output[0]  # First element contains token embeddings
+                attention_mask = encoded_input['attention_mask']
+                
+                # Multiply token embeddings by attention mask to zero out padding tokens
+                input_mask_expanded = attention_mask.unsqueeze(-1).expand(token_embeddings.size()).float()
+                embeddings_sum = torch.sum(token_embeddings * input_mask_expanded, 1)
+                sum_mask = torch.clamp(input_mask_expanded.sum(1), min=1e-9)
+                
+                # Mean pooling
+                sentence_embedding = embeddings_sum / sum_mask
+                
+                # Convert to numpy array
+                embedding = sentence_embedding.numpy()[0]  # Take first (and only) sentence
                 
             else:
                 # Third attempt: Use fallback embedding method
@@ -160,10 +205,6 @@ def get_embedding(text: str, model=None) -> np.ndarray:
                     del _embedding_cache[k]
             _embedding_cache[text_hash] = embedding
             
-            # Success - restore CUDA visibility if we disabled it
-            if attempt == 0:
-                os.environ.pop("CUDA_VISIBLE_DEVICES", None)
-                
             return embedding
             
         except Exception as e:
@@ -172,7 +213,7 @@ def get_embedding(text: str, model=None) -> np.ndarray:
             print(f"Embedding attempt {attempt+1} failed with {error_type}: {str(e)}")
             
             # If it's the Meta tensor error, immediately go to next method
-            if "Meta tensor" in str(e) or "abstract impl" in str(e):
+            if "Meta tensor" in str(e) or "abstract impl" in str(e) or "NotImplementedError" in str(e):
                 continue
                 
             # If it's the last attempt, use the fallback method

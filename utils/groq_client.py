@@ -9,7 +9,7 @@ from utils.llm_client_base import LLMClient
 class GroqClient(LLMClient):
     # Class-level variable for rate limiting across all instances
     _api_call_timestamps = deque()
-    _rate_limit = 30  # 30 calls per minute
+    _rate_limit = 1000  # 1000 calls per minute
     _rate_window = 60  # 1 minute in seconds
     
     # Rate limiting statistics
