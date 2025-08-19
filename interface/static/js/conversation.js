@@ -89,10 +89,14 @@ function initializeForm() {
             
             if (data.questionnaires && data.questionnaires.length) {
                 console.log('Questionnaires loaded:', data.questionnaires);
-                data.questionnaires.forEach(questionnaire => {
+                data.questionnaires.forEach((questionnaire, index) => {
                     const option = document.createElement('option');
                     option.value = questionnaire.id;
                     option.textContent = `${questionnaire.name} (${questionnaire.question_count} questions)`;
+                    // Select the first questionnaire by default
+                    if (index === 0) {
+                        option.selected = true;
+                    }
                     select.appendChild(option);
                 });
                 
@@ -211,8 +215,8 @@ function initializeForm() {
                         assistantOption.value = name;
                         assistantOption.textContent = displayName;
                         assistantOption.dataset.provider = provider;
-                        // Default to qwen2.5:3b if available
-                        if (name === 'qwen2.5:3b') {
+                                            // Default to qwen3:4b if available
+                    if (name === 'qwen3:4b') {
                             assistantOption.selected = true;
                         }
                         ollamaAssistantGroup.appendChild(assistantOption);
@@ -222,8 +226,8 @@ function initializeForm() {
                         patientOption.value = name;
                         patientOption.textContent = displayName;
                         patientOption.dataset.provider = provider;
-                        // Default to qwen2.5:3b if available
-                        if (name === 'qwen2.5:3b') {
+                                            // Default to qwen3:4b if available
+                    if (name === 'qwen3:4b') {
                             patientOption.selected = true;
                         }
                         ollamaPatientGroup.appendChild(patientOption);
@@ -233,8 +237,8 @@ function initializeForm() {
                         agentOption.value = name;
                         agentOption.textContent = displayName;
                         agentOption.dataset.provider = provider;
-                        // Default to qwen2.5:3b if available
-                        if (name === 'qwen2.5:3b') {
+                                            // Default to qwen3:4b if available
+                    if (name === 'qwen3:4b') {
                             agentOption.selected = true;
                         }
                         ollamaAgentGroup.appendChild(agentOption);
@@ -380,17 +384,17 @@ function initializeForm() {
 
 // Start a new conversation
 function startConversation() {
-    // Disable form and show loading state
+    // Get form data BEFORE disabling the form
+    const form = document.getElementById('conversation-form');
+    const formData = new FormData(form);
+    
+    // Now disable form and show loading state
     setFormEnabled(false);
     updateStatus('Starting conversation...', 'loading');
     
     // Clear previous conversation
     document.getElementById('conversation-display').innerHTML = '';
     document.getElementById('diagnosis-content').innerHTML = '<p>The diagnosis will appear after the conversation completes.</p>';
-    
-    // Get form data
-    const form = document.getElementById('conversation-form');
-    const formData = new FormData(form);
     
     // Get provider data from data attributes
     const assistantSelect = document.getElementById('assistant-model-select');
@@ -426,6 +430,13 @@ function startConversation() {
         console.log(pair[0] + ': ' + pair[1]);
     }
     
+    // Debug questionnaire selection
+    const questionnaireSelect = document.getElementById('questionnaire-select');
+    console.log('Questionnaire select element:', questionnaireSelect);
+    console.log('Selected index:', questionnaireSelect.selectedIndex);
+    console.log('Selected value:', questionnaireSelect.value);
+    console.log('All options:', Array.from(questionnaireSelect.options).map(opt => ({value: opt.value, text: opt.text, selected: opt.selected})));
+    
     // Build JSON payload
     const payload = {
         questionnaire: formData.get('questionnaire'),
@@ -443,6 +454,12 @@ function startConversation() {
     };
     
     console.log('Request payload:', payload);
+    
+    // Additional validation
+    if (!payload.questionnaire) {
+        console.error('No questionnaire in payload - questionnaire value is:', payload.questionnaire);
+        console.error('FormData questionnaire value:', formData.get('questionnaire'));
+    }
     
     // Send the request
     fetch('/api/conversations/start', {
@@ -528,7 +545,13 @@ function startPolling() {
         fetch(`/api/conversations/${conversationId}/status`)
             .then(response => response.json())
             .then(data => {
+                console.log(`[POLLING] Status response for conversation ${conversationId}:`, data);
+                console.log(`[POLLING] Conversation length: ${data.conversation ? data.conversation.length : 'N/A'}`);
+                console.log(`[POLLING] Status: ${data.status}`);
+                console.log(`[POLLING] Last message count: ${lastMessageCount}`);
+                
                 if (data.status === 'completed') {
+                    console.log('[POLLING] Conversation completed, updating display');
                     // Conversation is complete
                     updateConversation(data.conversation);
                     updateDiagnosis(data.diagnosis);
@@ -544,14 +567,18 @@ function startPolling() {
                     // Re-enable form
                     setFormEnabled(true);
                 } else if (data.status === 'error') {
+                    console.log('[POLLING] Conversation had error:', data.error);
                     // Conversation had an error
                     updateStatus(`Error: ${data.error || 'An error occurred'}`, 'error');
                     stopPolling();
                     setFormEnabled(true);
                 } else if (data.status === 'in_progress') {
+                    console.log('[POLLING] Conversation in progress, updating messages');
                     // Update conversation with new messages
                     updateConversation(data.conversation);
                     updateStatus('Conversation in progress...', 'active');
+                } else {
+                    console.log('[POLLING] Unknown status:', data.status);
                 }
             })
             .catch(error => {
@@ -573,12 +600,24 @@ function stopPolling() {
 
 // Update the conversation display with messages
 function updateConversation(conversation) {
-    if (!conversation || !conversation.length) return;
+    console.log('[UPDATE] updateConversation called with:', conversation);
+    console.log('[UPDATE] Conversation length:', conversation ? conversation.length : 'N/A');
+    console.log('[UPDATE] Last message count:', lastMessageCount);
+    
+    if (!conversation || !conversation.length) {
+        console.log('[UPDATE] No conversation data, returning early');
+        return;
+    }
     
     const display = document.getElementById('conversation-display');
     
     // Only update if we have new messages
-    if (conversation.length <= lastMessageCount) return;
+    if (conversation.length <= lastMessageCount) {
+        console.log('[UPDATE] No new messages, returning early');
+        return;
+    }
+    
+    console.log('[UPDATE] Adding new messages from index', lastMessageCount, 'to', conversation.length - 1);
     
     // Clear placeholder if it exists
     const placeholder = display.querySelector('.conversation-placeholder');
@@ -589,9 +628,15 @@ function updateConversation(conversation) {
     // Add new messages
     for (let i = lastMessageCount; i < conversation.length; i++) {
         const message = conversation[i];
+        console.log(`[UPDATE] Processing message ${i}:`, message);
         
         // Skip system messages
-        if (message.role === 'system') continue;
+        if (message.role === 'system') {
+            console.log(`[UPDATE] Skipping system message ${i}`);
+            continue;
+        }
+        
+        console.log(`[UPDATE] Adding message ${i} with role: ${message.role}`);
         
         // Create message element
         const messageDiv = document.createElement('div');
@@ -608,10 +653,13 @@ function updateConversation(conversation) {
         messageDiv.appendChild(roleLabel);
         messageDiv.appendChild(contentDiv);
         display.appendChild(messageDiv);
+        
+        console.log(`[UPDATE] Successfully added message ${i} to display`);
     }
     
     // Update last message count
     lastMessageCount = conversation.length;
+    console.log(`[UPDATE] Updated lastMessageCount to: ${lastMessageCount}`);
     
     // Scroll to bottom
     display.scrollTop = display.scrollHeight;
@@ -720,7 +768,11 @@ function switchMode(mode) {
 
 // Start batch generation
 function startBatchGeneration() {
-    // Disable form and show loading state
+    // Get form data BEFORE disabling the form
+    const form = document.getElementById('conversation-form');
+    const formData = new FormData(form);
+    
+    // Now disable form and show loading state
     setFormEnabled(false);
     updateBatchStatus('Starting simulation...', 'loading');
     
@@ -731,10 +783,6 @@ function startBatchGeneration() {
     
     // Clear previous results
     document.getElementById('batch-results-container').innerHTML = '<p>Simulation results will appear here after completion.</p>';
-    
-    // Get form data
-    const form = document.getElementById('conversation-form');
-    const formData = new FormData(form);
     
     // Get provider data from data attributes
     const assistantSelect = document.getElementById('assistant-model-select');
@@ -1082,17 +1130,17 @@ function viewBatchResults() {
 
 // Start a one-shot conversation (generate entire conversation in one call)
 function startOneshotConversation() {
-    // Disable form and show loading state
+    // Get form data BEFORE disabling the form
+    const form = document.getElementById('conversation-form');
+    const formData = new FormData(form);
+    
+    // Now disable form and show loading state
     setFormEnabled(false);
     updateOneshotStatus('Starting generation...', 'loading');
     
     // Clear previous conversation
     document.getElementById('oneshot-conversation-display').innerHTML = '';
     document.getElementById('oneshot-diagnosis-content').innerHTML = '<p>The diagnosis will appear after generation completes.</p>';
-    
-    // Get form data
-    const form = document.getElementById('conversation-form');
-    const formData = new FormData(form);
     
     // Get provider data from data attributes for agent model (one-shot mode only uses one model)
     const agentSelect = document.getElementById('agent-model-select');

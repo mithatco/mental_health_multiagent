@@ -54,19 +54,19 @@ def load_questions_from_json(file_path):
         print(f"Error loading questions from JSON: {e}")
         return None
 
-def run_conversation(pdf_path, patient_profile=None, assistant_provider="ollama", assistant_model="qwen2.5:3b", 
-                    patient_provider="ollama", patient_model="qwen2.5:3b", full_conversation=False, disable_output=False, logs_dir=None,
+def run_conversation(pdf_path, patient_profile=None, assistant_provider="ollama", assistant_model="qwen3:4b", 
+                    patient_provider="ollama", patient_model="qwen3:4b", full_conversation=False, disable_output=False, logs_dir=None,
                     log_filename=None, refresh_cache=False, no_save=False, state_file=None, disable_rag=False, disable_rag_evaluation=False,
-                    groq_api_key=None):
+                    groq_api_key=None, openai_api_key=None):
     """
     Run a simulated mental health assessment conversation between an AI assistant and an AI patient.
     
     Args:
         pdf_path: Path to PDF document containing mental health assessment questions
         patient_profile: Name of the patient profile to use
-        assistant_provider: Provider for the assistant LLM ("ollama" or "groq")
+        assistant_provider: Provider for the assistant LLM ("ollama", "groq", or "openai")
         assistant_model: Name of the model to use for the assistant
-        patient_provider: Provider for the patient LLM ("ollama" or "groq")
+        patient_provider: Provider for the patient LLM ("ollama", "groq", or "openai")
         patient_model: Name of the model to use for the patient
         full_conversation: Whether to generate the entire conversation in a single LLM call
         disable_output: Whether to disable console output
@@ -78,6 +78,7 @@ def run_conversation(pdf_path, patient_profile=None, assistant_provider="ollama"
         disable_rag: Whether to disable RAG document retrieval completely
         disable_rag_evaluation: Whether to disable RAG evaluation but keep document retrieval
         groq_api_key: API key for Groq (if using Groq provider)
+        openai_api_key: API key for OpenAI (if using OpenAI provider)
         
     Returns:
         Dict containing conversation results
@@ -170,6 +171,8 @@ def run_conversation(pdf_path, patient_profile=None, assistant_provider="ollama"
         assistant_provider_options["base_url"] = "http://localhost:11434"
     elif assistant_provider == "groq":
         assistant_provider_options["api_key"] = groq_api_key
+    elif assistant_provider == "openai":
+        assistant_provider_options["api_key"] = openai_api_key
     
     # Set up provider options for the patient
     patient_provider_options = {}
@@ -177,6 +180,8 @@ def run_conversation(pdf_path, patient_profile=None, assistant_provider="ollama"
         patient_provider_options["base_url"] = "http://localhost:11434"
     elif patient_provider == "groq":
         patient_provider_options["api_key"] = groq_api_key
+    elif patient_provider == "openai":
+        patient_provider_options["api_key"] = openai_api_key
     
     # Initialize agents
     debug_log("Initializing assistant agent")
@@ -324,9 +329,9 @@ def run_conversation(pdf_path, patient_profile=None, assistant_provider="ollama"
         "duration": duration
     }
 
-def process_batch_with_optimization(batch_size, questions, questionnaire_name, patient_profile=None, assistant_provider="ollama", assistant_model="qwen2.5:3b", 
-                  patient_provider="ollama", patient_model="qwen2.5:3b", full_conversation=False, disable_rag=False, disable_rag_evaluation=False,
-                  groq_api_key=None, logs_dir=None, randomize_profiles=False):
+def process_batch_with_optimization(batch_size, questions, questionnaire_name, patient_profile=None, assistant_provider="ollama", assistant_model="qwen3:4b", 
+                  patient_provider="ollama", patient_model="qwen3:4b", full_conversation=False, disable_rag=False, disable_rag_evaluation=False,
+                  groq_api_key=None, openai_api_key=None, logs_dir=None, randomize_profiles=False):
     """
     Optimized batch processor that pre-initializes shared resources once instead of per conversation.
     
@@ -343,6 +348,7 @@ def process_batch_with_optimization(batch_size, questions, questionnaire_name, p
         disable_rag: Whether to disable RAG completely
         disable_rag_evaluation: Whether to disable just RAG evaluation
         groq_api_key: API key for Groq
+        openai_api_key: API key for OpenAI
         logs_dir: Directory to save logs
         randomize_profiles: Whether to randomize patient profiles
         
@@ -382,6 +388,8 @@ def process_batch_with_optimization(batch_size, questions, questionnaire_name, p
         assistant_provider_options["base_url"] = "http://localhost:11434"
     elif assistant_provider == "groq":
         assistant_provider_options["api_key"] = groq_api_key
+    elif assistant_provider == "openai":
+        assistant_provider_options["api_key"] = openai_api_key
     
     # Set up shared provider options for the patient
     patient_provider_options = {}
@@ -389,6 +397,8 @@ def process_batch_with_optimization(batch_size, questions, questionnaire_name, p
         patient_provider_options["base_url"] = "http://localhost:11434"
     elif patient_provider == "groq":
         patient_provider_options["api_key"] = groq_api_key
+    elif patient_provider == "openai":
+        patient_provider_options["api_key"] = openai_api_key
     
     # Define optimized conversation runner that uses pre-loaded resources
     def optimized_conversation_runner(pdf_path, patient_profile=None, log_filename=None, **kwargs):
@@ -525,6 +535,7 @@ def process_batch_with_optimization(batch_size, questions, questionnaire_name, p
             patient_model=patient_model,
             disable_output=True,
             groq_api_key=groq_api_key,
+            openai_api_key=openai_api_key,
             full_conversation=full_conversation,
             disable_rag_evaluation=disable_rag_evaluation
         )
@@ -556,19 +567,20 @@ def main():
                         help=f"Directory containing questionnaires (default: {DEFAULT_QUESTIONNAIRES_DIR})")
     
     # LLM provider options
-    parser.add_argument('--assistant_provider', type=str, default="ollama", choices=["ollama", "groq"],
+    parser.add_argument('--assistant_provider', type=str, default="ollama", choices=["ollama", "groq", "openai"],
                         help="LLM provider to use for the assistant (default: ollama)")
-    parser.add_argument('--patient_provider', type=str, default="ollama", choices=["ollama", "groq"],
+    parser.add_argument('--patient_provider', type=str, default="ollama", choices=["ollama", "groq", "openai"],
                         help="LLM provider to use for the patient (default: ollama)")
     parser.add_argument('--ollama_url', type=str, default="http://localhost:11434", 
                         help="URL for the Ollama API (default: http://localhost:11434)")
     parser.add_argument('--groq_api_key', type=str, help="API key for Groq (can also be set via GROQ_API_KEY env var)")
+    parser.add_argument('--openai_api_key', type=str, help="API key for OpenAI (can also be set via OPENAI_API_KEY env var)")
     
     # Model options
-    parser.add_argument('--assistant_model', type=str, default="qwen2.5:3b", 
-                        help="Model to use for the assistant (default: qwen2.5:3b)")
-    parser.add_argument('--patient_model', type=str, default="qwen2.5:3b", 
-                        help="Model to use for the patient (default: qwen2.5:3b)")
+    parser.add_argument('--assistant_model', type=str, default="qwen3:4b", 
+                        help="Model to use for the assistant (default: qwen3:4b)")
+    parser.add_argument('--patient_model', type=str, default="qwen3:4b", 
+                        help="Model to use for the patient (default: qwen3:4b)")
     
     # Other options remain the same
     parser.add_argument('--patient_profile', type=str, help="Profile to use for the patient")
@@ -792,6 +804,11 @@ def main():
             if not assistant_provider_options["api_key"]:
                 print("Error: Groq API key required. Set with --groq_api_key or GROQ_API_KEY environment variable.")
                 sys.exit(1)
+        elif args.assistant_provider == "openai":
+            assistant_provider_options["api_key"] = args.openai_api_key or os.environ.get("OPENAI_API_KEY")
+            if not assistant_provider_options["api_key"]:
+                print("Error: OpenAI API key required. Set with --openai_api_key or OPENAI_API_KEY environment variable.")
+                sys.exit(1)
         
         # Set up provider options for the patient
         patient_provider_options = {}
@@ -801,6 +818,11 @@ def main():
             patient_provider_options["api_key"] = args.groq_api_key or os.environ.get("GROQ_API_KEY")
             if not patient_provider_options["api_key"]:
                 print("Error: Groq API key required. Set with --groq_api_key or GROQ_API_KEY environment variable.")
+                sys.exit(1)
+        elif args.patient_provider == "openai":
+            patient_provider_options["api_key"] = args.openai_api_key or os.environ.get("OPENAI_API_KEY")
+            if not patient_provider_options["api_key"]:
+                print("Error: OpenAI API key required. Set with --openai_api_key or OPENAI_API_KEY environment variable.")
                 sys.exit(1)
         
         print(f"Starting batch generation of {args.batch} conversations")
@@ -826,6 +848,7 @@ def main():
                 disable_rag=args.disable_rag,
                 disable_rag_evaluation=args.disable_rag_evaluation,
                 groq_api_key=args.groq_api_key or os.environ.get("GROQ_API_KEY"),
+                openai_api_key=args.openai_api_key or os.environ.get("OPENAI_API_KEY"),
                 logs_dir=args.logs_dir,
                 randomize_profiles=args.randomize_profiles
             )
@@ -880,6 +903,11 @@ def main():
         if not assistant_provider_options["api_key"]:
             print("Error: Groq API key required. Set with --groq_api_key or GROQ_API_KEY environment variable.")
             sys.exit(1)
+    elif args.assistant_provider == "openai":
+        assistant_provider_options["api_key"] = args.openai_api_key or os.environ.get("OPENAI_API_KEY")
+        if not assistant_provider_options["api_key"]:
+            print("Error: OpenAI API key required. Set with --openai_api_key or OPENAI_API_KEY environment variable.")
+            sys.exit(1)
     
     patient_provider_options = {}
     if args.patient_provider == "ollama":
@@ -888,6 +916,11 @@ def main():
         patient_provider_options["api_key"] = args.groq_api_key or os.environ.get("GROQ_API_KEY")
         if not patient_provider_options["api_key"]:
             print("Error: Groq API key required. Set with --groq_api_key or GROQ_API_KEY environment variable.")
+            sys.exit(1)
+    elif args.patient_provider == "openai":
+        patient_provider_options["api_key"] = args.openai_api_key or os.environ.get("OPENAI_API_KEY")
+        if not patient_provider_options["api_key"]:
+            print("Error: OpenAI API key required. Set with --openai_api_key or OPENAI_API_KEY environment variable.")
             sys.exit(1)
     
     if args.full_conversation:

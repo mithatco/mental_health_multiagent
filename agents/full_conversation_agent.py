@@ -6,7 +6,7 @@ import json
 import re
 
 class FullConversationAgent:
-    def __init__(self, provider="ollama", provider_options=None, model="qwen2.5:3b", 
+    def __init__(self, provider="ollama", provider_options=None, model="qwen3:4b", 
                  patient_profile=None, questions=None, rag_engine=None, questionnaire_name=None,
                  disable_rag_evaluation=False):
         """

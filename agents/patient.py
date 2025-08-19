@@ -5,7 +5,7 @@ from utils.llm_client_base import LLMClient
 class Patient:
     """Agent representing a patient with mental health concerns."""
     
-    def __init__(self, provider="ollama", provider_options=None, model="qwen2.5:3b", profile_name=None):
+    def __init__(self, provider="ollama", provider_options=None, model="qwen3:4b", profile_name=None):
         """
         Initialize the patient agent.
         

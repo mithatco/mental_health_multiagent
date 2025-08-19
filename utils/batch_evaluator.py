@@ -42,9 +42,9 @@ class BatchEvaluator:
         
         Args:
             batch_dir: Path to the batch directory
-            provider: LLM provider ('ollama' or 'groq')
+            provider: LLM provider ('ollama', 'groq', or 'openai')
             model: Model to use for LLM evaluation
-            api_key: API key for cloud providers like Groq
+            api_key: API key for cloud providers (Groq or OpenAI)
             api_url: URL for the API (optional)
             max_workers: Maximum number of worker threads
             force_reevaluation: If True, re-evaluate all logs even if they have evaluations
@@ -991,12 +991,12 @@ def example_usage():
     
     parser = argparse.ArgumentParser(description="Evaluate batches of mental health conversations")
     parser.add_argument("batch_path", help="Path to the batch directory")
-    parser.add_argument("--provider", "-p", type=str, default="ollama", choices=["ollama", "groq"],
-                       help="LLM provider to use for evaluation (ollama or groq)")
+    parser.add_argument("--provider", "-p", type=str, default="ollama", choices=["ollama", "groq", "openai"],
+                       help="LLM provider to use for evaluation (ollama, groq, or openai)")
     parser.add_argument("--model", "-m", type=str, default="qwen2.5:3b", 
                        help="Model to use for LLM evaluation")
     parser.add_argument("--api-key", "-k", type=str, 
-                       help="API key for cloud providers (required for Groq)")
+                       help="API key for cloud providers (required for Groq or OpenAI)")
     parser.add_argument("--max-workers", "-w", type=int, default=4, 
                        help="Maximum number of worker threads")
     parser.add_argument("--force", "-f", action="store_true", 

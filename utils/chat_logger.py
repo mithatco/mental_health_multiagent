@@ -505,3 +505,22 @@ class ChatLogger:
                     data.pop("reasons", None)
         
         return rag_summary
+    
+    def list_chat_logs(self) -> List[str]:
+        """
+        List all available chat log files in the logs directory.
+        
+        Returns:
+            List of log file names
+        """
+        if not os.path.exists(self.log_dir):
+            return []
+        
+        try:
+            files = os.listdir(self.log_dir)
+            # Filter for JSON files only
+            json_files = [f for f in files if f.endswith('.json')]
+            return json_files
+        except Exception as e:
+            print(f"Error listing chat logs: {str(e)}")
+            return []

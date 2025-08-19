@@ -35,7 +35,7 @@ def main():
     parser = argparse.ArgumentParser(description="Chat Log Viewer")
     parser.add_argument('--list', action='store_true', help="List available chat logs")
     parser.add_argument('--log', type=str, help="Specify a log file to view")
-    parser.add_argument('--logs-dir', type=str, help="Directory containing chat logs")
+    parser.add_argument('--logs-dir', type=str, default="chat_logs", help="Directory containing chat logs (default: chat_logs)")
     args = parser.parse_args()
     
     # Initialize the chat logger

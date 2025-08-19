@@ -75,9 +75,12 @@ class FullConversationHandler:
         
         # Generate conversation
         conversation_start = time.time()
+        print("[ONESHOT] Starting conversation generation...")
         conversation_text = self.agent.generate_conversation()
         conversation_end = time.time()
         self.timing_metrics["conversation_generation_time"] = conversation_end - conversation_start
+        
+        print(f"[ONESHOT] Conversation generated in {self.timing_metrics['conversation_generation_time']:.2f}s")
         
         if not disable_output:
             print(f"[Conversation generated in {self.timing_metrics['conversation_generation_time']:.2f}s]")
@@ -87,6 +90,15 @@ class FullConversationHandler:
             # Log each message in the conversation history
             for message in self.agent.conversation_history:
                 self.conversation_log.append(message)
+            
+            print(f"[ONESHOT] Added {len(self.agent.conversation_history)} messages to conversation log")
+            
+            # Update state file with the conversation
+            self._update_state_file()
+            print("[ONESHOT] Updated state file with conversation")
+            
+            # Small delay to ensure state file is written
+            time.sleep(0.1)
             
             # Print the conversation if output is not disabled
             if not disable_output:
@@ -99,15 +111,20 @@ class FullConversationHandler:
         else:
             # Fallback to logging the raw text if structured conversation is not available
             self.conversation_log.append(conversation_text)
+            # Update state file
+            self._update_state_file()
 
         if not disable_output:
             print(f"\n=== Generating Diagnosis ===\n")
         
         # Generate diagnosis
         diagnosis_start = time.time()
+        print("[ONESHOT] Starting diagnosis generation...")
         diagnosis = self.agent.generate_diagnosis()
         diagnosis_end = time.time()
         self.timing_metrics["diagnosis_generation_time"] = diagnosis_end - diagnosis_start
+        
+        print(f"[ONESHOT] Diagnosis generated in {self.timing_metrics['diagnosis_generation_time']:.2f}s")
         
         if not disable_output:
             print(f"[Diagnosis generated in {self.timing_metrics['diagnosis_generation_time']:.2f}s]")
@@ -166,6 +183,9 @@ class FullConversationHandler:
                 print(f"RAG evaluation: {self.timing_metrics['rag_evaluation_time']:.2f}s")
                 print(f"Total time: {self.timing_metrics['total_time']:.2f}s")
             
+            # Update state file with completion status and diagnosis
+            self._update_final_state(diagnosis_content)
+            
             return diagnosis_content
         else:
             # Legacy format support
@@ -186,6 +206,9 @@ class FullConversationHandler:
                 print(f"Conversation generation: {self.timing_metrics['conversation_generation_time']:.2f}s")
                 print(f"Diagnosis generation: {self.timing_metrics['diagnosis_generation_time']:.2f}s")
                 print(f"Total time: {self.timing_metrics['total_time']:.2f}s")
+            
+            # Update state file with completion status and diagnosis
+            self._update_final_state(diagnosis)
             
             return diagnosis
     
@@ -414,6 +437,31 @@ class FullConversationHandler:
                 json.dump(state_data, f)
         except Exception as e:
             print(f"Error updating state file: {str(e)}")
+
+    def _update_final_state(self, diagnosis):
+        """Update the state file with the final completed status and diagnosis."""
+        if not self.state_file:
+            return
+        
+        try:
+            # Prepare final state data
+            state_data = {
+                "conversation": self.conversation_log,
+                "diagnosis": diagnosis,
+                "status": "completed",
+                "timestamp": time.time()
+            }
+            
+            # Write to file
+            with open(self.state_file, 'w') as f:
+                json.dump(state_data, f)
+            
+            print(f"[STATE] Updated state file with completion status and {len(self.conversation_log)} messages")
+            
+            # Small delay to ensure final state is written
+            time.sleep(0.1)
+        except Exception as e:
+            print(f"Error updating final state file: {str(e)}")
 
     def _add_timing_metrics_to_state(self):
         """Add timing metrics to state file if it exists."""

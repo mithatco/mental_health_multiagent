@@ -127,6 +127,15 @@ class BatchRunner:
                 logger.info(f"  - Log file: {log_filename}")
                 logger.info(f"  - Full conversation mode: {run_kwargs.get('full_conversation', False)}")
                 logger.info(f"  - RAG evaluation disabled: {run_kwargs.get('disable_rag_evaluation', False)}")
+                logger.info(f"  - Assistant provider: {run_kwargs.get('assistant_provider', 'ollama')}")
+                logger.info(f"  - Patient provider: {run_kwargs.get('patient_provider', 'ollama')}")
+                
+                # Log API key presence (but not the actual keys)
+                if 'groq_api_key' in run_kwargs and run_kwargs['groq_api_key']:
+                    logger.info(f"  - Using Groq API key: Yes")
+                
+                if 'openai_api_key' in run_kwargs and run_kwargs['openai_api_key']:
+                    logger.info(f"  - Using OpenAI API key: Yes")
                 
                 # Run the conversation with the specified log filename
                 conversation_result = self.conversation_runner(

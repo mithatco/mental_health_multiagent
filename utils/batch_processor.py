@@ -18,8 +18,8 @@ logger = logging.getLogger("BatchProcessor")
 class BatchProcessor:
     """Process batches of conversations using the specified models."""
     
-    def __init__(self, provider="ollama", provider_options=None, model="qwen2.5:3b", 
-                 patient_provider="ollama", patient_provider_options=None, patient_model="qwen2.5:3b", 
+    def __init__(self, provider="ollama", provider_options=None, model="qwen3:4b",
+                 patient_provider="ollama", patient_provider_options=None, patient_model="qwen3:4b", 
                  rag_engine=None, logs_dir=None, full_conversation=False):
         """
         Initialize the batch processor.

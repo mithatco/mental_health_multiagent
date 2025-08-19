@@ -47,10 +47,14 @@ function initializeForm() {
             select.innerHTML = '';
             
             if (data.questionnaires && data.questionnaires.length) {
-                data.questionnaires.forEach(questionnaire => {
+                data.questionnaires.forEach((questionnaire, index) => {
                     const option = document.createElement('option');
                     option.value = questionnaire.id;
                     option.textContent = `${questionnaire.name} (${questionnaire.question_count} questions)`;
+                    // Select the first questionnaire by default
+                    if (index === 0) {
+                        option.selected = true;
+                    }
                     select.appendChild(option);
                 });
             } else {
@@ -83,16 +87,45 @@ function initializeForm() {
             assistantSelect.innerHTML = '';
             
             if (data.models && data.models.length) {
+                // Create option groups for each provider
+                const ollamaGroup = document.createElement('optgroup');
+                ollamaGroup.label = 'Ollama (Local)';
+                
+                const groqGroup = document.createElement('optgroup');
+                groqGroup.label = 'Groq (Cloud API)';
+                
+                // Add models to appropriate groups
                 data.models.forEach(model => {
+                    const provider = model.provider;
+                    const name = model.name;
+                    const displayName = model.display_name || name;
+                    
                     const assistantOption = document.createElement('option');
-                    assistantOption.value = model;
-                    assistantOption.textContent = model;
-                    // Default to qwen2.5:3b if available
-                    if (model === 'qwen2.5:3b') {
+                    assistantOption.value = name;
+                    assistantOption.textContent = displayName;
+                    assistantOption.dataset.provider = provider;
+                    
+                    // Default to qwen3:4b if available
+                    if (name === 'qwen3:4b') {
                         assistantOption.selected = true;
                     }
-                    assistantSelect.appendChild(assistantOption);
+                    
+                    // Add to appropriate group
+                    if (provider === 'ollama') {
+                        ollamaGroup.appendChild(assistantOption);
+                    } else if (provider === 'groq') {
+                        groqGroup.appendChild(assistantOption);
+                    }
                 });
+                
+                // Add option groups to select if they have children
+                if (ollamaGroup.children.length > 0) {
+                    assistantSelect.appendChild(ollamaGroup);
+                }
+                
+                if (groqGroup.children.length > 0) {
+                    assistantSelect.appendChild(groqGroup);
+                }
             } else {
                 const option = document.createElement('option');
                 option.value = '';
@@ -112,7 +145,19 @@ function initializeForm() {
 function startChat() {
     if (isConversationActive) return;
     
-    // Disable form and show loading state
+    // Get form data BEFORE disabling the form
+    const form = document.getElementById('chat-form');
+    const questionnaireSelect = document.getElementById('questionnaire-select');
+    const data = {
+        questionnaire: questionnaireSelect.value,
+        assistant_model: document.getElementById('assistant-model-select').value,
+        save_logs: document.getElementById('save-logs').checked,
+        refresh_cache: document.getElementById('refresh-cache').checked,
+        use_rag: document.getElementById('use-rag').checked,
+        chat_mode: true  // Signal that this is a chat where user is the patient
+    };
+    
+    // Now disable form and show loading state
     setFormEnabled(false);
     updateStatus('Starting chat...', 'loading');
     
@@ -123,21 +168,16 @@ function startChat() {
     // Reset the initialMessagePolled flag
     initialMessagePolled = false;
     
-    // Get form data
-    const form = document.getElementById('chat-form');
-    
-    // Convert form to JSON object
-    const data = {
-        questionnaire: document.getElementById('questionnaire-select').value,
-        assistant_model: document.getElementById('assistant-model-select').value,
-        save_logs: document.getElementById('save-logs').checked,
-        refresh_cache: document.getElementById('refresh-cache').checked,
-        use_rag: document.getElementById('use-rag').checked,
-        chat_mode: true  // Signal that this is a chat where user is the patient
-    };
+    // Debug logging
+    console.log('Questionnaire select element:', questionnaireSelect);
+    console.log('Selected index:', questionnaireSelect.selectedIndex);
+    console.log('Selected value:', questionnaireSelect.value);
+    console.log('All options:', Array.from(questionnaireSelect.options).map(opt => ({value: opt.value, text: opt.text, selected: opt.selected})));
+    console.log('Form data being sent:', data);
     
     // Verify we have a questionnaire selected
     if (!data.questionnaire) {
+        console.error('No questionnaire selected - questionnaire value is:', data.questionnaire);
         updateStatus('Error: No questionnaire selected', 'error');
         setFormEnabled(true);
         return;

@@ -44,7 +44,7 @@ class LLMClient(ABC):
         Factory method to create an LLM client instance.
         
         Args:
-            provider_name (str): Provider name ("ollama" or "groq")
+            provider_name (str): Provider name ("ollama", "groq", or "openai")
             **kwargs: Additional arguments to pass to the client constructor
             
         Returns:
@@ -56,5 +56,8 @@ class LLMClient(ABC):
         elif provider_name.lower() == "groq":
             from utils.groq_client import GroqClient
             return GroqClient(**kwargs)
+        elif provider_name.lower() == "openai":
+            from utils.openai_client import OpenAIClient
+            return OpenAIClient(**kwargs)
         else:
-            raise ValueError(f"Unknown provider: {provider_name}. Supported providers: ollama, groq") 
+            raise ValueError(f"Unknown provider: {provider_name}. Supported providers: ollama, groq, openai") 

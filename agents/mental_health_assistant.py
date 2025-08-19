@@ -3,7 +3,7 @@ from utils.llm_client_base import LLMClient
 from utils.rag_engine import RAGEngine
 
 class MentalHealthAssistant:
-    def __init__(self, provider="ollama", provider_options=None, model="qwen2.5:3b", 
+    def __init__(self, provider="ollama", provider_options=None, model="qwen3:4b", 
                  questions=None, rag_engine=None, questionnaire_name=None):
         """
         Initialize the Mental Health Assistant agent.
@@ -97,11 +97,11 @@ class MentalHealthAssistant:
         print("[DEBUG] Retrieving full questionnaire document for introduction...")
         
         # Get the full questionnaire document if available
-        if self.questionnaire_name:
+        full_questionnaire_content = ""
+        if self.questionnaire_name and self.rag_engine:
             specific_docs = self.rag_engine.get_context_for_question(f"full text of {self.questionnaire_name}")
             
             # Handle both old format (list) and new format (dictionary)
-            full_questionnaire_content = ""
             if isinstance(specific_docs, dict) and "content" in specific_docs:
                 # New format from enhanced RAG engine
                 full_questionnaire_content = specific_docs["content"]

@@ -912,7 +912,30 @@ def get_questionnaires():
         error_trace = traceback.format_exc()
         print(f"Error in get_questionnaires(): {str(e)}")
         print(error_trace)
-        return jsonify({"error": str(e), "traceback": error_trace}), 500
+        return jsonify({"error": str(e), "traceback": error_trace        }), 500
+
+@app.route('/api/conversations/<conversation_id>/output', methods=['GET'])
+def get_conversation_output(conversation_id):
+    """Get the raw output from the conversation process."""
+    global active_conversations
+    
+    if conversation_id not in active_conversations:
+        return jsonify({"error": "Conversation not found"}), 404
+    
+    conv_data = active_conversations[conversation_id]
+    
+    try:
+        # Read the output file
+        with open(conv_data['output_file'].name, 'r') as f:
+            output = f.read()
+        
+        return jsonify({
+            "output": output,
+            "output_file": conv_data['output_file'].name,
+            "state_file": conv_data['state_file']
+        })
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 @app.route('/api/profiles', methods=['GET'])
 def get_profiles():
@@ -927,7 +950,7 @@ def get_profiles():
 
 @app.route('/api/conversations/start', methods=['POST'])
 def start_conversation():
-    """Start a new conversation."""
+    """Start a new conversation (AI vs AI turn-based)."""
     global active_conversations
     
     # Clean up any stale conversations
@@ -961,9 +984,9 @@ def start_conversation():
         # Extract parameters
         questionnaire = data.get('questionnaire')
         profile = data.get('profile')
-        assistant_model = data.get('assistant_model', 'qwen2.5:3b')
-        patient_model = data.get('patient_model', 'qwen2.5:3b')
-        agent_model = data.get('agent_model', 'qwen2.5:3b')  # For one-shot mode
+        assistant_model = data.get('assistant_model', 'qwen3:4b')
+        patient_model = data.get('patient_model', 'qwen3:4b')
+        agent_model = data.get('agent_model', 'qwen3:4b')  # For one-shot mode
         
         # Extract provider parameters
         assistant_provider = data.get('assistant_provider', 'ollama')
@@ -982,6 +1005,11 @@ def start_conversation():
               f"patient_provider={patient_provider}, save_logs={save_logs}, "
               f"refresh_cache={refresh_cache}, full_conversation={full_conversation}, "
               f"disable_rag={disable_rag}, disable_rag_evaluation={disable_rag_evaluation}")
+        
+        print(f"[DEBUG] Full conversation mode: {full_conversation}")
+        print(f"[DEBUG] Agent model: {agent_model}")
+        print(f"[DEBUG] Assistant model: {assistant_model}")
+        print(f"[DEBUG] Patient model: {patient_model}")
         
         if not questionnaire:
             return jsonify({"error": "No questionnaire selected"}), 400
@@ -1023,9 +1051,12 @@ def start_conversation():
         
         # Use appropriate model parameter based on mode
         if full_conversation:
+            print(f"[DEBUG] Building command for ONE-SHOT mode with agent_model: {agent_model}")
             cmd.extend(['--assistant_model', agent_model])
             cmd.append('--full_conversation')
+            print(f"[DEBUG] Added --full_conversation flag")
         else:
+            print(f"[DEBUG] Building command for TURN-BASED mode")
             cmd.extend(['--assistant_model', assistant_model])
             cmd.extend(['--patient_model', patient_model])
         
@@ -1054,14 +1085,14 @@ def start_conversation():
         state_path = state_file.name
         state_file.close()
         
-        # Initialize conversation state
+        # Initialize conversation state for AI vs AI turn-based conversation
         conversation_state = {
             "conversation": [],
             "status": "starting",
             "timestamp": datetime.datetime.now().isoformat(),
-            "interactive_mode": True,  # Flag to indicate interactive mode with a real user
-            "chat_mode": True,  # Flag to indicate chat where user is patient
-            "human_user": True  # Add explicit flag to tell the system this is a human user
+            "interactive_mode": False,  # AI vs AI conversation, not interactive
+            "chat_mode": False,  # Not a chat where user is patient
+            "human_user": False  # AI vs AI conversation, no human user
         }
         
         with open(state_path, 'w') as f:
@@ -1070,6 +1101,11 @@ def start_conversation():
         # Add special arguments to tell main.py to update the state file
         cmd.extend(['--state-file', state_path])
         
+        print(f"[START] Starting AI vs AI conversation with command: {' '.join(cmd)}")
+        print(f"[START] State file: {state_path}")
+        print(f"[START] Output file: {output_file.name}")
+        print(f"[START] Conversation flags: interactive_mode=False, chat_mode=False, human_user=False")
+        
         # Start the subprocess
         process = subprocess.Popen(
             cmd,
@@ -1077,6 +1113,8 @@ def start_conversation():
             stderr=subprocess.STDOUT,
             text=True
         )
+        
+        print(f"[START] Process started with PID: {process.pid}")
         
         # Store process information
         active_conversations[conversation_id] = {
@@ -1111,22 +1149,33 @@ def get_conversation_status(conversation_id):
     """Get the status of a conversation."""
     global active_conversations
     
+    print(f"[STATUS] Getting status for conversation: {conversation_id}")
+    
     if conversation_id not in active_conversations:
+        print(f"[STATUS] Conversation {conversation_id} not found in active conversations")
         return jsonify({"error": "Conversation not found"}), 404
     
     conv_data = active_conversations[conversation_id]
+    print(f"[STATUS] Found conversation data: {list(conv_data.keys())}")
     
     try:
         # Check if the process is still running
         process = conv_data['process']
-        if process.poll() is not None:
+        process_status = process.poll()
+        print(f"[STATUS] Process poll result: {process_status}")
+        
+        if process_status is not None:
             # Process has ended
             return_code = process.returncode
+            print(f"[STATUS] Process ended with return code: {return_code}")
             
             if return_code != 0:
                 # Process ended with error
+                print(f"[STATUS] Process had error, reading output file")
                 with open(conv_data['output_file'].name, 'r') as f:
                     error_output = f.read()
+                
+                print(f"[STATUS] Error output: {error_output[:500]}...")  # First 500 chars
                 
                 # Update status
                 conv_data['status'] = 'error'
@@ -1138,6 +1187,7 @@ def get_conversation_status(conversation_id):
                 })
             
             # Process completed successfully
+            print(f"[STATUS] Process completed successfully")
             conv_data['status'] = 'completed'
             
             # Find the log file if saved
@@ -1172,14 +1222,22 @@ def get_conversation_status(conversation_id):
         
         # Process is still running - get current state
         try:
+            print(f"[STATUS] Process still running, reading state file: {conv_data['state_file']}")
             with open(conv_data['state_file'], 'r') as f:
                 state = json.load(f)
             
+            conversation = state.get('conversation', [])
+            print(f"[STATUS] State file contains {len(conversation)} messages")
+            print(f"[STATUS] State status: {state.get('status', 'unknown')}")
+            if conversation:
+                print(f"[STATUS] Last message: {conversation[-1] if conversation else 'None'}")
+            
             return jsonify({
                 "status": "in_progress",
-                "conversation": state.get('conversation', [])
+                "conversation": conversation
             })
-        except (json.JSONDecodeError, FileNotFoundError):
+        except (json.JSONDecodeError, FileNotFoundError) as e:
+            print(f"[STATUS] Error reading state file: {str(e)}")
             # State file might be empty or not yet created
             return jsonify({
                 "status": "in_progress",
@@ -1278,8 +1336,8 @@ def start_batch():
             return jsonify({"error": "No questionnaire selected"}), 400
         
         profile = data.get('profile')
-        assistant_model = data.get('assistant_model', 'qwen2.5:3b')
-        patient_model = data.get('patient_model', 'qwen2.5:3b')
+        assistant_model = data.get('assistant_model', 'qwen3:4b')
+        patient_model = data.get('patient_model', 'qwen3:4b')
         
         # Extract provider parameters
         assistant_provider = data.get('assistant_provider', 'ollama')
@@ -1644,7 +1702,7 @@ def start_chat():
         
         # Extract parameters
         questionnaire = data.get('questionnaire')
-        assistant_model = data.get('assistant_model', 'qwen2.5:3b')
+        assistant_model = data.get('assistant_model', 'qwen3:4b')
         save_logs = data.get('save_logs', True)
         refresh_cache = data.get('refresh_cache', False)
         use_rag = data.get('use_rag', True)

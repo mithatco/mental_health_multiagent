@@ -68,12 +68,12 @@ def main():
                        help="Only fix existing evaluations without re-evaluating")
     
     # LLM provider options
-    parser.add_argument("--provider", "-p", type=str, default="ollama", choices=["ollama", "groq"],
-                       help="LLM provider to use for evaluation (ollama or groq)")
+    parser.add_argument("--provider", "-p", type=str, default="ollama", choices=["ollama", "groq", "openai"],
+                       help="LLM provider to use for evaluation (ollama, groq, or openai)")
     parser.add_argument("--model", "-m", type=str, default="qwen2.5:3b", 
                        help="Model to use for LLM evaluation")
     parser.add_argument("--api-key", "-k", type=str, 
-                       help="API key for cloud providers (required for Groq)")
+                       help="API key for cloud providers (required for Groq or OpenAI)")
     parser.add_argument("--api-url", "-u", type=str,
                        help="API URL override (optional)")
     
@@ -81,9 +81,13 @@ def main():
     args = parser.parse_args()
     
     try:
-        # Check for required API key with Groq
+        # Check for required API key with cloud providers
         if args.provider.lower() == "groq" and not args.api_key and not os.environ.get("GROQ_API_KEY"):
             print("Error: Groq API key must be provided (use --api-key or set GROQ_API_KEY environment variable)")
+            return 1
+        
+        if args.provider.lower() == "openai" and not args.api_key and not os.environ.get("OPENAI_API_KEY"):
+            print("Error: OpenAI API key must be provided (use --api-key or set OPENAI_API_KEY environment variable)")
             return 1
         
         # Get batch directories
