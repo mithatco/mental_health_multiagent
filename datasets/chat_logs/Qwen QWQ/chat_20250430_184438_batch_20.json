@@ -1,0 +1,237 @@
+{
+  "timestamp": "2025-04-30T18:44:57.808616",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm Dr. Adams, a mental health professional. Today I'll be administering the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult to assess your symptoms over the past two weeks. This questionnaire will help us understand your experiences better. Your responses are confidential. We'll go through 23 questions one by one\u2014please answer as honestly as possible. Are you ready to start?"
+    },
+    {
+      "role": "patient",
+      "content": "Yes, I guess so. I just hope I'm explaining this right..."
+    },
+    {
+      "role": "assistant",
+      "content": "Great. Let's begin with the first question: Little interest or pleasure in doing things?"
+    },
+    {
+      "role": "patient",
+      "content": "I still try to do things, but the worry kind of overshadows everything. It's like I'm going through the motions half the time. Not *no* interest, but not like before. I'd say... sometimes, but not all the time?"
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. Next: Feeling down, depressed, or hopeless?"
+    },
+    {
+      "role": "patient",
+      "content": "I'm not... depressed exactly? More like stuck in a cycle of panic. I don't want to feel this way, but I keep thinking the worst about everything. Is that the same as depression? I hope not!"
+    },
+    {
+      "role": "assistant",
+      "content": "Understood. Now: Feeling more irritated, grouchy, or angry than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "Oh yeah, I snap at my roommate over little things. I'll get so worked up I can't even explain why I'm mad. It's like I'm always on edge. Definitely more than usual."
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. Next: Sleeping less than usual, but still have a lot of energy?"
+    },
+    {
+      "role": "patient",
+      "content": "No, actually I feel drained most days. I lie awake at night overthinking, then drag myself up tired. If anything, I'm sluggish, not energetic..."
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, let me start by carefully reviewing the user's responses to the questionnaire. The user is presenting with a mix of symptoms that need to be categorized accurately. \n\nFirst, the patient mentions \"little interest or pleasure\" but attributes it to worry, which might indicate anhedonia but could also be anxiety-related. The next question about feeling down points more towards anxiety-driven hopelessness rather than clear depression. The irritability and being \"on edge\" are strong indicators of anxiety, especially generalized anxiety disorder (GAD). The sleep issue, where they can't sleep but aren't energetic, suggests insomnia related to anxiety rather than the hyperarousal in conditions like PTSD. \n\nThe key here is differentiating between depression and anxiety. The patient explicitly states they don't feel depressed but experiences panic and catastrophizing. The DSM-5 criteria for GAD include excessive anxiety about multiple life domains, restlessness, irritability, and sleep issues. The symptoms here fit GAD well. The anhedonia might be secondary to anxiety rather than a primary depressive disorder. \n\nI should consider if there's a trauma history that might point to PTSD, but there's no mention of trauma triggers or re-experiencing symptoms. The sleep disturbances are due to ruminations, which align more with GAD. The patient's cognitive distortions (expecting the worst) are classic for anxiety. \n\nThe next steps should include a full clinical interview to explore trauma history and depressive symptoms further. CBT for anxiety would be appropriate, along with sleep interventions. Medication like SSRIs could be considered if symptoms persist. Ensuring social support is important, and ruling out other disorders like PTSD or major depression is crucial. \n\nI need to structure the response exactly as requested, using the tags and sections properly. Make sure the diagnosis is GAD, and the reasoning clearly connects the symptoms to the criteria. The next steps should be actionable and specific.\n</think>\n\n<sym>Loss of pleasure in activities</sym>, <sym>intrusive worry</sym>, and <sym>sustained irritability</sym> are central to your experience. Your description of feeling \"stuck in a cycle of panic\" and struggling with relentless negative thoughts highlights the toll this is taking on your daily life and relationships. It\u2019s clear how exhausting it must be to carry this tension, both mentally and physically.  \n\n**Diagnosis:**  \n<med>Generalized Anxiety Disorder (GAD)</med> with prominent irritability and sleep disturbance, provisional pending further clinical evaluation.  \n\n**Reasoning:**  \nThe patient\u2019s symptoms align most closely with <med>GAD</med> criteria:  \n- Excessive anxiety about unspecified outcomes (\"thinking the worst about everything\"),  \n- <sym>irritability</sym> impacting interpersonal interactions (\"snapping at roommate\"),  \n- <sym>sleep disturbance</sym> due to rumination, and  \n- <sym>hyperarousal</sym> (\"always on edge\"). The intermittent <sym>anhedonia</sym> and hopelessness may reflect secondary effects of chronic anxiety, rather than primary depressive features. No reported trauma triggers or re-experiencing symptoms rule out <med>PTSD</med>.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. Conduct a full psychiatric evaluation to rule out <med>Major Depressive Disorder</med> or <med>Adjustment Disorder</med> with mixed anxiety/depression.  \n2. Initiate <med>cognitive-behavioral therapy (CBT)</med> targeting worry cycles and sleep hygiene.  \n3. Evaluate for <med>generalized anxiety disorder</med>-specific interventions like <sym>muscle tension</sym> management or mindfulness-based stress reduction.  \n4. Consider short-term <med>SSRI</med> (e.g., escitalopram) or low-dose <med>benzodiazepines</med> for acute irritability (with caution for dependence risks).  \n5. Explore social support resources to mitigate interpersonal strain from irritability.  \n6. Track symptom patterns using a mood/sleep diary to confirm episodicity vs. chronicity of symptoms.  \n\nThe next steps should prioritize distinguishing primary anxiety from secondary mood symptoms while addressing immediate functional impairment.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.7055,
+            "highlight": "Negative cognitions and mood represents myriad feelings, from a persistent and distorted sense of  blame of self or others, to estrangement from others or markedly diminished interest in activities, to an inability to remember key aspects of the event.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"diminished\", \"key\", \"others\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Sleep-Wake-Disorders.pdf",
+            "score": 0.6769,
+            "highlight": "Sleep-Wake Disorders In the fifth edition of the Diagnostic and Statistical Manual of Mental Disorders  (DSM-5), sleep-wake  disorders encompass 10 conditions manifested by disturbed sleep and causing distress as well as im - pairment in daytime functioning.",
+            "excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"mental\", \"disorders\", and 2 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.6731,
+            "highlight": "While DSM-IV was organized centrally around the concept of  medically unexplained symptoms, DSM-5 criteria instead emphasize the degree to which a patient \u2019s  thoughts, feelings and behaviors about their somatic symptoms are disproportionate or excessive.",
+            "excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"around\", \"behaviors\", and 6 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf",
+            "score": 0.651,
+            "highlight": "Results of that extensive research showed that children diagnosed with BD who experience constant,  rather than episodic, irritability often are at risk for major depressive disorder or generalized anxiety  disorder later in life, but not life-long BD.",
+            "excerpt": " the case with BD. In an effort to address this issue, \nresearch was conducted comparing youth with ...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"depressive\", \"that\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Depression-Bereavement-Exclusion.pdf",
+            "score": 0.6487,
+            "highlight": "The presence of symptoms such as feelings of worthlessness, suicidal  ideas (as distinct from wanting to join a deceased loved one), and impairment of overall function sug - gest the presence of major depression, in addition to the normal response to a significant loss.",
+            "excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"significant\", \"suicidal\", \"depression\", and 3 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let me tackle this step by step. The user has provided a set of patient responses to a mental health questionnaire, and I need to analyze them as a clinical professional. First, I need to go through each question and answer to identify key symptoms.\n\nStarting with Q2: The patient mentions having some interest in activities but their worry overshadows everything. They use terms like \"half the time\" and \"not like before,\" which could point towards anhedonia but maybe not full-blown. So that's a possible depressive symptom, but not entirely clear yet.\n\nQ3: They differentiate between feeling down and panic cycles. They mention panic and expecting the worst, which leans more towards anxiety, specifically maybe generalized anxiety disorder (GAD). But they\u2019re unsure if that's depression, so there's a need to explore the distinction between anxiety and depressive symptoms here.\n\nQ4: The patient reports increased irritability and feeling on edge. That's a classic sign of anxiety, especially in GAD or maybe even PTSD, but without trauma history mentioned yet. The irritability could also be a part of a mood disorder.\n\nQ5: Sleep issues\u2014insomnia with overthinking, leading to fatigue. This is common in anxiety disorders where rumination keeps them awake, leading to low energy. So sleep disturbances linked to anxiety.\n\nNow, the main symptoms seem to revolve around anxiety, irritability, anhedonia-like symptoms, sleep disturbance, and fatigue. The patterns here are the presence of anxiety dominating over depressive symptoms, since they denied feeling depressed but highlighted panic and hopelessness. The irritability and hyperarousal (feeling on edge) are consistent with anxiety disorders.\n\nPotential clinical areas: Generalized Anxiety Disorder (GAD), maybe Panic Disorder if the panic attacks are more pronounced. The anhedonia could be part of the anxiety or a depressive disorder, so need to assess further. Also, the sleep issues are a key area here.\n\nRisk factors or warning signs: The patient is experiencing significant impairment in daily functioning because they're snapping at others and can't sleep. There's also mention of hopelessness, which is a concern as it can relate to suicidal thoughts, though they didn't mention those directly. Need to check for any suicidal ideation in their responses, but it's not stated here.\n\nWait, in the responses, the patient says \"I don't want to feel this way, but I keep thinking the worst about everything.\" The \"thinking the worst\" is a cognitive distortion common in anxiety. No direct mention of self-harm or suicidal thoughts, so maybe not an immediate risk there. But the hopelessness could be a red flag to probe further.\n\nPutting this together, the main concerns are anxiety symptoms with some depressive features, but the primary issue seems anxiety-related. The patterns are the presence of excessive worry, irritability, sleep disturbance, and functional impairment. The clinical significance areas would be GAD, possible adjustment disorder with anxious mood, or maybe panic disorder if panic attacks are occurring. Need to consider the duration (past two weeks) and the cross-cutting symptoms in the DSM-5 measure.\n\nAlso, the patient's uncertainty about whether their symptoms are depression or anxiety suggests they might be confused about their own experiences, which is common. The professional should clarify that distinction through further assessment.\n\nPotential risk factors: The irritability affecting relationships (snapping at roommate) and sleep issues affecting their daily functioning. There's no mention of substance use or other risk factors here, so maybe not applicable. However, the persistent anxiety without relief could indicate chronic stress or an anxiety disorder needing intervention.\n\nSo summarizing, the key points are anxiety symptoms with associated irritability, sleep disturbance, and anhedonia. Clinical areas would focus on anxiety-related disorders, with the need to assess for depression further if not already covered. The patterns of cyclical worry and functional impairment are important. Risk signs are the impact on interpersonal relationships and possible comorbid sleep issues. I need to make sure to present all this in clinical terms without speculating beyond the given data.\n</think>\n\n**Clinical Observation Summary**  \n\n1. **Main Symptoms and Concerns:**  \n   - **Anxiety symptoms:** Persistent worry, panic cycles, catastrophizing (\"thinking the worst about everything\"), and hypervigilance (\"always on edge\").  \n   - **Affective dysregulation:** Irritability/grouchiness, leading to interpersonal conflict (e.g., snapping at others).  \n   - **Anhedonia:** Diminished interest/pleasure in activities, though not entirely absent.  \n   - **Sleep disturbance:** Insomnia due to rumination, resulting in fatigue and reduced energy.  \n\n2. **Patterns in Responses:**  \n   - **Cognitive-affective focus:** Dominance of anxiety-related symptoms over overt depressive affect (e.g.,\u5426\u8ba4\u660e\u786e\u7684\u6291\u90c1\u60c5\u7eea but acknowledging hopelessness linked to anxiety).  \n   - **Functional impairment:** Explicit acknowledgment of impaired functioning (\"stuck in a cycle of panic,\" \"dragged up tired\").  \n   - **Self-questioning:** Uncertainty about symptom classification (e.g., distinguishing anxiety from depression), suggesting possible alexithymia or symptom misattribution.  \n\n3. **Potential Areas of Clinical Significance:**  \n   - **Generalized Anxiety Disorder (GAD):** Persistent excessive worry, irritability, and functional interference.  \n   - **Mixed anxiety and depressive features:** Anhedonia and hopelessness may warrant further assessment for mild depressive symptoms or adjustment disorder with mixed anxiety/depression.  \n   - **Sleep disturbance:** Insomnia with hyperarousal (rumination) requiring evaluation for comorbid insomnia disorder.  \n\n4. **Risk Factors/Warning Signs:**  \n   - **Impaired interpersonal functioning:** Noted irritability affecting relationships.  \n   - **Cognitive distortions:** Catastrophizing (\"thinking the worst\") elevating risk of escalating anxiety or avoidance behaviors.  \n   - **Lack of clear coping strategies:** No reported adaptive mechanisms for managing symptoms.  \n\n5. **Summary (Clinical Language):**  \n   The patient endorsed moderate anxiety symptoms (e.g., excessive worry, irritability, hypervigilance) consistent with a potential anxiety disorder (e.g., GAD). Anhedonia and sleep disturbance suggest possible comorbid mood dysregulation, though depressive features appear secondary to anxiety. Patterns of cognitive rumination and functional impairment highlight the need for further assessment of symptom etiology, interpersonal impact, and coping mechanisms. Risk factors include impaired social functioning and cognitive distortions, warranting targeted evaluation for anxiety-related comorbidities and sleep hygiene. No acute suicidal/harmful ideation explicitly reported, but hopelessness warrants screening.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6711
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "<sym>Loss of pleasure in activities</sym>, <sym>intrusive worry</sym>, and <sym>sustained irritability</sym> are central to your experience. Your description of feeling \"stuck in a cycle of panic\" and struggling with relentless negative thoughts highlights the toll this is taking on your daily life and relationships. It\u2019s clear how exhausting it must be to carry this tension, both mentally and physically.  \n\n**Diagnosis:**  \n<med>Generalized Anxiety Disorder (GAD)</med> with prominent irritability and sleep disturbance, provisional pending further clinical evaluation.  \n\n**Reasoning:**  \nThe patient\u2019s symptoms align most closely with <med>GAD</med> criteria:  \n- Excessive anxiety about unspecified outcomes (\"thinking the worst about everything\"),  \n- <sym>irritability</sym> impacting interpersonal interactions (\"snapping at roommate\"),  \n- <sym>sleep disturbance</sym> due to rumination, and  \n- <sym>hyperarousal</sym> (\"always on edge\"). The intermittent <sym>anhedonia</sym> and hopelessness may reflect secondary effects of chronic anxiety, rather than primary depressive features. No reported trauma triggers or re-experiencing symptoms rule out <med>PTSD</med>.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. Conduct a full psychiatric evaluation to rule out <med>Major Depressive Disorder</med> or <med>Adjustment Disorder</med> with mixed anxiety/depression.  \n2. Initiate <med>cognitive-behavioral therapy (CBT)</med> targeting worry cycles and sleep hygiene.  \n3. Evaluate for <med>generalized anxiety disorder</med>-specific interventions like <sym>muscle tension</sym> management or mindfulness-based stress reduction.  \n4. Consider short-term <med>SSRI</med> (e.g., escitalopram) or low-dose <med>benzodiazepines</med> for acute irritability (with caution for dependence risks).  \n5. Explore social support resources to mitigate interpersonal strain from irritability.  \n6. Track symptom patterns using a mood/sleep diary to confirm episodicity vs. chronicity of symptoms.  \n\nThe next steps should prioritize distinguishing primary anxiety from secondary mood symptoms while addressing immediate functional impairment.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "anxiety",
+    "question_count": 23,
+    "duration": 314.2614920139313,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 11.40132999420166,
+    "diagnosis_generation_time": 7.412831783294678,
+    "rag_evaluation_time": 1.1920928955078125e-05,
+    "total_time": 18.814183950424194
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7055,
+        "average_score": 0.7055,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"diminished\", \"key\", \"others\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM-5-Sleep-Wake-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6769,
+        "average_score": 0.6769,
+        "example_excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"mental\", \"disorders\", and 2 more matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6731,
+        "average_score": 0.6731,
+        "example_excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"around\", \"behaviors\", and 6 more matching aspects of your query."
+      },
+      "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.651,
+        "average_score": 0.651,
+        "example_excerpt": " the case with BD. In an effort to address this issue, \nresearch was conducted comparing youth with ...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"depressive\", \"that\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM-5-Depression-Bereavement-Exclusion.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6487,
+        "average_score": 0.6487,
+        "example_excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"significant\", \"suicidal\", \"depression\", and 3 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 08:14:40",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 08:14:40",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 3,
+        "clinical_relevance": 4,
+        "consistency": 4,
+        "diagnostic_justification": 4,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist covered some key domains such as depression, anxiety, and irritability but did not systematically address all 23 questions from the DSM-5 Level1 Cross-Cutting measure. Domains like mania, psychosis, repetitive thoughts/behaviors, dissociation, personality functioning, and substance use were not explored in depth or were skipped. For example, questions about psychotic symptoms, cognitive function, and sleep quality were not directly addressed, which are crucial for a comprehensive diagnosis.",
+        "clinical_relevance": "The therapist's questions generally aligned with DSM-5 criteria, accurately targeting symptoms like excessive worry, irritability, and sleep disturbance. However, some questions were phrased vaguely or not precisely aligned with DSM-5 terminology. For instance, when the patient mentioned 'stuck in a cycle of panic,' the therapist could have directly linked it to specific DSM-5 criteria for GAD. Overall, the questions were clinically relevant but could have been more precise.",
+        "consistency": "The dialogue generally flowed logically, with each question building on previous responses. However, there were minor logical inconsistencies, such as not following up on the patient's mention of feeling 'stuck in a cycle of panic' with more specific questions about panic attacks or PTSD. The conversation mostly maintained coherence, but a few opportunities for deeper exploration were missed.",
+        "diagnostic_justification": "The diagnosis of Generalized Anxiety Disorder (GAD) was generally justified by the patient's symptoms, such as excessive worry, irritability, and sleep disturbance. The therapist explicitly linked these symptoms to DSM-5 criteria. However, the differential diagnosis was not thoroughly discussed, and secondary effects of chronic anxiety on mood were not fully explored. The justification was sound but could have been more comprehensive.",
+        "empathy": "The therapist displayed empathy and a professional tone throughout the conversation. Responses were natural and engaging, acknowledging the patient's distress. For example, the therapist noted how exhausting it must be to carry tension mentally and physically. However, there were minor moments where the therapist could have been more personalized in their responses, such as directly validating the patient's emotions."
+      },
+      "overall_comments": "The conversation demonstrated a good understanding of the patient's symptoms and addressed key areas of concern. However, it lacked comprehensive coverage of all DSM-5 dimensions and could have benefited from more precise clinical language and follow-up questions. The therapist showed empathy and professionalism, but there is room for improvement in terms of thoroughness and diagnostic justification. Overall, the conversation was strong but had notable areas for improvement.",
+      "average_score": 3.8,
+      "diagnosis_accuracy": {
+        "matches_profile": true,
+        "confidence": 4,
+        "explanation": "The diagnosis explicitly mentions Generalized Anxiety Disorder (GAD) as the primary condition, which aligns with the expected profile of anxiety. The symptoms described, such as excessive worry, irritability, sleep disturbance, and hyperarousal, are consistent with GAD criteria.",
+        "classification": "anxiety"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "anxiety",
+        "classified_as": "anxiety",
+        "match": true,
+        "confidence": 4
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 2.303070306777954
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.527089992782552,
+        "local_coherence": 0.5405220385948868,
+        "window_coherence": 0.5560120188011319
+      },
+      "readability": {
+        "flesch_kincaid_grade": 10.67,
+        "gunning_fog_index": 4.9,
+        "flesch_reading_ease": 39.91
+      },
+      "diversity": {
+        "distinct_1": 0.5663841807909604,
+        "distinct_2": 0.9278642149929278,
+        "distinct_3": 0.9815864022662889
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "anxiety",
+      "predicted": "<sym>Loss of pleasure in activities</sym>, <sym>intrusive worry</sym>, and <sym>sustained irritability</sym> are central to your experience. Your description of feeling \"stuck in a cycle of panic\" and struggling with relentless negative thoughts highlights the toll this is taking on your daily life and relationships. It\u2019s clear how exhausting it must be to carry this tension, both mentally and physically.  \n\n**Diagnosis:**  \n<med>Generalized Anxiety Disorder (GAD)</med> with prominent irritability and sleep disturbance, provisional pending further clinical evaluation.  \n\n**Reasoning:**  \nThe patient\u2019s symptoms align most closely with <med>GAD</med> criteria:  \n- Excessive anxiety about unspecified outcomes (\"thinking the worst about everything\"),  \n- <sym>irritability</sym> impacting interpersonal interactions (\"snapping at roommate\"),  \n- <sym>sleep disturbance</sym> due to rumination, and  \n- <sym>hyperarousal</sym> (\"always on edge\"). The intermittent <sym>anhedonia</sym> and hopelessness may reflect secondary effects of chronic anxiety, rather than primary depressive features. No reported trauma triggers or re-experiencing symptoms rule out <med>PTSD</med>.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. Conduct a full psychiatric evaluation to rule out <med>Major Depressive Disorder</med> or <med>Adjustment Disorder</med> with mixed anxiety/depression.  \n2. Initiate <med>cognitive-behavioral therapy (CBT)</med> targeting worry cycles and sleep hygiene.  \n3. Evaluate for <med>generalized anxiety disorder</med>-specific interventions like <sym>muscle tension</sym> management or mindfulness-based stress reduction.  \n4. Consider short-term <med>SSRI</med> (e.g., escitalopram) or low-dose <med>benzodiazepines</med> for acute irritability (with caution for dependence risks).  \n5. Explore social support resources to mitigate interpersonal strain from irritability.  \n6. Track symptom patterns using a mood/sleep diary to confirm episodicity vs. chronicity of symptoms.  \n\nThe next steps should prioritize distinguishing primary anxiety from secondary mood symptoms while addressing immediate functional impairment.",
+      "matches": true,
+      "classification": "anxiety",
+      "classification_confidence": 4
+    }
+  }
+}

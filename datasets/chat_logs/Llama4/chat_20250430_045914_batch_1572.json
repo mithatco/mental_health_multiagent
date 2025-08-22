@@ -1,0 +1,205 @@
+{
+  "timestamp": "2025-04-30T04:59:21.634698",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm a mental health professional. I'm here to conduct an assessment using the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult. This tool helps us identify areas that might be impacting your mental health and guide our conversation. Everything discussed here is confidential and a safe space for you to share your experiences. We'll go through 23 questions, and I'll ask one at a time. Let's begin. 1. Little interest or pleasure in doing things?"
+    },
+    {
+      "role": "patient",
+      "content": "Hmm, yeah... there are times when I just don't feel like doing anything. It's like, I know I should be motivated, but I just can't seem to muster the energy or interest. It's happened a lot lately, and it's really frustrating."
+    },
+    {
+      "role": "assistant",
+      "content": "I've heard that you're experiencing a lot of frustration and struggle with motivation and interest in activities. You mentioned that there are times when you just don't feel like doing anything, and it's like you can't seem to muster the energy or interest. <quote>It's happened a lot lately, and it's really frustrating</quote>. I can imagine how difficult and overwhelming this must feel for you. It takes a lot of courage to share this, and I'm here to listen and support you.\n\n**Diagnosis:** <med>Somatic Symptom Disorder (SSD)</med> Provisional\n\n**Reasoning:** The patient's report of decreased interest and pleasure in activities, combined with <sym>anhedonia</sym> and <sym>low motivation</sym>, may be indicative of various conditions, including <med>Major Depressive Disorder</med> or <med>Generalized Anxiety Disorder</med>. However, the patient's focus on physical symptoms and their impact on daily life, as well as the presence of <sym>frustration</sym>, suggests that <med>Somatic Symptom Disorder</med> could be a possible diagnosis. Further evaluation is necessary to confirm this impression.\n\n**Recommended Next Steps/Treatment Options:**\n1. Conduct a comprehensive diagnostic evaluation to assess for underlying <med>mental health conditions</med>, including <med>depressive disorders</med> and <med>anxiety disorders</med>.\n2. Explore the patient's physical symptoms and their impact on daily life to better understand the nature of their <sym>somatic symptoms</sym>.\n3. Consider <med>cognitive-behavioral therapy (CBT)</med> or other evidence-based treatments to address <sym>anxiety</sym> and <sym>depression</sym>.\n4. Develop a treatment plan that addresses the patient's physical and emotional needs, including stress management techniques and coping strategies.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.7362,
+            "highlight": "The  new narrative text for SSD notes that some patients with physical conditions such as heart disease or  cancer will indeed experience disproportionate and excessive thoughts, feelings, and behaviors related  to their illness, and that these individuals may qualify for a diagnosis of SSD.",
+            "excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"these\", \"experience\", \"that\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Depression-Bereavement-Exclusion.pdf",
+            "score": 0.7217,
+            "highlight": "The presence of symptoms such as feelings of worthlessness, suicidal  ideas (as distinct from wanting to join a deceased loved one), and impairment of overall function sug - gest the presence of major depression, in addition to the normal response to a significant loss.",
+            "excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"symptoms\", \"depression\", \"loss\", and 7 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Schizophrenia.pdf",
+            "score": 0.7193,
+            "highlight": "Schizophrenia The upc oming fifth edition of the Diagnostic and Statistical Manual of Mental Disorders  (DSM-5 ) mak es  several key changes to the category of schizophrenia and highlights for future study an area that could  be cri tical for early detection of this often debilitating condition.",
+            "excerpt": "Schizophrenia\nThe upc oming fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"condition\", \"mental\", \"that\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf",
+            "score": 0.7075,
+            "highlight": "2 \u2022 Disruptive Mood Disregulation DisorderImproving Diagnosis and Care While DSM does include two diagnoses with related symptoms to DMDD, oppositional defiant disor- der (ODD) and Bipolar Disorder (BD), the symptoms described in DMDD are significantly.",
+            "excerpt": "t be made for the first time before age 6 or after age 18. \nProcess for New Diagnosis\nA new DSM diag...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"symptoms\", \"disorder\", \"diagnosis\", and 2 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Conduct-Disorder.pdf",
+            "score": 0.7065,
+            "highlight": "and research of mental illnesses, including substance use disorders.",
+            "excerpt": "and research of mental illnesses, including substance use disorders. Visit the APA at www.psychiatry...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"disorders\", \"including\", \"mental\" matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: **Clinical Observation Summary**\n\n**Patient's Responses to DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult (Q1)**\n\n**1. Main Symptoms and Concerns:**\nThe patient reports experiencing a lack of interest or pleasure in doing things, which is a significant concern. They describe periods of low motivation, energy, and interest in activities, which have been occurring frequently lately.\n\n**2. Patterns in Patient's Responses:**\nThe patient's response suggests a pattern of anhedonia (loss of pleasure) and decreased motivation. They acknowledge that this has been happening \"a lot lately,\" indicating a possible increase in frequency or severity of these symptoms.\n\n**3. Potential Areas of Clinical Significance:**\nThe patient's report of decreased interest and pleasure in activities may be indicative of:\n\t* Depressive disorders (e.g., Major Depressive Disorder)\n\t* Anxiety disorders (e.g., Generalized Anxiety Disorder)\n\t* Burnout or exhaustion\n\t* Possible underlying trauma or stress-related issues\n\n**4. Risk Factors or Warning Signs:**\nThe patient's experience of decreased motivation and interest in activities, combined with feelings of frustration, may be a warning sign for:\n\t* Suicidal ideation or behavior (although not explicitly reported)\n\t* Increased risk of depression or anxiety disorders\n\t* Potential impact on daily functioning, relationships, and overall well-being\n\n**5. Summary of Observations:**\nThe patient presents with symptoms of anhedonia, decreased motivation, and low energy, which may be indicative of a depressive or anxiety-related disorder. The frequency and recent increase in these symptoms suggest a potential area of clinical concern. Further assessment and exploration of these symptoms are necessary to determine the underlying causes and develop an effective treatment plan.\n\n**Clinical Impression:**\nThe patient's responses suggest a possible depressive or anxiety-related condition, which warrants further evaluation and assessment. A comprehensive diagnostic evaluation, including additional questions and observations, is necessary to determine the presence and nature of any underlying mental health concerns.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.7182
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "I've heard that you're experiencing a lot of frustration and struggle with motivation and interest in activities. You mentioned that there are times when you just don't feel like doing anything, and it's like you can't seem to muster the energy or interest. <quote>It's happened a lot lately, and it's really frustrating</quote>. I can imagine how difficult and overwhelming this must feel for you. It takes a lot of courage to share this, and I'm here to listen and support you.\n\n**Diagnosis:** <med>Somatic Symptom Disorder (SSD)</med> Provisional\n\n**Reasoning:** The patient's report of decreased interest and pleasure in activities, combined with <sym>anhedonia</sym> and <sym>low motivation</sym>, may be indicative of various conditions, including <med>Major Depressive Disorder</med> or <med>Generalized Anxiety Disorder</med>. However, the patient's focus on physical symptoms and their impact on daily life, as well as the presence of <sym>frustration</sym>, suggests that <med>Somatic Symptom Disorder</med> could be a possible diagnosis. Further evaluation is necessary to confirm this impression.\n\n**Recommended Next Steps/Treatment Options:**\n1. Conduct a comprehensive diagnostic evaluation to assess for underlying <med>mental health conditions</med>, including <med>depressive disorders</med> and <med>anxiety disorders</med>.\n2. Explore the patient's physical symptoms and their impact on daily life to better understand the nature of their <sym>somatic symptoms</sym>.\n3. Consider <med>cognitive-behavioral therapy (CBT)</med> or other evidence-based treatments to address <sym>anxiety</sym> and <sym>depression</sym>.\n4. Develop a treatment plan that addresses the patient's physical and emotional needs, including stress management techniques and coping strategies.",
+  "metadata": {
+    "assistant_model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "patient_model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "patient_profile": "bipolar",
+    "question_count": 23,
+    "duration": 12005.775536775589,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 3.1214022636413574,
+    "diagnosis_generation_time": 4.445035219192505,
+    "rag_evaluation_time": 2.384185791015625e-05,
+    "total_time": 7.566476106643677
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7362,
+        "average_score": 0.7362,
+        "example_excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"these\", \"experience\", \"that\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Depression-Bereavement-Exclusion.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7217,
+        "average_score": 0.7217,
+        "example_excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"symptoms\", \"depression\", \"loss\", and 7 more matching aspects of your query."
+      },
+      "APA_DSM-5-Schizophrenia.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7193,
+        "average_score": 0.7193,
+        "example_excerpt": "Schizophrenia\nThe upc oming fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"condition\", \"mental\", \"that\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7075,
+        "average_score": 0.7075,
+        "example_excerpt": "t be made for the first time before age 6 or after age 18. \nProcess for New Diagnosis\nA new DSM diag...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"symptoms\", \"disorder\", \"diagnosis\", and 2 more matching aspects of your query."
+      },
+      "APA_DSM-5-Conduct-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7065,
+        "average_score": 0.7065,
+        "example_excerpt": "and research of mental illnesses, including substance use disorders. Visit the APA at www.psychiatry...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"disorders\", \"including\", \"mental\" matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-04-30 09:44:48",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-04-30 09:44:48",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 1,
+        "clinical_relevance": 2,
+        "consistency": 1,
+        "diagnostic_justification": 2,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The conversation only addressed the first question of the DSM-5 Level1 Cross-Cutting Symptom Measure\u2014Adult, which pertains to 'Little interest or pleasure in doing things.' There is no evidence that the therapist explored the remaining 22 questions across various domains such as anger, energy/activity, anxiety, somatic concerns, suicidality, psychotic symptoms, sleep quality, cognitive function, repetitive thoughts/behaviors, dissociation, identity and relationships, and substance use. This significant omission indicates a failure to systematically assess most DSM-5 dimensions.",
+        "clinical_relevance": "The single question addressed ('Little interest or pleasure in doing things') was phrased in a clinically relevant way. However, the conversation did not include the rest of the DSM-5 Level1 Cross-Cutting Symptom Measure\u2014Adult questions, which are designed to assess a wide range of psychiatric domains. The lack of further questions means that the clinical relevance of the conversation is severely limited.",
+        "consistency": "The conversation starts with an introduction and one question. There is no logical flow or consistency since only one question was asked, and there was no follow-up or exploration based on the patient's response. The dialogue appears highly disconnected and lacks progression.",
+        "diagnostic_justification": "The therapist provided a diagnosis of Somatic Symptom Disorder (SSD) Provisional based on the patient's report of decreased interest and pleasure in activities, combined with anhedonia and low motivation. However, this justification seems superficial as it doesn't explicitly link to DSM-5 criteria or rule out other potential diagnoses like Major Depressive Disorder or Generalized Anxiety Disorder. The diagnostic conclusion appears to be based on very limited information.",
+        "empathy": "The therapist's response to the patient's disclosure shows empathy and a non-judgmental attitude. The therapist acknowledges the patient's frustration and validates their experience ('I can imagine how difficult and overwhelming this must feel for you. It takes a lot of courage to share this, and I'm here to listen and support you.'). This indicates a warm and supportive interaction, but the very limited scope of the conversation prevents a perfect score."
+      },
+      "overall_comments": "The conversation is severely limited by only addressing one question from the DSM-5 Level1 Cross-Cutting Symptom Measure\u2014Adult. This restricts the ability to evaluate the patient's mental health comprehensively. The therapist shows empathy but fails to explore critical areas that could inform an accurate diagnosis and treatment plan. Future conversations should prioritize systematically addressing all relevant DSM-5 dimensions.",
+      "average_score": 2.0,
+      "diagnosis_accuracy": {
+        "matches_profile": false,
+        "confidence": 4,
+        "explanation": "The diagnosis does not explicitly mention bipolar disorder or any equivalent clinical terms. The symptoms described, such as decreased interest and pleasure in activities, anhedonia, and low motivation, could be indicative of depressive episodes, which are a part of bipolar disorder, but the diagnosis provided suggests Somatic Symptom Disorder (SSD) as a possible diagnosis, which does not align with the expected profile of bipolar disorder.",
+        "classification": "depression"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "bipolar",
+        "classified_as": "depression",
+        "match": false,
+        "confidence": 4
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 15.749913215637207
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.6350983767629859,
+        "local_coherence": 0.6147611564446727,
+        "window_coherence": 0.6350983767629859
+      },
+      "readability": {
+        "flesch_kincaid_grade": 9.96,
+        "gunning_fog_index": 5.91,
+        "flesch_reading_ease": 49.54
+      },
+      "diversity": {
+        "distinct_1": 0.5902578796561605,
+        "distinct_2": 0.9080459770114943,
+        "distinct_3": 0.968299711815562
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "bipolar",
+      "predicted": "I've heard that you're experiencing a lot of frustration and struggle with motivation and interest in activities. You mentioned that there are times when you just don't feel like doing anything, and it's like you can't seem to muster the energy or interest. <quote>It's happened a lot lately, and it's really frustrating</quote>. I can imagine how difficult and overwhelming this must feel for you. It takes a lot of courage to share this, and I'm here to listen and support you.\n\n**Diagnosis:** <med>Somatic Symptom Disorder (SSD)</med> Provisional\n\n**Reasoning:** The patient's report of decreased interest and pleasure in activities, combined with <sym>anhedonia</sym> and <sym>low motivation</sym>, may be indicative of various conditions, including <med>Major Depressive Disorder</med> or <med>Generalized Anxiety Disorder</med>. However, the patient's focus on physical symptoms and their impact on daily life, as well as the presence of <sym>frustration</sym>, suggests that <med>Somatic Symptom Disorder</med> could be a possible diagnosis. Further evaluation is necessary to confirm this impression.\n\n**Recommended Next Steps/Treatment Options:**\n1. Conduct a comprehensive diagnostic evaluation to assess for underlying <med>mental health conditions</med>, including <med>depressive disorders</med> and <med>anxiety disorders</med>.\n2. Explore the patient's physical symptoms and their impact on daily life to better understand the nature of their <sym>somatic symptoms</sym>.\n3. Consider <med>cognitive-behavioral therapy (CBT)</med> or other evidence-based treatments to address <sym>anxiety</sym> and <sym>depression</sym>.\n4. Develop a treatment plan that addresses the patient's physical and emotional needs, including stress management techniques and coping strategies.",
+      "matches": false,
+      "classification": "depression",
+      "classification_confidence": 4
+    }
+  }
+}

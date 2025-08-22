@@ -1,0 +1,357 @@
+{
+  "timestamp": "2025-04-30T20:37:37.608779",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm Dr. Lee, a mental health professional. Today I'll be administering the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult. This questionnaire helps assess various mental health domains to guide treatment. Your answers will remain confidential. We'll go through 23 questions about your experiences over the past two weeks. I'll start with the first question when you're ready."
+    },
+    {
+      "role": "patient",
+      "content": "Okay... sure, I'll try to answer honestly."
+    },
+    {
+      "role": "assistant",
+      "content": "1. Little interest or pleasure in doing things?"
+    },
+    {
+      "role": "patient",
+      "content": "Hmm... I guess I don't get excited about things as much as I used to. Maybe 2 or 3 days a week, but I don't think it's a big deal."
+    },
+    {
+      "role": "assistant",
+      "content": "2. Feeling down, depressed, or hopeless?"
+    },
+    {
+      "role": "patient",
+      "content": "I've had a few days where I feel low, maybe twice a week. But I'm managing, really."
+    },
+    {
+      "role": "assistant",
+      "content": "3. Feeling more irritated, grouchy, or angry than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "I've been a bit testy when stressed, but I don't think it's worse than normal."
+    },
+    {
+      "role": "assistant",
+      "content": "4. Sleeping less than usual, but still have a lot of energy?"
+    },
+    {
+      "role": "patient",
+      "content": "No, actually... I've been having trouble sleeping, but I don't feel extra energetic. More like exhausted, honestly."
+    },
+    {
+      "role": "assistant",
+      "content": "5. Starting lots more projects than usual or doing more risky things than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "Not really starting projects. I mean... I sometimes take risks, but that's just life, right?"
+    },
+    {
+      "role": "assistant",
+      "content": "6. Feeling nervous, anxious, frightened, worried, or on edge?"
+    },
+    {
+      "role": "patient",
+      "content": "Yeah, I'm pretty anxious. Like, every day. I just use something to calm down, you know?"
+    },
+    {
+      "role": "assistant",
+      "content": "7. Feeling panic or being frightened?"
+    },
+    {
+      "role": "patient",
+      "content": "Maybe once or twice. It's more the everyday anxiety, not full-on panic."
+    },
+    {
+      "role": "assistant",
+      "content": "8. Avoiding situations that make you anxious?"
+    },
+    {
+      "role": "patient",
+      "content": "I avoid some places, sure. Like crowded places make me anxious. But I don't call that a problem."
+    },
+    {
+      "role": "assistant",
+      "content": "9. Unexplained aches and pains (e.g., head, back, joints, abdomen, legs)?"
+    },
+    {
+      "role": "patient",
+      "content": "I have backaches sometimes, but that's from sitting at work. Not sure what that has to do with anything."
+    },
+    {
+      "role": "assistant",
+      "content": "10. Feeling that your illnesses are not being taken seriously enough?"
+    },
+    {
+      "role": "patient",
+      "content": "My doctor's always like, 'It's all in your head.' But I'm here now, so..."
+    },
+    {
+      "role": "assistant",
+      "content": "11. Thoughts of actually hurting yourself?"
+    },
+    {
+      "role": "patient",
+      "content": "No, not like that. I just feel bad about myself sometimes."
+    },
+    {
+      "role": "assistant",
+      "content": "12. Hearing things other people couldn't hear, such as voices when no one is around?"
+    },
+    {
+      "role": "patient",
+      "content": "No, nothing like that."
+    },
+    {
+      "role": "assistant",
+      "content": "13. Feeling that someone could hear your thoughts, or you could hear what another person was thinking?"
+    },
+    {
+      "role": "patient",
+      "content": "No... that's not right. I stay grounded, okay?"
+    },
+    {
+      "role": "assistant",
+      "content": "14. Problems with sleep that affected your sleep quality overall?"
+    },
+    {
+      "role": "patient",
+      "content": "Yeah, I don't sleep well. Can't turn my brain off at night."
+    },
+    {
+      "role": "assistant",
+      "content": "15. Problems with memory (e.g., learning new information) or finding your way home?"
+    },
+    {
+      "role": "patient",
+      "content": "I've forgotten things a few times... but that's stress, not brain damage."
+    },
+    {
+      "role": "assistant",
+      "content": "16. Unpleasant thoughts, urges, or images repeatedly enter your mind?"
+    },
+    {
+      "role": "patient",
+      "content": "Not really. Just thinking about... stuff I need to do."
+    },
+    {
+      "role": "assistant",
+      "content": "17. Feeling driven to perform certain behaviors or mental acts over and over again?"
+    },
+    {
+      "role": "patient",
+      "content": "Not really... except maybe the usual habits."
+    },
+    {
+      "role": "assistant",
+      "content": "18. Feeling detached or distant from yourself, your body, your physical surroundings, or your memories?"
+    },
+    {
+      "role": "patient",
+      "content": "Sometimes I feel numb, but that's just being busy."
+    },
+    {
+      "role": "assistant",
+      "content": "19. Not knowing who you really are or what you want out of life?"
+    },
+    {
+      "role": "patient",
+      "content": "...I guess I'm kind of lost, but everyone feels that way sometimes."
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, let me tackle this query. The user provided a detailed set of answers from a DSM-5 questionnaire. My task is to generate an assessment following their strict structure. First, I need to parse each answer carefully.\n\nStarting with the symptoms: The patient reports reduced interest in activities (Q1), low mood (Q2), and daily anxiety (Q6). They mention using something to calm down, which is a red flag. The back pain (Q10) and feeling their symptoms aren't taken seriously (Q11) suggests possible somatic symptoms. But the instructions say not to default to Somatic Symptom Disorder unless clearly warranted. I need to consider other disorders first.\n\nThe patient denied any psychotic features (Q12-14), so that's ruled out. The anxiety and avoidance (Q9) point towards GAD. The depressive symptoms (Q1-2) aren't severe enough for MDD, maybe more adjustment disorder? The existential questions (Q20) might tie into depression. The \"something\" for anxiety could be substance use, so that needs exploration.\n\nNext, the structure: first a compassionate summary. I should acknowledge their struggles without being too technical. Then Diagnosis section, which has to be a specific disorder. The symptoms align most with Generalized Anxiety Disorder (GAD) given the daily anxiety, avoidance, and functional impact. The depressive symptoms could be part of an adjustment disorder with mixed anxiety and depressed mood. But the primary issue here seems to be anxiety.  \n\nWait, the instructions say not to default to SSD. Since they have physical symptoms but also clear anxiety, GAD is better. The existential issues (Q20) and somatic symptoms might overlap, but SSD requires excessive thoughts/behaviors about symptoms, which they don't fully endorse. They downplay their pain's psychological link, so SSD might not fit yet.  \n\nFor treatment, addressing anxiety and possible substance use is key. Also, the doctor dismissing their pain needs to be addressed. The summary should highlight empathy, then the diagnosis, then reasoning, then steps. Need to use the tags properly: <med>, <sym>, and <quote>.  \n\nWait, the user's answer to Q10 says their doctor said \"it's all in your head,\" which they seem to take issue with. The patient might feel invalidated. The existential questions (Q20) could hint at adjustment disorder if there's a stressor, but the main thread is anxiety-driven.  \n\nPutting it all together: The diagnosis should prioritize GAD with possible adjustment disorder. But let me check the DSM-5 criteria. GAD requires excessive anxiety for 6+ months. The patient's responses seem acute, but the \"something\" they use could be a new issue. Maybe the diagnosis is Adjustment Disorder with anxious and depressed mood? Or GAD if symptoms are persistent. The responses don't specify duration, but based on the answers, GAD is plausible.  \n\nAlternatively, the \"something\" points to substance use, so maybe a Substance-Related Disorder? But they didn't specify, just mentioned using something to calm down. Need to list that as a consideration in reasoning.  \n\nFinalizing the diagnosis: Likely Generalized Anxiety Disorder (GAD) with comorbid adjustment issues. The diagnosis section should be clear. Let me structure each part step by step following the format exactly. Ensure tags are used correctly. Make sure the summary is empathetic, then the diagnosis, reasoning, and steps. Check for the SSD note: they don't meet full criteria, so it's not primary.  \n\nOkay, putting it all into the required structure without any markdown, just the sections as specified.\n</think>\n\n<sym>Little interest or pleasure in activities</sym>, persistent <sym>anxiety</sym>, and <sym>perceived medical dismissal of physical symptoms</sym> emerged as central themes. You\u2019ve described navigating daily challenges with <sym>mood fluctuations</sym>, <sym>somatic discomfort</sym>, and a sense of being misunderstood, which must feel isolating. Your efforts to manage distress\u2014whether through avoidance or self-soothing strategies\u2014are valid, even if they feel routine to you.  \n\n**Diagnosis:** <med>Generalized Anxiety Disorder (GAD), unspecified; provisional depressive symptoms (adjustment disorder with mixed anxiety and depressed mood); and possible substance use concern (pending substance screen)</med>  \n\n**Reasoning:**  \n- **GAD** is supported by daily <sym>nervousness</sym>, avoidance behaviors (<quote>\u201cavoiding crowded places\u201d</quote>), and impaired functioning (Q9, Q15). The \u201c<quote>something</quote>\u201d used to calm anxiety raises suspicion for possible <med>substance use</med> (e.g., benzodiazepines, alcohol).  \n- Depressive features (Q1-2) do not meet full <med>MDD</med> criteria but align with <med>adjustment disorder</med> given the overlap with stressors (e.g., work strain, medical dissatisfaction).  \n- <sym>Somatic symptoms</sym> (Q10) are noted but insufficient for <med>somatic symptom disorder</med> without evidence of excessive illness-related thoughts/behaviors.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Comprehensive clinical interview:** Explore substance use patterns (e.g., \u201c<sym>something</sym>\u201d use) and clarify symptom chronology (e.g., when anxiety/depression began).  \n2. **Psychometric screening:** Assess for <med>GAD</med> with the GAD-7 and screen for <med>substance use</med> via AUDIT or DAST-10.  \n3. **Medical reevaluation:** Coordinate with primary care to rule out physical contributors to fatigue or aches (e.g., thyroid imbalances) and address concerns about prior dismissiveness.  \n4. **Cognitive-behavioral therapy (CBT):** Focus on anxiety management, cognitive restructuring for <sym>worry</sym> spirals, and exposure-based strategies for avoidance.  \n5. **Medication consideration:** Low-dose SSRIs (e.g., escitalopram) or short-term <med>buspirones</med> for anxiety, pending substance use assessment.  \n\nThis framework balances your concerns while prioritizing validation and collaboration to address both emotional distress and unmet healthcare needs.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.7625,
+            "highlight": "While DSM-IV was organized centrally around the concept of  medically unexplained symptoms, DSM-5 criteria instead emphasize the degree to which a patient \u2019s  thoughts, feelings and behaviors about their somatic symptoms are disproportionate or excessive.",
+            "excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"behaviors\", \"patient\", and 6 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Conduct-Disorder.pdf",
+            "score": 0.7588,
+            "highlight": "\u00a9 2013 American Psychiatric Association  2 \u2022 Somatic Symptom Disorder Order DSM-5 and DSM-5 Collection    at www.appi.org.",
+            "excerpt": "and research of mental illnesses, including substance use disorders. Visit the APA at www.psychiatry...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"symptom\", \"somatic\", \"disorder\", and 1 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf",
+            "score": 0.7237,
+            "highlight": "The unique features of DMDD necessitated a new diagnosis to ensure that children affected by this  disorder get the clinical help they need.",
+            "excerpt": "ther disorders, such as depressive and anxiety disorders. \nThe unique features of DMDD necessitated ...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"they\", \"clinical\", \"this\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Substance-Use-Disorder.pdf",
+            "score": 0.7226,
+            "highlight": "Each specific sub - stance (other than caffeine, which cannot be diagnosed as a substance use disorder) is addressed as a separate use disorder (e.g., alcohol use disorder, stimulant use disorder, etc.), but nearly all substances are diagnosed based on the same overarching criteria.",
+            "excerpt": "     Substance-Related and \nAddictive Disorders\nIn the fifth edition of the Diagnostic and Statistic...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"each\", \"which\", \"use\", and 7 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Schizophrenia.pdf",
+            "score": 0.7083,
+            "highlight": "Identifying individuals with an increased risk for developing a psychotic disorder is  significant for effective early intervention, but more study is needed to ensure that attenuated psycho - sis syndrome can be reliably diagnosed.",
+            "excerpt": "h before their consideration as formal disorders. This potential category would \nidentify a person w...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"psychotic\", \"significant\", \"that\", and 5 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let me start by going through each of the patient's answers one by one. The user wants me to act as a mental health professional reviewing their responses to the DSM-5 questionnaire. I need to follow the steps outlined: identify main symptoms, note response patterns, list clinical areas, highlight risks, and summarize clinically.\n\nFirst, looking at Q1-3: The patient reports reduced interest in activities (Q1) and feeling depressed (Q2). They mentioned 2-3 days a week for Q1 and twice a week for Q2. So that's some mild to moderate symptoms but they downplay it as not a big deal. For Q4, they mention trouble sleeping but no increased energy, so maybe not a manic episode. \n\nQ5 is about increased activity or risk-taking. They say no, so probably not hypomanic. Q6 is anxiety, which they admit to daily, using something to calm down. That's a significant anxiety component. They mention avoiding situations (Q9), like crowded places, which is avoidance behavior, a common sign in anxiety disorders, maybe social anxiety or Panic Disorder? But they downplay it as not a problem. \n\nQ7-8: Daily anxiety, but not full panic attacks. So maybe GAD? The backaches in Q10 they attribute to work, but the doctor's comment (Q10) suggests they might feel their physical symptoms aren't taken seriously. The patient mentions self-critical thoughts (Q20) but no self-harm (Q11). Negative on psychotic symptoms (Q12-14), so that's a relief.\n\nSleep issues (Q15) and trouble concentrating? Wait, Q15 is about memory and finding the way home? They say problems with memory but attribute it to stress. Maybe early cognitive symptoms or just stress. The Q16-18: no intrusive thoughts or compulsions (Q16-17), occasional detachment (Q18), which they say is just being busy. Identity confusion (Q20) but they downplay as common.\n\nMain symptoms: Depressed mood, anhedonia, anxiety (daily), sleep disturbance, avoidance behaviors, somatic symptoms (back pain), perceived invalidation by medical providers, some existential distress.\n\nPatterns: Undermining or minimizing symptoms (like saying it's not a big deal, not a problem, or attributing to external factors like work or stress). This might indicate possible minimization of distress or external attribution to avoid acknowledging mental health issues.\n\nClinical areas: Depressive symptoms, Generalized Anxiety Disorder, possible adjustment issues, sleep disturbance, somatic complaints with possible psychosomatic aspects, existential concerns. Need to evaluate for anxiety and depressive disorders, maybe adjustment disorder with anxiety or mixed features.\n\nRisk factors: The patient says they use \"something\" to calm down. That's concerning\u2014could be substance use? They didn't elaborate, so that's a red flag. Also, the question about self-harm (Q11) was negative, so maybe low risk there, but the substance use is a potential issue. Also, the doctor dismissing their physical complaints might contribute to their stress and under-treatment.\n\nPotential clinical significance: The anxiety and sleep issues are prominent. The daily anxiety and use of \"something\" to cope needs exploration. The depressive features, though not severe, combined with anxiety might point towards a comorbid anxiety and depressive disorder. The perceived invalidation by previous medical providers could indicate a history of unmet needs, leading to possible distrust or non-compliance.\n\nWait, for the summary, need to use clinical terms. Maybe major depressive features (but not severe enough?), GAD, possible somatic symptom disorder? The back pain they attribute to work but the doctor's comment might question that. The existential issues (Q20) could be part of depression or existential depression.\n\nRisk factors: The \"something\" they use for anxiety is a warning sign\u2014could be drugs/alcohol. Also, chronic stress leading to possible substance misuse. Need to assess for substance use disorders.\n\nPutting it all together, the summary needs to note the key symptoms, the minimizing pattern, the anxiety/depressive features, possible substance use, and the issues with somatic symptoms and healthcare experiences.\n</think>\n\n**Clinical Observation Summary**  \n\n**1. Main Symptoms and Concerns:**  \n- **Depressive symptoms:** Reduced interest in activities (Q1), low mood (Q2), and sleep disturbance (Q15).  \n- **Anxiety symptoms:** Daily nervousness (Q6) and social avoidance (Q9), with perceived somatic symptoms (Q10) potentially related to anxiety.  \n- **Sleep disturbance:** Difficulty maintaining restorative sleep (Q15) and excessive fatigue (Q4).  \n- **Existential distress:** Uncertainty about identity and life purpose (Q20).  \n\n**2. Response Patterns:**  \n- **Minimization of symptoms:** Frequently downplays distress (e.g., \u201cnot a big deal,\u201d \u201cjust life,\u201d \u201cnot sure what that has to do with anything\u201d).  \n- **External attribution:** Attributes somatic symptoms (back pain, memory issues) and existential concerns to situational stress (work, \u201cbeing busy\u201d) rather than psychological distress.  \n- **Functional impairment acknowledgment:** Reports avoidance of social situations (Q9) and impaired sleep (Q15), suggesting some awareness of impact on functioning.  \n\n**3. Areas of Clinical Significance:**  \n- **Anxiety disorders:** Persistent anxiety (Q6, Q7) and avoidance behaviors (Q9) raise concern for generalized anxiety disorder (GAD) or specific phobia (e.g., social anxiety).  \n- **Depressive disorder:** Mood-related symptoms (Q1, Q2) coupled with somatic complaints (Q10) warrant evaluation for major depressive disorder (MDD) or adjustment disorder with mixed anxiety and depressed mood.  \n- **Substance use concerns:** Ambiguous reference to using \u201csomething\u201d to manage anxiety (Q7) requires assessment for possible substance misuse (e.g., anxiolytics, alcohol).  \n- **Somatic symptom disorder:** Discrepancy between reported somatic symptoms (Q10) and their attributed cause (work stress), with perceived medical dismissal (Q11) may indicate somatic symptom disorder or health anxiety.  \n\n**4. Risk Factors/Warning Signs:**  \n- **Potential substance use:** Vague reference to self-medication (Q7) requires direct screening.  \n- **Medical skepticism:** Perception of healthcare providers dismissing physical concerns (Q11) may exacerbate psychological distress.  \n- **Lack of psychotic features:** Negative responses to Q12\u2013Q14 rule out psychotic spectrum disorders.  \n\n**5. Clinical Summary:**  \nThe patient presents with moderate depressive symptoms (anhedonia, low mood) and prominent generalized anxiety (daily nervousness, avoidance behaviors), with possible functional impairment related to sleep disturbance (Q4, Q15) and somatic complaints (Q10). Self-report of using substances to manage anxiety raises clinical concern for co-occurring substance use. The patient minimizes psychological distress, attributing symptoms to external stressors, which may indicate under-reporting or coping mechanisms. Evaluation for GAD, MDD, and somatic symptom disorder is warranted. Further assessment is needed to clarify substance use patterns and address healthcare dissatisfaction contributing to emotional distress.  \n\n**Recommendations:**  \n- Formal assessment for anxiety/depressive disorders.  \n- Substance use screening (e.g., AUDIT-C, DAST).  \n- Exploration of somatic symptoms in the context of psychological distress.  \n- Address patient\u2019s expressed distrust of medical providers to engage in collaborative care.  \n\n**Key Note:** Patient demonstrates insight into some functional impacts (e.g., avoidance, sleep) but minimizes psychological etiology, suggesting potential ambivalence about mental health acknowledgment.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.7352
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "<sym>Little interest or pleasure in activities</sym>, persistent <sym>anxiety</sym>, and <sym>perceived medical dismissal of physical symptoms</sym> emerged as central themes. You\u2019ve described navigating daily challenges with <sym>mood fluctuations</sym>, <sym>somatic discomfort</sym>, and a sense of being misunderstood, which must feel isolating. Your efforts to manage distress\u2014whether through avoidance or self-soothing strategies\u2014are valid, even if they feel routine to you.  \n\n**Diagnosis:** <med>Generalized Anxiety Disorder (GAD), unspecified; provisional depressive symptoms (adjustment disorder with mixed anxiety and depressed mood); and possible substance use concern (pending substance screen)</med>  \n\n**Reasoning:**  \n- **GAD** is supported by daily <sym>nervousness</sym>, avoidance behaviors (<quote>\u201cavoiding crowded places\u201d</quote>), and impaired functioning (Q9, Q15). The \u201c<quote>something</quote>\u201d used to calm anxiety raises suspicion for possible <med>substance use</med> (e.g., benzodiazepines, alcohol).  \n- Depressive features (Q1-2) do not meet full <med>MDD</med> criteria but align with <med>adjustment disorder</med> given the overlap with stressors (e.g., work strain, medical dissatisfaction).  \n- <sym>Somatic symptoms</sym> (Q10) are noted but insufficient for <med>somatic symptom disorder</med> without evidence of excessive illness-related thoughts/behaviors.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Comprehensive clinical interview:** Explore substance use patterns (e.g., \u201c<sym>something</sym>\u201d use) and clarify symptom chronology (e.g., when anxiety/depression began).  \n2. **Psychometric screening:** Assess for <med>GAD</med> with the GAD-7 and screen for <med>substance use</med> via AUDIT or DAST-10.  \n3. **Medical reevaluation:** Coordinate with primary care to rule out physical contributors to fatigue or aches (e.g., thyroid imbalances) and address concerns about prior dismissiveness.  \n4. **Cognitive-behavioral therapy (CBT):** Focus on anxiety management, cognitive restructuring for <sym>worry</sym> spirals, and exposure-based strategies for avoidance.  \n5. **Medication consideration:** Low-dose SSRIs (e.g., escitalopram) or short-term <med>buspirones</med> for anxiety, pending substance use assessment.  \n\nThis framework balances your concerns while prioritizing validation and collaboration to address both emotional distress and unmet healthcare needs.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "substance_abuse",
+    "question_count": 23,
+    "duration": 7074.061658859253,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 6.5311548709869385,
+    "diagnosis_generation_time": 8.501674890518188,
+    "rag_evaluation_time": 8.821487426757812e-06,
+    "total_time": 15.032844066619873
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7625,
+        "average_score": 0.7625,
+        "example_excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"behaviors\", \"patient\", and 6 more matching aspects of your query."
+      },
+      "APA_DSM-5-Conduct-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7588,
+        "average_score": 0.7588,
+        "example_excerpt": "and research of mental illnesses, including substance use disorders. Visit the APA at www.psychiatry...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"symptom\", \"somatic\", \"disorder\", and 1 more matching aspects of your query."
+      },
+      "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7237,
+        "average_score": 0.7237,
+        "example_excerpt": "ther disorders, such as depressive and anxiety disorders. \nThe unique features of DMDD necessitated ...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"they\", \"clinical\", \"this\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM-5-Substance-Use-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7226,
+        "average_score": 0.7226,
+        "example_excerpt": "     Substance-Related and \nAddictive Disorders\nIn the fifth edition of the Diagnostic and Statistic...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"each\", \"which\", \"use\", and 7 more matching aspects of your query."
+      },
+      "APA_DSM-5-Schizophrenia.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7083,
+        "average_score": 0.7083,
+        "example_excerpt": "h before their consideration as formal disorders. This potential category would \nidentify a person w...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"psychotic\", \"significant\", \"that\", and 5 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 08:10:47",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 08:10:47",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 4,
+        "clinical_relevance": 4,
+        "consistency": 4,
+        "diagnostic_justification": 4,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist addressed most of the 23 questions from the DSM-5 Level1 Cross-Cutting Symptom Measure\u2014Adult. However, some areas such as 'mania' (questions 4 and 5) and 'repetitive thoughts and behaviors' (questions 16 and 17) were not thoroughly explored. The therapist also skipped directly to certain domains without fully exploring the patient's experiences in each area, leading to minor omissions.",
+        "clinical_relevance": "The therapist's questions generally aligned with DSM-5 criteria, but there were slight inaccuracies or vague phrasing in some instances. For example, when asking about 'little interest or pleasure in doing things,' the patient responded with a frequency, but the therapist did not probe further to understand the impact. Additionally, some questions could have been more precisely worded to match DSM-5 terminology.",
+        "consistency": "The dialogue generally flows logically, with each question building on previous responses. However, there were minor logical inconsistencies, such as abrupt transitions between domains (e.g., moving from anxiety to somatic symptoms without a smooth transition). The therapist mostly maintained a coherent conversational arc but could improve on seamless flow.",
+        "diagnostic_justification": "The diagnoses of Generalized Anxiety Disorder (GAD), unspecified; provisional depressive symptoms (adjustment disorder with mixed anxiety and depressed mood); and possible substance use concern were generally aligned with the patient's responses. The reasoning behind each diagnostic decision was explicitly stated and clinically sound. However, some differential diagnoses were not extensively ruled out, and the justification could have been more comprehensive.",
+        "empathy": "The therapist responses showed consistent empathy and a professional tone. The therapist acknowledged the patient's distress and validated their experiences. However, there were minor moments where the interactions seemed slightly robotic or impersonal, such as when discussing 'something used to calm anxiety,' which could have been explored with more sensitivity."
+      },
+      "overall_comments": "The conversation demonstrated a good understanding of the DSM-5 Level1 Cross-Cutting Symptom Measure\u2014Adult and effectively addressed most domains. However, some areas could be improved, such as more thorough exploration of all dimensions, precise clinical phrasing, seamless conversational flow, comprehensive diagnostic justification, and consistent empathy. Overall, the therapist performed well but with room for refinement.",
+      "average_score": 4.0,
+      "diagnosis_accuracy": {
+        "matches_profile": false,
+        "confidence": 4,
+        "explanation": "The diagnosis does not explicitly identify substance_abuse as the primary condition. While it mentions 'possible substance use concern (pending substance screen)', this is presented as a potential additional issue rather than the main diagnosis. The primary diagnosis focuses on Generalized Anxiety Disorder (GAD) and adjustment disorder with mixed anxiety and depressed mood.",
+        "classification": "anxiety"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "substance_abuse",
+        "classified_as": "anxiety",
+        "match": false,
+        "confidence": 4
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 2.26283597946167
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.516738464507486,
+        "local_coherence": 0.5583668129082007,
+        "window_coherence": 0.5710389622728567
+      },
+      "readability": {
+        "flesch_kincaid_grade": 7.74,
+        "gunning_fog_index": 3.74,
+        "flesch_reading_ease": 55.82
+      },
+      "diversity": {
+        "distinct_1": 0.5202761000862812,
+        "distinct_2": 0.9110535405872193,
+        "distinct_3": 0.9732065687121867
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "substance_abuse",
+      "predicted": "<sym>Little interest or pleasure in activities</sym>, persistent <sym>anxiety</sym>, and <sym>perceived medical dismissal of physical symptoms</sym> emerged as central themes. You\u2019ve described navigating daily challenges with <sym>mood fluctuations</sym>, <sym>somatic discomfort</sym>, and a sense of being misunderstood, which must feel isolating. Your efforts to manage distress\u2014whether through avoidance or self-soothing strategies\u2014are valid, even if they feel routine to you.  \n\n**Diagnosis:** <med>Generalized Anxiety Disorder (GAD), unspecified; provisional depressive symptoms (adjustment disorder with mixed anxiety and depressed mood); and possible substance use concern (pending substance screen)</med>  \n\n**Reasoning:**  \n- **GAD** is supported by daily <sym>nervousness</sym>, avoidance behaviors (<quote>\u201cavoiding crowded places\u201d</quote>), and impaired functioning (Q9, Q15). The \u201c<quote>something</quote>\u201d used to calm anxiety raises suspicion for possible <med>substance use</med> (e.g., benzodiazepines, alcohol).  \n- Depressive features (Q1-2) do not meet full <med>MDD</med> criteria but align with <med>adjustment disorder</med> given the overlap with stressors (e.g., work strain, medical dissatisfaction).  \n- <sym>Somatic symptoms</sym> (Q10) are noted but insufficient for <med>somatic symptom disorder</med> without evidence of excessive illness-related thoughts/behaviors.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Comprehensive clinical interview:** Explore substance use patterns (e.g., \u201c<sym>something</sym>\u201d use) and clarify symptom chronology (e.g., when anxiety/depression began).  \n2. **Psychometric screening:** Assess for <med>GAD</med> with the GAD-7 and screen for <med>substance use</med> via AUDIT or DAST-10.  \n3. **Medical reevaluation:** Coordinate with primary care to rule out physical contributors to fatigue or aches (e.g., thyroid imbalances) and address concerns about prior dismissiveness.  \n4. **Cognitive-behavioral therapy (CBT):** Focus on anxiety management, cognitive restructuring for <sym>worry</sym> spirals, and exposure-based strategies for avoidance.  \n5. **Medication consideration:** Low-dose SSRIs (e.g., escitalopram) or short-term <med>buspirones</med> for anxiety, pending substance use assessment.  \n\nThis framework balances your concerns while prioritizing validation and collaboration to address both emotional distress and unmet healthcare needs.",
+      "matches": false,
+      "classification": "anxiety",
+      "classification_confidence": 4
+    }
+  }
+}

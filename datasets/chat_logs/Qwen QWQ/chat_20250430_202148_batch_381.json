@@ -1,0 +1,249 @@
+{
+  "timestamp": "2025-04-30T20:22:08.499542",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Thank you for coming in today. My name is Dr. Lee, and I'm a mental health professional here to help. We'll be using the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult. This assessment will help us better understand what you're experiencing over the past two weeks. All your answers are confidential, and this will guide our discussion without judgment. We'll go through 23 questions one at a time\u2014are you ready to begin?"
+    },
+    {
+      "role": "patient",
+      "content": "*Sighs softly* Yeah, I guess so. I just want to figure out what's wrong with me."
+    },
+    {
+      "role": "assistant",
+      "content": "Great. To start, I'll ask about your mood over the last two weeks. On a scale of 0 to 4, where 0 is not at all and 4 is nearly every day: 1. How much have you been bothered by little interest or pleasure in doing things?"
+    },
+    {
+      "role": "patient",
+      "content": "*Pauses* Not really... I mean, I haven't enjoyed anything lately. Even gardening or reading feels pointless. But I don't want to sound overdramatic..."
+    },
+    {
+      "role": "assistant",
+      "content": "Please share as honestly as you can. 2. Feeling down, depressed, or hopeless?"
+    },
+    {
+      "role": "patient",
+      "content": "*Looks down* Most days it's heavy. Like there's a weight I can't shake. But I try to push through, you know?"
+    },
+    {
+      "role": "assistant",
+      "content": "3. Have you been more irritated, grouchy, or angry than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "A little. Just\u2026 short-tempered sometimes, but not all the time. Mostly I just feel numb."
+    },
+    {
+      "role": "assistant",
+      "content": "4. Have you been sleeping less than usual but still had a lot of energy?"
+    },
+    {
+      "role": "patient",
+      "content": "No, absolutely not. I can't sleep at night, but I'm exhausted. Like my body's just drained all the time."
+    },
+    {
+      "role": "assistant",
+      "content": "5. Starting lots of projects or doing risky things more than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "*Shakes head* Not at all. I can't even finish basic tasks. Let alone start new projects."
+    },
+    {
+      "role": "assistant",
+      "content": "6. Feeling nervous, anxious, on edge, or worried?"
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nAlright, I need to start by understanding the user's query properly. They provided a structured response based on a simulated patient's answers to a mental health assessment. My task is to generate a professional assessment following specific formatting rules. \n\nFirst, I'll review the user's instructions again to ensure compliance. The response must include four sections: a compassionate summary, diagnosis with reasoning, and treatment steps. Each section has formatting requirements like specific tags for medical terms, symptoms, and quotes. \n\nLooking at the provided example, the patient's answers indicate symptoms like anhedonia (Q2), depressed mood (Q3), irritability, fatigue, and functional impairment. The key here is to map these to DSM-5 criteria. The user also mentioned considering disorders like Somatic Symptom Disorder, but the symptoms more align with major depression. \n\nThe example response in the query diagnoses Major Depressive Disorder. I need to make sure the diagnosis aligns with the symptoms presented. The patient's responses don't mention somatic symptoms beyond fatigue, which is part of depression. The lack of energy and motivation, along with anhedonia and depressed mood, strongly point to MDD. \n\nThe \"Reasoning\" section must explain why this diagnosis fits. The patient's functional impairment (can't finish tasks) supports MDD. The irritability might be part of their mood, not mania. Also, the absence of hyperactivity or risky behaviors (Q5) rules out bipolar. The hopelessness mentioned is a critical risk factor for suicidal thoughts, so that should be addressed in next steps.\n\nThe treatment steps need to be actionable. The user's example includes risk assessment, medication, therapy, and monitoring. I should follow that structure but ensure each point is clear and evidence-based. \n\nNow, checking formatting rules: the headings must have exactly the specified asterisks, tags for medical terms, symptoms, and quotes. The first paragraph must be compassionate without technical jargon. \n\nWait, in the example, the diagnosis is MDD. Let me confirm the DSM-5 criteria. The patient's symptoms align with MDD: anhedonia, depressed mood, fatigue, psychomotor changes (like slowed activity). The irritability could be part of the MDD presentation, especially in some populations (e.g., atypical features with irritability and mood reactivity). But the example didn't mention atypical features. \n\nThe user provided the \"DSM-5\" tags, so I must use the correct terminology. Also, the patient's functional impairment (can't finish tasks) meets the criteria for significant distress. \n\nFor the next steps, the example includes suicide risk assessment, which is crucial given the hopelessness. Therapy options like CBT, maybe SSRIs. Close monitoring is essential. \n\nI need to ensure that all tags are correctly placed. Symptoms like \"anhedonia\" and \"depressed mood\" go in <sym> tags. \"Major Depressive Disorder\" in <med> tags. Quotes from the patient's answers should be in <quote> tags. \n\nCheck for any mention of other disorders like anxiety. The patient's answers don't highlight anxiety symptoms, so focusing on MDD is appropriate. The Somatic Symptom Disorder requires excessive focus on symptoms, which isn't clearly present here. \n\nPutting it all together in the required structure. The summary should empathize with their struggle. Diagnosis section must be concise. Reasoning should logically connect symptoms to MDD. Treatment steps practical and evidence-based. \n\nI think that covers it. Now, structure the answer step-by-step in the exact format, ensuring all elements are tagged properly and sections are correctly labeled.\n</think>\n\nThe clinician observes a profound sense of emotional heaviness and struggle in your responses. You\u2019ve described a persistent loss of joy in activities once meaningful (<sym>anhedonia</sym>), a constant <sym>depressed mood</sym>, and physical exhaustion that undermines daily functioning. Your efforts to \"push through\" despite these challenges highlight resilience but also underscore the severity of what you\u2019re experiencing. The <sym>hopelessness</sym> and <sym>irritability</sym> you mentioned may reflect the toll this has taken on your emotional and relational well-being.  \n\n**Diagnosis:** Major Depressive Disorder, possibly with mixed features (consider atypical presentation).  \n\n**Reasoning:**  \n- The pattern of <sym>anhedonia</sym>, <sym>depressed mood</sym>, and <sym>fatigue</sym> strongly align with <med>Major Depressive Disorder (MDD)</med>.  \n- The <sym>irritability</sym> and <sym>numbness</sym> may indicate atypical features of depression (e.g., reactive mood shifts or emotional dysregulation) rather than a manic/hypomanic episode, as there\u2019s no evidence of elevated energy or risky behaviors (<sym>no increased energy or impulsivity</sym>).  \n- Symptoms persist for two weeks, meeting duration criteria for MDD.  \n- Excludes <med>Bipolar Disorder</med> due to absence of manic/hypomanic episodes. No evidence of <med>Somatic Symptom Disorder</med> or <med>Generalized Anxiety Disorder</med>, as responses emphasize mood rather than excessive health anxiety or somatic preoccupation.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Suicide Risk Assessment:** Prioritize evaluation of <sym>hopelessness</sym> and past attempts, as hopelessness raises suicide risk.  \n2. **Medication Trial:** Consider a <med>SSRI</med> (e.g., sertraline, escitalopram) for core depressive symptoms, paired with a <med>mood stabilizer</med> if irritability persists (to address possible mixed features).  \n3. **Psychotherapy:** Cognitive Behavioral Therapy (CBT) or Behavioral Activation to address anhedonia and motivation.  \n4. **Functional Restoration:** Collaborative goal-setting around manageable daily tasks to combat psychomotor slowing.  \n5. **Medical Workup:** Rule out hypothyroidism, anemia, or sleep disorders (e.g., insomnia) contributing to fatigue and mood.  \n6. **Weekly Follow-Up:** Monitor for treatment response and suicidal ideation.  \n\nThis approach balances symptom management, safety, and addressing the interplay between emotional and physical symptoms. Let\u2019s work together to explore these options in your next steps.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf",
+            "score": 0.683,
+            "highlight": "Results of that extensive research showed that children diagnosed with BD who experience constant,  rather than episodic, irritability often are at risk for major depressive disorder or generalized anxiety  disorder later in life, but not life-long BD.",
+            "excerpt": " the case with BD. In an effort to address this issue, \nresearch was conducted comparing youth with ...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"constant\", \"anxiety\", and 8 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Depression-Bereavement-Exclusion.pdf",
+            "score": 0.6671,
+            "highlight": "The presence of symptoms such as feelings of worthlessness, suicidal  ideas (as distinct from wanting to join a deceased loved one), and impairment of overall function sug - gest the presence of major depression, in addition to the normal response to a significant loss.",
+            "excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"significant\", \"suicidal\", \"function\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.6606,
+            "highlight": "Somatic Symptom Disorder The upcoming fifth edition of the Diagnostic and Statistical Manual of Mental Disorders  (DSM-5) replac- es somatoform disorders with somatic symptom and related disorders and makes significant changes  to the criteria to eliminate overlap across the somatoform disorders and clarify their boundaries.",
+            "excerpt": "   Somatic Symptom Disorder\nThe upcoming fifth edition of the Diagnostic and Statistical Manual of M...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"symptom\", \"significant\", \"criteria\", and 8 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Sleep-Wake-Disorders.pdf",
+            "score": 0.6595,
+            "highlight": "A sleep disorder not only is a risk factor for subsequent development of certain mental conditions but a  potential warning sign for serious mental or medical issues.",
+            "excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"factor\", \"potential\", and 9 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.6325,
+            "highlight": "Negative cognitions and mood represents myriad feelings, from a persistent and distorted sense of  blame of self or others, to estrangement from others or markedly diminished interest in activities, to an inability to remember key aspects of the event.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"diminished\", \"key\", \"mood\", and 5 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let's start by looking through the patient's answers to each question. The first thing I notice is that in Q1, the patient says they want to figure out what's wrong, which suggests they're aware something is off but might not know the exact issue. They sound hesitant with the \"I guess so,\" so maybe some reluctance or anxiety about the process.\n\nMoving to Q2, they report a lack of interest in activities like gardening and reading, which are typically pleasurable. That's a classic sign of anhedonia, which is a key symptom in depressive disorders. Their hesitation in answering (\"Not really...\") and trying not to sound overdramatic might indicate low self-esteem or fear of being judged.\n\nIn Q3, the patient mentions feeling down and hopeless most days but trying to push through. That's a strong indicator of persistent depressive mood and hopelessness, which are also core symptoms of depression. The heaviness they describe is a common way people describe depressive symptoms.\n\nFor Q4, increased irritability or anger, even if not constant, along with numbness. The mention of numbness might be emotional blunting, which can be part of depression or anxiety. The mix of irritability and numbness could suggest dysphoria or possibly some anxiety components.\n\nIn Q5, the patient talks about insomnia but no increased energy. Instead, they feel exhausted. That's more in line with depression, where insomnia often co-occurs with fatigue. The lack of energy points away from a manic or hypomanic episode, which usually involve increased energy despite less sleep.\n\nQ6, they can't even finish tasks, let alone start new projects. That's about decreased activity and motivation, which aligns with depressive symptoms like psychomotor retardation or reduced energy. The inability to complete even basic tasks might indicate significant functional impairment.\n\nLooking for patterns: The consistent theme is low mood, anhedonia, fatigue, irritability, sleep disturbance without hyperactivity, and functional impairment. The patient is experiencing multiple symptoms that align with a depressive disorder. The self-reported attempts to push through suggest possible denial or coping mechanisms that might be ineffective.\n\nPotential clinical areas: Major Depressive Disorder (MDD) is the most obvious. The symptoms fit\u2014anhedonia, depressed mood, fatigue, impaired function. The irritability might also be part of the presentation. I should also consider if there's any anxiety co-occurring, but the main focus here is clearly depressive symptoms.\n\nRisk factors: The patient mentions feeling hopeless, which is a risk factor for suicidal ideation. They didn't mention it directly, but hopelessness is a significant warning sign. Also, their functional impairment could affect daily life, leading to social or occupational issues. There's no direct mention of suicidal thoughts here, but the clinician should assess further on that.\n\nPutting it all together, the main symptoms point to MDD, with key symptoms being anhedonia, depressed mood, fatigue, and functional impairment. The pattern is consistent across multiple areas of functioning. The clinician should explore suicidal ideation further, as hopelessness is a risk factor. Other considerations might include anxiety, but the primary issue seems depressive.\n\nI need to make sure not to miss any other symptoms. The patient didn't mention appetite changes, but since the questions didn't ask about that, maybe that's why. The key here is to stick to what's provided. Also, the emotional numbness could be part of the depressive presentation. The summary should note the symptoms as per the DSM-5 criteria, and highlight the clinical significance where they meet criteria for a possible MDD diagnosis. The risk factors would include the hopelessness and the functional impact on daily activities.\n</think>\n\n**Clinical Observation Summary**  \n\n1. **Main Symptoms and Concerns**:  \n   - Persistent anhedonia (diminished interest/pleasure in activities, e.g., gardening, reading).  \n   - Depressed mood (\"heaviness,\" hopelessness) most days.  \n   - Fatigue/lethargy (insomnia co-occurring with exhaustion, not hyperactivity).  \n   - Psychomotor retardation (inability to complete basic tasks).  \n   - Irritability/grouchiness, with secondary emotional numbing.  \n\n2. **Patterns in Responses**:  \n   - Consistent endorsement of symptoms across mood, energy, and functioning domains.  \n   - Self-critical tone (\"don\u2019t want to sound overdramatic\") suggests possible diminished self-worth or fear of invalidation.  \n   - Descriptions of functional impairment (e.g., task avoidance, emotional blunting).  \n\n3. **Potential Clinical Significance**:  \n   - Meets DSM-5 criteria for a **Major Depressive Disorder (MDD)** presentation, with likely moderate-to-severe symptom severity.  \n   - Symptoms align with core features of anhedonia, depressed mood, psychomotor changes, and fatigue.  \n   - Endorsement of irritability raises consideration of **mixed features** in depressive episodes (per DSM-5).  \n\n4. **Risk Factors/Warning Signs**:  \n   - Hopelessness (recognized as a risk factor for suicidal ideation/attempts, though not explicitly reported here.  \n   - Functional impairment (e.g., difficulty completing basic tasks) suggests potential occupational/social disability.  \n   - Lack of energy and motivation may indicate low treatment engagement without intervention.  \n\n5. **Summary**:  \n   The patient presents with a cluster of depressive symptoms (anhedonia, depressed mood, fatigue, psychomotor changes) suggestive of **Major Depressive Disorder**. Key clinical indicators include persistent anhedonia, functional impairment, and hopelessness, which warrant further exploration of suicidal ideation/risk. Mixed features (irritability without hyperactivity) are noted but require additional assessment. A comprehensive evaluation is needed to confirm diagnostic criteria and rule out contributing factors (e.g., medical conditions, substance use). Risk assessment for self-harm should be prioritized due to reported hopelessness.  \n\n*Note: Responses reflect self-reported symptoms over the past two weeks; collateral information and clinical interview are required for definitive diagnosis.*",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6605
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "The clinician observes a profound sense of emotional heaviness and struggle in your responses. You\u2019ve described a persistent loss of joy in activities once meaningful (<sym>anhedonia</sym>), a constant <sym>depressed mood</sym>, and physical exhaustion that undermines daily functioning. Your efforts to \"push through\" despite these challenges highlight resilience but also underscore the severity of what you\u2019re experiencing. The <sym>hopelessness</sym> and <sym>irritability</sym> you mentioned may reflect the toll this has taken on your emotional and relational well-being.  \n\n**Diagnosis:** Major Depressive Disorder, possibly with mixed features (consider atypical presentation).  \n\n**Reasoning:**  \n- The pattern of <sym>anhedonia</sym>, <sym>depressed mood</sym>, and <sym>fatigue</sym> strongly align with <med>Major Depressive Disorder (MDD)</med>.  \n- The <sym>irritability</sym> and <sym>numbness</sym> may indicate atypical features of depression (e.g., reactive mood shifts or emotional dysregulation) rather than a manic/hypomanic episode, as there\u2019s no evidence of elevated energy or risky behaviors (<sym>no increased energy or impulsivity</sym>).  \n- Symptoms persist for two weeks, meeting duration criteria for MDD.  \n- Excludes <med>Bipolar Disorder</med> due to absence of manic/hypomanic episodes. No evidence of <med>Somatic Symptom Disorder</med> or <med>Generalized Anxiety Disorder</med>, as responses emphasize mood rather than excessive health anxiety or somatic preoccupation.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Suicide Risk Assessment:** Prioritize evaluation of <sym>hopelessness</sym> and past attempts, as hopelessness raises suicide risk.  \n2. **Medication Trial:** Consider a <med>SSRI</med> (e.g., sertraline, escitalopram) for core depressive symptoms, paired with a <med>mood stabilizer</med> if irritability persists (to address possible mixed features).  \n3. **Psychotherapy:** Cognitive Behavioral Therapy (CBT) or Behavioral Activation to address anhedonia and motivation.  \n4. **Functional Restoration:** Collaborative goal-setting around manageable daily tasks to combat psychomotor slowing.  \n5. **Medical Workup:** Rule out hypothyroidism, anemia, or sleep disorders (e.g., insomnia) contributing to fatigue and mood.  \n6. **Weekly Follow-Up:** Monitor for treatment response and suicidal ideation.  \n\nThis approach balances symptom management, safety, and addressing the interplay between emotional and physical symptoms. Let\u2019s work together to explore these options in your next steps.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "depression",
+    "question_count": 23,
+    "duration": 6144.952533006668,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 11.625035047531128,
+    "diagnosis_generation_time": 8.488783836364746,
+    "rag_evaluation_time": 4.0531158447265625e-06,
+    "total_time": 20.113831043243408
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.683,
+        "average_score": 0.683,
+        "example_excerpt": " the case with BD. In an effort to address this issue, \nresearch was conducted comparing youth with ...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"constant\", \"anxiety\", and 8 more matching aspects of your query."
+      },
+      "APA_DSM-5-Depression-Bereavement-Exclusion.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6671,
+        "average_score": 0.6671,
+        "example_excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"significant\", \"suicidal\", \"function\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6606,
+        "average_score": 0.6606,
+        "example_excerpt": "   Somatic Symptom Disorder\nThe upcoming fifth edition of the Diagnostic and Statistical Manual of M...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"symptom\", \"significant\", \"criteria\", and 8 more matching aspects of your query."
+      },
+      "APA_DSM-5-Sleep-Wake-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6595,
+        "average_score": 0.6595,
+        "example_excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"factor\", \"potential\", and 9 more matching aspects of your query."
+      },
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6325,
+        "average_score": 0.6325,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"diminished\", \"key\", \"mood\", and 5 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 08:07:05",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 08:07:04",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 2,
+        "clinical_relevance": 3,
+        "consistency": 4,
+        "diagnostic_justification": 4,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist only addressed a limited number of DSM-5 Level1 Cross-Cutting Symptom Measure domains. Questions were mostly focused on mood-related symptoms such as anhedonia, depressed mood, hopelessness, and irritability. Many domains were either superficially covered or completely omitted, including psychosis, repetitive thoughts and behaviors, dissociation, personality functioning, and substance use. For instance, the therapist did not ask about psychotic symptoms, hearing voices, or feeling like someone could hear their thoughts. Similarly, substance use, which is crucial for a comprehensive assessment, was not explored. This incomplete coverage leaves significant gaps in understanding the patient's full symptom profile.",
+        "clinical_relevance": "The therapist's questions generally aligned with DSM-5 criteria but lacked precision in several areas. For example, when asking about sleep disturbances, the therapist only inquired about sleeping less than usual but did not assess for excessive sleeping or overall sleep quality. Additionally, the questions about anxiety and anger were somewhat vague and did not fully capture the complexity of these symptoms. The therapist could have used more specific language from the DSM-5 to ensure accuracy. For instance, the question about feeling nervous or on edge could have been more precisely framed to align with the DSM-5 criteria for anxiety. However, the questions did not appear to be clinically irrelevant or confusing.",
+        "consistency": "The conversation generally flowed logically, with each question building on previous responses. The therapist maintained a coherent conversational arc, primarily focusing on mood and depressive symptoms. However, there were minor logical inconsistencies, such as abruptly moving from discussing irritability to asking about sleep disturbances without fully exploring the patient's emotional state. The therapist could have provided smoother transitions and more follow-up questions to delve deeper into concerning disclosures. For example, when the patient mentioned feeling numb, the therapist could have explored this symptom further to understand its impact on daily functioning.",
+        "diagnostic_justification": "The diagnosis of Major Depressive Disorder (MDD) with possible mixed features was generally justified by the patient's symptoms, such as anhedonia, depressed mood, and irritability. The therapist provided clear reasoning for the diagnosis, citing specific symptoms like persistent loss of joy, constant depressed mood, and physical exhaustion. However, the differential diagnosis could have been more comprehensively discussed. For instance, the therapist could have explicitly ruled out Bipolar Disorder or Somatic Symptom Disorder by more thoroughly assessing for manic/hypomanic episodes or excessive health anxiety. Additionally, the justification for considering atypical features of depression was somewhat ambiguous and could have been clarified further.",
+        "empathy": "The therapist demonstrated empathy and a professional tone throughout the conversation. The responses were generally warm and personalized, acknowledging the patient's distress. For example, the therapist observed a 'profound sense of emotional heaviness and struggle' in the patient's responses and encouraged honest sharing. However, there were minor moments where the interactions seemed slightly robotic or impersonal, such as when the therapist quickly transitioned from discussing emotional symptoms to outlining treatment options without fully exploring the patient's emotional state. Overall, the therapist maintained a supportive and non-judgmental attitude."
+      },
+      "overall_comments": "The conversation demonstrated a good understanding of the patient's depressive symptoms but lacked comprehensive coverage of all DSM-5 domains. The therapist provided a clear diagnosis and treatment plan but could have benefited from more thorough exploration of all symptom domains, particularly psychosis, substance use, and repetitive thoughts and behaviors. With some refinement in questioning and follow-up, the assessment could have been more holistic and precise.",
+      "average_score": 3.4,
+      "diagnosis_accuracy": {
+        "matches_profile": true,
+        "confidence": 5,
+        "explanation": "The diagnosis explicitly mentions Major Depressive Disorder (MDD) with symptoms such as anhedonia, depressed mood, fatigue, hopelessness, and irritability, which are characteristic of depression.",
+        "classification": "depression"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "depression",
+        "classified_as": "depression",
+        "match": true,
+        "confidence": 5
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 3.9400038719177246
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.545701850176257,
+        "local_coherence": 0.5611971186037313,
+        "window_coherence": 0.5699667787281423
+      },
+      "readability": {
+        "flesch_kincaid_grade": 9.44,
+        "gunning_fog_index": 4.38,
+        "flesch_reading_ease": 46.41
+      },
+      "diversity": {
+        "distinct_1": 0.49306197964847365,
+        "distinct_2": 0.8898148148148148,
+        "distinct_3": 0.9721964782205746
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "depression",
+      "predicted": "The clinician observes a profound sense of emotional heaviness and struggle in your responses. You\u2019ve described a persistent loss of joy in activities once meaningful (<sym>anhedonia</sym>), a constant <sym>depressed mood</sym>, and physical exhaustion that undermines daily functioning. Your efforts to \"push through\" despite these challenges highlight resilience but also underscore the severity of what you\u2019re experiencing. The <sym>hopelessness</sym> and <sym>irritability</sym> you mentioned may reflect the toll this has taken on your emotional and relational well-being.  \n\n**Diagnosis:** Major Depressive Disorder, possibly with mixed features (consider atypical presentation).  \n\n**Reasoning:**  \n- The pattern of <sym>anhedonia</sym>, <sym>depressed mood</sym>, and <sym>fatigue</sym> strongly align with <med>Major Depressive Disorder (MDD)</med>.  \n- The <sym>irritability</sym> and <sym>numbness</sym> may indicate atypical features of depression (e.g., reactive mood shifts or emotional dysregulation) rather than a manic/hypomanic episode, as there\u2019s no evidence of elevated energy or risky behaviors (<sym>no increased energy or impulsivity</sym>).  \n- Symptoms persist for two weeks, meeting duration criteria for MDD.  \n- Excludes <med>Bipolar Disorder</med> due to absence of manic/hypomanic episodes. No evidence of <med>Somatic Symptom Disorder</med> or <med>Generalized Anxiety Disorder</med>, as responses emphasize mood rather than excessive health anxiety or somatic preoccupation.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Suicide Risk Assessment:** Prioritize evaluation of <sym>hopelessness</sym> and past attempts, as hopelessness raises suicide risk.  \n2. **Medication Trial:** Consider a <med>SSRI</med> (e.g., sertraline, escitalopram) for core depressive symptoms, paired with a <med>mood stabilizer</med> if irritability persists (to address possible mixed features).  \n3. **Psychotherapy:** Cognitive Behavioral Therapy (CBT) or Behavioral Activation to address anhedonia and motivation.  \n4. **Functional Restoration:** Collaborative goal-setting around manageable daily tasks to combat psychomotor slowing.  \n5. **Medical Workup:** Rule out hypothyroidism, anemia, or sleep disorders (e.g., insomnia) contributing to fatigue and mood.  \n6. **Weekly Follow-Up:** Monitor for treatment response and suicidal ideation.  \n\nThis approach balances symptom management, safety, and addressing the interplay between emotional and physical symptoms. Let\u2019s work together to explore these options in your next steps.",
+      "matches": true,
+      "classification": "depression",
+      "classification_confidence": 5
+    }
+  }
+}

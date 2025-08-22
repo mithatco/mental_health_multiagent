@@ -1,0 +1,313 @@
+{
+  "timestamp": "2025-05-01T02:28:05.939426",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm Dr. Smith, a mental health professional here to help. Today, I'll be using the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult to better understand your experiences over the past two weeks. This is a routine assessment to guide our discussion. Everything you share is confidential, and I'll ask you questions one at a time. Are you ready to begin?"
+    },
+    {
+      "role": "patient",
+      "content": "Yes, I guess. I just\u2026 I'm not sure how to explain everything."
+    },
+    {
+      "role": "assistant",
+      "content": "Take your time. Let's start with the first question. Over the past two weeks, how much have you been bothered by LITTLE INTEREST OR PLEASURE IN DOING THINGS?"
+    },
+    {
+      "role": "patient",
+      "content": "Hmm, not much, but\u2026 I just don't feel excited about anything anymore. Like, going out with friends or even hobbies\u2014I just don't care. It's been, I don't know, maybe two or three weeks now?"
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you for sharing. Next: FEELING DOWN, DEPRESSED, OR HOPELESS?"
+    },
+    {
+      "role": "patient",
+      "content": "That's probably most days. I wake up and just\u2026 it's hard to shake this heaviness. I try to push through, but sometimes I just can't."
+    },
+    {
+      "role": "assistant",
+      "content": "I'm sorry you're feeling that way. Next: FEELING MORE IRRITATED, GROUCHY, OR ANGRY THAN USUAL?"
+    },
+    {
+      "role": "patient",
+      "content": "Oh, definitely. I've been snapping at my coworkers over little things. My boss mentioned it last week. I don't mean to, but I just get so worked up sometimes."
+    },
+    {
+      "role": "assistant",
+      "content": "This next question is about ENERGY: SLEEPING LESS THAN USUAL, BUT STILL HAVE A LOT OF ENERGY?"
+    },
+    {
+      "role": "patient",
+      "content": "No, actually I'm exhausted. I've been sleeping too much instead. I just can't stay awake sometimes."
+    },
+    {
+      "role": "assistant",
+      "content": "And the next item: STARTING LOTS MORE PROJECTS THAN USUAL OR DOING MORE RISKY THINGS THAN USUAL?"
+    },
+    {
+      "role": "patient",
+      "content": "Not really. I'm actually the opposite\u2014I can't even get motivated to finish basic tasks at work. I'm falling behind because I just\u2026 can't focus."
+    },
+    {
+      "role": "assistant",
+      "content": "Next: FEELING NERVOUS, ANXIOUS, FRIGHTENED, WORRIED, OR ON EDGE?"
+    },
+    {
+      "role": "patient",
+      "content": "Yeah, this is constant. My heart races sometimes. I get jumpy if plans change, which they're doing a lot lately, and I can't relax."
+    },
+    {
+      "role": "assistant",
+      "content": "FEELING PANIC OR BEING FRIGHTENED?"
+    },
+    {
+      "role": "patient",
+      "content": "Panic? Not exactly, but I feel a low-level fear all the time. Like, what if things get worse? I can't shake it."
+    },
+    {
+      "role": "assistant",
+      "content": "AVOIDING SITUATIONS THAT MAKE YOU ANXIOUS?"
+    },
+    {
+      "role": "patient",
+      "content": "I've skipped some meetings and social events. It's easier to stay home, but I know that's not healthy."
+    },
+    {
+      "role": "assistant",
+      "content": "UNEXPLAINED ACHES, PAINS, LIKE HEAD, BACK, JOINTS, OR ABDOMEN?"
+    },
+    {
+      "role": "patient",
+      "content": "Oh yeah, I've had headaches almost every day. My stomach's been unsettled too. They can't find anything physically wrong, but it's there."
+    },
+    {
+      "role": "assistant",
+      "content": "FEELING THAT ILLNESSES ARE NOT BEING TAKEN SERIOUSLY ENOUGH?"
+    },
+    {
+      "role": "patient",
+      "content": "Hmm, not really. My doctor said it's stress-related, but\u2026 I guess I just feel like I'm overreacting sometimes."
+    },
+    {
+      "role": "assistant",
+      "content": "THOUGHTS OF ACTUALLY HURTING YOURSELF?"
+    },
+    {
+      "role": "patient",
+      "content": "No, not like that. I just\u2026 feel empty sometimes. But I don't want to hurt myself. Just wish I could escape this feeling."
+    },
+    {
+      "role": "assistant",
+      "content": "HEARING THINGS OTHER PEOPLE COULDN'T HEAR, LIKE VOICES WHEN NO ONE IS AROUND?"
+    },
+    {
+      "role": "patient",
+      "content": "No, nothing like that. I'm just hearing normal things. I don't think I'm\u2026 hallucinating or anything."
+    },
+    {
+      "role": "assistant",
+      "content": "FEELING THAT SOMEONE COULD HEAR YOUR THOUGHTS, OR YOU COULD HEAR WHAT ANOTHER PERSON WAS THINKING?"
+    },
+    {
+      "role": "patient",
+      "content": "No, not that either. I'm not sure what that's like. I'm just focused on my own problems, really."
+    },
+    {
+      "role": "assistant",
+      "content": "PROBLEMS WITH SLEEP THAT AFFECTED YOUR SLEEP QUALITY OVERALL?"
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, let's go through this step by step. The user provided a detailed set of responses from a patient assessment. My task is to structure the answer exactly as specified, using the required formatting and tags. \n\nFirst, the compassionate summary. I need to acknowledge the patient's experience without medical jargon. Highlight their struggles with mood, anxiety, and physical symptoms. Use <sym> for symptoms like anhedonia and fatigue, and <quote> for their direct quotes about feeling empty or overreacting.\n\nNext, the Diagnosis section. The main symptoms point to Major Depressive Disorder and Generalized Anxiety Disorder. The DSM-5 criteria for MDD are met with anhedonia, low mood, fatigue, and irritability. GAD fits because of persistent anxiety and avoidance. Somatic Symptom Disorder is possible, but the primary drivers seem to be mood and anxiety. Need to mention comorbid possibilities but prioritize the main disorders here.\n\nFor Reasoning, I'll explain why MDD and GAD are primary. The duration (2+ weeks), symptom clusters (depressive and anxious) support that. Somatic symptoms are present but likely tied to the anxiety. The patient's quote about feeling they \"overreact\" suggests anxiety-driven somatization, not SSD. Exclude psychotic features since they denied voices or delusions. \n\nNext Steps: Need to include psychotherapy (CBT for both MDD and GAD), possible meds like SSRIs, medical recheck for somatic symptoms, lifestyle adjustments, and monitoring for suicidal thoughts (though they denied active intent). \n\nI must ensure all sections follow the strict format\u2014no markdown, correct tags. Check that all headings are properly formatted with double asterisks. Avoid using any terms not in the responses. Make sure to use the specified tags correctly: medical terms in <med>, symptoms in <sym>, and quotes as noted. Also, ensure that the diagnosis is after the **Diagnosis:** label without extra lines. \n\nWait, the user mentioned Somatic Symptom Disorder in the reference, but in the answers, the patient's somatic symptoms are unexplained but they don't show the excessive thoughts or behaviors required for SSD. They said their doctor thinks it\u2019s stress-related, so SSD might not be primary. So the primary Dx is MDD and GAD. \n\nCheck the answers again: The patient said they feel \"empty,\" which supports depression. The anxiety symptoms are chronic, not episodic. The somatic symptoms are present but secondary. \n\nMake sure the recommendations are practical: therapy, med options, medical follow-up, etc. \n\nDouble-check formatting\u2014each section after the first paragraph starts with their exact headings. No markdown, just plain text with asterisks. \n\nI think that covers all parts. Now structure it all per instructions, making sure to avoid any markdown and use the tags correctly. Let's put it all together now.\n</think>\n\n<sym>Little interest in activities</sym>, <sym>depressed mood</sym>, and persistent <sym>anxiety</sym> paint a picture of profound emotional strain. Your <sym>fatigue</sym> and <quote>\"empty\"</quote> feeling highlight distress that\u2019s likely affecting work and relationships. The unexplained <sym>headaches</sym> and <sym>stomach discomfort</sym> add to your burden, and the <quote>\"overreacting\"</quote> self-doubt suggests isolation and frustration.  \n\n**Diagnosis:**  \n<med>Mild to Moderate Major Depressive Disorder (MDD) with comorbid Generalized Anxiety Disorder (GAD)</med>, with <sym>somatic symptoms</sym> explained by mood/anxiety dysregulation.  \n\n**Reasoning:**  \n1. **MDD**: Criteria met via <sym>anhedonia</sym>, <sym>low mood most days</sym>, <sym>fatigue</sym>, and <sym>irritability</sym> (6+ of the past 2+ weeks). The 2\u20133-week duration is near the DSM-5 2-week threshold.  \n2. **GAD**: Persistent <sym>nervousness</sym>, <sym>worry about worsening circumstances</sym>, and <sym>avoidant behaviors</sym> (e.g., skipping meetings) align with GAD criteria.  \n3. **Somatic symptoms**: Likely secondary to stress, per the patient\u2019s doctor, and not meeting <med>Somatic Symptom Disorder</med> criteria (no evidence of disproportionate thoughts/behaviors about illness).  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Psychotherapy**: Cognitive Behavioral Therapy (CBT) targeting depressive and anxious thought patterns and social withdrawal.  \n2. **Medication evaluation**: Trial of an <med>SSRI</med> (e.g., escitalopram) for mood + anxiety, with monitoring for sleep/energy improvement.  \n3. **Medical reassurance**: Repeat physical workup if new somatic symptoms arise, but focus treatment on mental health per current data.  \n4. **Lifestyle intervention**: Sleep hygiene strategies to address hypersomnia, and gradual exposure exercises to reduce avoidance.  \n5. **Collaborative care**: Involve primary care for ongoing somatic symptom monitoring, paired with mental health follow-up.  \n\nThis is manageable with coordinated care. Let\u2019s work together to address both your emotional and physical struggles.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.7866,
+            "highlight": "Somatic Symptom Disorder The upcoming fifth edition of the Diagnostic and Statistical Manual of Mental Disorders  (DSM-5) replac- es somatoform disorders with somatic symptom and related disorders and makes significant changes  to the criteria to eliminate overlap across the somatoform disorders and clarify their boundaries.",
+            "excerpt": "   Somatic Symptom Disorder\nThe upcoming fifth edition of the Diagnostic and Statistical Manual of M...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"symptom\", \"significant\", \"criteria\", and 9 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Conduct-Disorder.pdf",
+            "score": 0.6872,
+            "highlight": "and research of mental illnesses, including substance use disorders.",
+            "excerpt": "and research of mental illnesses, including substance use disorders. Visit the APA at www.psychiatry...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"use\", \"mental\", \"disorders\", and 3 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Sleep-Wake-Disorders.pdf",
+            "score": 0.6823,
+            "highlight": "Changes to Sleep-Wake Disorders   A prime goal of DSM-5 changes to sleep-wake disorders is to increase the clinical utility of definitions and diagnostic criteria, especially for general medical or mental health clinicians, and to clarify when referral is appropriate to a sleep specialist.",
+            "excerpt": "rious mental or medical issues. For example, sleep disturbances can signal the presence of medical a...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"criteria\", \"mental\", \"clinical\", and 6 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.6719,
+            "highlight": "Negative cognitions and mood represents myriad feelings, from a persistent and distorted sense of  blame of self or others, to estrangement from others or markedly diminished interest in activities, to an inability to remember key aspects of the event.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"negative\", \"mood\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Obsessive-Compulsive-Disorder.pdf",
+            "score": 0.6619,
+            "highlight": "Obsessive Compulsive    and Related Disorders The upcoming fifth edition of the Diagnostic and Statistical Manual of Mental Disorders (DSM-5) will in - clude a new chapter on Obsessive-Compulsive and Related Disorders to reflect the increasing evidence  of these disorders\u2019 relatedness to one another and distinction from other anxiety disorders, as well as  to help clinicians better identify and treat individuals suffering from these disorders.",
+            "excerpt": "  Obsessive Compulsive \n  and Related Disorders\nThe upcoming fifth edition of the Diagnostic and Sta...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"mental\", \"disorders\", \"identify\", and 4 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let's tackle this step by step. The user provided a detailed set of responses from a patient to a cross-cutting symptom measure. My job is to analyze these and structure the answer according to the five points specified. \n\nFirst, I need to identify the main symptoms. Looking at the answers, the patient mentions little interest in activities, feeling down, irritability, fatigue, anxiety, physical symptoms like headaches and stomach issues, and some avoidance behaviors. They also mention not having suicidal thoughts or psychosis. \n\nNext, patterns in responses. They seem to consistently endorse symptoms across multiple domains: mood (depression, hopelessness), anxiety (nervousness, avoidance), and somatic complaints. The lack of positive symptoms like mania or psychosis suggests it's not bipolar. The duration mentioned (past two weeks) is important but the patient also notes it's been three weeks, which is close to the clinical threshold for depression.\n\nFor clinical significance, the depression symptoms are key here\u2014anhedonia, low energy, and negative mood. The anxiety is chronic, so maybe an anxiety disorder co-occurring. The somatic symptoms without medical cause point to possible somatic symptom disorder or could be part of depression/anxiety. The irritability might be a part of the depressive presentation or separate.\n\nRisk factors: The patient isn't suicidal, which is good, but the ongoing symptoms without relief could indicate chronicity. The physical symptoms not being taken seriously by the patient themselves might be a point to explore further\u2014they feel their doctor dismisses them, but they didn't say they feel unheard by their doctor, just that they question if they're overreacting. \n\nNow, putting this into clinical terms. I need to structure each section as per the user's instructions. Avoid speculation, stick to what's reported. \n\nWait, in A11, the patient says \"not really\" about feeling illnesses aren't taken seriously, but then adds \"I guess I just feel like I'm overreacting sometimes.\" So maybe there's some doubt about their own symptoms, which could be part of the anxiety or depression.\n\nAlso, the sleep pattern: they mention sleeping too much, which is different from the typical insomnia in anxiety. That's more depressive. The lack of manic symptoms (Q6 response) rules out bipolar in the current presentation.\n\nPutting it all together: The main symptoms are depressive (anhedonia, depressed mood, fatigue) and anxiety (persistent worry, somatic symptoms). The pattern shows multiple domains affected. Clinical areas include major depressive disorder, generalized anxiety, possible somatic symptom disorder. No acute risks, but chronic issues need attention. The summary should be concise, using DSM terms without guessing. \n\nCheck for all points: main symptoms, patterns, clinical areas, risks, then the summary. Make sure not to miss anything from the answers. The patient's physical symptoms without medical cause are significant. They\u2019re avoiding social situations, which might be part of the depression or anxiety. \n\nDouble-check if there's any substance use or trauma mentioned, but the patient didn't report those. The key is to stick to the provided data. \n\nAlright, time to structure each part step by step, using clinical terminology. Avoid opinions, just the facts from their answers.\n</think>\n\n**Clinical Observation Summary**  \n\n1. **Main Symptoms and Concerns**:  \n   - **Anhedonia (lack of interest/pleasure) in activities** with marked social and occupational withdrawal.  \n   - **Persistent depressed mood and hopelessness** (most days over the past 2\u20133 weeks).  \n   - **Anxiety**: chronic nervousness, fear, and hypervigilance (e.g., \"heart racing,\" \"jumpy,\" \"fear things might get worse\").  \n   - **Somatic complaints**: unexplained headaches, abdominal discomfort, and fatigue (despite hypersomnia).  \n   - **Irritability** impacting interpersonal functioning (e.g., conflicts at work).  \n\n2. **Patterns in Responses**:  \n   - Consistent endorsement of **mood and anxiety symptoms** across multiple domains (depressive, anxious, physical).  \n   - **Temporal consistency**: symptoms reported as \"most days\" or \"constant,\" suggesting chronicity.  \n   - **Physical symptoms not attributed to medical causes**, yet persistent.  \n   - **Avoidance behaviors** (e.g., skipping social events, work meetings) to manage anxiety.  \n\n3. **Potential Clinical Significance**:  \n   - **Major Depressive Disorder (MDD)**: criteria met for anhedonia, depressed mood, and fatigue.  \n   - **Generalized Anxiety Disorder (GAD)**: persistent anxiety, restlessness, and somatic symptoms (e.g., hypervigilance, heart palpitations).  \n   - **Somatic Symptom Disorder**: unexplained physical complaints with disproportionate distress, possibly secondary to mood/anxiety.  \n   - **Mixed symptomatology**: overlap of depressive and anxious features (e.g., irritability, energy changes).  \n\n4. **Risk Factors/Warning Signs**:  \n   - **Chronic functional impairment**: work and social withdrawal, declining occupational performance.  \n   - **Somatic preoccupation**: unexplained symptoms warranting further medical evaluation, though patient acknowledges no psychosis.  \n   - **Self-doubt about symptom validity**: \"I feel like I\u2019m overreacting,\" suggesting potential for reassurance-seeking or potential minimization of distress.  \n   - No acute **suicidal ideation** or psychotic features; however, persistent hopelessness requires monitoring.  \n\n5. **Summary (Clinical Language)**:  \nThe patient presents with significant **mood and anxiety symptoms**, including persistent anhedonia, low energy, depressed mood, and psychomotor retardation (e.g., hypersomnia, work impairment). Co-occurring **generalized anxiety** is evident via sustained nervousness, hypervigilance, and somatic symptoms (headaches, gastrointestinal distress). **Avoidant behaviors** (e.g., social withdrawal, work avoidance) likely reflect attempts to manage distress. No psychotic features or suicidal ideation with plan. **Functional impairment** is notable in occupational and social domains. Further evaluation is warranted to differentiate primary depressive vs. anxiety etiology of somatic symptoms, and to assess for comorbid disorders (e.g., GAD, Somatic Symptom Disorder). Patient\u2019s self-reported \"hopelessness\" and self-doubt necessitate thorough assessment of risk and symptom trajectory.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.698
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "<sym>Little interest in activities</sym>, <sym>depressed mood</sym>, and persistent <sym>anxiety</sym> paint a picture of profound emotional strain. Your <sym>fatigue</sym> and <quote>\"empty\"</quote> feeling highlight distress that\u2019s likely affecting work and relationships. The unexplained <sym>headaches</sym> and <sym>stomach discomfort</sym> add to your burden, and the <quote>\"overreacting\"</quote> self-doubt suggests isolation and frustration.  \n\n**Diagnosis:**  \n<med>Mild to Moderate Major Depressive Disorder (MDD) with comorbid Generalized Anxiety Disorder (GAD)</med>, with <sym>somatic symptoms</sym> explained by mood/anxiety dysregulation.  \n\n**Reasoning:**  \n1. **MDD**: Criteria met via <sym>anhedonia</sym>, <sym>low mood most days</sym>, <sym>fatigue</sym>, and <sym>irritability</sym> (6+ of the past 2+ weeks). The 2\u20133-week duration is near the DSM-5 2-week threshold.  \n2. **GAD**: Persistent <sym>nervousness</sym>, <sym>worry about worsening circumstances</sym>, and <sym>avoidant behaviors</sym> (e.g., skipping meetings) align with GAD criteria.  \n3. **Somatic symptoms**: Likely secondary to stress, per the patient\u2019s doctor, and not meeting <med>Somatic Symptom Disorder</med> criteria (no evidence of disproportionate thoughts/behaviors about illness).  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Psychotherapy**: Cognitive Behavioral Therapy (CBT) targeting depressive and anxious thought patterns and social withdrawal.  \n2. **Medication evaluation**: Trial of an <med>SSRI</med> (e.g., escitalopram) for mood + anxiety, with monitoring for sleep/energy improvement.  \n3. **Medical reassurance**: Repeat physical workup if new somatic symptoms arise, but focus treatment on mental health per current data.  \n4. **Lifestyle intervention**: Sleep hygiene strategies to address hypersomnia, and gradual exposure exercises to reduce avoidance.  \n5. **Collaborative care**: Involve primary care for ongoing somatic symptom monitoring, paired with mental health follow-up.  \n\nThis is manageable with coordinated care. Let\u2019s work together to address both your emotional and physical struggles.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "adjustment",
+    "question_count": 23,
+    "duration": 28102.392318964005,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 5.298831939697266,
+    "diagnosis_generation_time": 7.270148754119873,
+    "rag_evaluation_time": 1.0967254638671875e-05,
+    "total_time": 12.568999767303467
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7866,
+        "average_score": 0.7866,
+        "example_excerpt": "   Somatic Symptom Disorder\nThe upcoming fifth edition of the Diagnostic and Statistical Manual of M...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"symptom\", \"significant\", \"criteria\", and 9 more matching aspects of your query."
+      },
+      "APA_DSM-5-Conduct-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6872,
+        "average_score": 0.6872,
+        "example_excerpt": "and research of mental illnesses, including substance use disorders. Visit the APA at www.psychiatry...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"use\", \"mental\", \"disorders\", and 3 more matching aspects of your query."
+      },
+      "APA_DSM-5-Sleep-Wake-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6823,
+        "average_score": 0.6823,
+        "example_excerpt": "rious mental or medical issues. For example, sleep disturbances can signal the presence of medical a...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"criteria\", \"mental\", \"clinical\", and 6 more matching aspects of your query."
+      },
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6719,
+        "average_score": 0.6719,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"negative\", \"mood\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Obsessive-Compulsive-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6619,
+        "average_score": 0.6619,
+        "example_excerpt": "  Obsessive Compulsive \n  and Related Disorders\nThe upcoming fifth edition of the Diagnostic and Sta...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"mental\", \"disorders\", \"identify\", and 4 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 07:58:43",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 07:58:42",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 4,
+        "clinical_relevance": 4,
+        "consistency": 5,
+        "diagnostic_justification": 5,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist addressed most of the DSM-5 Level1 Cross-Cutting Symptom Measure domains. All 23 questions were essentially covered, but some areas like 'suicidality' and 'psychotic symptoms' were briefly touched upon without extensive follow-up. For instance, when the patient mentioned 'I just\u2026 feel empty sometimes,' the therapist could have probed deeper into suicidal ideation. Similarly, the domain of 'substance use' was not explored in significant depth, which is crucial given its potential impact on treatment. However, the therapist did manage to cover the core domains, including mood, anxiety, and somatic symptoms, which are highly relevant to the patient's presentation.",
+        "clinical_relevance": "The therapist's questions generally aligned with DSM-5 criteria and effectively targeted clinical symptoms. For example, the questions about 'little interest or pleasure in doing things' and 'feeling down, depressed, or hopeless' directly reflect DSM-5 criteria for depression. However, there were moments where the language used was slightly vague or could have been more precise. For instance, when discussing 'anxiety,' the therapist could have used more specific DSM-5 aligned language to capture the patient's experience more accurately. Overall, the questions were clinically relevant but could benefit from further refinement for optimal precision.",
+        "consistency": "The dialogue flows logically, with each question naturally following from previous responses. The therapist effectively built upon the patient's disclosures to guide the conversation. For example, after the patient mentioned 'snapping at coworkers,' the therapist logically transitioned to questions about irritability and anger. There were no abrupt topic changes or non-sequiturs, and the therapist adequately followed up on concerning disclosures, such as the patient's feelings of emptiness and anxiety. This logical progression helped maintain a coherent and understandable conversation.",
+        "diagnostic_justification": "The diagnoses of Mild to Moderate Major Depressive Disorder (MDD) with comorbid Generalized Anxiety Disorder (GAD) clearly align with DSM-5 responses. The therapist explicitly stated the reasoning behind each diagnostic decision, citing specific symptoms mentioned by the patient. For instance, the diagnosis of MDD was justified by symptoms like anhedonia, low mood, fatigue, and irritability. Similarly, GAD was supported by persistent nervousness, worry, and avoidant behaviors. The therapist also considered alternative explanations for the patient's somatic symptoms, determining they were likely secondary to stress and mood/anxiety dysregulation.",
+        "empathy": "The therapist responses mostly showed empathy and a natural conversational style, but there were minor moments that seemed slightly robotic or impersonal. For example, when the patient discussed feeling empty, the therapist could have offered more personalized acknowledgment of their distress. However, the therapist generally maintained a professional tone and appropriately validated the patient's experiences. The conversation was not cold or detached, but could have benefited from more consistently warm and individualized responses to enhance the therapeutic rapport."
+      },
+      "overall_comments": "The therapist demonstrated a strong clinical approach, effectively covering most DSM-5 domains and logically progressing through the conversation. The diagnostic justification was clear and aligned with DSM-5 criteria. While minor areas for improvement exist, particularly in consistently demonstrating empathy and thoroughly exploring all domains (e.g., suicidality, substance use), the overall performance was strong. With refinement in these areas, the therapist can provide even more comprehensive and empathetic care.",
+      "average_score": 4.4,
+      "diagnosis_accuracy": {
+        "matches_profile": false,
+        "confidence": 4,
+        "explanation": "The diagnosis provided does not explicitly mention 'adjustment' or equivalent clinical terms such as 'adjustment disorder'. Instead, it diagnoses Mild to Moderate Major Depressive Disorder (MDD) with comorbid Generalized Anxiety Disorder (GAD).",
+        "classification": "depression"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "adjustment",
+        "classified_as": "depression",
+        "match": false,
+        "confidence": 4
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 3.812328815460205
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.5184724161146886,
+        "local_coherence": 0.5729192704356172,
+        "window_coherence": 0.5766439266876972
+      },
+      "readability": {
+        "flesch_kincaid_grade": 8.62,
+        "gunning_fog_index": 4.55,
+        "flesch_reading_ease": 53.09
+      },
+      "diversity": {
+        "distinct_1": 0.5628865979381443,
+        "distinct_2": 0.9267285861713106,
+        "distinct_3": 0.9824380165289256
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "adjustment",
+      "predicted": "<sym>Little interest in activities</sym>, <sym>depressed mood</sym>, and persistent <sym>anxiety</sym> paint a picture of profound emotional strain. Your <sym>fatigue</sym> and <quote>\"empty\"</quote> feeling highlight distress that\u2019s likely affecting work and relationships. The unexplained <sym>headaches</sym> and <sym>stomach discomfort</sym> add to your burden, and the <quote>\"overreacting\"</quote> self-doubt suggests isolation and frustration.  \n\n**Diagnosis:**  \n<med>Mild to Moderate Major Depressive Disorder (MDD) with comorbid Generalized Anxiety Disorder (GAD)</med>, with <sym>somatic symptoms</sym> explained by mood/anxiety dysregulation.  \n\n**Reasoning:**  \n1. **MDD**: Criteria met via <sym>anhedonia</sym>, <sym>low mood most days</sym>, <sym>fatigue</sym>, and <sym>irritability</sym> (6+ of the past 2+ weeks). The 2\u20133-week duration is near the DSM-5 2-week threshold.  \n2. **GAD**: Persistent <sym>nervousness</sym>, <sym>worry about worsening circumstances</sym>, and <sym>avoidant behaviors</sym> (e.g., skipping meetings) align with GAD criteria.  \n3. **Somatic symptoms**: Likely secondary to stress, per the patient\u2019s doctor, and not meeting <med>Somatic Symptom Disorder</med> criteria (no evidence of disproportionate thoughts/behaviors about illness).  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Psychotherapy**: Cognitive Behavioral Therapy (CBT) targeting depressive and anxious thought patterns and social withdrawal.  \n2. **Medication evaluation**: Trial of an <med>SSRI</med> (e.g., escitalopram) for mood + anxiety, with monitoring for sleep/energy improvement.  \n3. **Medical reassurance**: Repeat physical workup if new somatic symptoms arise, but focus treatment on mental health per current data.  \n4. **Lifestyle intervention**: Sleep hygiene strategies to address hypersomnia, and gradual exposure exercises to reduce avoidance.  \n5. **Collaborative care**: Involve primary care for ongoing somatic symptom monitoring, paired with mental health follow-up.  \n\nThis is manageable with coordinated care. Let\u2019s work together to address both your emotional and physical struggles.",
+      "matches": false,
+      "classification": "depression",
+      "classification_confidence": 4
+    }
+  }
+}

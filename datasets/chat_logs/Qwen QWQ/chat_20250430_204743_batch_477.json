@@ -1,0 +1,277 @@
+{
+  "timestamp": "2025-04-30T20:47:58.750858",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "intro"
+    },
+    {
+      "role": "assistant",
+      "content": "Question 1 text"
+    },
+    {
+      "role": "patient",
+      "content": "Patient's answer"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello"
+    },
+    {
+      "role": "patient",
+      "content": "Okay"
+    },
+    {
+      "role": "assistant",
+      "content": "1. Little interest or pleasure in doing things?"
+    },
+    {
+      "role": "patient",
+      "content": "Hmm"
+    },
+    {
+      "role": "assistant",
+      "content": "2. Feeling down"
+    },
+    {
+      "role": "patient",
+      "content": "Sometimes. I feel stuck in a bad cycle. Maybe 3 or 4 days a week I feel really low"
+    },
+    {
+      "role": "assistant",
+      "content": "3. Feeling more irritated"
+    },
+    {
+      "role": "patient",
+      "content": "Not really angry\u2014more anxious. Maybe once or twice I snapped at someone"
+    },
+    {
+      "role": "assistant",
+      "content": "4. Sleeping less than usual"
+    },
+    {
+      "role": "patient",
+      "content": "No"
+    },
+    {
+      "role": "assistant",
+      "content": "5. Starting lots more projects or doing more risky things than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "No"
+    },
+    {
+      "role": "assistant",
+      "content": "6. Feeling nervous"
+    },
+    {
+      "role": "patient",
+      "content": "Constantly. It\u2019s like a storm in my chest. Nearly every day"
+    },
+    {
+      "role": "assistant",
+      "content": "7. Feeling panic or being frightened?"
+    },
+    {
+      "role": "patient",
+      "content": "Oh god"
+    },
+    {
+      "role": "assistant",
+      "content": "8. Avoiding situations where you might"
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nAlright, I need to go through the user's instructions carefully. They provided a detailed scenario where the patient answered a questionnaire about their mental health. My task is to generate a professional assessment following their strict formatting and tagging requirements. \n\nFirst, I'll start with the compassionate summary. The user emphasized showing empathy, so I should acknowledge the patient's struggles without being too technical here. The main points from the answers are the constant nervousness, panic, and cyclical low mood. I need to mention these symptoms using the specified tags like <sym> and <quote>.\n\nNext, the diagnosis section. The symptoms point to anxiety and depression. The patient's answers about panic, constant nervousness, and depressive symptoms like anhedonia and low mood suggest a possible comorbidity. Since GAD and panic disorder are highlighted, along with depressive features, I should list the primary diagnosis as GAD with depressive symptoms, but also note possible panic disorder. Need to use <med> tags for the diagnosis names.\n\nFor the reasoning section, I need to explain why those diagnoses are considered. The daily nervousness and panic attacks (even if not quantified here) point to GAD or panic disorder. The depressive symptoms (anhedonia, low mood) meet some criteria but might not reach MDD without more data. The cyclical nature and self-reported \"stuck\" feeling could indicate rumination, which is common in both anxiety and depression.\n\nThe treatment steps must be actionable. CBT is a good first-line for anxiety. SSRIs like sertraline or SNRIs could be considered. Mindfulness practices might help with the somatic symptoms. A referral to a therapist and a primary care check for physical health (to rule out other causes) are standard steps. \n\nI must ensure all medical terms are in <med> tags, symptoms in <sym>, and quotes from the patient in <quote>. Also, follow the exact structure with headings and no extra lines. Need to avoid any markdown and stick strictly to the specified format. Double-check that the diagnoses are justified based on the given answers. Also, ensure that the \"stuck in a bad cycle\" is mentioned as part of the reasoning. Avoid mentioning things not in the answers, like suicidal thoughts since they weren't addressed. Make sure the recommendations are clear and practical. Finally, confirm that all tags are correctly placed and the structure matches exactly what was requested.\n</think>\n\n**1. First paragraph: Compassionate summary**  \nI hear the <sym>constant nervousness</sym> and <sym>panic</sym> that feel overwhelming, like a \"storm in my chest,\" and the <sym>cyclical low mood</sym> that leaves you feeling <quote>\"stuck in a bad cycle.\"</quote> It sounds like these feelings are disrupting your daily life, and the <sym>irritability</sym> and <sym>somatic distress</sym> suggest this is a significant challenge to manage. You\u2019re not alone in this\u2014many people experience similar struggles, and there are effective ways to address these symptoms.  \n\n**Diagnosis:** Provisional: <med>Generalized Anxiety Disorder (GAD)</med> with <med>mild depressive features</med>; <med>panic disorder</med> cannot be ruled out due to reported panic reactions  \n\n**Reasoning:**  \n- **GAD** is supported by <sym>daily nervousness</sym> meeting the \"excessive anxiety on most days for \u22656 months\" criterion (DSM-5). The visceral description of anxiety as a \"storm in my chest\" aligns with somatic symptoms of anxiety.  \n- **Depressive features** are suggested by reports of <sym>anhedonia</sym> (\"Hmm\" to pleasure) and <sym>low mood</sym> 3\u20134 days weekly, though duration and severity may not yet meet full <med>major depressive disorder (MDD)</med> criteria.  \n- **Panic Disorder** is a consideration due to <sym>panic reactions</sym> (Q9, \"Oh god\") but requires further assessment of panic attack criteria (e.g., fear of recurrence, avoidance behavior).  \n- The <sym>cyclical low mood</sym> and <sym>irritability</sym> may reflect anxiety-driven dysphoria.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Formal diagnostic assessment:** Conduct a full clinical interview to clarify panic disorder criteria and depressive symptom severity.  \n2. **Cognitive-behavioral therapy (CBT):** Target anxiety spirals and cognitive distortions driving the \"stuck\" cycle.  \n3. **SSRI/SNRI trial:** Consider <med>sertraline</med> or <med>venlafaxine</med> for comorbid anxiety and depressive symptoms.  \n4. **Mindfulness/grounding techniques:** Address somatic symptoms (e.g., \"storm in the chest\") to interrupt anxiety cycles.  \n5. **Functional evaluation:** Explore how <sym>daily nervousness</sym> and <sym>mood fluctuations</sym> impact work/school or relationships.  \n6. **Rule out medical contributors:** Primary care evaluation for thyroid dysfunction or cardiac issues mimicking panic.  \n\nEnsure follow-up within 2 weeks to reassess symptom acuity and treatment response.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.6356,
+            "highlight": "Negative cognitions and mood represents myriad feelings, from a persistent and distorted sense of  blame of self or others, to estrangement from others or markedly diminished interest in activities, to an inability to remember key aspects of the event.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"negative\", \"sense\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Obsessive-Compulsive-Disorder.pdf",
+            "score": 0.6347,
+            "highlight": "Obsessive Compulsive    and Related Disorders The upcoming fifth edition of the Diagnostic and Statistical Manual of Mental Disorders (DSM-5) will in - clude a new chapter on Obsessive-Compulsive and Related Disorders to reflect the increasing evidence  of these disorders\u2019 relatedness to one another and distinction from other anxiety disorders, as well as  to help clinicians better identify and treat individuals suffering from these disorders.",
+            "excerpt": "  Obsessive Compulsive \n  and Related Disorders\nThe upcoming fifth edition of the Diagnostic and Sta...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"anxiety\", \"mental\", \"dsm\" matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf",
+            "score": 0.6335,
+            "highlight": "APA is a national medical specialty society whose more than 3 7,000  physician members specialize in the diagnosis, treat- ment, prevention and research of mental illnesses, including substance use disorders.",
+            "excerpt": "ther disorders, such as depressive and anxiety disorders. \nThe unique features of DMDD necessitated ...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"use\", \"mental\", \"more\", and 2 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Sleep-Wake-Disorders.pdf",
+            "score": 0.6331,
+            "highlight": "Sleep-Wake Disorders In the fifth edition of the Diagnostic and Statistical Manual of Mental Disorders  (DSM-5), sleep-wake  disorders encompass 10 conditions manifested by disturbed sleep and causing distress as well as im - pairment in daytime functioning.",
+            "excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"mental\", \"sleep\", and 2 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.6062,
+            "highlight": "Characteristics of Somatic Symptom Disorder Somatic symptom disorder (SSD) is characterized by somatic symptoms that are either very distressing or result in significant disruption of functioning, as well as excessive and disproportionate thoughts, feelings and behaviors regarding those symptoms.",
+            "excerpt": "   Somatic Symptom Disorder\nThe upcoming fifth edition of the Diagnostic and Statistical Manual of M...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"symptom\", \"significant\", and 7 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let me tackle this. The user provided a patient's questionnaire responses and wants me to analyze them as a mental health professional. First, I need to go through each question and answer carefully.\n\nStarting with Q1 and A1: The question isn't fully provided, so maybe it's part of a standard scale. The answer is just \"Patient's answer\"\u2014probably not much to draw from here. \n\nQ2 is \"Hello\" with A2: \"Okay\". That's odd. Maybe a test question or a mistake, but not clinically relevant. I'll skip that for now.\n\nLooking at Q3: \"Little interest or pleasure in doing things?\" A3: \"Hmm\". Hmm could mean uncertainty or ambivalence. Not a clear yes/no, so maybe mild anhedonia?\n\nQ4 asks about feeling down. The patient says sometimes, stuck in a bad cycle, 3-4 days a week. That's a significant portion of the week. That's a key point for depression symptoms.\n\nQ5: Feeling more irritated. The patient says not angry but anxious, with occasional snapping. So maybe anxiety is more prominent than anger, but there's some irritability noted.\n\nQ6: Sleeping less? Answer is \"No\". So sleep isn't an issue here. Wait, but sometimes in depression people can have hypersomnia too. But the patient isn't reporting sleeplessness, so that's a point.\n\nQ7: More projects or risky behavior? \"No\". So not hypomanic or manic, which might rule out bipolar mania. But they might be avoiding things instead?\n\nQ8: Feeling nervous constantly, like a storm in the chest every day. That's a strong indicator of anxiety, possibly panic. The physical description suggests somatic symptoms of anxiety.\n\nQ9: Feeling panic or frightened? \"Oh god\"\u2014that's a strong reaction, suggesting possible panic attacks or severe anxiety.\n\nNow, the main symptoms: The constant nervousness (Q8), the panic (Q9), the low mood 3-4 days a week (Q4). The anhedonia (Q3's \"Hmm\" might need to be explored further, but combined with the mood and anxiety, it's a concern. The irritability is more anxiety-driven rather than anger.\n\nPatterns: The patient is experiencing significant anxiety with physical symptoms (nervousness as a storm in chest), panic reactions, and moderate depressive symptoms. The combination suggests an anxiety disorder, possibly with depressive features. The \"stuck in a bad cycle\" indicates possible rumination or lack of coping strategies, which can exacerbate symptoms.\n\nClinical significance areas: Anxiety disorder (maybe GAD, panic disorder), depressive symptoms, possible comorbidity. The constant nervousness and panic reactions are acute and need attention.\n\nRisk factors: The panic (Q9) and feeling frightened could indicate heightened anxiety, possibly with some risk of avoidance behaviors or social withdrawal. The snapping at others once or twice might not be a major risk but shows some dysphoric mood.\n\nWait, the user asked for risk factors or warning signs. The panic and fear might not directly indicate self-harm, but they could indicate impairment. The user didn't mention suicidal thoughts, so maybe not immediate risk, but significant functional impairment.\n\nPutting this all together, the main concerns are the persistent anxiety, daily nervousness, panic episodes, and depressive symptoms. The pattern indicates a primary anxiety disorder with depressive features. Need to note the cyclical low mood and somatic symptoms. The lack of sleep issues and no increased activity rules out hypomania. \n\nNeed to structure this into the required points: main symptoms, patterns, clinical areas, risks, then summary.\n\nWait, the user wants the summary in clinical terms. Let me make sure I'm not missing anything. The \"stuck in a bad cycle\" might suggest hopelessness or rumination, which is a depressive symptom. The anhedonia question (Q3) with \"Hmm\" could be a subtle yes, so combined with the low mood, that's a key depressive symptom. The anxiety is definitely prominent with the nervousness and panic.\n\nSo main symptoms are: anhedonia (possible), low mood 3-4 days weekly, irritability due to anxiety, constant nervousness, panic/fear.\n\nPatterns: Daily anxiety symptoms with weekly depressive episodes, physical manifestations of anxiety (storm in chest), cyclical negative thoughts.\n\nClinical significance: Major Depressive Disorder with anxious distress, or Generalized Anxiety Disorder with depressive features. Maybe Panic Disorder given the panic mentions. Comorbidity is likely.\n\nRisk factors: The panic and fear could lead to social withdrawal or avoidance. The \"stuck in a bad cycle\" might indicate functional impairment. The occasional snapping could be a sign of stress but not a major risk unless there's aggression. Since the user didn't mention self-harm or suicidal ideation, maybe the risks are more about quality of life and functioning rather than imminent danger. But maybe the intensity of panic attacks could be a concern if they're frequent.\n\nWait, in Q9 the patient says \"Oh god\" to panic/frightened, which could indicate severe anxiety. Also, \"constant\" nervousness is a significant impairment. Need to highlight those as areas of clinical concern.\n\nPutting this into the structure:\n\n1. Main symptoms: Anhedonia (possible), depressed mood several days/week, anxiety with somatic symptoms, panic reactions.\n2. Patterns: Daily anxiety symptoms, cyclical depressive episodes, physical anxiety symptoms.\n3. Clinical areas: Depression with anxious distress, GAD, Panic Disorder. Comorbidity.\n4. Risks: Functional impairment due to anxiety, possible social withdrawal, cyclical low mood impacting daily life. Not obvious immediate harm, but significant distress.\n\nWait, the user asked for risk factors or warning signs. Maybe the panic could lead to avoidant behavior, which is a risk for worsening condition. Also, the constant anxiety might interfere with functioning. But maybe there's no imminent risk unless there's a mention of suicidal thoughts, which there isn't here. So perhaps the risk is more about the impact on daily functioning rather than acute danger.\n\nNow, in clinical terms, the summary should mention the symptoms, note the patterns like daily vs weekly, and the comorbidity. Highlight the panic and somatic anxiety as key points. The depressive symptoms are present but maybe not meeting full MDD criteria yet, but significant.\n\nAlso, the \"stuck in a bad cycle\" suggests a negative thought pattern, which could be part of depression or rumination. The irritability from anxiety might be contributing.\n\nOkay, time to structure all this into the required points without speculation. Stick to the data given.\n</think>\n\n**Clinical Observation Summary**  \n\n**1. Main Symptoms and Concerns:**  \n- **Anxiety and Autonomic Symptoms:** Persistent, daily nervousness (\"storm in my chest\") and panic reactions (Q8-9), consistent with generalized anxiety disorder (GAD) or panic disorder.  \n- **Depressive Symptoms:** Reduced interest/pleasure (Q3), cyclical low mood (3-4 days weekly; Q4), and subjective sense of being \"stuck in a bad cycle.\"  \n- **Affective Dysregulation:** Irritability (Q5) linked to anxiety rather than anger, suggesting anxiety-driven mood lability.  \n\n**2. Patterns in Responses:**  \n- **Temporal Clustering:** Depressive symptoms occur episodically (3-4 days weekly), while anxiety symptoms are persistent (daily).  \n- **Qualitative Descriptors:** Use of visceral metaphors (\"storm in my chest\") and urgency in responses (e.g., \"Oh god\" for panic) underscores subjective distress severity.  \n- **Denial of Hypomanic Features:** Denial of increased activity/risks (Q7) and insomnia (Q6) rules out bipolar manic/hypomanic features.  \n\n**3. Potential Clinical Significance:**  \n- **Comorbid Anxiety and Depressive Disorder:** Mixed features of GAD or panic disorder with mild to moderate depressive symptoms.  \n- **Psychophysiological Symptoms:** Autonomic arousal (e.g., \"storm in my chest\") warrants assessment for somatic anxiety or panic attacks.  \n- **Functional Impairment:** \"Stuck in a bad cycle\" suggests possible rumination, maladaptive coping, or avoidance behaviors impacting daily functioning.  \n\n**4. Risk Factors/Warning Signs:**  \n- **Severe Subjective Distress:** Panic reactions (Q9) and daily nervousness indicate high anxiety severity.  \n- **Emotional Lability:** Irritability and cyclical low mood may disrupt interpersonal or occupational stability.  \n- **Lack of Protective Factors:** No mention of positive coping strategies or social support in responses.  \n\n**5. Summary (Clinical Language):**  \nThe patient presents with **persistent generalized anxiety** (daily nervousness, somatic symptoms, panic reactions) and **moderate depressive symptoms** (anhedonia, cyclical low mood 3-4 days weekly). Key patterns include somatic expression of anxiety, episodic dysphoria with self-reported behavioral \"stuckness,\" and denial of hypomanic features. Clinical priorities include evaluating for **GAD, panic disorder, and depressive disorder with anxious distress** (DSM-5 criteria relevant for 300.02 [GAD] or 300.21 [panic disorder] comorbid with depressive features). Risk factors include moderate functional impairment and lack of protective coping strategies. Immediate concerns focus on anxiety severity and cyclical mood dysregulation requiring further exploration.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6286
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "**1. First paragraph: Compassionate summary**  \nI hear the <sym>constant nervousness</sym> and <sym>panic</sym> that feel overwhelming, like a \"storm in my chest,\" and the <sym>cyclical low mood</sym> that leaves you feeling <quote>\"stuck in a bad cycle.\"</quote> It sounds like these feelings are disrupting your daily life, and the <sym>irritability</sym> and <sym>somatic distress</sym> suggest this is a significant challenge to manage. You\u2019re not alone in this\u2014many people experience similar struggles, and there are effective ways to address these symptoms.  \n\n**Diagnosis:** Provisional: <med>Generalized Anxiety Disorder (GAD)</med> with <med>mild depressive features</med>; <med>panic disorder</med> cannot be ruled out due to reported panic reactions  \n\n**Reasoning:**  \n- **GAD** is supported by <sym>daily nervousness</sym> meeting the \"excessive anxiety on most days for \u22656 months\" criterion (DSM-5). The visceral description of anxiety as a \"storm in my chest\" aligns with somatic symptoms of anxiety.  \n- **Depressive features** are suggested by reports of <sym>anhedonia</sym> (\"Hmm\" to pleasure) and <sym>low mood</sym> 3\u20134 days weekly, though duration and severity may not yet meet full <med>major depressive disorder (MDD)</med> criteria.  \n- **Panic Disorder** is a consideration due to <sym>panic reactions</sym> (Q9, \"Oh god\") but requires further assessment of panic attack criteria (e.g., fear of recurrence, avoidance behavior).  \n- The <sym>cyclical low mood</sym> and <sym>irritability</sym> may reflect anxiety-driven dysphoria.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Formal diagnostic assessment:** Conduct a full clinical interview to clarify panic disorder criteria and depressive symptom severity.  \n2. **Cognitive-behavioral therapy (CBT):** Target anxiety spirals and cognitive distortions driving the \"stuck\" cycle.  \n3. **SSRI/SNRI trial:** Consider <med>sertraline</med> or <med>venlafaxine</med> for comorbid anxiety and depressive symptoms.  \n4. **Mindfulness/grounding techniques:** Address somatic symptoms (e.g., \"storm in the chest\") to interrupt anxiety cycles.  \n5. **Functional evaluation:** Explore how <sym>daily nervousness</sym> and <sym>mood fluctuations</sym> impact work/school or relationships.  \n6. **Rule out medical contributors:** Primary care evaluation for thyroid dysfunction or cardiac issues mimicking panic.  \n\nEnsure follow-up within 2 weeks to reassess symptom acuity and treatment response.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "panic",
+    "question_count": 23,
+    "duration": 7695.203551054001,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 6.2121241092681885,
+    "diagnosis_generation_time": 8.920536994934082,
+    "rag_evaluation_time": 2.002716064453125e-05,
+    "total_time": 15.132690906524658
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6356,
+        "average_score": 0.6356,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"negative\", \"sense\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM-5-Obsessive-Compulsive-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6347,
+        "average_score": 0.6347,
+        "example_excerpt": "  Obsessive Compulsive \n  and Related Disorders\nThe upcoming fifth edition of the Diagnostic and Sta...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"anxiety\", \"mental\", \"dsm\" matching aspects of your query."
+      },
+      "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6335,
+        "average_score": 0.6335,
+        "example_excerpt": "ther disorders, such as depressive and anxiety disorders. \nThe unique features of DMDD necessitated ...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"use\", \"mental\", \"more\", and 2 more matching aspects of your query."
+      },
+      "APA_DSM-5-Sleep-Wake-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6331,
+        "average_score": 0.6331,
+        "example_excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"mental\", \"sleep\", and 2 more matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6062,
+        "average_score": 0.6062,
+        "example_excerpt": "   Somatic Symptom Disorder\nThe upcoming fifth edition of the Diagnostic and Statistical Manual of M...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"symptom\", \"significant\", and 7 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 07:48:03",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 07:48:03",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 3,
+        "clinical_relevance": 4,
+        "consistency": 4,
+        "diagnostic_justification": 4,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist addressed several DSM-5 dimensions, including depression, anxiety, irritability, sleep, and panic. However, the conversation was limited and did not thoroughly explore all 23 questions from the DSM-5 Level1 Cross-Cutting measure. Dimensions such as mania, psychosis, somatic symptoms, repetitive thoughts/behaviors, dissociation, personality functioning, and substance use were not adequately addressed or were skipped entirely. For example, the therapist did not ask about 'suicidality' or 'cognitive function,' which are critical areas to assess.",
+        "clinical_relevance": "The therapist's questions generally aligned with DSM-5 criteria, but there were slight inaccuracies or vague phrasing in some instances. For example, the therapist asked about 'sleeping less than usual' but did not follow up on the patient's sleep quality in depth. Additionally, the questions about anxiety and panic were relevant but could have been more precisely phrased to align with DSM-5 terminology.",
+        "consistency": "The dialogue generally flowed logically, with each question building on previous responses. However, there were minor logical inconsistencies, such as abruptly moving from discussing anxiety to asking about sleep without fully exploring the connection between them. The therapist also did not follow up on concerning disclosures, such as the patient's 'panic reaction,' which was only briefly mentioned.",
+        "diagnostic_justification": "The diagnoses of Generalized Anxiety Disorder (GAD) with mild depressive features and potential panic disorder clearly aligned with the patient's symptoms. The therapist provided a compassionate summary that highlighted the patient's experiences of 'constant nervousness,' 'panic,' and 'cyclical low mood.' However, the justification could have been more comprehensive by explicitly ruling out other potential diagnoses and providing a more detailed differential diagnosis.",
+        "empathy": "The therapist's responses showed empathy and a natural conversational style, with a professional tone. The use of phrases like 'You're not alone in this\u2014many people experience similar struggles' demonstrated understanding and support. However, there were minor moments where the interactions seemed slightly robotic or impersonal, such as when quickly transitioning between topics without fully acknowledging the patient's emotional state."
+      },
+      "overall_comments": "The conversation demonstrated a good effort to address the patient's symptoms and concerns but had notable gaps in coverage of all DSM-5 dimensions. The therapist provided a clear and compassionate summary and appropriately identified potential diagnoses. However, to improve, the therapist should ensure thorough exploration of all relevant dimensions, refine question accuracy, and maintain a consistently empathetic and natural conversational style throughout the interaction.",
+      "average_score": 3.8,
+      "diagnosis_accuracy": {
+        "matches_profile": true,
+        "confidence": 4,
+        "explanation": "The diagnosis explicitly mentions panic reactions and considers panic disorder as a potential diagnosis, indicating alignment with the expected profile of panic. However, it does not rule out panic disorder entirely, suggesting a need for further assessment.",
+        "classification": "panic"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "panic",
+        "classified_as": "panic",
+        "match": true,
+        "confidence": 4
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 2.057036876678467
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.1959297242271319,
+        "local_coherence": 0.1859457627362694,
+        "window_coherence": 0.22400272211977232
+      },
+      "readability": {
+        "flesch_kincaid_grade": 8.75,
+        "gunning_fog_index": 4.95,
+        "flesch_reading_ease": 53.99
+      },
+      "diversity": {
+        "distinct_1": 0.5311720698254364,
+        "distinct_2": 0.9101123595505618,
+        "distinct_3": 0.975
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "panic",
+      "predicted": "**1. First paragraph: Compassionate summary**  \nI hear the <sym>constant nervousness</sym> and <sym>panic</sym> that feel overwhelming, like a \"storm in my chest,\" and the <sym>cyclical low mood</sym> that leaves you feeling <quote>\"stuck in a bad cycle.\"</quote> It sounds like these feelings are disrupting your daily life, and the <sym>irritability</sym> and <sym>somatic distress</sym> suggest this is a significant challenge to manage. You\u2019re not alone in this\u2014many people experience similar struggles, and there are effective ways to address these symptoms.  \n\n**Diagnosis:** Provisional: <med>Generalized Anxiety Disorder (GAD)</med> with <med>mild depressive features</med>; <med>panic disorder</med> cannot be ruled out due to reported panic reactions  \n\n**Reasoning:**  \n- **GAD** is supported by <sym>daily nervousness</sym> meeting the \"excessive anxiety on most days for \u22656 months\" criterion (DSM-5). The visceral description of anxiety as a \"storm in my chest\" aligns with somatic symptoms of anxiety.  \n- **Depressive features** are suggested by reports of <sym>anhedonia</sym> (\"Hmm\" to pleasure) and <sym>low mood</sym> 3\u20134 days weekly, though duration and severity may not yet meet full <med>major depressive disorder (MDD)</med> criteria.  \n- **Panic Disorder** is a consideration due to <sym>panic reactions</sym> (Q9, \"Oh god\") but requires further assessment of panic attack criteria (e.g., fear of recurrence, avoidance behavior).  \n- The <sym>cyclical low mood</sym> and <sym>irritability</sym> may reflect anxiety-driven dysphoria.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Formal diagnostic assessment:** Conduct a full clinical interview to clarify panic disorder criteria and depressive symptom severity.  \n2. **Cognitive-behavioral therapy (CBT):** Target anxiety spirals and cognitive distortions driving the \"stuck\" cycle.  \n3. **SSRI/SNRI trial:** Consider <med>sertraline</med> or <med>venlafaxine</med> for comorbid anxiety and depressive symptoms.  \n4. **Mindfulness/grounding techniques:** Address somatic symptoms (e.g., \"storm in the chest\") to interrupt anxiety cycles.  \n5. **Functional evaluation:** Explore how <sym>daily nervousness</sym> and <sym>mood fluctuations</sym> impact work/school or relationships.  \n6. **Rule out medical contributors:** Primary care evaluation for thyroid dysfunction or cardiac issues mimicking panic.  \n\nEnsure follow-up within 2 weeks to reassess symptom acuity and treatment response.",
+      "matches": true,
+      "classification": "panic",
+      "classification_confidence": 4
+    }
+  }
+}

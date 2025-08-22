@@ -1,0 +1,281 @@
+{
+  "timestamp": "2025-04-30T19:08:21.859965",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm Dr. Collins. Today I'll be using the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult to better understand your current experience. This is a 23-question assessment that helps us evaluate different mental health areas. Your answers will be confidential, and we'll take it one question at a time at your own pace. Ready when you are."
+    },
+    {
+      "role": "patient",
+      "content": "Uh... okay. I'll try my best to explain everything, Doctor."
+    },
+    {
+      "role": "assistant",
+      "content": "1. Over the last two weeks, how much have you been bothered by LITTLE INTEREST OR PLEASURE IN DOING THINGS?"
+    },
+    {
+      "role": "patient",
+      "content": "Hmm... Well, I still enjoy things like reading or walking if I can make myself go outside, but sometimes I just feel numb. It's like the joy's there but muted. Maybe a few days a week I just can't muster the energy to do anything."
+    },
+    {
+      "role": "assistant",
+      "content": "2. FEELING DOWN, DEPRESSED, OR HOPELESS?"
+    },
+    {
+      "role": "patient",
+      "content": "Oh, yes. A lot lately. Like there's this shadow hanging over me. Even when I'm not having an attack, I wonder if things will ever get better. It's worse on days I can't leave the house."
+    },
+    {
+      "role": "assistant",
+      "content": "3. FEELING MORE IRRITATED, GROUCHY, OR ANGRY THAN USUAL?"
+    },
+    {
+      "role": "patient",
+      "content": "Not really angry... more like on edge. I snap at small things sometimes. Like if there's a loud noise, or someone asks me to go somewhere new, I get really worked up. But I don't feel truly angry, just reactive."
+    },
+    {
+      "role": "assistant",
+      "content": "4. SLEEPING LESS THAN USUAL, BUT STILL HAVE A LOT OF ENERGY?"
+    },
+    {
+      "role": "patient",
+      "content": "No, I sleep way too much sometimes, or not enough. When I do sleep, I'm exhausted. I don't feel hyper or anything... just tired and jumpy."
+    },
+    {
+      "role": "assistant",
+      "content": "5. STARTING LOTS MORE PROJECTS THAN USUAL OR DOING MORE RISKY THINGS THAN USUAL?"
+    },
+    {
+      "role": "patient",
+      "content": "Definitely not. I've been avoiding social events and new things. The only thing I feel like doing is staying home where I can control the environment."
+    },
+    {
+      "role": "assistant",
+      "content": "6. FEELING NERVOUS, ANXIOUS, FRIGHTENED, WORRIED, OR ON EDGE?"
+    },
+    {
+      "role": "patient",
+      "content": "Constantly. Even now, my hands are shaking a little. It's like there's this undercurrent of tension. Some days it's a 3 out of 10, others it spikes to 9 when an attack hits. I can't seem to turn it off."
+    },
+    {
+      "role": "assistant",
+      "content": "7. FEELING PANIC OR BEING FRIGHTENED?"
+    },
+    {
+      "role": "patient",
+      "content": "Oh god, the panic attacks are the worst. My heart races, I feel like I can't breathe, and sometimes I get this ice-cold sweat. They strike randomly\u2014like once in the grocery store, another time just lying in bed. The fear of the panic itself keeps me up at night."
+    },
+    {
+      "role": "assistant",
+      "content": "8. AVOIDING SITUATIONS THAT MAKE YOU ANXIOUS?"
+    },
+    {
+      "role": "patient",
+      "content": "Absolutely. I avoid crowded places, places far from home... even this office visit took me weeks to schedule. I canceled once because I couldn't leave the house the first time I tried."
+    },
+    {
+      "role": "assistant",
+      "content": "9. UNEXPLAINED ACHES AND PAINS (E.G., HEAD, BACK, JOINTS, ABDOMEN, LEGS)?"
+    },
+    {
+      "role": "patient",
+      "content": "Yeah, my chest tightness and my head feels like it's in a fog all the time. The doctor said it's anxiety, but part of me still worries it's something worse. I get muscle aches from being tense too much."
+    },
+    {
+      "role": "assistant",
+      "content": "10. FEELING THAT YOUR ILLNESSES ARE NOT BEING TAKEN SERIOUSLY ENOUGH?"
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, let me tackle this. The user wants an assessment based on the patient's responses using the specified structure. First, I need to ensure I follow the exact formatting and tags. \n\nStarting with the compassionate summary: I need to paraphrase the patient's experience, highlighting their struggles with anxiety and depression. Use quotes where they describe their panic attacks and avoidance. Make sure to use the tags for symptoms like panic attacks and avoidance, and medical terms like panic disorder.\n\nNext, under Diagnosis, I need to decide between possible conditions. The patient has panic attacks with avoidance, so <med>panic disorder with agoraphobia</med> is a key point. They also have depressive symptoms (anhedonia, hopelessness) but not sure if MDD is primary or secondary. Since the panic and avoidance are central, maybe primary diagnosis is panic disorder with agoraphobia. But also note possible depressive features.\n\nThe Reasoning section must explain why panic disorder with comorbid depression is considered. Mention the panic attacks, avoidance behaviors, and somatic symptoms like chest pain. Also, depressive symptoms like anhedonia and hopelessness could align with <med>major depressive disorder</med>, but the panic symptoms are more prominent. Need to differentiate between primary anxiety and secondary symptoms.\n\nFor treatment steps, the guidelines suggest SSRIs for panic, therapy like CBT. Also, address the depressive symptoms and comorbid GAD. Ensure the steps are actionable and specific. Maybe list 5 steps: therapy types, medication, sleep hygiene, collaboration with other providers, and safety monitoring.\n\nCheck the user's instructions again: no markdown, use the tags properly. Make sure the diagnosis is first, then reasoning, then steps. Avoid any extra explanations outside the structure. Also, ensure that the diagnosis isn't Somatic Symptom Disorder unless justified. Here, the somatic symptoms (chest tightness) are explained by anxiety, so SSD isn't needed.\n\nWait, the patient mentions \"the doctor said it's anxiety\" so SSD might not be primary. Focus on panic disorder with agoraphobia and possible comorbid MDD and GAD. \n\nDouble-check the Q2 response: they still do some pleasurable activities (reading, walking), so maybe not full MDD. But the hopelessness and low mood may still warrant depression. However, the panic and avoidance are more acute. \n\nThe user emphasized not to default to SSD unless warranted. The patient's somatic symptoms are tied to anxiety, so that's covered under panic/GAD. \n\nAlright, structure the diagnosis as panic disorder with agoraphobia with depressive features. Then in reasoning, explain the panic criteria (panic attacks + avoidance), functional impairment), and depressive symptoms as comorbid. \n\nTreatment steps should include CBT for panic, possibly SSRIs, addressing sleep issues, etc. \n\nMake sure tags are correctly applied. Let me draft each section step by step, ensuring all points are covered without markdown. Also, ensure the reasoning clearly connects the symptoms to the diagnosis. \n\nWait, the patient said \"sleep disturbances\" which are part of both panic and depression. Need to mention that in the reasoning. Also, the avoidance behaviors are central here, so definitely agoraphobia component. \n\nYes, the panic disorder with agoraphobia is the primary diagnosis. The depressive symptoms might be secondary, so maybe a comorbid condition. \n\nOkay, putting it all together now following the structure precisely. Make sure not to miss any tags. Symptom terms like \"panic attacks\" should be in <sym> tags, terms like agoraphobia in <med> tags. \n\nAlright, time to write it out properly.\n</think>\n\n<sym>Panic attacks</sym>, <sym>social withdrawal</sym>, and <sym>chronic nervousness</sym> have clearly taken a toll on your life, <quote>\"It's like there's a shadow over me\"</quote>\u2014this captures the persistent hopelessness and constriction you describe. Your courage in seeking help despite the <sym>avoidance of feared places</sym> speaks to the severity of your struggles.  \n\n**Diagnosis:** <med>Panic Disorder with Agoraphobia</med> (with comorbid <med>Mood Disorder (Depressive Features)</med> and <med>Generalized Anxiety Disorder</med>).  \n\n**Reasoning:**  \nThe hallmark of panic disorder is recurrent unexpected <sym>panic attacks</sym> (e.g., tachycardia, dyspnea, chills) followed by <sym>avoidance of situations</sym> that trigger anxiety (e.g., crowds, leaving home), as noted in your delayed clinic visit). The <sym>hopelessness</sym> and <sym>diminished pleasure</sym> suggest depressive symptoms, but these are likely exacerbated by chronic anxiety rather than meeting full <med>MDD</med> criteria. <sym>Generalized anxiety</sym> (restlessness, muscle tension) and somatic symptoms (chest tightness) align with DSM-5 criteria for <med>Generalized Anxiety Disorder</med>. <sym>Sleep disturbance</sym> and functional impairment further support these diagnoses.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Cognitive Behavioral Therapy (CBT) for panic and agoraphobia**, focusing on exposure-based strategies to reduce avoidance behaviors.  \n2. **SSRI medication** (e.g., sertraline or escitalopram) to address <sym>panic</sym>, <sym>anxiety</sym>, and depressive symptoms.  \n3. **Panic-focused psychoseducation** to reduce catastrophizing about physical symptoms (e.g., heart palpitations).  \n4. **Sleep hygiene intervention** to address <sym>insomnia/hypersomnia</sym> and improve restorative sleep.  \n5. **Collaborative care with a primary care provider** to rule out medical causes for somatic symptoms (though you\u2019ve already done this) and monitor medication side effects.  \n6. **Weekly psychotherapy sessions** to address <sym>avoidance patterns</sym> and <sym>hopelessness</sym>.  \n\nAll these recommendations prioritize gradually rebuilding your ability to engage with the world while addressing the <sym>physical and emotional distress</sym> you\u2019re experiencing.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.7207,
+            "highlight": "Characteristics of Somatic Symptom Disorder Somatic symptom disorder (SSD) is characterized by somatic symptoms that are either very distressing or result in significant disruption of functioning, as well as excessive and disproportionate thoughts, feelings and behaviors regarding those symptoms.",
+            "excerpt": "   Somatic Symptom Disorder\nThe upcoming fifth edition of the Diagnostic and Statistical Manual of M...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"symptom\", \"significant\", and 7 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Sleep-Wake-Disorders.pdf",
+            "score": 0.6942,
+            "highlight": "Changes to Sleep-Wake Disorders   A prime goal of DSM-5 changes to sleep-wake disorders is to increase the clinical utility of definitions and diagnostic criteria, especially for general medical or mental health clinicians, and to clarify when referral is appropriate to a sleep specialist.",
+            "excerpt": "rious mental or medical issues. For example, sleep disturbances can signal the presence of medical a...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"criteria\", \"mental\", \"especially\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf",
+            "score": 0.6802,
+            "highlight": "Results of that extensive research showed that children diagnosed with BD who experience constant,  rather than episodic, irritability often are at risk for major depressive disorder or generalized anxiety  disorder later in life, but not life-long BD.",
+            "excerpt": " the case with BD. In an effort to address this issue, \nresearch was conducted comparing youth with ...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"constant\", \"depressive\", and 9 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Obsessive-Compulsive-Disorder.pdf",
+            "score": 0.6691,
+            "highlight": "Obsessive Compulsive    and Related Disorders The upcoming fifth edition of the Diagnostic and Statistical Manual of Mental Disorders (DSM-5) will in - clude a new chapter on Obsessive-Compulsive and Related Disorders to reflect the increasing evidence  of these disorders\u2019 relatedness to one another and distinction from other anxiety disorders, as well as  to help clinicians better identify and treat individuals suffering from these disorders.",
+            "excerpt": "  Obsessive Compulsive \n  and Related Disorders\nThe upcoming fifth edition of the Diagnostic and Sta...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"related\", \"help\", \"other\", and 6 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.6564,
+            "highlight": "Negative cognitions and mood represents myriad feelings, from a persistent and distorted sense of  blame of self or others, to estrangement from others or markedly diminished interest in activities, to an inability to remember key aspects of the event.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"diminished\", \"key\", \"mood\", and 4 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, I need to go through this patient's responses and answer the query step by step. Let me start by reading all the questions and answers again to make sure I don't miss anything.\n\nFirst, the patient is responding to the DSM-5 Level 1 Cross-Cutting Symptom Measure for adults. The user wants me to analyze these responses and provide a clinical summary based on the five points: main symptoms, patterns, areas of significance, risk factors, and a clinical summary.\n\nStarting with main symptoms and concerns. Let's look at each question's answer.\n\nQ2 asks about little interest or pleasure. The patient says they still do some activities but feel numb, with muted joy and low energy. That's anhedonia, which is common in depression. But they still do some things, so maybe not full anhedonia but partial.\n\nQ3 is about feeling down, depressed, or hopeless. The patient says yes, with a shadow feeling and hopelessness, especially on days when they can't leave home. That's a strong indicator of depressive symptoms.\n\nQ4: Irritability, angry? They say more on edge, snaps at small things but not truly angry. That's more anxiety or hyperarousal, maybe from anxiety or PTSD.\n\nQ5: Sleeping less but having energy? The patient sleeps too much or not enough, but feels exhausted. So insomnia/hypersomnia and fatigue, which is common in depression but conflicting with a manic phase. But they don't have energy, so more likely depression.\n\nQ6: Starting more projects or risky behavior? No, they avoid social events, stay home. That's social withdrawal, which can be part of depression or anxiety disorders.\n\nQ7: Feeling nervous, anxious, etc. Constantly, with a range from 3 to 9 on a 10 scale. This points to high anxiety, maybe GAD (Generalized Anxiety Disorder) or panic.\n\nQ8: Panic attacks? They describe panic attacks with physical symptoms (racing heart, breathlessness, cold sweat). They also mention fear of the attacks, which is anticipatory anxiety, so panic disorder is likely.\n\nQ9: Avoiding situations due to anxiety? Definitely, avoiding crowded places, far from home. So agoraphobia, social anxiety, or avoidance behaviors related to panic disorder.\n\nQ10: Unexplained aches? Chest tightness, head fog, muscle aches. These are somatic symptoms often linked to anxiety, maybe somatic symptom disorder, but the doctor attributed it to anxiety, so that's a clue.\n\nSo the main symptoms are:\n\n- Depressive symptoms (anhedonia, hopelessness, social withdrawal)\n- Anxiety symptoms (generalized anxiety, panic attacks, constant nervousness)\n- Physical symptoms (chest tightness, muscle aches, sleep disturbances)\n- Avoidant behaviors and social withdrawal\n\nNow, patterns in responses. The patient uses phrases like \"constantly\", \"spikes to 9\", indicating variability in anxiety levels. They describe a cycle where anxiety leads to avoidance, which exacerbates depression. The interplay between anxiety and depression is a recurring theme.\n\nAreas of clinical significance would include:\n\n- Major depressive disorder (MDD) given the anhedonia, depressed mood, and hopelessness.\n- Panic disorder with agoraphobia, as they have panic attacks and avoid places due to fear.\n- Generalized anxiety disorder (GAD) from the constant worry.\n- Social anxiety or specific phobia related to situations that trigger panic.\n- Somatic symptoms linked to anxiety.\n\nRisk factors or warning signs. The patient mentions suicidal ideation? No, not directly. But the hopelessness in Q3 could be a risk factor for suicidal thoughts. The avoidance behavior significantly affects their life, impacting social functioning. The panic attacks themselves are a significant impairment. The patient's avoidance of the office appointment, needing multiple tries, shows high severity.\n\nOther risk factors: functional impairment due to avoidance, possible social isolation, chronic anxiety leading to somatic symptoms. They don't mention self-harm, so maybe not acute risk, but chronic issues.\n\nNow, putting it all together into the required sections. Need to use clinical terms without speculation. Make sure to note the key points without adding anything not in the answers.\n\nWait, Q8 mentions panic attacks, so panic disorder. The avoidance of situations due to fear of panic attacks is part of panic disorder with agoraphobia. The depression symptoms are present but mixed with anxiety. The sleep disturbances are non-restorative, contributing to fatigue. The somatic symptoms are part of the anxiety but also need to be considered if they're excessive, possibly somatic symptom disorder, but the doctor already said it's anxiety, so maybe just note the somatic symptoms as part of the anxiety.\n\nSo the summary should list all these points in the sections required. Make sure to avoid speculation, so if the patient didn't mention suicide, don't assume. The patterns like fluctuating anxiety levels, the comorbidity between anxiety and depression, avoidance leading to functional impairment, and somatic complaints.\n\nPotential areas of significance include the panic disorder, MDD, GAD, and the impact on their lifestyle. Risk factors are the functional impairment, possible social withdrawal, and the severity of panic attacks affecting daily life. The fact that they avoided the appointment shows high anxiety, which is a risk for not seeking help.\n\nI think that's the core. Now structure it as per the user's instructions: main symptoms, patterns, areas of significance, risk factors, and a concise clinical summary. Keep the language professional but clear, using DSM-5 terms where applicable.\n</think>\n\n**1. Main Symptoms and Concerns:**  \n- Depressive symptoms: Anhedonia (diminished pleasure/interest in activities), hopelessness, and social withdrawal.  \n- Anxiety-related symptoms: Chronic generalized anxiety (constant nervousness, worry), panic attacks (physical symptoms: tachycardia, dyspnea, diaphoresis), and anticipatory anxiety (fear of panic attacks).  \n- Somatic complaints: Chest tightness, muscle aches, and cognitive fog attributed to anxiety.  \n- Sleep disturbance: Insomnia/hypersomnia and non-restorative sleep.  \n- Behavioral avoidance: Social isolation, avoidance of feared situations (e.g., crowds, leaving home), and delayed help-seeking (e.g., postponed clinical visit due to anxiety).  \n\n**2. Patterns in Responses:**  \n- **Fluctuating symptom severity**: Anxiety fluctuates between moderate (3/10) and severe (9/10), likely modulated by environmental triggers (e.g., crowded places) or context (e.g., panic attacks).  \n- **Psychological comorbidity**: Overlapping depressive and anxiety symptoms with bidirectional impact (e.g., anhedonia exacerbated by anxiety-induced social withdrawal).  \n- **Functional impairment**: Avoidance behaviors significantly limit activities (e.g., delayed clinical engagement, restricted mobility).  \n\n**3. Potential Areas of Clinical Significance:**  \n- **Panic disorder with agoraphobia**: Recurrent panic attacks and avoidance of anxiety-provoking situations.  \n- **Major depressive disorder (MDD)**: Anhedonia, hopelessness, and persistent low mood.  \n- **Generalized anxiety disorder (GAD)**: Persistent worry, hyperarousal, and somatic manifestations (tension, muscle aches).  \n- **Anxiety-related disability**: Significant interference with occupational or social functioning due to avoidance.  \n- **Somatic symptom amplification**: Physical manifestations (chest tightness, cognitive fog) may reflect somaticized anxiety.  \n\n**4. Risk Factors/Warning Signs:**  \n- **Severe functional impairment**: Avoidance of routine activities (e.g., missed appointments) and social isolation.  \n- **High symptom severity during panic episodes**: Acute distress (e.g., panic attacks in public), suggesting heightened vulnerability to trauma or worsening disability.  \n- **Chronicity**: Symptoms persist for \u201ctwo weeks\u201d (as per assessment timeframe) with no clear remission.  \n\n**5. Clinical Summary:**  \nThe patient presents with prominent **mixed anxiety and depressive features**, consistent with possible major depressive disorder and panic disorder with agoraphobia. Core symptoms include anhedonia, persistent low mood, and recurrent panic attacks with avoidance of feared stimuli. Generalized anxiety symptoms (hyperarousal, somatic tension) and sleep disturbance further complicate functioning. Somatic complaints (chest tightness, myalgias) align with anxiety-driven physiological hyperarousal. The patient exhibits significant impairment in social and occupational functioning due to avoidance behaviors, delayed help-seeking, and fear of panic exacerbation. Comorbidities (depression-anxiety overlap) and functional disability require prioritization in clinical management. No acute suicidal ideation is noted, but hopelessness merits ongoing monitoring. A formal diagnosis should integrate DSM-5 criteria for panic disorder with agoraphobia and depressive features.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6841
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "<sym>Panic attacks</sym>, <sym>social withdrawal</sym>, and <sym>chronic nervousness</sym> have clearly taken a toll on your life, <quote>\"It's like there's a shadow over me\"</quote>\u2014this captures the persistent hopelessness and constriction you describe. Your courage in seeking help despite the <sym>avoidance of feared places</sym> speaks to the severity of your struggles.  \n\n**Diagnosis:** <med>Panic Disorder with Agoraphobia</med> (with comorbid <med>Mood Disorder (Depressive Features)</med> and <med>Generalized Anxiety Disorder</med>).  \n\n**Reasoning:**  \nThe hallmark of panic disorder is recurrent unexpected <sym>panic attacks</sym> (e.g., tachycardia, dyspnea, chills) followed by <sym>avoidance of situations</sym> that trigger anxiety (e.g., crowds, leaving home), as noted in your delayed clinic visit). The <sym>hopelessness</sym> and <sym>diminished pleasure</sym> suggest depressive symptoms, but these are likely exacerbated by chronic anxiety rather than meeting full <med>MDD</med> criteria. <sym>Generalized anxiety</sym> (restlessness, muscle tension) and somatic symptoms (chest tightness) align with DSM-5 criteria for <med>Generalized Anxiety Disorder</med>. <sym>Sleep disturbance</sym> and functional impairment further support these diagnoses.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Cognitive Behavioral Therapy (CBT) for panic and agoraphobia**, focusing on exposure-based strategies to reduce avoidance behaviors.  \n2. **SSRI medication** (e.g., sertraline or escitalopram) to address <sym>panic</sym>, <sym>anxiety</sym>, and depressive symptoms.  \n3. **Panic-focused psychoseducation** to reduce catastrophizing about physical symptoms (e.g., heart palpitations).  \n4. **Sleep hygiene intervention** to address <sym>insomnia/hypersomnia</sym> and improve restorative sleep.  \n5. **Collaborative care with a primary care provider** to rule out medical causes for somatic symptoms (though you\u2019ve already done this) and monitor medication side effects.  \n6. **Weekly psychotherapy sessions** to address <sym>avoidance patterns</sym> and <sym>hopelessness</sym>.  \n\nAll these recommendations prioritize gradually rebuilding your ability to engage with the world while addressing the <sym>physical and emotional distress</sym> you\u2019re experiencing.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "panic",
+    "question_count": 23,
+    "duration": 1718.31281208992,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 12.770267009735107,
+    "diagnosis_generation_time": 9.215378046035767,
+    "rag_evaluation_time": 1.1920928955078125e-05,
+    "total_time": 21.985666036605835
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7207,
+        "average_score": 0.7207,
+        "example_excerpt": "   Somatic Symptom Disorder\nThe upcoming fifth edition of the Diagnostic and Statistical Manual of M...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"symptom\", \"significant\", and 7 more matching aspects of your query."
+      },
+      "APA_DSM-5-Sleep-Wake-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6942,
+        "average_score": 0.6942,
+        "example_excerpt": "rious mental or medical issues. For example, sleep disturbances can signal the presence of medical a...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"criteria\", \"mental\", \"especially\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6802,
+        "average_score": 0.6802,
+        "example_excerpt": " the case with BD. In an effort to address this issue, \nresearch was conducted comparing youth with ...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"constant\", \"depressive\", and 9 more matching aspects of your query."
+      },
+      "APA_DSM-5-Obsessive-Compulsive-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6691,
+        "average_score": 0.6691,
+        "example_excerpt": "  Obsessive Compulsive \n  and Related Disorders\nThe upcoming fifth edition of the Diagnostic and Sta...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"related\", \"help\", \"other\", and 6 more matching aspects of your query."
+      },
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6564,
+        "average_score": 0.6564,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"diminished\", \"key\", \"mood\", and 4 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 07:51:09",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 07:51:09",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 4,
+        "clinical_relevance": 4,
+        "consistency": 4,
+        "diagnostic_justification": 5,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist addressed most of the DSM-5 Level1 Cross-Cutting Symptom Measure domains. Questions covered depression (1-2), anger (3), anxiety (6-8), somatic concerns (9), and sleep (implicitly through other questions). However, some domains like mania (IV), psychotic symptoms (VII), cognitive function (IX), repetitive thoughts/behaviors (X), dissociation (XI), identity and relationships (XII), and substance use (XIII) were either not directly addressed or only superficially covered. For example, the therapist did not ask about 'starting lots more projects than usual' (mania) or 'hearing things other people couldn\u2019t hear' (psychosis). The coverage was generally good but not comprehensive.",
+        "clinical_relevance": "The therapist's questions generally aligned with DSM-5 criteria and were clinically relevant. For instance, questions about feeling down (depression) and feeling nervous or anxious (anxiety) were directly related to the patient's symptoms. However, some questions could have been phrased more precisely to fully capture the DSM-5 criteria. For example, the question about sleep could have distinguished between insomnia and hypersomnia more clearly. Overall, the questions were relevant but occasionally imprecise.",
+        "consistency": "The conversation generally flowed logically, with each question building on previous responses. The therapist appropriately followed up on concerning disclosures, such as the patient's hopelessness and panic attacks. However, there were minor logical inconsistencies, such as not directly addressing the patient's substance use or psychotic symptoms. The conversation mostly felt coherent and well-guided but had some minor gaps.",
+        "diagnostic_justification": "The therapist provided a clear and sound justification for the diagnoses of Panic Disorder with Agoraphobia, Mood Disorder (Depressive Features), and Generalized Anxiety Disorder. The reasoning explicitly linked specific patient symptoms to DSM-5 criteria, such as recurrent panic attacks, avoidance of situations, hopelessness, and generalized anxiety. The differential diagnosis was considered, and the therapist recommended comprehensive treatment options.",
+        "empathy": "The therapist generally displayed empathy and a professional tone. For example, acknowledging the patient's courage in seeking help and describing their feelings. However, there were moments where the interaction felt slightly impersonal or focused on technical aspects. The therapist could have offered more personalized emotional support or acknowledged the patient's distress more explicitly at times."
+      },
+      "overall_comments": "The therapist demonstrated a strong clinical approach, covering most DSM-5 domains and justifying diagnoses clearly. However, some areas like mania, psychosis, and substance use were not thoroughly explored. The conversation was generally empathetic and well-structured but had minor areas for improvement, particularly in fully addressing all DSM-5 dimensions and providing consistent emotional support.",
+      "average_score": 4.2,
+      "diagnosis_accuracy": {
+        "matches_profile": true,
+        "confidence": 5,
+        "explanation": "The diagnosis explicitly mentions 'Panic Disorder' and 'panic attacks' as a primary condition, which directly aligns with the expected profile of 'panic'.",
+        "classification": "panic"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "panic",
+        "classified_as": "panic",
+        "match": true,
+        "confidence": 5
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 2.2728629112243652
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.5455936021469445,
+        "local_coherence": 0.5761545524055351,
+        "window_coherence": 0.5826957538529112
+      },
+      "readability": {
+        "flesch_kincaid_grade": 8.97,
+        "gunning_fog_index": 4.17,
+        "flesch_reading_ease": 48.92
+      },
+      "diversity": {
+        "distinct_1": 0.5134615384615384,
+        "distinct_2": 0.888354186717998,
+        "distinct_3": 0.9682080924855492
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "panic",
+      "predicted": "<sym>Panic attacks</sym>, <sym>social withdrawal</sym>, and <sym>chronic nervousness</sym> have clearly taken a toll on your life, <quote>\"It's like there's a shadow over me\"</quote>\u2014this captures the persistent hopelessness and constriction you describe. Your courage in seeking help despite the <sym>avoidance of feared places</sym> speaks to the severity of your struggles.  \n\n**Diagnosis:** <med>Panic Disorder with Agoraphobia</med> (with comorbid <med>Mood Disorder (Depressive Features)</med> and <med>Generalized Anxiety Disorder</med>).  \n\n**Reasoning:**  \nThe hallmark of panic disorder is recurrent unexpected <sym>panic attacks</sym> (e.g., tachycardia, dyspnea, chills) followed by <sym>avoidance of situations</sym> that trigger anxiety (e.g., crowds, leaving home), as noted in your delayed clinic visit). The <sym>hopelessness</sym> and <sym>diminished pleasure</sym> suggest depressive symptoms, but these are likely exacerbated by chronic anxiety rather than meeting full <med>MDD</med> criteria. <sym>Generalized anxiety</sym> (restlessness, muscle tension) and somatic symptoms (chest tightness) align with DSM-5 criteria for <med>Generalized Anxiety Disorder</med>. <sym>Sleep disturbance</sym> and functional impairment further support these diagnoses.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Cognitive Behavioral Therapy (CBT) for panic and agoraphobia**, focusing on exposure-based strategies to reduce avoidance behaviors.  \n2. **SSRI medication** (e.g., sertraline or escitalopram) to address <sym>panic</sym>, <sym>anxiety</sym>, and depressive symptoms.  \n3. **Panic-focused psychoseducation** to reduce catastrophizing about physical symptoms (e.g., heart palpitations).  \n4. **Sleep hygiene intervention** to address <sym>insomnia/hypersomnia</sym> and improve restorative sleep.  \n5. **Collaborative care with a primary care provider** to rule out medical causes for somatic symptoms (though you\u2019ve already done this) and monitor medication side effects.  \n6. **Weekly psychotherapy sessions** to address <sym>avoidance patterns</sym> and <sym>hopelessness</sym>.  \n\nAll these recommendations prioritize gradually rebuilding your ability to engage with the world while addressing the <sym>physical and emotional distress</sym> you\u2019re experiencing.",
+      "matches": true,
+      "classification": "panic",
+      "classification_confidence": 5
+    }
+  }
+}

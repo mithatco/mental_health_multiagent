@@ -1,0 +1,205 @@
+{
+  "timestamp": "2025-04-30T22:04:41.352567",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "patient",
+      "content": "Maybe a bit, but not because I'm down, more because social stuff is exhausting. I prefer being alone, but it's not that I don't enjoy things generally.\n\nQuestion 2: Feeling down or hopeless?"
+    },
+    {
+      "role": "patient",
+      "content": "Not really hopeless, more anxious. When I force myself to go out, I feel down afterward, but not a general sense of hopelessness.\n\nAnd so on for each question. The patient's answers should reflect their social anxiety symptoms, like physical symptoms during anxiety, avoidance behaviors, etc. \n\nNeed to ensure that all the points from the patient's profile are addressed through their answers. Also, when the patient is asked about substance use, they might mention avoiding alcohol but no misuse. \n\nI should structure each question and response carefully, ensuring all 23 are there. Let me start building the JSON array with each pair correctly formatted. The assistant's role is just to ask the questions as written, one at a time, and the patient responds with elaborated answers. \n\nWait, the user specified that the assistant asks the questions in order, one at a time. The patient's answers should be in natural language, not numbers. The patient's responses must correspond to the domains but in their own words. \n\nDouble-check that all 23 questions are included. The questions go from 1 to 23. Each question's content must be exactly as in the questionnaire, and the patient's responses must align with their profile. \n\nFor example, question 17 asks about repetitive behaviors. The patient might say yes to overthinking social interactions, ruminating on past conversations, but not compulsive behaviors. \n\nI need to ensure that the patient's answers don't just say \"no\" but explain in context. \n\nLet me proceed step by step, making sure each question is addressed properly without missing any. The final JSON array must have exactly 23 question-answer pairs plus the intro, but wait, the introduction isn't counted as a question. The user's example shows that the assistant's first message is the intro, then the questions start. The total number of assistant messages should be 24 (intro + 23 questions), and 23 patient responses. But in the JSON array, the assistant's messages are the intro and the 23 questions, each as separate entries. The patient's responses are 23 entries. Let me structure each pair correctly. \n\nStarting with the introduction:\n\n{\"role\": \"assistant\", \"content\": \"Hello, I'm Dr. [Your Name], a mental health professional. I'll be administering the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult. This assessment helps identify areas needing further exploration. Your responses are confidential. I\u2019ll ask 23 questions about your experiences over the past two weeks. We'll go through each one step by step. Let\u2019s start with the first question. Are you ready?\"}\n\nThen the patient says they're ready. Then the first question is asked, then the patient answers, and so on.\n\nWait, the user's example might have the assistant after the intro immediately starts the first question. Let me ensure the flow is correct. The user's instructions say the intro is part of the conversation, then the 23 Q&A pairs follow. The total array will have 2 (intro and patient's readiness) plus 23*2 =46, totaling 48 entries? Wait, the intro is one message from the assistant, the patient responds with readiness, then the 23 questions each from the assistant, each followed by the patient's answer. So total entries: 1 (intro) + 1 (patient readiness) + 23*2 (questions and answers) = 48 entries. The user's instruction requires the JSON array to include all these. \n\nWait the user's example in the query shows that in their example they have the assistant's first message as the introduction, then the patient responds. Then the assistant asks the first question. Each subsequent question is a new assistant message, and each patient's response is a patient message. So total entries: 1 (intro) + 1 (patient's \"ready\") + 23 questions from assistant and 23 answers from patient, totaling 1+1+23+23 = 48 entries. \n\nI need to structure it properly. Let me start writing the JSON step by step, ensuring all questions are included. Let me check each question number to avoid missing any. For example, question 22 and 23 are part of the substance use section. \n\nQuestion 21: Drinking 4+ drinks in a day. The patient might answer they rarely drink, maybe a drink socially but not exceeding 4. \n\nQuestion 22: Smoking. The patient may say no, don't smoke. \n\nQuestion 23: Using substances beyond prescriptions. The patient would say no, except maybe occasional over-the-counter meds but not misused. \n\nI need to ensure all 23 questions are there. Let me count again. The list in the questionnaire has 23 questions (from 1 to 23), so that's correct. \n\nNow, the assistant's messages will be the introduction, followed by each of the 23 questions exactly as written. The patient's responses must be natural, elaborating on their experiences. They should downplay at first but elaborate when asked. For example, on the first question about pleasure, they might say they lose interest in social events but still enjoy solitary activities. \n\nAlso, when asked about suicidal thoughts (11), the patient might say rarely, but when pressed, admit fleeting thoughts in extreme anxiety but no intent.\n\nI need to make sure all questions are covered, and the patient's answers fit their profile. Let me start composing each pair step by step, ensuring no question is skipped. This will take"
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, let's tackle this. The user provided a questionnaire where all answers are \"No response provided.\" The task is to create a structured clinical assessment based on that, following strict formatting. \n\nFirst, the compassionate summary. I need to acknowledge the patient's situation without judgment. They didn\u2019t answer any questions, so phrases like \"I want to understand what you're experiencing\" and \"you may feel overwhelmed\" could work. Make sure it's empathetic and supportive.\n\nNext, the diagnosis section. Since there's no data, the diagnosis can't be specific. The term \"Nonresponsive to Assessment\" isn't an official diagnosis, so maybe use \"Provisional Clinical Impediment: Nonengagement in Self-Report Assessment\" to capture the issue. \n\nReasoning section needs to explain that the lack of responses prevents any diagnosis. Mention possible reasons like lack of trust, cognitive issues, or communication barriers. Also note that without info, common disorders like depression or anxiety can't be ruled out. Emphasize the need for further evaluation.\n\nRecommended steps: List actionable items. 1. Clinical interview in person, 2. Collateral info from family, 3. Assess for cognitive/communication issues, 4. Rule out medical causes (like neurological issues), 5. Consider motivational interviewing techniques. Need to make these clear and specific.\n\nCheck formatting: Ensure sections are properly headed with asterisks, tags used where needed, and spacing right. Make sure medical terms are tagged. Did I miss any sections? Let me see the structure again. The user wants four sections in order: summary, diagnosis, reasoning, next steps. \n\nWait, the user mentioned \"IMPORTANT DIAGNOSTIC CONSIDERATIONS\" in their prompt, but the instructions say to follow the structure strictly. I should not include that section. Focus on the four parts.\n\nDiagnosis: Can't assign a specific disorder yet, so the impression should reflect data limitation. Maybe \"Provisional Clinical Impediment\" to highlight the barrier to assessment.\n\nSymptoms are not provided, so in the reasoning, explain that the lack of response itself is the presenting issue, not symptoms. Mention that common disorders can't be ruled out without data.\n\nEnsure all sections are concise and tags are correctly placed. Examples: \"Nonengagement\" as a symptom, \"cognitive impairment\" as a medical term.\n\nCheck for empathy in the first paragraph, then move into clinical reasoning. Avoid jargon but use proper terms where needed. Okay, that should cover it. Make sure I didn't miss any formatting rules like the exact section headings. Alright, time to put it all together.\n</think>\n\nI want to emphasize how challenging this situation must feel for you. It takes courage to seek support, and I want to acknowledge the effort it may have taken to even begin this process. While the assessment tool was not fully completed, I want you to know your experience is valid and worth exploring further.  \n\n**Diagnosis:** <med>Provisional Clinical Impediment: Nonengagement in Self-Report Assessment</med>  \n\n**Reasoning:**  \nThe absence of responses prevents reliable symptom-based diagnosis. Possible explanations include:  \n- <sym>Resistance to mental health evaluation</sym> (e.g., distrust, stigma-related shame)  \n- <sym>Cognitive or communication impairments</sym> (e.g., alexithymia, neurocognitive deficits)  \n- <sym>Acute distress or dissociation</sym> interfering with engagement  \nCommon disorders like <med>mood disorders</med>, <med>anxiety disorders</med>, or <med>cognitive impairment</med> cannot be ruled out without further data.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **In-person clinical interview** to explore barriers to engagement (e.g., ask directly about concerns, cultural/linguistic preferences, or sensory/cognitive needs).  \n2. **Collateral information gathering** (with consent) from family, caregivers, or medical providers to contextualize presentation.  \n3. **Formal cognitive/communication assessment** (e.g., MMSE, language screening) if impaired insight or expression is suspected.  \n4. **Medical evaluation** to rule out conditions causing nonengagement (e.g., untreated <med>neurological disorders</med>, metabolic disturbances).  \n5. **Trauma-informed rapport-building** to address potential distrust or fear of disclosure.  \n\n<sym>Nonengagement itself</sym> may indicate unspoken distress requiring careful exploration.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Schizophrenia.pdf",
+            "score": 0.7007,
+            "highlight": "Identifying individuals with an increased risk for developing a psychotic disorder is  significant for effective early intervention, but more study is needed to ensure that attenuated psycho - sis syndrome can be reliably diagnosed.",
+            "excerpt": "h before their consideration as formal disorders. This potential category would \nidentify a person w...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"psychotic\", \"ensure\", \"reliably\", and 6 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Mild-Neurocognitive-Disorder.pdf",
+            "score": 0.695,
+            "highlight": "The impact of these problems is noticeable, but clinicians have lacked a reliable  diagnosis by which to assess symptoms or understand the most appropriate treatment or services.",
+            "excerpt": "ory strategies and accommodations to help maintain independence and \nperform activities of daily liv...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"understand\", \"which\", \"treatment\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Social-Communication-Disorder.pdf",
+            "score": 0.6928,
+            "highlight": "APA is a national medical specialty society whose more than 3 7,000  physician members specialize in the diagnosis, treat- ment, prevention and research of mental illnesses, including substance use disorders.",
+            "excerpt": "and \npractices. Research shows that communication disorders are amenable to treatment, so identifyin...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"use\", \"mental\", \"more\", and 3 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.6895,
+            "highlight": "The  new narrative text for SSD notes that some patients with physical conditions such as heart disease or  cancer will indeed experience disproportionate and excessive thoughts, feelings, and behaviors related  to their illness, and that these individuals may qualify for a diagnosis of SSD.",
+            "excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"illness\", \"related\", \"diagnosis\", and 7 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Conduct-Disorder.pdf",
+            "score": 0.6806,
+            "highlight": "APA is a national medical specialty society whose more than 37,000  physician members specialize in the diagnosis, treat - ment, prevention and research of mental illnesses, including substance use disorders.",
+            "excerpt": "he disorder and a different treatment response. Thus the specifier will allow clinicians to more ac ...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"use\", \"mental\", \"more\", and 3 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, so I need to go through this patient's questionnaire responses. All the answers are \"No response provided\" from Q1 to Q23. Hmm, that's a lot of missing data. Let me see. The user wants me to act as a mental health professional assessing these responses.\n\nFirst, the main symptoms and concerns. Well, since there's no data, maybe the main issue here is the lack of responses. The patient didn't answer any questions. That's notable. The absence of information could indicate several things. Maybe they didn't understand the questions, were reluctant to engage, had difficulty communicating, or there's some other barrier like language or literacy issues. Alternatively, they might be avoiding addressing mental health concerns, possibly due to stigma or denial. Also, technical issues might be a factor, like they couldn't fill it out properly.\n\nPatterns in the responses: All are non-responses. That's a clear pattern. No partial answers, just all skipped. That's unusual. It's not like they answered some and left others; every single one is missing. That's a strong indicator of a systematic problem.\n\nPotential clinical areas of significance: Lack of engagement in assessment tools can be a red flag. It might suggest resistance to treatment, which could relate to underlying issues like anxiety about the process, distrust of the provider, or cognitive impairments affecting their ability to participate. Also, if they're avoiding the questions, maybe they're experiencing severe distress that makes answering difficult. Or, if they have conditions like alexithymia, which makes identifying and describing emotions hard. Alternatively, maybe they're in a crisis that prevents them from responding.\n\nRisk factors: The patient might be at risk of not receiving accurate diagnosis because the data is incomplete. Without responses, it's hard to assess for depression, anxiety, psychosis, substance abuse, etc. There's a risk of under-identification of symptoms. Also, if they didn't answer Q10 about self-harm or Q11 about hearing voices, we can't rule out immediate risks like suicidal ideation or psychotic symptoms. The lack of response could be a sign of acute stress or dissociation, making it hard to engage.\n\nIn summary, the key points are the complete non-responsiveness. I need to note that in the clinical summary, pointing out that the absence of data prevents proper assessment. Mention possible reasons without speculating too much, and highlight the need for further evaluation through a clinical interview to address these gaps. Also, stress the importance of determining why the patient didn't respond\u2014maybe they need support to communicate, or there's an underlying issue affecting their ability to engage. Safety concerns can't be ruled out without more info, so that's a critical point.\n</think>\n\n**Clinical Observation Summary:**  \n\n**1. Main Symptoms and Concerns:**  \n- **Complete absence of responses** across all 23 assessment questions, precluding evaluation of depression, mania, anxiety, psychosis, trauma-related symptoms, somatic complaints, substance use, cognitive deficits, or dissociative features.  \n\n**2. Patterns in Responses:**  \n- **Systematic non-engagement** with the questionnaire, with no partial or \"no\" responses noted. This uniform pattern suggests intentional avoidance, inability to engage, or technical/communication barriers.  \n\n**3. Potential Areas of Clinical Significance:**  \n- **Lack of engagement in assessment:** May indicate resistance to mental health evaluation, poor insight, alexithymia, or cognitive impairment impairing self-report capacity.  \n- **Unaddressed risk factors:** Inability to assess for suicidal/harm ideation (Q10), psychosis (Q11, Q12), self-harm behaviors, or substance use (Q19, Q20, Q23).  \n- **Possible communication barriers:** Language/cognitive limitations, denial of distress, or acute dissociative states interfering with task performance.  \n\n**4. Risk Factors/Warning Signs:**  \n- **Undetermined safety risk:** Cannot rule out active suicidal/harm ideation, psychotic symptoms, or harmful substance use.  \n- **Impaired insight/cognition:** Global non-responsiveness may reflect anosognosia (lack of self-awareness of illness) or neurocognitive impairment.  \n- **Potential for diagnostic under-ascertainment:** Without self-reported data, syndromal diagnoses (e.g., depression, anxiety, bipolar disorder) cannot be reliably inferred.  \n\n**5. Summary:**  \nThe patient\u2019s failure to provide any responses to the structured questionnaire precludes meaningful symptom assessment and limits identification of diagnostic or risk factors. This requires immediate clinical follow-up to determine etiology:  \n- **Prioritize a clinical interview** to evaluate capacity for self-report, assess for cognitive/communication impairments, and directly screen for acute risks (e.g., self-harm, psychosis).  \n- Rule out barriers (e.g., language, literacy, sensory impairment)\u59a8\u788d\u54cd\u5e94.  \n- Consider collateral information (e.g., family report, medical records) to contextualize findings and guide\u4e0b\u4e00\u6b65 interventions.  \n\n**Clinical Note:**  \nFurther evaluation is critical to address gaps in assessment and ensure patient safety. Non-response patterns warrant investigation into factors impeding reliable symptom reporting.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6917
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "I want to emphasize how challenging this situation must feel for you. It takes courage to seek support, and I want to acknowledge the effort it may have taken to even begin this process. While the assessment tool was not fully completed, I want you to know your experience is valid and worth exploring further.  \n\n**Diagnosis:** <med>Provisional Clinical Impediment: Nonengagement in Self-Report Assessment</med>  \n\n**Reasoning:**  \nThe absence of responses prevents reliable symptom-based diagnosis. Possible explanations include:  \n- <sym>Resistance to mental health evaluation</sym> (e.g., distrust, stigma-related shame)  \n- <sym>Cognitive or communication impairments</sym> (e.g., alexithymia, neurocognitive deficits)  \n- <sym>Acute distress or dissociation</sym> interfering with engagement  \nCommon disorders like <med>mood disorders</med>, <med>anxiety disorders</med>, or <med>cognitive impairment</med> cannot be ruled out without further data.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **In-person clinical interview** to explore barriers to engagement (e.g., ask directly about concerns, cultural/linguistic preferences, or sensory/cognitive needs).  \n2. **Collateral information gathering** (with consent) from family, caregivers, or medical providers to contextualize presentation.  \n3. **Formal cognitive/communication assessment** (e.g., MMSE, language screening) if impaired insight or expression is suspected.  \n4. **Medical evaluation** to rule out conditions causing nonengagement (e.g., untreated <med>neurological disorders</med>, metabolic disturbances).  \n5. **Trauma-informed rapport-building** to address potential distrust or fear of disclosure.  \n\n<sym>Nonengagement itself</sym> may indicate unspoken distress requiring careful exploration.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "social_anxiety",
+    "question_count": 23,
+    "duration": 12297.80549621582,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 12.98864197731018,
+    "diagnosis_generation_time": 7.225561141967773,
+    "rag_evaluation_time": 6.9141387939453125e-06,
+    "total_time": 20.214216947555542
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Schizophrenia.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7007,
+        "average_score": 0.7007,
+        "example_excerpt": "h before their consideration as formal disorders. This potential category would \nidentify a person w...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"psychotic\", \"ensure\", \"reliably\", and 6 more matching aspects of your query."
+      },
+      "APA_DSM-5-Mild-Neurocognitive-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.695,
+        "average_score": 0.695,
+        "example_excerpt": "ory strategies and accommodations to help maintain independence and \nperform activities of daily liv...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"understand\", \"which\", \"treatment\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM-5-Social-Communication-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6928,
+        "average_score": 0.6928,
+        "example_excerpt": "and \npractices. Research shows that communication disorders are amenable to treatment, so identifyin...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"use\", \"mental\", \"more\", and 3 more matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6895,
+        "average_score": 0.6895,
+        "example_excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"illness\", \"related\", \"diagnosis\", and 7 more matching aspects of your query."
+      },
+      "APA_DSM-5-Conduct-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6806,
+        "average_score": 0.6806,
+        "example_excerpt": "he disorder and a different treatment response. Thus the specifier will allow clinicians to more ac ...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"use\", \"mental\", \"more\", and 3 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 08:02:11",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 08:02:11",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 1,
+        "clinical_relevance": 1,
+        "consistency": 1,
+        "diagnostic_justification": 1,
+        "empathy": 1
+      },
+      "explanations": {
+        "dsm_coverage": "The conversation barely addressed the DSM-5 dimensions. The therapist failed to ask all 23 questions from the DSM-5 Level1 Cross-Cutting Symptom Measure\u2014Adult. The provided conversation only includes two question-answer pairs, which is insufficient for a comprehensive assessment.",
+        "clinical_relevance": "The questions asked were not precisely aligned with DSM-5 criteria. The conversation was highly incomplete, making it difficult to assess clinical relevance accurately. However, the two questions asked did not accurately reflect the DSM-5 criteria in the context of a comprehensive assessment.",
+        "consistency": "The dialogue appears highly disconnected and lacking in logical progression. With only two question-answer pairs, there's no visible flow or coherence in the conversation. The abrupt end and lack of follow-up questions contribute to the poor consistency and logical flow.",
+        "diagnostic_justification": "The diagnosis provided does not clearly align with the minimal responses obtained from the patient. The justification for the diagnosis of 'Provisional Clinical Impediment: Nonengagement in Self-Report Assessment' seems appropriate given the context, but it lacks direct connection to specific DSM-5 criteria due to the limited data collected.",
+        "empathy": "The therapist's responses show little empathy or natural conversational style. The interaction appears highly impersonal and abrupt, given the very limited engagement and lack of follow-up questions to explore the patient's distress."
+      },
+      "overall_comments": "The conversation and diagnosis provided are highly incomplete. A comprehensive evaluation cannot be made with only two question-answer pairs. The therapist's approach seems to acknowledge the patient's potential distress but fails to systematically assess DSM-5 dimensions. Significant improvement is needed in all areas, including DSM-5 coverage, clinical relevance, consistency, diagnostic justification, and empathy.",
+      "average_score": 1.0,
+      "diagnosis_accuracy": {
+        "matches_profile": false,
+        "confidence": 4,
+        "explanation": "The diagnosis does not explicitly mention social anxiety or equivalent clinical terms. Instead, it focuses on nonengagement in self-report assessment, which may be a symptom of various conditions, including social anxiety, but also other conditions like anxiety disorders, mood disorders, or cognitive impairments.",
+        "classification": "other"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "social_anxiety",
+        "classified_as": "other",
+        "match": false,
+        "confidence": 4
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 4.341677904129028
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.5263209619989007,
+        "local_coherence": 0.5394101343507758,
+        "window_coherence": 0.5263209619989007
+      },
+      "readability": {
+        "flesch_kincaid_grade": 9.91,
+        "gunning_fog_index": 3.87,
+        "flesch_reading_ease": 40.75
+      },
+      "diversity": {
+        "distinct_1": 0.5882352941176471,
+        "distinct_2": 0.9203821656050956,
+        "distinct_3": 0.9728867623604466
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "social_anxiety",
+      "predicted": "I want to emphasize how challenging this situation must feel for you. It takes courage to seek support, and I want to acknowledge the effort it may have taken to even begin this process. While the assessment tool was not fully completed, I want you to know your experience is valid and worth exploring further.  \n\n**Diagnosis:** <med>Provisional Clinical Impediment: Nonengagement in Self-Report Assessment</med>  \n\n**Reasoning:**  \nThe absence of responses prevents reliable symptom-based diagnosis. Possible explanations include:  \n- <sym>Resistance to mental health evaluation</sym> (e.g., distrust, stigma-related shame)  \n- <sym>Cognitive or communication impairments</sym> (e.g., alexithymia, neurocognitive deficits)  \n- <sym>Acute distress or dissociation</sym> interfering with engagement  \nCommon disorders like <med>mood disorders</med>, <med>anxiety disorders</med>, or <med>cognitive impairment</med> cannot be ruled out without further data.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **In-person clinical interview** to explore barriers to engagement (e.g., ask directly about concerns, cultural/linguistic preferences, or sensory/cognitive needs).  \n2. **Collateral information gathering** (with consent) from family, caregivers, or medical providers to contextualize presentation.  \n3. **Formal cognitive/communication assessment** (e.g., MMSE, language screening) if impaired insight or expression is suspected.  \n4. **Medical evaluation** to rule out conditions causing nonengagement (e.g., untreated <med>neurological disorders</med>, metabolic disturbances).  \n5. **Trauma-informed rapport-building** to address potential distrust or fear of disclosure.  \n\n<sym>Nonengagement itself</sym> may indicate unspoken distress requiring careful exploration.",
+      "matches": false,
+      "classification": "other",
+      "classification_confidence": 4
+    }
+  }
+}

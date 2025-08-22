@@ -1,0 +1,237 @@
+{
+  "timestamp": "2025-04-30T21:11:06.111255",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello, thank you for coming in today. My name is Dr. Thompson, and I'm here to help assess your mental health. I'll be using the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult. This tool helps us identify areas to discuss further. Your answers will stay confidential, and I'll ask you 23 questions about how much you've been bothered by certain issues over the past two weeks. We'll go one at a time, and you can share as much or as little as comfortable. Let's start with the first question: 1. Little interest or pleasure in doing things? Please describe how much this has affected you in the past two weeks."
+    },
+    {
+      "role": "patient",
+      "content": "Hmm, well... I mean, I still do things, but it feels like I'm just going through the motions. My compulsions take up so much time, so I don't really have a chance to enjoy things anymore. But I don't know, maybe that's just normal stress?"
+    },
+    {
+      "role": "assistant",
+      "content": "2. Feeling down, depressed, or hopeless?"
+    },
+    {
+      "role": "patient",
+      "content": "Most days I feel stuck... like I'm living in a cycle I can't break. But I don't think I'm *hopeless*\u2014it's more that I'm exhausted from fighting my thoughts all the time."
+    },
+    {
+      "role": "assistant",
+      "content": "3. Feeling more irritated, grouchy, or angry than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "Yeah, if someone interrupts my routines, I get really worked up. Like, if I'm mid-washing and they ask me a question, I snap. But I hate that it happens. It's not my fault, though\u2014they just don't get how important these things are to me."
+    },
+    {
+      "role": "assistant",
+      "content": "4. Sleeping less than usual, but still have a lot of energy?"
+    },
+    {
+      "role": "patient",
+      "content": "No, actually I've been really tired. I barely sleep because I'm either up doing rituals or lying there panicking about doing them wrong."
+    },
+    {
+      "role": "assistant",
+      "content": "5. Starting lots more projects than usual or doing more risky things than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "No\u2014nothing like that. I just... do the same things over and over. It's not starting projects. It's just... stuck."
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, let's see. The user wants a structured mental health assessment based on the provided questionnaire responses. They emphasized the need to follow a strict format with specific tags and sections. First, I need to make sure I address each part of the structure exactly as instructed.\n\nStarting with the compassionate summary. The patient's answers show they're struggling with compulsions that dominate their life, leading to exhaustion and interpersonal issues. I should acknowledge their distress and validate their experience without making it sound dismissive.\n\nNext, the diagnosis section. The main symptoms point to OCD. The compulsions, rituals, and the way they disrupt daily life are classic OCD indicators. The anhedonia and feeling stuck might suggest depressive symptoms, but they don't fully meet major depression criteria yet. So primary diagnosis would be OCD with possible depressive features.\n\nFor the reasoning, I need to link symptoms to OCD criteria. The compulsions are time-consuming, causing distress. The irritability when routines are broken fits with OCD's compulsive need for control. Anhedonia could be part of OCD's impact or a separate issue, so I should note that as a possible comorbidity but not assume without more info.\n\nTreatment steps should include CBT with ERP as first-line for OCD, possibly SSRIs. Addressing sleep and anger management is important too. The patient mentioned exhaustion from rituals, so sleep hygiene advice makes sense. They also get angry when interrupted, so anger management strategies would help. Monitoring for depression is needed in case symptoms worsen.\n\nI need to use the tags correctly: medical terms like OCD and SSRIs in <med> tags, symptoms like anhedonia and compulsions in <sym> tags, and quotes from their answers in <quote> tags. The sections must be in order with exact headings and proper spacing. Let me check all the requirements again to make sure nothing's missed. Also, avoid any markdown beyond the specified tags and ensure the tone stays empathetic yet professional.\n\nWait, the user mentioned not to include Somatic Symptom Disorder unless warranted. Since the symptoms are more about rituals and intrusive thoughts, OCD is the better fit. The depressive symptoms aren't severe enough yet, but monitoring is needed. Okay, that seems right. Let's structure each section step by step, ensuring all parts are covered. Alright, time to put it all together carefully.\n</think>\n\n<sym>Anhedonia</sym>, <sym>ritualistic behaviors</sym>, and <sym>emotional dysregulation</sym> are central to your experience. Your <sym>compulsions</sym> consume so much time and energy that everyday joys feel out of reach, and the pressure to \"get things right\" takes a toll on your well-being. Despite this, your awareness and willingness to describe these struggles reflect resilience. You\u2019re not alone in this\u2014it\u2019s clear how exhausting it is to fight against these patterns daily.  \n\n**Diagnosis:** <med>Obsessive-Compulsive Disorder (OCD)</med> with <sym>comorbid depressive symptoms</sym> (provisional).  \n\n**Reasoning:**  \nThe hallmark <sym>compulsions</sym> (e.g., rituals, repetitive behaviors), time-consuming nature, and associated distress align with <med>OCD</med> criteria. <sym>Anhedonia</sym> and feelings of being <quote>\"stuck\"</quote> suggest overlapping <sym>depressive symptoms</sym>, though these may be secondary to OCD severity. The <sym>irritability</sym> triggered by disruptions to routines further supports <med>OCD</med>, as interruptions to compulsions often provoke intense anxiety and emotional dysregulation. No evidence of psychotic features, substance use, or trauma-specific triggers to explain the symptom pattern.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Formal <med>Cognitive-Behavioral Therapy (CBT)</med> with <med>Exposure and Response Prevention (ERP)</med> therapy for <med>OCD</med>. This is first-line treatment for compulsions and rituals.  \n2. **Medication evaluation:** Consider <med>SSRIs</med> (e.g., fluoxetine, sertraline) to reduce OCD severity and address <sym>anxiety</sym> or <sym>depressive symptoms</sym>.  \n3. **Sleep hygiene intervention:** Address insomnia via structured routines and relaxation strategies to reduce nighttime <sym>anxiety</sym> from compulsions.  \n4. **Emotional regulation training:** Skills to manage <sym>irritability</sym> when routines are disrupted (e.g., mindfulness, grounding techniques).  \n5. **Monitor depressive symptoms:** Reassess in 2-4 weeks for changes in <sym>anhedonia</sym> or hopelessness to rule out <med>MDD</med>.  \n6. **Psychoeducation:** Normalize the experience of <med>OCD</med> and validate efforts to manage symptoms while emphasizing the effectiveness of evidence-based treatments.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Mild-Neurocognitive-Disorder.pdf",
+            "score": 0.5553,
+            "highlight": "Process for a New Diagnosis New diagnoses were included in DSM-5 only after a comprehensive review of the scientific literature;  full discussion by Work Group members; review by the DSM-5 Task Force, Scientific Review Committee,  and Clinical and Public Health Committee; and, finally, evaluation by the American Psychiatric Associa - tion\u2019s Board of Trust ees.",
+            "excerpt": "ment and may prevent or slow progression. Researchers \nwill evaluate how well the new diagnostic cri...",
+            "relevance_explanation": "Some relevance: Contains terms \"evaluation\", \"health\", \"clinical\", and 1 more that have contextual connection to your query."
+          },
+          {
+            "title": "APA_DSM-5-Conduct-Disorder.pdf",
+            "score": 0.5497,
+            "highlight": "The specifier will also encourage treatment research to refine what does and does not work for this  group of individuals.",
+            "excerpt": "he disorder and a different treatment response. Thus the specifier will allow clinicians to more ac ...",
+            "relevance_explanation": "Some relevance: Contains terms \"treatment\", \"not\", \"also\", and 1 more that have contextual connection to your query."
+          },
+          {
+            "title": "APA_DSM-5-Intellectual-Disability.pdf",
+            "score": 0.5397,
+            "highlight": "APA is a national medical specialty society whose more than 37,000  physician members specialize in the diagnosis, treat - ment, prevention and research of mental illnesses, including substance use disorders.",
+            "excerpt": "linicians base their diagnosis on the impact of the deficit in general mental abilities on functioni...",
+            "relevance_explanation": "Some relevance: Contains terms \"mental\", \"more\", \"disorders\", and 3 more that have contextual connection to your query."
+          },
+          {
+            "title": "APA_DSM-5-Obsessive-Compulsive-Disorder.pdf",
+            "score": 0.5371,
+            "highlight": "Process for a New Diagnosis New diagnoses were included in DSM-5 only after a comprehensive review of the scientific literature;  full discussion by Work Group members; review by the DSM-5 Task Force, Scientific Review Committee,  and Clinical and Public Health Committee; and, finall y, evaluation by the American Psychiatric Associa- tion\u2019s Board of Trustees.",
+            "excerpt": "c literature on excoriation \u2019s preva-\nlence, diagnostic validators and treatment. Studies show that ...",
+            "relevance_explanation": "Some relevance: Contains terms \"evaluation\", \"health\", \"clinical\", and 1 more that have contextual connection to your query."
+          },
+          {
+            "title": "APA_DSM-5-Social-Communication-Disorder.pdf",
+            "score": 0.5167,
+            "highlight": "For example, while autism  spectrum disorder (ASD) does encompass communication problems, it also includes restricted, repeti- tive patterns of behavio r, interests or activities and gives equal weight to both communication issues  and repetitive behaviors.",
+            "excerpt": "al and Public Health Committee; and, finall y, evaluation by the American Psychiatric Associa-\ntion\u2019...",
+            "relevance_explanation": "Some relevance: Contains terms \"issues\", \"behaviors\", \"repetitive\", and 5 more that have contextual connection to your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, I need to analyze the patient's answers to these questions. Let's start by going through each response one by one to identify main symptoms and concerns.\n\nStarting with Q1: The patient mentions they still do things but feel like they're \"going through the motions,\" and their compulsions take up a lot of time, leaving no room for enjoyment. They wonder if it's just normal stress. This suggests a possible decrease in interest/pleasure, which is a key symptom of depression, but the mention of compulsions points more towards an anxiety disorder, maybe OCD. The compulsions taking up significant time is a red flag for OCD.\n\nQ2 says they feel \"stuck\" and \"exhausted from fighting thoughts,\" but they don't see themselves as hopeless. The stuck feeling and exhaustion from battling intrusive thoughts could indicate OCD's intrusive thoughts and compulsions, but also the depressive component of feeling stuck might suggest a co-occurring depression.\n\nQ3 notes irritability when routines are interrupted, leading to snapping. They justify their anger by saying others don't understand their compulsions. This sounds like irritability due to disruption of compulsive behaviors, which is common in OCD. The anger and frustration when routines are interrupted is a pattern here.\n\nQ4: They have trouble sleeping, not because they have energy but because of anxiety from rituals or panicking about doing them wrong. Insomnia is a common issue in anxiety disorders, especially OCD, where the rituals may interfere with sleep or cause anxiety that disrupts sleep.\n\nQ5: They don't start projects but do the same things over and over. Repetitive behaviors are classic in OCD. The description here aligns with compulsions, like rituals done repeatedly to alleviate anxiety.\n\nNow, looking for patterns: The patient consistently refers to compulsions, their time-consuming nature, and the associated distress. The mention of rituals, the impact on daily activities, and the emotional toll (irritability, exhaustion) are recurring themes. The patient seems to have insight into their compulsions but may feel compelled to continue them despite the negative impact.\n\nPotential clinical areas: OCD is the most prominent here. The compulsions are affecting their ability to enjoy life (anhedonia also seen in depression), but the primary issue seems to be OCD. However, there's a depressive component with feeling stuck and down, so maybe a comorbid depressive disorder. The irritability and frustration when routines are interrupted could also point to OCPD or another anxiety-related condition, but OCD fits better with the compulsions.\n\nRisk factors: The compulsions taking so much time could interfere with social, occupational, or other areas of functioning. The sleep disruption is another risk, leading to fatigue. The patient's mention of panicking about doing rituals \"wrong\" suggests possible anxiety exacerbation, which could lead to further distress or possible self-isolation. There's no direct mention of suicidal thoughts, but the exhaustion and feeling stuck could be concerning if they worsen.\n\nAny signs of psychosis or substance abuse? The patient doesn't mention those. The self-report doesn't indicate those, so maybe not. The main concerns are OCD symptoms with possible depressive features and associated irritability and sleep disturbances.\n\nPutting it all together, the main symptoms are compulsions interfering with life, anhedonia, irritability related to disruptions, sleep issues, and repetitive behaviors. The pattern is consistent with OCD. The clinical significance includes the compulsions' time consumption and impact on functioning. Risks include functional impairment, sleep disturbance, and emotional distress from the compulsions.\n\nI need to make sure I'm not missing anything. They didn't mention any suicidal ideation or psychotic symptoms, so no immediate risk there. The compulsions are the central issue here. The depressive symptoms might be secondary to OCD, but still worth noting as a comorbidity.\n</think>\n\n**Clinical Observation Summary**  \n\n**1. Main Symptoms and Concerns:**  \n- **Anhedonia (lack of pleasure/interest):** Reduced ability to derive enjoyment from activities, attributed to time-consuming compulsions.  \n- **Persistent distressing thoughts and compulsions:** Intrusive thoughts (\"fighting my thoughts\"), repetitive rituals (e.g., \"rituals,\" \"doing things over and over\"), and rigidity around routines (e.g., irritability when routines are interrupted).  \n- **Sleep disturbance:** Insomnia due to compulsions interfering with rest and anxiety about performing rituals \"correctly.\"  \n- **Irritability/anger dysregulation:** Expressed when compulsions are disrupted (e.g., during rituals).  \n\n**2. Patterns in Responses:**  \n- **Cyclical distress:** Reports feeling \"stuck\" in a cycle of intrusive thoughts and compulsive behaviors, with exhaustion from this cycle.  \n- **Self-awareness of impact:** Acknowledges compulsions consume time and reduce enjoyment but questions if this is \"normal stress,\" suggesting possible underestimation of symptom severity.  \n- **Externalizing distress:** Anger/irritability directed at others when routines are interrupted, reflecting frustration over perceived threats to compulsions.  \n\n**3. Potential Areas of Clinical Significance:**  \n- **Obsessive-Compulsive Disorder (OCD):** Compulsive behaviors, intrusive thoughts, time-consuming rituals, and associated distress strongly indicate OCD.  \n- **Depressive features:** Anhedonia and feelings of being \"stuck\" may reflect co-occurring Major Depressive Disorder or depressive symptoms secondary to OCD.  \n- **Emotional dysregulation:** Anger/irritability linked to disruptions in compulsive behaviors.  \n- **Functional impairment:** Compulsions likely interfere with social, occupational, or daily functioning.  \n\n**4. Risk Factors/Warning Signs:**  \n- **Functional impairment:** Compulsions occupy significant time, limiting leisure or pleasurable activities.  \n- **Sleep disruption:** Insomnia due to compulsions and anxiety about performance (risk of fatigue, secondary mood dysregulation).  \n- **Social/relational strain:** Irritability when routines are disrupted may lead to interpersonal conflict.  \n- **No current evidence of acute suicidal/harmful intent or psychotic symptoms.**  \n\n**5. Summary (Clinical Language):**  \nThe patient exhibits clinically significant symptoms consistent with **Obsessive-Compulsive Disorder (OCD)**, including time-consuming compulsions, intrusive thoughts, and associated anhedonia. Compulsions appear to dominate daily functioning, leading to sleep disturbance and anger dysregulation when routines are disrupted. Depressive symptoms (anhedonia, feelings of being \"stuck\") may warrant further assessment for comorbid Major Depressive Disorder. Emotional dysregulation and functional impairment (e.g., reduced leisure engagement, interpersonal tension) highlight urgency for targeted intervention. OCD symptom severity and associated distress are primary concerns requiring prioritization in further evaluation and treatment planning.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.5397
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "<sym>Anhedonia</sym>, <sym>ritualistic behaviors</sym>, and <sym>emotional dysregulation</sym> are central to your experience. Your <sym>compulsions</sym> consume so much time and energy that everyday joys feel out of reach, and the pressure to \"get things right\" takes a toll on your well-being. Despite this, your awareness and willingness to describe these struggles reflect resilience. You\u2019re not alone in this\u2014it\u2019s clear how exhausting it is to fight against these patterns daily.  \n\n**Diagnosis:** <med>Obsessive-Compulsive Disorder (OCD)</med> with <sym>comorbid depressive symptoms</sym> (provisional).  \n\n**Reasoning:**  \nThe hallmark <sym>compulsions</sym> (e.g., rituals, repetitive behaviors), time-consuming nature, and associated distress align with <med>OCD</med> criteria. <sym>Anhedonia</sym> and feelings of being <quote>\"stuck\"</quote> suggest overlapping <sym>depressive symptoms</sym>, though these may be secondary to OCD severity. The <sym>irritability</sym> triggered by disruptions to routines further supports <med>OCD</med>, as interruptions to compulsions often provoke intense anxiety and emotional dysregulation. No evidence of psychotic features, substance use, or trauma-specific triggers to explain the symptom pattern.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Formal <med>Cognitive-Behavioral Therapy (CBT)</med> with <med>Exposure and Response Prevention (ERP)</med> therapy for <med>OCD</med>. This is first-line treatment for compulsions and rituals.  \n2. **Medication evaluation:** Consider <med>SSRIs</med> (e.g., fluoxetine, sertraline) to reduce OCD severity and address <sym>anxiety</sym> or <sym>depressive symptoms</sym>.  \n3. **Sleep hygiene intervention:** Address insomnia via structured routines and relaxation strategies to reduce nighttime <sym>anxiety</sym> from compulsions.  \n4. **Emotional regulation training:** Skills to manage <sym>irritability</sym> when routines are disrupted (e.g., mindfulness, grounding techniques).  \n5. **Monitor depressive symptoms:** Reassess in 2-4 weeks for changes in <sym>anhedonia</sym> or hopelessness to rule out <med>MDD</med>.  \n6. **Psychoeducation:** Normalize the experience of <med>OCD</med> and validate efforts to manage symptoms while emphasizing the effectiveness of evidence-based treatments.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "ocd",
+    "question_count": 23,
+    "duration": 9082.564060926437,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 5.742544174194336,
+    "diagnosis_generation_time": 6.9316182136535645,
+    "rag_evaluation_time": 1.2159347534179688e-05,
+    "total_time": 12.674186944961548
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Mild-Neurocognitive-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.5553,
+        "average_score": 0.5553,
+        "example_excerpt": "ment and may prevent or slow progression. Researchers \nwill evaluate how well the new diagnostic cri...",
+        "relevance_explanation": "Some relevance: Contains terms \"evaluation\", \"health\", \"clinical\", and 1 more that have contextual connection to your query."
+      },
+      "APA_DSM-5-Conduct-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.5497,
+        "average_score": 0.5497,
+        "example_excerpt": "he disorder and a different treatment response. Thus the specifier will allow clinicians to more ac ...",
+        "relevance_explanation": "Some relevance: Contains terms \"treatment\", \"not\", \"also\", and 1 more that have contextual connection to your query."
+      },
+      "APA_DSM-5-Intellectual-Disability.pdf": {
+        "access_count": 1,
+        "highest_score": 0.5397,
+        "average_score": 0.5397,
+        "example_excerpt": "linicians base their diagnosis on the impact of the deficit in general mental abilities on functioni...",
+        "relevance_explanation": "Some relevance: Contains terms \"mental\", \"more\", \"disorders\", and 3 more that have contextual connection to your query."
+      },
+      "APA_DSM-5-Obsessive-Compulsive-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.5371,
+        "average_score": 0.5371,
+        "example_excerpt": "c literature on excoriation \u2019s preva-\nlence, diagnostic validators and treatment. Studies show that ...",
+        "relevance_explanation": "Some relevance: Contains terms \"evaluation\", \"health\", \"clinical\", and 1 more that have contextual connection to your query."
+      },
+      "APA_DSM-5-Social-Communication-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.5167,
+        "average_score": 0.5167,
+        "example_excerpt": "al and Public Health Committee; and, finall y, evaluation by the American Psychiatric Associa-\ntion\u2019...",
+        "relevance_explanation": "Some relevance: Contains terms \"issues\", \"behaviors\", \"repetitive\", and 5 more that have contextual connection to your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 07:55:17",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 07:55:17",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 3,
+        "clinical_relevance": 4,
+        "consistency": 4,
+        "diagnostic_justification": 4,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist addressed several key domains such as depression, anger, and anxiety but did not thoroughly explore all 23 questions from the DSM-5 Level1 Cross-Cutting Symptom Measure. Notably, domains like mania, psychotic symptoms, substance use, memory, repetitive thoughts/behaviors, dissociation, identity and relationships, and cognitive function were either not addressed or only superficially covered. For example, the therapist did not ask about 'starting lots more projects than usual or doing more risky things than usual' (mania), 'hearing things other people couldn\u2019t hear, such as voices when no one is around?' (psychotic symptoms), or 'problems with memory (e.g., learning new information) or with location (e.g., finding your way home)?' (cognitive function).",
+        "clinical_relevance": "The therapist's questions generally align with DSM-5 criteria, but there were slight inaccuracies or vague phrasing in some instances. For example, when asking about 'little interest or pleasure in doing things,' the patient mentioned compulsions taking up time, and the therapist could have more precisely linked this to anhedonia. However, questions were mostly clinically relevant and targeted symptoms accurately. The therapist could improve by using more precise DSM-5 terminology consistently.",
+        "consistency": "The dialogue generally flows logically, with each question building on previous responses. However, there were minor logical inconsistencies, such as not following up on concerning disclosures (e.g., 'I get really worked up' when routines are interrupted) with more probing questions. The conversation mostly maintains coherence, but could benefit from smoother transitions and more in-depth exploration of certain symptoms.",
+        "diagnostic_justification": "The diagnosis of Obsessive-Compulsive Disorder (OCD) with comorbid depressive symptoms is generally supported by the patient's responses. The therapist explicitly linked symptoms like compulsions, anhedonia, and irritability to the diagnosis. However, the justification could be stronger by more comprehensively ruling out alternative diagnoses or considering additional factors such as trauma-specific triggers. The reasoning provided is clinically sound but could benefit from more detailed differential diagnosis consideration.",
+        "empathy": "The therapist responses mostly show empathy and a natural conversational style. The therapist acknowledges the patient's struggles, describing them as 'exhausting' and validating their experience. However, there were moments where the interactions seemed slightly robotic or impersonal, such as directly moving from one structured question to the next without additional emotional acknowledgment. More consistent warmth and personalized interactions could elevate this to a perfect score."
+      },
+      "overall_comments": "The conversation demonstrates a good effort to assess the patient's mental health using the DSM-5 Level1 Cross-Cutting Symptom Measure. However, there are areas for improvement, particularly in thoroughly covering all relevant DSM-5 dimensions, maintaining consistent empathy, and providing more comprehensive diagnostic justification. The therapist did well in identifying central symptoms of OCD and depressive symptoms but could enhance the assessment by addressing all domains and tailoring responses more closely to the patient's emotional state.",
+      "average_score": 3.8,
+      "diagnosis_accuracy": {
+        "matches_profile": true,
+        "confidence": 5,
+        "explanation": "The diagnosis explicitly mentions 'Obsessive-Compulsive Disorder (OCD)' as the primary condition, and the symptoms described (e.g., compulsions, ritualistic behaviors, emotional dysregulation) align with the expected profile of OCD.",
+        "classification": "ocd"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "ocd",
+        "classified_as": "ocd",
+        "match": true,
+        "confidence": 5
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 2.589087963104248
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.5507409134248454,
+        "local_coherence": 0.5547426640556155,
+        "window_coherence": 0.5657251233503433
+      },
+      "readability": {
+        "flesch_kincaid_grade": 8.43,
+        "gunning_fog_index": 4.54,
+        "flesch_reading_ease": 54.48
+      },
+      "diversity": {
+        "distinct_1": 0.5518044237485448,
+        "distinct_2": 0.9382284382284383,
+        "distinct_3": 0.9813302217036173
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "ocd",
+      "predicted": "<sym>Anhedonia</sym>, <sym>ritualistic behaviors</sym>, and <sym>emotional dysregulation</sym> are central to your experience. Your <sym>compulsions</sym> consume so much time and energy that everyday joys feel out of reach, and the pressure to \"get things right\" takes a toll on your well-being. Despite this, your awareness and willingness to describe these struggles reflect resilience. You\u2019re not alone in this\u2014it\u2019s clear how exhausting it is to fight against these patterns daily.  \n\n**Diagnosis:** <med>Obsessive-Compulsive Disorder (OCD)</med> with <sym>comorbid depressive symptoms</sym> (provisional).  \n\n**Reasoning:**  \nThe hallmark <sym>compulsions</sym> (e.g., rituals, repetitive behaviors), time-consuming nature, and associated distress align with <med>OCD</med> criteria. <sym>Anhedonia</sym> and feelings of being <quote>\"stuck\"</quote> suggest overlapping <sym>depressive symptoms</sym>, though these may be secondary to OCD severity. The <sym>irritability</sym> triggered by disruptions to routines further supports <med>OCD</med>, as interruptions to compulsions often provoke intense anxiety and emotional dysregulation. No evidence of psychotic features, substance use, or trauma-specific triggers to explain the symptom pattern.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Formal <med>Cognitive-Behavioral Therapy (CBT)</med> with <med>Exposure and Response Prevention (ERP)</med> therapy for <med>OCD</med>. This is first-line treatment for compulsions and rituals.  \n2. **Medication evaluation:** Consider <med>SSRIs</med> (e.g., fluoxetine, sertraline) to reduce OCD severity and address <sym>anxiety</sym> or <sym>depressive symptoms</sym>.  \n3. **Sleep hygiene intervention:** Address insomnia via structured routines and relaxation strategies to reduce nighttime <sym>anxiety</sym> from compulsions.  \n4. **Emotional regulation training:** Skills to manage <sym>irritability</sym> when routines are disrupted (e.g., mindfulness, grounding techniques).  \n5. **Monitor depressive symptoms:** Reassess in 2-4 weeks for changes in <sym>anhedonia</sym> or hopelessness to rule out <med>MDD</med>.  \n6. **Psychoeducation:** Normalize the experience of <med>OCD</med> and validate efforts to manage symptoms while emphasizing the effectiveness of evidence-based treatments.",
+      "matches": true,
+      "classification": "ocd",
+      "classification_confidence": 5
+    }
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "timestamp": "2025-04-30T21:22:07.593170",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, I need to generate a full conversation based on the provided DSM-5 Level 1 Cross-Cutting Symptom Measure. Let me start by understanding the requirements. The user wants a JSON array with each question from the questionnaire answered in natural language by the patient. The mental health professional (assistant) must ask all 23 questions in order, using the exact wording.\n\nFirst, I'll check the questionnaire details. The questions are divided into domains, each with specific items. The patient's profile has PTSD from a car accident, so their answers must reflect that. They should show reluctance, emotional responses, and natural language, not numbers.\n\nStarting with the introduction. The assistant must introduce themselves, mention the specific questionnaire, explain the purpose, reassure confidentiality, and outline the process. Then proceed through each question.\n\nThe patient's answers need to mirror the symptoms listed in their profile. For example, question 1 about little interest in activities \u2013 the patient might mention withdrawal or loss of pleasure. Question 2 about feeling down relates to their depression symptoms. The PTSD's re-experiencing, avoidance, negative thoughts, and arousal must come through their answers.\n\nEach answer should align with the severity indicated by the scale, but in their own words. For instance, if the answer would be a '3' (moderate), the patient should describe it as happening more than half the days, like frequent nightmares or triggers.\n\nI need to ensure all 23 questions are covered. Let me count them again. The DSM-5 list ends at 23, so 23 items total. Each must be asked in order, and the patient's responses need to be natural, not just numbers. Also, the patient should occasionally express distress, such as mentioning the anniversary approaching, physical reactions, or emotional statements like \"I just want to get back to normal.\"\n\nWait, in the questionnaire, the questions are numbered 1 to 23. The domains go up to XIII Substance Use with questions 21-23. So I need to make sure all are included. Let me list them:\n\n1. Little interest...\n2. Feeling down/depressed...\n3. Feeling more irritable...\n4. Sleeping less but lots of energy?\n5. Starting lots of projects...\n6. Feeling nervous...\n7. Feeling panic...\n8. Avoiding situations...\n9. Unexplained aches...\n10. Feeling illnesses not taken seriously?\n11. Thoughts of hurting yourself? (suicidal)\n12. Hearing voices...\n13. Feeling that someone can hear thoughts...\n14. Problems with sleep affecting quality?\n15. Memory problems...\n16. Unpleasant thoughts...\n17. Feeling driven to perform behaviors...\n18. Feeling detached...\n19. Not knowing who you are...\n20. Not feeling close to others...\n21. Drinking 4+ drinks a day? (The patient's answer should be yes, like 3-4 drinks to sleep)\n22. Smoking? (Probably not, unless specified. The profile says they drink more alcohol)\nWait, looking back: the patient's coping includes increased alcohol, but smoking? The profile says \"drinking more alcohol to help sleep,\" so for question 22 about smoking, the patient might answer \"no\" or not applicable.\n\n23. Using unprescribed substances? The patient might mention using more alcohol than prescribed, but the question is about other substances. The profile says they haven't mentioned other drugs, so maybe \"no.\"\n\nI need to map each question to the patient's profile. For example, Question 3 is about anger. The profile mentions irritability and outbursts, so the patient would answer that they're more irritable. \n\nQuestion 4 about mania (energy despite less sleep). The patient might not have mania, but their insomnia might be due to anxiety. Wait, the question is \"Sleeping less than usual but still have a lot of energy?\" The patient's insomnia is there, but they might have low energy because they're stressed. So their answer could be \"no\" or maybe slight. Wait, the patient has trouble sleeping but likely feels tired, so maybe \"0\" or \"slight\". But the assistant's question is exactly as written. The patient's response should be in their voice, like \"I haven't noticed that. I actually feel drained a lot.\"\n\nI need to ensure each question's response aligns with the patient's PTSD and coping mechanisms. Also, the patient should sometimes mention physical reactions or emotional statements, like tearing up when talking about the deceased driver, or expressing guilt.\n\nAlso, the patient's answers must not use numerical ratings. For example, question 1 asks how much they've been bothered by little interest in activities. The patient might say, \"Not much interest anymore, even in hobbies I used to love,\" indicating a 'moderate' or 'severe' rating, but in their own words.\n\nNow, the structure must be a JSON array with each question and response as objects. The assistant's role is to ask the questions in order, and the patient responds naturally. I'll need to ensure all 23 are there.\n\nLet me start drafting each pair:\n\n1. Assistant starts with introduction, then asks question 1: \"Little interest...\"\nPatient's response relates to losing pleasure in activities, maybe moderate to severe.\n\nProceed through each question, ensuring the patient's answers reflect PTSD symptoms. For the suicidal thoughts (Q11), the profile says they haven't had suicidal ideation, so perhaps \"0\" but in their words: \"No, I don't have thoughts like that. I just want to feel better.\"\n\nPsychosis (Q12 and 13): The patient doesn't have psychosis, so \"0\" or slight if they sometimes feel detached, but question 18 is about dissociation, which they do have, so that's where dissociation comes in. Wait, the DSM-5 questions: question 12 is about hearing voices. The patient has PTSD, so unless they have psychotic features, they might answer \"no\" there. \n\nSubstance use (Q21-23): The patient drinks 3-4 drinks nightly, so answer 21 would be \"yes, I've had 4+ drinks some days.\" The other substance questions might be no, except maybe the third one about unprescribed meds? The profile says they use more alcohol, which is substance use, so Q21 would be \"yes\".\n\nNeed to ensure all questions are covered. Now, constructing each question and response step by step, ensuring that each of the 23 are there. Also, the patient occasionally shows reluctance, pauses, or emotional responses. For instance, when asked about the other driver's death (question 3? No, that's anger. Wait, the questions are as per the list. For example, when discussing the accident details, the patient might mention the deceased driver, leading to emotional responses.\n\nI must make sure that each Q is asked and answered. Let me proceed step-by-step:\n\n1. Q1: Little interest or pleasure. Patient says they've lost enjoyment in things they used to like, like going out with friends. Moderate.\n2. Q2: Feeling down or hopeless. They have depression symptoms, so perhaps moderate to severe.\n3. Q3: Irritable. The profile mentions irritable outbursts, so moderate.\n4. Q4: Energy despite less sleep. If they're fatigued, maybe 0 or slight.\n5. Q5: Starting projects. Unlikely, so maybe 0 or slight.\n6. Anxiety: They have anxiety, so maybe moderate.\n7. Panic: Nightmares and panic attacks, so moderate to severe.\n8. Avoiding situations: Definitely yes, so moderate to severe (avoiding driving, etc.)\n9. Aches: Maybe physical symptoms from stress, so mild to moderate.\n10. Feeling illnesses not taken seriously: Maybe 0, but the patient might feel misunderstood, but not sure.\n11. Suicidal: The patient's profile doesn't mention suicidal thoughts, so 0 or slight (if some fleeting thoughts but not wanting to hurt themselves).\n12. Hearing voices: No, unless they dissociate, but that's covered in another question (Q18).\n13. Feeling someone can hear thoughts: Probably 0 unless they have paranoia, which isn't stated.\n14. Sleep problems: They have trouble sleeping, so moderate to severe.\n15. Memory problems: Yes, due to stress, so mild to moderate.\n16. Unpleasant thoughts: Intrusive memories, so moderate/severe (Q16 is about OCD-like thoughts? The question says \"unpleasant thoughts, urges, or images.\" Yes, so that's part of PTSD, so moderate/severe.\n17. Feeling driven to repeat behaviors: Maybe not, unless they have compulsions. Probably 0 or slight.\n18. Feeling detached: Yes, dissociation is part of PTSD, so moderate/severe.\n19. Unsure who they are: Part of negative thoughts in PTSD (question 4's profile says \"negative beliefs\" like \"can't trust myself,\" so maybe moderate.\n20. Not feeling close: Detachment from others, so moderate.\n21. Drinking 4+ drinks: They have 3-4 drinks, so yes, so answer would be \"Yes, I've been drinking more to sleep.\"\n22. Smoking? The profile doesn't mention smoking, so \"No.\"\n23. Using unprescribed meds? The profile says they drink more, which is covered in Q21, so maybe 0 on 22 and 23 except Q21.\n\nWait, Q21 is about drinking at least 4 drinks in a day. The profile says 3-4 drinks \"most nights,\" so \"yes, some days I have 3-4 drinks, so that counts"
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, let's tackle this. The user provided a questionnaire where the patient didn't answer any of the 23 questions. My task is to create a structured clinical assessment based on that. \n\nFirst, the compassionate summary needs to acknowledge the patient's situation without judgment. I have to express empathy, maybe mention their struggle to engage but not assume reasons. \n\nNext, the diagnosis section. Since there's no data, I can't assign a definitive diagnosis. The instructions say to state if symptoms are insufficient. So maybe the diagnosis line should mention \"incomplete assessment\" as the main issue.\n\nThe reasoning section has to explain why the non-response is a problem. They mentioned that non-response itself could be a symptom, like avoidance from trauma or severe depression. Also, key risks like suicide (Q10) or substance use (Q19-23) are unassessed. Need to mention the inability to rule out critical risks.\n\nFor next steps, the recommendations should focus on re-engaging the patient. Maybe start with building rapport, explore barriers to verbal response, consider alternative assessment methods (like collateral info, nonverbal checks), and safety evaluation. Also, suggest a structured clinical interview and possibly a medical review for physical health issues that might affect cognition.\n\nWait, the user specified not to assume but to base on presented info. Since all questions are unanswered, the diagnosis must reflect that. The instructions emphasized not defaulting to Somatic Symptom Disorder unless clearly. Here, there's no data, so Somatic Symptom Disorder isn't supported yet. \n\nNeed to structure each section exactly as specified. Use the tags properly. Medical terms like PTSD should be in <med>, symptoms like non-response in <sym>, and any quotes from the patient (if any, but in this case, there are none). Wait, the patient didn't answer, so maybe paraphrase like \"patient did not respond to questions\" as a symptom.\n\nWait, in the example, quotes are used for patient's own words, but since there are none, maybe use \"patient declined to respond\" or similar. \n\nPutting it all together: The summary should convey understanding of the patient's difficulty in engaging. The diagnosis section states the evaluation is incomplete. Reasoning explains the limitations and potential underlying causes. Next steps focus on re-engagement strategies. \n\nCheck if all sections have proper tags. For example, \"non-response\" as a <sym>, \"incomplete assessment\" as a <diag>, etc. Ensure that the headings are exactly as directed with the asterisks. No markdown, just plain text with the specified formatting. \n\nDouble-check the structure: summary, then Diagnosis: heading with answer, then Reasoning: explanation, then Next Steps with numbered points. Also, the user emphasized not to include any introductory statements, so start right with the summary.\n\nI think that's all. Let's put it all together following the template.\n</think>\n\nThe patient\u2019s lack of engagement with the screening questions reflects profound struggles, possibly rooted in emotional avoidance, overwhelming distress, or barriers to communication. Their silence may mask significant <sym>psychological distress</sym>, such as <med>PTSD</med> from the car accident or other unexpressed <sym>psychiatric symptoms</sym>. While their story is untold, the context of the accident and increased alcohol use (<sym>drinking 3\u20134 drinks nightly</sym>) suggests urgent needs that warrant compassionate exploration.  \n\n**Diagnosis:** Incomplete assessment precluding definitive diagnosis  \n\n**Reasoning:**  \nThe absence of responses limits reliable symptom evaluation, but contextual clues (e.g., accident trauma, alcohol use) raise concerns for <med>PTSD</med>, <med>mood disorder</med>, or <med>adjustment disorder</med>. Key <sym>risk factors</sym> (suicidal ideation \\[Q10\\], psychosis \\[Q11\u2013Q12\\], substance use \\[Q19\u2013Q23\\]) remain unassessed. Non-response itself may signal <med>avoidance behaviors</med>, <med>dissociation</med>, or <med>alexithymia</med>. A <diag>provisional diagnosis</diag> cannot be made without further data.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Crisis stabilization:** Conduct direct clinical interview to explore barriers to engagement (e.g., trauma-based avoidance, cognitive impairment).  \n2. **Safety assessment:** Evaluate for <sym>suicidal ideation</sym>, substance use (<sym>alcohol dependence</sym>), and medical comorbidities.  \n3. **Build trust:** Use trauma-informed approaches to reduce avoidance, perhaps via brief open-ended questions or collateral information from family.  \n4. **Alternative assessment tools:** Consider brief psychometric scales, behavioral observations, or nonverbal checklists if verbal response remains inaccessible.  \n5. **Medical evaluation:** Rule out neurological or medical conditions (e.g., PTSD-related dissociation, hypovitaminosis) contributing to non-response.  \n6. **Psychoeducation:** Address <sym>avoidance</sym> and alcohol use openly, framing assessment as collaborative, nonjudgmental process.  \n\nFurther evaluation is essential to clarify the etiology of the assessment block and guide targeted interventions.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.7218,
+            "highlight": "While DSM-IV was organized centrally around the concept of  medically unexplained symptoms, DSM-5 criteria instead emphasize the degree to which a patient \u2019s  thoughts, feelings and behaviors about their somatic symptoms are disproportionate or excessive.",
+            "excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"emphasize\", \"patient\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Schizophrenia.pdf",
+            "score": 0.7161,
+            "highlight": "Identifying individuals with an increased risk for developing a psychotic disorder is  significant for effective early intervention, but more study is needed to ensure that attenuated psycho - sis syndrome can be reliably diagnosed.",
+            "excerpt": "h before their consideration as formal disorders. This potential category would \nidentify a person w...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"psychotic\", \"significant\", \"more\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.7091,
+            "highlight": "Negative cognitions and mood represents myriad feelings, from a persistent and distorted sense of  blame of self or others, to estrangement from others or markedly diminished interest in activities, to an inability to remember key aspects of the event.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"mood\", \"key\", \"inability\", and 1 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Depression-Bereavement-Exclusion.pdf",
+            "score": 0.6953,
+            "highlight": "The presence of symptoms such as feelings of worthlessness, suicidal  ideas (as distinct from wanting to join a deceased loved one), and impairment of overall function sug - gest the presence of major depression, in addition to the normal response to a significant loss.",
+            "excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"significant\", \"suicidal\", \"depression\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Personality-Disorder.pdf",
+            "score": 0.6917,
+            "highlight": "This approach also includes a diag - nosis of Personality Disorder\u2014 Trait Specified (PD-TS) that could be made when a Personality Disorder is  considered present, but the criteria for a specific personality disorder are not fully met.",
+            "excerpt": "ncluded evaluation of impairments \nin personality functioning (how an individual typically experienc...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"could\", \"this\", and 4 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let me tackle this step by step. The user provided a list of questions and the patient didn't answer any of them. My task is to analyze this lack of response.\n\nFirst, I need to identify main symptoms and concerns. Since there are no answers, the main issue here is the absence of responses. Maybe the patient didn't or couldn't answer. Possible reasons could be avoidance, lack of engagement, or perhaps issues like mutism or severe psychopathology preventing them from responding. But I can't assume, so I should note the non-response as the key concern.\n\nNext, patterns in the responses. All 23 questions are unanswered. That's a clear pattern of non-engagement. It could suggest resistance, refusal to participate, or maybe the patient found the questions too distressing. But without more context, it's hard to say exactly why.\n\nPotential clinical areas: The non-response itself is clinically significant. It might indicate things like treatment resistance, communication barriers, or underlying issues like depression where they can't engage. Also, maybe they're in a state where they can't articulate their symptoms, like severe anxiety or dissociation. It's also important to consider the possibility of malingering, but that's a stretch without more info. The lack of data makes it hard to assess actual symptoms, so there's a gap in information needed for diagnosis.\n\nRisk factors or warning signs: Since they didn't answer about self-harm (Q10) or hearing voices (Q11), those could be red flags. But since we don't know, we have to note that critical areas weren't addressed. If they did have those issues, their non-response might be hiding something, so it's a significant gap. Also, substance use (Q19-Q20-Q23) is unknown, which complicates things. Maybe they're using substances that affect their ability to respond.\n\nSummarizing in clinical terms: The assessment should highlight the non-response as the primary issue, note the pattern of all questions unanswered, mention the inability to assess for key symptoms like depression, anxiety, psychosis, etc., and note the lack of info on risk factors and substance use. It's important to emphasize that the incomplete data prevents proper evaluation, so further assessment is needed.\n\nI need to make sure I don't speculate too much. Just state the facts: all responses were not provided, leading to inability to assess specific symptoms. The main concerns are the non-responses themselves, which could be due to various factors. The key risks here are the unanswered questions about self-harm and substance use, which are critical for safety and treatment planning.\n\nWait, the user wants the summary in clinical language without speculation. So I should avoid stating possible reasons and just stick to the facts. Like, \"The patient did not provide responses to any screening questions, precluding assessment of symptom severity...\" rather than guessing why they didn't answer.\n\nAlso, check if any question might have implications for immediate danger. Since Q10 is about self-harm thoughts, and they didn't answer, that's a critical point. So in the risk factors, mention that inability to assess for suicidal ideation is a concern. Same with substance use and other symptoms.\n\nI need to structure it into the points they asked: main symptoms (non-response), patterns (all unanswered), clinical areas (can't assess depression, anxiety, etc.), risk factors (inability to assess suicide, psychosis, substance use), and summary.\n\nMake sure to use terms like \"non-response bias,\" \"screening limitations,\" \"inability to assess symptom severity.\" Also note that the lack of answers may indicate barriers to engagement, which is a clinical concern.\n\nOkay, that should cover the requirements. Now, format it as a clinical summary without markdown, using professional terms and the points outlined.\n</think>\n\n**Clinical Observation Summary:**  \n\n**1. Main Symptoms and Concerns:**  \nThe patient did not provide responses to any of the 23 screening questions, precluding assessment of symptom severity or presence of specific mental health or somatic concerns.  \n\n**2. Patterns in Responses:**  \n- **Universal non-response:** All questions, spanning mood, anxiety, psychosis, trauma-related symptoms, dissociation, substance use, somatic complaints, and cognitive functioning, were left unanswered.  \n- **Absence of engagement:** No attempt to clarify questions or report symptoms was evident.  \n\n**3. Potential Areas of Clinical Significance:**  \n- **Treatment engagement barriers:** Non-response may reflect resistance, communication difficulties, or impaired insight.  \n- **Possible psychiatric acuity:** Inability to assess for symptoms of depression (Q1\u2013Q2), mania (Q4\u2013Q5), psychosis (Q11\u2013Q12), trauma-related disorders (Q14\u2013Q15), dissociation (Q16\u2013Q17), or substance use (Q19\u2013Q23).  \n- **Safety concerns:** Critical risk factors (e.g., suicidal ideation \\[Q10\\], self-harm, or psychotic symptoms) cannot be ruled out.  \n- **Medical/psychological comorbidities:** Unassessed physical symptoms (Q21, Q22) and cognitive impairment (Q22) may warrant further evaluation.  \n\n**4. Risk Factors or Warning Signs:**  \n- **Non-response bias:** Incomplete data limits risk stratification, particularly regarding suicidal/self-harm ideation, psychotic symptoms, and substance misuse.  \n- **Impaired functioning:** May indicate severe distress, lack of motivation, or cognitive/affective blunting.  \n\n**5. Summary:**  \nThe patient\u2019s failure to respond to all screening items introduces significant limitations in clinical assessment, precluding identification of symptomatology or risk. Key concerns include unassessed suicidal/self-injurious ideation (Q10), psychotic features (Q11\u2013Q12), substance use (Q19\u2013Q23), and functional impairment. Immediate clinical priority includes exploring barriers to engagement (e.g., alexithymia, refusal, or communication challenges) and ensuring safety via direct clinical observation or collateral information. Further assessment is required to evaluate for underlying factors (e.g., depression, anxiety, trauma, or neurocognitive impairment) contributing to non-response.  \n\n**Clinical Note:** Non-response may represent a presenting problem itself (e.g., mutism, dissociation, or extreme avoidance) requiring targeted intervention. Referral for direct clinical interview or alternative assessment modalities (e.g., collateral history, behavioral observation) is indicated to address this evaluation gap.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.7068
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "The patient\u2019s lack of engagement with the screening questions reflects profound struggles, possibly rooted in emotional avoidance, overwhelming distress, or barriers to communication. Their silence may mask significant <sym>psychological distress</sym>, such as <med>PTSD</med> from the car accident or other unexpressed <sym>psychiatric symptoms</sym>. While their story is untold, the context of the accident and increased alcohol use (<sym>drinking 3\u20134 drinks nightly</sym>) suggests urgent needs that warrant compassionate exploration.  \n\n**Diagnosis:** Incomplete assessment precluding definitive diagnosis  \n\n**Reasoning:**  \nThe absence of responses limits reliable symptom evaluation, but contextual clues (e.g., accident trauma, alcohol use) raise concerns for <med>PTSD</med>, <med>mood disorder</med>, or <med>adjustment disorder</med>. Key <sym>risk factors</sym> (suicidal ideation \\[Q10\\], psychosis \\[Q11\u2013Q12\\], substance use \\[Q19\u2013Q23\\]) remain unassessed. Non-response itself may signal <med>avoidance behaviors</med>, <med>dissociation</med>, or <med>alexithymia</med>. A <diag>provisional diagnosis</diag> cannot be made without further data.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Crisis stabilization:** Conduct direct clinical interview to explore barriers to engagement (e.g., trauma-based avoidance, cognitive impairment).  \n2. **Safety assessment:** Evaluate for <sym>suicidal ideation</sym>, substance use (<sym>alcohol dependence</sym>), and medical comorbidities.  \n3. **Build trust:** Use trauma-informed approaches to reduce avoidance, perhaps via brief open-ended questions or collateral information from family.  \n4. **Alternative assessment tools:** Consider brief psychometric scales, behavioral observations, or nonverbal checklists if verbal response remains inaccessible.  \n5. **Medical evaluation:** Rule out neurological or medical conditions (e.g., PTSD-related dissociation, hypovitaminosis) contributing to non-response.  \n6. **Psychoeducation:** Address <sym>avoidance</sym> and alcohol use openly, framing assessment as collaborative, nonjudgmental process.  \n\nFurther evaluation is essential to clarify the etiology of the assessment block and guide targeted interventions.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "ptsd",
+    "question_count": 23,
+    "duration": 9744.045886993408,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 11.102964162826538,
+    "diagnosis_generation_time": 7.3776209354400635,
+    "rag_evaluation_time": 2.09808349609375e-05,
+    "total_time": 18.4806170463562
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7218,
+        "average_score": 0.7218,
+        "example_excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"emphasize\", \"patient\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Schizophrenia.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7161,
+        "average_score": 0.7161,
+        "example_excerpt": "h before their consideration as formal disorders. This potential category would \nidentify a person w...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"psychotic\", \"significant\", \"more\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7091,
+        "average_score": 0.7091,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"mood\", \"key\", \"inability\", and 1 more matching aspects of your query."
+      },
+      "APA_DSM-5-Depression-Bereavement-Exclusion.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6953,
+        "average_score": 0.6953,
+        "example_excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"significant\", \"suicidal\", \"depression\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Personality-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6917,
+        "average_score": 0.6917,
+        "example_excerpt": "ncluded evaluation of impairments \nin personality functioning (how an individual typically experienc...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"could\", \"this\", and 4 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 08:03:44",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 08:03:44",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 1,
+        "clinical_relevance": 2,
+        "consistency": 3,
+        "diagnostic_justification": 2,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The conversation barely addressed any of the DSM-5 Level1 Cross-Cutting Symptom Measure dimensions. The therapist did not systematically assess most domains, instead focusing on general concerns such as PTSD, mood disorder, or adjustment disorder without specific exploration of the 23 questions provided in the measure. Key risk factors like suicidal ideation, psychosis, and substance use remained unassessed. The lack of engagement from the patient was noted, but this did not prompt a comprehensive evaluation of all relevant domains.",
+        "clinical_relevance": "The therapist's questions and concerns generally aligned with DSM-5 criteria but were phrased vaguely and lacked specificity. For example, the therapist mentioned PTSD, mood disorder, or adjustment disorder as potential concerns based on the patient's context (car accident, increased alcohol use), but did not use precise language or criteria from the DSM-5. The questions did not clearly target clinical symptoms in a detailed or systematic manner.",
+        "consistency": "The dialogue had noticeable logical inconsistencies and occasionally disrupted coherence and understanding. The therapist's responses seemed to jump between acknowledging the patient's lack of engagement and speculating about potential diagnoses without a clear, systematic approach. There were no abrupt topic changes, but the conversation lacked a coherent flow due to the absence of patient responses and the therapist's failure to systematically address each domain.",
+        "diagnostic_justification": "The diagnosis of 'Incomplete assessment precluding definitive diagnosis' was made, but the justification was unclear and lacked explicit linkage to specific DSM-5 criteria. The therapist speculated about potential diagnoses (PTSD, mood disorder, adjustment disorder) based on contextual clues, but did not provide a comprehensive differential diagnosis or rule out alternative explanations. The focus was more on the need for further evaluation rather than providing a clear justification for a specific diagnosis.",
+        "empathy": "The therapist's responses showed empathy and a professional tone, acknowledging the patient's potential distress and barriers to communication. The therapist suggested using trauma-informed approaches to reduce avoidance and framed the assessment as a collaborative, nonjudgmental process. However, the conversation was limited by the patient's lack of engagement, which restricted opportunities for more personalized interactions."
+      },
+      "overall_comments": "The conversation demonstrated a lack of systematic coverage of the DSM-5 Level1 Cross-Cutting Symptom Measure domains, with significant gaps in assessing the patient's symptoms. While the therapist showed empathy and a professional tone, the conversation's flow was disrupted by the patient's non-engagement and the therapist's failure to use precise DSM-5 criteria. Further evaluation is essential to clarify the etiology of the assessment block and guide targeted interventions.",
+      "average_score": 2.4,
+      "diagnosis_accuracy": {
+        "matches_profile": true,
+        "confidence": 4,
+        "explanation": "The diagnosis explicitly mentions PTSD as a possible underlying condition, citing the car accident and increased alcohol use as contextual clues. Although a definitive diagnosis is not made due to incomplete assessment, PTSD is clearly considered as a potential diagnosis.",
+        "classification": "ptsd"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "ptsd",
+        "classified_as": "ptsd",
+        "match": true,
+        "confidence": 4
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 2.318369150161743
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.7463779905083655,
+        "local_coherence": 0.7463779905083655,
+        "window_coherence": 0.0
+      },
+      "readability": {
+        "flesch_kincaid_grade": 6.76,
+        "gunning_fog_index": 3.76,
+        "flesch_reading_ease": 62.97
+      },
+      "diversity": {
+        "distinct_1": 0.4012826385707742,
+        "distinct_2": 0.8240146654445463,
+        "distinct_3": 0.9445208619899129
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "ptsd",
+      "predicted": "The patient\u2019s lack of engagement with the screening questions reflects profound struggles, possibly rooted in emotional avoidance, overwhelming distress, or barriers to communication. Their silence may mask significant <sym>psychological distress</sym>, such as <med>PTSD</med> from the car accident or other unexpressed <sym>psychiatric symptoms</sym>. While their story is untold, the context of the accident and increased alcohol use (<sym>drinking 3\u20134 drinks nightly</sym>) suggests urgent needs that warrant compassionate exploration.  \n\n**Diagnosis:** Incomplete assessment precluding definitive diagnosis  \n\n**Reasoning:**  \nThe absence of responses limits reliable symptom evaluation, but contextual clues (e.g., accident trauma, alcohol use) raise concerns for <med>PTSD</med>, <med>mood disorder</med>, or <med>adjustment disorder</med>. Key <sym>risk factors</sym> (suicidal ideation \\[Q10\\], psychosis \\[Q11\u2013Q12\\], substance use \\[Q19\u2013Q23\\]) remain unassessed. Non-response itself may signal <med>avoidance behaviors</med>, <med>dissociation</med>, or <med>alexithymia</med>. A <diag>provisional diagnosis</diag> cannot be made without further data.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Crisis stabilization:** Conduct direct clinical interview to explore barriers to engagement (e.g., trauma-based avoidance, cognitive impairment).  \n2. **Safety assessment:** Evaluate for <sym>suicidal ideation</sym>, substance use (<sym>alcohol dependence</sym>), and medical comorbidities.  \n3. **Build trust:** Use trauma-informed approaches to reduce avoidance, perhaps via brief open-ended questions or collateral information from family.  \n4. **Alternative assessment tools:** Consider brief psychometric scales, behavioral observations, or nonverbal checklists if verbal response remains inaccessible.  \n5. **Medical evaluation:** Rule out neurological or medical conditions (e.g., PTSD-related dissociation, hypovitaminosis) contributing to non-response.  \n6. **Psychoeducation:** Address <sym>avoidance</sym> and alcohol use openly, framing assessment as collaborative, nonjudgmental process.  \n\nFurther evaluation is essential to clarify the etiology of the assessment block and guide targeted interventions.",
+      "matches": true,
+      "classification": "ptsd",
+      "classification_confidence": 4
+    }
+  }
+}

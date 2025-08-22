@@ -1,0 +1,297 @@
+{
+  "timestamp": "2025-05-01T02:42:46.083611",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Good morning. My name is Dr. Lee"
+    },
+    {
+      "role": "patient",
+      "content": "...Uh"
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. We\u2019ll start with the first question. Over the past two weeks"
+    },
+    {
+      "role": "patient",
+      "content": "Hmm... It\u2019s been hard to care about anything. My hobbies? I used to love painting"
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. Now"
+    },
+    {
+      "role": "patient",
+      "content": "*sighs* Almost constantly. Even on days I manage to get out of bed"
+    },
+    {
+      "role": "assistant",
+      "content": "How much have you been bothered by feeling more irritated"
+    },
+    {
+      "role": "patient",
+      "content": "Not really... I just feel numb. Maybe snap a bit at small things"
+    },
+    {
+      "role": "assistant",
+      "content": "How much have you been bothered by sleeping less than usual but still having a lot of energy?"
+    },
+    {
+      "role": "patient",
+      "content": "Not at all. I can\u2019t sleep. I wake up at 4 AM every morning"
+    },
+    {
+      "role": "assistant",
+      "content": "How much have you been bothered by starting lots of projects or doing risky things more than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "*shakes head slowly* Definitely not. I can\u2019t even get out of bed on some days"
+    },
+    {
+      "role": "assistant",
+      "content": "How much have you been bothered by feeling nervous"
+    },
+    {
+      "role": "patient",
+      "content": "It\u2019s there sometimes. More like a low-level dread. Like something bad is always about to happen"
+    },
+    {
+      "role": "assistant",
+      "content": "How much have you been bothered by feeling panic or being frightened?"
+    },
+    {
+      "role": "patient",
+      "content": "*pauses* A couple of times... When I\u2019m alone at night"
+    },
+    {
+      "role": "assistant",
+      "content": "How much have you been bothered by avoiding situations that make you anxious?"
+    },
+    {
+      "role": "patient",
+      "content": "I guess I avoid most things... Parties"
+    },
+    {
+      "role": "assistant",
+      "content": "How much have you been bothered by unexplained aches and pains?"
+    },
+    {
+      "role": "patient",
+      "content": "My back\u2019s been sore"
+    },
+    {
+      "role": "assistant",
+      "content": "How much have you been bothered by feeling that your illnesses aren\u2019t taken seriously enough?"
+    },
+    {
+      "role": "patient",
+      "content": "*voice cracks* Yeah. My doctor just... gave me pills and said to \u2018exercise more.\u2019 Like that\u2019s all it is."
+    },
+    {
+      "role": "assistant",
+      "content": "How much have you been bothered by thoughts about actually hurting yourself?"
+    },
+    {
+      "role": "patient",
+      "content": "\"...*looks away* Sometimes I think about it"
+    },
+    {
+      "role": "assistant",
+      "content": "How much"
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, I need to process this user's responses and create the required clinical assessment. Let's start by reading through all the instructions again to make sure I follow the structure exactly. \n\nFirst, the compassionate summary. I need to paraphrase their feelings, using <quote> tags where they mentioned their symptoms. Highlight their distress from the quotes like \"It\u2019s been hard to care about anything\" and \"My doctor just... gave me pills and said 'exercise more.'\"\n\nNext, the Diagnosis section. The user specified to use the exact headings with asterisks. The main symptoms point towards Major Depressive Disorder. The DSM-5 criteria for MDD include depressed mood, anhedonia, and at least four other symptoms like sleep issues, fatigue, etc. They've had these for two weeks, so that fits. Also, the suicidal ideation in Q12 is a red flag. I should include that in the diagnosis section. Wait, the user might also have anxiety features. The panic and avoidance could be part of MDD with anxious distress. Also, the somatic symptoms (back pain and feeling symptoms aren't taken seriously) might need Somatic Symptom Disorder, but the instructions say not to default to that unless it's clear. Since their main issues are depressive and anxiety symptoms, maybe Somatic Symptom Disorder is secondary here. \n\nThe Reasoning section needs to explain why the diagnosis is MDD with anxious distress. Mention the criteria met: depressed mood, anhedonia, sleep disturbance, fatigue, and the anxiety features. Also, the somatic symptoms are present but possibly secondary to the mood disorder. The suicidal ideation is critical here. \n\nNext steps should include immediate suicide risk assessment, referral to a psychiatrist for meds, and therapy. Also, collaboration with primary care to address physical symptoms and build trust. \n\nI need to use the tags properly. For example, \"Major Depressive Disorder\" should be in <med> tags. Symptoms like \"suicidal ideation\" go in <sym> tags. The direct quotes from the user's answers need to be in <quote> tags where appropriate. \n\nWait, in the diagnosis section, I should stick to DSM-5 criteria. Since they've had these symptoms for two weeks, MDD (296.33 in ICD-10?) but just the name here. Also, the anxious distress is part of the specifier. \n\nCheck the Q&A again. The patient's back pain and feeling dismissed by their doctor (Q11) might relate to somatic concerns, but the primary issues are the depression and anxiety. The instructions say not to default to Somatic Symptom Disorder unless warranted. Since they have clear depressive symptoms, the primary diagnosis would be MDD with anxious distress. \n\nNext steps: suicide risk assessment first. Then, collaborative care with their primary doctor to validate their physical symptoms. Therapy like CBT for both depression and anxiety.  \n\nMake sure to follow the structure exactly. Start with the compassionate paragraph, then Diagnosis, Reasoning with tags, and the steps. \n\nI think that's all. Now structure it properly, ensuring all tags are used correctly and the sections are in order with the right headings. Check for any missed symptoms or criteria. Okay, let's put it all together now.\n</think>\n\n<sym>Loss of interest in activities</sym>, persistent <sym>numbness</sym>, and <sym>somatic pain</sym> paired with <sym>suicidal ideation</sym> suggest profound distress. Your description of being told by a doctor to \u201cexercise more\u201d despite your <sym>fatigue</sym> and <sym>back pain</sym> reflects a deep sense of being unheard, which exacerbates emotional distress. The <sym>panic</sym> at night and social withdrawal highlight how your physical and emotional pain intersect in daily life.  \n\n**Diagnosis:** <med>Major Depressive Disorder with Anxious Distress, possibly with mixed features of trauma-related vigilance</med>, with <sym>somatic symptom amplification</sym> in the context of perceived medical neglect.  \n\n**Reasoning:**  \n- **Major Depressive Disorder (MDD)** is supported by <sym>anhedonia</sym>, <sym>psychomotor retardation</sym> (e.g., \u201ccan\u2019t get out of bed\u201d), <sym>sleep disturbance</sym>, and <sym>suicidal ideation</sym> (<sym>risk of self-harm</sym>). Duration exceeds two weeks, meeting DSM-5 criteria.  \n- **Anxious distress specifier** applies due to <sym>anticipatory worry</sym> (\u201csomething bad is about to happen\u201d) and <sym>panic attacks</sym>.  \n- <sym>Somatic complaints</sym> (e.g., back pain) align with MDD\u2019s somatic expression and mistrust of medical providers, but insufficient evidence for <med>Somatic Symptom Disorder</med> given the context of mood disorder.  \n- The <sym>avoidant behavior</sym> and <sym>panic</sym> may overlap with <med>Trauma- and Stressor-Related Disorder</med>, but trauma history isn\u2019t explicitly documented here.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Immediate suicide risk assessment**: Prioritize evaluation for <sym>self-harm risk</sym>, using a suicide risk assessment tool (e.g., Columbia-Suicide Severity Rating Scale).  \n2. **Primary care re-engagement**: Collaborate with a physician to validate somatic symptoms (e.g., back pain) through objective testing (e.g., imaging) to address medical neglect concerns.  \n3. **Pharmacotherapy**: Consider SSRIs (e.g., sertraline) or SNRIs, paired with <med>Cognitive Behavioral Therapy</med> (CBT) targeting <sym>anxious distress</sym> and <sym>behavioral activation</sym> for depression.  \n4. **Interpersonal interventions**: Address <sym>emotional numbing</sym> via psychodynamic or mindfulness-based therapies for emotional dysregulation.  \n5. **Safety planning**: Develop a crisis plan with accessible contacts (e.g., crisis hotline, trusted support systems).  \n\nThis approach addresses acute risk, restores trust in care, and integrates somatic/psychological symptoms holistically.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.723,
+            "highlight": "While DSM-IV was organized centrally around the concept of  medically unexplained symptoms, DSM-5 criteria instead emphasize the degree to which a patient \u2019s  thoughts, feelings and behaviors about their somatic symptoms are disproportionate or excessive.",
+            "excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"criteria\", \"behaviors\", and 8 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.7212,
+            "highlight": "The exposure must result from one or more of the following scenarios, in which the individual: \u2022dir ectly experiences the traumatic event; \u2022witnesses the tr aumatic event in person; \u2022learns tha t the traumatic event occurred to a close family member or close friend (with  the actual or thr eatened death being either violent or accidental); or \u2022e xperiences first-hand repeated or extreme exposure to aversive details of the traumatic event (not thr ough media, pictures, tele.",
+            "excerpt": "Posttraumatic Stress Disorder\nPosttraumatic Stress Disorder (PTSD) will be included in a new chapter...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"more\", \"not\" matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf",
+            "score": 0.7054,
+            "highlight": "The unique features of DMDD necessitated a new diagnosis to ensure that children affected by this  disorder get the clinical help they need.",
+            "excerpt": "ther disorders, such as depressive and anxiety disorders. \nThe unique features of DMDD necessitated ...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"they\", \"clinical\", \"this\", and 6 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Social-Communication-Disorder.pdf",
+            "score": 0.6723,
+            "highlight": "Improving Diagnosis and Care While previous editions of DSM included diagnoses with related symptoms, the SCD diagnosis was  needed to ensure that the unique needs of affected individuals are met.",
+            "excerpt": "al and Public Health Committee; and, finall y, evaluation by the American Psychiatric Associa-\ntion\u2019...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"met\", \"that\", \"symptoms\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Schizophrenia.pdf",
+            "score": 0.6686,
+            "highlight": "Identifying individuals with an increased risk for developing a psychotic disorder is  significant for effective early intervention, but more study is needed to ensure that attenuated psycho - sis syndrome can be reliably diagnosed.",
+            "excerpt": "h before their consideration as formal disorders. This potential category would \nidentify a person w...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"significant\", \"more\", \"that\", and 6 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, I need to analyze the patient's responses as a mental health professional. Let me start by reading through all the questions and answers again to make sure I don't miss anything.\n\nStarting with Q1-Q3: The patient mentions loss of interest in hobbies like painting, feeling numb, and having persistent low mood almost daily. That sounds like significant depressive symptoms. The constant struggle even on days they get out of bed points to chronicity.\n\nQ4 and A4: They mention feeling numb but a little irritability. Not sure if that's part of depression or something else, but the numbness stands out. \n\nQ5: Difficulty sleeping, waking up early (4 AM) is classic insomnia, which often goes with depression or anxiety. \n\nQ6: They don't have increased activity or risky behavior, so that's ruling out manic symptoms. So maybe a depressive episode?\n\nQ7 and Q8: Nervousness as low-level dread and occasional panic when alone. That's anxiety, but more like generalized anxiety or panic disorder? But the panic is situational (at night alone). \n\nQ9: Avoiding social situations like parties. That could indicate social anxiety or agoraphobia, but in the context of depression, avoidance might be part of anhedonia or withdrawal.\n\nQ10: Back pain that's unexplained. Somatic symptoms, maybe due to stress or anxiety, but the patient didn't say it's unexplained yet. Wait, in A11, they mention their doctor didn't take their physical symptoms seriously. So maybe they feel their physical pain isn't being addressed, which could lead to distrust in medical care.\n\nQ11: The patient feels their symptoms aren't taken seriously. This is a big red flag. It suggests possible misdiagnosis, inadequate treatment, or maybe they're feeling invalidated, which can worsen their condition and trust issues.\n\nQ12: Thoughts of self-harm. They look away, which is an important non-verbal cue. This is a direct mention of suicidal ideation. Definitely a major concern here.\n\nNow, the main symptoms would include depressed mood, anhedonia, sleep disturbance, fatigue, anergia (lack of energy), worthlessness, diminished concentration, and suicidal thoughts. The DSM-5 criteria for MDD are likely met here. The presence of both depressive and anxiety symptoms (like low-level dread, panic attacks) might indicate comorbid anxiety disorder or mixed features, but need to check if there's hypomania. Since Q6 says they aren't starting projects, so probably not.\n\nPatterns: The patient is using a lot of passive language, sighs, and avoids eye contact, which might indicate emotional blunting or hopelessness. They describe persistent symptoms over two weeks, meeting the duration criteria for MDD.\n\nClinical significance areas: Major Depressive Disorder with possible anxiety features, somatic symptoms (back pain), and significant clinical concern due to suicidal ideation. The patient's report of their doctor dismissing their concerns is important because it might affect treatment adherence and trust.\n\nRisk factors: Suicidal thoughts are the biggest risk here. They mentioned thoughts about hurting themselves, which is an immediate concern. Also, feelings of not being taken seriously could lead to non-compliance or worsening symptoms.\n\nI should also check for other risk factors like isolation (avoiding parties, being alone at night when panic occurs), which might contribute to their depression.\n\nPutting this all together, the summary needs to list the main symptoms, note the patterns like persistent low mood and somatic complaints, highlight suicidal ideation as an immediate risk, and mention the distrust in medical care as an important factor to address.\n</think>\n\n**Clinical Observation Summary**  \n\n1. **Main Symptoms and Concerns**:  \n   - **Depressive Symptoms**: Marked anhedonia (loss of interest in hobbies like painting), persistent low mood, fatigue, and psychomotor retardation (difficulty getting out of bed).  \n   - **Anxiety Features**: Low-level generalized anxiety (\u201cdread\u201d), situational panic (nighttime), and social avoidance (e.g., avoiding parties).  \n   - **Sleep Disturbance**: Early morning awakening (4 AM) and insomnia, consistent with non-restorative sleep.  \n   - **Somatic Complaints**: Unexplained back pain and perceived medical dismissal of symptoms, contributing to feelings of invalidation.  \n   - **Suicidal Ideation**: Acknowledged passive thoughts of self-harm, requiring urgent evaluation.  \n\n2. **Patterns in Responses**:  \n   - **Avoidance of Eye Contact/Nonverbal Cues**: Hesitation, sighs, and averting gaze during high-stakes questions (e.g., Q12) suggest emotional dysregulation, shame, or reluctance to disclose fully.  \n   - **Chronicity**: Symptoms reported as persistent over two weeks, meeting temporal criteria for a major depressive episode.  \n   - **Numbness vs. Irritability**: Reports of emotional blunting (\u201cnumb\u201d) with minimal reactivity (no elevated mood, no psychomotor agitation).  \n\n3. **Clinical Significance Areas**:  \n   - **Major Depressive Disorder (MDD)**: Criteria met via depressed mood, anhedonia, fatigue, and psychomotor symptoms.  \n   - **Generalized Anxiety Disorder (GAD)/Panic Disorder**: Low-level anxiety and situational panic attacks.  \n   - **Somatization**: Unexplained physical symptoms (back pain) and distrust of medical care.  \n   - **Social Withdrawal**: Avoidant behaviors linked to anxiety and depression.  \n\n4. **Risk Factors/Warning Signs**:  \n   - **Suicidal Ideation**: Explicit acknowledgment of self-harm thoughts (Q12), necessitating immediate risk assessment.  \n   - **Medical Alienation**: Patient reports their concerns were dismissed (Q11), risking therapeutic alliance and treatment adherence.  \n   - **Isolation**: Avoidance of social engagement and nighttime panic may exacerbate symptoms.  \n   - **Functional Impairment**: Difficulty with daily activities (e.g., getting out of bed) suggests significant occupational/social dysfunction.  \n\n5. **Summary (Clinical Language)**:  \nThe patient exhibits prominent depressive features (anhedonia, psychomotor inhibition, insomnia, and persistent low mood) consistent with **Major Depressive Disorder (MDD)**. Co-occurring anxiety is noted (generalized anxiety, anticipatory dread, situational panic), with social avoidance suggestive of **Generalized Anxiety Disorder** or **Avoidant Personality traits**. Somatic symptoms (unexplained pain) and perceived medical invalidation (Q11) may contribute to treatment resistance or distrust. **Suicidal ideation** (Q12) constitutes an urgent risk requiring immediate evaluation. The patient\u2019s blunted affect, hesitancy, and nonverbal cues (e.g., sighs, avoidance) underscore severe emotional distress and potential alexithymia or dissociation. Clinical priority should focus on:  \n   - **Suicide risk mitigation** and safety planning,  \n   - Comprehensive psychiatric evaluation to rule out comorbidities (e.g., PTSD, adjustment disorder),  \n   - Addressing medical mistrust and somatic symptom amplification,  \n   - Referral for collaborative care (e.g., primary care coordination, psychopharmacology if indicated).  \n\n**Implications**: Patient meets criteria for MDD with anxious distress and requires immediate intervention to address emergent risk and systemic treatment barriers.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6981
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "<sym>Loss of interest in activities</sym>, persistent <sym>numbness</sym>, and <sym>somatic pain</sym> paired with <sym>suicidal ideation</sym> suggest profound distress. Your description of being told by a doctor to \u201cexercise more\u201d despite your <sym>fatigue</sym> and <sym>back pain</sym> reflects a deep sense of being unheard, which exacerbates emotional distress. The <sym>panic</sym> at night and social withdrawal highlight how your physical and emotional pain intersect in daily life.  \n\n**Diagnosis:** <med>Major Depressive Disorder with Anxious Distress, possibly with mixed features of trauma-related vigilance</med>, with <sym>somatic symptom amplification</sym> in the context of perceived medical neglect.  \n\n**Reasoning:**  \n- **Major Depressive Disorder (MDD)** is supported by <sym>anhedonia</sym>, <sym>psychomotor retardation</sym> (e.g., \u201ccan\u2019t get out of bed\u201d), <sym>sleep disturbance</sym>, and <sym>suicidal ideation</sym> (<sym>risk of self-harm</sym>). Duration exceeds two weeks, meeting DSM-5 criteria.  \n- **Anxious distress specifier** applies due to <sym>anticipatory worry</sym> (\u201csomething bad is about to happen\u201d) and <sym>panic attacks</sym>.  \n- <sym>Somatic complaints</sym> (e.g., back pain) align with MDD\u2019s somatic expression and mistrust of medical providers, but insufficient evidence for <med>Somatic Symptom Disorder</med> given the context of mood disorder.  \n- The <sym>avoidant behavior</sym> and <sym>panic</sym> may overlap with <med>Trauma- and Stressor-Related Disorder</med>, but trauma history isn\u2019t explicitly documented here.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Immediate suicide risk assessment**: Prioritize evaluation for <sym>self-harm risk</sym>, using a suicide risk assessment tool (e.g., Columbia-Suicide Severity Rating Scale).  \n2. **Primary care re-engagement**: Collaborate with a physician to validate somatic symptoms (e.g., back pain) through objective testing (e.g., imaging) to address medical neglect concerns.  \n3. **Pharmacotherapy**: Consider SSRIs (e.g., sertraline) or SNRIs, paired with <med>Cognitive Behavioral Therapy</med> (CBT) targeting <sym>anxious distress</sym> and <sym>behavioral activation</sym> for depression.  \n4. **Interpersonal interventions**: Address <sym>emotional numbing</sym> via psychodynamic or mindfulness-based therapies for emotional dysregulation.  \n5. **Safety planning**: Develop a crisis plan with accessible contacts (e.g., crisis hotline, trusted support systems).  \n\nThis approach addresses acute risk, restores trust in care, and integrates somatic/psychological symptoms holistically.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "depression",
+    "question_count": 23,
+    "duration": 28982.536452054977,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 10.375187873840332,
+    "diagnosis_generation_time": 7.882761001586914,
+    "rag_evaluation_time": 1.1920928955078125e-05,
+    "total_time": 18.25797390937805
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.723,
+        "average_score": 0.723,
+        "example_excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"criteria\", \"behaviors\", and 8 more matching aspects of your query."
+      },
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7212,
+        "average_score": 0.7212,
+        "example_excerpt": "Posttraumatic Stress Disorder\nPosttraumatic Stress Disorder (PTSD) will be included in a new chapter...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"more\", \"not\" matching aspects of your query."
+      },
+      "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7054,
+        "average_score": 0.7054,
+        "example_excerpt": "ther disorders, such as depressive and anxiety disorders. \nThe unique features of DMDD necessitated ...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"they\", \"clinical\", \"this\", and 6 more matching aspects of your query."
+      },
+      "APA_DSM-5-Social-Communication-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6723,
+        "average_score": 0.6723,
+        "example_excerpt": "al and Public Health Committee; and, finall y, evaluation by the American Psychiatric Associa-\ntion\u2019...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"met\", \"that\", \"symptoms\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Schizophrenia.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6686,
+        "average_score": 0.6686,
+        "example_excerpt": "h before their consideration as formal disorders. This potential category would \nidentify a person w...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"significant\", \"more\", \"that\", and 6 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 08:11:52",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 08:11:51",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 3,
+        "clinical_relevance": 4,
+        "consistency": 4,
+        "diagnostic_justification": 4,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist addressed several key domains such as depression (little interest in activities, feeling down), anxiety (feeling nervous, panic), and somatic concerns (back pain). However, some domains were not thoroughly explored or omitted, such as mania (only asked about sleeping less with more energy, but not increased activity or risky behaviors), psychotic symptoms, cognitive function, repetitive thoughts/behaviors, dissociation, identity and relationships, and substance use. The conversation did not systematically cover all 23 questions from the DSM-5 Level1 Cross-Cutting measure.",
+        "clinical_relevance": "The therapist's questions generally aligned with DSM-5 criteria, accurately targeting clinical symptoms. For example, the questions about little interest in activities, feeling down, and sleep disturbances directly reflect DSM-5 criteria for Major Depressive Disorder. However, some questions were phrased vaguely or lacked specificity, such as the question about irritability, which was not fully explored. The therapist also did not use DSM-5 language consistently.",
+        "consistency": "The dialogue generally flows logically, with each question building on previous responses. For instance, after the patient mentioned feeling down, the therapist followed up with questions about anxiety. However, there were minor logical inconsistencies, such as abrupt transitions between topics (e.g., moving from anxiety to somatic concerns without a smooth transition). The therapist also did not adequately follow up on concerning disclosures, such as suicidal ideation.",
+        "diagnostic_justification": "The diagnosis of Major Depressive Disorder with Anxious Distress was supported by specific symptoms mentioned by the patient, such as anhedonia, psychomotor retardation, sleep disturbance, and suicidal ideation. The therapist explicitly linked the diagnosis to DSM-5 criteria. However, some differential diagnoses, such as Trauma- and Stressor-Related Disorders, were not adequately ruled out due to the lack of explicit trauma history. The justification was generally clear but could have been more comprehensive.",
+        "empathy": "The therapist's responses mostly showed empathy and a professional tone. For example, the therapist acknowledged the patient's distress and validated their feelings about medical neglect. However, there were moments where the interactions seemed slightly robotic or impersonal, such as when discussing suicidal ideation. The therapist could have provided more emotional validation and support during these discussions."
+      },
+      "overall_comments": "The conversation demonstrated a good understanding of the patient's symptoms and addressed several key DSM-5 domains. However, it lacked thorough exploration of all domains, particularly mania, psychotic symptoms, and substance use. The therapist's questions were generally clinically relevant, and the diagnostic justification was clear. The conversation could benefit from more systematic coverage of all DSM-5 dimensions, improved logical flow, and enhanced empathy during sensitive discussions.",
+      "average_score": 3.8,
+      "diagnosis_accuracy": {
+        "matches_profile": true,
+        "confidence": 5,
+        "explanation": "The diagnosis explicitly mentions 'Major Depressive Disorder (MDD)' and provides symptoms that align with depression such as anhedonia, psychomotor retardation, sleep disturbance, and suicidal ideation. These are all characteristic of depression.",
+        "classification": "depression"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "depression",
+        "classified_as": "depression",
+        "match": true,
+        "confidence": 5
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 2.292231321334839
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.42597203481302176,
+        "local_coherence": 0.43614464159469724,
+        "window_coherence": 0.47878886569820067
+      },
+      "readability": {
+        "flesch_kincaid_grade": 8.36,
+        "gunning_fog_index": 4.58,
+        "flesch_reading_ease": 55.13
+      },
+      "diversity": {
+        "distinct_1": 0.4520547945205479,
+        "distinct_2": 0.8315377081292851,
+        "distinct_3": 0.9215686274509803
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "depression",
+      "predicted": "<sym>Loss of interest in activities</sym>, persistent <sym>numbness</sym>, and <sym>somatic pain</sym> paired with <sym>suicidal ideation</sym> suggest profound distress. Your description of being told by a doctor to \u201cexercise more\u201d despite your <sym>fatigue</sym> and <sym>back pain</sym> reflects a deep sense of being unheard, which exacerbates emotional distress. The <sym>panic</sym> at night and social withdrawal highlight how your physical and emotional pain intersect in daily life.  \n\n**Diagnosis:** <med>Major Depressive Disorder with Anxious Distress, possibly with mixed features of trauma-related vigilance</med>, with <sym>somatic symptom amplification</sym> in the context of perceived medical neglect.  \n\n**Reasoning:**  \n- **Major Depressive Disorder (MDD)** is supported by <sym>anhedonia</sym>, <sym>psychomotor retardation</sym> (e.g., \u201ccan\u2019t get out of bed\u201d), <sym>sleep disturbance</sym>, and <sym>suicidal ideation</sym> (<sym>risk of self-harm</sym>). Duration exceeds two weeks, meeting DSM-5 criteria.  \n- **Anxious distress specifier** applies due to <sym>anticipatory worry</sym> (\u201csomething bad is about to happen\u201d) and <sym>panic attacks</sym>.  \n- <sym>Somatic complaints</sym> (e.g., back pain) align with MDD\u2019s somatic expression and mistrust of medical providers, but insufficient evidence for <med>Somatic Symptom Disorder</med> given the context of mood disorder.  \n- The <sym>avoidant behavior</sym> and <sym>panic</sym> may overlap with <med>Trauma- and Stressor-Related Disorder</med>, but trauma history isn\u2019t explicitly documented here.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Immediate suicide risk assessment**: Prioritize evaluation for <sym>self-harm risk</sym>, using a suicide risk assessment tool (e.g., Columbia-Suicide Severity Rating Scale).  \n2. **Primary care re-engagement**: Collaborate with a physician to validate somatic symptoms (e.g., back pain) through objective testing (e.g., imaging) to address medical neglect concerns.  \n3. **Pharmacotherapy**: Consider SSRIs (e.g., sertraline) or SNRIs, paired with <med>Cognitive Behavioral Therapy</med> (CBT) targeting <sym>anxious distress</sym> and <sym>behavioral activation</sym> for depression.  \n4. **Interpersonal interventions**: Address <sym>emotional numbing</sym> via psychodynamic or mindfulness-based therapies for emotional dysregulation.  \n5. **Safety planning**: Develop a crisis plan with accessible contacts (e.g., crisis hotline, trusted support systems).  \n\nThis approach addresses acute risk, restores trust in care, and integrates somatic/psychological symptoms holistically.",
+      "matches": true,
+      "classification": "depression",
+      "classification_confidence": 5
+    }
+  }
+}

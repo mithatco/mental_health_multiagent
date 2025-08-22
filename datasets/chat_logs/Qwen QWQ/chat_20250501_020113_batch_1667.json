@@ -1,0 +1,237 @@
+{
+  "timestamp": "2025-05-01T02:01:25.940930",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm Dr. Smith, a mental health professional. I'd like to conduct a standard assessment using the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult. This helps identify areas important for your care. Your answers are confidential and will guide our discussion. I'll ask 23 questions about how you've felt in the last two weeks. Feel free to take your time, and let me know if anything is hard to talk about. Ready to begin?"
+    },
+    {
+      "role": "patient",
+      "content": "Okay, I guess. I just want to get through this. I'll try my best."
+    },
+    {
+      "role": "assistant",
+      "content": "1. Over the past two weeks, how often have you been bothered by *little interest or pleasure in doing things?*"
+    },
+    {
+      "role": "patient",
+      "content": "It's been hard\u2026 I used to enjoy hiking with friends. Now nothing feels fun. Lately I just lie around. I don't know if that's normal, though. *(pauses, looks down)*"
+    },
+    {
+      "role": "assistant",
+      "content": "2. How often have you been bothered by *feeling down, depressed, or hopeless?*"
+    },
+    {
+      "role": "patient",
+      "content": "It comes in waves. Especially when the anniversary gets closer. I feel\u2026 empty. Like there's no way out of it. *(voice wavers)*"
+    },
+    {
+      "role": "assistant",
+      "content": "3. How often have you been bothered by *feeling more irritated, grouchy, or angry than usual?*"
+    },
+    {
+      "role": "patient",
+      "content": "Yeah, definitely. I snap at my coworkers over little things. I get so worked up\u2026 last week I yelled at a coworker for slamming a door. I felt terrible afterward. *(clenches hands)*"
+    },
+    {
+      "role": "assistant",
+      "content": "4. How often have you been bothered by *sleeping less than usual, but still have a lot of energy?*"
+    },
+    {
+      "role": "patient",
+      "content": "No, I'm exhausted. I barely sleep. I wake up panicking in the middle of the night. I'm always tired but can't relax. *(runs hand through hair nervously)*"
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, I need to structure the response exactly as specified. Let's start with the compassionate summary. The user's answers show clear signs of depression and possible trauma. I should acknowledge their struggles empathetically.\n\nNext is the diagnosis section. The main symptoms align with Major Depressive Disorder. The anniversary trigger might hint at PTSD, but there's not enough info yet. Should I combine MDD with PTSD or just MDD with possible trauma? The DSM-5 criteria for PTSD requires trauma exposure, which isn't confirmed here, so maybe list MDD as primary with consideration for trauma-related disorders.\n\nThe reasoning section needs to explain why MDD is the main diagnosis. The symptoms like anhedonia, depressed mood, sleep issues all fit. The anniversary could be a grief or trauma trigger, so mention that but note insufficient info for a definite PTSD diagnosis yet.\n\nTreatment steps: Assessment for trauma history, depression treatment (meds or therapy), sleep hygiene, and crisis plan. Also, rule out medical causes for sleep issues.\n\nMake sure all sections are in the right order, use the correct tags, and avoid markdown. Check for required tags around medical terms, symptoms, etc. Need to avoid any meta-comments and follow the structure precisely. Let's put it all together now.\n</think>\n\nYou\u2019ve described a deeply challenging period marked by <sym>loss of joy</sym>, overwhelming sadness that intensifies around a significant anniversary, and a struggle to manage sudden bursts of anger that leave you feeling remorseful. The exhaustion from fragmented sleep and the weight of feeling \"empty\" suggest a profound emotional burden. Your honesty about how these changes have disrupted relationships and daily life reflects courage in facing what feels unbearable.  \n\n**Diagnosis:** <med>Major Depressive Disorder</med> with provisional consideration of <med>PTSD</med> pending trauma history clarification, and <med>Sleep-Wake Disorder</med> (insomnia/hypersomnia).  \n\n**Reasoning:**  \n- <med>MDD</med> is supported by <sym>anhedonia</sym>, <sym>depressed mood</sym>, <sym>irritability</sym>, and <sym>sleep disturbances</sym> (DSM-5 criteria A1\u2013A2). The anniversary\u2019s impact aligns with <med>trauma- and stressor-related disorder</med> considerations (e.g., <med>PTSD</med> or prolonged grief), but full diagnostic criteria for PTSD require confirmation of trauma exposure. The <sym>midnight panic</sym> may reflect re-experiencing trauma (e.g., nightmares) or anxiety.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Comprehensive clinical interview**: Assess trauma history, clarify PTSD criteria (e.g., exposure to trauma, re-experiencing symptoms), and differentiate grief vs. pathological bereavement.  \n2. **Depression management**: Consider <med>SSRIs</med> (e.g., sertraline) and <med>CBT</med> for mood and behavioral dysregulation.  \n3. **Trauma-focused evaluation**: Use tools like the <med>PCL-5</med> (Primary Care PTSD Screen) to assess PTSD.  \n4. **Sleep hygiene intervention**: Target <sym>insomnia</sym> with CBT-I or short-term <med>melatonin</med>, coupled with grounding techniques for nighttime panic.  \n5. **Suicidality risk assessment**: Explore <sym>hopelessness</sym> and <sym>worthlessness</sym> (paraphrased in <quote>\"no way out\"</quote>), and develop a safety plan.  \n6. **Collateral history**: Explore occupational/relational impact via work incident reports (e.g., yelling at coworkers) for <med>disruptive mood dysregulation</med> or <med>adjustment disorder</med> evaluation.  \n\nEnsure all recommendations align with DSM-5 criteria and prioritize ruling out medical causes (e.g., thyroid dysfunction) for sleep/mood changes.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.7618,
+            "highlight": "Negative cognitions and mood represents myriad feelings, from a persistent and distorted sense of  blame of self or others, to estrangement from others or markedly diminished interest in activities, to an inability to remember key aspects of the event.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"event\", \"key\", \"others\", and 6 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Depression-Bereavement-Exclusion.pdf",
+            "score": 0.7345,
+            "highlight": "The presence of symptoms such as feelings of worthlessness, suicidal  ideas (as distinct from wanting to join a deceased loved one), and impairment of overall function sug - gest the presence of major depression, in addition to the normal response to a significant loss.",
+            "excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"significant\", \"suicidal\", \"depression\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Sleep-Wake-Disorders.pdf",
+            "score": 0.7268,
+            "highlight": "Sleep-Wake Disorders In the fifth edition of the Diagnostic and Statistical Manual of Mental Disorders  (DSM-5), sleep-wake  disorders encompass 10 conditions manifested by disturbed sleep and causing distress as well as im - pairment in daytime functioning.",
+            "excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"mental\", \"sleep\", and 2 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.6884,
+            "highlight": "While DSM-IV was organized centrally around the concept of  medically unexplained symptoms, DSM-5 criteria instead emphasize the degree to which a patient \u2019s  thoughts, feelings and behaviors about their somatic symptoms are disproportionate or excessive.",
+            "excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"around\", \"criteria\", and 7 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf",
+            "score": 0.6836,
+            "highlight": "APA is a national medical specialty society whose more than 3 7,000  physician members specialize in the diagnosis, treat- ment, prevention and research of mental illnesses, including substance use disorders.",
+            "excerpt": "ther disorders, such as depressive and anxiety disorders. \nThe unique features of DMDD necessitated ...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"use\", \"mental\", \"more\", and 3 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let me tackle this step by step. The user provided the patient's responses to the first five questions of the DSM-5 assessment. My job is to analyze these responses and structure the clinical summary as per the instructions. \n\nFirst, I need to identify the main symptoms and concerns. Looking at Q2 and Q3, the patient mentions little interest in activities, feeling down, and hopelessness, especially around an anniversary. That points to depressive symptoms. Q4 talks about increased irritability and anger outbursts, like snapping at coworkers. That's a behavioral symptom. Q5 mentions sleep disturbances\u2014insomnia with night waking and exhaustion. \n\nNext, looking for patterns. The patient's responses are detailed, not just numerical. They use phrases like \"used to enjoy hiking\" indicating loss of interest (anhedonia). The anniversary mention in Q3 suggests possible trauma or grief-related triggers. The physiological arousal in Q5\u2014waking up panicking\u2014could be related to anxiety or PTSD. The self-awareness in their answers (e.g., knowing they're snapping at others) might indicate insight into their behavior.\n\nPotential clinical areas: Major Depressive Disorder (MDD) is a strong candidate here with anhedonia, depressed mood, and irritability. The sleep issues and irritability might also point to Adjustment Disorder with Depressed Mood if it's situational, like the anniversary. But the persistent nature over two weeks leans more towards MDD. The anger and irritability could also be part of a mixed depressive and anxiety disorder, or even PTSD if the anniversary relates to a traumatic event. Need to note that PTSD is a possibility here, especially with the anniversary trigger and sleep disturbances.\n\nRisk factors or warning signs: The emptiness and hopelessness (Q3) could be suicidal ideation indicators, though the patient hasn't explicitly mentioned that. The anniversary reference might be a significant event, like a loss, which could be a risk factor. The panic at night (Q5) might suggest anxiety or PTSD-related symptoms. The patient's acknowledgment of feeling terrible after outbursts (Q4) shows some insight but also potential self-criticism which can be a risk for worsening mood.\n\nClinical summary needs to be concise. Use terms like anhedonia, depressed mood, irritability, insomnia. Mention the anniversary as a possible stressor or trauma trigger. Highlight the need for further exploration into trauma, suicidal ideation, and the exact nature of the anniversary event. Also, note the physiological symptoms (panic waking) as part of the depressive presentation or PTSD.\n\nWait, in Q5 the patient says \"can't relax\" and \"panic,\" which are anxiety symptoms. But the question was about sleep with a lot of energy, which they denied. So maybe hyperarousal without hyperactivity. The panic waking could be part of PTSD or anxiety. Need to distinguish between insomnia with anxiety versus depressive-related insomnia. Also, the irritability in MDD can present with increased anger, so that's consistent.\n\nI should structure each section as per the user's instructions. Make sure not to include any assumptions beyond the given data. The summary should be professional, using DSM-5 criteria where applicable. Highlight the key symptoms, their triggers, and any red flags like possible trauma or risk indicators.\n\nCheck if there are any immediate risks. The patient hasn't expressed suicidal intent, but the hopelessness and empty feelings are concerning. The anniversary might be a loss (like a death), which could be a grief-related issue. Maybe complicated grief or PTSD. The irritability and anger management issues could be part of adjustment disorder or depression.\n\nSo compiling all this into the required sections: main symptoms (anhedonia, depressed mood, irritability, insomnia), patterns (stressor linked to anniversary, somatic symptoms like panic), clinical significance (MDD, possible PTSD or adjustment disorder), risks (suicidal ideation not mentioned but possible, need for trauma assessment). The clinical summary should tie these together without being speculative.\n\nMake sure to avoid terms that aren't supported. Since there's mention of an anniversary but no specifics, it's a trigger but not certain what it is. The key points are the depressive symptoms, the anger, sleep issues, and possible trauma connection. The panic at night is a significant symptom that needs noting. \n\nAlso, the patient's non-verbal cues like pausing, looking down, clenched hands indicate emotional distress, which reinforces the self-reported symptoms. Including behavioral observations from the responses could add depth to the clinical summary, but the user's instructions focus on the responses given. \n\nI think that's covered. Now structure each part as bullet points for each section, then the summary. Make sure to use proper terminology like \"anhedonia,\" \"dysphoric mood,\" \"hypervigilance\" if applicable. Wait, in Q5, the panic could be related to PTSD's re-experiencing symptoms during sleep. So noting that the sleep issue might be tied to trauma. \n\nOkay, putting it all together now.\n</think>\n\n### Clinical Observation Summary: Patient Responses Analysis  \n\n#### 1. **Main Symptoms and Concerns**  \n- **Anhedonia**: Marked loss of interest/pleasure (Q2), including withdrawal from previously enjoyed activities (e.g., hiking).  \n- **Persistent Depressed Mood**: Reports of feeling \"down, depressed, or hopeless\" with cyclical \"waves\" of intensity (Q3), exacerbated by an unspecified anniversary.  \n- **Irritability/Anger Dysregulation**: Increased interpersonal conflicts (e.g., yelling at coworkers; Q4) and physiological tension (clenched hands noted).  \n- **Insomnia and Hypersomnia**: Difficulty maintaining sleep (midnight panic, exhaustion; Q5), inconsistent with hyperarousal (no excess energy).  \n- **Psychomotor Agitation**: Nervous gestures (e.g., running hand through hair; Q5) and emotional dysphoria.  \n\n#### 2. **Patterns in Responses**  \n- **Temporal Trigger**: Symptoms intensify near an unresolved anniversary (likely a loss/grief-related event).  \n- **Functional Impairment**: Reports of social withdrawal (Q2), occupational conflict (Q4), and impaired daily functioning (e.g., lying around.  \n- **Emotional Dysregulation**: Alternating between emotional numbness (Q3) and explosive anger (Q4), suggesting dysphoric mood variability.  \n- **Self-Awareness**: Acknowledges guilt/regret over behavior (Q4) but expresses uncertainty about symptom normality (Q2).  \n\n#### 3. **Potential Clinical Significance**  \n- **Major Depressive Disorder (MDD)**: Anhedonia, depressed mood, and irritability (DSM-5 criteria).  \n- **Trauma/PTSD**: Anniversary-related symptom exacerbation, nocturnal panic, and emotional dysregulation (Q3-Q5).  \n- **Generalized Anxiety Disorder (GAD)**: Restlessness, fatigue, and sleep disturbances (Q5).  \n- **Adjustment Disorder with Depressed Mood and Disturbance of Conduct**: If symptoms are time-limited to stressor (e.g., anniversary event).  \n\n#### 4. **Risk Factors/Warning Signs**  \n- **Suicidality Risk Indicators**: Ambiguously noted via statements of \"no way out\" (Q3) and existential hopelessness.  \n- **Trauma History Suggestion**: Anniversary reaction and panic symptoms may reflect unresolved grief or PTSD.  \n- **Social/Interpersonal Strain**: Workplace conflicts and social withdrawal (Q2, Q4) signal impaired functioning.  \n- **Potential Substance Use Not Mentioned**: No direct report, but nonverbal cues (e.g., restlessness) warrant screening.  \n\n#### 5. **Clinical Summary (DSM-5 Framework)**  \nPatient presents with **persistent anhedonia, depressed mood, irritability, and sleep disturbances** meeting criteria for **Major Depressive Disorder (MDD)**. Symptom exacerbation linked to an unresolved anniversary (possible trauma/grief) suggests possible **complicating factors like PTSD** or adjustment disorder. **Suicidality risk** is implied by hopelessness, though no explicit ideation is stated. **Irritability and interpersonal strain** may reflect dysphoric MDD or comorbid anxiety. Further assessment required to clarify trauma history, evaluate for PTSD, and assess risk of self-harm. Prioritize exploration of the anniversary-related stressor and safety.  \n\n---  \nThis summary adheres to DSM-5 descriptors while prioritizing patient-reported data without overinterpretation.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.719
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "You\u2019ve described a deeply challenging period marked by <sym>loss of joy</sym>, overwhelming sadness that intensifies around a significant anniversary, and a struggle to manage sudden bursts of anger that leave you feeling remorseful. The exhaustion from fragmented sleep and the weight of feeling \"empty\" suggest a profound emotional burden. Your honesty about how these changes have disrupted relationships and daily life reflects courage in facing what feels unbearable.  \n\n**Diagnosis:** <med>Major Depressive Disorder</med> with provisional consideration of <med>PTSD</med> pending trauma history clarification, and <med>Sleep-Wake Disorder</med> (insomnia/hypersomnia).  \n\n**Reasoning:**  \n- <med>MDD</med> is supported by <sym>anhedonia</sym>, <sym>depressed mood</sym>, <sym>irritability</sym>, and <sym>sleep disturbances</sym> (DSM-5 criteria A1\u2013A2). The anniversary\u2019s impact aligns with <med>trauma- and stressor-related disorder</med> considerations (e.g., <med>PTSD</med> or prolonged grief), but full diagnostic criteria for PTSD require confirmation of trauma exposure. The <sym>midnight panic</sym> may reflect re-experiencing trauma (e.g., nightmares) or anxiety.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Comprehensive clinical interview**: Assess trauma history, clarify PTSD criteria (e.g., exposure to trauma, re-experiencing symptoms), and differentiate grief vs. pathological bereavement.  \n2. **Depression management**: Consider <med>SSRIs</med> (e.g., sertraline) and <med>CBT</med> for mood and behavioral dysregulation.  \n3. **Trauma-focused evaluation**: Use tools like the <med>PCL-5</med> (Primary Care PTSD Screen) to assess PTSD.  \n4. **Sleep hygiene intervention**: Target <sym>insomnia</sym> with CBT-I or short-term <med>melatonin</med>, coupled with grounding techniques for nighttime panic.  \n5. **Suicidality risk assessment**: Explore <sym>hopelessness</sym> and <sym>worthlessness</sym> (paraphrased in <quote>\"no way out\"</quote>), and develop a safety plan.  \n6. **Collateral history**: Explore occupational/relational impact via work incident reports (e.g., yelling at coworkers) for <med>disruptive mood dysregulation</med> or <med>adjustment disorder</med> evaluation.  \n\nEnsure all recommendations align with DSM-5 criteria and prioritize ruling out medical causes (e.g., thyroid dysfunction) for sleep/mood changes.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "ptsd",
+    "question_count": 23,
+    "duration": 26502.393543958664,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 5.159706115722656,
+    "diagnosis_generation_time": 7.37066912651062,
+    "rag_evaluation_time": 1.9311904907226562e-05,
+    "total_time": 12.530405759811401
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7618,
+        "average_score": 0.7618,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"event\", \"key\", \"others\", and 6 more matching aspects of your query."
+      },
+      "APA_DSM-5-Depression-Bereavement-Exclusion.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7345,
+        "average_score": 0.7345,
+        "example_excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"significant\", \"suicidal\", \"depression\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM-5-Sleep-Wake-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7268,
+        "average_score": 0.7268,
+        "example_excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"mental\", \"sleep\", and 2 more matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6884,
+        "average_score": 0.6884,
+        "example_excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"around\", \"criteria\", and 7 more matching aspects of your query."
+      },
+      "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6836,
+        "average_score": 0.6836,
+        "example_excerpt": "ther disorders, such as depressive and anxiety disorders. \nThe unique features of DMDD necessitated ...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"use\", \"mental\", \"more\", and 3 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 08:05:09",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 08:05:09",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 3,
+        "clinical_relevance": 4,
+        "consistency": 4,
+        "diagnostic_justification": 4,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist addressed several key domains such as depression (questions 1-2), anger (question 3), sleep disturbances (question 4), and anxiety (implied through patient's responses). However, the conversation only covered a subset of the 23 questions from the DSM-5 Level1 Cross-Cutting Symptom Measure. Domains like mania, psychotic symptoms, somatic concerns, suicidal ideation, cognitive function, repetitive thoughts/behaviors, dissociation, identity and relationships, and substance use were not directly explored. This incomplete coverage results in a score of 3, indicating adequate but not comprehensive assessment.",
+        "clinical_relevance": "The therapist's questions generally aligned with DSM-5 criteria, accurately targeting symptoms such as anhedonia, depressed mood, irritability, and sleep disturbances. The questions were phrased in a clinically relevant way, and the therapist adapted the questioning based on the patient's responses. However, the lack of direct inquiry into other domains (e.g., substance use, psychosis) and the reliance on patient-initiated topics slightly reduces the score to 4.",
+        "consistency": "The conversation generally flowed logically, with each question building on previous responses. The therapist effectively explored the patient's symptoms of depression, anger, and sleep disturbances. However, there were minor logical inconsistencies, such as not directly following up on concerning disclosures (e.g., 'no way out') and not systematically covering all DSM-5 domains. Overall, the conversation was coherent, but could have benefited from smoother transitions and more comprehensive coverage.",
+        "diagnostic_justification": "The therapist provided a clear justification for the diagnosis of Major Depressive Disorder, citing specific symptoms like anhedonia, depressed mood, irritability, and sleep disturbances. The consideration of PTSD and Sleep-Wake Disorder was also logical based on the patient's responses. However, the diagnostic justification could have been strengthened by more explicitly ruling out other potential diagnoses and providing a detailed differential diagnosis. The therapist's recommendations for next steps were appropriate but could have been more comprehensive.",
+        "empathy": "The therapist demonstrated empathy and a professional tone throughout the conversation. The patient was encouraged to share their feelings, and the therapist acknowledged their distress. For example, the therapist noted the patient's 'profound emotional burden' and 'courage in facing what feels unbearable.' However, there were moments where the conversation felt somewhat structured and formal, potentially limiting a perfect score. The therapist generally adapted their responses to the patient's emotional state but could have shown more emotional warmth."
+      },
+      "overall_comments": "The conversation demonstrated a good understanding of the patient's symptoms and addressed several key domains relevant to the DSM-5 Level1 Cross-Cutting Symptom Measure. However, it fell short in comprehensively covering all 23 questions and domains. The therapist provided a clear diagnosis and treatment plan but could have benefited from more systematic coverage of all relevant symptoms and domains. With some refinement in these areas, the conversation could have been even more effective in identifying and addressing the patient's needs.",
+      "average_score": 3.8,
+      "diagnosis_accuracy": {
+        "matches_profile": false,
+        "confidence": 4,
+        "explanation": "The diagnosis does not explicitly identify PTSD as the primary condition, but rather considers it provisionally pending trauma history clarification. The symptoms described, such as loss of joy, overwhelming sadness, and sleep disturbances, are more closely aligned with Major Depressive Disorder. However, the mention of PTSD as a consideration and the reference to trauma- and stressor-related disorders suggest that PTSD is being taken into account.",
+        "classification": "depression"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "ptsd",
+        "classified_as": "depression",
+        "match": false,
+        "confidence": 4
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 4.809893846511841
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.5496578567039905,
+        "local_coherence": 0.5584600842870221,
+        "window_coherence": 0.5767121685552932
+      },
+      "readability": {
+        "flesch_kincaid_grade": 8.46,
+        "gunning_fog_index": 4.15,
+        "flesch_reading_ease": 52.46
+      },
+      "diversity": {
+        "distinct_1": 0.5926470588235294,
+        "distinct_2": 0.9293078055964654,
+        "distinct_3": 0.971976401179941
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "ptsd",
+      "predicted": "You\u2019ve described a deeply challenging period marked by <sym>loss of joy</sym>, overwhelming sadness that intensifies around a significant anniversary, and a struggle to manage sudden bursts of anger that leave you feeling remorseful. The exhaustion from fragmented sleep and the weight of feeling \"empty\" suggest a profound emotional burden. Your honesty about how these changes have disrupted relationships and daily life reflects courage in facing what feels unbearable.  \n\n**Diagnosis:** <med>Major Depressive Disorder</med> with provisional consideration of <med>PTSD</med> pending trauma history clarification, and <med>Sleep-Wake Disorder</med> (insomnia/hypersomnia).  \n\n**Reasoning:**  \n- <med>MDD</med> is supported by <sym>anhedonia</sym>, <sym>depressed mood</sym>, <sym>irritability</sym>, and <sym>sleep disturbances</sym> (DSM-5 criteria A1\u2013A2). The anniversary\u2019s impact aligns with <med>trauma- and stressor-related disorder</med> considerations (e.g., <med>PTSD</med> or prolonged grief), but full diagnostic criteria for PTSD require confirmation of trauma exposure. The <sym>midnight panic</sym> may reflect re-experiencing trauma (e.g., nightmares) or anxiety.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Comprehensive clinical interview**: Assess trauma history, clarify PTSD criteria (e.g., exposure to trauma, re-experiencing symptoms), and differentiate grief vs. pathological bereavement.  \n2. **Depression management**: Consider <med>SSRIs</med> (e.g., sertraline) and <med>CBT</med> for mood and behavioral dysregulation.  \n3. **Trauma-focused evaluation**: Use tools like the <med>PCL-5</med> (Primary Care PTSD Screen) to assess PTSD.  \n4. **Sleep hygiene intervention**: Target <sym>insomnia</sym> with CBT-I or short-term <med>melatonin</med>, coupled with grounding techniques for nighttime panic.  \n5. **Suicidality risk assessment**: Explore <sym>hopelessness</sym> and <sym>worthlessness</sym> (paraphrased in <quote>\"no way out\"</quote>), and develop a safety plan.  \n6. **Collateral history**: Explore occupational/relational impact via work incident reports (e.g., yelling at coworkers) for <med>disruptive mood dysregulation</med> or <med>adjustment disorder</med> evaluation.  \n\nEnsure all recommendations align with DSM-5 criteria and prioritize ruling out medical causes (e.g., thyroid dysfunction) for sleep/mood changes.",
+      "matches": true,
+      "classification": "depression",
+      "classification_confidence": 4
+    }
+  }
+}

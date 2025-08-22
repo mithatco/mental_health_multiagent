@@ -1,0 +1,225 @@
+{
+  "timestamp": "2025-05-01T01:58:22.146885",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm Dr. Smith, a mental health professional here to help. Today, I'll be using the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult to assess your mental health symptoms over the past two weeks. Your answers will help guide our conversation and ensure a comprehensive evaluation. Everything discussed here is confidential. We'll go through 23 questions one by one. Would you like to start?"
+    },
+    {
+      "role": "patient",
+      "content": "Okay, sure. I'll try to be honest, I guess."
+    },
+    {
+      "role": "assistant",
+      "content": "Great, thank you. Let's begin. 1. Over the past two weeks, how much have you been bothered by little interest or pleasure in doing things?"
+    },
+    {
+      "role": "patient",
+      "content": "Hmm, maybe a little. I mean, sometimes I just don't feel like doing anything, but I'd say it's not too bad."
+    },
+    {
+      "role": "assistant",
+      "content": "2. How much have you been bothered by feeling down, depressed, or hopeless?"
+    },
+    {
+      "role": "patient",
+      "content": "Not much. I'm fine most days. Maybe when I'm not... when I'm off, I feel a bit low, but I handle it."
+    },
+    {
+      "role": "assistant",
+      "content": "3. How much have you been bothered by feeling more irritable, grouchy, or angry than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "I guess I snap sometimes. Not a lot, but if things aren't going my way, yeah. Probably a little more."
+    },
+    {
+      "role": "assistant",
+      "content": "4. How much have you been bothered by sleeping less than usual but still having a lot of energy?"
+    },
+    {
+      "role": "patient",
+      "content": "No, not really. Actually, I've been struggling to sleep. I just end up tossing and turning a lot."
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, let's tackle this step by step. The user provided a structured query for a clinical assessment based on a questionnaire. The patient's responses need to be analyzed according to DSM-5 criteria.\n\nFirst, looking at the answers: \n\nFor question 1, the patient reports \"a little\" anhedonia. That's a key symptom of depression. Question 2 mentions low mood occasionally but they downplay it. Question 3 shows some irritability, which could be part of depression or another issue. Question 4 indicates insomnia without increased energy, which is more depressive than mania. \n\nThe user emphasized not to assume anything beyond the data. The patient's minimization suggests possible underreporting, which is common. Need to check if symptoms meet criteria for a diagnosis. \n\nSleep disturbance (Q4) is a red flag. In depression, insomnia is common without the energy seen in mania. The irritability might be related to depression or an adjustment disorder. \n\nThe instructions said to avoid somatic symptom disorder unless warranted. Since the symptoms are more mood-related, maybe Major Depressive Disorder is better here. But the severity doesn't meet full MDD criteria yet, so maybe a depressive disorder not otherwise specified? Wait, DSM-5 has \"Depressive Disorder Due to Another Medical Condition\" or \"Other Specified Depressive Disorder (OSDD)\" if not full criteria. The patient's responses don't specify if there's a triggering event, so adjustment disorder with depressed mood is possible if triggered by stressors. But the info given doesn't mention stressors. \n\nAlternatively, Persistent Depressive Disorder (dysthymia) could be a consideration, but duration isn't specified here. The responses are from the past two weeks. \n\nWait, the first question's anhedonia and low mood but not severe enough yet. The insomnia and irritability add to it. Since the patient's responses are mild, maybe the best fit is a provisional diagnosis of \"Depressive Disorder, Not Otherwise Specified\" (DDNOS) or \"Other Specified Depressive Disorder (OSDD)\" under DSM-5. \n\nAlternatively, if there's a stressor, adjustment disorder, but since no info on stressor, it's safer to go with OSDD. \n\nThe instructions specify not to use SSD unless clear, which it's not here. \n\nAlso, need to make sure they don't meet criteria for an anxiety disorder. The responses don't mention anxiety symptoms. \n\nPutting it together, the best fit is likely **Other Specified Depressive Disorder (OSDD)** due to subthreshold symptoms that don't meet full MDD criteria but are causing distress. The insomnia, anhedonia, and irritability support this, but duration and severity are borderline. \n\nNext steps would be to assess for stressors, explore symptom duration, rule out medical causes (like sleep apnea or thyroid issues), and track symptom progression over time. Also, consider a PHQ-9 or GAD-7 for further assessment. \n\nI need to structure the response per their exact format, using tags. Let me check all the requirements again to ensure compliance.\n</think>\n\n<sym>Reduced pleasure, low mood, insomnia, and irritability</sym> were reported, along with guarded self-assessment. It sounds like you\u2019re experiencing moments where life feels less engaging or manageable, and the struggle to sleep might be adding to that. Taking time to reflect on these shifts and their effects on daily life is a brave first step.\n\n**Diagnosis:**  \n<med>Other Specified Depressive Disorder (OSDD)</med>  \n\n**Reasoning:**  \nSymptoms align with mild depressive features (anhedonia, intermittent low mood, irritability) and insomnia without hyperarousal, suggesting a subthreshold depressive condition (<med>OSDD</med>). <sym>Irritability</sym> and <sym>disturbed sleep</sym> may reflect early-stage mood dysregulation or adjustment to stressors not explicitly noted here. The patient\u2019s minimization of distress (<quote>\"not too bad\"</quote>/<quote>\"handle it\"</quote>) points to possible underrecognition of symptom impact.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Thorough clinical interview**: Explore life stressors, symptom triggers, and medical history (e.g., thyroid, sleep disorders).  \n2. **Monitor for symptom escalation**: Track changes in mood, sleep, and irritability over 1\u20132 months.  \n3. **Cognitive-behavioral therapy (CBT): Focus on sleep hygiene, mood-regulation strategies.  \n4. **Rule out medical causes**: Lab work (e.g., vitamin D, thyroid function) if unaddressed in prior care.  \n5. **Follow-up assessments**: Use <med>PHQ-9</med> and <med>GAD-7</med> to quantify symptom severity longitudinally.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Sleep-Wake-Disorders.pdf",
+            "score": 0.722,
+            "highlight": "Sleep-Wake Disorders In the fifth edition of the Diagnostic and Statistical Manual of Mental Disorders  (DSM-5), sleep-wake  disorders encompass 10 conditions manifested by disturbed sleep and causing distress as well as im - pairment in daytime functioning.",
+            "excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"mental\", \"disorders\", and 3 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.6712,
+            "highlight": "Characteristics of Somatic Symptom Disorder Somatic symptom disorder (SSD) is characterized by somatic symptoms that are either very distressing or result in significant disruption of functioning, as well as excessive and disproportionate thoughts, feelings and behaviors regarding those symptoms.",
+            "excerpt": "   Somatic Symptom Disorder\nThe upcoming fifth edition of the Diagnostic and Statistical Manual of M...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"symptom\", \"that\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf",
+            "score": 0.6613,
+            "highlight": "This disorder is called Disruptive Mood Dysregulation Disorder (DMDD), and its symptoms go beyond describing temperamental children to those with a severe impairment that requires clinical attention.",
+            "excerpt": "This disorder is called Disruptive Mood Dysregulation Disorder (DMDD), and its symptoms go beyond de...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"dysregulation\", \"clinical\", \"this\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-ADHD.pdf",
+            "score": 0.6515,
+            "highlight": "As in DSM-IV, symptoms will be divided into two categories of inattention and hyperactivity and impulsivity that include behav - iors like failure to pay close attention to details, difficulty organizing tasks and activities, excessive talk - ing, fidgeting, or an inability to remain seated in appropriate situations.",
+            "excerpt": "s to the Disorder\nADHD is characterized by a pattern of behavior, present in multiple settings (e.g....",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"like\", \"activities\", \"that\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.6407,
+            "highlight": "Negative cognitions and mood represents myriad feelings, from a persistent and distorted sense of  blame of self or others, to estrangement from others or markedly diminished interest in activities, to an inability to remember key aspects of the event.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"activities\", \"feelings\", \"interest\", and 2 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let's tackle this. The user provided a patient's responses to some DSM-5 questions and wants me to do an assessment based on that. First, I need to go through each of the patient's answers and note what they say.\n\nStarting with Q1: The patient says they have some lack of interest or pleasure, but not too bad. That's a classic depressive symptom, like anhedonia. But they're downplaying it a bit. \n\nQ2 asks about feeling down, depressed, or hopeless. The patient says \"not much,\" but mentions they feel low when they're \"off.\" That inconsistency might be important. They might not be acknowledging the severity, or maybe they have times when it's worse. \n\nQ3 is about irritability. The patient admits to snapping sometimes, especially when things don't go their way. Increased irritability can be part of depression, anxiety, or even something like bipolar, but we don't have enough info yet. \n\nQ4 is about sleeping less but having energy. The patient says the opposite: trouble sleeping, tossing and turning. That's insomnia, which is common in depression but can also be part of anxiety. \n\nNow, the main symptoms here are anhedonia, some depressed mood (though minimized), irritability, and insomnia. The patterns I notice are the patient downplaying their symptoms. They start with \"Okay, sure\" to starting, which might indicate some reluctance. Their responses are guarded, using phrases like \"maybe,\" \"I guess,\" which could suggest they're not entirely open or maybe not fully aware of their symptoms' severity. \n\nPotential areas of clinical significance: depressive symptoms, possible adjustment disorder, maybe anxiety. The insomnia and irritability might indicate underlying mood issues. \n\nRisk factors or warning signs: The insomnia could be a risk for worsening depression, but there's no mention of suicidal thoughts or self-harm here. The irritability might affect relationships or daily functioning, which is worth noting. \n\nWait, I need to make sure I don't miss anything. The patient didn't mention any manic symptoms, so maybe not bipolar. But the irritability and sleep issues could be part of depression. The inconsistent reporting between Q2 and their comment about feeling low when \"off\" suggests possible fluctuations in mood that could be worth exploring further. \n\nAlso, the patient's minimization of symptoms might indicate denial, avoidance, or not recognizing the impact of their symptoms. That's a pattern. \n\nPutting this all together in a clinical summary, I need to mention the symptoms, patterns like minimization, areas like depressive features, and note that while there's no immediate high risk, these symptoms could indicate a mood disorder needing further evaluation. I should avoid speculating on diagnosis but highlight what's present.\n</think>\n\n### Clinical Observation Summary  \n\n**1. Main Symptoms and Concerns**  \n- **Anhedonia**: Mild-to-moderate reduced interest/pleasure in activities (Q1: \"a little\").  \n- **Dysphoric mood variability**: Self-reported minimal depressive feelings (Q2: \"not much\"), but acknowledgment of intermittent low mood when \"not on\" (suggesting situational or fluctuating dysphoria).  \n- **Irritability**: Acknowledged increase in irritability/grouchiness (Q3: \"snap sometimes\").  \n- **Sleep disturbance**: Insomnia (Q4: \"tossing and turning\") with no associated increased energy, inconsistent with hypomanic features.  \n\n**2. Patterns in Responses**  \n- **Minimization of distress**: Qualifiers like \"not too bad,\" \"handle it,\" and \"not much\" suggest under-reporting symptom severity.  \n- **Guardedness**: Ambivalence in responses (e.g., \"I guess,\" \"maybe\") may indicate reluctance to fully disclose distress or insight into symptom impact.  \n- **Temporal variability**: Acknowledgment of symptom fluctuation (e.g., \"when I\u2019m off\") implies episodic symptom exacerbation.  \n\n**3. Potential Areas of Clinical Significance**  \n- **Depressive spectrum**: Anhedonia, low mood, and irritability align with mild-to-moderate depressive features.  \n- **Insomnia**: Primary insomnia or comorbid with mood/anxiety disorders.  \n- **Affective lability**: Fluctuating mood and irritability may warrant screening for cyclothymic disorder or adjustment disorder.  \n\n**4. Risk Factors/Warning Signs**  \n- **Functional impairment**: Reduced pleasure/interest in activities may indicate early depressive disorder or adjustment-related distress.  \n- **Potential for symptom escalation**: Insomnia and irritability may predispose to worsening mood if unaddressed.  \n- **Social/interpersonal impact**: Irritability could strain relationships, exacerbating distress.  \n\n**5. Summary (Clinical Language)**  \nThe patient reports mild-to-moderate symptoms of anhedonia, intermittent low mood, and irritability over the past two weeks. Sleep disturbance (insomnia without hyperarousal) is present. Responses reflect underreporting of symptom severity and temporal variability (e.g., situational dysphoria). Notable patterns include guardedness and minimization, suggesting possible underrecognition of symptom impact. Areas of concern include depressive features, insomnia, and affective lability, warranting further evaluation for major depressive disorder, adjustment disorder, or subthreshold mood dysregulation. No acute risk of harm is indicated, but longitudinal symptom progression or functional impairment should be assessed.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6693
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "<sym>Reduced pleasure, low mood, insomnia, and irritability</sym> were reported, along with guarded self-assessment. It sounds like you\u2019re experiencing moments where life feels less engaging or manageable, and the struggle to sleep might be adding to that. Taking time to reflect on these shifts and their effects on daily life is a brave first step.\n\n**Diagnosis:**  \n<med>Other Specified Depressive Disorder (OSDD)</med>  \n\n**Reasoning:**  \nSymptoms align with mild depressive features (anhedonia, intermittent low mood, irritability) and insomnia without hyperarousal, suggesting a subthreshold depressive condition (<med>OSDD</med>). <sym>Irritability</sym> and <sym>disturbed sleep</sym> may reflect early-stage mood dysregulation or adjustment to stressors not explicitly noted here. The patient\u2019s minimization of distress (<quote>\"not too bad\"</quote>/<quote>\"handle it\"</quote>) points to possible underrecognition of symptom impact.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Thorough clinical interview**: Explore life stressors, symptom triggers, and medical history (e.g., thyroid, sleep disorders).  \n2. **Monitor for symptom escalation**: Track changes in mood, sleep, and irritability over 1\u20132 months.  \n3. **Cognitive-behavioral therapy (CBT): Focus on sleep hygiene, mood-regulation strategies.  \n4. **Rule out medical causes**: Lab work (e.g., vitamin D, thyroid function) if unaddressed in prior care.  \n5. **Follow-up assessments**: Use <med>PHQ-9</med> and <med>GAD-7</med> to quantify symptom severity longitudinally.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "substance_abuse",
+    "question_count": 23,
+    "duration": 26318.59969305992,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 5.2343590259552,
+    "diagnosis_generation_time": 6.929775714874268,
+    "rag_evaluation_time": 1.4781951904296875e-05,
+    "total_time": 12.164159774780273
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Sleep-Wake-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.722,
+        "average_score": 0.722,
+        "example_excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"mental\", \"disorders\", and 3 more matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6712,
+        "average_score": 0.6712,
+        "example_excerpt": "   Somatic Symptom Disorder\nThe upcoming fifth edition of the Diagnostic and Statistical Manual of M...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"symptom\", \"that\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6613,
+        "average_score": 0.6613,
+        "example_excerpt": "This disorder is called Disruptive Mood Dysregulation Disorder (DMDD), and its symptoms go beyond de...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"dysregulation\", \"clinical\", \"this\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM-5-ADHD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6515,
+        "average_score": 0.6515,
+        "example_excerpt": "s to the Disorder\nADHD is characterized by a pattern of behavior, present in multiple settings (e.g....",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"like\", \"activities\", \"that\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6407,
+        "average_score": 0.6407,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"activities\", \"feelings\", \"interest\", and 2 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 07:51:05",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 07:51:05",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {},
+      "explanations": {},
+      "overall_comments": "Error occurred during evaluation: 'str' object has no attribute 'get'",
+      "average_score": 0,
+      "diagnosis_accuracy": {
+        "matches_profile": false,
+        "confidence": 5,
+        "explanation": "The diagnosis provided does not explicitly mention substance abuse or related terms. The symptoms described (reduced pleasure, low mood, insomnia, irritability) and the diagnosis of Other Specified Depressive Disorder (OSDD) focus on depressive features, not substance abuse.",
+        "classification": "depression"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "substance_abuse",
+        "classified_as": "depression",
+        "match": false,
+        "confidence": 5
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 1.9152839183807373
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.5601661537953353,
+        "local_coherence": 0.5755057998224414,
+        "window_coherence": 0.6090271354548544
+      },
+      "readability": {
+        "flesch_kincaid_grade": 9.11,
+        "gunning_fog_index": 4.6,
+        "flesch_reading_ease": 49.84
+      },
+      "diversity": {
+        "distinct_1": 0.5394088669950738,
+        "distinct_2": 0.8951911220715166,
+        "distinct_3": 0.9567901234567902
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "substance_abuse",
+      "predicted": "<sym>Reduced pleasure, low mood, insomnia, and irritability</sym> were reported, along with guarded self-assessment. It sounds like you\u2019re experiencing moments where life feels less engaging or manageable, and the struggle to sleep might be adding to that. Taking time to reflect on these shifts and their effects on daily life is a brave first step.\n\n**Diagnosis:**  \n<med>Other Specified Depressive Disorder (OSDD)</med>  \n\n**Reasoning:**  \nSymptoms align with mild depressive features (anhedonia, intermittent low mood, irritability) and insomnia without hyperarousal, suggesting a subthreshold depressive condition (<med>OSDD</med>). <sym>Irritability</sym> and <sym>disturbed sleep</sym> may reflect early-stage mood dysregulation or adjustment to stressors not explicitly noted here. The patient\u2019s minimization of distress (<quote>\"not too bad\"</quote>/<quote>\"handle it\"</quote>) points to possible underrecognition of symptom impact.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Thorough clinical interview**: Explore life stressors, symptom triggers, and medical history (e.g., thyroid, sleep disorders).  \n2. **Monitor for symptom escalation**: Track changes in mood, sleep, and irritability over 1\u20132 months.  \n3. **Cognitive-behavioral therapy (CBT): Focus on sleep hygiene, mood-regulation strategies.  \n4. **Rule out medical causes**: Lab work (e.g., vitamin D, thyroid function) if unaddressed in prior care.  \n5. **Follow-up assessments**: Use <med>PHQ-9</med> and <med>GAD-7</med> to quantify symptom severity longitudinally.",
+      "matches": false,
+      "classification": "depression",
+      "classification_confidence": 5
+    }
+  }
+}

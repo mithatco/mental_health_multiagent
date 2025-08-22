@@ -1,0 +1,205 @@
+{
+  "timestamp": "2025-04-30T05:11:11.684414",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm a mental health professional. I'm here to conduct an assessment using the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult. This tool helps us identify areas that might be impacting your mental health and treatment. Everything discussed here is confidential and a safe space for you to share your experiences. We'll go through 23 questions, and I'll ask one at a time. Let's begin. 1. Little interest or pleasure in doing things?"
+    },
+    {
+      "role": "patient",
+      "content": "Hmm, yeah... there are times when I just don't feel like doing anything. It's like, I know I should be motivated, but I just can't seem to muster up the energy or interest. It's happened a lot lately, and it's really frustrating."
+    },
+    {
+      "role": "assistant",
+      "content": "I've heard that you're experiencing a lack of interest or pleasure in doing things, which can be really frustrating and overwhelming. You mentioned that there are times when you just don't feel like doing anything, and it's like you can't muster up the energy or interest. <quote>it's happened a lot lately, and it's really frustrating</quote>. I can imagine how challenging this must be for you, and I want you to know that I'm here to listen and support you.\n\n**Diagnosis:** <med>Major Depressive Disorder, Moderate Severity</med>\n\n**Reasoning:** The patient's report of <sym>anhedonia</sym> and <sym>decreased motivation</sym> are key symptoms of <med>Major Depressive Disorder (MDD)</med>. The patient's response suggests a possible depressive episode, with <quote>it's happened a lot lately</quote> implying a recent onset or exacerbation of these symptoms. According to the DSM-5, a diagnosis of <med>MDD</med> requires at least two of the following symptoms: <sym>depressed mood</sym>, <sym>anhedonia</sym>, <sym>changes in appetite</sym>, <sym>changes in sleep</sym>, <sym>psychomotor agitation or retardation</sym>, <sym>fatigue or loss of energy</sym>, <sym>feelings of worthlessness or guilt</sym>, <sym>diminished ability to think or concentrate</sym>, and <sym>recurrent thoughts of death</sym>. While only one symptom is reported, it's possible that further assessment will reveal additional symptoms.\n\n**Recommended Next Steps/Treatment Options:**\n1. Conduct a comprehensive diagnostic interview to assess for additional symptoms of <med>MDD</med> and other potential diagnoses, such as <med>Anxiety Disorder</med> or <med>Somatic Symptom Disorder</med>.\n2. Consider using standardized rating scales, such as the <med>Patient Health Questionnaire-9 (PHQ-9)</med>, to assess the severity of depressive symptoms.\n3. Explore potential contributing factors, such as <sym>stress</sym>, <sym>trauma</sym>, or <sym>medical conditions</sym>, that may be impacting the patient's mental health.\n4. Develop a treatment plan that may include <med>psychotherapy</med>, <med>pharmacotherapy</med>, or a combination of both.\n5. Consider referring the patient to a <med>mental health specialist</med> or a <med>sleep specialist</med> if <sym>sleep disturbances</sym> are present.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.7239,
+            "highlight": "It requires clinical training, experience and judgment based on  guidance such as that contained in the DSM-5 text to recognize when a patient \u2019s thoughts feelings and  behaviors are indicative of a mental disorder that can benefit from focused treatment.",
+            "excerpt": "ssive thoughts, feelings, and behaviors related \nto their illness, and that these individuals may qu...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"indicative\", \"mental\", \"patient\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Schizophrenia.pdf",
+            "score": 0.7093,
+            "highlight": "Schizophrenia The upc oming fifth edition of the Diagnostic and Statistical Manual of Mental Disorders  (DSM-5 ) mak es  several key changes to the category of schizophrenia and highlights for future study an area that could  be cri tical for early detection of this often debilitating condition.",
+            "excerpt": "Schizophrenia\nThe upc oming fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"this\", \"key\", \"mental\", and 1 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Depression-Bereavement-Exclusion.pdf",
+            "score": 0.7079,
+            "highlight": "The presence of symptoms such as feelings of worthlessness, suicidal  ideas (as distinct from wanting to join a deceased loved one), and impairment of overall function sug - gest the presence of major depression, in addition to the normal response to a significant loss.",
+            "excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"symptoms\", \"depression\", \"response\", and 1 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf",
+            "score": 0.7013,
+            "highlight": "Process for New Diagnosis A new DSM diagnosis is included only after a comprehensive review of the scientific literature; full discussion by Work Group members; review by the DSM-5 Task Force, Scientific Review Committee, Clinical and Public Health Committee; and, finally, approval by the American Psychiatric Association\u2019s Board of Trustees.",
+            "excerpt": "t be made for the first time before age 6 or after age 18. \nProcess for New Diagnosis\nA new DSM diag...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"health\", \"diagnosis\", \"clinical\", and 1 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Sleep-Wake-Disorders.pdf",
+            "score": 0.6896,
+            "highlight": "They are diagnosed through comprehensive assessment, which may entail a detailed patient history, physical exam, questionnaires and sleep diaries, and clinical testing.",
+            "excerpt": "rious mental or medical issues. For example, sleep disturbances can signal the presence of medical a...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"clinical\", \"assessment\", and 2 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: **Clinical Observation Summary**\n\n**Patient's Responses to DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult (Q1)**\n\n**1. Main Symptoms and Concerns:**\nThe patient reports experiencing a lack of interest or pleasure in doing things, which is a key symptom of anhedonia. This is evident in their response, \"there are times when I just don't feel like doing anything.\" The patient also expresses frustration with their current state, indicating some level of distress.\n\n**2. Patterns in Patient's Responses:**\nThe patient's response suggests a pattern of decreased motivation and interest, which may be related to a depressive episode. The use of phrases like \"it's happened a lot lately\" implies a possible recent onset or exacerbation of these symptoms.\n\n**3. Potential Areas of Clinical Significance:**\nBased on the patient's response, potential areas of clinical significance include:\n* Depressive symptoms (anhedonia, decreased motivation, and interest)\n* Possible decreased energy levels\n\n**4. Risk Factors or Warning Signs:**\nNo explicit risk factors or warning signs are evident in this single response. However, the patient's reported symptoms of anhedonia and decreased motivation may be indicative of a developing depressive episode.\n\n**5. Summary of Observations:**\nThe patient presents with symptoms of anhedonia and decreased motivation, which may be indicative of a depressive episode. The patient's reported lack of interest or pleasure in doing things, decreased energy, and frustration with their current state suggest some level of distress. Further assessment is necessary to determine the presence and severity of depressive symptoms, as well as to explore potential contributing factors.\n\n**Clinical Impression:**\nThe patient's response suggests a possible depressive episode, and further evaluation is warranted to assess for depression, including the severity of symptoms and potential impact on daily functioning. Additional questions and assessments will be necessary to gather more information and develop an accurate diagnosis and treatment plan.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.7064
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "I've heard that you're experiencing a lack of interest or pleasure in doing things, which can be really frustrating and overwhelming. You mentioned that there are times when you just don't feel like doing anything, and it's like you can't muster up the energy or interest. <quote>it's happened a lot lately, and it's really frustrating</quote>. I can imagine how challenging this must be for you, and I want you to know that I'm here to listen and support you.\n\n**Diagnosis:** <med>Major Depressive Disorder, Moderate Severity</med>\n\n**Reasoning:** The patient's report of <sym>anhedonia</sym> and <sym>decreased motivation</sym> are key symptoms of <med>Major Depressive Disorder (MDD)</med>. The patient's response suggests a possible depressive episode, with <quote>it's happened a lot lately</quote> implying a recent onset or exacerbation of these symptoms. According to the DSM-5, a diagnosis of <med>MDD</med> requires at least two of the following symptoms: <sym>depressed mood</sym>, <sym>anhedonia</sym>, <sym>changes in appetite</sym>, <sym>changes in sleep</sym>, <sym>psychomotor agitation or retardation</sym>, <sym>fatigue or loss of energy</sym>, <sym>feelings of worthlessness or guilt</sym>, <sym>diminished ability to think or concentrate</sym>, and <sym>recurrent thoughts of death</sym>. While only one symptom is reported, it's possible that further assessment will reveal additional symptoms.\n\n**Recommended Next Steps/Treatment Options:**\n1. Conduct a comprehensive diagnostic interview to assess for additional symptoms of <med>MDD</med> and other potential diagnoses, such as <med>Anxiety Disorder</med> or <med>Somatic Symptom Disorder</med>.\n2. Consider using standardized rating scales, such as the <med>Patient Health Questionnaire-9 (PHQ-9)</med>, to assess the severity of depressive symptoms.\n3. Explore potential contributing factors, such as <sym>stress</sym>, <sym>trauma</sym>, or <sym>medical conditions</sym>, that may be impacting the patient's mental health.\n4. Develop a treatment plan that may include <med>psychotherapy</med>, <med>pharmacotherapy</med>, or a combination of both.\n5. Consider referring the patient to a <med>mental health specialist</med> or a <med>sleep specialist</med> if <sym>sleep disturbances</sym> are present.",
+  "metadata": {
+    "assistant_model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "patient_model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "patient_profile": "bipolar",
+    "question_count": 23,
+    "duration": 12715.825262784958,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 3.2435591220855713,
+    "diagnosis_generation_time": 5.525725841522217,
+    "rag_evaluation_time": 1.5974044799804688e-05,
+    "total_time": 8.76931118965149
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7239,
+        "average_score": 0.7239,
+        "example_excerpt": "ssive thoughts, feelings, and behaviors related \nto their illness, and that these individuals may qu...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"indicative\", \"mental\", \"patient\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Schizophrenia.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7093,
+        "average_score": 0.7093,
+        "example_excerpt": "Schizophrenia\nThe upc oming fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"this\", \"key\", \"mental\", and 1 more matching aspects of your query."
+      },
+      "APA_DSM-5-Depression-Bereavement-Exclusion.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7079,
+        "average_score": 0.7079,
+        "example_excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"symptoms\", \"depression\", \"response\", and 1 more matching aspects of your query."
+      },
+      "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7013,
+        "average_score": 0.7013,
+        "example_excerpt": "t be made for the first time before age 6 or after age 18. \nProcess for New Diagnosis\nA new DSM diag...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"health\", \"diagnosis\", \"clinical\", and 1 more matching aspects of your query."
+      },
+      "APA_DSM-5-Sleep-Wake-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6896,
+        "average_score": 0.6896,
+        "example_excerpt": "rious mental or medical issues. For example, sleep disturbances can signal the presence of medical a...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"clinical\", \"assessment\", and 2 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-04-30 10:24:13",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-04-30 10:24:13",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 1,
+        "clinical_relevance": 2,
+        "consistency": 1,
+        "diagnostic_justification": 2,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The conversation only addressed the first question of the DSM-5 Level1 Cross-Cutting Symptom Measure\u2014Adult, which focuses on 'Little interest or pleasure in doing things.' The therapist did not explore the remaining 22 questions across various domains such as anger, energy/activity, anxiety, somatic concerns, suicidality, psychotic symptoms, sleep quality, cognitive function, repetitive thoughts/behaviors, dissociation, identity and relationships, and substance use. This significant omission indicates a lack of comprehensive coverage of the DSM-5 dimensions.",
+        "clinical_relevance": "The single question asked, while relevant to depression, was not phrased with the full clinical context or accuracy that could have been achieved by referencing the DSM-5 criteria directly. The question was straightforward but did not allow for a detailed exploration of symptoms or their impact. The therapist's response to the patient's disclosure was empathetic but did not probe further into clinical specifics or related symptoms.",
+        "consistency": "The conversation was highly inconsistent and lacked logical flow. The therapist only asked one question and did not proceed with the planned assessment, leading to an abrupt and disjointed interaction. There was no natural progression from one topic to another, primarily because only one topic was addressed.",
+        "diagnostic_justification": "The therapist provided a diagnosis of Major Depressive Disorder, Moderate Severity, based on the patient's report of anhedonia and decreased motivation. However, this justification was not comprehensive, as it did not consider or rule out other potential diagnoses. The reasoning provided referenced the DSM-5 criteria but did not explicitly link to a thorough differential diagnosis process.",
+        "empathy": "The therapist's response to the patient's disclosure showed empathy and a professional tone. The therapist acknowledged the patient's frustration and offered support. However, given that the interaction was brief and only one question was asked, there were limited opportunities to demonstrate consistent empathy throughout the conversation."
+      },
+      "overall_comments": "The conversation was severely limited by only addressing the first question of the DSM-5 Level1 Cross-Cutting Symptom Measure\u2014Adult. This approach failed to provide a comprehensive assessment of the patient's mental health across various domains. Future assessments should prioritize a thorough and systematic exploration of symptoms and their impact on the patient's life.",
+      "average_score": 2.0,
+      "diagnosis_accuracy": {
+        "matches_profile": false,
+        "confidence": 4,
+        "explanation": "The diagnosis provided focuses on symptoms of anhedonia and decreased motivation, which are characteristic of Major Depressive Disorder (MDD). There is no explicit mention of manic or hypomanic episodes, which are hallmark symptoms of bipolar disorder. The diagnosis seems to align more closely with depressive symptoms rather than bipolar symptoms.",
+        "classification": "depression"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "bipolar",
+        "classified_as": "depression",
+        "match": false,
+        "confidence": 4
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 5.109225034713745
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.6238459456560416,
+        "local_coherence": 0.5978870258966014,
+        "window_coherence": 0.6238459456560416
+      },
+      "readability": {
+        "flesch_kincaid_grade": 9.59,
+        "gunning_fog_index": 6.88,
+        "flesch_reading_ease": 56.56
+      },
+      "diversity": {
+        "distinct_1": 0.5248868778280543,
+        "distinct_2": 0.8616780045351474,
+        "distinct_3": 0.9522727272727273
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "bipolar",
+      "predicted": "I've heard that you're experiencing a lack of interest or pleasure in doing things, which can be really frustrating and overwhelming. You mentioned that there are times when you just don't feel like doing anything, and it's like you can't muster up the energy or interest. <quote>it's happened a lot lately, and it's really frustrating</quote>. I can imagine how challenging this must be for you, and I want you to know that I'm here to listen and support you.\n\n**Diagnosis:** <med>Major Depressive Disorder, Moderate Severity</med>\n\n**Reasoning:** The patient's report of <sym>anhedonia</sym> and <sym>decreased motivation</sym> are key symptoms of <med>Major Depressive Disorder (MDD)</med>. The patient's response suggests a possible depressive episode, with <quote>it's happened a lot lately</quote> implying a recent onset or exacerbation of these symptoms. According to the DSM-5, a diagnosis of <med>MDD</med> requires at least two of the following symptoms: <sym>depressed mood</sym>, <sym>anhedonia</sym>, <sym>changes in appetite</sym>, <sym>changes in sleep</sym>, <sym>psychomotor agitation or retardation</sym>, <sym>fatigue or loss of energy</sym>, <sym>feelings of worthlessness or guilt</sym>, <sym>diminished ability to think or concentrate</sym>, and <sym>recurrent thoughts of death</sym>. While only one symptom is reported, it's possible that further assessment will reveal additional symptoms.\n\n**Recommended Next Steps/Treatment Options:**\n1. Conduct a comprehensive diagnostic interview to assess for additional symptoms of <med>MDD</med> and other potential diagnoses, such as <med>Anxiety Disorder</med> or <med>Somatic Symptom Disorder</med>.\n2. Consider using standardized rating scales, such as the <med>Patient Health Questionnaire-9 (PHQ-9)</med>, to assess the severity of depressive symptoms.\n3. Explore potential contributing factors, such as <sym>stress</sym>, <sym>trauma</sym>, or <sym>medical conditions</sym>, that may be impacting the patient's mental health.\n4. Develop a treatment plan that may include <med>psychotherapy</med>, <med>pharmacotherapy</med>, or a combination of both.\n5. Consider referring the patient to a <med>mental health specialist</med> or a <med>sleep specialist</med> if <sym>sleep disturbances</sym> are present.",
+      "matches": false,
+      "classification": "depression",
+      "classification_confidence": 4
+    }
+  }
+}

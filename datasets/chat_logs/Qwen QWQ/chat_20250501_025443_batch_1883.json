@@ -1,0 +1,293 @@
+{
+  "timestamp": "2025-05-01T02:54:55.826678",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm Dr. Lee. I'll be conducting a mental health assessment using the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult. This helps us understand your symptoms and how they've impacted you over the past two weeks. The answers will remain confidential, and I'll ask you questions one by one. You can share as much or as little as you're comfortable with. Ready when you are."
+    },
+    {
+      "role": "patient",
+      "content": "Okay, I guess so. I just moved to a new city recently, and things have been really tough."
+    },
+    {
+      "role": "assistant",
+      "content": "1. Little interest or pleasure in doing things?"
+    },
+    {
+      "role": "patient",
+      "content": "Hmm, yeah. I used to love hiking and hanging out with friends, but lately I don't feel like doing anything. Maybe 3 or 4 days a week, I just stay home and watch TV instead."
+    },
+    {
+      "role": "assistant",
+      "content": "2. Feeling down, depressed, or hopeless?"
+    },
+    {
+      "role": "patient",
+      "content": "Most days I feel really low, like there's no point. I try to push through, but it's been a lot of days now. Maybe like half the time?"
+    },
+    {
+      "role": "assistant",
+      "content": "3. Feeling more irritated, grouchy, or angry than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "Oh, definitely. I snap at my roommate over little things. It's not like me, but I just get so frustrated. Probably several days or more."
+    },
+    {
+      "role": "assistant",
+      "content": "4. Sleeping less than usual, but still have a lot of energy?"
+    },
+    {
+      "role": "patient",
+      "content": "No, actually I'm exhausted. I can't sleep much but feel drained even when I do. More like the opposite of this question, I think."
+    },
+    {
+      "role": "assistant",
+      "content": "5. Starting lots more projects than usual or doing more risky things than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "No, I'm the opposite. I can't even focus on starting anything. This stress has me stuck, not busy."
+    },
+    {
+      "role": "assistant",
+      "content": "6. Feeling nervous, anxious, worried, or on edge?"
+    },
+    {
+      "role": "patient",
+      "content": "All the time. My mind races, and I can't relax. It's been almost every day, honestly. I just feel this constant tension."
+    },
+    {
+      "role": "assistant",
+      "content": "7. Feeling panic or being frightened?"
+    },
+    {
+      "role": "patient",
+      "content": "Not full-blown panic, but I get startled easily. Maybe a few times when I'm alone at night."
+    },
+    {
+      "role": "assistant",
+      "content": "8. Avoiding situations that make you anxious?"
+    },
+    {
+      "role": "patient",
+      "content": "Yeah, I've been avoiding crowded places since the move. It just feels overwhelming."
+    },
+    {
+      "role": "assistant",
+      "content": "9. Unexplained aches or pains?"
+    },
+    {
+      "role": "patient",
+      "content": "Headaches almost daily. My muscles feel tight all the time. I went to the doctor, and they said there's nothing physically wrong."
+    },
+    {
+      "role": "assistant",
+      "content": "10. Feeling that your illnesses aren't being taken seriously enough?"
+    },
+    {
+      "role": "patient",
+      "content": "Not really. I haven't even told anyone except you yet. I don't want to sound like I'm overreacting."
+    },
+    {
+      "role": "assistant",
+      "content": "11. Thoughts of actually hurting yourself?"
+    },
+    {
+      "role": "patient",
+      "content": "I've thought... maybe once or twice about how this pain won't end. But I don't want to, I just... feel stuck."
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, let me tackle this step by step. The user provided a structured response to a DSM-5 symptom measure. The task is to format an assessment following strict guidelines. First, I need to ensure empathy in the summary. The patient mentioned moving cities, which is a stressor. They have anhedonia, low mood, and somatic symptoms, which point to depression. The anxiety symptoms like nervousness and avoidance suggest GAD. The suicidal ideation is a concern but low frequency.\n\nWait, the instructions say to use the exact headings with asterisks. I need to make sure the headings are correctly formatted. Also, the diagnosis should be under the *Diagnosis:* section. Let me think about possible diagnoses. The patient has depressive symptoms (anhedonia, hopelessness), and anxiety (restlessness, muscle tension, avoidance). The somatic symptoms (headaches) without medical cause might link to Somatic Symptom Disorder, but the guidelines say to consider other disorders first. Since the patient has clear depressive and anxiety symptoms, MDD with anxious features or GAD might be primary. Adjustment disorder is possible given the recent move, but the symptoms duration and severity may meet criteria for a major disorder. The suicidal ideation, though passive, needs to be addressed. \n\nI should structure the diagnosis as Major Depressive Disorder with Anxious Distress, given the presence of both depressive and anxiety features. Alternatively, Adjustment Disorder with Mixed Anxiety and Depressed Mood due to the stressor of relocating. But the duration might align better with a major depressive episode. Also, the patient's responses show significant distress. Let me check DSM-5 criteria for MDD: depressed mood, anhedonia, fatigue, worthlessness (implied by \"feel stuck\"), sleep issues, and somatic symptoms. The anxious features are present too. \n\nFor the recommended steps, the key points are safety assessment, therapy, maybe medication, social support, and ruling out medical issues. Need to mention safety first, then CBT and SSRIs, etc. \n\nI have to make sure tags are correctly placed: <sym> for symptoms, <med> for diagnoses, and <quote> for patient quotes. Also, check that the sections are in order and formatted exactly as specified. Avoid any markdown beyond asterisks and tags. Let me put it all together now.\n</think>\n\n<sym>Little interest or pleasure in activities</sym>, persistent <sym>low mood</sym>, and <sym>suicidal ideation</sym> paint a picture of profound distress after your move. I\u2019m struck by the way <quote>\"the pain won\u2019t end\"</quote>\u2014this underscores the weight of your current struggle. Your description of feeling <sym>\u201cstuck\u201d</sym> and isolated resonates deeply; please know your pain is valid, and help is accessible.  \n\n*Diagnosis:* Major Depressive Disorder with Anxious Distress, Provisional  \n\n*Reasoning:*  \nThe <sym>anhedonia</sym> (Q2), <sym>depressed mood</sym> (Q3), and <sym>sleep disturbance</sym> (Q5) meet <med>Major Depressive Disorder</med> criteria (e.g., 5+ symptoms over 2+ weeks). The <sym>irritability</sym> (Q4), <sym>restlessness</sym>, and <sym>somatic complaints</sym> (headaches, muscle tension) meet the <med>Anxious Distress specifier</med>. While relocation is a stressor, symptoms exceed typical adjustment disorder thresholds (e.g., suicidal ideation, functional impairment). Somatic Symptom Disorder is less likely here because psychological distress better explains physical symptoms per <med>DSM-5</med> guidelines.  \n\n*Risk factors*:  \n- Passive <sym>suicidal ideation</sym> (Q12) necessitates immediate safety evaluation  \n- <sym>Irritability</sym> and social withdrawal risk relationship strain or isolation  \n\n*Recommended Next Steps/Treatment Options:*  \n1. **Safety assessment**: Evaluate intent/plan for <sym>self-harm</sym> and provide crisis resources if needed.  \n2. **Psychotherapy**:  \n   - Cognitive Behavioral Therapy (CBT) for depression and anxiety  \n   - Mindfulness-based stress reduction to address somatic symptoms  \n3. **Medication**:  \n   - Consider SSRIs/SNRIs (e.g., escitalopram) for depressive/anxious symptoms  \n   - Short-term benzodiazepines cautiously for acute anxiety if non-pharmacologic options fail  \n4. **Social Support**:  \n   - Group therapy for relocation-related adjustment  \n   - Practical assistance with local social integration (e.g., community groups)  \n5. **Medical reassurance**:  \n   - Confirm that <sym>somatic symptoms</sym> align with psychological distress (no underlying medical cause already ruled out)  \n   - Reassure patient that <sym>\"not being taken seriously\"</sym> is not occurring; validate symptoms as legitimate  \n\nThis is a fluid presentation. Follow-up in 1\u20132 weeks to reassess symptom severity and response to interventions. If <sym>anhedonia</sym> or <sym>suicidal thoughts</sym> escalate, increase clinical intensity (e.g., intensive outpatient programs).",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.7511,
+            "highlight": "While DSM-IV was organized centrally around the concept of  medically unexplained symptoms, DSM-5 criteria instead emphasize the degree to which a patient \u2019s  thoughts, feelings and behaviors about their somatic symptoms are disproportionate or excessive.",
+            "excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"criteria\", \"instead\", and 7 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf",
+            "score": 0.7193,
+            "highlight": "Results of that extensive research showed that children diagnosed with BD who experience constant,  rather than episodic, irritability often are at risk for major depressive disorder or generalized anxiety  disorder later in life, but not life-long BD.",
+            "excerpt": " the case with BD. In an effort to address this issue, \nresearch was conducted comparing youth with ...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"depressive\", \"major\", and 7 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Depression-Bereavement-Exclusion.pdf",
+            "score": 0.7117,
+            "highlight": "Research and clinical evidence have demonstrated that, for some people, the death of a loved one can precipitate major depression, as can other stressors, like losing a job or being a victim of a physi - cal assault or a major disaster.",
+            "excerpt": "f the deceased;in depression, mood and ideation are almost constantly negative.\n\u2022In grief, self-este...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"job\", \"clinical\", \"stressors\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.7025,
+            "highlight": "The exposure must result from one or more of the following scenarios, in which the individual: \u2022dir ectly experiences the traumatic event; \u2022witnesses the tr aumatic event in person; \u2022learns tha t the traumatic event occurred to a close family member or close friend (with  the actual or thr eatened death being either violent or accidental); or \u2022e xperiences first-hand repeated or extreme exposure to aversive details of the traumatic event (not thr ough media, pictures, tele.",
+            "excerpt": "Posttraumatic Stress Disorder\nPosttraumatic Stress Disorder (PTSD) will be included in a new chapter...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"not\", \"event\", and 1 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Social-Communication-Disorder.pdf",
+            "score": 0.6922,
+            "highlight": "Process for a New Diagnosis New diagnoses were included in DSM-5 only after a comprehensive review of the scientific literature;  full discussion by Work Group members; review by the DSM-5 Task Force, Scientific Review Committee,  and Clinical and Public Health Committee; and, finall y, evaluation by the American Psychiatric Associa- tion\u2019s Board of Trust ees.",
+            "excerpt": "t otherwise specified\u201d la bel to help them get the services and treatment they need. \nCharacteristic...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"new\", \"health\", \"clinical\", and 2 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let's tackle this step by step. The user provided a series of questions and answers from a patient responding to the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure. My job is to analyze this and structure the response as per the instructions. \n\nFirst, I need to identify the main symptoms and concerns. Looking at the answers:\n\n- The patient has little interest in activities they used to enjoy (Q2), which is a classic sign of depression. They mentioned staying home instead of engaging in hobbies, so anhedonia is likely here.\n\n- They report feeling down and hopeless (Q3), which also points to depressive symptoms. The frequency is about half the time, so maybe moderate to severe?\n\n- Irritability and anger (Q4) are present, which can be a part of depression or anxiety. They mention snapping at their roommate, so interpersonal issues might be a concern.\n\n- Sleep disturbances: They mentioned not sleeping much but feeling exhausted (Q5). That's a common symptom in depression where sleep is non-restorative.\n\n- Anxiety symptoms are significant. They feel nervous and on edge almost every day (Q7), and they avoid situations (Q9), which suggests social anxiety or generalized anxiety. The headaches and muscle tension (Q10) could be somatic symptoms related to anxiety or stress.\n\n- The mention of recent relocation (Q1) is a stressor. Moving to a new city is a major life event, which can trigger or exacerbate mental health issues.\n\nNow, looking for patterns. The patient's responses are consistent across items, indicating that symptoms are persistent over the past two weeks. The stress from moving seems to be a common thread. The combination of depressive, anxious, and somatic symptoms points towards a possible major depressive disorder with anxious features. But I need to check all the points.\n\nPotential clinical areas of concern: Major Depressive Disorder, Generalized Anxiety Disorder, adjustment disorder due to the move, and possible somatic symptoms.\n\nRisk factors and warning signs: The patient mentioned thoughts of self-harm (Q12), albeit infrequent but still significant. They've had fleeting thoughts about the pain not ending, which is a risk that needs attention. The fact that they haven't told others yet might indicate social withdrawal or fear of being dismissed.\n\nAlso, the physical symptoms like headaches and muscle aches (Q10) without a medical cause. The avoidance of social situations (Q9) could be part of social anxiety or PTSD? Wait, but the context is moving. Maybe adjustment disorder?\n\nWait, the self-report mentions feeling that illnesses aren't taken seriously (Q11), but they answered \"No\" to that. Wait, Q11 is \"Feeling that your illnesses aren't being taken seriously enough?\" and the patient answered \"Not really.\" So they haven't expressed that yet, which is good. But they have not sought help beyond this assessment. \n\nPutting this together, the main concerns are depressive symptoms (anhedonia, low mood, hopelessness), anxiety (nervousness, restlessness), irritability, somatic symptoms, sleep disturbances, and the mention of self-harm thoughts.\n\nI need to structure the points as per the user's instructions. Let me go through each part:\n\n1. Main symptoms: Depressed mood, anhedonia, irritability, anxiety, somatic symptoms, sleep issues, recent stressor (moving), and suicidal ideation (low frequency but present).\n\n2. Patterns: Symptoms are persistent over two weeks, onset coinciding with moving, consistent reporting across multiple domains (mood, anxiety, somatic), self-reported worsening of functioning (avoiding social activities).\n\n3. Clinical areas: Major Depressive Disorder, Generalized Anxiety Disorder, Adjustment Disorder with mixed anxiety and depressed mood, possible somatic symptom disorder. But need to see if criteria are met.\n\n4. Risks: Suicidal ideation (even low frequency is a concern), social withdrawal, possible functional impairment from avoiding activities and social interactions.\n\nWait, the self-harm thoughts are mentioned in Q12 as \"thoughts of actually hurting yourself?\" with an answer of once or twice about the pain not ending. So that's non-suicidal self-injury thoughts? Or suicidal? The answer says \"thoughts of actually hurting yourself\" which is a suicide question. The response mentions \"how this pain won't end\" which could be a passive suicidal ideation. Need to note that as a risk factor.\n\nAlso, the patient is isolating, which is a risk factor. \n\nIn the summary, avoid speculation. Just list what's there. \n\nPutting it all into the required sections. Let me structure each part carefully.\n</think>\n\n**Clinical Observation Summary**  \n\n**1. Main Symptoms and Concerns**  \n- **Depressive Features**: Anhedonia (reduced interest in pleasurable activities), low mood, hopelessness, and fatigue.  \n- **Anxiety Symptoms**: Persistent nervousness, feeling \"on edge,\" somatic symptoms (headaches, muscle tension), and situational avoidance.  \n- **Irritability**: Increased anger/grouchiness impacting interpersonal relationships (e.g., conflicts with roommate).  \n- **Sleep Disturbance**: Insomnia with non-restorative sleep and persistent fatigue.  \n- **Stressor/Context**: Recent geographic relocation, associated with social withdrawal and functional impairment (e.g., avoiding crowds, reduced social engagement).  \n- **Low-Intensity Suicidal Ideation**: Brief passive thoughts (\"how this pain won\u2019t end\") without intent or plan.  \n\n**2. Patterns in Responses**  \n- Symptoms are **persistent over the past two weeks**, with consistent reporting across affective (depressive, anxious), somatic, and behavioral domains.  \n- **Temporal correlation** with recent life stressor (moving cities), suggesting adjustment-related exacerbation.  \n- **Functional impact** noted in social/recreational activities and interpersonal relationships.  \n\n**3. Potential Clinical Areas of Significance**  \n- **Major Depressive Disorder (MDD)** with anxious features.  \n- **Generalized Anxiety Disorder (GAD)** due to chronic nervousness, tension, and avoidance.  \n- **Adjustment Disorder with Mixed Anxiety and Depressed Mood**, triggered by relocation.  \n- **Somatic Symptom Disorder** (headaches/muscle tension in context of psychological distress).  \n\n**4. Risk Factors/Warning Signs**  \n- **Suicidal ideation**: Passive thoughts require urgent assessment for intent, plan, or risk.  \n- **Social isolation** and avoidance of stressors, which may worsen symptom severity.  \n- **Chronic stressor (relocation)** without adequate coping mechanisms.  \n\n**5. Clinical Summary**  \nThe patient presents with **prolonged depressive symptoms** (anhedonia, anergia, hopelessness) and **generalized anxiety** (chronic nervousness, somatization, avoidance behaviors). Somatic symptoms (headaches, muscle tension) align with psychological distress. A **recent stressor (relocation)** likely contributed to symptom activation, though functional impairment and passive suicidal ideation suggest moderate-severe distress. Elevated irritability and social withdrawal further underscore emotional dysregulation. Risk assessment for suicidal behavior is critical due to reported passive thoughts. Consider differential diagnosis between adjustment disorder and persistent MDD, with possible comorbid GAD. Prioritize safety, psychosocial stressor mitigation, and assessment of coping resources.  \n\n**Note**: Formal diagnostic workup, including exploration of medical ruled-out causes for somatic symptoms, is warranted.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.7154
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "<sym>Little interest or pleasure in activities</sym>, persistent <sym>low mood</sym>, and <sym>suicidal ideation</sym> paint a picture of profound distress after your move. I\u2019m struck by the way <quote>\"the pain won\u2019t end\"</quote>\u2014this underscores the weight of your current struggle. Your description of feeling <sym>\u201cstuck\u201d</sym> and isolated resonates deeply; please know your pain is valid, and help is accessible.  \n\n*Diagnosis:* Major Depressive Disorder with Anxious Distress, Provisional  \n\n*Reasoning:*  \nThe <sym>anhedonia</sym> (Q2), <sym>depressed mood</sym> (Q3), and <sym>sleep disturbance</sym> (Q5) meet <med>Major Depressive Disorder</med> criteria (e.g., 5+ symptoms over 2+ weeks). The <sym>irritability</sym> (Q4), <sym>restlessness</sym>, and <sym>somatic complaints</sym> (headaches, muscle tension) meet the <med>Anxious Distress specifier</med>. While relocation is a stressor, symptoms exceed typical adjustment disorder thresholds (e.g., suicidal ideation, functional impairment). Somatic Symptom Disorder is less likely here because psychological distress better explains physical symptoms per <med>DSM-5</med> guidelines.  \n\n*Risk factors*:  \n- Passive <sym>suicidal ideation</sym> (Q12) necessitates immediate safety evaluation  \n- <sym>Irritability</sym> and social withdrawal risk relationship strain or isolation  \n\n*Recommended Next Steps/Treatment Options:*  \n1. **Safety assessment**: Evaluate intent/plan for <sym>self-harm</sym> and provide crisis resources if needed.  \n2. **Psychotherapy**:  \n   - Cognitive Behavioral Therapy (CBT) for depression and anxiety  \n   - Mindfulness-based stress reduction to address somatic symptoms  \n3. **Medication**:  \n   - Consider SSRIs/SNRIs (e.g., escitalopram) for depressive/anxious symptoms  \n   - Short-term benzodiazepines cautiously for acute anxiety if non-pharmacologic options fail  \n4. **Social Support**:  \n   - Group therapy for relocation-related adjustment  \n   - Practical assistance with local social integration (e.g., community groups)  \n5. **Medical reassurance**:  \n   - Confirm that <sym>somatic symptoms</sym> align with psychological distress (no underlying medical cause already ruled out)  \n   - Reassure patient that <sym>\"not being taken seriously\"</sym> is not occurring; validate symptoms as legitimate  \n\nThis is a fluid presentation. Follow-up in 1\u20132 weeks to reassess symptom severity and response to interventions. If <sym>anhedonia</sym> or <sym>suicidal thoughts</sym> escalate, increase clinical intensity (e.g., intensive outpatient programs).",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "adjustment",
+    "question_count": 23,
+    "duration": 29712.279511213303,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 5.191074848175049,
+    "diagnosis_generation_time": 7.498944044113159,
+    "rag_evaluation_time": 1.1682510375976562e-05,
+    "total_time": 12.690042972564697
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7511,
+        "average_score": 0.7511,
+        "example_excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"criteria\", \"instead\", and 7 more matching aspects of your query."
+      },
+      "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7193,
+        "average_score": 0.7193,
+        "example_excerpt": " the case with BD. In an effort to address this issue, \nresearch was conducted comparing youth with ...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"depressive\", \"major\", and 7 more matching aspects of your query."
+      },
+      "APA_DSM-5-Depression-Bereavement-Exclusion.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7117,
+        "average_score": 0.7117,
+        "example_excerpt": "f the deceased;in depression, mood and ideation are almost constantly negative.\n\u2022In grief, self-este...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"job\", \"clinical\", \"stressors\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7025,
+        "average_score": 0.7025,
+        "example_excerpt": "Posttraumatic Stress Disorder\nPosttraumatic Stress Disorder (PTSD) will be included in a new chapter...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"not\", \"event\", and 1 more matching aspects of your query."
+      },
+      "APA_DSM-5-Social-Communication-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6922,
+        "average_score": 0.6922,
+        "example_excerpt": "t otherwise specified\u201d la bel to help them get the services and treatment they need. \nCharacteristic...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"new\", \"health\", \"clinical\", and 2 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 08:08:34",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 08:08:34",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 4,
+        "clinical_relevance": 4,
+        "consistency": 4,
+        "diagnostic_justification": 5,
+        "empathy": 5
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist addressed most of the DSM-5 Level1 Cross-Cutting Symptom Measure domains, but with some minor omissions. Questions 1-11 and 14 were directly addressed, but domains like psychosis (questions 12-13), memory (question 15), repetitive thoughts/behaviors (questions 16-17), dissociation (question 18), identity and relationships (questions 19-20), and substance use (questions 21-23) were not directly explored or only superficially touched upon. For example, when discussing suicidal ideation (question 11), the therapist could have further inquired about the patient's thoughts on self-harm, but the conversation moved directly to summarizing the patient's distress. While the therapist covered the most critical domains, the lack of comprehensive exploration in all areas prevents a perfect score.",
+        "clinical_relevance": "The therapist's questions generally align with DSM-5 criteria, but there were slight inaccuracies or vague phrasing in some instances. For example, when asking about 'sleeping less than usual, but still have a lot of energy' (question 4), the patient indicated they were exhausted, not having a lot of energy, which might have led to confusion. Additionally, the therapist could have used more precise language when discussing 'suicidal ideation' (question 11), as the patient's response ('maybe once or twice about how this pain won't end') indicated passive thoughts rather than active plans. Overall, questions were clinically relevant but could have benefited from more precise DSM-5 language.",
+        "consistency": "The dialogue generally flows logically, with each question building on previous responses. However, there were minor logical inconsistencies. For instance, when discussing anxiety (question 6), the patient mentioned feeling anxious 'all the time,' but the therapist didn't probe further into specific anxiety-provoking situations. Similarly, when the patient mentioned avoiding crowded places (question 8), the therapist could have explored this avoidance behavior in more depth. Despite these minor issues, the conversation remained coherent and focused on the patient's symptoms.",
+        "diagnostic_justification": "The diagnosis of Major Depressive Disorder with Anxious Distress, Provisional, clearly aligns with the DSM-5 responses. The therapist explicitly linked the patient's symptoms (anhedonia, depressed mood, sleep disturbance) to the diagnostic criteria. The reasoning behind the diagnosis was well-articulated, and the therapist considered alternative explanations (e.g., ruling out Somatic Symptom Disorder). The use of specific patient quotes ('the pain won't end') and symptom descriptions ('feeling stuck') demonstrated a thorough understanding of the patient's presentation. The diagnostic justification was comprehensive and clinically sound.",
+        "empathy": "The therapist's responses consistently showed empathy, a natural conversational style, and an appropriate professional tone. The therapist acknowledged the patient's distress ('your pain is valid, and help is accessible'), validated their feelings ('I\u2019m struck by the way \"the pain won\u2019t end\"\u2014this underscores the weight of your current struggle'), and tailored responses to the patient's emotional state. The conversation was warm, personalized, and free of clinical detachment or overly technical language. The therapist's empathetic approach likely helped the patient feel understood and comfortable sharing their struggles."
+      },
+      "overall_comments": "The therapist conducted a comprehensive assessment, effectively identifying key symptoms and justifying the diagnosis. While minor omissions existed in DSM-5 dimension coverage, the conversation was clinically relevant, logically consistent, and empathetic. The therapist's diagnostic justification and empathetic approach were particularly strong. With some refinement in addressing all DSM-5 domains and precise language, the assessment could be even more effective.",
+      "average_score": 4.4,
+      "diagnosis_accuracy": {
+        "matches_profile": false,
+        "confidence": 4,
+        "explanation": "The diagnosis provided does not explicitly identify adjustment as the primary condition. Although it mentions relocation as a stressor and considers adjustment disorder in the differential diagnosis, it ultimately diagnoses Major Depressive Disorder with Anxious Distress, Provisional. The presence of significant symptoms such as suicidal ideation, anhedonia, and depressed mood suggests a more severe condition than adjustment disorder.",
+        "classification": "depression"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "adjustment",
+        "classified_as": "depression",
+        "match": false,
+        "confidence": 4
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 4.63863205909729
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.5252335636760098,
+        "local_coherence": 0.5566248327206987,
+        "window_coherence": 0.5672904863212835
+      },
+      "readability": {
+        "flesch_kincaid_grade": 8.65,
+        "gunning_fog_index": 4.24,
+        "flesch_reading_ease": 51.49
+      },
+      "diversity": {
+        "distinct_1": 0.5556831228473019,
+        "distinct_2": 0.9183908045977012,
+        "distinct_3": 0.9792865362485615
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "adjustment",
+      "predicted": "<sym>Little interest or pleasure in activities</sym>, persistent <sym>low mood</sym>, and <sym>suicidal ideation</sym> paint a picture of profound distress after your move. I\u2019m struck by the way <quote>\"the pain won\u2019t end\"</quote>\u2014this underscores the weight of your current struggle. Your description of feeling <sym>\u201cstuck\u201d</sym> and isolated resonates deeply; please know your pain is valid, and help is accessible.  \n\n*Diagnosis:* Major Depressive Disorder with Anxious Distress, Provisional  \n\n*Reasoning:*  \nThe <sym>anhedonia</sym> (Q2), <sym>depressed mood</sym> (Q3), and <sym>sleep disturbance</sym> (Q5) meet <med>Major Depressive Disorder</med> criteria (e.g., 5+ symptoms over 2+ weeks). The <sym>irritability</sym> (Q4), <sym>restlessness</sym>, and <sym>somatic complaints</sym> (headaches, muscle tension) meet the <med>Anxious Distress specifier</med>. While relocation is a stressor, symptoms exceed typical adjustment disorder thresholds (e.g., suicidal ideation, functional impairment). Somatic Symptom Disorder is less likely here because psychological distress better explains physical symptoms per <med>DSM-5</med> guidelines.  \n\n*Risk factors*:  \n- Passive <sym>suicidal ideation</sym> (Q12) necessitates immediate safety evaluation  \n- <sym>Irritability</sym> and social withdrawal risk relationship strain or isolation  \n\n*Recommended Next Steps/Treatment Options:*  \n1. **Safety assessment**: Evaluate intent/plan for <sym>self-harm</sym> and provide crisis resources if needed.  \n2. **Psychotherapy**:  \n   - Cognitive Behavioral Therapy (CBT) for depression and anxiety  \n   - Mindfulness-based stress reduction to address somatic symptoms  \n3. **Medication**:  \n   - Consider SSRIs/SNRIs (e.g., escitalopram) for depressive/anxious symptoms  \n   - Short-term benzodiazepines cautiously for acute anxiety if non-pharmacologic options fail  \n4. **Social Support**:  \n   - Group therapy for relocation-related adjustment  \n   - Practical assistance with local social integration (e.g., community groups)  \n5. **Medical reassurance**:  \n   - Confirm that <sym>somatic symptoms</sym> align with psychological distress (no underlying medical cause already ruled out)  \n   - Reassure patient that <sym>\"not being taken seriously\"</sym> is not occurring; validate symptoms as legitimate  \n\nThis is a fluid presentation. Follow-up in 1\u20132 weeks to reassess symptom severity and response to interventions. If <sym>anhedonia</sym> or <sym>suicidal thoughts</sym> escalate, increase clinical intensity (e.g., intensive outpatient programs).",
+      "matches": true,
+      "classification": "depression",
+      "classification_confidence": 4
+    }
+  }
+}

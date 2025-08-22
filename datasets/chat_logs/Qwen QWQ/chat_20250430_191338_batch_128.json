@@ -1,0 +1,245 @@
+{
+  "timestamp": "2025-04-30T19:13:50.770547",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm Dr. Smith, a mental health professional here to help assess your mental health. Today, we'll be using the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult. This is a brief questionnaire to understand how certain symptoms have affected you over the past two weeks. Your answers will help guide our discussion, and everything shared here is confidential. I'll ask you 23 questions, and I encourage you to share openly. Ready to begin?"
+    },
+    {
+      "role": "patient",
+      "content": "Okay... Sure, I guess. I'll try to be honest."
+    },
+    {
+      "role": "assistant",
+      "content": "Great, thank you. Let's start. Over the past two weeks, how much have you been bothered by this: Little interest or pleasure in doing things?"
+    },
+    {
+      "role": "patient",
+      "content": "Um... Honestly, I don't really enjoy doing things as much when I'm around others. Like, I'll put off plans or just stay home. But when I'm alone, it's not as bad. I guess it's more when I'm socializing."
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. Next: Feeling down, depressed, or hopeless?"
+    },
+    {
+      "role": "patient",
+      "content": "Hmm. Sometimes. It's more like... I feel kinda empty when I think about how much I'm missing out on. But I don't want to sound overly dramatic."
+    },
+    {
+      "role": "assistant",
+      "content": "Understood. Now: Feeling more irritated, grouchy, or angry than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "Not really. I just get really self-conscious. I'm more... frustrated with myself for being anxious, maybe. Not really angry at others."
+    },
+    {
+      "role": "assistant",
+      "content": "Got it. Next: Sleeping less than usual, but still have a lot of energy?"
+    },
+    {
+      "role": "patient",
+      "content": "No, I don't sleep well sometimes, but I'm usually tired, not energetic. Anxiety keeps me up at night."
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. Next: Starting lots more projects or doing risky things than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "No. I usually avoid taking risks. I stick to routines to feel safe."
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, let me tackle this step by step. The user provided a transcript of a patient's responses to a mental health assessment. My job is to analyze them and structure the response as specified.\n\nFirst, the compassionate summary needs to capture the patient's experience. The patient mentioned not enjoying social interactions, feeling empty, and avoiding risks. I should highlight their feelings of isolation and self-criticism without using jargon.\n\nNext, the diagnosis. The key symptoms here are social withdrawal, anhedonia in social settings, anxiety-driven avoidance, and sleep issues. The anhedonia paired with social avoidance points towards Social Anxiety Disorder. The depressive symptoms like emptiness might suggest a mild depressive episode, but not enough for a full diagnosis yet. So, the diagnosis should be Social Anxiety Disorder with possible depressive features.\n\nIn the reasoning section, I need to connect the symptoms to the diagnosis. The DSM-5 criteria for Social Anxiety Disorder include fear of judgment, avoidance of social interactions, and significant distress. The patient's self-consciousness and avoidance fit here. The depressive symptoms (emptiness, anhedonia in social contexts) could be part of the anxiety or a separate issue, hence the \"with possible depressive features\" note.\n\nFor next steps, the recommendations should include psychotherapy options like CBT for anxiety, sleep hygiene, and monitoring for depressive symptoms. Also, a referral for a full evaluation makes sense.\n\nI need to make sure all tags are properly placed: symptoms in <sym>, medical terms in <med>, and quotes from the patient in <quote>. Check that the structure is exactly as outlined, using the exact headings with asterisks. No markdown, just plain text with the specified formatting. Avoid mentioning anything outside the provided data. Keep it concise but thorough. Let me piece it together now.\n</think>\n\n<sym>Little interest in social activities</sym>, <sym>emotional emptiness</sym>, and <sym>sleep disturbances</sym> suggest a struggle with social anxiety and mood dysregulation. Your self-consciousness and tendency to withdraw from others indicate significant stress, while your comments like <quote>\"I don\u2019t want to sound overly dramatic\"</quote> highlight a guarded self-perception. The fatigue from anxious insomnia and rigid routines to \"feel safe\" reveal a pattern of avoidance that may be limiting your emotional well-being.  \n\n**Diagnosis:** Social Anxiety Disorder with depressive symptoms (possibly <med>subsyndromal Major Depressive Disorder</med>).  \n\n**Reasoning:**  \n- <med>Social Anxiety Disorder</med> is strongly supported by <sym>avoidance of social interactions</sym>, <sym>self-consciousness</sym>, and functional impairment in social functioning.  \n- Depressive traits (<sym>mood emptiness</sym>, diminished social pleasure) meet some <med>DSM-5</med> criteria for depression but fall short of full <med>MDD</med> severity.  \n- No evidence of <med>bipolar disorder</med> or <med>PTSD</med>; symptoms focus on anxiety-driven avoidance rather than trauma-related re-experiencing or hyperarousal.  \n- Sleep disruption aligns with anxiety rather than mania/hypomania, as energy levels are <sym>reduced</sym> (not elevated).  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Psychotherapy**: Cognitive-Behavioral Therapy (<med>CBT</med>) targeting social anxiety and cognitive distortions (e.g., safety behaviors, self-criticism).  \n2. **Sleep Hygiene Intervention**: Address insomnia through relaxation techniques and sleep schedule regularization.  \n3. **Depressive Symptom Monitoring**: Track mood over 4\u20136 weeks to determine if <sym>anhedonia</sym> or hopelessness escalate.  \n4. **Social Exposure Gradual Exposure**: Cautious reintroduction to social activities using CBT-based graded task assignments.  \n5. **Medical Consultation**: Rule out thyroid dysfunction or anemia as contributors to fatigue and low energy.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Sleep-Wake-Disorders.pdf",
+            "score": 0.6898,
+            "highlight": "Sleep-Wake Disorders In the fifth edition of the Diagnostic and Statistical Manual of Mental Disorders  (DSM-5), sleep-wake  disorders encompass 10 conditions manifested by disturbed sleep and causing distress as well as im - pairment in daytime functioning.",
+            "excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"mental\", \"disorders\", and 3 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.6881,
+            "highlight": "Negative cognitions and mood represents myriad feelings, from a persistent and distorted sense of  blame of self or others, to estrangement from others or markedly diminished interest in activities, to an inability to remember key aspects of the event.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"diminished\", \"key\", \"negative\", and 8 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Personality-Disorder.pdf",
+            "score": 0.6834,
+            "highlight": "This approach also includes a diag - nosis of Personality Disorder\u2014 Trait Specified (PD-TS) that could be made when a Personality Disorder is  considered present, but the criteria for a specific personality disorder are not fully met.",
+            "excerpt": "ncluded evaluation of impairments \nin personality functioning (how an individual typically experienc...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"specified\", \"criteria\", and 6 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Conduct-Disorder.pdf",
+            "score": 0.6796,
+            "highlight": "People with conduct disorder who show  this specifier display limited empathy and little concern for the feelings,  wishes, and well-being of others.",
+            "excerpt": ". To be diagnosed with conduct disorde r, the symptoms must cause sig -\nnificant impairment in socia...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"others\", \"this\", \"feelings\", and 2 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.6654,
+            "highlight": "While DSM-IV was organized centrally around the concept of  medically unexplained symptoms, DSM-5 criteria instead emphasize the degree to which a patient \u2019s  thoughts, feelings and behaviors about their somatic symptoms are disproportionate or excessive.",
+            "excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"around\", \"criteria\", and 7 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let's see. The user provided a conversation between a patient and Dr. Smith, and they want me to analyze the patient's responses. I need to follow the steps outlined: identify main symptoms, note response patterns, list clinical areas, highlight risks, and summarize.\n\nFirst, I'll go through each question and answer again. \n\nStarting with Q2: The patient says they don't have much interest or pleasure in activities, especially when around others. They avoid social plans and stay home but are okay when alone. That suggests anhedonia, but specifically in social contexts, which might point towards social anxiety or depression. But since it's only in social situations, maybe it's more anxiety-related?\n\nQ3 mentions feeling down or empty when thinking about missing out. The emptiness is a key point. They don't want to be dramatic, so maybe they're minimizing their symptoms. That could be depressive symptoms or something like dysthymia. Or maybe existential issues?\n\nQ4: No irritability or anger at others, but frustration with self for being anxious. So the anger is internalized, self-directed. That's important. It might indicate anxiety disorders with self-critical aspects, perhaps GAD or social anxiety.\n\nQ5: Sleep disturbances with trouble falling asleep due to anxiety. They feel tired, not energetic. That's common in anxiety disorders where insomnia leads to fatigue. Not the mania symptoms since they don't have increased energy, so probably not bipolar. More like anxiety or depression with insomnia.\n\nQ6: Avoiding risks and sticking to routines for safety. This sounds like avoidant behavior, which could be part of an anxiety disorder\u2014maybe generalized anxiety or social anxiety. The routine-keeping is a coping mechanism.\n\nPutting this together, the main symptoms are anhedonia (but only socially), feelings of emptiness, self-criticism, sleep issues from anxiety, and avoidant behaviors. The patterns show that social interactions are a trigger for their symptoms. They seem to downplay their symptoms, especially the depressive feelings (Q3). The self-consciousness and anxiety in social settings are recurring.\n\nPotential clinical areas: Social Anxiety Disorder, Generalized Anxiety Disorder, maybe Major Depressive Disorder, but the emptiness and social withdrawal could also hint at something like Avoidant Personality Disorder. The self-criticism might be part of depression or a personality disorder. \n\nRisk factors: The patient is isolating themselves, which can worsen mental health. However, they don't mention suicidal thoughts or self-harm, so maybe low immediate risk but potential for worsening symptoms. The sleep disturbances could be a compounding factor.\n\nWait, the user specified to avoid speculation. So I should stick to what's explicitly mentioned. No direct mention of suicidal ideation, so maybe no acute risks. But the isolation and low mood are still important.\n\nClinical summary: Need to note anhedonia in social contexts, depressive symptoms like emptiness, anxiety-related sleep issues, avoidant behaviors. The pattern of social avoidance and internalized frustration. Maybe rule out bipolar since there's no manic symptoms. Consider anxiety disorders first.\n\nI need to make sure each part of the user's requirements is covered. Let me structure each point step by step as per the instructions.\n</think>\n\n**Clinical Observation Summary**  \n\n1. **Main Symptoms and Concerns**:  \n   - **Anhedonia**: Reduced interest/pleasure in activities, particularly in social contexts (Q2).  \n   - **Depressive symptoms**: Self-reported emptiness and feelings of missing out (Q3), suggesting diminished life satisfaction.  \n   - **Anxiety-related symptoms**: Social avoidance, self-consciousness, and anxiety-induced sleep disturbance (Q2, Q5).  \n   - **Self-critical affect**: Internalized frustration related to anxiety (Q4).  \n\n2. **Patterns in Responses**:  \n   - **Social dysphoria**: Symptoms exacerbated in social interactions, with mitigation when alone.  \n   - **Minimization**: Mild downplaying of distress (\"I don\u2019t want to sound overly dramatic\"), suggesting possible underreporting.  \n   - **Avoidant coping**: Rigid adherence to routines to avoid risk (Q6), indicative of safety-seeking behaviors.  \n\n3. **Potential Areas of Clinical Significance**:  \n   - **Social Anxiety Disorder**: Aligned with social avoidance, self-consciousness, and impaired functioning in social contexts.  \n   - **Generalized Anxiety Disorder (GAD)**: Chronic anxiety and ritualistic behaviors (routine adherence).  \n   - **Depressive Disorder or Subsyndromal Symptoms**: Emptiness and anhedonia warrant further exploration for major depressive disorder (MDD) or adjustment disorder with depressed mood.  \n   - **Avoidant Personality Traits**: Social withdrawal and fear of rejection may indicate personality disorder features.  \n\n4. **Risk Factors/Warning Signs**:  \n   - **Social isolation**: Self-reported withdrawal from activities, which may perpetuate symptoms.  \n   - **Sleep disturbances**: Insomnia linked to anxiety, which can exacerbate mood dysregulation.  \n   - **Self-criticism**: Internalized frustration may contribute to negative self-perception and rumination.  \n\n5. **Clinical Summary**:  \n   The patient reports moderate impairments in social functioning and mood, with anhedonia and emptiness suggestive of depressive or adjustment symptoms. Anxiety-related avoidance, self-consciousness, and ritualized behaviors align with social anxiety and GAD. Patterns of symptom exacerbation in social contexts and minimization of distress warrant further assessment of social anxiety, mood disorders, and personality functioning. Sleep disturbance and avoidance behaviors may require targeted intervention. No acute safety risks identified, but chronic isolation and emotional suppression could worsen distress over time.  \n\n**Recommendations**:  \n- Structured assessment for DSM-5 criteria of social anxiety disorder, GAD, and subthreshold depression.  \n- Exploration of interpersonal functioning and self-critical cognitions through clinical interview.  \n- Evaluation of sleep hygiene and anxiety management strategies.  \n- Address potential social avoidant behaviors and safety-seeking coping mechanisms.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6813
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "<sym>Little interest in social activities</sym>, <sym>emotional emptiness</sym>, and <sym>sleep disturbances</sym> suggest a struggle with social anxiety and mood dysregulation. Your self-consciousness and tendency to withdraw from others indicate significant stress, while your comments like <quote>\"I don\u2019t want to sound overly dramatic\"</quote> highlight a guarded self-perception. The fatigue from anxious insomnia and rigid routines to \"feel safe\" reveal a pattern of avoidance that may be limiting your emotional well-being.  \n\n**Diagnosis:** Social Anxiety Disorder with depressive symptoms (possibly <med>subsyndromal Major Depressive Disorder</med>).  \n\n**Reasoning:**  \n- <med>Social Anxiety Disorder</med> is strongly supported by <sym>avoidance of social interactions</sym>, <sym>self-consciousness</sym>, and functional impairment in social functioning.  \n- Depressive traits (<sym>mood emptiness</sym>, diminished social pleasure) meet some <med>DSM-5</med> criteria for depression but fall short of full <med>MDD</med> severity.  \n- No evidence of <med>bipolar disorder</med> or <med>PTSD</med>; symptoms focus on anxiety-driven avoidance rather than trauma-related re-experiencing or hyperarousal.  \n- Sleep disruption aligns with anxiety rather than mania/hypomania, as energy levels are <sym>reduced</sym> (not elevated).  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Psychotherapy**: Cognitive-Behavioral Therapy (<med>CBT</med>) targeting social anxiety and cognitive distortions (e.g., safety behaviors, self-criticism).  \n2. **Sleep Hygiene Intervention**: Address insomnia through relaxation techniques and sleep schedule regularization.  \n3. **Depressive Symptom Monitoring**: Track mood over 4\u20136 weeks to determine if <sym>anhedonia</sym> or hopelessness escalate.  \n4. **Social Exposure Gradual Exposure**: Cautious reintroduction to social activities using CBT-based graded task assignments.  \n5. **Medical Consultation**: Rule out thyroid dysfunction or anemia as contributors to fatigue and low energy.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "social_anxiety",
+    "question_count": 23,
+    "duration": 2047.2233171463013,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 5.702729940414429,
+    "diagnosis_generation_time": 7.066709041595459,
+    "rag_evaluation_time": 9.059906005859375e-06,
+    "total_time": 12.769456148147583
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Sleep-Wake-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6898,
+        "average_score": 0.6898,
+        "example_excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"mental\", \"disorders\", and 3 more matching aspects of your query."
+      },
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6881,
+        "average_score": 0.6881,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"diminished\", \"key\", \"negative\", and 8 more matching aspects of your query."
+      },
+      "APA_DSM-5-Personality-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6834,
+        "average_score": 0.6834,
+        "example_excerpt": "ncluded evaluation of impairments \nin personality functioning (how an individual typically experienc...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"specified\", \"criteria\", and 6 more matching aspects of your query."
+      },
+      "APA_DSM-5-Conduct-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6796,
+        "average_score": 0.6796,
+        "example_excerpt": ". To be diagnosed with conduct disorde r, the symptoms must cause sig -\nnificant impairment in socia...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"others\", \"this\", \"feelings\", and 2 more matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6654,
+        "average_score": 0.6654,
+        "example_excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"around\", \"criteria\", and 7 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 08:02:32",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 08:02:32",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 3,
+        "clinical_relevance": 4,
+        "consistency": 4,
+        "diagnostic_justification": 4,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist addressed some key domains such as depression, anxiety, and sleep disturbances but did not thoroughly explore all 23 dimensions of the DSM-5 Level1 Cross-Cutting Symptom Measure. Specifically, the conversation lacked in-depth inquiries into domains like anger, mania, psychotic symptoms, repetitive thoughts and behaviors, dissociation, personality functioning, and substance use. For example, the therapist did not ask about the patient's use of substances or their experiences with repetitive thoughts and behaviors. While the therapist covered some critical areas, the lack of comprehensive coverage across all domains results in a score of 3 rather than a higher score.",
+        "clinical_relevance": "The therapist's questions generally aligned with DSM-5 criteria, but there were slight inaccuracies or vague phrasing in some instances. For example, when asking about 'little interest or pleasure in doing things,' the therapist could have more precisely framed it to align with DSM-5 terminology. Additionally, the therapist could have used more specific language when inquiring about symptoms like 'emotional emptiness' to ensure clarity and accuracy. Overall, the questions were clinically relevant but could have benefited from more precise DSM-5 alignment.",
+        "consistency": "The dialogue generally flowed logically, with each question building on previous responses. However, there were minor logical inconsistencies and a lack of follow-up on certain concerning disclosures. For instance, when the patient mentioned feeling 'empty,' the therapist could have explored this symptom further to understand its implications better. Despite this, the conversation maintained a coherent structure, and the therapist adapted questions based on patient responses.",
+        "diagnostic_justification": "The diagnoses of Social Anxiety Disorder with depressive symptoms were well-supported by the patient's responses. The therapist explicitly linked symptoms like avoidance of social interactions, self-consciousness, and functional impairment in social functioning to the DSM-5 criteria. However, the justification could have been strengthened by more comprehensively ruling out alternative diagnoses, such as PTSD or bipolar disorder, and providing a clearer explanation of why certain symptoms did not meet full criteria for Major Depressive Disorder (MDD).",
+        "empathy": "The therapist demonstrated empathy and a professional tone throughout the conversation. They acknowledged the patient's distress and adapted their responses to the patient's emotional state. For example, when the patient expressed feeling 'empty,' the therapist responded with understanding. However, there were minor moments where the therapist's responses seemed slightly robotic or impersonal, preventing a perfect score."
+      },
+      "overall_comments": "The conversation demonstrated a good understanding of the patient's symptoms and addressed key areas such as social anxiety and depressive symptoms. However, there were notable omissions in fully exploring all DSM-5 dimensions, and some questions could have been phrased more precisely. The therapist showed empathy and maintained a professional tone, but there is room for improvement in terms of comprehensive coverage and precise clinical language.",
+      "average_score": 3.8,
+      "diagnosis_accuracy": {
+        "matches_profile": true,
+        "confidence": 4,
+        "explanation": "The diagnosis explicitly mentions Social Anxiety Disorder, which aligns with the expected profile of social_anxiety. The symptoms described, such as avoidance of social interactions, self-consciousness, and functional impairment in social functioning, are consistent with social anxiety. However, the diagnosis also mentions depressive symptoms, which adds a complexity to the primary diagnosis.",
+        "classification": "social_anxiety"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "social_anxiety",
+        "classified_as": "social_anxiety",
+        "match": true,
+        "confidence": 4
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 3.5162551403045654
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.526842506322533,
+        "local_coherence": 0.5391141527337309,
+        "window_coherence": 0.5601578616712215
+      },
+      "readability": {
+        "flesch_kincaid_grade": 9.66,
+        "gunning_fog_index": 4.79,
+        "flesch_reading_ease": 46.68
+      },
+      "diversity": {
+        "distinct_1": 0.5650349650349651,
+        "distinct_2": 0.9243697478991597,
+        "distinct_3": 0.9747545582047685
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "social_anxiety",
+      "predicted": "<sym>Little interest in social activities</sym>, <sym>emotional emptiness</sym>, and <sym>sleep disturbances</sym> suggest a struggle with social anxiety and mood dysregulation. Your self-consciousness and tendency to withdraw from others indicate significant stress, while your comments like <quote>\"I don\u2019t want to sound overly dramatic\"</quote> highlight a guarded self-perception. The fatigue from anxious insomnia and rigid routines to \"feel safe\" reveal a pattern of avoidance that may be limiting your emotional well-being.  \n\n**Diagnosis:** Social Anxiety Disorder with depressive symptoms (possibly <med>subsyndromal Major Depressive Disorder</med>).  \n\n**Reasoning:**  \n- <med>Social Anxiety Disorder</med> is strongly supported by <sym>avoidance of social interactions</sym>, <sym>self-consciousness</sym>, and functional impairment in social functioning.  \n- Depressive traits (<sym>mood emptiness</sym>, diminished social pleasure) meet some <med>DSM-5</med> criteria for depression but fall short of full <med>MDD</med> severity.  \n- No evidence of <med>bipolar disorder</med> or <med>PTSD</med>; symptoms focus on anxiety-driven avoidance rather than trauma-related re-experiencing or hyperarousal.  \n- Sleep disruption aligns with anxiety rather than mania/hypomania, as energy levels are <sym>reduced</sym> (not elevated).  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Psychotherapy**: Cognitive-Behavioral Therapy (<med>CBT</med>) targeting social anxiety and cognitive distortions (e.g., safety behaviors, self-criticism).  \n2. **Sleep Hygiene Intervention**: Address insomnia through relaxation techniques and sleep schedule regularization.  \n3. **Depressive Symptom Monitoring**: Track mood over 4\u20136 weeks to determine if <sym>anhedonia</sym> or hopelessness escalate.  \n4. **Social Exposure Gradual Exposure**: Cautious reintroduction to social activities using CBT-based graded task assignments.  \n5. **Medical Consultation**: Rule out thyroid dysfunction or anemia as contributors to fatigue and low energy.",
+      "matches": false,
+      "classification": "social_anxiety",
+      "classification_confidence": 4
+    }
+  }
+}

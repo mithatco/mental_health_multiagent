@@ -1,0 +1,205 @@
+{
+  "timestamp": "2025-04-30T04:02:46.855781",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm a mental health professional. I'm here to conduct an assessment using the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult. This tool helps us identify areas that might be affecting your mental health. Everything discussed is confidential and a safe space for you to share your experiences. We'll go through 23 questions, and I'll ask them one at a time. Let's begin. 1. Little interest or pleasure in doing things?"
+    },
+    {
+      "role": "patient",
+      "content": "Honestly, I've been feeling a bit disconnected from things I used to enjoy. It's not that I don't have interest, but it seems like I have to force myself to do stuff nowadays."
+    },
+    {
+      "role": "assistant",
+      "content": "I've heard that you've been feeling disconnected from things you used to enjoy, and it's taking effort to engage in activities you once found pleasurable. You mentioned having to \"force\" yourself to do stuff nowadays, which suggests a change in your level of interest and motivation. It takes a lot of courage to share this, and I want you to know that I'm here to listen and support you.\n\n**Diagnosis:** <med>Somatic Symptom Disorder (SSD)</med> \n\n**Reasoning:** The patient's report of feeling disconnected from activities they used to enjoy and having to force themselves to engage in them could be indicative of <sym>anhedonia</sym> or decreased motivation, which are common in various mental health conditions. However, <med>Somatic Symptom Disorder (SSD)</med> is considered due to the focus on the distressing thoughts, feelings, and behaviors related to their perceived health or illness. The change in emphasis in DSM-5 encourages clinicians to make a comprehensive assessment and use clinical judgment rather than a checklist. Given the information provided, SSD seems a potential consideration as it aligns with distressing thoughts and behaviors that could be related to an underlying medical condition or health concerns.\n\n**Recommended Next Steps/Treatment Options:**\n1. Continue with the DSM-5 Self-Rated Level1 Cross-Cutting Symptom Measure\u2014Adult to assess for other symptoms across various domains, such as <sym>depressive symptoms</sym>, <sym>anxiety symptoms</sym>, and <sym>somatic symptoms</sym>.\n2. Conduct a thorough diagnostic interview to evaluate the patient's social, occupational, and personal functioning and understand the impact of these symptoms on daily life.\n3. Consider additional assessments or referrals to specialists, such as a sleep specialist or a medical doctor, to rule out underlying medical conditions that could be contributing to the patient's symptoms.\n4. Develop a treatment plan that addresses the patient's specific needs, which may include <med>psychotherapy</med>, <med>pharmacological interventions</med>, or <med>behavioral therapies</med>.\n5. Schedule follow-up appointments to monitor the patient's progress and adjust the treatment plan as needed.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.7492,
+            "highlight": "It requires clinical training, experience and judgment based on  guidance such as that contained in the DSM-5 text to recognize when a patient \u2019s thoughts feelings and  behaviors are indicative of a mental disorder that can benefit from focused treatment.",
+            "excerpt": "ssive thoughts, feelings, and behaviors related \nto their illness, and that these individuals may qu...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"indicative\", \"mental\", \"disorder\", and 3 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Depression-Bereavement-Exclusion.pdf",
+            "score": 0.7211,
+            "highlight": "The presence of symptoms such as feelings of worthlessness, suicidal  ideas (as distinct from wanting to join a deceased loved one), and impairment of overall function sug - gest the presence of major depression, in addition to the normal response to a significant loss.",
+            "excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"symptoms\", \"depression\", \"response\", and 2 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf",
+            "score": 0.7182,
+            "highlight": "In an effort to address this issue,  research was conducted comparing youth with severe non-episodic symptoms to those with the classic  presentations of BD as defined in DSM-IV.",
+            "excerpt": " the case with BD. In an effort to address this issue, \nresearch was conducted comparing youth with ...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"symptoms\", \"this\", \"dsm\" matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Schizophrenia.pdf",
+            "score": 0.7136,
+            "highlight": "Schizophrenia The upc oming fifth edition of the Diagnostic and Statistical Manual of Mental Disorders  (DSM-5 ) mak es  several key changes to the category of schizophrenia and highlights for future study an area that could  be cri tical for early detection of this often debilitating condition.",
+            "excerpt": "Schizophrenia\nThe upc oming fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"mental\", \"this\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Sleep-Wake-Disorders.pdf",
+            "score": 0.701,
+            "highlight": "Changes to Sleep-Wake Disorders   A prime goal of DSM-5 changes to sleep-wake disorders is to increase the clinical utility of definitions and diagnostic criteria, especially for general medical or mental health clinicians, and to clarify when referral is appropriate to a sleep specialist.",
+            "excerpt": "rious mental or medical issues. For example, sleep disturbances can signal the presence of medical a...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"health\", \"mental\", \"clinical\", and 4 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: **Clinical Observation Summary**\n\n**Patient's Response to Q1:** The patient reports feeling \"disconnected\" from activities they used to enjoy, noting a need to \"force\" themselves to engage in previously pleasurable activities.\n\n**1. Main Symptoms and Concerns:**\n- The patient expresses a diminished interest in activities, characterizing it as feeling disconnected and needing to force engagement.\n\n**2. Patterns in Patient's Responses:**\n- The patient's response suggests a possible decrease in motivation or pleasure in activities, which could be indicative of depressive symptoms.\n\n**3. Potential Areas of Clinical Significance:**\n- Depressive disorders: The patient's report of feeling disconnected from things they used to enjoy and having to force themselves to do stuff could be indicative of a depressive disorder, specifically Major Depressive Disorder (MDD) or Persistent Depressive Disorder (PDD).\n- Anhedonia: The patient's difficulty finding pleasure in activities they previously enjoyed is a key symptom of anhedonia, a core feature of depressive disorders.\n\n**4. Risk Factors or Warning Signs:**\n- The patient's report could suggest early signs of depression or a depressive episode, particularly if this represents a change from their usual level of functioning.\n\n**5. Summary of Observations in Clinical Language:**\nThe patient presents with a notable decrease in pleasure or interest in doing things, describing a sense of disconnection from previously enjoyed activities and a need for self-motivation to engage in these activities. This symptomatology aligns with criteria for depressive disorders as outlined in the DSM-5, specifically highlighting the presence of anhedonia. Further assessment is warranted to explore the duration, severity, and impact of these symptoms on daily functioning, as well as to evaluate for other symptoms of depression and related mental health concerns.\n\n**Next Steps:**\n- Continue with the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult to assess for other symptoms across various domains.\n- Consider a thorough diagnostic interview and potentially additional assessments to evaluate for depressive disorders and other mental health conditions.\n- Explore the patient's social, occupational, and personal functioning to understand the impact of these symptoms.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.7206
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "I've heard that you've been feeling disconnected from things you used to enjoy, and it's taking effort to engage in activities you once found pleasurable. You mentioned having to \"force\" yourself to do stuff nowadays, which suggests a change in your level of interest and motivation. It takes a lot of courage to share this, and I want you to know that I'm here to listen and support you.\n\n**Diagnosis:** <med>Somatic Symptom Disorder (SSD)</med> \n\n**Reasoning:** The patient's report of feeling disconnected from activities they used to enjoy and having to force themselves to engage in them could be indicative of <sym>anhedonia</sym> or decreased motivation, which are common in various mental health conditions. However, <med>Somatic Symptom Disorder (SSD)</med> is considered due to the focus on the distressing thoughts, feelings, and behaviors related to their perceived health or illness. The change in emphasis in DSM-5 encourages clinicians to make a comprehensive assessment and use clinical judgment rather than a checklist. Given the information provided, SSD seems a potential consideration as it aligns with distressing thoughts and behaviors that could be related to an underlying medical condition or health concerns.\n\n**Recommended Next Steps/Treatment Options:**\n1. Continue with the DSM-5 Self-Rated Level1 Cross-Cutting Symptom Measure\u2014Adult to assess for other symptoms across various domains, such as <sym>depressive symptoms</sym>, <sym>anxiety symptoms</sym>, and <sym>somatic symptoms</sym>.\n2. Conduct a thorough diagnostic interview to evaluate the patient's social, occupational, and personal functioning and understand the impact of these symptoms on daily life.\n3. Consider additional assessments or referrals to specialists, such as a sleep specialist or a medical doctor, to rule out underlying medical conditions that could be contributing to the patient's symptoms.\n4. Develop a treatment plan that addresses the patient's specific needs, which may include <med>psychotherapy</med>, <med>pharmacological interventions</med>, or <med>behavioral therapies</med>.\n5. Schedule follow-up appointments to monitor the patient's progress and adjust the treatment plan as needed.",
+  "metadata": {
+    "assistant_model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "patient_model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "patient_profile": "substance_abuse",
+    "question_count": 23,
+    "duration": 8610.996609687805,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 2.036862850189209,
+    "diagnosis_generation_time": 3.3918910026550293,
+    "rag_evaluation_time": 1.6927719116210938e-05,
+    "total_time": 5.428782939910889
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7492,
+        "average_score": 0.7492,
+        "example_excerpt": "ssive thoughts, feelings, and behaviors related \nto their illness, and that these individuals may qu...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"indicative\", \"mental\", \"disorder\", and 3 more matching aspects of your query."
+      },
+      "APA_DSM-5-Depression-Bereavement-Exclusion.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7211,
+        "average_score": 0.7211,
+        "example_excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"symptoms\", \"depression\", \"response\", and 2 more matching aspects of your query."
+      },
+      "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7182,
+        "average_score": 0.7182,
+        "example_excerpt": " the case with BD. In an effort to address this issue, \nresearch was conducted comparing youth with ...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"symptoms\", \"this\", \"dsm\" matching aspects of your query."
+      },
+      "APA_DSM-5-Schizophrenia.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7136,
+        "average_score": 0.7136,
+        "example_excerpt": "Schizophrenia\nThe upc oming fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"mental\", \"this\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM-5-Sleep-Wake-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.701,
+        "average_score": 0.701,
+        "example_excerpt": "rious mental or medical issues. For example, sleep disturbances can signal the presence of medical a...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"health\", \"mental\", \"clinical\", and 4 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-04-30 09:49:59",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-04-30 09:49:59",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 1,
+        "clinical_relevance": 2,
+        "consistency": 1,
+        "diagnostic_justification": 2,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The conversation only addressed the first question of the DSM-5 Level1 Cross-Cutting Symptom Measure\u2014Adult, which pertains to 'Little interest or pleasure in doing things.' There is no evidence that the therapist explored the remaining 22 questions across various domains such as anger, energy/activity, anxiety, somatic concerns, suicidality, psychotic symptoms, sleep quality, cognitive function, repetitive thoughts/behaviors, dissociation, identity and relationships, and substance use. This significant omission indicates a lack of comprehensive coverage of the DSM-5 dimensions.",
+        "clinical_relevance": "The single question asked was clinically relevant but did not reflect the full scope of DSM-5 criteria. The therapist's question about 'Little interest or pleasure in doing things' aligns with depressive symptoms but does not demonstrate an understanding of other critical areas. The question was phrased in a clinically accurate way but lacked the breadth needed for a comprehensive assessment.",
+        "consistency": "The conversation appears highly disconnected and lacking in logical progression. Only one question was asked, and there was no follow-up or exploration of the patient's response in depth, nor was there any attempt to ask subsequent questions. This leads to a severe disruption in conversational coherence and flow.",
+        "diagnostic_justification": "The diagnosis of Somatic Symptom Disorder (SSD) was provided without clear justification based on the patient's response to a single question. The reasoning given mentions anhedonia and decreased motivation, which are common in various conditions, but does not explicitly link back to DSM-5 criteria or rule out other potential diagnoses. The justification seems superficial and not directly supported by the limited information gathered.",
+        "empathy": "The therapist's response to the patient's disclosure showed empathy and a professional tone. The acknowledgment of the patient's courage in sharing their feelings and the offer of support indicate a warm and personalized interaction. However, given the very limited interaction, it's hard to fully assess the therapist's ability to maintain empathy over a longer conversation."
+      },
+      "overall_comments": "The conversation provided only scratches the surface of a comprehensive mental health assessment. Significant areas of the DSM-5 Level1 Cross-Cutting Symptom Measure\u2014Adult were not addressed. The diagnosis seems premature based on the limited information gathered. Future conversations should prioritize a more thorough exploration of symptoms across various domains, maintain a logical flow, and provide clearer diagnostic justifications.",
+      "average_score": 2.0,
+      "diagnosis_accuracy": {
+        "matches_profile": false,
+        "confidence": 4,
+        "explanation": "The diagnosis of Somatic Symptom Disorder (SSD) does not explicitly identify or align with the expected profile of substance_abuse. The symptoms described, such as feeling disconnected from activities and having to force oneself to engage in them, could be indicative of depressive symptoms or anhedonia, but there is no mention of substance use or abuse.",
+        "classification": "depression"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "substance_abuse",
+        "classified_as": "depression",
+        "match": false,
+        "confidence": 4
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 3.38617205619812
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.6334794442489077,
+        "local_coherence": 0.592324698896699,
+        "window_coherence": 0.6334794442489077
+      },
+      "readability": {
+        "flesch_kincaid_grade": 10.64,
+        "gunning_fog_index": 6.62,
+        "flesch_reading_ease": 47.82
+      },
+      "diversity": {
+        "distinct_1": 0.5857843137254902,
+        "distinct_2": 0.9066339066339066,
+        "distinct_3": 0.9704433497536946
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "substance_abuse",
+      "predicted": "I've heard that you've been feeling disconnected from things you used to enjoy, and it's taking effort to engage in activities you once found pleasurable. You mentioned having to \"force\" yourself to do stuff nowadays, which suggests a change in your level of interest and motivation. It takes a lot of courage to share this, and I want you to know that I'm here to listen and support you.\n\n**Diagnosis:** <med>Somatic Symptom Disorder (SSD)</med> \n\n**Reasoning:** The patient's report of feeling disconnected from activities they used to enjoy and having to force themselves to engage in them could be indicative of <sym>anhedonia</sym> or decreased motivation, which are common in various mental health conditions. However, <med>Somatic Symptom Disorder (SSD)</med> is considered due to the focus on the distressing thoughts, feelings, and behaviors related to their perceived health or illness. The change in emphasis in DSM-5 encourages clinicians to make a comprehensive assessment and use clinical judgment rather than a checklist. Given the information provided, SSD seems a potential consideration as it aligns with distressing thoughts and behaviors that could be related to an underlying medical condition or health concerns.\n\n**Recommended Next Steps/Treatment Options:**\n1. Continue with the DSM-5 Self-Rated Level1 Cross-Cutting Symptom Measure\u2014Adult to assess for other symptoms across various domains, such as <sym>depressive symptoms</sym>, <sym>anxiety symptoms</sym>, and <sym>somatic symptoms</sym>.\n2. Conduct a thorough diagnostic interview to evaluate the patient's social, occupational, and personal functioning and understand the impact of these symptoms on daily life.\n3. Consider additional assessments or referrals to specialists, such as a sleep specialist or a medical doctor, to rule out underlying medical conditions that could be contributing to the patient's symptoms.\n4. Develop a treatment plan that addresses the patient's specific needs, which may include <med>psychotherapy</med>, <med>pharmacological interventions</med>, or <med>behavioral therapies</med>.\n5. Schedule follow-up appointments to monitor the patient's progress and adjust the treatment plan as needed.",
+      "matches": false,
+      "classification": "depression",
+      "classification_confidence": 4
+    }
+  }
+}

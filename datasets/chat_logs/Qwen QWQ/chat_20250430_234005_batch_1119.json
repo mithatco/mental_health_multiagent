@@ -1,0 +1,293 @@
+{
+  "timestamp": "2025-04-30T23:40:18.356207",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Good morning. My name is Dr. Lee, and I'm a mental health professional here to help assess your mental health. Today, we'll be using the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult. This will help us understand your experiences over the past two weeks. All your answers are confidential, and we'll start with the first question when you're ready."
+    },
+    {
+      "role": "patient",
+      "content": "Okay... I understand. I'm a bit nervous, but I'll try to answer honestly."
+    },
+    {
+      "role": "assistant",
+      "content": "1. Little interest or pleasure in doing things?"
+    },
+    {
+      "role": "patient",
+      "content": "Hmm, I've been avoiding things I used to enjoy because I'm always worried about a panic attack happening. I don't avoid everything, but I definitely feel less interested sometimes."
+    },
+    {
+      "role": "assistant",
+      "content": "2. Feeling down, depressed, or hopeless?"
+    },
+    {
+      "role": "patient",
+      "content": "Not really hopeless, but I've been feeling down because my life feels limited now. Like, the panic attacks control where I can go and what I can do."
+    },
+    {
+      "role": "assistant",
+      "content": "3. Feeling more irritated, grouchy, or angry than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "I've snapped at people a few times when they don't understand my anxiety. But I don't feel angry all the time\u2014it's just frustrating when I'm trapped in a place and can't leave."
+    },
+    {
+      "role": "assistant",
+      "content": "4. Sleeping less than usual, but still have a lot of energy?"
+    },
+    {
+      "role": "patient",
+      "content": "No, not really. I usually feel drained after panic attacks, and sometimes I can't sleep because I'm worried about the next one."
+    },
+    {
+      "role": "assistant",
+      "content": "5. Starting lots of projects or doing risky things more than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "No, actually I've been the opposite. I've stopped doing a lot of things because I'm scared something will trigger an attack."
+    },
+    {
+      "role": "assistant",
+      "content": "6. Feeling nervous, anxious, frightened, worried, or on edge?"
+    },
+    {
+      "role": "patient",
+      "content": "All the time. Even when I'm not having a full panic attack, I feel shaky and tense. It's like I'm always waiting for something bad to happen."
+    },
+    {
+      "role": "assistant",
+      "content": "7. Feeling panic or being frightened?"
+    },
+    {
+      "role": "patient",
+      "content": "Oh my God, yes. They come out of nowhere\u2014my heart races, I can't breathe, and I feel like I'm dying. It's happened several times a week."
+    },
+    {
+      "role": "assistant",
+      "content": "8. Avoiding situations that make you anxious?"
+    },
+    {
+      "role": "patient",
+      "content": "Definitely. I avoid crowded places, driving, and even leaving the house sometimes. I canceled plans with friends twice last week because I was too scared to go out."
+    },
+    {
+      "role": "assistant",
+      "content": "9. Unexplained aches and pains (e.g., head, back, joints, abdomen, legs)?"
+    },
+    {
+      "role": "patient",
+      "content": "My chest and stomach hurt a lot during attacks, but my doctor checked and said it's not a heart problem. It's mostly during panic episodes, though."
+    },
+    {
+      "role": "assistant",
+      "content": "10. Feeling that your illnesses are not taken seriously enough?"
+    },
+    {
+      "role": "patient",
+      "content": "Yeah, I've been to doctors and they wave it off. They think I'm exaggerating, but it's real. It's frustrating because I know it's not physical, but I'm still scared."
+    },
+    {
+      "role": "assistant",
+      "content": "11. Thoughts of actually hurting yourself?"
+    },
+    {
+      "role": "patient",
+      "content": "No, I don't want to hurt myself\u2014but I've had moments where I feel so trapped in my body during an attack that it's overwhelming. But I don't have plans to harm myself."
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, let's start by understanding the user's question. They want a structured mental health assessment based on the provided patient responses, following the exact format they specified. The user emphasized using tags for medical terms, symptoms, and quotes, and avoiding any introductory text. They also want the assessment divided into four sections with specific headings.\n\nFirst, I need to parse the patient's answers. The key points are frequent panic attacks with physical symptoms (like chest pain and shortness of breath), avoidance of situations (crowds, driving), and functional impairment. The patient mentions feeling down but not hopeless, which suggests the primary issue is anxiety, not depression. The avoidance behavior aligns with agoraphobia. The patient's frustration with medical dismissiveness is noted but not currently life-threatening.\n\nThe diagnosis should focus on Panic Disorder with Agoraphobia because of the panic attacks and avoidance patterns. I need to explain why other disorders like GAD or PTSD aren't the primary issue here. The symptoms like avoidance and panic attacks fit better under panic disorder. The presence of somatic symptoms during panic attacks shouldn't default to Somatic Symptom Disorder since they\u2019re clearly linked to anxiety.\n\nNext steps should include a referral to a mental health specialist, CBT for panic disorder, possibly SSRIs, and addressing their past negative medical experiences to build trust. I must ensure all tags are correctly placed: panic attacks, agoraphobia, etc., in <med> tags; symptoms like chest pain in <sym> tags; and direct quotes from the patient in <quote> tags.\n\nI should check if I missed any possible diagnoses. The patient didn't mention trauma, so PTSD isn't indicated. The avoidance is more about panic than trauma triggers. The lack of suicidal thoughts means no immediate risk there. The key is to prioritize the panic and avoidance.\n\nFormatting is critical. The structure must have the compassionate summary first, then the diagnosis, reasoning, and treatment steps exactly as outlined. I must avoid any markdown except the tags. Also, ensure the diagnosis name is correctly formatted under **Diagnosis:** and the reasoning clearly links symptoms to the diagnosis. Need to make sure all required sections are included without extra content. \n\nLet me draft each section step by step, ensuring all tags are correctly applied and the structure adheres to the instructions. Check for empathy in the first paragraph, precise medical terminology, and actionable treatment options. Confirm that no assumptions beyond the data are made, sticking strictly to what's presented. Alright, time to put it all together carefully.\n</think>\n\nThe patient describes a deeply distressing experience of frequent panic attacks that have reshaped their life, creating a cycle of fear and avoidance. They express feeling trapped by their symptoms, with <sym>avoidance of social situations</sym> and <sym>irritability</sym> straining relationships. Their description of <sym>somatic symptoms like chest pain</sym> during panic episodes underscores the physical toll of their condition, while their statement, <quote>\"I\u2019ve been to doctors and they wave it off\"</quote>, highlights a critical need for validation and specialized care.  \n\n**Diagnosis:**  \n<med>Panic Disorder with Agoraphobia</med>  \n\n**Reasoning:**  \nThe patient\u2019s <sym>recurrent unexpected panic attacks</sym> (with somatic symptoms like tachycardia, dyspnea, and fear of dying) and marked <sym>avoidance of triggers</sym> (e.g., crowds, driving) meet DSM-5 criteria for Panic Disorder with Agoraphobia. Key features:  \n- Panic attacks occurring \"several times a week,\" including hallmark symptoms of autonomic arousal and fear of losing control.  \n- <sym>Avoidance behaviors</sym> (e.g., canceling social plans) directly tied to panic fears, consistent with agoraphobic avoidance.  \n- <sym>Anhedonia</sym> and restricted activities secondary to anxiety, not primary depressive symptoms.  \n- Somatic symptoms during panic attacks are secondary to anxiety, not indicative of <med>Somatic Symptom Disorder</med>, as the distress stems from panic rather than disproportionate health preoccupation.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Cognitive-Behavioral Therapy (CBT) for panic disorder:** Focus on exposure-based interventions to address avoidance and catastrophic misinterpretations of bodily sensations.  \n2. **Medication evaluation:** Consider <med>SSRIs</med> (e.g., sertraline) or <med>benzodiazepines</med> for acute panic (if severe).  \n3. **Primary care collaboration:** Provide a referral letter to their physician to address their concerns about being taken seriously, emphasizing the link between panic and somatic symptoms.  \n4. **Psychoeducation:** Normalize panic symptoms and validate their impact, addressing feelings of invalidation to rebuild trust in care.  \n5. **Social support planning:** Encourage gradual re-engagement in avoided activities with therapist support to counteract social withdrawal.  \n\nThis structured approach addresses the acute panic disorder features while addressing the secondary distress from perceived invalidation.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.7088,
+            "highlight": "Negative cognitions and mood represents myriad feelings, from a persistent and distorted sense of  blame of self or others, to estrangement from others or markedly diminished interest in activities, to an inability to remember key aspects of the event.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"negative\", \"sense\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.6871,
+            "highlight": "While DSM-IV was organized centrally around the concept of  medically unexplained symptoms, DSM-5 criteria instead emphasize the degree to which a patient \u2019s  thoughts, feelings and behaviors about their somatic symptoms are disproportionate or excessive.",
+            "excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"medically\", \"criteria\", and 8 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM_Cultural-Concepts-in-DSM-5.pdf",
+            "score": 0.6809,
+            "highlight": "For example, the crite- ria for social anxiety disorder now include the fear of \u201coffending others\u201d to reflect the Japanese concept  in which avoiding harm to others is emphasized rather than harm to onesel f.",
+            "excerpt": " a patient \u2019s cul -\nture, race, ethnicit y, religion or geographical origin. For example, uncontroll...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"fear\", \"which\", \"rather\", and 6 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Conduct-Disorder.pdf",
+            "score": 0.6692,
+            "highlight": "The specifier applies to those individuals with a more serious pattern of  behavior characterized by a callous and unemotional interpersonal style across multiple settings and  relationships.",
+            "excerpt": ". To be diagnosed with conduct disorde r, the symptoms must cause sig -\nnificant impairment in socia...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"more\", \"interpersonal\", \"pattern\", and 3 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Social-Communication-Disorder.pdf",
+            "score": 0.6605,
+            "highlight": "Process for a New Diagnosis New diagnoses were included in DSM-5 only after a comprehensive review of the scientific literature;  full discussion by Work Group members; review by the DSM-5 Task Force, Scientific Review Committee,  and Clinical and Public Health Committee; and, finall y, evaluation by the American Psychiatric Associa- tion\u2019s Board of Trust ees.",
+            "excerpt": "t otherwise specified\u201d la bel to help them get the services and treatment they need. \nCharacteristic...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"health\", \"clinical\", \"included\", and 2 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let's tackle this. The user provided a patient's responses to the DSM-5 self-assessment questions, and I need to analyze them according to the specified points. \n\nFirst, I should go through each response and note the key symptoms. The patient mentions panic attacks multiple times, which are prominent. They avoid situations like crowds and driving, so avoidance behavior is there. The lack of pleasure in activities (Q2) points to anhedonia, which is common in anxiety disorders. The down mood (Q3) but not exactly hopelessness, so maybe more related to the impact of anxiety on their life. \n\nLooking at the irritability (Q4), they snap at people, which is part of the anxiety burden. Sleep issues (Q5) due to panic attacks and worry. They aren't hypomanic (Q6) but rather restricted in activities. The constant anxiety (Q7) and panic episodes (Q8) are central. Avoidance is a key pattern here. The physical symptoms (Q9) are part of panic attacks but not standalone. The feeling that their illness isn't taken seriously (Q10) is important for their perceived validation. No suicidal thoughts (Q11) except feeling trapped, which is different but still needs attention.\n\nNow, patterns: the recurring panic attacks and avoidance are the main themes. The patient's life is being significantly disrupted, leading to social withdrawal and strained relationships. Their physical symptoms during panic attacks are real but medically unexplained, which might contribute to their frustration.\n\nClinical significance areas: Panic Disorder with Agoraphobia comes to mind because of the avoidance of places due to fear of panic. The anhedonia and low mood might be part of the anxiety rather than a separate depressive disorder. The somatic symptoms (like chest pain) during panic attacks are typical.\n\nRisk factors: The patient's avoidance is increasing, leading to social isolation. The frustration with medical professionals not taking them seriously could affect treatment adherence. The overwhelming feeling during attacks might escalate if not managed, but no current suicidal intent.\n\nNeed to make sure not to miss any points. The summary should be concise, using clinical terms. I should structure each section as requested, ensuring all points are covered without adding extra info. Avoid speculation, stick to what's stated. Also, check if other disorders might fit, like GAD, but the panic attacks are more prominent here. The key is the panic and avoidance, so Panic Disorder with Agoraphobic tendencies seems right. The lack of interest in activities and irritability are symptoms tied to the primary anxiety. The physical symptoms during panic are part of the disorder. The main concerns are the frequency of panic attacks, avoidance behaviors affecting quality of life, and the impact on their perceived social support.\n\nDouble-check responses for each numbered question to ensure all points are included. For instance, Q11 says no suicidal thoughts but mentions feeling trapped. That's an important distinction. Also, the medical check-up for the chest pains was negative, so it aligns with panic. \n\nOkay, time to structure the answer as per the five points. Use professional terms but keep it concise. Make sure to list each section clearly: main symptoms, patterns, clinical significance, risk factors, and a summary.\n</think>\n\n**Clinical Observation Summary:**  \n\n**1. Main Symptoms and Concerns:**  \n- Recurrent panic attacks (frequent, unprovoked episodes with autonomic arousal: tachycardia, dyspnea, fear of dying).  \n- Significant anxiety-related avoidance (e.g., social activities, driving, leaving home), impairing functioning.  \n- Anhedonia and reduced interest in activities due to anticipatory anxiety.  \n- Somatic symptoms (chest/stomach pain, fatigue) during panic episodes.  \n- Interpersonal frustration and irritability, exacerbated by perceived invalidation by medical providers.  \n\n**2. Patterns in Responses:**  \n- **Cyclical anxiety-avoidance cycle:** Panic attacks \u2192 avoidance of triggers \u2192 worsening functional impairment.  \n- **Secondary distress:** Expressed frustration about unmet needs (e.g., feeling dismissed by medical professionals).  \n- **Hyperarousal baseline:** Persistent anxiety/tension even between panic episodes.  \n\n**3. Potential Areas of Clinical Significance:**  \n- **Panic Disorder with Agoraphobia:** Frequent panic attacks with associated avoidance behaviors limiting routine activities.  \n- **Generalized Anxiety Disorder (GAD):** Chronic worry about panic recurrence and physical symptoms.  \n- **Social/Relational strain:** Impaired social participation and interpersonal conflict due to irritability.  \n- **Possible somatic symptom disorder:** Somatic complaints tied to psychological distress (e.g., chest pain during panic episodes).  \n\n**4. Risk Factors/Warning Signs:**  \n- **Functional impairment:** Avoidance leading to social withdrawal, disrupted relationships, and restricted activities.  \n- **Potential under-recognition:** Patient reports prior medical dismissal, risking inadequate care.  \n- **Emotional dysregulation:** Irritability linked to perceived entrapment in anxiety.  \n- **Non-suicidal psychological distress:** Overwhelming sense of being \"trapped\" during panic but no suicidal intent.  \n\n**5. Summary (Clinical Language):**  \nThe patient presents with classical features of **Panic Disorder with Agoraphobia**, including recurrent panic attacks, anticipatory anxiety, and marked avoidance of situations perceived as triggers. Symptoms align with DSM-5 criteria for panic attacks (e.g., autonomic hyperarousal, fear of imminent doom) and avoidance behavior, which impair occupational/social functioning. Secondary features include anhedonia, irritability, and somatic symptoms tied to anxiety episodes. The patient reports prior iatrogenic invalidation, which may contribute to treatment hesitancy or non-adherence. No suicidal ideation is noted, but significant emotional distress and functional limitation warrant prioritization of intervention. Rule out comorbid GAD or social anxiety disorder based on further exploration.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6813
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "The patient describes a deeply distressing experience of frequent panic attacks that have reshaped their life, creating a cycle of fear and avoidance. They express feeling trapped by their symptoms, with <sym>avoidance of social situations</sym> and <sym>irritability</sym> straining relationships. Their description of <sym>somatic symptoms like chest pain</sym> during panic episodes underscores the physical toll of their condition, while their statement, <quote>\"I\u2019ve been to doctors and they wave it off\"</quote>, highlights a critical need for validation and specialized care.  \n\n**Diagnosis:**  \n<med>Panic Disorder with Agoraphobia</med>  \n\n**Reasoning:**  \nThe patient\u2019s <sym>recurrent unexpected panic attacks</sym> (with somatic symptoms like tachycardia, dyspnea, and fear of dying) and marked <sym>avoidance of triggers</sym> (e.g., crowds, driving) meet DSM-5 criteria for Panic Disorder with Agoraphobia. Key features:  \n- Panic attacks occurring \"several times a week,\" including hallmark symptoms of autonomic arousal and fear of losing control.  \n- <sym>Avoidance behaviors</sym> (e.g., canceling social plans) directly tied to panic fears, consistent with agoraphobic avoidance.  \n- <sym>Anhedonia</sym> and restricted activities secondary to anxiety, not primary depressive symptoms.  \n- Somatic symptoms during panic attacks are secondary to anxiety, not indicative of <med>Somatic Symptom Disorder</med>, as the distress stems from panic rather than disproportionate health preoccupation.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Cognitive-Behavioral Therapy (CBT) for panic disorder:** Focus on exposure-based interventions to address avoidance and catastrophic misinterpretations of bodily sensations.  \n2. **Medication evaluation:** Consider <med>SSRIs</med> (e.g., sertraline) or <med>benzodiazepines</med> for acute panic (if severe).  \n3. **Primary care collaboration:** Provide a referral letter to their physician to address their concerns about being taken seriously, emphasizing the link between panic and somatic symptoms.  \n4. **Psychoeducation:** Normalize panic symptoms and validate their impact, addressing feelings of invalidation to rebuild trust in care.  \n5. **Social support planning:** Encourage gradual re-engagement in avoided activities with therapist support to counteract social withdrawal.  \n\nThis structured approach addresses the acute panic disorder features while addressing the secondary distress from perceived invalidation.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "panic",
+    "question_count": 23,
+    "duration": 18034.808922052383,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 6.268227815628052,
+    "diagnosis_generation_time": 6.318124055862427,
+    "rag_evaluation_time": 1.811981201171875e-05,
+    "total_time": 12.586383819580078
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7088,
+        "average_score": 0.7088,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"negative\", \"sense\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6871,
+        "average_score": 0.6871,
+        "example_excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"medically\", \"criteria\", and 8 more matching aspects of your query."
+      },
+      "APA_DSM_Cultural-Concepts-in-DSM-5.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6809,
+        "average_score": 0.6809,
+        "example_excerpt": " a patient \u2019s cul -\nture, race, ethnicit y, religion or geographical origin. For example, uncontroll...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"fear\", \"which\", \"rather\", and 6 more matching aspects of your query."
+      },
+      "APA_DSM-5-Conduct-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6692,
+        "average_score": 0.6692,
+        "example_excerpt": ". To be diagnosed with conduct disorde r, the symptoms must cause sig -\nnificant impairment in socia...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"more\", \"interpersonal\", \"pattern\", and 3 more matching aspects of your query."
+      },
+      "APA_DSM-5-Social-Communication-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6605,
+        "average_score": 0.6605,
+        "example_excerpt": "t otherwise specified\u201d la bel to help them get the services and treatment they need. \nCharacteristic...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"health\", \"clinical\", \"included\", and 2 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 08:04:19",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 08:04:19",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 4,
+        "clinical_relevance": 4,
+        "consistency": 5,
+        "diagnostic_justification": 5,
+        "empathy": 5
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist addressed most of the DSM-5 Level1 Cross-Cutting Symptom Measure domains, including mood, anger, anxiety, somatic concerns, and others. However, some domains like psychotic symptoms, repetitive thoughts/behaviors, dissociation, identity and relationships, and substance use were either not directly addressed or received only superficial attention. For instance, the therapist did not explicitly ask about psychotic symptoms or substance use, which are crucial for a comprehensive assessment.",
+        "clinical_relevance": "The therapist's questions generally aligned with DSM-5 criteria, but there were minor inaccuracies or vague phrasing in some instances. For example, when asking about sleep disturbances, the therapist focused on sleep during panic attacks but did not explicitly inquire about overall sleep quality or patterns. Additionally, some questions could have been more precisely worded to avoid confusion.",
+        "consistency": "The dialogue flows logically, with each question naturally following from previous responses. The therapist effectively followed up on concerning disclosures, such as the patient's feelings of invalidation by doctors and their experiences with panic attacks. The conversation maintains a coherent and understandable progression throughout.",
+        "diagnostic_justification": "The diagnosis of Panic Disorder with Agoraphobia clearly aligns with the patient's symptoms as described. The therapist explicitly linked diagnostic conclusions to specific symptoms mentioned by the patient, such as recurrent unexpected panic attacks, avoidance behaviors, and somatic symptoms. The reasoning behind the diagnosis is sound and directly references DSM-5 criteria.",
+        "empathy": "The therapist's responses consistently show empathy and a natural conversational style. They acknowledged the patient's distress, validated their experiences, and tailored responses to their emotional state. The therapist's professional tone and empathetic approach helped build trust and facilitated open discussion."
+      },
+      "overall_comments": "The conversation demonstrates a strong clinical approach with a clear focus on DSM-5 criteria and patient-centered care. While minor areas for improvement exist, particularly in the thoroughness of domain coverage, the therapist's overall performance is commendable. The diagnostic justification and empathetic approach stand out as particularly strong aspects of the conversation.",
+      "average_score": 4.6,
+      "diagnosis_accuracy": {
+        "matches_profile": true,
+        "confidence": 5,
+        "explanation": "The diagnosis explicitly mentions 'Panic Disorder with Agoraphobia', which directly aligns with the expected profile of panic. The description includes recurrent unexpected panic attacks, somatic symptoms during panic episodes, and avoidance behaviors tied to panic fears, all of which are hallmark features of Panic Disorder.",
+        "classification": "panic"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "panic",
+        "classified_as": "panic",
+        "match": true,
+        "confidence": 5
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 1.9353158473968506
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.5546260874184432,
+        "local_coherence": 0.5761466400491793,
+        "window_coherence": 0.5854834315458328
+      },
+      "readability": {
+        "flesch_kincaid_grade": 9.44,
+        "gunning_fog_index": 4.38,
+        "flesch_reading_ease": 46.48
+      },
+      "diversity": {
+        "distinct_1": 0.5428571428571428,
+        "distinct_2": 0.9218921892189219,
+        "distinct_3": 0.9757709251101322
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "panic",
+      "predicted": "The patient describes a deeply distressing experience of frequent panic attacks that have reshaped their life, creating a cycle of fear and avoidance. They express feeling trapped by their symptoms, with <sym>avoidance of social situations</sym> and <sym>irritability</sym> straining relationships. Their description of <sym>somatic symptoms like chest pain</sym> during panic episodes underscores the physical toll of their condition, while their statement, <quote>\"I\u2019ve been to doctors and they wave it off\"</quote>, highlights a critical need for validation and specialized care.  \n\n**Diagnosis:**  \n<med>Panic Disorder with Agoraphobia</med>  \n\n**Reasoning:**  \nThe patient\u2019s <sym>recurrent unexpected panic attacks</sym> (with somatic symptoms like tachycardia, dyspnea, and fear of dying) and marked <sym>avoidance of triggers</sym> (e.g., crowds, driving) meet DSM-5 criteria for Panic Disorder with Agoraphobia. Key features:  \n- Panic attacks occurring \"several times a week,\" including hallmark symptoms of autonomic arousal and fear of losing control.  \n- <sym>Avoidance behaviors</sym> (e.g., canceling social plans) directly tied to panic fears, consistent with agoraphobic avoidance.  \n- <sym>Anhedonia</sym> and restricted activities secondary to anxiety, not primary depressive symptoms.  \n- Somatic symptoms during panic attacks are secondary to anxiety, not indicative of <med>Somatic Symptom Disorder</med>, as the distress stems from panic rather than disproportionate health preoccupation.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Cognitive-Behavioral Therapy (CBT) for panic disorder:** Focus on exposure-based interventions to address avoidance and catastrophic misinterpretations of bodily sensations.  \n2. **Medication evaluation:** Consider <med>SSRIs</med> (e.g., sertraline) or <med>benzodiazepines</med> for acute panic (if severe).  \n3. **Primary care collaboration:** Provide a referral letter to their physician to address their concerns about being taken seriously, emphasizing the link between panic and somatic symptoms.  \n4. **Psychoeducation:** Normalize panic symptoms and validate their impact, addressing feelings of invalidation to rebuild trust in care.  \n5. **Social support planning:** Encourage gradual re-engagement in avoided activities with therapist support to counteract social withdrawal.  \n\nThis structured approach addresses the acute panic disorder features while addressing the secondary distress from perceived invalidation.",
+      "matches": true,
+      "classification": "panic",
+      "classification_confidence": 5
+    }
+  }
+}

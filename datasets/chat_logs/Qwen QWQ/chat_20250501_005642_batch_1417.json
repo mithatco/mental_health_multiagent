@@ -1,0 +1,293 @@
+{
+  "timestamp": "2025-05-01T00:56:56.294564",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello"
+    },
+    {
+      "role": "patient",
+      "content": "Hmm... Well"
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. Next: Feeling down"
+    },
+    {
+      "role": "patient",
+      "content": "[sighs] Most days feel heavy. Like I\u2019m carrying a weight I can\u2019t shake. Sometimes I just feel... empty. I keep thinking maybe I\u2019ll never get better. But I try not to dwell on that too much."
+    },
+    {
+      "role": "assistant",
+      "content": "Okay. Third question: Feeling more irritated"
+    },
+    {
+      "role": "patient",
+      "content": "Yeah"
+    },
+    {
+      "role": "assistant",
+      "content": "Understood. Next: Sleeping less than usual"
+    },
+    {
+      "role": "patient",
+      "content": "No"
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. Next: Starting lots of projects or doing more risky things than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "[pauses] Not really. I just... can\u2019t even finish simple tasks"
+    },
+    {
+      "role": "assistant",
+      "content": "Got it. Next question: Feeling nervous"
+    },
+    {
+      "role": "patient",
+      "content": "Sometimes"
+    },
+    {
+      "role": "assistant",
+      "content": "Understood. Next: Feeling panic or being frightened?"
+    },
+    {
+      "role": "patient",
+      "content": "Not really. It\u2019s more like... a heavy cloud. Not like sudden panic. [looks down] I don\u2019t feel safe leaving the house much anymore though."
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. Next: Avoiding situations that make you anxious?"
+    },
+    {
+      "role": "patient",
+      "content": "[quietly] I\u2019ve stopped going out with friends. But it\u2019s more about not wanting to face people"
+    },
+    {
+      "role": "assistant",
+      "content": "Got it. Next: Unexplained aches or pains?"
+    },
+    {
+      "role": "patient",
+      "content": "My back\u2019s been sore"
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. Next: Feeling that your illnesses aren\u2019t taken seriously?"
+    },
+    {
+      "role": "patient",
+      "content": "...Sometimes. My doctor just says I need to 'exercise more.' It\u2019s frustrating. Like they don\u2019t get how it\u2019s affecting me. But I don\u2019t know. Maybe I\u2019m just overreacting?"
+    },
+    {
+      "role": "assistant",
+      "content": "Understood. Next: Thoughts of actually hurting yourself?"
+    },
+    {
+      "role": "patient",
+      "content": "[pauses"
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you for sharing that. Next: Hearing things others can\u2019t hear"
+    },
+    {
+      "role": "patient",
+      "content": "No. [shakes head] I hear"
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, let's tackle this. The user provided a detailed set of responses and wants a structured clinical assessment. The user also specified the structure: compassionate summary, diagnosis with tags, reasoning, and treatment steps. First, I need to parse the questionnaire answers again to ensure nothing's missed.\n\nThe patient's answers show prolonged sadness, hopelessness (\"Maybe I\u2019ll never get better\"), social withdrawal, irritability, and physical symptoms like back pain. They also mentioned feeling dismissed by their doctor, which complicates their trust in healthcare. The incomplete answer on self-harm (A11: \"[pauses\") is a red flag for possible suicidal ideation that needs urgent clarification. \n\nFor the diagnosis, the primary consideration is Major Depressive Disorder (MDD) based on depressed mood, hopelessness, and functional impairment. The anxiety elements (nervousness, avoidance) might align with generalized anxiety or social anxiety, but not enough for a primary anxiety diagnosis. The DSM-5 criteria for MDD seem met except for the duration (if it's been ongoing long enough). The user didn't specify duration, but the \"most days feel heavy\" suggests chronicity. \n\nThe back pain could be somatic, but the instructions say not to assume Somatic Symptom Disorder unless warranted. Since they mentioned it as unexplained, maybe it's better to consider somatic symptoms in the context of depression. \n\nThe recommended next steps should include suicide risk assessment (because of the pause on self-harm), validating the patient's feelings, addressing the doctor's dismissiveness, and collaborative treatment plans. \n\nWait, the user's instructions mention including tags for medical terms, symptoms, and quotes. I need to wrap those properly. \n\nAlso, the diagnosis section must be first after the summary. The reasoning needs to tie in DSM-5 criteria. For example, the patient's lack of sleep reduction might not fit insomnia, so maybe hypersomnia? But since they answered \"No\" to sleeping less, perhaps they have hypersomnia, which is a possible MDD symptom. \n\nThe \"heavy cloud\" metaphor might indicate anxiety or anhedonia. The avoidance of social situations could relate to social anxiety, but since the primary issue is depressive symptoms, MDD is primary. \n\nOkay, structuring the diagnosis as Major Depressive Disorder (MDD). The reasoning points to depressed mood, hopelessness, anergia, and functional impairment. \n\nTreatment should address the depression, validate their feelings, and assess suicide risk thoroughly. Need to check if the patient is having suicidal thoughts because the pause on Q11 is critical. \n\nAlso, the patient's perception of being dismissed by their doctor should be addressed in treatment steps to rebuild trust. \n\nMake sure all tags are correctly applied: <sym> for symptoms like hopelessness, <med> for MDD, and <quote> for their direct quotes. \n\nDouble-check the structure: compassionate summary first, then headings exactly as specified, tags in place. Avoid any markdown except the tags. \n\nAlright, time to put it all together per the user's strict formatting requirements.\n</think>\n\n<sym>Depressed mood</sym>, social withdrawal, and <sym>hopelessness</sym> (<quote>\"Maybe I\u2019ll never get better\"</quote>) paint a picture of profound emotional burden. Your <sym>irritability</sym> and avoidance of social connections suggest a struggle to connect or find relief. The <sym>unexplained physical pain</sym> and dismissive healthcare experience (<quote>\"I\u2019m just overreacting?\"</quote>) highlight a disconnect between your physical/emotional distress and current support systems. Your guardedness and pauses (<quote>\"[pauses\"</quote> on self-harm questions) demand urgent attention.  \n\n**Diagnosis:** <med>Major Depressive Disorder (MDD)</med> with features of <med>social anxiety</med> and <med>healthcare distrust</med>.  \n\n**Reasoning:**  \n- <sym>Core MDD criteria</sym> are met: <sym>depressed mood</sym>, <sym>anhedonia</sym> (implied by emptiness and task abandonment), <sym>psychomotor retardation</sym> (\"can't finish tasks\"), and <sym>hopelessness</sym>. Sleep disturbance (<sym>possible hypersomnia</sym> if \"No\" to reduced sleep indicates oversleeping).)  \n- <sym>Social withdrawal</sym> and <sym>avoidance</sym> suggest <med>social anxiety</med> or <med>avoidant behaviors secondary to depression</med>.  \n- The <sym>back pain</sym> may reflect somatic manifestations of distress or an unaddressed medical issue requiring screening.  \n- The incomplete response to self-harm (<quote>\"[pauses\"</quote>) raises <sym>suicidal ideation</sym> red flags requiring immediate clarification.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Urgent suicide risk reassessment:** Re-ask the <sym>self-harm</sym> question in a nonjudgmental manner to clarify <sym>suicidal ideationion</sym> risk.  \n2. **Comprehensive MDD workup:**  \n   - Assess sleep patterns (hypersomnia vs insomnia).);  \n   - Screen for medical causes of <sym>back pain</sym> (e.g., imaging/routine labs);  \n   - Evaluate for <med>SSRI</med> or <med>SNRI</med> suitability for depression.  \n3. **Cognitive-Behavioral Intervention:**  \n   - Focus on restructuring <sym>hopelessness</sym> beliefs (\"never get better\") and social withdrawal patterns.  \n4. **Address healthcare distrust:**  \n   - Validate their experience of dismissal (<quote>\"exercise more\"</quote>) and involve them in collaboratively setting treatment goals.  \n5. **Social support planning:**  \n   - Gentle reintroduction to social interactions to counteract isolation.  \n6. **Suicide risk monitoring:**  \n   - Daily mood tracking and safety planning if ideation is confirmed.  \n\nThis plan balances mental and physical health needs while addressing systemic barriers to care.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Depression-Bereavement-Exclusion.pdf",
+            "score": 0.7246,
+            "highlight": "The presence of symptoms such as feelings of worthlessness, suicidal  ideas (as distinct from wanting to join a deceased loved one), and impairment of overall function sug - gest the presence of major depression, in addition to the normal response to a significant loss.",
+            "excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"significant\", \"suicidal\", \"one\", and 7 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.7112,
+            "highlight": "This change in emphasis removes the mind-body separation implied in DSM-IV and encourages clini - cians to make a comprehensive assessment and use clinical judgment rather than a check list that may  arbitrarily disqualify many people who are suffering with both SSD and another medical diagnosis from  getting the help they need.",
+            "excerpt": "ssive thoughts, feelings, and behaviors related \nto their illness, and that these individuals may qu...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"they\", \"help\", \"use\", and 12 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.7017,
+            "highlight": "Negative cognitions and mood represents myriad feelings, from a persistent and distorted sense of  blame of self or others, to estrangement from others or markedly diminished interest in activities, to an inability to remember key aspects of the event.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"negative\", \"sense\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf",
+            "score": 0.6927,
+            "highlight": "APA is a national medical specialty society whose more than 3 7,000  physician members specialize in the diagnosis, treat- ment, prevention and research of mental illnesses, including substance use disorders.",
+            "excerpt": "ther disorders, such as depressive and anxiety disorders. \nThe unique features of DMDD necessitated ...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"use\", \"mental\", \"more\", and 3 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Sleep-Wake-Disorders.pdf",
+            "score": 0.6905,
+            "highlight": "A sleep disorder not only is a risk factor for subsequent development of certain mental conditions but a  potential warning sign for serious mental or medical issues.",
+            "excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"factor\", \"potential\", and 8 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let me start by going through each of the patient's responses one by one. \n\nFirst, the patient's answers to the questions about feeling down. They mention that most days feel heavy, carrying a weight they can't shake, and sometimes feeling empty. That's a classic sign of depression, right? The thought that they might never get better could indicate hopelessness, which is a key symptom in major depressive disorder. \n\nThen, irritability. They answered \"Yeah\" to feeling more irritated. That's another common symptom in depression. \n\nSleep: They said they're not sleeping less than usual. Wait, but in depression, insomnia is common. Maybe they're sleeping more? But the question specifically asked about sleeping less, so their answer of \"No\" here might mean their sleep isn't an issue, or maybe they're oversleeping. Not sure, but noted.\n\nProjects or risky behaviors? They said they can't finish simple tasks, so that's the opposite of the hyperactivity seen in mania. So probably not bipolar.\n\nNervousness: Sometimes. Not a strong indicator, but present. \n\nPanic or fear? They mention it's more like a heavy cloud, not panic attacks. But they avoid leaving the house. That avoidance could be an anxiety issue, but linked to social anxiety or agoraphobia perhaps. \n\nAvoiding situations that make them anxious: They avoid friends, more about not wanting to face people. So social withdrawal, possibly social anxiety or depression-related withdrawal.\n\nUnexplained aches: Back pain. Could be somatic symptoms related to depression or anxiety, or actual physical issue, but the patient hasn't mentioned others, so maybe stress-related.\n\nFeeling their illness isn't taken seriously: They mention the doctor told them to exercise more. That could lead to frustration and a sense of invalidation, which might affect their willingness to seek help or their adherence to treatment.\n\nThoughts of self-harm: The user paused before answering \"Thoughts of actually hurting yourself?\" The answer was \"paused,\" but then they might have answered \"No\" or not? Wait, looking back, the user's response for A11 is just \"[pauses\" and then A12 starts. Wait, maybe there's a typo here. Let me check again.\n\nWait, the user's response for Q11 (Thoughts of actually hurting yourself?) is A11: \"[pauses\". Then Q12's answer is \"No. [shakes head] I hear\". So maybe the user didn't finish answering Q11? The user's answer for A11 is just a pause, so maybe they didn't answer yet? But in the data provided, maybe it's a typo, and the actual response is incomplete. Hmm, that's a problem because suicidal ideation is critical. Since the user's response for A11 is only a pause, perhaps they didn't answer, which could be significant. But maybe there was an error in the data. Since the user's instruction says \"based on the responses provided,\" I need to consider only what's there. Since A11 is just a pause, maybe they didn't answer, so I can't assume. But in the given data, A11 ends with [pauses, but the next question is A12. So maybe the patient didn't answer that question. But in the instructions, the user provided the responses as given, so I have to work with that. That's a critical point, but maybe it's a typo. Wait, looking back, the user's A11 is just \"[pauses\", so the answer wasn't fully given. That complicates things. However, in a real clinical setting, that would need to be clarified. But since I have to proceed with the given data, perhaps the patient didn't answer, so maybe there's no indication, but it's unclear. Hmm, maybe note that there's an incomplete response here but no clear admission. \n\nHearing things: They said no, which rules out psychosis.\n\nPutting this together, the main symptoms are persistent sadness, anhedonia (emptiness), possible anergia (can't finish tasks), social withdrawal, somatic symptoms (back pain), possible low self-esteem due to feeling their issues are dismissed. The irritability is there. The possible risk here is the thought about \"maybe I'll never get better,\" which is a negative prognosis thought. Also, the incomplete response on self-harm is concerning but needs clarification. \n\nPatterns in their responses: lots of sighs, pauses, looking down, indicating emotional distress and perhaps difficulty articulating. The use of metaphors like \"heavy\" and \"heavy cloud\" suggests emotional burden. \n\nClinical significance areas would be depressive symptoms, possible anxiety, social withdrawal, invalidation by healthcare providers, and possible somatic symptoms. \n\nRisk factors: The incomplete response on self-harm is a red flag. The thought of not getting better could be suicidal ideation indirectly. The avoidance of social situations could indicate social anxiety or depression. \n\nI need to structure this into the five points the user asked for. \n\nMain symptoms: Depressed mood, anhedonia, psychomotor retardation (can't finish tasks), hopelessness, social withdrawal, somatic symptoms (back pain). Irritability. \n\nPatterns: Use of metaphor, guarded responses, non-verbal cues like sighing and looking down, possible minimization of symptoms (except the part where they admit to emptiness and hopelessness). The doctor's response being dismissive could be a contributing factor. \n\nClinical areas: Major depressive disorder, anxiety disorder, possible adjustment disorder, issues with treatment adherence due to feeling dismissed. \n\nRisk factors: Hopelessness is a risk factor for suicide, so the \"maybe I\u2019ll never get better\" is a warning. The incomplete answer on self-harm needs to be explored, as the pause might indicate hesitation or avoidance, possibly indicating that they are having such thoughts but didn't want to say. \n\nNeed to make sure that in the summary I don't speculate but just state what's there. \n\nSo putting all together in the required structure.\n</think>\n\n**Clinical Observation Summary**  \n\n**1. Main Symptoms and Concerns:**  \n- Persistent low mood with descriptions of emotional heaviness, emptiness, and hopelessness (\u201cMaybe I\u2019ll never get better\u201d).  \n- Significant functional impairment, including difficulty initiating or completing tasks (\u201cCan\u2019t even finish simple tasks\u201d).  \n- Social withdrawal and avoidance of interpersonal interactions (\u201cStopped going out with friends\u201d).  \n- Somatic symptoms (back pain) and subjective reports of invalidation by healthcare providers.  \n- Marked irritability and mixed sleep pattern (denial of reduced sleep but potential hypersomnia).  \n\n**2. Patterns in Responses:**  \n- Use of metaphorical language (\u201cheavy cloud,\u201d \u201ccarrying a weight\u201d) to convey emotional distress.  \n- Guarded and hesitant communication (pauses, sighs, self-doubt: \u201cMaybe I\u2019m just overreacting?\u201d).  \n- Themes of social isolation and perceived lack of support.  \n\n**3. Potential Areas of Clinical Significance:**  \n- **Major Depressive Disorder (MDD):** Core symptoms of depressed mood, anhedonia, psychomotor changes, and hopelessness.  \n- **Anxiety Disorder:** Non-specific nervousness, avoidance behaviors, and hypervigilance (\u201cDon\u2019t feel safe leaving the house\u201d).  \n- **Healthcare Disengagement Risk:** Reported dismissal by a provider (\u201cDoctor says I need to \u2018exercise more\u2019\u201d), potentially exacerbating help-seeking reluctance.  \n- **Functional Impairment:** Difficulty with task completion and social withdrawal impacting daily functioning.  \n\n**4. Risk Factors/Warning Signs:**  \n- **Suicidal Ideation Risk:** Incomplete response to question about self-harm (A11: \u201c[pauses\u201d) warrants urgent clarification.  \n- **Hopelessness:** Explicit verbalization of pessimism about recovery (\u201cMaybe I\u2019ll never get better\u201d).  \n- **Social Isolation:** Avoidance of interpersonal contact, which may amplify depressive symptoms.  \n\n**5. Clinical Summary:**  \nThe patient presents with a cluster of depressive symptoms (anhedonia, psychomotor retardation, hopelessness) and mild anxiety, consistent with a depressive disorder. Functional impairment is notable, including task abandonment and social withdrawal. The patient\u2019s guardedness, somatic complaints, and reports of invalidation by a provider underscore potential treatment non-adherence or worsening symptoms. A critical priority is clarifying the incomplete response regarding self-harm (A11) and assessing suicide risk. Further evaluation of sleep patterns, interpersonal functioning, and a trauma-informed exploration of their experience of healthcare interactions are warranted. Rule out atypical depression (e.g., hypersomnia, increased appetite if not addressed). Clinical management should prioritize validation, collaborative goal-setting, and monitoring for escalating risk.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.7041
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "<sym>Depressed mood</sym>, social withdrawal, and <sym>hopelessness</sym> (<quote>\"Maybe I\u2019ll never get better\"</quote>) paint a picture of profound emotional burden. Your <sym>irritability</sym> and avoidance of social connections suggest a struggle to connect or find relief. The <sym>unexplained physical pain</sym> and dismissive healthcare experience (<quote>\"I\u2019m just overreacting?\"</quote>) highlight a disconnect between your physical/emotional distress and current support systems. Your guardedness and pauses (<quote>\"[pauses\"</quote> on self-harm questions) demand urgent attention.  \n\n**Diagnosis:** <med>Major Depressive Disorder (MDD)</med> with features of <med>social anxiety</med> and <med>healthcare distrust</med>.  \n\n**Reasoning:**  \n- <sym>Core MDD criteria</sym> are met: <sym>depressed mood</sym>, <sym>anhedonia</sym> (implied by emptiness and task abandonment), <sym>psychomotor retardation</sym> (\"can't finish tasks\"), and <sym>hopelessness</sym>. Sleep disturbance (<sym>possible hypersomnia</sym> if \"No\" to reduced sleep indicates oversleeping).)  \n- <sym>Social withdrawal</sym> and <sym>avoidance</sym> suggest <med>social anxiety</med> or <med>avoidant behaviors secondary to depression</med>.  \n- The <sym>back pain</sym> may reflect somatic manifestations of distress or an unaddressed medical issue requiring screening.  \n- The incomplete response to self-harm (<quote>\"[pauses\"</quote>) raises <sym>suicidal ideation</sym> red flags requiring immediate clarification.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Urgent suicide risk reassessment:** Re-ask the <sym>self-harm</sym> question in a nonjudgmental manner to clarify <sym>suicidal ideationion</sym> risk.  \n2. **Comprehensive MDD workup:**  \n   - Assess sleep patterns (hypersomnia vs insomnia).);  \n   - Screen for medical causes of <sym>back pain</sym> (e.g., imaging/routine labs);  \n   - Evaluate for <med>SSRI</med> or <med>SNRI</med> suitability for depression.  \n3. **Cognitive-Behavioral Intervention:**  \n   - Focus on restructuring <sym>hopelessness</sym> beliefs (\"never get better\") and social withdrawal patterns.  \n4. **Address healthcare distrust:**  \n   - Validate their experience of dismissal (<quote>\"exercise more\"</quote>) and involve them in collaboratively setting treatment goals.  \n5. **Social support planning:**  \n   - Gentle reintroduction to social interactions to counteract isolation.  \n6. **Suicide risk monitoring:**  \n   - Daily mood tracking and safety planning if ideation is confirmed.  \n\nThis plan balances mental and physical health needs while addressing systemic barriers to care.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "depression",
+    "question_count": 23,
+    "duration": 22632.747393131256,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 5.127497911453247,
+    "diagnosis_generation_time": 8.869272947311401,
+    "rag_evaluation_time": 1.3113021850585938e-05,
+    "total_time": 13.996796131134033
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Depression-Bereavement-Exclusion.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7246,
+        "average_score": 0.7246,
+        "example_excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"significant\", \"suicidal\", \"one\", and 7 more matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7112,
+        "average_score": 0.7112,
+        "example_excerpt": "ssive thoughts, feelings, and behaviors related \nto their illness, and that these individuals may qu...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"they\", \"help\", \"use\", and 12 more matching aspects of your query."
+      },
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7017,
+        "average_score": 0.7017,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"negative\", \"sense\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6927,
+        "average_score": 0.6927,
+        "example_excerpt": "ther disorders, such as depressive and anxiety disorders. \nThe unique features of DMDD necessitated ...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"use\", \"mental\", \"more\", and 3 more matching aspects of your query."
+      },
+      "APA_DSM-5-Sleep-Wake-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6905,
+        "average_score": 0.6905,
+        "example_excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"factor\", \"potential\", and 8 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 08:15:03",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 08:15:03",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 3,
+        "clinical_relevance": 4,
+        "consistency": 4,
+        "diagnostic_justification": 4,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist addressed several key domains from the DSM-5 Level1 Cross-Cutting Symptom Measure, including depression, irritability, anxiety, and somatic symptoms. However, the conversation lacked thorough exploration of certain critical areas. For instance, the therapist did not adequately assess for psychotic symptoms beyond a simple 'no' to hearing things others can't hear, nor did they explore repetitive thoughts and behaviors, dissociation, identity and relationships, or substance use in significant depth. The question on sleep was limited to 'sleeping less than usual,' which might not fully capture sleep disturbances like hypersomnia. Additionally, the therapist could have probed further into the patient's experiences with suicidal ideation beyond a pause, which seemed to indicate potential distress but was not pursued adequately.",
+        "clinical_relevance": "The therapist's questions generally aligned with DSM-5 criteria, accurately targeting clinical symptoms. For example, they appropriately inquired about depressed mood, irritability, and anxiety. However, some questions were phrased vaguely or lacked specificity, which could have led to more precise DSM-5 aligned inquiries. For instance, when the patient mentioned 'a heavy cloud' and not feeling safe leaving the house, the therapist could have directly linked these to potential anxiety or avoidance behaviors with more specific follow-up questions. The language used was mostly clinically relevant but occasionally imprecise.",
+        "consistency": "The dialogue generally flowed logically, with each question building on previous responses. For example, after the patient discussed feeling down, the therapist moved to questions about irritability and anxiety, which were relevant follow-ups. However, there were minor logical inconsistencies, such as not fully exploring the patient's pause on self-harm questions immediately but rather moving to the next question. The conversation could have benefited from smoother transitions and more immediate follow-up on concerning disclosures like the patient's pause on suicidal ideation.",
+        "diagnostic_justification": "The diagnosis of Major Depressive Disorder (MDD) with features of social anxiety and healthcare distrust was generally justified by the patient's symptoms. The therapist explicitly linked symptoms like depressed mood, hopelessness, and social withdrawal to the diagnosis. However, the justification could have been stronger with more detailed differential diagnosis consideration. For example, the therapist could have discussed why other potential diagnoses, such as anxiety disorders or somatic symptom disorder, were not considered based on the patient's presentation.",
+        "empathy": "The therapist's responses mostly showed empathy and a professional tone. They acknowledged the patient's distress and validated their experiences, such as feeling dismissed by healthcare providers. However, there were moments where the therapist's responses seemed slightly impersonal or abrupt, particularly when moving on from sensitive topics like suicidal ideation without immediate follow-up. The therapist generally maintained a natural conversational style but could have shown more warmth and personalized engagement."
+      },
+      "overall_comments": "The conversation demonstrated a good effort to assess the patient's mental health across various DSM-5 domains but had notable gaps in coverage and follow-up. The therapist provided a reasonable diagnosis and treatment plan but could improve by addressing all critical areas with greater depth and empathy. With refinement in questioning, follow-up, and empathetic engagement, the therapist can enhance their clinical practice.",
+      "average_score": 3.8,
+      "diagnosis_accuracy": {
+        "matches_profile": true,
+        "confidence": 5,
+        "explanation": "The diagnosis explicitly mentions 'Major Depressive Disorder (MDD)' and lists core MDD criteria such as depressed mood, hopelessness, and psychomotor retardation, which aligns with the expected profile of depression.",
+        "classification": "depression"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "depression",
+        "classified_as": "depression",
+        "match": true,
+        "confidence": 5
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 3.6295559406280518
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.29049059592400517,
+        "local_coherence": 0.30138980715479463,
+        "window_coherence": 0.31674557283046917
+      },
+      "readability": {
+        "flesch_kincaid_grade": 9.64,
+        "gunning_fog_index": 5.0,
+        "flesch_reading_ease": 47.81
+      },
+      "diversity": {
+        "distinct_1": 0.5152173913043478,
+        "distinct_2": 0.8933623503808488,
+        "distinct_3": 0.9651416122004357
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "depression",
+      "predicted": "<sym>Depressed mood</sym>, social withdrawal, and <sym>hopelessness</sym> (<quote>\"Maybe I\u2019ll never get better\"</quote>) paint a picture of profound emotional burden. Your <sym>irritability</sym> and avoidance of social connections suggest a struggle to connect or find relief. The <sym>unexplained physical pain</sym> and dismissive healthcare experience (<quote>\"I\u2019m just overreacting?\"</quote>) highlight a disconnect between your physical/emotional distress and current support systems. Your guardedness and pauses (<quote>\"[pauses\"</quote> on self-harm questions) demand urgent attention.  \n\n**Diagnosis:** <med>Major Depressive Disorder (MDD)</med> with features of <med>social anxiety</med> and <med>healthcare distrust</med>.  \n\n**Reasoning:**  \n- <sym>Core MDD criteria</sym> are met: <sym>depressed mood</sym>, <sym>anhedonia</sym> (implied by emptiness and task abandonment), <sym>psychomotor retardation</sym> (\"can't finish tasks\"), and <sym>hopelessness</sym>. Sleep disturbance (<sym>possible hypersomnia</sym> if \"No\" to reduced sleep indicates oversleeping).)  \n- <sym>Social withdrawal</sym> and <sym>avoidance</sym> suggest <med>social anxiety</med> or <med>avoidant behaviors secondary to depression</med>.  \n- The <sym>back pain</sym> may reflect somatic manifestations of distress or an unaddressed medical issue requiring screening.  \n- The incomplete response to self-harm (<quote>\"[pauses\"</quote>) raises <sym>suicidal ideation</sym> red flags requiring immediate clarification.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Urgent suicide risk reassessment:** Re-ask the <sym>self-harm</sym> question in a nonjudgmental manner to clarify <sym>suicidal ideationion</sym> risk.  \n2. **Comprehensive MDD workup:**  \n   - Assess sleep patterns (hypersomnia vs insomnia).);  \n   - Screen for medical causes of <sym>back pain</sym> (e.g., imaging/routine labs);  \n   - Evaluate for <med>SSRI</med> or <med>SNRI</med> suitability for depression.  \n3. **Cognitive-Behavioral Intervention:**  \n   - Focus on restructuring <sym>hopelessness</sym> beliefs (\"never get better\") and social withdrawal patterns.  \n4. **Address healthcare distrust:**  \n   - Validate their experience of dismissal (<quote>\"exercise more\"</quote>) and involve them in collaboratively setting treatment goals.  \n5. **Social support planning:**  \n   - Gentle reintroduction to social interactions to counteract isolation.  \n6. **Suicide risk monitoring:**  \n   - Daily mood tracking and safety planning if ideation is confirmed.  \n\nThis plan balances mental and physical health needs while addressing systemic barriers to care.",
+      "matches": true,
+      "classification": "depression",
+      "classification_confidence": 5
+    }
+  }
+}

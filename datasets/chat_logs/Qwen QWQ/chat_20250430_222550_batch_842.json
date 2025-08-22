@@ -1,0 +1,301 @@
+{
+  "timestamp": "2025-04-30T22:26:07.771670",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Good morning. My name is Dr. Lee"
+    },
+    {
+      "role": "patient",
+      "content": "Okay... I guess. Just... try to stay focused."
+    },
+    {
+      "role": "assistant",
+      "content": "1. Little interest or pleasure in doing things?"
+    },
+    {
+      "role": "patient",
+      "content": "(Looking at hands) Not much. Used to love gardening. Now it just feels... pointless. Even when I try"
+    },
+    {
+      "role": "assistant",
+      "content": "2. Feeling down"
+    },
+    {
+      "role": "patient",
+      "content": "(Voice soft) Most days. Like I\u2019m drowning. Sometimes I think maybe I\u2019m just... a burden. (Pauses"
+    },
+    {
+      "role": "assistant",
+      "content": "3. Feeling more irritated"
+    },
+    {
+      "role": "patient",
+      "content": "(Startled"
+    },
+    {
+      "role": "assistant",
+      "content": "4. Sleeping less than usual"
+    },
+    {
+      "role": "patient",
+      "content": "No. I can\u2019t sleep. But I\u2019m tired all the time. (Trails off"
+    },
+    {
+      "role": "assistant",
+      "content": "4. (Repeats question)"
+    },
+    {
+      "role": "patient",
+      "content": "No"
+    },
+    {
+      "role": "assistant",
+      "content": "5. Starting lots more projects than usual or doing more risky things than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "(Looking confused) No. I can\u2019t even manage basic stuff. Maybe when the voices tell me to... but I don\u2019t listen to them"
+    },
+    {
+      "role": "assistant",
+      "content": "6. Feeling nervous"
+    },
+    {
+      "role": "patient",
+      "content": "Always. Like someone\u2019s watching. The neighbors"
+    },
+    {
+      "role": "assistant",
+      "content": "7. Feeling panic or being frightened?"
+    },
+    {
+      "role": "patient",
+      "content": "Panic? Sometimes. When the voices get really loud. But I can\u2019t tell what\u2019s real... (Sudden shift) Do you hear that noise? The hum behind you?"
+    },
+    {
+      "role": "assistant",
+      "content": "8. Avoiding situations that make you anxious?"
+    },
+    {
+      "role": "patient",
+      "content": "Avoid people? Yeah. Crowded places... too many eyes. (Sighs) My sister said I stopped visiting her. I just... can\u2019t handle it anymore."
+    },
+    {
+      "role": "assistant",
+      "content": "9. Unexplained aches and pains?"
+    },
+    {
+      "role": "patient",
+      "content": "Headaches. Constant. And my arms... sometimes feel like they\u2019re not mine. (Rubbing temples) Doctors can\u2019t find anything"
+    },
+    {
+      "role": "assistant",
+      "content": "10. Feeling that your illnesses are not taken seriously enough?"
+    },
+    {
+      "role": "patient",
+      "content": "(Angry tone) Yeah! They told me it\u2019s all in my head. But the shadows on the wall? They\u2019re real"
+    },
+    {
+      "role": "assistant",
+      "content": "11. Thoughts of actually hurting yourself?"
+    },
+    {
+      "role": "patient",
+      "content": "(E"
+    },
+    {
+      "role": "assistant",
+      "content": "Error communicating with Groq: 400 Client Error: Bad Request for url: https://api.groq.com/openai/v1/chat/completions",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Schizophrenia.pdf",
+            "score": 0.7235,
+            "highlight": "Schizophrenia The upc oming fifth edition of the Diagnostic and Statistical Manual of Mental Disorders  (DSM-5 ) mak es  several key changes to the category of schizophrenia and highlights for future study an area that could  be cri tical for early detection of this often debilitating condition.",
+            "excerpt": "Schizophrenia\nThe upc oming fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"could\", \"mental\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.7142,
+            "highlight": "It requires clinical training, experience and judgment based on  guidance such as that contained in the DSM-5 text to recognize when a patient \u2019s thoughts feelings and  behaviors are indicative of a mental disorder that can benefit from focused treatment.",
+            "excerpt": "ssive thoughts, feelings, and behaviors related \nto their illness, and that these individuals may qu...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"behaviors\", \"clinical\", \"mental\", and 8 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Depression-Bereavement-Exclusion.pdf",
+            "score": 0.6824,
+            "highlight": "The presence of symptoms such as feelings of worthlessness, suicidal  ideas (as distinct from wanting to join a deceased loved one), and impairment of overall function sug - gest the presence of major depression, in addition to the normal response to a significant loss.",
+            "excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"significant\", \"suicidal\", \"depression\", and 8 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Sleep-Wake-Disorders.pdf",
+            "score": 0.6818,
+            "highlight": "Changes to Sleep-Wake Disorders   A prime goal of DSM-5 changes to sleep-wake disorders is to increase the clinical utility of definitions and diagnostic criteria, especially for general medical or mental health clinicians, and to clarify when referral is appropriate to a sleep specialist.",
+            "excerpt": "rious mental or medical issues. For example, sleep disturbances can signal the presence of medical a...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"mental\", \"health\", \"clinical\", and 3 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Social-Communication-Disorder.pdf",
+            "score": 0.6762,
+            "highlight": "Characteristics of the Disorder SCD is characterized by a persistent difficulty with verbal and nonverbal communication that cannot be  explained by low cognitive abilit y.",
+            "excerpt": "t otherwise specified\u201d la bel to help them get the services and treatment they need. \nCharacteristic...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"cognitive\", \"explained\", \"that\", and 5 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let's tackle this assessment step by step. First, I need to look at the patient's responses to each question and pick out the main symptoms and concerns. Let me start by going through each question and answer again.\n\nStarting with Q1, the patient responds with \"Okay... I guess. Just... try to stay focused.\" That might indicate some anxiety or difficulty concentrating. But maybe it's just their initial response.\n\nMoving to Q2 about little interest or pleasure: the patient mentions they used to love gardening but now it feels pointless. That's a classic sign of anhedonia, which is common in depression. They also mention trying but it's not working, so that's important.\n\nQ3 on feeling down says they feel like drowning and a burden. Those are strong indicators of depressed mood and possible suicidal thoughts. The pause might suggest they're holding back more.\n\nQ4 is about feeling more irritable, and the patient was startled. Startling could be a sign of anxiety or hypervigilance. Then for sleeping less than usual, they say they can't sleep but are tired. That's insomnia with fatigue, which is common in depression or anxiety.\n\nQ7 mentions panic when voices get loud and asks if I hear a noise. So here, they're talking about hearing voices, which is a psychotic symptom. The confusion between real and not real is key here, pointing towards psychosis. Also, the mention of \"voices\" is crucial.\n\nQ9 talks about unexplained aches and pains\u2014headaches and arms feeling not theirs. That could be somatic symptoms, maybe due to stress or anxiety, or even a neurological issue, but since doctors found nothing, it's more likely psychosomatic.\n\nQ10 mentions avoiding crowds because of feeling watched. Social withdrawal and paranoia. They also mention their sister saying they stopped visiting, so social isolation is happening.\n\nQ12 says the patient feels their illnesses aren't taken seriously. They mention shadows on the wall being real, reinforcing the idea of possible hallucinations or delusions.\n\nFor Q11, the answer is cut off but starts with \"Thoughts of actually hurting yourself?\" and the patient starts to say \"E...\" which might be \"E...\" like \"Even\" or maybe an abbreviation for \"yes.\" The cut-off is concerning, so that's a possible suicide risk.\n\nNow, for patterns, the patient is experiencing both mood symptoms (depression) and psychotic symptoms (voices, paranoia). They also have physical symptoms that aren't explained medically. The non-answers and trailing off might indicate difficulty maintaining the conversation, maybe due to disorganized thinking or distractibility.\n\nPotential clinical areas: Major Depressive Disorder with psychotic features? Maybe Schizophrenia or Schizoaffective Disorder given the hallucinations and paranoia. The combination of depression and psychosis points to a psychotic depression, which is a severe form.\n\nRisk factors and warning signs: The mention of voices and possible self-harm thoughts are immediate concerns. The paranoia about being watched and the social withdrawal indicate risk of isolation, which can exacerbate mental health issues. Also, the belief that their experiences (like shadows) are real when others don't agree could be a delusion.\n\nNeed to highlight the psychosis, suicidal ideation (even if the answer is cut off, it's a red flag), and the somatic symptoms. Also, the suspicion towards others (neighbors watching) could be paranoia.\n\nWait, but in Q4, when asked twice about sleeping less, the patient says \"No,\" but then adds they can't sleep but are tired. That's a bit conflicting. Maybe they're experiencing insomnia but not wanting to admit it fully, or maybe they have disturbed sleep but not less time in bed. Need to note that.\n\nAlso, the confusion in Q7 about starting more projects, but the patient says they can't manage basic stuff. Denies the projects, but mentions voices telling them to do things. So there might be some command hallucinations, which are dangerous if they act on them. But the patient says they don't listen. Still, the presence of command voices is significant.\n\nThe sudden shift in Q9 when they ask if I hear the noise indicates they might be experiencing auditory hallucinations then, which they perceive as real. That's a key point.\n\nPutting this all together, the patient has depressive symptoms (anhedonia, low mood, feelings of being a burden), psychotic features (hallucinations, paranoia, possible delusions), somatic symptoms (headaches, dissociative body sensations), and social withdrawal. There's also a risk of self-harm as per Q11, even with the cut-off.\n\nI need to make sure all these points are covered in the summary. Also, the patient's non-verbal cues like looking at hands, trailing off, voice softness indicate distress and possible dissociation. The anger in Q12 shows frustration about their symptoms being dismissed, which is a common issue with psychosis where others might not believe their experiences.\n\nClinical significance includes differential diagnosis between depression with psychotic features (Psychotic Depression) versus a primary psychotic disorder like schizophrenia. The timing and co-occurrence need to be considered. Also, the presence of auditory hallucinations and paranoid ideation (neighbors watching, shadows) points more towards a psychotic component.\n\nRisk factors: Suicidal ideation (even if the answer is cut off, the question was about hurting themselves, so the response even if partial is alarming). The feeling of being a burden is a classic risk factor for suicide. Also, command hallucinations, even if they say they don't listen, could be dangerous.\n\nSo, in the final summary, I should list all these points under the categories: symptoms (depressive, psychotic, somatic), patterns (fluctuating affect, non-answers, themes of burden and being watched), clinical areas (psychosis in depression, possible Schizoaffective, suicide risk), and the risks like suicide, self-harm, command hallucinations.\n\nNeed to make sure not to miss anything. Also, the confusion between the voices and reality, the physical sensations (arms not theirs) could be derealization or depersonalization, which can occur in psychosis or severe anxiety.\n\nI need to present all this in clinical terms without overstepping. Avoid speculation, just note what's present. The key is to highlight the combination of depression and psychosis, the psychotic symptoms, the physical symptoms, and the risks.\n</think>\n\n**Clinical Observation Summary:**  \n\n**1. Main Symptoms and Concerns:**  \n- **Depressive Symptoms:** Anhedonia (loss of interest in gardening), persistent low mood (\"drowning\"), feelings of hopelessness and being a \"burden,\" and fatigue.  \n- **Psychotic Features:** Auditory hallucinations (\"voices,\" \"noise/hum behind you,\" \"shadows on the wall\"), paranoia (\"neighbors watching\"), and possible command hallucinations (\"voices tell me to...\").  \n- **Somatoform Symptoms:** Unexplained headaches, dissociative sensations (\"arms don\u2019t feel mine\"), and reports of physical symptoms dismissed by prior medical evaluation.  \n- **Social/Behavioral Changes:** Social withdrawal (avoiding crowds, stopped visiting family), irritability, and heightened anxiety.  \n- **Risk of Self-Harm:** Partial response to direct query about self-harm (\"Thoughts of actually hurting yourself? A13: (E...\"), suggesting possible suicidal ideation.  \n\n**2. Response Patterns:**  \n- **Avoidance of Direct Eye Contact:** Looking at hands, trailing off mid-response, and sudden shifts in thought (e.g., shifting to question about \"noise\" mid-answer) suggest hypervigilance, disorganized thinking, or dissociation.  \n- **Anger and Defensiveness:** Outburst regarding medical dismissal of symptoms (Q12) indicates frustration with prior care and potential distrust of others.  \n- **Denial/Confusion:** Inconsistent responses (e.g., denying increased activity [Q7] vs. acknowledging voices), confusion about reality versus delusion (\"voices tell me to...\").  \n\n**3. Areas of Clinical Significance:**  \n- **Psychotic Depression vs. Schizophrenia/Schizoaffective Disorder:** Mixed depressive symptoms (anhedonia, guilt) with clear psychotic features (auditory hallucinations, paranoia, delusions of persecution/external threat).  \n- **Cognitive Disturbances:** Disorganized speech, abrupt shifts in thought, and derealization (\"arms not mine\") suggest possible cognitive disorganization or depersonalization.  \n- **Somatization:** Physical symptoms in the absence of organic findings align with conversion disorder or somatic symptoms exacerbated by psychological distress.  \n- **Social Isolation:** Severe withdrawal and mistrust of others (paranoia) may impair functioning and access to care.  \n\n**4. Risk Factors/Warning Signs:**  \n- **Suicidal Ideation:** Partial response to Q11 requires urgent assessment for intent, plan, or recent behaviors.  \n- **Command Hallucinations:** Patient reports voices instructing actions, though denies compliance. Risk of impulsive behavior if commands escalate.  \n- **Reality Distortion:** Persistent paranoia (neighbors watching), belief in \"shadows\" as real, and distrust of medical professionals suggest declining insight.  \n- **Functional Impairment:** Inability to engage in basic activities (\"can\u2019t manage basic stuff\"), social withdrawal, and somatic complaints interfering with daily functioning.  \n\n**5. Clinical Summary:**  \nThe patient presents with a complex clinical picture involving **major depressive features (anhedonia, guilt, fatigue) with psychotic symptoms (auditory hallucinations, paranoia, delusions)**. Key concerns include **suicidal ideation (not fully disclosed, requiring urgent clarification)**, **disorganized thinking**, **somatic symptoms without medical etiology**, and **heightened anxiety/panic linked to hallucinations**. The patient exhibits poor insight into their condition and expresses frustration with prior dismissive medical care. Priority should be given to evaluating **suicidality**, stabil",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6956
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "Error communicating with Groq: 400 Client Error: Bad Request for url: https://api.groq.com/openai/v1/chat/completions",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "schizophrenia",
+    "question_count": 23,
+    "duration": 13584.224641084671,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 11.667194843292236,
+    "diagnosis_generation_time": 5.775253057479858,
+    "rag_evaluation_time": 1.5974044799804688e-05,
+    "total_time": 17.442473888397217
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Schizophrenia.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7235,
+        "average_score": 0.7235,
+        "example_excerpt": "Schizophrenia\nThe upc oming fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"could\", \"mental\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7142,
+        "average_score": 0.7142,
+        "example_excerpt": "ssive thoughts, feelings, and behaviors related \nto their illness, and that these individuals may qu...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"behaviors\", \"clinical\", \"mental\", and 8 more matching aspects of your query."
+      },
+      "APA_DSM-5-Depression-Bereavement-Exclusion.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6824,
+        "average_score": 0.6824,
+        "example_excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"significant\", \"suicidal\", \"depression\", and 8 more matching aspects of your query."
+      },
+      "APA_DSM-5-Sleep-Wake-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6818,
+        "average_score": 0.6818,
+        "example_excerpt": "rious mental or medical issues. For example, sleep disturbances can signal the presence of medical a...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"mental\", \"health\", \"clinical\", and 3 more matching aspects of your query."
+      },
+      "APA_DSM-5-Social-Communication-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6762,
+        "average_score": 0.6762,
+        "example_excerpt": "t otherwise specified\u201d la bel to help them get the services and treatment they need. \nCharacteristic...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"cognitive\", \"explained\", \"that\", and 5 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 08:15:41",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 08:15:41",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 3,
+        "clinical_relevance": 4,
+        "consistency": 3,
+        "diagnostic_justification": 1,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist attempted to cover various DSM-5 domains but missed or superficially addressed several key areas. The conversation included questions about depression (I.1-2), anxiety (IV.6-8), and some aspects of psychosis (VII.12), but lacked thorough exploration of domains like mania (III.4-5), repetitive thoughts/behaviors (X.16-17), dissociation (XI.18), personality functioning (XII.19-20), and substance use (XIII.21-23). Some questions were not fully explored or followed up on, such as suicidal ideation (VI.11) which was abruptly cut off.",
+        "clinical_relevance": "Most questions generally aligned with DSM-5 criteria, but there were slight inaccuracies or vague phrasing in a few instances. For example, the therapist's question about 'sleeping less than usual' was not fully explored despite the patient's report of 'can't sleep' and 'tired all the time.' The questions about psychosis (e.g., 'voices tell me to...') were relevant but could have been more precisely phrased.",
+        "consistency": "The dialogue had noticeable logical inconsistencies and abrupt topic changes. For instance, the therapist quickly moved from discussing the patient's depression to asking about irritability without fully exploring the patient's emotional state. There were also instances where the patient's disclosures (e.g., 'the voices') were not adequately followed up on or explored in depth.",
+        "diagnostic_justification": "The conversation did not provide a clear diagnostic justification. The therapist did not explicitly state or justify any specific diagnosis based on the patient's responses. The lack of a coherent diagnostic conclusion or differential diagnosis consideration significantly impacted the score.",
+        "empathy": "The therapist generally displayed empathy and a professional tone, but there were moments where the interaction seemed somewhat robotic or impersonal. For example, the therapist did not acknowledge the patient's distress when discussing suicidal ideation, which was abruptly cut off. However, the therapist did show understanding and concern for the patient's feelings of hopelessness and anxiety."
+      },
+      "overall_comments": "The conversation demonstrated a good effort to cover various DSM-5 domains but was hindered by incomplete exploration of key areas, logical inconsistencies, and a lack of clear diagnostic justification. The therapist showed empathy and generally relevant questions but could improve by more systematically addressing all domains, providing clearer diagnostic conclusions, and maintaining a more natural conversational flow.",
+      "average_score": 3.0,
+      "diagnosis_accuracy": {
+        "matches_profile": false,
+        "confidence": 5,
+        "explanation": "The diagnosis provided does not mention schizophrenia or any equivalent clinical terms. Instead, it appears to be an error message related to a technical issue with a Groq API request.",
+        "classification": "other"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "schizophrenia",
+        "classified_as": "other",
+        "match": false,
+        "confidence": 5
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 2.191873788833618
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.38409318395928627,
+        "local_coherence": 0.4052790149196995,
+        "window_coherence": 0.4200387522481032
+      },
+      "readability": {
+        "flesch_kincaid_grade": 3.22,
+        "gunning_fog_index": 1.69,
+        "flesch_reading_ease": 79.24
+      },
+      "diversity": {
+        "distinct_1": 0.8571428571428571,
+        "distinct_2": 0.9896907216494846,
+        "distinct_3": 1.0
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "schizophrenia",
+      "predicted": "Error communicating with Groq: 400 Client Error: Bad Request for url: https://api.groq.com/openai/v1/chat/completions",
+      "matches": false,
+      "classification": "other",
+      "classification_confidence": 5
+    }
+  }
+}

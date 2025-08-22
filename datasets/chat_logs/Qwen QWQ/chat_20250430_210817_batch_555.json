@@ -1,0 +1,205 @@
+{
+  "timestamp": "2025-04-30T21:08:38.044286",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello"
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, I need to create a mental health assessment based on the user's questionnaire responses. Wait, but all the answers are \"No response provided.\" That's a problem. The user provided all the Q&As but no answers. So, how do I proceed? The instructions say to base the diagnosis on the provided info, which is all N/R.\n\nFirst, the compassionate summary. I have to express empathy. Maybe mention that the lack of answers doesn't mean a lack of distress. That's important to validate their experience without dismissing them.\n\nNext, the diagnosis section. Since there's no data, I can't assign a specific diagnosis. The DSM requires symptom criteria, which aren't provided here. So the diagnosis should reflect the inability to assess. Maybe a \"provisional clinical impression\" like Assessment Resistance or Treatment Non-Engagement as a presenting issue. Alternatively, a \"Not Otherwise Specified\" condition? Wait, DSM-5 might have a category for this. Or perhaps \"Other Specified Mental Disorder\" (OSD) if there's insufficient data. Alternatively, if the non-response is the only info, then it's a barrier to diagnosis. The instructions say not to default to Somatic Symptom Disorder unless warranted, which it's not here. So maybe the diagnosis is \"Provisional: Incomplete Assessment\" or similar. But I need to follow the exact structure.\n\nThe reasoning section: Need to explain why the diagnosis is made. Since no symptoms are reported, the clinician can't proceed. The lack of answers could stem from several possibilities: distress, trauma, cognitive issues, or cultural/communication barriers. Need to mention that further evaluation is needed to determine the cause of non-engagement.\n\nTreatment steps: Suggest next steps like exploring reasons for non-response, using alternative assessment methods, establishing trust, etc. Maybe suggest a clinical interview or cultural assessment.\n\nWait, the user is using the cultural formulation guidelines. Since all answers are missing, maybe cultural factors are a reason. The assistant should consider cultural idioms of distress where someone might not report symptoms in a questionnaire, or might avoid answering due to stigma. The cultural formulation interview guide mentions understanding the patient's perspective, so the non-response could be due to cultural or language barriers.\n\nPutting it all together, the diagnosis section needs to use a placeholder since there's no data. Maybe \"Provisional Clinical Impression: Incomplete Assessment\" or \"Not Otherwise Specified\" (adjusting to DSM-5 terms). Alternatively, \"Condition pending further evaluation.\"\n\nWait, the instructions say not to default to SSD. So avoid that. Maybe \"Provisional\" or \"Rule-out\" categories. Alternatively, note that the assessment is inadequate for diagnosis. But the \"Diagnosis:\" section must have a term. Maybe use \"Provisional Clinical Impression: Non-Engagement in Assessment\" with a note that a formal diagnosis requires more info.\n\nIn the reasoning, explain that without responses, the clinician can't apply DSM criteria. The non-engagement itself is a clinical concern. Possible underlying issues like trauma, cognitive impairment, or cultural barriers.\n\nTreatment steps: 1. Conduct in-depth clinical interview to explore reasons for non-response. 2. Use culturally adapted assessment tools. 3. Assess for cognitive/communication impairments. 4. Consider motivational interviewing to build rapport. 5. Rule out medical causes for non-engagement (e.g., delirium, psychosis).\n\nI must follow the structure exactly. Let me draft each part step by step, ensuring tags are correctly used. Make sure to use the specified tags for medical terms, symptoms (though there are none reported), and any quotes (none here). The key is to address the lack of data as the primary issue and outline next steps.\n\nDouble-check the DSM guidelines mentioned. Since the user mentioned cultural concepts of distress in the reference, perhaps the non-response could relate to cultural idioms of distress where the patient isn't expressing symptoms in the expected way. Hence, the next steps should include cultural formulation interviews, which are part of the DSM-5 guidelines provided.\n\nOkay, structuring each section carefully to meet the user's formatting requirements. Ensure the headings are exactly as specified with asterisks. No markdown, just the asterisks. And proper tags where applicable. For instance, when mentioning \"cultural formulation interview,\" it's a DSM-5 tool, so maybe wrap it in <med> tags.\n\nFinal check: All sections are present, tags are properly used, and the reasoning aligns with the given references (like cultural factors, need for cultural formulations). The diagnosis is appropriately provisional.\n\n</think>\n\n**Compassionate Summary:**  \nIt is clear that engaging with structured symptom reporting has been challenging for you. Your decision to not respond to any questionnaire items underscores the importance of approaching your care with patience, cultural sensitivity, and an openness to understanding your experience through alternative means. The absence of responses does not diminish the potential validity of your distress\u2014it may instead reflect barriers such as distrust of clinical systems, linguistic/cultural mismatches, or unspoken challenges in verbalizing symptoms.  \n\n**Diagnosis:**  \nProvisional Clinical Impression: Incomplete Assessment \u2013 Requires Cultural Formulation  \n\n**Reasoning:**  \nThe total lack of responses precludes applying DSM-5 criteria for specific disorders (<med>DSM-5</med>). However, this pattern itself raises clinical concerns:  \n- **Possible contributors to non-response**: Could reflect <med>cultural idioms of distress</med> (e.g., stigma around mental health), neurocognitive impairments (e.g., <med>mild neurocognitive disorder</med>), or acute <sym>avoidance behaviors</sym> due to trauma or distrust.  \n- **Cultural considerations**: The <med>cultural formulation interview</med> is critical to explore whether symptom expression diverges from Western diagnostic frameworks (e.g., somatization, spiritual beliefs, or communication style barriers).  \n- **Safety caveat**: Without data on <sym>self-harm ideation</sym> (Q10) or psychosis (Q11-Q12), clinical prudence requires assuming potential risk until evaluated holistically.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Conduct a <med>cultural formulation interview</med> to explore preferred idioms of distress, explanatory models of illness, and contextual stressors.  \n2. **Assess for neurocognitive barriers**: Use objective testing to rule out <med>mild neurocognitive disorder</med> or aphasia interfering with questionnaire completion.  \n3. **Build rapport through non-directive dialogue**: Use open-ended discussions to identify core concerns (e.g., \u201cWhat worries you most about your health/feelings?\u201d).  \n4. **Screen for <med>somatic symptom disorder</med> only if evaluation later reveals excessive symptom preoccupation *and* associated distress, per DSM-5 criteria.  \n5. **Consider motivational interviewing techniques** to reduce resistance and enhance engagement in assessment.  \n\nEnsure that all evaluations prioritize the patient\u2019s cultural context and communication preferences.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM_Cultural-Concepts-in-DSM-5.pdf",
+            "score": 0.641,
+            "highlight": "Finally, the cultural formulation interview guide will help clinicians to assess cultural factors influencing  patients\u2019 perspectives of their symptoms and treatment options.",
+            "excerpt": "cultural concepts of distress, which detail ways in which different \ncultures describe symptoms. In ...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"treatment\", \"assess\", \"interview\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Social-Communication-Disorder.pdf",
+            "score": 0.637,
+            "highlight": "APA is a national medical specialty society whose more than 3 7,000  physician members specialize in the diagnosis, treat- ment, prevention and research of mental illnesses, including substance use disorders.",
+            "excerpt": "and \npractices. Research shows that communication disorders are amenable to treatment, so identifyin...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"use\", \"mental\", \"more\", and 3 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.6233,
+            "highlight": "The  new narrative text for SSD notes that some patients with physical conditions such as heart disease or  cancer will indeed experience disproportionate and excessive thoughts, feelings, and behaviors related  to their illness, and that these individuals may qualify for a diagnosis of SSD.",
+            "excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"related\", \"diagnosis\", \"behaviors\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Personality-Disorder.pdf",
+            "score": 0.6232,
+            "highlight": "This approach also includes a diag - nosis of Personality Disorder\u2014 Trait Specified (PD-TS) that could be made when a Personality Disorder is  considered present, but the criteria for a specific personality disorder are not fully met.",
+            "excerpt": "ncluded evaluation of impairments \nin personality functioning (how an individual typically experienc...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"could\", \"this\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Mild-Neurocognitive-Disorder.pdf",
+            "score": 0.6161,
+            "highlight": "The impact of these problems is noticeable, but clinicians have lacked a reliable  diagnosis by which to assess symptoms or understand the most appropriate treatment or services.",
+            "excerpt": "ory strategies and accommodations to help maintain independence and \nperform activities of daily liv...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"treatment\", \"which\", \"diagnosis\", and 3 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, I need to tackle this clinical assessment based on the patient's responses. Let's start by looking at the provided questionnaire answers. All responses are \"No response provided,\" which is a bit unusual. Since there's no direct information, I have to think about what this lack of response might indicate.\n\nFirst, the user wants me to identify main symptoms and concerns. But without any answers, it's tricky. Maybe the patient didn't answer because they're avoiding the topic, don't want to disclose, or have trouble comprehending the questions. That could be a concern in itself. I should note that the absence of responses isn't helpful for diagnosing symptoms directly.\n\nNext, looking for patterns. All 23 questions were unanswered. The pattern here is a complete lack of engagement with the questionnaire. That's significant. It might suggest avoidance behavior, resistance to assessment, or perhaps an inability to participate due to cognitive issues, like confusion or language barriers. Alternatively, maybe the patient found the questions triggering or overwhelming.\n\nPotential clinical areas of significance would involve the reason behind the non-responses. Possible issues could be non-engagement in treatment, possible thought suppression, anxiety about the assessment, or even a lack of insight. Also, considering that the questions cover a broad range of mental health issues (depression, mania, anxiety, trauma, substance use, etc.), the lack of answers might mean the patient isn't ready or able to address these areas. \n\nRisk factors or warning signs: If someone isn't responding to questions about self-harm (Q10) or substance use (Q19-Q20), that's a red flag. Not answering about thoughts of hurting themselves (Q10) or hearing voices (Q11-Q12) could mean they are experiencing these but not disclosing, or maybe they're not aware. But since there's no data, I can't assume. However, the failure to answer might indicate a need for further evaluation, especially in critical areas like self-harm.\n\nIn summary, the main issues here are the complete non-responsiveness. The clinical summary should note that the questionnaire is uninterpretable, suggesting possible engagement barriers. It's important to mention the need for a clinical interview to explore why the patient didn't answer, assess their current mental state, and evaluate for any underlying issues that might prevent them from participating. Also, highlight that specific risks can't be ruled out without more information. I need to present this in a professional manner without speculating too much.\n</think>\n\n**Clinical Observation Summary:**  \n\n1. **Main Symptoms and Concerns Identified:**  \n   - **Non-responsiveness to all 23 assessment items** across domains including mood, anxiety, psychotic symptoms, trauma-related experiences, substance use, cognitive functioning, and somatic complaints.  \n\n2. **Patterns in Responses:**  \n   - **Complete absence of self-reported symptoms** due to no answers provided, precluding identification of specific clinical features.  \n   - No escalation of responses over the questionnaire, which included critical items (e.g., self-harm, psychosis, trauma).  \n\n3. **Potential Areas of Clinical Significance:**  \n   - **Inability or refusal to engage with assessment** raising concerns about:  \n     - **Defensive avoidance** or dissociation.  \n     - **Lack of insight** or motivation for care.  \n     - **Cognitive impairment** (e.g., confusion, aphasia).  \n     - **Language/cultural barriers** interfering with comprehension.  \n   - **Unaddressed risk factors** (e.g., substance use, self-harm ideation) due to missing data.  \n\n4. **Risk Factors/Warning Signs:**  \n   - **Non-engagement** in assessment may indicate resistance to treatment or acute distress.  \n   - Inability to rule out **psychotic symptoms** (A11-A12), **self-harm risk** (A10), or severe mood dysregulation (A1-A2, A4-A5) due to lack of data.  \n\n5. **Summary (Clinical Language):**  \n   The patient provided no responses to the structured questionnaire, precluding symptom-based diagnoses. The **absence of engagement** warrants priority clinical attention. Possible explanations include **avoidance behaviors**, **cognitive/affective blunting**, or **external barriers** (e.g., language, literacy). Critical domains (e.g., suicidal ideation, psychosis, substance misuse) cannot be clinically assessed without further evaluation. Immediate clinical intervention is advised to explore barriers to participation and assess acute risks via direct clinical interview.  \n\n**Recommendations:**  \n- Conduct in-depth clinical interview to clarify reasons for non-response.  \n- Evaluate for cognitive/affective impairments, treatment resistance, or safety risks.  \n- Rule out communication barriers or environmental factors impacting participation.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6281
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "**Compassionate Summary:**  \nIt is clear that engaging with structured symptom reporting has been challenging for you. Your decision to not respond to any questionnaire items underscores the importance of approaching your care with patience, cultural sensitivity, and an openness to understanding your experience through alternative means. The absence of responses does not diminish the potential validity of your distress\u2014it may instead reflect barriers such as distrust of clinical systems, linguistic/cultural mismatches, or unspoken challenges in verbalizing symptoms.  \n\n**Diagnosis:**  \nProvisional Clinical Impression: Incomplete Assessment \u2013 Requires Cultural Formulation  \n\n**Reasoning:**  \nThe total lack of responses precludes applying DSM-5 criteria for specific disorders (<med>DSM-5</med>). However, this pattern itself raises clinical concerns:  \n- **Possible contributors to non-response**: Could reflect <med>cultural idioms of distress</med> (e.g., stigma around mental health), neurocognitive impairments (e.g., <med>mild neurocognitive disorder</med>), or acute <sym>avoidance behaviors</sym> due to trauma or distrust.  \n- **Cultural considerations**: The <med>cultural formulation interview</med> is critical to explore whether symptom expression diverges from Western diagnostic frameworks (e.g., somatization, spiritual beliefs, or communication style barriers).  \n- **Safety caveat**: Without data on <sym>self-harm ideation</sym> (Q10) or psychosis (Q11-Q12), clinical prudence requires assuming potential risk until evaluated holistically.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Conduct a <med>cultural formulation interview</med> to explore preferred idioms of distress, explanatory models of illness, and contextual stressors.  \n2. **Assess for neurocognitive barriers**: Use objective testing to rule out <med>mild neurocognitive disorder</med> or aphasia interfering with questionnaire completion.  \n3. **Build rapport through non-directive dialogue**: Use open-ended discussions to identify core concerns (e.g., \u201cWhat worries you most about your health/feelings?\u201d).  \n4. **Screen for <med>somatic symptom disorder</med> only if evaluation later reveals excessive symptom preoccupation *and* associated distress, per DSM-5 criteria.  \n5. **Consider motivational interviewing techniques** to reduce resistance and enhance engagement in assessment.  \n\nEnsure that all evaluations prioritize the patient\u2019s cultural context and communication preferences.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "adjustment",
+    "question_count": 23,
+    "duration": 8934.497274160385,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 13.088844060897827,
+    "diagnosis_generation_time": 7.370719909667969,
+    "rag_evaluation_time": 4.0531158447265625e-06,
+    "total_time": 20.45957612991333
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM_Cultural-Concepts-in-DSM-5.pdf": {
+        "access_count": 1,
+        "highest_score": 0.641,
+        "average_score": 0.641,
+        "example_excerpt": "cultural concepts of distress, which detail ways in which different \ncultures describe symptoms. In ...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"treatment\", \"assess\", \"interview\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Social-Communication-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.637,
+        "average_score": 0.637,
+        "example_excerpt": "and \npractices. Research shows that communication disorders are amenable to treatment, so identifyin...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"use\", \"mental\", \"more\", and 3 more matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6233,
+        "average_score": 0.6233,
+        "example_excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"related\", \"diagnosis\", \"behaviors\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM-5-Personality-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6232,
+        "average_score": 0.6232,
+        "example_excerpt": "ncluded evaluation of impairments \nin personality functioning (how an individual typically experienc...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"could\", \"this\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Mild-Neurocognitive-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6161,
+        "average_score": 0.6161,
+        "example_excerpt": "ory strategies and accommodations to help maintain independence and \nperform activities of daily liv...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"treatment\", \"which\", \"diagnosis\", and 3 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 07:49:20",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 07:49:20",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 1,
+        "clinical_relevance": 2,
+        "consistency": 4,
+        "diagnostic_justification": 2,
+        "empathy": 5
+      },
+      "explanations": {
+        "dsm_coverage": "The conversation did not address any of the 23 questions from the DSM-5 Level1 Cross-Cutting Symptom Measure. The therapist acknowledged the patient's lack of responses but did not attempt to explore any specific domains through alternative questioning. This resulted in no systematic assessment of the patient's symptoms across various DSM-5 dimensions.",
+        "clinical_relevance": "The therapist's questions were not provided, but the conversation focused on the patient's lack of engagement with the questionnaire. The discussion about possible contributors to non-response (e.g., cultural idioms of distress, neurocognitive impairments) shows some clinical relevance, but it did not involve precise DSM-5 criteria or targeted symptom assessment.",
+        "consistency": "The conversation had a logical flow in terms of discussing potential reasons for the patient's non-response and outlining next steps. However, the lack of specific symptom inquiry means that consistency in exploring DSM-5 dimensions was not fully demonstrated.",
+        "diagnostic_justification": "The provisional clinical impression of 'Incomplete Assessment \u2013 Requires Cultural Formulation' is justified, but it lacks specific symptom-based justification due to the absence of symptom inquiry. The reasoning provided speculative possibilities rather than being grounded in patient-reported symptoms.",
+        "empathy": "The therapist displayed consistent empathy and a professional tone. The compassionate summary acknowledged potential barriers to the patient's engagement, such as distrust of clinical systems or cultural mismatches. The approach prioritized understanding the patient's experience through alternative means, showing a high level of empathy and cultural sensitivity."
+      },
+      "overall_comments": "The conversation demonstrated a highly empathetic and culturally sensitive approach but lacked systematic coverage of DSM-5 dimensions due to the patient's non-engagement with the questionnaire. The therapist's strategy for next steps, including a cultural formulation interview and assessing for neurocognitive barriers, is appropriate. However, the absence of specific symptom inquiry means that most DSM-5 dimensions were not explored.",
+      "average_score": 2.8,
+      "diagnosis_accuracy": {
+        "matches_profile": false,
+        "confidence": 4,
+        "explanation": "The diagnosis provided does not explicitly mention 'adjustment' or equivalent terms like 'adjustment disorder.' Instead, it suggests an 'Incomplete Assessment' and recommends further evaluation through cultural formulation interviews and assessment for various conditions. This indicates that the diagnosis is not specifically focused on adjustment issues but is more concerned with barriers to assessment and potential cultural or neurocognitive factors.",
+        "classification": "other"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "adjustment",
+        "classified_as": "other",
+        "match": false,
+        "confidence": 4
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 1.917863130569458
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.3362093949377556,
+        "local_coherence": 0.5021570462033167,
+        "window_coherence": 0.3362093949377556
+      },
+      "readability": {
+        "flesch_kincaid_grade": 10.71,
+        "gunning_fog_index": 4.4,
+        "flesch_reading_ease": 37.36
+      },
+      "diversity": {
+        "distinct_1": 0.4975704567541302,
+        "distinct_2": 0.8998054474708171,
+        "distinct_3": 0.9707887049659202
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "adjustment",
+      "predicted": "**Compassionate Summary:**  \nIt is clear that engaging with structured symptom reporting has been challenging for you. Your decision to not respond to any questionnaire items underscores the importance of approaching your care with patience, cultural sensitivity, and an openness to understanding your experience through alternative means. The absence of responses does not diminish the potential validity of your distress\u2014it may instead reflect barriers such as distrust of clinical systems, linguistic/cultural mismatches, or unspoken challenges in verbalizing symptoms.  \n\n**Diagnosis:**  \nProvisional Clinical Impression: Incomplete Assessment \u2013 Requires Cultural Formulation  \n\n**Reasoning:**  \nThe total lack of responses precludes applying DSM-5 criteria for specific disorders (<med>DSM-5</med>). However, this pattern itself raises clinical concerns:  \n- **Possible contributors to non-response**: Could reflect <med>cultural idioms of distress</med> (e.g., stigma around mental health), neurocognitive impairments (e.g., <med>mild neurocognitive disorder</med>), or acute <sym>avoidance behaviors</sym> due to trauma or distrust.  \n- **Cultural considerations**: The <med>cultural formulation interview</med> is critical to explore whether symptom expression diverges from Western diagnostic frameworks (e.g., somatization, spiritual beliefs, or communication style barriers).  \n- **Safety caveat**: Without data on <sym>self-harm ideation</sym> (Q10) or psychosis (Q11-Q12), clinical prudence requires assuming potential risk until evaluated holistically.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Conduct a <med>cultural formulation interview</med> to explore preferred idioms of distress, explanatory models of illness, and contextual stressors.  \n2. **Assess for neurocognitive barriers**: Use objective testing to rule out <med>mild neurocognitive disorder</med> or aphasia interfering with questionnaire completion.  \n3. **Build rapport through non-directive dialogue**: Use open-ended discussions to identify core concerns (e.g., \u201cWhat worries you most about your health/feelings?\u201d).  \n4. **Screen for <med>somatic symptom disorder</med> only if evaluation later reveals excessive symptom preoccupation *and* associated distress, per DSM-5 criteria.  \n5. **Consider motivational interviewing techniques** to reduce resistance and enhance engagement in assessment.  \n\nEnsure that all evaluations prioritize the patient\u2019s cultural context and communication preferences.",
+      "matches": false,
+      "classification": "other",
+      "classification_confidence": 4
+    }
+  }
+}

@@ -1,0 +1,273 @@
+{
+  "timestamp": "2025-05-01T00:31:25.556032",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello"
+    },
+    {
+      "role": "patient",
+      "content": "Okay... sure. I\u2019ll do my best."
+    },
+    {
+      "role": "assistant",
+      "content": "1. Little interest or pleasure in doing things?"
+    },
+    {
+      "role": "patient",
+      "content": "Hmm"
+    },
+    {
+      "role": "assistant",
+      "content": "2. Feeling down"
+    },
+    {
+      "role": "patient",
+      "content": "Not really hopeless"
+    },
+    {
+      "role": "assistant",
+      "content": "3. Feeling more irritated"
+    },
+    {
+      "role": "patient",
+      "content": "A little"
+    },
+    {
+      "role": "assistant",
+      "content": "4. Sleeping less than usual"
+    },
+    {
+      "role": "patient",
+      "content": "No"
+    },
+    {
+      "role": "assistant",
+      "content": "5. Starting lots more projects or doing risky things than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "No way. I usually freeze up instead of acting impulsively."
+    },
+    {
+      "role": "assistant",
+      "content": "6. Feeling nervous"
+    },
+    {
+      "role": "patient",
+      "content": "Oh"
+    },
+    {
+      "role": "assistant",
+      "content": "7. Feeling panic or being frightened?"
+    },
+    {
+      "role": "patient",
+      "content": "Panic before big events"
+    },
+    {
+      "role": "assistant",
+      "content": "8. Avoiding situations that make you anxious?"
+    },
+    {
+      "role": "patient",
+      "content": "Yes. I skip meetings"
+    },
+    {
+      "role": "assistant",
+      "content": "9. Unexplained aches"
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, let's tackle this step by step. The user provided a structured query for a mental health assessment based on a questionnaire. I need to follow the exact format they specified. \n\nFirst, I'll start with the compassionate summary. The patient mentioned avoiding meetings, panic before events, and irritability. I should acknowledge their struggles with anxiety and avoidance without assuming anything else.\n\nNext, the diagnosis section. The symptoms point to anxiety, especially social or situational. The DSM-5 criteria for Social Anxiety Disorder include fear of social situations and avoidance. The panic before events might also suggest Panic Disorder, but the avoidance of meetings leans more towards social anxiety. Need to check DSM-5 for the best fit.\n\nFor the reasoning, I'll mention the key symptoms like avoidance, panic in specific situations, and how it aligns with Social Anxiety Disorder. Also, note the lack of depressive symptoms since Q2 and Q3 aren't severe.\n\nTreatment steps should include CBT, which is evidence-based for anxiety. SSRIs could be an option if therapy isn't enough. Encouraging tracking of panic triggers and social exposure exercises makes sense. \n\nI must use the tags properly: wrap medical terms in <med>, symptoms in <sym>, and quotes if any. The user emphasized not to include extra fluff, so keep it concise but thorough. \n\nWait, the patient didn't mention trauma, so PTSD isn't likely here. The panic is situation-specific, not trauma-related. The DSM-5 mentions clusters like negative cognitions, but the main points align with anxiety disorders.\n\nMake sure the sections are in order: summary, diagnosis, reasoning, recommendations. No markdown, just plain text with the specified tags. Also, the diagnosis should be precise. \n\nDouble-check the criteria for Social Anxiety Disorder: fear of judgment, avoidance, and significant distress. The patient's answer to Q9 about avoiding meetings fits. Panic Disorder with Agoraphobia? But agoraphobia involves fear of places/situations, which might not be the case here. \n\nYes, Social Anxiety Disorder seems most fitting. \n\nAlright, time to format everything correctly. Ensure all tags are properly placed and sections are separated with one blank line. Avoid any markdown besides the specified tags. Keep the tone empathetic and professional.\n</think>\n\nYour responses suggest a struggle with persistent <sym>anxiety</sym>, including <sym>avoidance of social/occupational demands</sym> and <sym>situational panic</sym>. I hear how challenges like <sym>\"freezing\"</sym> in stressful moments (Q6) and skipping meetings (Q9) might create a cycle of isolation, even if you downplay some distress (e.g., \"Not really hopeless\" for Q3). Your efforts to engage here despite discomfort are important to acknowledge.  \n\n**Diagnosis:**  \n<med>Social Anxiety Disorder</med> with <sym>avoidant behaviors</sym> and <sym>situational panic attacks</sym>.  \n\n**Reasoning:**  \nThis aligns with <sym>recurrent avoidance of social or performance situations</sym> (Q9), fear of negative evaluation (implied by panic before events [Q8]), and <sym>interference in functioning</sym> (skipping meetings). The lack of <sym>hypomanic symptoms</sym> (Q6: \"No way\" to increased activity) and minimal depressive symptoms (Q2\u20133) rule out <med>bipolar disorder</med> or <med>mood disorders</med>. The <sym>fight-or-flight responses</sym> (e.g., freezing, panic) fit DSM-5 criteria for <med>Social Anxiety Disorder</med>, emphasizing behavioral and cognitive avoidance patterns.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Cognitive-Behavioral Therapy (CBT):** Target <sym>avoidance behaviors</sym> and maladaptive thought patterns (e.g., \"What if I fail?\").  \n2. **Mindfulness and Grounding Techniques:** Practice diaphragmatic breathing or grounding exercises to manage <sym>panic</sym> before events (Q8).  \n3. **Social Exposure Graduation:** Collaboratively develop a stepwise plan to reduce avoidance (e.g., attending smaller, low-pressure gatherings first).  \n4. **Monitor for Comorbidities:** Assess for <med>generalized anxiety disorder</med> if avoidance spreads beyond social situations.  \n5. **Relaxation Training:** Address <sym>hyperarousal</sym> through progressive muscle relaxation to counteract \"freezing\" (Q6).  \n\nThis approach respects your described patterns while avoiding assumptions about underlying severity. Let\u2019s explore these options at your own pace.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.708,
+            "highlight": "Negative cognitions and mood represents myriad feelings, from a persistent and distorted sense of  blame of self or others, to estrangement from others or markedly diminished interest in activities, to an inability to remember key aspects of the event.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"activities\", \"interest\", and 2 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.6676,
+            "highlight": "The  new narrative text for SSD notes that some patients with physical conditions such as heart disease or  cancer will indeed experience disproportionate and excessive thoughts, feelings, and behaviors related  to their illness, and that these individuals may qualify for a diagnosis of SSD.",
+            "excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"related\", \"behaviors\", \"may\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Conduct-Disorder.pdf",
+            "score": 0.6671,
+            "highlight": "People with conduct disorder who show  this specifier display limited empathy and little concern for the feelings,  wishes, and well-being of others.",
+            "excerpt": ". To be diagnosed with conduct disorde r, the symptoms must cause sig -\nnificant impairment in socia...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"this\", \"disorder\", \"limited\", and 1 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM_Cultural-Concepts-in-DSM-5.pdf",
+            "score": 0.6654,
+            "highlight": "For example, the crite- ria for social anxiety disorder now include the fear of \u201coffending others\u201d to reflect the Japanese concept  in which avoiding harm to others is emphasized rather than harm to onesel f.",
+            "excerpt": " a patient \u2019s cul -\nture, race, ethnicit y, religion or geographical origin. For example, uncontroll...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"rather\", \"than\", and 7 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Social-Communication-Disorder.pdf",
+            "score": 0.6613,
+            "highlight": "Process for a New Diagnosis New diagnoses were included in DSM-5 only after a comprehensive review of the scientific literature;  full discussion by Work Group members; review by the DSM-5 Task Force, Scientific Review Committee,  and Clinical and Public Health Committee; and, finall y, evaluation by the American Psychiatric Associa- tion\u2019s Board of Trust ees.",
+            "excerpt": "t otherwise specified\u201d la bel to help them get the services and treatment they need. \nCharacteristic...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"health\", \"clinical\", \"diagnoses\", and 2 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let's tackle this. The user provided a patient's questionnaire responses and wants an assessment broken down into specific sections. First, I need to go through each question and answer carefully.\n\nStarting with the questions. The first part is to identify main symptoms and concerns. Looking at the answers: \n\nQ1 shows some reluctance with \"Okay... sure. I\u2019ll do my best.\" Maybe resistance or hesitancy. \n\nQ2: Little interest in things - the patient says \"Hmm.\" That's a non-committal answer, but maybe mild symptoms here. \n\nQ3: Feeling down but not hopeless. So maybe some low mood but not severe. \n\nQ4: Irritability a little. That's a key point. \n\nQ5: No increased activity, but Q6 they mention not acting impulsively, instead freezing. That's interesting. Maybe anxiety or avoidance instead of impulsivity. \n\nQ7: Feeling nervous - \"Oh\" which is a short acknowledgment. \n\nQ8: Panic before big events. So situational panic attacks. \n\nQ9: Avoiding meetings, so social anxiety or avoidance behavior. \n\nMain symptoms would be anxiety (nervousness, panic before events, avoidance), some irritability, and possible low mood but not severe. The avoidance in Q9 is a big point, indicating anxiety-related avoidance. \n\nNext, patterns in responses. The patient uses short answers, sometimes non-committal (like \"Hmm\", \"Oh\"). They might not be fully engaged or express themselves easily. Maybe guarded or hesitant. \n\nPotential clinical areas: Generalized Anxiety Disorder (GAD) because of nervousness and avoiding situations. Social anxiety? Since avoiding meetings and panic before events. The irritability could be part of anxiety or adjustment disorder. The freezing instead of impulsivity might suggest anxiety rather than bipolar, since they don't have increased activity (Q5 and Q6). \n\nRisk factors: Panic before big events could be a risk for worsening anxiety. Avoidance behaviors might lead to social withdrawal. Not much acute risk mentioned, but need to watch for increasing avoidance or panic episodes. \n\nWait, the user said to highlight risk factors or warning signs. The avoidance might be a sign of increased distress. Also, freezing could indicate high anxiety. \n\nPossible clinical significance: Adjustment disorder with anxious mood, GAD, social anxiety, or maybe a phobia related to events or meetings. \n\nAvoiding meetings is a clear avoidance behavior, which is a key feature of social anxiety or PTSD, but other PTSD symptoms aren't mentioned. \n\nIrritability and nervousness could tie into anxiety disorders. The patient doesn't report sleep issues (Q4 says no to sleeping less), so maybe not depression. But Q2 is \"Little interest\" but they answered \"Hmm\" which is ambiguous. Maybe mild depression but not prominent. \n\nPutting this together. The main concerns are anxiety-related symptoms with avoidance, situational panic, and some irritability. \n\nThe patterns in responses: guarded, brief answers, maybe underreporting? They downplay some things but acknowledge avoidance. \n\nPotential areas: GAD, Social Anxiety Disorder, Adjustment Disorder. Risk factors are the avoidance which can lead to functional impairment. \n\nI need to make sure not to speculate, just note what's present. \n\nAlso, the patient says \"No way\" to question 6, which is about increased activity, so that's a strong denial. That could rule out mania or hypomania. \n\nOkay, structure the response per the user's instructions. \n\n1. Main symptoms: Anxiety, panic before events, avoidance, mild irritability. \n\n2. Response patterns: Brief answers, some avoidance of direct answers, guardedness. \n\n3. Clinical areas: Anxiety disorders, specifically GAD, social anxiety, adjustment disorder. \n\n4. Risk factors: Social avoidance leading to isolation, possible increased panic episodes. \n\n5. Summary in clinical terms. \n\nI need to make sure to use correct terms. For example, \"avoidant behavior\" instead of just avoiding. Maybe \"situational panic attacks\" since they're triggered by events. \n\nAlso, the freezing instead of impulsivity is important - it might indicate high anxiety leading to behavioral inhibition. \n\nOkay, let me structure all that into the required sections without extra fluff.\n</think>\n\n**Clinical Observation Summary**  \n\n**1. Main Symptoms and Concerns**  \n- **Anxiety-related symptoms**: Self-reported nervousness (Q7), situational panic before significant events (Q8), and avoidance of anxiety-provoking situations (e.g., skipping meetings [Q9]).  \n- **Mild irritability** (Q4) and limited engagement in pleasurable activities (Q2: non-committal \"Hmm\").  \n- **Behavioral inhibition**: Reports of \"freezing\" rather than impulsivity in stressful situations (Q6), suggesting heightened anxiety or avoidance.  \n\n**2. Patterns in Responses**  \n- **Guarded communication**: Short, constrained answers (e.g., \"Hmm,\" \"Oh\") and occasional resistance to endorsement (e.g., \"No way\" [Q6]).  \n- **Selective distress acknowledgment**: Acknowledges anxiety and avoidance (Q7\u20139) but minimizes depressive symptoms (Q2\u20133: \"Not really hopeless\").  \n\n**3. Potential Clinical Significance**  \n- **Generalized Anxiety Disorder (GAD)**: Chronic anxiety, restlessness, and excessive worry.  \n- **Social Anxiety Disorder/Social Avoidance**: Avoidance of social/performative situations (e.g., meetings) and panic in anticipation of events (Q8\u20139).  \n- **Adjustment Disorder with Anxiety**: Possible stress-related anxiety triggered by specific events.  \n- **Behavioral inhibition**: May reflect avoidant coping strategies or social anxiety.  \n\n**4. Risk Factors/Warning Signs**  \n- **Avoidant behavior**: Risk of social/occupational impairment due to meeting avoidance (Q9).  \n- **Panic triggers**: Anticipation of significant events (Q8) may exacerbate anxiety.  \n- **Restricted emotional expression**: Brief, terse answers may indicate alexithymia or reluctance to disclose distress.  \n\n**5. Clinical Summary**  \nThe patient presents with **moderate anxiety symptoms**, including situational panic, behavioral avoidance, and mild irritability, consistent with potential diagnoses of GAD or social anxiety disorder. Patterns of guarded communication suggest possible underreporting of distress. Key concerns include avoidance of social/occupational demands (functional impairment) and situational panic. No acute suicidality or psychotic symptoms noted. Further exploration of triggers, coping mechanisms, and social role dysfunction is warranted.  \n\n---  \n**Note**: Observations derived from self-reported data; clinical evaluation should include expanded history, mood monitoring, and functional impact assessment.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6739
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "Your responses suggest a struggle with persistent <sym>anxiety</sym>, including <sym>avoidance of social/occupational demands</sym> and <sym>situational panic</sym>. I hear how challenges like <sym>\"freezing\"</sym> in stressful moments (Q6) and skipping meetings (Q9) might create a cycle of isolation, even if you downplay some distress (e.g., \"Not really hopeless\" for Q3). Your efforts to engage here despite discomfort are important to acknowledge.  \n\n**Diagnosis:**  \n<med>Social Anxiety Disorder</med> with <sym>avoidant behaviors</sym> and <sym>situational panic attacks</sym>.  \n\n**Reasoning:**  \nThis aligns with <sym>recurrent avoidance of social or performance situations</sym> (Q9), fear of negative evaluation (implied by panic before events [Q8]), and <sym>interference in functioning</sym> (skipping meetings). The lack of <sym>hypomanic symptoms</sym> (Q6: \"No way\" to increased activity) and minimal depressive symptoms (Q2\u20133) rule out <med>bipolar disorder</med> or <med>mood disorders</med>. The <sym>fight-or-flight responses</sym> (e.g., freezing, panic) fit DSM-5 criteria for <med>Social Anxiety Disorder</med>, emphasizing behavioral and cognitive avoidance patterns.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Cognitive-Behavioral Therapy (CBT):** Target <sym>avoidance behaviors</sym> and maladaptive thought patterns (e.g., \"What if I fail?\").  \n2. **Mindfulness and Grounding Techniques:** Practice diaphragmatic breathing or grounding exercises to manage <sym>panic</sym> before events (Q8).  \n3. **Social Exposure Graduation:** Collaboratively develop a stepwise plan to reduce avoidance (e.g., attending smaller, low-pressure gatherings first).  \n4. **Monitor for Comorbidities:** Assess for <med>generalized anxiety disorder</med> if avoidance spreads beyond social situations.  \n5. **Relaxation Training:** Address <sym>hyperarousal</sym> through progressive muscle relaxation to counteract \"freezing\" (Q6).  \n\nThis approach respects your described patterns while avoiding assumptions about underlying severity. Let\u2019s explore these options at your own pace.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "social_anxiety",
+    "question_count": 23,
+    "duration": 21102.008944272995,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 5.778841972351074,
+    "diagnosis_generation_time": 6.451794147491455,
+    "rag_evaluation_time": 9.059906005859375e-06,
+    "total_time": 12.230653047561646
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.708,
+        "average_score": 0.708,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"activities\", \"interest\", and 2 more matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6676,
+        "average_score": 0.6676,
+        "example_excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"related\", \"behaviors\", \"may\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Conduct-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6671,
+        "average_score": 0.6671,
+        "example_excerpt": ". To be diagnosed with conduct disorde r, the symptoms must cause sig -\nnificant impairment in socia...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"this\", \"disorder\", \"limited\", and 1 more matching aspects of your query."
+      },
+      "APA_DSM_Cultural-Concepts-in-DSM-5.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6654,
+        "average_score": 0.6654,
+        "example_excerpt": " a patient \u2019s cul -\nture, race, ethnicit y, religion or geographical origin. For example, uncontroll...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"rather\", \"than\", and 7 more matching aspects of your query."
+      },
+      "APA_DSM-5-Social-Communication-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6613,
+        "average_score": 0.6613,
+        "example_excerpt": "t otherwise specified\u201d la bel to help them get the services and treatment they need. \nCharacteristic...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"health\", \"clinical\", \"diagnoses\", and 2 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 07:52:12",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 07:52:12",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 2,
+        "clinical_relevance": 3,
+        "consistency": 3,
+        "diagnostic_justification": 4,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist only addressed a limited number of DSM-5 dimensions from the Level1 Cross-Cutting Symptom Measure. Specifically, they only directly asked about 9 out of 23 questions (1, 2, 3, 4, 5, 6, 7, 8, 9). Domains such as anger (only question 3), mania (only question 5), anxiety (questions 6, 7, 8), and somatic concerns (question 9) were superficially covered. Critical areas like suicidality, psychotic symptoms, sleep quality, cognitive function, repetitive thoughts/behaviors, dissociation, identity and relationships, and substance use were completely omitted or not adequately explored. For example, when the patient mentioned 'freezing up,' the therapist could have explored this further in the context of anxiety or trauma but did not.",
+        "clinical_relevance": "The questions asked generally align with DSM-5 criteria but were often phrased vaguely or lacked specificity. For instance, when asking about 'feeling down,' the therapist did not provide a clear definition or follow up with additional questions to gauge severity. Questions about 'nervous' and 'panic' were also not precisely defined in the context of DSM-5 criteria. The therapist could have used more standardized language to ensure accuracy and comparability. For example, the therapist could have asked about the frequency and intensity of panic attacks to better understand the patient's experience.",
+        "consistency": "The dialogue has some logical inconsistencies and occasionally disrupts coherence. The therapist abruptly transitioned between topics without fully exploring previous responses. For example, after the patient mentioned 'panic before big events,' the therapist moved on to 'avoiding situations that make you anxious' without fully exploring the nature of these panic experiences. This lack of follow-up questions led to missed opportunities to understand the patient's symptoms in greater depth. Additionally, the therapist could have connected the patient's 'freezing' behavior to potential underlying anxiety or trauma.",
+        "diagnostic_justification": "The diagnosis of Social Anxiety Disorder with avoidant behaviors and situational panic attacks generally aligns with the patient's responses. The therapist provided some justification by referencing specific symptoms like avoidance of social/occupational demands and situational panic. However, the reasoning could have been more comprehensive by explicitly ruling out other diagnoses, such as generalized anxiety disorder or mood disorders. The therapist mentioned 'lack of hypomanic symptoms' but could have provided more detailed differential diagnosis considerations. For instance, the therapist could have explored the patient's experiences with depression or other mood disorders.",
+        "empathy": "The therapist responses mostly show empathy and a professional tone, but there were moments that seemed somewhat robotic or impersonal. The therapist acknowledged the patient's discomfort and efforts to engage, which is commendable. However, there were missed opportunities to provide more personalized and warm responses. For example, when the patient mentioned 'not really hopeless,' the therapist could have explored this statement further to understand their emotional state better. Additionally, the therapist could have offered more reassurance or support given the patient's reported anxiety and avoidance behaviors."
+      },
+      "overall_comments": "The conversation demonstrated a good start in identifying the patient's anxiety symptoms but fell short in comprehensively covering all DSM-5 dimensions and providing a fully nuanced understanding of the patient's experiences. The therapist could benefit from more systematic and in-depth exploration of symptoms, particularly in areas like suicidality, psychosis, and substance use. Additionally, more attention to empathetic and personalized communication could enhance the therapeutic relationship and patient engagement.",
+      "average_score": 3.2,
+      "diagnosis_accuracy": {
+        "matches_profile": true,
+        "confidence": 5,
+        "explanation": "The diagnosis explicitly mentions 'Social Anxiety Disorder' with symptoms such as avoidance of social/occupational demands, situational panic attacks, and fear of negative evaluation, which align with the expected profile of social_anxiety.",
+        "classification": "social_anxiety"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "social_anxiety",
+        "classified_as": "social_anxiety",
+        "match": true,
+        "confidence": 5
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 3.7789270877838135
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.2717884799268815,
+        "local_coherence": 0.25729357367212974,
+        "window_coherence": 0.27872581517591827
+      },
+      "readability": {
+        "flesch_kincaid_grade": 8.74,
+        "gunning_fog_index": 3.95,
+        "flesch_reading_ease": 49.52
+      },
+      "diversity": {
+        "distinct_1": 0.566145092460882,
+        "distinct_2": 0.9173789173789174,
+        "distinct_3": 0.9771754636233951
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "social_anxiety",
+      "predicted": "Your responses suggest a struggle with persistent <sym>anxiety</sym>, including <sym>avoidance of social/occupational demands</sym> and <sym>situational panic</sym>. I hear how challenges like <sym>\"freezing\"</sym> in stressful moments (Q6) and skipping meetings (Q9) might create a cycle of isolation, even if you downplay some distress (e.g., \"Not really hopeless\" for Q3). Your efforts to engage here despite discomfort are important to acknowledge.  \n\n**Diagnosis:**  \n<med>Social Anxiety Disorder</med> with <sym>avoidant behaviors</sym> and <sym>situational panic attacks</sym>.  \n\n**Reasoning:**  \nThis aligns with <sym>recurrent avoidance of social or performance situations</sym> (Q9), fear of negative evaluation (implied by panic before events [Q8]), and <sym>interference in functioning</sym> (skipping meetings). The lack of <sym>hypomanic symptoms</sym> (Q6: \"No way\" to increased activity) and minimal depressive symptoms (Q2\u20133) rule out <med>bipolar disorder</med> or <med>mood disorders</med>. The <sym>fight-or-flight responses</sym> (e.g., freezing, panic) fit DSM-5 criteria for <med>Social Anxiety Disorder</med>, emphasizing behavioral and cognitive avoidance patterns.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Cognitive-Behavioral Therapy (CBT):** Target <sym>avoidance behaviors</sym> and maladaptive thought patterns (e.g., \"What if I fail?\").  \n2. **Mindfulness and Grounding Techniques:** Practice diaphragmatic breathing or grounding exercises to manage <sym>panic</sym> before events (Q8).  \n3. **Social Exposure Graduation:** Collaboratively develop a stepwise plan to reduce avoidance (e.g., attending smaller, low-pressure gatherings first).  \n4. **Monitor for Comorbidities:** Assess for <med>generalized anxiety disorder</med> if avoidance spreads beyond social situations.  \n5. **Relaxation Training:** Address <sym>hyperarousal</sym> through progressive muscle relaxation to counteract \"freezing\" (Q6).  \n\nThis approach respects your described patterns while avoiding assumptions about underlying severity. Let\u2019s explore these options at your own pace.",
+      "matches": false,
+      "classification": "social_anxiety",
+      "classification_confidence": 5
+    }
+  }
+}

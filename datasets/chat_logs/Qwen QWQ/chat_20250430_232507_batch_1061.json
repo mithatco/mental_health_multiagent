@@ -1,0 +1,297 @@
+{
+  "timestamp": "2025-04-30T23:25:20.485291",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello"
+    },
+    {
+      "role": "patient",
+      "content": "Okay"
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you for being here today. Starting with the first question: 'Little interest or pleasure in doing things?' Can you describe how this has been for you in the past two weeks?\""
+    },
+    {
+      "role": "patient",
+      "content": "Hmm"
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. Next"
+    },
+    {
+      "role": "patient",
+      "content": "Yeah"
+    },
+    {
+      "role": "assistant",
+      "content": "Understood. Moving to the next section on Anger: 'Feeling more irritated"
+    },
+    {
+      "role": "patient",
+      "content": "Oh"
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. The next set relates to Energy/Activity: 'Sleeping less than usual"
+    },
+    {
+      "role": "patient",
+      "content": "Hmm"
+    },
+    {
+      "role": "assistant",
+      "content": "Understood. Next: 'Starting lots more projects than usual or doing more risky things than usual?' Has that been part of your experience?\""
+    },
+    {
+      "role": "patient",
+      "content": "Uh"
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. Now we\u2019ll move to Anxiety: 'Feeling nervous"
+    },
+    {
+      "role": "patient",
+      "content": "Oh"
+    },
+    {
+      "role": "assistant",
+      "content": "Understood. 'Feeling panic or being frightened?' Have those moments occurred?\""
+    },
+    {
+      "role": "patient",
+      "content": "Not full panic attacks"
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. 'Avoiding situations that make you anxious?' What\u2019s your approach been?\""
+    },
+    {
+      "role": "patient",
+      "content": "I\u2019ve been avoiding social gatherings"
+    },
+    {
+      "role": "assistant",
+      "content": "Understood. Somatic Symptoms: 'Unexplained aches and pains (e.g."
+    },
+    {
+      "role": "patient",
+      "content": "Yeah"
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. 'Feeling that your illnesses are not being taken seriously enough?' How has your experience been?\""
+    },
+    {
+      "role": "patient",
+      "content": "Honestly"
+    },
+    {
+      "role": "assistant",
+      "content": "Understood. Suicidal Ideation: 'Thoughts of actually hurting yourself?' Please be honest.\""
+    },
+    {
+      "role": "patient",
+      "content": "I\u2026 I haven\u2019t had actual plans"
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you."
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, the user provided a mental health assessment task based on a questionnaire. The patient's answers are very brief, mostly monosyllabic. Need to structure the response exactly as specified, using the four sections with tags.\n\nFirst, the compassionate summary should acknowledge their struggles without making them feel judged. Highlight their reported symptoms like low pleasure, anxiety, and unexplained pain. Use <sym> for symptoms and <quote> for their direct responses.\n\nDiagnosis: They have anhedonia, sleep changes, and suicidal ideation without plans. MDD seems primary. The social avoidance could be GAD or social anxiety. Maybe bipolar since there's increased activity, but not enough for a clear diagnosis yet. So the primary diagnosis is Major Depressive Disorder (MDD) with anxiety features.\n\nReasoning: Need to link each symptom to MDD. Mention hypomanic features as a consideration but not confirmed. Note the suicidal thoughts as a key concern.\n\nNext steps: Focus on safety, comprehensive assessment, therapy, medication, and addressing somatic symptoms. Make sure each recommendation is numbered and actionable. Use medical terms in tags.\n\nWait, check the DSM-5 criteria for MDD. The patient's anhedonia, sleep disturbance, and social withdrawal fit. The increased activity might not meet full hypomania criteria yet. Suicidal ideation without plan meets the criteria for MDD with suicidal ideation. \n\nMake sure to avoid premature labeling of Somatic Symptom Disorder unless disproportionate thoughts/behaviors are confirmed. Here, the somatic complaints are \"unexplained\" but not yet linked to excessive worry, so MDD is primary.\n\nDouble-check formatting: headings with asterisks, tags properly placed, and no markdown. Ensure all sections are in order and required tags are used. Keep the tone empathetic but professional. Alright, structure looks good. Proceed with the response.\n</think>\n\n<sym>Little interest or pleasure</sym>, <sym>insomnia</sym>, and <sym>social avoidance</sym> paint a picture of struggles with <sym>emotional withdrawal</sym> and <sym>physical distress</sym>. Your hesitations when discussing <sym>suicidal thoughts</sym> (<quote>\"I\u2026 I haven\u2019t had actual plans\"</quote>) and vague descriptions of <sym>somatic aches</sym> highlight a need for deeper exploration of emotional and physical pain.  \n\n**Diagnosis:** Major Depressive Disorder (With <med>mixed anxiety features</med> and <med>suicidal ideation</med>) and <med>Somatic Symptom Disorder</med> under provisional consideration pending further evaluation  \n\n**Reasoning:**  \n- **Major Depressive Disorder:** Core <sym>anhedonia</sym> (<quote>\"Hmm\"</quote> in response to loss of pleasure), <sym>sleep disturbance</sym>, and <sym>suicidal ideation</sym> (<quote>\"I\u2026 I haven\u2019t had actual plans\"</quote>) align with MDD criteria. The <sym>increased activity</sym> (<sym>starting projects/risk-taking</sym>) could suggest <med>bipolar spectrum vulnerability</med> but lacks the full criteria for <med>hypomania</med>.  \n- **Somatic Symptom Disorder:** <sym>unexplained aches</sym> and <quote>\"Feeling that illnesses are not taken seriously\"</quote> raise this possibility, though disproportionate health-related distress must be confirmed.  \n- **Anxiety/Depression Comorbidity:** <sym>Nervousness</sym>, <sym>somatic symptoms</sym>, and <sym>social avoidance</sym> suggest overlapping <med>Generalized Anxiety Disorder</med> or <med>Social Anxiety Disorder</med>.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Safety Planning:** Immediate evaluation of <sym>suicidal thoughts</sym>, including crisis contacts and mood monitoring.  \n2. **Comprehensive Psychiatric Evaluation:**  \n   - Assess for <med>bipolar specifiers</med> (e.g., full <sym>hypomanic episodes</sym>).  \n   - Differentiate <med>Somatic Symptom Disorder</med> via assessment of health-related <sym>anxiety or behavioral impairment</sym>.  \n3. **Therapeutic Intervention:**  \n   - CBT for <sym>anxiety</sym>/<sym>social avoidance</sym>.  \n   - SSRIs or SNRIs if depressive symptoms are primary.  \n4. **Somatic Symptom Workup:** Collaborate with primary care to rule out medical causes for <sym>aches/pains</sym>.  \n5. **Collaborative Care:** Address <quote>\"Feeling illnesses are not taken seriously\"</quote> via patient-centered communication and multidisciplinary input.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.7136,
+            "highlight": "The  new narrative text for SSD notes that some patients with physical conditions such as heart disease or  cancer will indeed experience disproportionate and excessive thoughts, feelings, and behaviors related  to their illness, and that these individuals may qualify for a diagnosis of SSD.",
+            "excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"physical\", \"related\", \"behaviors\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Depression-Bereavement-Exclusion.pdf",
+            "score": 0.6942,
+            "highlight": "The presence of symptoms such as feelings of worthlessness, suicidal  ideas (as distinct from wanting to join a deceased loved one), and impairment of overall function sug - gest the presence of major depression, in addition to the normal response to a significant loss.",
+            "excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"suicidal\", \"one\", \"depression\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.693,
+            "highlight": "DSM-5 pays more attention to the behavioral symptoms that accompany PTSD and proposes four  distinct diagnostic clusters instead of three.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"behavioral\", \"more\", \"that\", and 2 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Schizophrenia.pdf",
+            "score": 0.6819,
+            "highlight": "Schizophrenia The upc oming fifth edition of the Diagnostic and Statistical Manual of Mental Disorders  (DSM-5 ) mak es  several key changes to the category of schizophrenia and highlights for future study an area that could  be cri tical for early detection of this often debilitating condition.",
+            "excerpt": "Schizophrenia\nThe upc oming fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"could\", \"mental\", and 3 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Social-Communication-Disorder.pdf",
+            "score": 0.6815,
+            "highlight": "Process for a New Diagnosis New diagnoses were included in DSM-5 only after a comprehensive review of the scientific literature;  full discussion by Work Group members; review by the DSM-5 Task Force, Scientific Review Committee,  and Clinical and Public Health Committee; and, finall y, evaluation by the American Psychiatric Associa- tion\u2019s Board of Trust ees.",
+            "excerpt": "t otherwise specified\u201d la bel to help them get the services and treatment they need. \nCharacteristic...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"full\", \"health\", \"clinical\", and 4 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let's tackle this. The user provided a transcript of a questionnaire between a patient and a clinician, and wants me to analyze it. The task is to break down the responses into symptoms, response patterns, clinical areas, risks, and a summary.\n\nFirst, I need to go through each question and answer. The patient's answers are mostly one-word or very brief. Let's start with the first question about interest or pleasure. The patient answered \"Hmm\" which is non-committal, but maybe indicating some issue. The next question on anger mentions feeling irritated, and the patient says \"Oh\" which could mean they acknowledge it. \n\nFor the energy/activity section, the patient mentions sleeping less and starting too many projects. The answers here are \"Hmm\" and \"Uh\", which are non-committal again, but the actual content mentions decreased sleep and possible increased activity (but not sure if hypomanic). \n\nAnxiety: The patient reports feeling nervous (Oh) and avoiding social gatherings. They mention avoiding social situations, which is a key point. The panic question: they say it's not full panic attacks, so maybe anxiety but not panic disorder. \n\nSomatic symptoms: They have unexplained aches and pains (Yes). The question about feeling illnesses not taken seriously: the patient says \"Honestly\" which might indicate frustration or feeling dismissed. \n\nSuicidal ideation: They answered with some hesitation but no actual plans. That's important for risk assessment.\n\nNow, main symptoms: anhedonia (loss of pleasure), irritability, insomnia, possible increased activity, anxiety, social avoidance, somatic symptoms, and suicidal ideation without plans. \n\nPatterns in responses: The patient's answers are mostly very brief (monosyllabic), which could indicate low energy, avoidance of engagement, or reluctance to share more. The use of \"Hmm\", \"Yeah\", \"Oh\", \"Uh\" suggests maybe they're not elaborating, which could be due to depression, anxiety, or reluctance. \n\nClinical significance: The anhedonia and low energy might point to depression. The increased activity and risky behaviors could be hypomanic features, but need more info. Anxiety and social avoidance might be social anxiety or generalized anxiety. Somatic symptoms without physical cause could relate to anxiety or depression. \n\nRisk factors: Suicidal ideation without plans is a concern, though the patient says no plans, but still needs attention. The social avoidance and anhedonia are classic depression indicators. The somatic symptoms might be related to depression or anxiety. The hesitancy in answers might be due to depression's anergia or anxiety.\n\nI need to make sure not to miss any key points. The suicidal question's hesitant answer is a red flag, even if no plans. The avoidance of social gatherings is a behavior linked to depression or anxiety. The lack of elaboration in answers could be a sign of depression's psychomotor retardation or low motivation to communicate, which is part of depressive symptoms. \n\nPotential areas of clinical significance: Major Depressive Disorder with possible hypomanic features (bipolar?), Generalized Anxiety Disorder or Social Anxiety Disorder, Somatization, and Suicidality. But need to be cautious not to overdiagnose. The key is to list potential areas, not make a diagnosis yet.\n\nRisk factors: The suicidal ideation, even without plans, is a risk. The social withdrawal and physical symptoms might indicate severity. \n\nSummarize all that in clinical terms without speculation. Avoid assuming diagnoses, just note the symptoms and possible areas. Make sure to use correct terminology like anhedonia, anergia, hypomanic features, etc. \n\nWait, the patient didn't explicitly say they have no pleasure, but the question was about interest/pleasure, and the patient's answer was \"Hmm\" which might indicate some issue. The clinician should note that the patient is experiencing anhedonia. The increased projects and risky behavior might point to hypomania if it's a part of bipolar. But the suicidal thoughts without a plan are still a concern. The social avoidance is a behavioral change linked to anxiety or depression. The somatic complaints without physical cause are common in depression. The brief responses might indicate low motivation or emotional blunting, which is part of depression. \n\nPatterns: Short, non-committal answers, which can be a pattern of limited verbal output, possibly due to depression. Also, the avoidance behavior and somatic complaints. \n\nOkay, compiling all this into the required sections. Need to be concise, use clinical terms, and avoid speculation. Make sure each section addresses exactly what's asked. Also, check for any missed points like the \"feeling not being taken seriously\" which might indicate a perception of being invalidated, possibly linking to comorbid issues or need for validation. \n\nDouble-checking each question's content and the patient's answers. The last question on suicidal ideation: the patient says \"I haven't had actual plans\" which means they have thoughts but not concrete plans, so that's still a risk. \n\nPutting it all together now in the structured way required.\n</think>\n\n**Clinical Observation Summary**  \n\n1. **Main Symptoms and Concerns:**  \n   - **Anhedonia:** Reduced interest/pleasure (A2: \"Hmm\").  \n   - **Irritability:** Acknowledged (A4: \"Oh\") but no elaboration on severity.  \n   - **Insomnia/Restlessness:** Reports \"sleeping less than usual\" and \"starting lots of projects\" (A5-A6: \"Hmm,\" \"Uh\"), suggesting potential hypomanic features.  \n   - **Anxiety Symptoms:** Self-reported \"feeling nervous\" (A7: \"Oh\") and social avoidance (A9: \"avoiding social gatherings\").  \n   - **Somatic Complaints:** Unexplained aches/pains (A10: \"Yeah\").  \n   - **Suicidal Ideation:** Acknowledged without plans (A12: \"I\u2026 I haven\u2019t had actual plans\"), requiring further exploration.  \n\n2. **Patterns in Responses:**  \n   - **Limited Verbal Engagement:** Monosyllabic/non-committal answers (e.g., \"Hmm,\" \"Oh,\" \"Yeah\") suggest potential anergia, avoidant communication, or emotional blunting.  \n   - **Ambiguity in Symptom Reporting:** Vague affirmations (e.g., \"Yeah,\" \"Hmm\") without elaboration, limiting specificity.  \n\n3. **Potential Clinical Areas:**  \n   - **Major Depressive Disorder (MDD):** Anhedonia, insomnia, and somatic symptoms.  \n   - **Generalized Anxiety Disorder (GAD)/Social Anxiety Disorder:** Anxiety, avoidance of social situations, and perceived invalidation of health concerns (A11: \"Honestly\").  \n   - **Bipolar Spectrum Features:** Increased activity/risk-taking and irritability may warrant evaluation for hypomania.  \n\n4. **Risk Factors/Warning Signs:**  \n   - **Suicidal Ideation:** Explicit acknowledgment of thoughts without plans, necessitating safety planning.  \n   - **Social Withdrawal:** Avoidance of social gatherings (A9) may reflect worsening depression or anxiety.  \n   - **Somatization:** Unexplained physical symptoms (A10) may complicate treatment engagement.  \n\n5. **Summary (Clinical Language):**  \n   The patient exhibits **anhedonia, insomnia, irritability, social avoidance, and somatic complaints**, consistent with depressive and anxiety symptomatology. **Hypomanic features** (e.g., increased activity, risk-taking) require further evaluation for bipolar spectrum disorders. **Suicidal ideation without plans** necessitates priority assessment. Response patterns (minimal verbal output, vagueness) suggest **anergia, emotional blunting, or communication avoidance**, which may reflect depressive severity or defensive engagement. Risk factors include social withdrawal and perceived invalidation (A11), which may exacerbate distress. Immediate priorities include clarifying mood/cognitive symptoms, assessing for hypomanic features, and addressing suicidal ideation.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6928
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "<sym>Little interest or pleasure</sym>, <sym>insomnia</sym>, and <sym>social avoidance</sym> paint a picture of struggles with <sym>emotional withdrawal</sym> and <sym>physical distress</sym>. Your hesitations when discussing <sym>suicidal thoughts</sym> (<quote>\"I\u2026 I haven\u2019t had actual plans\"</quote>) and vague descriptions of <sym>somatic aches</sym> highlight a need for deeper exploration of emotional and physical pain.  \n\n**Diagnosis:** Major Depressive Disorder (With <med>mixed anxiety features</med> and <med>suicidal ideation</med>) and <med>Somatic Symptom Disorder</med> under provisional consideration pending further evaluation  \n\n**Reasoning:**  \n- **Major Depressive Disorder:** Core <sym>anhedonia</sym> (<quote>\"Hmm\"</quote> in response to loss of pleasure), <sym>sleep disturbance</sym>, and <sym>suicidal ideation</sym> (<quote>\"I\u2026 I haven\u2019t had actual plans\"</quote>) align with MDD criteria. The <sym>increased activity</sym> (<sym>starting projects/risk-taking</sym>) could suggest <med>bipolar spectrum vulnerability</med> but lacks the full criteria for <med>hypomania</med>.  \n- **Somatic Symptom Disorder:** <sym>unexplained aches</sym> and <quote>\"Feeling that illnesses are not taken seriously\"</quote> raise this possibility, though disproportionate health-related distress must be confirmed.  \n- **Anxiety/Depression Comorbidity:** <sym>Nervousness</sym>, <sym>somatic symptoms</sym>, and <sym>social avoidance</sym> suggest overlapping <med>Generalized Anxiety Disorder</med> or <med>Social Anxiety Disorder</med>.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Safety Planning:** Immediate evaluation of <sym>suicidal thoughts</sym>, including crisis contacts and mood monitoring.  \n2. **Comprehensive Psychiatric Evaluation:**  \n   - Assess for <med>bipolar specifiers</med> (e.g., full <sym>hypomanic episodes</sym>).  \n   - Differentiate <med>Somatic Symptom Disorder</med> via assessment of health-related <sym>anxiety or behavioral impairment</sym>.  \n3. **Therapeutic Intervention:**  \n   - CBT for <sym>anxiety</sym>/<sym>social avoidance</sym>.  \n   - SSRIs or SNRIs if depressive symptoms are primary.  \n4. **Somatic Symptom Workup:** Collaborate with primary care to rule out medical causes for <sym>aches/pains</sym>.  \n5. **Collaborative Care:** Address <quote>\"Feeling illnesses are not taken seriously\"</quote> via patient-centered communication and multidisciplinary input.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "adjustment",
+    "question_count": 23,
+    "duration": 17136.93816804886,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 5.467191696166992,
+    "diagnosis_generation_time": 7.257966041564941,
+    "rag_evaluation_time": 1.1920928955078125e-05,
+    "total_time": 12.725178956985474
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7136,
+        "average_score": 0.7136,
+        "example_excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"physical\", \"related\", \"behaviors\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM-5-Depression-Bereavement-Exclusion.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6942,
+        "average_score": 0.6942,
+        "example_excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"suicidal\", \"one\", \"depression\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.693,
+        "average_score": 0.693,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"behavioral\", \"more\", \"that\", and 2 more matching aspects of your query."
+      },
+      "APA_DSM-5-Schizophrenia.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6819,
+        "average_score": 0.6819,
+        "example_excerpt": "Schizophrenia\nThe upc oming fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"could\", \"mental\", and 3 more matching aspects of your query."
+      },
+      "APA_DSM-5-Social-Communication-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6815,
+        "average_score": 0.6815,
+        "example_excerpt": "t otherwise specified\u201d la bel to help them get the services and treatment they need. \nCharacteristic...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"full\", \"health\", \"clinical\", and 4 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 07:56:04",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 07:56:04",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 3,
+        "clinical_relevance": 4,
+        "consistency": 3,
+        "diagnostic_justification": 4,
+        "empathy": 3
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist addressed several DSM-5 dimensions, including depression, anxiety, sleep disturbance, and suicidal ideation. However, the conversation appeared to be somewhat superficial, with many questions answered with brief responses ('Hmm', 'Oh', 'Uh') without adequate follow-up or exploration. Notably, domains such as psychotic symptoms, cognitive function, repetitive thoughts/behaviors, dissociation, identity and relationships, and substance use were either not addressed or only minimally touched upon. This incomplete coverage results in a score of 3, indicating that while some effort was made to cover various domains, significant gaps remain.",
+        "clinical_relevance": "The therapist's questions generally aligned with DSM-5 criteria, although there were instances of vague phrasing or abrupt transitions. For example, when discussing 'little interest or pleasure in doing things,' the therapist moved quickly to the next question without probing further. Similarly, questions related to anger and somatic symptoms were asked but not thoroughly explored. While the questions were largely clinically relevant, the lack of depth in certain areas and some inconsistencies in questioning lead to a score of 4 rather than 5.",
+        "consistency": "The conversation had noticeable logical inconsistencies and abrupt topic changes. For instance, the therapist moved from discussing 'suicidal ideation' to 'somatic symptoms' without a smooth transition. Additionally, some questions seemed to be asked in a somewhat formulaic manner without fully integrating the patient's previous responses. These inconsistencies occasionally disrupted the coherence and flow of the conversation, warranting a score of 3.",
+        "diagnostic_justification": "The therapist provided a clear justification for the proposed diagnoses of Major Depressive Disorder and Somatic Symptom Disorder, citing specific symptoms mentioned by the patient, such as anhedonia, sleep disturbance, and unexplained aches. However, there was a minor ambiguity in the justification regarding the differentiation between Somatic Symptom Disorder and potential anxiety or depressive disorders. The therapist could have more explicitly ruled out alternative diagnoses, such as Generalized Anxiety Disorder or Social Anxiety Disorder, based on the patient's symptoms.",
+        "empathy": "The therapist's responses occasionally showed empathy and a professional tone, but sometimes came across as somewhat robotic or impersonal. For example, when the patient hesitated discussing suicidal thoughts ('I\u2026 I haven\u2019t had actual plans'), the therapist's response seemed more focused on acknowledging the statement rather than exploring the patient's emotional state. While there were moments of empathy, they were not consistently demonstrated throughout the conversation, leading to a score of 3."
+      },
+      "overall_comments": "The conversation demonstrated a good effort to cover various DSM-5 dimensions and align with clinical criteria. However, it fell short in terms of depth, consistency, and empathy. The therapist could improve by providing more thorough explorations of symptoms, ensuring smoother transitions between topics, and demonstrating a more consistently empathetic and natural conversational style. Overall, the conversation appears to be at an early stage of therapeutic engagement, and further sessions would be needed to fully assess the patient's condition and develop an effective treatment plan.",
+      "average_score": 3.4,
+      "diagnosis_accuracy": {
+        "matches_profile": false,
+        "confidence": 5,
+        "explanation": "The diagnosis provided does not mention adjustment disorder or any equivalent clinical terms. Instead, it explicitly considers Major Depressive Disorder, Somatic Symptom Disorder, and anxiety features, which do not align with the expected profile of adjustment disorder.",
+        "classification": "depression"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "adjustment",
+        "classified_as": "depression",
+        "match": false,
+        "confidence": 5
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 2.624511241912842
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.1782764602346494,
+        "local_coherence": 0.10961220039774483,
+        "window_coherence": 0.16628681886401186
+      },
+      "readability": {
+        "flesch_kincaid_grade": 9.26,
+        "gunning_fog_index": 4.28,
+        "flesch_reading_ease": 47.28
+      },
+      "diversity": {
+        "distinct_1": 0.500646830530401,
+        "distinct_2": 0.8704663212435233,
+        "distinct_3": 0.9559014267185474
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "adjustment",
+      "predicted": "<sym>Little interest or pleasure</sym>, <sym>insomnia</sym>, and <sym>social avoidance</sym> paint a picture of struggles with <sym>emotional withdrawal</sym> and <sym>physical distress</sym>. Your hesitations when discussing <sym>suicidal thoughts</sym> (<quote>\"I\u2026 I haven\u2019t had actual plans\"</quote>) and vague descriptions of <sym>somatic aches</sym> highlight a need for deeper exploration of emotional and physical pain.  \n\n**Diagnosis:** Major Depressive Disorder (With <med>mixed anxiety features</med> and <med>suicidal ideation</med>) and <med>Somatic Symptom Disorder</med> under provisional consideration pending further evaluation  \n\n**Reasoning:**  \n- **Major Depressive Disorder:** Core <sym>anhedonia</sym> (<quote>\"Hmm\"</quote> in response to loss of pleasure), <sym>sleep disturbance</sym>, and <sym>suicidal ideation</sym> (<quote>\"I\u2026 I haven\u2019t had actual plans\"</quote>) align with MDD criteria. The <sym>increased activity</sym> (<sym>starting projects/risk-taking</sym>) could suggest <med>bipolar spectrum vulnerability</med> but lacks the full criteria for <med>hypomania</med>.  \n- **Somatic Symptom Disorder:** <sym>unexplained aches</sym> and <quote>\"Feeling that illnesses are not taken seriously\"</quote> raise this possibility, though disproportionate health-related distress must be confirmed.  \n- **Anxiety/Depression Comorbidity:** <sym>Nervousness</sym>, <sym>somatic symptoms</sym>, and <sym>social avoidance</sym> suggest overlapping <med>Generalized Anxiety Disorder</med> or <med>Social Anxiety Disorder</med>.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Safety Planning:** Immediate evaluation of <sym>suicidal thoughts</sym>, including crisis contacts and mood monitoring.  \n2. **Comprehensive Psychiatric Evaluation:**  \n   - Assess for <med>bipolar specifiers</med> (e.g., full <sym>hypomanic episodes</sym>).  \n   - Differentiate <med>Somatic Symptom Disorder</med> via assessment of health-related <sym>anxiety or behavioral impairment</sym>.  \n3. **Therapeutic Intervention:**  \n   - CBT for <sym>anxiety</sym>/<sym>social avoidance</sym>.  \n   - SSRIs or SNRIs if depressive symptoms are primary.  \n4. **Somatic Symptom Workup:** Collaborate with primary care to rule out medical causes for <sym>aches/pains</sym>.  \n5. **Collaborative Care:** Address <quote>\"Feeling illnesses are not taken seriously\"</quote> via patient-centered communication and multidisciplinary input.",
+      "matches": false,
+      "classification": "depression",
+      "classification_confidence": 5
+    }
+  }
+}

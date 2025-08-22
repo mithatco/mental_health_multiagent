@@ -1,0 +1,205 @@
+{
+  "timestamp": "2025-04-30T22:26:45.692532",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm Dr. Lee. Thank you for coming in. Today I'll be using the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult to better understand your experiences over the past two weeks. This helps me identify areas to explore further. Your answers are confidential, and there are no right or wrong responses. I'll ask each question, and I'll pause to let you share. Ready to start?"
+    },
+    {
+      "role": "patient",
+      "content": "Okay... sure. I'll try to be honest, but some of this might be hard to talk about."
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, let's see. The user provided a questionnaire where all answers were \"No response.\" I need to structure the response according to the strict format they specified.\n\nFirst, the compassionate summary. I should acknowledge the difficulty the patient might be facing without assuming their reasons. Maybe mention the absence of responses as a barrier but express a commitment to support.\n\nNext, the diagnosis section. Since there's no data, the appropriate diagnosis might be something like \"Provisional clinical interview needed\" but in formal terms. Maybe \"Provisional Clinical Assessment Pending\" under a Z code? Wait, looking back at the DSM-5 info given, there's mention of \"Otherwise specified\" categories. Alternatively, maybe a \"Deferred\" or \"Assessment Resistance\" isn't a diagnosis. Hmm. The prompt says \"provide a professional assessment that MUST follow this exact structure.\" For diagnosis, perhaps \"Provisional diagnosis pending further assessment\" but needs a code. The DSM-5 has Z codes for circumstances, like Z03.9 for encounter for observation or screening. So maybe \"Z03.9 Encounter for general adult medical check-up\" but not sure. Alternatively, since the problem is non-response, maybe \"Provisional diagnosis: Assessment Resistance\" but that's not a DSM-5 diagnosis. Wait, the user mentioned \"Otherwise specified\" in the initial reference. The \"SCD\" mentioned earlier was Social Communication Disorder, but that might not apply here. Alternatively, the non-response could be due to a disorder like avoidant personality, but without data, it's hard. The diagnosis should reflect the current state of the assessment. Maybe \"Provisional disorder pending further evaluation\" under a Z code. Let me check DSM-5. Oh, the user provided info mentions \"Otherwise specified\" but in the context of SCD. Maybe use \"Assessment Unavailable, Non-Response\" but that's not a diagnosis. Alternatively, the diagnosis here would be \"Provisional clinical evaluation\" as an encounter code. The DSM-5 Z-codes include Z03.9 for encounter for general adult medical check-up. So perhaps the diagnosis here is Z03.9 to indicate the need for further assessment. Alternatively, the clinical impression could be \"Provisional clinical interview needed\" but needs to be in the format. The user wants the diagnosis section to have a specific term. Maybe \"Provisional clinical evaluation pending\" but not an official code. Alternatively, use \"Provisional disorder pending evaluation (Z03.9)\" to include the Z code. That might work.\n\nReasoning: Since all responses are missing, the diagnosis can't be determined yet. The Z03.9 is for encounters where the chief concern is evaluation. So that's appropriate.\n\nNext steps would include re-administering the assessment with support, using alternative methods like interviews, checking for language barriers, etc. Also, maybe a psychological evaluation to assess for conditions like alexithymia or communication disorders. Also, addressing motivational issues or possible alexithymia if they can't articulate symptoms.\n\nI need to make sure the structure is exactly as specified. The sections must be in order with the right headings and tags. Also, include the required tags for medical terms, symptoms, etc. Since there are no symptom responses, the reasoning should focus on the non-response as the key issue. The diagnosis is pending, so Z03.9 fits. The next steps should be actionable: re-administer, alternative assessments, etc.\n\nCheck for all the sections: compassionate summary, diagnosis with Z03.9, reasoning about non-response and barriers, then steps. Ensure no markdown and proper tags where applicable, even if symptoms aren't listed. Maybe mention <sym>non-response to all items</sym> in the reasoning. The diagnosis line must be exactly under **Diagnosis:** and the rest follows. Make sure the Z code is correctly formatted. Alright, let's put it all together following the structure.\n</think>\n\n**Compassionate Summary:**  \nIt\u2019s clear that this assessment presents a unique challenge, as your lack of responses leaves many questions unanswered. My hope is that this reflects a barrier to communication rather than a lack of concern for your well-being. My priority is to understand the circumstances contributing to this pattern and ensure we can collaborate effectively to address whatever challenges you may be facing.  \n\n**Diagnosis:**  \nZ03.9 Encounter for general adult medical check-up  \n\n**Reasoning:**  \nThe absence of responses to all <sym>symptom-based questions</sym> precludes definitive diagnosis. This <sym>non-response pattern</sym> could reflect:  \n- <med>Assessment resistance</med> due to factors like mistrust, alexithymia, or communication difficulties.  \n- <med>Alexithymia</med> (inability to articulate emotions), <med>intellectual disability</med>, or cognitive impairment affecting comprehension.  \n- <med>Treatment refusal</med> or motivational barriers to engagement.  \n- <med>Psychosocial stressors</med> (e.g., trauma, stigma) inhibiting self-report.  \n- <med>Neurological or communication disorders</med> (e.g., aphasia) preventing effective response.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. Re-administer the assessment in a modified format (e.g., verbal interview, pictorial aids) to explore barriers to written responses.  \n2. Conduct a mental status exam focusing on <sym>thought content/process</sym>, affective flattening, and cognitive functioning.  \n3. Explore <med>alexithymia</med> or <med>communication disorders</med> (e.g., social communication disorder) via collateral history or standardized tools like the Toronto Alexithymia Scale.  \n4. Evaluate for <med>mood/anxiety disorders</med> using behavioral observations and collateral reports if self-report is unreliable.  \n5. Address <sym>non-response</sym> as a clinical concern itself, assessing for motivational interviewing strategies to improve engagement.  \n\nA multidisciplinary approach (e.g., social work, speech therapy) may be needed to bypass communication barriers and identify underlying contributors to this <sym>symptom non-reporting</sym>.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Social-Communication-Disorder.pdf",
+            "score": 0.6252,
+            "highlight": "Process for a New Diagnosis New diagnoses were included in DSM-5 only after a comprehensive review of the scientific literature;  full discussion by Work Group members; review by the DSM-5 Task Force, Scientific Review Committee,  and Clinical and Public Health Committee; and, finall y, evaluation by the American Psychiatric Associa- tion\u2019s Board of Trust ees.",
+            "excerpt": "t otherwise specified\u201d la bel to help them get the services and treatment they need. \nCharacteristic...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"health\", \"clinical\", \"task\", and 2 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Gender-Dysphoria.pdf",
+            "score": 0.6251,
+            "highlight": "APA is a national medical specialty society whose more than 37,000  physician members specialize in the diagnosis, treat - ment, prevention and research of mental illnesses, including substance use disorders.",
+            "excerpt": " and behaviors they experience with -\nout jeopardizing their access to effective treatment options. ...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"use\", \"mental\", \"more\", and 3 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Mild-Neurocognitive-Disorder.pdf",
+            "score": 0.6202,
+            "highlight": "Process for a New Diagnosis New diagnoses were included in DSM-5 only after a comprehensive review of the scientific literature;  full discussion by Work Group members; review by the DSM-5 Task Force, Scientific Review Committee,  and Clinical and Public Health Committee; and, finally, evaluation by the American Psychiatric Associa - tion\u2019s Board of Trust ees.",
+            "excerpt": "ment and may prevent or slow progression. Researchers \nwill evaluate how well the new diagnostic cri...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"health\", \"clinical\", \"task\", and 2 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Conduct-Disorder.pdf",
+            "score": 0.6176,
+            "highlight": "APA is a national medical specialty society whose more than 37,000  physician members specialize in the diagnosis, treat - ment, prevention and research of mental illnesses, including substance use disorders.",
+            "excerpt": "he disorder and a different treatment response. Thus the specifier will allow clinicians to more ac ...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"use\", \"mental\", \"more\", and 3 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Personality-Disorder.pdf",
+            "score": 0.6098,
+            "highlight": "This approach also includes a diag - nosis of Personality Disorder\u2014 Trait Specified (PD-TS) that could be made when a Personality Disorder is  considered present, but the criteria for a specific personality disorder are not fully met.",
+            "excerpt": "ncluded evaluation of impairments \nin personality functioning (how an individual typically experienc...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"could\", \"this\", and 3 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let's tackle this. The user provided a list of questions from a patient questionnaire where all answers are \"No response provided.\" I need to act as a mental health professional reviewing these. \n\nFirst, the main task is to identify the main symptoms and concerns. Since there are no answers, the lack of response itself is significant. Maybe the patient didn't complete the questionnaire properly, or there's a communication barrier. Perhaps they didn't understand the questions, or there's reluctance to engage, which could indicate avoidance or denial.\n\nNext, noting patterns. All 23 questions were left unanswered. That's a clear pattern of non-engagement. It could suggest the patient is not ready to disclose information, or there might be an issue with the assessment format. Maybe they found the questions triggering, or there's a language barrier. It's also possible that the patient didn't take the assessment seriously, but I shouldn't assume that without more info.\n\nPotential clinical areas of significance would include compliance with treatment, possible communication issues, or underlying conditions that affect their ability to respond. Maybe they have cognitive impairments, like memory issues (since one question mentioned memory problems but no response). Alternatively, they could be experiencing severe anxiety or depression that prevents them from engaging. \n\nRisk factors or warning signs: The absence of data means I can't assess specific risks like suicidal thoughts (since Q10 is unanswered) or self-harm. Similarly, unexplained physical symptoms (Q21) aren't addressed. If they didn't answer about substance use (Q19, Q20, Q23), that's a concern but unknown. Also, not answering about hearing voices (Q11) might be a risk if they had such symptoms but didn't report them.\n\nIn summary, the key points are the complete lack of responses, which is the main issue here. The clinical summary needs to highlight that all questions were unanswered, leading to an inability to assess specific symptoms. The non-response itself is a significant finding, pointing to possible barriers to effective assessment. I should note that without the responses, standard risk factors can't be evaluated, so further assessment is needed to determine why they didn't respond. Maybe suggest a follow-up interview to understand the reason behind the non-responses and address any underlying issues preventing engagement.\n</think>\n\n**Clinical Observation Summary:**  \n\n1. **Main Symptoms and Concerns:**  \n   - Absence of self-reported symptoms across all domains (mood, anxiety, psychotic symptoms, trauma-related symptoms, substance use, cognitive/physical concerns).  \n   - Lack of engagement with the assessment tool, indicating potential barriers to valid symptom evaluation.  \n\n2. **Patterns in Responses:**  \n   - Uniform non-response to all 23 items, suggesting systematic avoidance, refusal, or inability to engage with structured questioning.  \n   - No identifiable pattern of endorsed or denied symptoms, precluding clinical interpretation of symptom severity or symptom clusters.  \n\n3. **Potential Areas of Clinical Significance:**  \n   - **Assessment Validity:** Non-response may reflect impaired insight, resistance to treatment, or lack of motivation for care.  \n   - **Functional Impairment:** Absence of symptom reporting despite assessment administration raises questions about patient\u2019s perceived need for help or capacity for self-reflection.  \n   - **Cognitive or Neurological Concerns:** Unresponsive to comprehension-based items (e.g., Q22 on memory) may warrant neuropsychological evaluation if concerns exist about cognitive status.  \n   - **Trauma or Avoidance Behaviors:** Non-engagement with anxiety/depression items (e.g., Q1\u2013Q8, Q14\u2013Q18) could indicate dissociation, alexithymia, or avoidance of emotional processing.  \n\n4. **Risk Factors/Warning Signs:**  \n   - **Suicidal/Harm Ideation:** Unassessed due to unanswered Q10. Clinical judgment required to evaluate risk via collateral or clinical interview.  \n   - **Psychotic Symptoms:** Unaddressed (Q11\u2013Q12), necessitating mental status exam for hallucinations/delusions.  \n   - **Substance Use:** Unassessed (Q19\u2013Q20, Q23), requiring collateral history or urine toxicology screening if indicated.  \n   - **Physical Complaints:** Unreported somatic symptoms (Q21) may require medical evaluation.  \n\n5. **Summary:**  \n   The patient provided no responses to the structured assessment, rendering it analytically non-informative. This pattern demands prioritization of clinical evaluation via alternative methods (e.g., clinical interview, collateral sources) to:  \n   - Assess for cognitive/communication impairments (e.g., aphasia, alexithymia).  \n   - Determine barriers to engagement (e.g., mistrust, stigma, motivational deficits).  \n   - Rule out unresolved risk factors (suicidality, psychosis, substance use.  \n   - Explore therapeutic alliance factors contributing to non-participation.  \n\nFurther assessment should focus on establishing rapport, clarifying the patient\u2019s readiness to engage, and identifying contextual or systemic factors impeding assessment completion.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6196
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "**Compassionate Summary:**  \nIt\u2019s clear that this assessment presents a unique challenge, as your lack of responses leaves many questions unanswered. My hope is that this reflects a barrier to communication rather than a lack of concern for your well-being. My priority is to understand the circumstances contributing to this pattern and ensure we can collaborate effectively to address whatever challenges you may be facing.  \n\n**Diagnosis:**  \nZ03.9 Encounter for general adult medical check-up  \n\n**Reasoning:**  \nThe absence of responses to all <sym>symptom-based questions</sym> precludes definitive diagnosis. This <sym>non-response pattern</sym> could reflect:  \n- <med>Assessment resistance</med> due to factors like mistrust, alexithymia, or communication difficulties.  \n- <med>Alexithymia</med> (inability to articulate emotions), <med>intellectual disability</med>, or cognitive impairment affecting comprehension.  \n- <med>Treatment refusal</med> or motivational barriers to engagement.  \n- <med>Psychosocial stressors</med> (e.g., trauma, stigma) inhibiting self-report.  \n- <med>Neurological or communication disorders</med> (e.g., aphasia) preventing effective response.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. Re-administer the assessment in a modified format (e.g., verbal interview, pictorial aids) to explore barriers to written responses.  \n2. Conduct a mental status exam focusing on <sym>thought content/process</sym>, affective flattening, and cognitive functioning.  \n3. Explore <med>alexithymia</med> or <med>communication disorders</med> (e.g., social communication disorder) via collateral history or standardized tools like the Toronto Alexithymia Scale.  \n4. Evaluate for <med>mood/anxiety disorders</med> using behavioral observations and collateral reports if self-report is unreliable.  \n5. Address <sym>non-response</sym> as a clinical concern itself, assessing for motivational interviewing strategies to improve engagement.  \n\nA multidisciplinary approach (e.g., social work, speech therapy) may be needed to bypass communication barriers and identify underlying contributors to this <sym>symptom non-reporting</sym>.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "ocd",
+    "question_count": 23,
+    "duration": 13622.14530801773,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 11.570489168167114,
+    "diagnosis_generation_time": 6.728042125701904,
+    "rag_evaluation_time": 1.3113021850585938e-05,
+    "total_time": 18.298554182052612
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Social-Communication-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6252,
+        "average_score": 0.6252,
+        "example_excerpt": "t otherwise specified\u201d la bel to help them get the services and treatment they need. \nCharacteristic...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"health\", \"clinical\", \"task\", and 2 more matching aspects of your query."
+      },
+      "APA_DSM-5-Gender-Dysphoria.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6251,
+        "average_score": 0.6251,
+        "example_excerpt": " and behaviors they experience with -\nout jeopardizing their access to effective treatment options. ...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"use\", \"mental\", \"more\", and 3 more matching aspects of your query."
+      },
+      "APA_DSM-5-Mild-Neurocognitive-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6202,
+        "average_score": 0.6202,
+        "example_excerpt": "ment and may prevent or slow progression. Researchers \nwill evaluate how well the new diagnostic cri...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"health\", \"clinical\", \"task\", and 2 more matching aspects of your query."
+      },
+      "APA_DSM-5-Conduct-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6176,
+        "average_score": 0.6176,
+        "example_excerpt": "he disorder and a different treatment response. Thus the specifier will allow clinicians to more ac ...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"use\", \"mental\", \"more\", and 3 more matching aspects of your query."
+      },
+      "APA_DSM-5-Personality-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6098,
+        "average_score": 0.6098,
+        "example_excerpt": "ncluded evaluation of impairments \nin personality functioning (how an individual typically experienc...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"could\", \"this\", and 3 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 07:55:45",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 07:55:45",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 1,
+        "clinical_relevance": 2,
+        "consistency": 3,
+        "diagnostic_justification": 2,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist failed to systematically assess most DSM-5 dimensions. The conversation did not address any of the 23 questions from the DSM-5 Level1 Cross-Cutting Symptom Measure\u2014Adult. The patient's lack of responses was noted, but no effort was made to explore these dimensions through alternative methods such as verbal interview or follow-up questions. This approach left significant gaps in understanding the patient's symptoms and experiences.",
+        "clinical_relevance": "The therapist's questions were not directly observed as the conversation transcript mainly highlighted the patient's non-responses. However, the initial setup and explanation provided by the therapist were clear and aligned with clinical practice. The issues arose from the lack of exploration of symptoms, leading to a failure in assessing clinical relevance accurately. The therapist did not adapt questions to fit the patient's responses or lack thereof.",
+        "consistency": "The conversation had a logical start with the therapist explaining the purpose and format of the assessment. However, it quickly became inconsistent due to the patient's lack of responses. The therapist acknowledged this issue but did not effectively adapt the conversation to overcome the barriers. There were no abrupt topic changes, but the flow was disrupted by the absence of patient engagement.",
+        "diagnostic_justification": "The diagnosis provided (Z03.9 Encounter for general adult medical check-up) did not directly relate to the patient's symptoms or the DSM-5 criteria. The justification for the diagnosis mainly focused on the patient's non-response pattern, which was attributed to various potential factors. However, this did not constitute a comprehensive diagnostic evaluation based on the patient's reported symptoms. Alternative diagnoses were not adequately explored or ruled out.",
+        "empathy": "The therapist displayed empathy and a professional tone, particularly in the initial and final sections of the conversation. The therapist acknowledged the challenge posed by the patient's lack of responses and expressed a desire to understand and address the patient's potential concerns. However, there were limited opportunities to demonstrate empathy in-depth due to the patient's non-engagement. The therapist's responses were compassionate and indicated a priority on understanding the patient's situation."
+      },
+      "overall_comments": "The conversation highlighted significant challenges in assessing a patient with a non-response pattern. While the therapist showed empathy and a professional approach, the failure to adapt the assessment method to engage the patient more effectively was notable. The conversation underscored the need for flexibility in clinical assessments and the importance of addressing communication barriers early on. Future improvements could involve incorporating alternative assessment methods to better understand the patient's experiences and symptoms.",
+      "average_score": 2.4,
+      "diagnosis_accuracy": {
+        "matches_profile": false,
+        "confidence": 1,
+        "explanation": "The diagnosis does not explicitly mention ocd or any equivalent clinical terms. Instead, it focuses on the patient's non-response pattern and potential barriers to communication, suggesting a need for further assessment to understand the underlying issues.",
+        "classification": "other"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "ocd",
+        "classified_as": "other",
+        "match": false,
+        "confidence": 1
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 2.2518889904022217
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.536170117106853,
+        "local_coherence": 0.49377084333670795,
+        "window_coherence": 0.536170117106853
+      },
+      "readability": {
+        "flesch_kincaid_grade": 10.04,
+        "gunning_fog_index": 3.91,
+        "flesch_reading_ease": 40.05
+      },
+      "diversity": {
+        "distinct_1": 0.48819742489270385,
+        "distinct_2": 0.8925886143931256,
+        "distinct_3": 0.9731182795698925
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "ocd",
+      "predicted": "**Compassionate Summary:**  \nIt\u2019s clear that this assessment presents a unique challenge, as your lack of responses leaves many questions unanswered. My hope is that this reflects a barrier to communication rather than a lack of concern for your well-being. My priority is to understand the circumstances contributing to this pattern and ensure we can collaborate effectively to address whatever challenges you may be facing.  \n\n**Diagnosis:**  \nZ03.9 Encounter for general adult medical check-up  \n\n**Reasoning:**  \nThe absence of responses to all <sym>symptom-based questions</sym> precludes definitive diagnosis. This <sym>non-response pattern</sym> could reflect:  \n- <med>Assessment resistance</med> due to factors like mistrust, alexithymia, or communication difficulties.  \n- <med>Alexithymia</med> (inability to articulate emotions), <med>intellectual disability</med>, or cognitive impairment affecting comprehension.  \n- <med>Treatment refusal</med> or motivational barriers to engagement.  \n- <med>Psychosocial stressors</med> (e.g., trauma, stigma) inhibiting self-report.  \n- <med>Neurological or communication disorders</med> (e.g., aphasia) preventing effective response.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. Re-administer the assessment in a modified format (e.g., verbal interview, pictorial aids) to explore barriers to written responses.  \n2. Conduct a mental status exam focusing on <sym>thought content/process</sym>, affective flattening, and cognitive functioning.  \n3. Explore <med>alexithymia</med> or <med>communication disorders</med> (e.g., social communication disorder) via collateral history or standardized tools like the Toronto Alexithymia Scale.  \n4. Evaluate for <med>mood/anxiety disorders</med> using behavioral observations and collateral reports if self-report is unreliable.  \n5. Address <sym>non-response</sym> as a clinical concern itself, assessing for motivational interviewing strategies to improve engagement.  \n\nA multidisciplinary approach (e.g., social work, speech therapy) may be needed to bypass communication barriers and identify underlying contributors to this <sym>symptom non-reporting</sym>.",
+      "matches": false,
+      "classification": "other",
+      "classification_confidence": 1
+    }
+  }
+}

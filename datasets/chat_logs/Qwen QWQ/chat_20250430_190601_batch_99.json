@@ -1,0 +1,285 @@
+{
+  "timestamp": "2025-04-30T19:06:20.738240",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm Dr. Lee, and I'll be conducting this assessment. We'll be going through the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult. This helps us understand how various symptoms have affected your life over the past two weeks. Your answers will guide our conversation, and everything you share is confidential. I'll ask you questions one at a time, and I encourage you to describe your experiences in your own words. Let's start with the first question: Have you felt little interest or pleasure in doing things during the past two weeks?"
+    },
+    {
+      "role": "patient",
+      "content": "Hmm... Well, I guess I don't really enjoy social gatherings anymore. Like, if I have to go to a party or meeting, I'd rather skip it. But I still like doing things alone, like reading or hobbies. Just... the social stuff feels really heavy."
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. Next: During the past two weeks, have you often been feeling down, depressed, or hopeless?"
+    },
+    {
+      "role": "patient",
+      "content": "Not really hopeless, but I'll feel really low before a social event. Like, the day before, I might feel awful. But once I'm home, it lifts. Maybe it's just anxiety, not true sadness?"
+    },
+    {
+      "role": "assistant",
+      "content": "Got it. Next: In the past two weeks, have you felt more irritated, grouchy, or angry than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "Not angry, no. Maybe a little irritable when people ask me to do things like go out with them. I just get stressed, not mad. Do others get that way too?"
+    },
+    {
+      "role": "assistant",
+      "content": "Understood. Now about energy and activity: Have you been sleeping less than usual but still had a lot of energy?"
+    },
+    {
+      "role": "patient",
+      "content": "No, I usually can't sleep the night before social stuff. I'm tired, not energetic. It's the opposite, actually."
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. Next: Have you started lots more projects or done riskier things than usual in the past two weeks?"
+    },
+    {
+      "role": "patient",
+      "content": "No, I've actually been avoiding starting anything new because I'm worried people will judge me if I fail."
+    },
+    {
+      "role": "assistant",
+      "content": "Understood. Now about anxiety: Over the past two weeks, have you felt nervous, anxious, or on edge?"
+    },
+    {
+      "role": "patient",
+      "content": "Oh, definitely. Like, my heart races and I sweat if I know I'll be in a group. It's like a knot in my stomach all day before an event. It's almost constant when I know I have to interact."
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. Next: Have you had panic attacks or felt frightened suddenly, even when there's no clear reason?"
+    },
+    {
+      "role": "patient",
+      "content": "Hmm... Maybe once or twice. Like, when I was at a work lunch suddenly my hands shook, and I had to leave. But I don't have them every day."
+    },
+    {
+      "role": "assistant",
+      "content": "Got it. Have you avoided situations because they make you anxious in the past two weeks?"
+    },
+    {
+      "role": "patient",
+      "content": "Yeah, I skipped a team meeting last week because I was terrified of speaking up. And I avoid parties entirely now. It's become a big habit."
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. Next question: Have you had unexplained aches or pains, like headaches or stomach issues, in the past two weeks?"
+    },
+    {
+      "role": "patient",
+      "content": "Sometimes. My stomach gets really queasy before social events. I thought it was just nerves, but maybe it's more than that."
+    },
+    {
+      "role": "assistant",
+      "content": "Understood. Have you felt like your physical symptoms aren't taken seriously by others?"
+    },
+    {
+      "role": "patient",
+      "content": "Well... Yeah. People sometimes say I'm overreacting. But I'm not faking it. It's real, but I feel like they don't get it."
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. Next: Have you had thoughts of hurting yourself in the past two weeks?"
+    },
+    {
+      "role": "patient",
+      "content": "No, never! But sometimes I just wish I could... disappear, like fade into the background. But I wouldn't act on anything like that."
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, let me go through this step by step. The user is asking for a structured clinical assessment based on the provided questionnaire responses. I need to follow their exact format and tags.\n\nFirst, the compassionate summary paragraph. I need to paraphrase the patient's experiences, highlighting their social anxiety and physical symptoms. Use the tags correctly: symptoms in <sym> and medical terms in <med>. Make sure it's empathetic.\n\nNext is the diagnosis section. The main diagnosis seems to be Social Anxiety Disorder (300.22). There's also somatic symptoms linked to anxiety, so maybe also mention <med>Somatic Symptom Disorder</med> if criteria are met. But the user said not to default to SSD unless clear. Looking at the answers, the physical symptoms (stomach issues) are tied to anxiety triggers, so perhaps SSD isn't the main one. Stick with SAD.\n\nIn the reasoning section, explain why SAD is the primary diagnosis. The patient's avoidance, physiological symptoms, and situational mood changes all align with SAD. The somatic symptoms are context-specific, so they\u2019re likely anxiety-related. The panic attacks and avoidance behaviors support this. Also, the patient hasn't shown depression criteria beyond the situational mood dips, so that's not primary.  \n\nFor the next steps, list evidence-based interventions: CBT for SAD, maybe SSRIs, addressing somatic symptoms through CBT, social support strategies, and monitoring for comorbid issues like GAD. Ensure the recommendations are specific and actionable, numbered correctly.  \n\nCheck all tags: symptoms like \"avoidance\" should be in <sym>avoidance</sym>, medical terms like Social Anxiety Disorder as <med>Social Anxiety Disorder (SAD)</med>, and quotes from the patient in <quote>. Make sure the structure is exactly as specified with the headings and no extra lines. Avoid mentioning anything beyond the presented data. Also, ensure the diagnosis is the first priority, then the reasoning, and the next steps.  \n\nWait, the user's instructions say to first write the compassionate summary, then the diagnosis with the exact heading, then reasoning, then next steps. I need to make sure all sections are properly formatted, and tags are correctly applied. Avoid any markdown except the specified tags. Also, check for any other possible disorders like Panic Disorder, but since panic attacks are infrequent (once or twice), maybe not primary. So focus on SAD as primary.  \n\nDouble-check if there's a mention of trauma, but there's no PTSD indicators. The patient's symptoms are all contextually linked to social interactions. The DSM-5 criteria for SAD include fear of negative evaluation, avoidance, and significant distress/impairment, which all fit here. The somatic symptoms as per Q9 and Q10 may tie into the anxiety, not a separate diagnosis unless excessive worry about symptoms. Since the patient says symptoms are event-specific, that's more anxiety.  \n\nOkay, finalize the sections with correct tags and structure. Ensure the headings have the asterisks exactly as specified. Use the exact codes for SAD (300.22) and ensure the next steps are practical, like CBT, medication, etc. Make sure the reasoning addresses why other disorders are ruled out.  \n\nAlright, that should cover everything without missing tags or structure.\n</think>\n\nYour answers highlight a pattern of intense fear and distress around social interactions, with physical symptoms like <sym>sweating</sym>, <sym>rapid heartbeat</sym>, and <sym>stomach discomfort</sym> surfacing when anticipating social events. You described feeling trapped between wanting to engage and fearing judgment, while also emphasizing that your physical and emotional struggles are often dismissed as \"overreacting.\" This paints a clear picture of someone whose well-being is significantly impacted by anxiety tied to social expectations.  \n\n**Diagnosis:** <med>Social Anxiety Disorder (300.22)</med>  \n**Reasoning:**  \n- Your symptoms align with <med>Social Anxiety Disorder (SAD)</med> criteria: <sym>avoidance</sym> of social obligations, excessive fear of negative evaluation, and <sym>physiological arousal</sym> (elevated heart rate, sweating) tied to social triggers.  \n- <sym>Panic attacks</sym> (e.g., sudden autonomic arousal during a work lunch) are consistent with anxiety escalation in feared situations.  \n- Somatic symptoms (e.g., gastrointestinal distress) are plausible manifestations of anxiety, not better explained by a medical condition or excessive health-related worry (excluding <med>Somatic Symptom Disorder</med>).  \n- <sym>Mood dips</sym> are situational (pre-social event) rather than pervasive, ruling out <med>Major Depressive Disorder</med>.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Cognitive-Behavioral Therapy (CBT) for social anxiety**: Focus on exposure-based strategies to gradually reduce avoidance and reframe social fears.  \n2. **Pharmacotherapy**: Consider low-dose SSRIs (e.g., sertraline) or SNRIs for symptom management under medical supervision.  \n3. **Mindfulness-based stress reduction (MBSR)**: To address somatic symptoms like <sym>stomach distress</sym> linked to anticipatory anxiety.  \n4. **Social skills training**: Practice assertive communication and distress tolerance to reduce anticipatory worry.  \n5. **Cultural sensitivity assessment**: Explore if cultural factors (e.g., fear of \"offending others\" per <med>DSM-5</med> cultural considerations) amplify your anxiety.  \n6. **Collateral validation**: Involve trusted supporters to reinforce that your distress is legitimate, counteringing <quote>\"people say I\u2019m overreacting\"</quote>.  \n\nThis is a treatable condition with targeted interventions. Your avoidance patterns can improve with structured therapy, and validation of your experiences is critical to rebuilding confidence.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.7106,
+            "highlight": "The  new narrative text for SSD notes that some patients with physical conditions such as heart disease or  cancer will indeed experience disproportionate and excessive thoughts, feelings, and behaviors related  to their illness, and that these individuals may qualify for a diagnosis of SSD.",
+            "excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"new\", \"physical\", \"related\", and 8 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Conduct-Disorder.pdf",
+            "score": 0.6899,
+            "highlight": "To be diagnosed with conduct disorde r, the symptoms must cause sig - nificant impairment in social, academic or occupational functioning.",
+            "excerpt": ". To be diagnosed with conduct disorde r, the symptoms must cause sig -\nnificant impairment in socia...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"symptoms\", \"impairment\", and 2 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM_Cultural-Concepts-in-DSM-5.pdf",
+            "score": 0.688,
+            "highlight": "For example, the crite- ria for social anxiety disorder now include the fear of \u201coffending others\u201d to reflect the Japanese concept  in which avoiding harm to others is emphasized rather than harm to onesel f.",
+            "excerpt": " a patient \u2019s cul -\nture, race, ethnicit y, religion or geographical origin. For example, uncontroll...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"fear\", \"harm\", \"which\", and 7 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Social-Communication-Disorder.pdf",
+            "score": 0.6829,
+            "highlight": "Social (Pragmatic)   Communication Disorder The new diagnosis of social (pragmatic) communication disorder (SCD) in the fift h edition of the Diag- nostic and Statistical Manual of Mental Disorders  (DSM-5) will mor e accurately recognize individuals  who have significant problems using verbal and nonverbal communication for social purposes, leading  to impairments in their ability to effectively communicate, participate sociall y, maintain social relation- ships, or otherwise perform academically or occupationall y.",
+            "excerpt": "Social (Pragmatic)  \nCommunication Disorder\nThe new diagnosis of social (pragmatic) communication di...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"new\", \"significant\", \"diagnosis\", and 7 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.6811,
+            "highlight": "Negative cognitions and mood represents myriad feelings, from a persistent and distorted sense of  blame of self or others, to estrangement from others or markedly diminished interest in activities, to an inability to remember key aspects of the event.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"event\", \"key\", \"others\", and 4 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let's tackle this. The user provided a series of Q&A from a patient assessment using the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure. I need to analyze the responses and structure the answer according to the five points asked. \n\nFirst, I need to read through all the answers carefully to pick up on the main symptoms. The patient mentions lack of interest in social activities, which is a classic sign of depression, but they still enjoy solitary activities. That's important. Then, the low mood is specifically around social events, not ongoing depression. They experience anxiety with physical symptoms like increased heart rate and sweating, which points to social anxiety. The panic attacks mentioned once or twice, and avoidance behaviors like skipping meetings or parties. The physical symptoms like stomach issues also align with anxiety.\n\nPatterns here seem centered around social situations triggering their symptoms. Their responses consistently link their distress to anticipated social interactions. They also express feeling misunderstood by others regarding their physical symptoms.\n\nPotential clinical areas: Social anxiety disorder is the primary candidate here. The avoidance, physical symptoms, and anxiety around social events all point there. Also, maybe adjustment disorder with anxious mood if there's a specific stressor, but the DSM-5 criteria for social anxiety might fit better. The transient panic attacks could be part of the anxiety disorder rather than a separate panic disorder. The somatic symptoms like stomach issues should be noted as well. \n\nRisk factors: The patient hasn't had self-harm thoughts, but the avoidance is significant and could lead to social withdrawal. The feeling that others don't take their symptoms seriously might impact their help-seeking behavior. The stress of social interactions could escalate if unaddressed.\n\nI need to ensure I'm not speculating. The user said to avoid that, so stick to what's presented. The summary should be concise and use clinical terms. Let me check each part again.\n\nWait, in A1, the patient says they don't enjoy social gatherings but still have interest in solitary activities. That differentiates it from major depression where anhedonia is broader. The low mood in Q2 is situation-specific (before social events), which is more anxiety-related. The irritability in Q3 is situational too, related to social demands. The sleep issue in Q4 is insomnia but linked to anticipation of social events. No manic symptoms since they aren't starting projects. The anxiety in Q6 is clearly social phobia with physical symptoms. Panic attacks in Q7 are infrequent but present. Avoidance in Q8 is a key point for social anxiety. Somatic symptoms in Q9 and perceived invalidation in Q10 could contribute to comorbid issues. No self-harm in Q11, so that's a relief, but the desire to disappear is a need to address their distress.\n\nPutting this all together: The main diagnosis is likely Social Anxiety Disorder with associated physical symptoms and avoidance behaviors. The patient's pattern is clear\u2014symptoms triggered by social interactions, leading to avoidance and distress. Need to make sure I don't miss any points like the somatic symptoms or the social impairment. Also, the fact that others don't take their symptoms seriously is a social risk factor that might affect their coping strategies. \n\nI should structure the summary by the five points. Let me list each part step by step to ensure I cover all. No need to mention things not present, like suicidal intent since they said no. Okay, I think that's all. Time to format it as per the instructions.\n</think>\n\n**Clinical Observation Summary**  \n\n**1. Main Symptoms and Concerns**  \n- **Social Avoidance and Anhedonia**: Reduced interest in social activities, with avoidance of gatherings/meetings, though solitary interests remain intact.  \n- **Anxiety-Related Somatic Symptoms**: Physiological reactivity (elevated heart rate, sweating, gastrointestinal distress) triggered by anticipated social interactions.  \n- **Situational Low Mood**: Pre-social event dysphoria lifting post-event, suggesting anxiety-driven distress rather than pervasive depression.  \n- **Panic-Like Symptoms**: Occasional panic episodes (e.g., sudden autonomic arousal leading to avoidance of social settings).  \n- **Avoidant Behaviors**: Active avoidance of social obligations (e.g., skipping meetings/parties) to manage anxiety.  \n\n**2. Patterns in Responses**  \n- **Social Specificity**: Symptoms cluster around anticipated or actual social interactions, suggesting a primary anxiety trigger.  \n- **Pre-Event Escalation**: Symptoms (anxiety, somatic distress, low mood) intensify in the lead-up to social events, resolving post-event.  \n- **Self-Reported Invalidity**: Perceived dismissal of symptoms by others, contributing to emotional distress.  \n\n**3. Potential Areas of Clinical Significance**  \n- **Social Anxiety Disorder (SAD)**: Consistent with DSM-5 criteria (avoidance, physiological arousal, impairment in social functioning).  \n- **Generalized Anxiety Disorder (GAD)**: Worry about social judgment and catastrophizing around failure (e.g., avoiding new projects).  \n- **Somatization in Anxiety Context**: Somatic symptoms (e.g., stomach discomfort) linked to anxiety rather than independent somatic disorder.  \n- **Interpersonal Sensitivity**: Fear of judgment and criticism, exacerbating avoidance.  \n\n**4. Risk Factors/Warning Signs**  \n- **Functional Impairment**: Avoidance is affecting professional responsibilities (e.g., skipped meetings), risking occupational/social withdrawal.  \n- **Maladaptive Coping**: Relying on avoidance may perpetuate anxiety.  \n- **Perceived Stigma**: Patient reports invalidation by others, which could undermine help-seeking behavior.  \n\n**5. Clinical Summary**  \nThe patient exhibits marked social anxiety symptoms, including anticipatory anxiety, somatic reactivity, and behavioral avoidance, consistent with **Social Anxiety Disorder (300.22)**. Symptoms are situation-specific, situational mood fluctuations (pre-social event dysphoria), and somatic complaints (e.g., gastrointestinal distress) align with anxiety-driven physiological arousal. No acute suicidal ideation or intent is present, though distress from perceived invalidation may contribute to emotional dysregulation. Risk of progressive social withdrawal and functional impairment is notable. Further evaluation of comorbid GAD or adjustment disorder with anxious mood is warranted, alongside assessment of coping strategies and interpersonal functioning. Clinical focus should address cognitive-behavioral patterns maintaining avoidance and validate the patient\u2019s subjective experience to engage in evidence-based interventions (e.g., CBT for SAD).",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6905
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "Your answers highlight a pattern of intense fear and distress around social interactions, with physical symptoms like <sym>sweating</sym>, <sym>rapid heartbeat</sym>, and <sym>stomach discomfort</sym> surfacing when anticipating social events. You described feeling trapped between wanting to engage and fearing judgment, while also emphasizing that your physical and emotional struggles are often dismissed as \"overreacting.\" This paints a clear picture of someone whose well-being is significantly impacted by anxiety tied to social expectations.  \n\n**Diagnosis:** <med>Social Anxiety Disorder (300.22)</med>  \n**Reasoning:**  \n- Your symptoms align with <med>Social Anxiety Disorder (SAD)</med> criteria: <sym>avoidance</sym> of social obligations, excessive fear of negative evaluation, and <sym>physiological arousal</sym> (elevated heart rate, sweating) tied to social triggers.  \n- <sym>Panic attacks</sym> (e.g., sudden autonomic arousal during a work lunch) are consistent with anxiety escalation in feared situations.  \n- Somatic symptoms (e.g., gastrointestinal distress) are plausible manifestations of anxiety, not better explained by a medical condition or excessive health-related worry (excluding <med>Somatic Symptom Disorder</med>).  \n- <sym>Mood dips</sym> are situational (pre-social event) rather than pervasive, ruling out <med>Major Depressive Disorder</med>.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Cognitive-Behavioral Therapy (CBT) for social anxiety**: Focus on exposure-based strategies to gradually reduce avoidance and reframe social fears.  \n2. **Pharmacotherapy**: Consider low-dose SSRIs (e.g., sertraline) or SNRIs for symptom management under medical supervision.  \n3. **Mindfulness-based stress reduction (MBSR)**: To address somatic symptoms like <sym>stomach distress</sym> linked to anticipatory anxiety.  \n4. **Social skills training**: Practice assertive communication and distress tolerance to reduce anticipatory worry.  \n5. **Cultural sensitivity assessment**: Explore if cultural factors (e.g., fear of \"offending others\" per <med>DSM-5</med> cultural considerations) amplify your anxiety.  \n6. **Collateral validation**: Involve trusted supporters to reinforce that your distress is legitimate, counteringing <quote>\"people say I\u2019m overreacting\"</quote>.  \n\nThis is a treatable condition with targeted interventions. Your avoidance patterns can improve with structured therapy, and validation of your experiences is critical to rebuilding confidence.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "social_anxiety",
+    "question_count": 23,
+    "duration": 1597.1910898685455,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 11.35276198387146,
+    "diagnosis_generation_time": 7.696697235107422,
+    "rag_evaluation_time": 1.3828277587890625e-05,
+    "total_time": 19.049482822418213
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7106,
+        "average_score": 0.7106,
+        "example_excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"new\", \"physical\", \"related\", and 8 more matching aspects of your query."
+      },
+      "APA_DSM-5-Conduct-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6899,
+        "average_score": 0.6899,
+        "example_excerpt": ". To be diagnosed with conduct disorde r, the symptoms must cause sig -\nnificant impairment in socia...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"symptoms\", \"impairment\", and 2 more matching aspects of your query."
+      },
+      "APA_DSM_Cultural-Concepts-in-DSM-5.pdf": {
+        "access_count": 1,
+        "highest_score": 0.688,
+        "average_score": 0.688,
+        "example_excerpt": " a patient \u2019s cul -\nture, race, ethnicit y, religion or geographical origin. For example, uncontroll...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"fear\", \"harm\", \"which\", and 7 more matching aspects of your query."
+      },
+      "APA_DSM-5-Social-Communication-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6829,
+        "average_score": 0.6829,
+        "example_excerpt": "Social (Pragmatic)  \nCommunication Disorder\nThe new diagnosis of social (pragmatic) communication di...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"new\", \"significant\", \"diagnosis\", and 7 more matching aspects of your query."
+      },
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6811,
+        "average_score": 0.6811,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"event\", \"key\", \"others\", and 4 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 07:50:02",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 07:50:01",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 4,
+        "clinical_relevance": 4,
+        "consistency": 5,
+        "diagnostic_justification": 5,
+        "empathy": 5
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist addressed most of the DSM-5 Level1 Cross-Cutting Symptom Measure domains, including mood, anger, anxiety, energy/activity, somatic concerns, and suicidality. However, some domains like psychotic symptoms, cognitive function, repetitive thoughts/behaviors, dissociation, identity and relationships, and substance use were either not directly asked or only superficially covered. For example, the therapist did not explicitly inquire about psychotic symptoms or substance use beyond a few questions.",
+        "clinical_relevance": "The therapist's questions generally aligned with DSM-5 criteria, but there were instances where the language used was not precise. For example, when asking about irritability, the patient mentioned stress rather than anger, which might have been explored further. Additionally, some questions could have been phrased to better capture the patient's experiences in DSM-5 terms.",
+        "consistency": "The conversation flowed logically, with each question naturally following from previous responses. The therapist effectively used the patient's disclosures to guide the conversation and explore relevant areas in greater depth. There were no abrupt topic changes or non-sequiturs.",
+        "diagnostic_justification": "The diagnosis of Social Anxiety Disorder (SAD) was clearly justified by the patient's symptoms, which aligned with DSM-5 criteria. The therapist explicitly linked the patient's avoidance of social obligations, excessive fear of negative evaluation, and physiological arousal to the diagnosis. Alternative diagnoses like Major Depressive Disorder were considered and ruled out based on the patient's responses.",
+        "empathy": "The therapist's responses consistently showed empathy and a natural conversational style. The therapist acknowledged the patient's distress, validated their experiences, and tailored responses to their emotional state. The tone was professional and supportive throughout the conversation."
+      },
+      "overall_comments": "The conversation demonstrated a strong understanding of the patient's symptoms and effectively explored their experiences related to social anxiety. While some DSM-5 domains were not thoroughly addressed, the therapist's questions were generally clinically relevant and accurately reflected DSM-5 criteria. The diagnostic justification was clear and well-supported by the patient's responses. The therapist's empathetic and professional approach helped to establish a supportive environment for the patient to share their concerns.",
+      "average_score": 4.6,
+      "diagnosis_accuracy": {
+        "matches_profile": true,
+        "confidence": 5,
+        "explanation": "The diagnosis explicitly mentions 'Social Anxiety Disorder (300.22)' and describes symptoms that align with the expected profile of social_anxiety, such as intense fear and distress around social interactions, physical symptoms like sweating, rapid heartbeat, and stomach discomfort, avoidance of social obligations, and excessive fear of negative evaluation.",
+        "classification": "social_anxiety"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "social_anxiety",
+        "classified_as": "social_anxiety",
+        "match": true,
+        "confidence": 5
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 2.127297878265381
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.5602578370128249,
+        "local_coherence": 0.5612141885427667,
+        "window_coherence": 0.5809871634172705
+      },
+      "readability": {
+        "flesch_kincaid_grade": 9.09,
+        "gunning_fog_index": 4.63,
+        "flesch_reading_ease": 50.17
+      },
+      "diversity": {
+        "distinct_1": 0.4829443447037702,
+        "distinct_2": 0.8589398023360287,
+        "distinct_3": 0.9460431654676259
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "social_anxiety",
+      "predicted": "Your answers highlight a pattern of intense fear and distress around social interactions, with physical symptoms like <sym>sweating</sym>, <sym>rapid heartbeat</sym>, and <sym>stomach discomfort</sym> surfacing when anticipating social events. You described feeling trapped between wanting to engage and fearing judgment, while also emphasizing that your physical and emotional struggles are often dismissed as \"overreacting.\" This paints a clear picture of someone whose well-being is significantly impacted by anxiety tied to social expectations.  \n\n**Diagnosis:** <med>Social Anxiety Disorder (300.22)</med>  \n**Reasoning:**  \n- Your symptoms align with <med>Social Anxiety Disorder (SAD)</med> criteria: <sym>avoidance</sym> of social obligations, excessive fear of negative evaluation, and <sym>physiological arousal</sym> (elevated heart rate, sweating) tied to social triggers.  \n- <sym>Panic attacks</sym> (e.g., sudden autonomic arousal during a work lunch) are consistent with anxiety escalation in feared situations.  \n- Somatic symptoms (e.g., gastrointestinal distress) are plausible manifestations of anxiety, not better explained by a medical condition or excessive health-related worry (excluding <med>Somatic Symptom Disorder</med>).  \n- <sym>Mood dips</sym> are situational (pre-social event) rather than pervasive, ruling out <med>Major Depressive Disorder</med>.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Cognitive-Behavioral Therapy (CBT) for social anxiety**: Focus on exposure-based strategies to gradually reduce avoidance and reframe social fears.  \n2. **Pharmacotherapy**: Consider low-dose SSRIs (e.g., sertraline) or SNRIs for symptom management under medical supervision.  \n3. **Mindfulness-based stress reduction (MBSR)**: To address somatic symptoms like <sym>stomach distress</sym> linked to anticipatory anxiety.  \n4. **Social skills training**: Practice assertive communication and distress tolerance to reduce anticipatory worry.  \n5. **Cultural sensitivity assessment**: Explore if cultural factors (e.g., fear of \"offending others\" per <med>DSM-5</med> cultural considerations) amplify your anxiety.  \n6. **Collateral validation**: Involve trusted supporters to reinforce that your distress is legitimate, counteringing <quote>\"people say I\u2019m overreacting\"</quote>.  \n\nThis is a treatable condition with targeted interventions. Your avoidance patterns can improve with structured therapy, and validation of your experiences is critical to rebuilding confidence.",
+      "matches": false,
+      "classification": "social_anxiety",
+      "classification_confidence": 5
+    }
+  }
+}

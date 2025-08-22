@@ -1,0 +1,241 @@
+{
+  "timestamp": "2025-05-01T03:15:39.199870",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello"
+    },
+    {
+      "role": "patient",
+      "content": "Okay... I guess so. I just want to get through this."
+    },
+    {
+      "role": "assistant",
+      "content": "1. Little interest or pleasure in doing things?"
+    },
+    {
+      "role": "patient",
+      "content": "Not really. I used to like gardening"
+    },
+    {
+      "role": "assistant",
+      "content": "2. Feeling down"
+    },
+    {
+      "role": "patient",
+      "content": "Yeah"
+    },
+    {
+      "role": "assistant",
+      "content": "3. Feeling more irritated"
+    },
+    {
+      "role": "patient",
+      "content": "Hmm... I guess I snap more. Like"
+    },
+    {
+      "role": "assistant",
+      "content": "4. Sleeping less than usual"
+    },
+    {
+      "role": "patient",
+      "content": "I stay up a lot at night"
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, I need to structure the response based on the user's detailed instructions. Let me start by reviewing the questionnaire answers again to ensure I capture all points.\n\nThe patient's responses indicate a depressed mood, lack of interest in activities they once enjoyed (gardening), irritability, and insomnia. The user emphasized using the exact structure with the four sections: compassionate summary, diagnosis, reasoning, and next steps. \n\nFirst, the compassionate summary should reflect empathy. I'll mention their struggles with mood, sleep, and irritability, acknowledging their effort to cope. Need to tag the symptoms and medical terms properly. Maybe start with something like, \"It sounds like you're experiencing significant distress with <sym>low mood</sym> and <sym>insomnia</sym>,\" using the tags as required.\n\nNext, the diagnosis section. The symptoms align most closely with Major Depressive Disorder (MDD). The DSM-5 criteria include depressed mood, anhedonia, sleep changes, and irritability, which are all present. I need to make sure not to mention other disorders unless there's more evidence. Avoid Somatic Symptom Disorder unless there's excessive worry about physical symptoms, which isn't indicated here. \n\nIn the reasoning section, I have to explain why MDD is the best fit. List the criteria met: depressed mood, anhedonia, sleep disturbance, and irritability (which can be a criterion in adults, though it's more common in children; maybe note that). Also, the duration isn't specified here, but the presence of multiple symptoms suggests a need for further assessment. \n\nFor treatment steps, standard MDD interventions: therapy (CBT), sleep hygiene, monitoring for worsening symptoms, and possibly medication consult. Should list them as numbered points. Must use the tags correctly, like <med>Cognitive Behavioral Therapy</med> for the therapy, and mention ruling out other conditions like anxiety or sleep disorders.\n\nWait, the user's example included \"DMDD\" in the references, but since this is an adult, DMDD isn't applicable. So stick to MDD. Also, ensure that all symptoms are tagged properly. Check for any mention of trauma, but the answers don't indicate PTSD, so maybe not needed here. \n\nI should avoid assumptions beyond what's stated. The patient didn't mention trauma or medical issues, so no need to consider those unless the sleep issues could be related to another condition. The guidelines say not to include Somatic Symptom Disorder unless excessive somatic focus is present, which it's not here. \n\nPutting it all together: The compassionate summary needs to reflect their struggle, diagnosis as MDD, reasoning based on DSM-5 criteria, and then the steps. Need to ensure the sections are in order with exact headings. Also, check that all symptoms are properly tagged and the quotes from the patient's answers are in <quote>. \n\nLet me draft each part step by step. First paragraph: empathize with their experience, mention the symptoms they described. Then the diagnosis line, then reasoning explaining criteria met. Finally, the steps with clear recommendations. Need to ensure all formatting tags are correctly placed and no markdown is used except the specified tags. Also, make sure not to use any extra spaces or formatting beyond what's asked. \n\nDouble-checking the structure: compassionate summary first, then Diagnosis: line, then Reasoning: paragraph, then the numbered recommendations. Yes. Alright, ready to format the final answer accordingly.\n</think>\n\nIt sounds like you\u2019re experiencing a challenging time, marked by <sym>low mood</sym>, <sym>loss of interest in activities like gardening</sym>, <sym>irritability</sym>, and <sym>troubled sleep</sym>. Your answers highlight a struggle to engage with life and a sense of emotional strain, which must feel exhausting.  \n\n**Diagnosis:** Major Depressive Disorder (MDD)  \n**Reasoning:** The responses align with DSM-5 criteria for <med>MDD</med>. Key <sym>anhedonia</sym> (loss of interest in gardening), <sym>depressed mood</sym> (\"feeling down\"), <sym>insomnia</sym> (\"stay up a lot at night\"), and <sym>irritability</sym> are core features of this diagnosis. The <sym>guarded tone</sym> (\"Okay... I guess so\") and fragmented phrasing (\"Like\") may reflect emotional withdrawal, consistent with depressed affect. No obvious signs of psychomotor changes or psychotic symptoms are noted, but further assessment is needed to confirm duration and severity.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Formal diagnostic evaluation:** Assess symptom duration (2+ weeks for MDD), rule out medical causes (e.g., thyroid dysfunction), and confirm exclusion of bipolar disorder or adjustment disorders.  \n2. **Cognitive Behavioral Therapy (CBT):** Address <sym>irritability</sym>, sleep disruptions, and maladaptive thoughts contributing to low mood.  \n3. **Sleep hygiene interventions:** Prioritize consistent routines, reduced screen time before bed, and environmental adjustments to improve <sym>insomnia</sym>.  \n4. **Monitor for suicidal ideation:** Though not explicitly stated, <sym>hopelessness</sym> (\"just want to get through this\") warrants direct inquiry.  \n5. **Medication review:** Consider SSRIs (e.g., sertraline) if symptoms persist, paired with psychotherapy.  \n6. **Functional assessment:** Explore how <sym>anhedonia</sym> and irritability impact work/school or relationships to guide treatment goals.  \n\nAlways integrate physical health assessments (e.g., thyroid tests) to ensure <sym>insomnia</sym> isn\u2019t secondary to a medical issue.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Sleep-Wake-Disorders.pdf",
+            "score": 0.728,
+            "highlight": "A sleep disorder not only is a risk factor for subsequent development of certain mental conditions but a  potential warning sign for serious mental or medical issues.",
+            "excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"factor\", \"potential\", and 8 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.7044,
+            "highlight": "Negative cognitions and mood represents myriad feelings, from a persistent and distorted sense of  blame of self or others, to estrangement from others or markedly diminished interest in activities, to an inability to remember key aspects of the event.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"diminished\", \"key\", \"mood\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Depression-Bereavement-Exclusion.pdf",
+            "score": 0.6814,
+            "highlight": "The presence of symptoms such as feelings of worthlessness, suicidal  ideas (as distinct from wanting to join a deceased loved one), and impairment of overall function sug - gest the presence of major depression, in addition to the normal response to a significant loss.",
+            "excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"suicidal\", \"depression\", \"response\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf",
+            "score": 0.676,
+            "highlight": "Results of that extensive research showed that children diagnosed with BD who experience constant,  rather than episodic, irritability often are at risk for major depressive disorder or generalized anxiety  disorder later in life, but not life-long BD.",
+            "excerpt": " the case with BD. In an effort to address this issue, \nresearch was conducted comparing youth with ...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"than\", \"depressive\", and 7 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.6712,
+            "highlight": "The  new narrative text for SSD notes that some patients with physical conditions such as heart disease or  cancer will indeed experience disproportionate and excessive thoughts, feelings, and behaviors related  to their illness, and that these individuals may qualify for a diagnosis of SSD.",
+            "excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"diagnosis\", \"conditions\", \"these\", and 5 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let me tackle this query. The user is a mental health professional reviewing a patient's questionnaire responses. I need to analyze the provided answers and structure the response as per their instructions.\n\nFirst, I'll go through each question and answer again to make sure I don't miss anything. \n\nStarting with Q1: The patient says \"Okay... I guess so. I just want to get through this.\" That sounds like they're somewhat resigned or maybe feeling overwhelmed. It might indicate a passive acceptance or a low mood.\n\nQ2 asks about little interest in things. The patient mentions gardening as something they used to like but not now. So decreased interest/pleasure (anhedonia) is present, but perhaps it's partial since they still remember enjoying it before.\n\nQ3 is about feeling down, and the answer is a clear \"Yeah.\" So that's a definite symptom of depressed mood.\n\nQ4 is irritability. The patient admits to snapping more, so increased irritability is there. That's a common symptom in depression and can also be part of anxiety or other disorders.\n\nQ5 talks about sleep. They stay up a lot at night, indicating insomnia. Sleep disturbances are a big red flag in mood disorders.\n\nNow, I need to identify main symptoms. The key points from the responses are depressed mood, anhedonia (though partial), irritability, and insomnia. Those are core symptoms of depression. The user wants the main symptoms and concerns listed first. So I'll note those.\n\nNext, looking for patterns. The patient's responses are somewhat brief and hesitant. They start with \"Okay... I guess so,\" which might show reluctance. Their answers are a bit fragmented, like in Q4 with \"Like\" at the end. Maybe they're struggling to express themselves clearly, or there's some anxiety. Also, the mention of past hobbies but not present interest shows a change over time. That's important for assessing duration and onset.\n\nPotential clinical areas could include depressive disorder, maybe major depressive disorder. The symptoms point there. Also, the irritability could be part of dysthymia or even adjustment disorder. But the combination of depressed mood, anhedonia, insomnia, and irritability are more consistent with MDD. \n\nRisk factors or warning signs: The insomnia and irritability could indicate severity. The patient's \"just want to get through this\" might hint at low energy or hopelessness, which are part of depression criteria. But there's no direct mention of suicidal thoughts here, though persistent insomnia can be a risk factor. Also, the fact that they used to have interests but don't now shows functional impairment. Need to check if there's mention of suicidal thoughts, but it's not here. Maybe not a direct risk factor, but still important to note possible fatigue from lack of sleep affecting daily functioning.\n\nNow, summarizing in clinical terms. Need to be concise and use proper terminology like anhedonia, dysphoria, sleep disturbance, irritability. Also, the pattern of responses might indicate some defensiveness or difficulty articulating, but the user said to avoid speculation, so maybe stick to the responses' content.\n\nPutting it all together: The main symptoms are depressed mood, anhedonia, irritability, and insomnia. Patterns are acknowledgment of current issues but some reluctance or brevity, and noting past vs present functioning. Clinical areas are depressive disorder, possible adjustment disorder. Risks include sleep issues affecting daily life and irritability which can lead to interpersonal issues. \n\nWait, the user also wants to highlight risk factors or warning signs. Since there's no self-harm mention, maybe not acute risk, but chronic symptoms like insomnia can be a risk for prolonged depression or other issues. Also, the patient's response to Q1 about wanting to \"get through this\" might hint at low motivation, which is part of depression but not necessarily a risk factor unless there's suicidal ideation. Since that's not present, maybe focus on the functional impairment from these symptoms.\n\nOkay, I think that covers all parts. Need to make sure the summary is in clinical terms without adding extra info not in the responses. Alright, time to structure the answer as per the required sections.\n</think>\n\n**Clinical Observation Summary:**  \n\n**1. Main Symptoms and Concerns:**  \n- **Depressed mood** (Q3: \"Feeling down\").  \n- **Anhedonia** (Q2: Acknowledgment of reduced interest in previously enjoyed activity, e.g., gardening).  \n- **Irritability** (Q4: \"Snap more\").  \n- **Insomnia** (Q5: \"Sleeping less than usual\").  \n\n**2. Patterns in Responses:**  \n- **Ambivalence or guardedness** in initial statements (Q1: \"Okay... I guess so. I just want to get through this\").  \n- **Acknowledgment of past interests** (e.g., gardening) contrasted with current diminished engagement (Q2).  \n- **Fragmented or truncated phrasing** (e.g., \"Like\" at end of Q4; ellipses in Q1/Q2/Q4), suggesting effort to articulate distress.  \n\n**3. Potential Areas of Clinical Significance:**  \n- **Major Depressive Disorder** (MDD): Core features (anhedonia, depressed mood, insomnia, irritability) align with diagnostic criteria.  \n- **Functional impairment** (e.g., diminished engagement in hobbies).  \n- **Dysregulation of affect** (irritability) and **sleep disturbance** (non-restorative sleep).  \n\n**4. Risk Factors/Warning Signs:**  \n- **Persistent insomnia** may exacerbate mood instability and cognitive functioning.  \n- **Irritability** may signal heightened emotional reactivity, potentially impacting interpersonal functioning.  \n- **Passive acceptance** (\"want to get through this\") may reflect low motivation or hopelessness (needs further exploration).  \n\n**5. Summary (Clinical Language):**  \nPatient reports depressive symptoms including anhedonia, dysphoria, and irritability, consistent with MDD. Sleep disturbance (insomnia) and diminished engagement in previously valued activities (e.g., gardening) suggest functional decline. Responses exhibit guardedness and fragmented expression, indicating possible emotional avoidance or difficulty articulating distress. Risk factors include non-restorative sleep and emotional dysregulation. Further assessment is warranted to evaluate hopelessness, duration of symptoms, and exclusion of other etiologies (e.g., medical conditions, substance use).",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6922
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "It sounds like you\u2019re experiencing a challenging time, marked by <sym>low mood</sym>, <sym>loss of interest in activities like gardening</sym>, <sym>irritability</sym>, and <sym>troubled sleep</sym>. Your answers highlight a struggle to engage with life and a sense of emotional strain, which must feel exhausting.  \n\n**Diagnosis:** Major Depressive Disorder (MDD)  \n**Reasoning:** The responses align with DSM-5 criteria for <med>MDD</med>. Key <sym>anhedonia</sym> (loss of interest in gardening), <sym>depressed mood</sym> (\"feeling down\"), <sym>insomnia</sym> (\"stay up a lot at night\"), and <sym>irritability</sym> are core features of this diagnosis. The <sym>guarded tone</sym> (\"Okay... I guess so\") and fragmented phrasing (\"Like\") may reflect emotional withdrawal, consistent with depressed affect. No obvious signs of psychomotor changes or psychotic symptoms are noted, but further assessment is needed to confirm duration and severity.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Formal diagnostic evaluation:** Assess symptom duration (2+ weeks for MDD), rule out medical causes (e.g., thyroid dysfunction), and confirm exclusion of bipolar disorder or adjustment disorders.  \n2. **Cognitive Behavioral Therapy (CBT):** Address <sym>irritability</sym>, sleep disruptions, and maladaptive thoughts contributing to low mood.  \n3. **Sleep hygiene interventions:** Prioritize consistent routines, reduced screen time before bed, and environmental adjustments to improve <sym>insomnia</sym>.  \n4. **Monitor for suicidal ideation:** Though not explicitly stated, <sym>hopelessness</sym> (\"just want to get through this\") warrants direct inquiry.  \n5. **Medication review:** Consider SSRIs (e.g., sertraline) if symptoms persist, paired with psychotherapy.  \n6. **Functional assessment:** Explore how <sym>anhedonia</sym> and irritability impact work/school or relationships to guide treatment goals.  \n\nAlways integrate physical health assessments (e.g., thyroid tests) to ensure <sym>insomnia</sym> isn\u2019t secondary to a medical issue.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "schizophrenia",
+    "question_count": 23,
+    "duration": 30955.652772188187,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 6.582741022109985,
+    "diagnosis_generation_time": 6.972383975982666,
+    "rag_evaluation_time": 8.106231689453125e-06,
+    "total_time": 13.555139780044556
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Sleep-Wake-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.728,
+        "average_score": 0.728,
+        "example_excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"factor\", \"potential\", and 8 more matching aspects of your query."
+      },
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7044,
+        "average_score": 0.7044,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"diminished\", \"key\", \"mood\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM-5-Depression-Bereavement-Exclusion.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6814,
+        "average_score": 0.6814,
+        "example_excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"suicidal\", \"depression\", \"response\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.676,
+        "average_score": 0.676,
+        "example_excerpt": " the case with BD. In an effort to address this issue, \nresearch was conducted comparing youth with ...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"than\", \"depressive\", and 7 more matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6712,
+        "average_score": 0.6712,
+        "example_excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"diagnosis\", \"conditions\", \"these\", and 5 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 08:06:53",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 08:06:53",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 2,
+        "clinical_relevance": 3,
+        "consistency": 3,
+        "diagnostic_justification": 4,
+        "empathy": 2
+      },
+      "explanations": {
+        "dsm_coverage": "The conversation only superficially addressed a few DSM-5 dimensions. The therapist asked about depression, irritability, sleep disturbances, and loss of interest but failed to explore other critical areas such as anxiety, somatic symptoms, suicidal ideation, psychosis, and substance use. For example, the patient mentioned staying up a lot at night, but the therapist did not inquire about the patient's sleep quality or its impact on daily life. Additionally, the therapist did not assess for psychotic symptoms or substance use, which are crucial for a comprehensive diagnosis.",
+        "clinical_relevance": "The therapist's questions generally aligned with DSM-5 criteria but were phrased vaguely or lacked specificity. For instance, when asking about irritability, the therapist did not provide a clear definition or context, which might have led to confusion. The questions were mostly clinically relevant but could have been more precise. For example, the therapist could have asked about the frequency and intensity of the patient's irritability to better understand its impact on daily life.",
+        "consistency": "The conversation had some logical flow but was occasionally disjointed. The therapist did not follow up on concerning disclosures, such as the patient's hopelessness ('just want to get through this'), which warrants direct inquiry about suicidal ideation. Additionally, the therapist abruptly transitioned between topics without fully exploring the patient's responses. For example, after the patient mentioned snapping more, the therapist did not ask follow-up questions to understand the context or frequency of this behavior.",
+        "diagnostic_justification": "The diagnosis of Major Depressive Disorder (MDD) generally aligns with the patient's responses, and the therapist provided some reasoning behind the diagnosis. However, the justification could have been more comprehensive, and alternative diagnoses were not discussed. The therapist could have also explored other potential diagnoses, such as adjustment disorders or bipolar disorder, to rule them out. Additionally, the therapist did not provide specific examples from the patient's responses to support the diagnosis of MDD.",
+        "empathy": "The therapist's responses sometimes seemed robotic or impersonal. The therapist did not adequately acknowledge the patient's distress or tailor responses to their emotional state. For example, when the patient expressed hopelessness, the therapist did not offer empathy or support. The therapist's tone was mostly neutral and lacked warmth, which could have helped establish a more supportive therapeutic relationship."
+      },
+      "overall_comments": "The conversation demonstrated a limited approach to assessing the patient's symptoms and DSM-5 dimensions. While the therapist identified some core symptoms of depression, the conversation lacked depth and breadth in exploring other critical domains. The therapist's questions were sometimes vague, and the conversation flow was occasionally inconsistent. The diagnosis was generally justified, but alternative explanations and more comprehensive assessments were needed. Empathy and a natural conversational style were often lacking, making the interaction feel somewhat impersonal and clinical.",
+      "average_score": 2.8,
+      "diagnosis_accuracy": {
+        "matches_profile": false,
+        "confidence": 5,
+        "explanation": "The diagnosis explicitly mentions Major Depressive Disorder (MDD) and does not mention schizophrenia or any related terms. The symptoms described, such as low mood, loss of interest in activities, irritability, and troubled sleep, are consistent with depression, not schizophrenia.",
+        "classification": "depression"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "schizophrenia",
+        "classified_as": "depression",
+        "match": false,
+        "confidence": 5
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 3.3904800415039062
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.2730195217150828,
+        "local_coherence": 0.4000201048629252,
+        "window_coherence": 0.35387201564789156
+      },
+      "readability": {
+        "flesch_kincaid_grade": 9.37,
+        "gunning_fog_index": 5.06,
+        "flesch_reading_ease": 50.0
+      },
+      "diversity": {
+        "distinct_1": 0.5250875145857643,
+        "distinct_2": 0.8983644859813084,
+        "distinct_3": 0.9649122807017544
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "schizophrenia",
+      "predicted": "It sounds like you\u2019re experiencing a challenging time, marked by <sym>low mood</sym>, <sym>loss of interest in activities like gardening</sym>, <sym>irritability</sym>, and <sym>troubled sleep</sym>. Your answers highlight a struggle to engage with life and a sense of emotional strain, which must feel exhausting.  \n\n**Diagnosis:** Major Depressive Disorder (MDD)  \n**Reasoning:** The responses align with DSM-5 criteria for <med>MDD</med>. Key <sym>anhedonia</sym> (loss of interest in gardening), <sym>depressed mood</sym> (\"feeling down\"), <sym>insomnia</sym> (\"stay up a lot at night\"), and <sym>irritability</sym> are core features of this diagnosis. The <sym>guarded tone</sym> (\"Okay... I guess so\") and fragmented phrasing (\"Like\") may reflect emotional withdrawal, consistent with depressed affect. No obvious signs of psychomotor changes or psychotic symptoms are noted, but further assessment is needed to confirm duration and severity.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Formal diagnostic evaluation:** Assess symptom duration (2+ weeks for MDD), rule out medical causes (e.g., thyroid dysfunction), and confirm exclusion of bipolar disorder or adjustment disorders.  \n2. **Cognitive Behavioral Therapy (CBT):** Address <sym>irritability</sym>, sleep disruptions, and maladaptive thoughts contributing to low mood.  \n3. **Sleep hygiene interventions:** Prioritize consistent routines, reduced screen time before bed, and environmental adjustments to improve <sym>insomnia</sym>.  \n4. **Monitor for suicidal ideation:** Though not explicitly stated, <sym>hopelessness</sym> (\"just want to get through this\") warrants direct inquiry.  \n5. **Medication review:** Consider SSRIs (e.g., sertraline) if symptoms persist, paired with psychotherapy.  \n6. **Functional assessment:** Explore how <sym>anhedonia</sym> and irritability impact work/school or relationships to guide treatment goals.  \n\nAlways integrate physical health assessments (e.g., thyroid tests) to ensure <sym>insomnia</sym> isn\u2019t secondary to a medical issue.",
+      "matches": false,
+      "classification": "depression",
+      "classification_confidence": 5
+    }
+  }
+}

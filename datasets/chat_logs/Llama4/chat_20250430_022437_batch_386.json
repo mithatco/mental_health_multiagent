@@ -1,0 +1,201 @@
+{
+  "timestamp": "2025-04-30T02:24:44.329503",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Error communicating with Groq: 500 Server Error: Internal Server Error for url: https://api.groq.com/openai/v1/chat/completions"
+    },
+    {
+      "role": "assistant",
+      "content": "The patient has not provided responses to any of the questions on the questionnaire, which suggests a significant level of distress, disengagement, or avoidance. This lack of response is concerning and may indicate that the patient is struggling with <sym>anxiety</sym>, <sym>depression</sym>, or other mental health issues. It's essential to approach this situation with empathy and understanding, acknowledging that the patient's silence may be a coping mechanism or a sign of feeling overwhelmed.\n\n**Diagnosis:** \n<med>Unspecified Mental Health Condition</med>\n\n**Reasoning:** \nThe patient's failure to provide responses to the questionnaire, including critical questions about <sym>suicidal ideation</sym>, <sym>substance use</sym>, and <sym>psychotic symptoms</sym>, suggests a significant level of distress or avoidance. This non-response pattern warrants a cautious and thorough evaluation to ensure patient safety and to identify potential areas of concern. The lack of information makes it challenging to provide a definitive diagnosis; however, it's essential to consider various diagnostic possibilities, including <med>anxiety disorders</med>, <med>mood disorders</med>, and <med>trauma-related disorders</med>.\n\n**Recommended Next Steps/Treatment Options:** \n1. Conduct a comprehensive clinical interview to establish a rapport with the patient and gather more information about their mental health status.\n2. Use alternative assessment tools or methods to evaluate the patient's symptoms and concerns, such as a <med>mental status examination</med> or a <med>psychological assessment</med>.\n3. Consider a <med>provisional diagnosis</med> of <med>Unspecified Mental Health Condition</med> and revisit the diagnosis as more information becomes available.\n4. Develop a treatment plan that addresses potential <sym>anxiety</sym>, <sym>depression</sym>, or other mental health concerns, and involves <med>counseling</med> or <med>psychotherapy</med> as needed.\n5. Ensure patient safety by assessing for <sym>suicidal ideation</sym> and <sym>substance use</sym> in a sensitive and non-judgmental manner.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.724,
+            "highlight": "The  new narrative text for SSD notes that some patients with physical conditions such as heart disease or  cancer will indeed experience disproportionate and excessive thoughts, feelings, and behaviors related  to their illness, and that these individuals may qualify for a diagnosis of SSD.",
+            "excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"these\", \"that\", \"diagnosis\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Schizophrenia.pdf",
+            "score": 0.7103,
+            "highlight": "Identifying individuals with an increased risk for developing a psychotic disorder is  significant for effective early intervention, but more study is needed to ensure that attenuated psycho - sis syndrome can be reliably diagnosed.",
+            "excerpt": "h before their consideration as formal disorders. This potential category would \nidentify a person w...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"that\", \"ensure\", \"significant\", and 2 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Social-Communication-Disorder.pdf",
+            "score": 0.7052,
+            "highlight": "Process for a New Diagnosis New diagnoses were included in DSM-5 only after a comprehensive review of the scientific literature;  full discussion by Work Group members; review by the DSM-5 Task Force, Scientific Review Committee,  and Clinical and Public Health Committee; and, finall y, evaluation by the American Psychiatric Associa- tion\u2019s Board of Trust ees.",
+            "excerpt": "t otherwise specified\u201d la bel to help them get the services and treatment they need. \nCharacteristic...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"evaluation\", \"health\", \"diagnosis\", and 1 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.7033,
+            "highlight": "DSM-5 pays more attention to the behavioral symptoms that accompany PTSD and proposes four  distinct diagnostic clusters instead of three.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"symptoms\", \"that\", \"attention\" matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Depression-Bereavement-Exclusion.pdf",
+            "score": 0.702,
+            "highlight": "The presence of symptoms such as feelings of worthlessness, suicidal  ideas (as distinct from wanting to join a deceased loved one), and impairment of overall function sug - gest the presence of major depression, in addition to the normal response to a significant loss.",
+            "excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"symptoms\", \"response\", \"suicidal\", and 2 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: **Clinical Observation Summary**\n\n**Patient's Response Pattern:** The patient did not provide responses to any of the 23 questions on the questionnaire. This lack of response is notable and may indicate avoidance, reluctance to engage, or significant distress.\n\n**Main Symptoms and Concerns:** \n- No explicit symptoms or concerns are reported due to the absence of responses.\n\n**Patterns in Patient's Responses:** \n- A consistent pattern of non-response across all items suggests that the patient may be unwilling or unable to engage with the questionnaire.\n\n**Potential Areas of Clinical Significance:**\n- The patient's refusal or inability to provide information may indicate significant psychological distress, avoidance behaviors, or difficulties with self-reflection.\n- Potential areas of concern include mood disorders, anxiety disorders, substance use, psychotic symptoms, and trauma, as these are domains covered by the questionnaire.\n\n**Risk Factors or Warning Signs:**\n- The absence of responses to questions about suicidal thoughts (Q10), substance use (Q19, Q20, Q23), and psychotic symptoms (Q11, Q12) is particularly concerning, as these are critical risk factors for harm to self or others.\n\n**Summary of Observations:**\nThe patient's failure to provide responses to the questionnaire suggests a significant level of distress, disengagement, or avoidance. This non-response pattern warrants immediate attention and may necessitate an alternative approach to assessment, such as a clinical interview, to understand the patient's current mental health status and to identify potential areas of concern. The lack of information on critical risk factors, such as suicidal ideation and substance use, necessitates a cautious and thorough evaluation to ensure patient safety.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.709
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "The patient has not provided responses to any of the questions on the questionnaire, which suggests a significant level of distress, disengagement, or avoidance. This lack of response is concerning and may indicate that the patient is struggling with <sym>anxiety</sym>, <sym>depression</sym>, or other mental health issues. It's essential to approach this situation with empathy and understanding, acknowledging that the patient's silence may be a coping mechanism or a sign of feeling overwhelmed.\n\n**Diagnosis:** \n<med>Unspecified Mental Health Condition</med>\n\n**Reasoning:** \nThe patient's failure to provide responses to the questionnaire, including critical questions about <sym>suicidal ideation</sym>, <sym>substance use</sym>, and <sym>psychotic symptoms</sym>, suggests a significant level of distress or avoidance. This non-response pattern warrants a cautious and thorough evaluation to ensure patient safety and to identify potential areas of concern. The lack of information makes it challenging to provide a definitive diagnosis; however, it's essential to consider various diagnostic possibilities, including <med>anxiety disorders</med>, <med>mood disorders</med>, and <med>trauma-related disorders</med>.\n\n**Recommended Next Steps/Treatment Options:** \n1. Conduct a comprehensive clinical interview to establish a rapport with the patient and gather more information about their mental health status.\n2. Use alternative assessment tools or methods to evaluate the patient's symptoms and concerns, such as a <med>mental status examination</med> or a <med>psychological assessment</med>.\n3. Consider a <med>provisional diagnosis</med> of <med>Unspecified Mental Health Condition</med> and revisit the diagnosis as more information becomes available.\n4. Develop a treatment plan that addresses potential <sym>anxiety</sym>, <sym>depression</sym>, or other mental health concerns, and involves <med>counseling</med> or <med>psychotherapy</med> as needed.\n5. Ensure patient safety by assessing for <sym>suicidal ideation</sym> and <sym>substance use</sym> in a sensitive and non-judgmental manner.",
+  "metadata": {
+    "assistant_model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "patient_model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "patient_profile": "schizophrenia",
+    "question_count": 23,
+    "duration": 2728.470377922058,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 4.412766933441162,
+    "diagnosis_generation_time": 2.1934709548950195,
+    "rag_evaluation_time": 8.821487426757812e-06,
+    "total_time": 6.606255769729614
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.724,
+        "average_score": 0.724,
+        "example_excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"these\", \"that\", \"diagnosis\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Schizophrenia.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7103,
+        "average_score": 0.7103,
+        "example_excerpt": "h before their consideration as formal disorders. This potential category would \nidentify a person w...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"that\", \"ensure\", \"significant\", and 2 more matching aspects of your query."
+      },
+      "APA_DSM-5-Social-Communication-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7052,
+        "average_score": 0.7052,
+        "example_excerpt": "t otherwise specified\u201d la bel to help them get the services and treatment they need. \nCharacteristic...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"evaluation\", \"health\", \"diagnosis\", and 1 more matching aspects of your query."
+      },
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7033,
+        "average_score": 0.7033,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"symptoms\", \"that\", \"attention\" matching aspects of your query."
+      },
+      "APA_DSM-5-Depression-Bereavement-Exclusion.pdf": {
+        "access_count": 1,
+        "highest_score": 0.702,
+        "average_score": 0.702,
+        "example_excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"symptoms\", \"response\", \"suicidal\", and 2 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-04-30 10:02:20",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-04-30 10:02:20",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 1,
+        "clinical_relevance": 1,
+        "consistency": 1,
+        "diagnostic_justification": 2,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The conversation barely addressed any of the DSM-5 Level1 Cross-Cutting Symptom Measure dimensions. The therapist noted the patient's failure to provide responses to the questionnaire but did not attempt to explore any specific symptoms or domains. This lack of coverage leaves significant gaps in understanding the patient's mental health status.",
+        "clinical_relevance": "The therapist's questions and approach were not provided, as the conversation was non-existent. Therefore, it's not possible to assess the clinical relevance or accuracy of the questions asked. The therapist's response to the situation was to acknowledge the patient's silence as a potential sign of distress, but no specific clinical inquiries were made.",
+        "consistency": "The conversation lacked any structured approach or logical flow. The therapist's response was more of an observation of the patient's non-response rather than a structured clinical conversation. As such, consistency and logical flow could not be evaluated in a meaningful way.",
+        "diagnostic_justification": "The diagnosis of 'Unspecified Mental Health Condition' was provided, but the justification was based on the patient's lack of response to the questionnaire. While this indicates some level of distress or avoidance, the diagnostic conclusion could have been more thoroughly supported by exploring specific symptoms or domains. The therapist suggested several potential diagnoses (anxiety disorders, mood disorders, trauma-related disorders) but did not systematically assess these areas.",
+        "empathy": "The therapist's response showed empathy and understanding, acknowledging the patient's silence as a potential coping mechanism or sign of feeling overwhelmed. The approach was gentle and non-judgmental, indicating a caring attitude. However, the lack of direct interaction or further engagement limits the evaluation of empathy in a real-world clinical scenario."
+      },
+      "overall_comments": "The conversation was severely limited by the patient's failure to provide responses to the questionnaire. The therapist's approach was empathetic and acknowledged potential distress but did not involve direct clinical inquiry. As such, most criteria could not be fully evaluated, and scores reflect the significant limitations of the interaction. A comprehensive clinical interview and further assessment are warranted to accurately diagnose and treat the patient.",
+      "average_score": 1.8,
+      "diagnosis_accuracy": {
+        "matches_profile": false,
+        "confidence": 5,
+        "explanation": "The diagnosis does not explicitly mention schizophrenia or any equivalent clinical terms. Instead, it suggests unspecified mental health conditions, anxiety, depression, or other mental health issues, without specific reference to schizophrenia.",
+        "classification": "other"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "schizophrenia",
+        "classified_as": "other",
+        "match": false,
+        "confidence": 5
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 3.1379239559173584
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.43858885890949334,
+        "local_coherence": 0.43858885890949334,
+        "window_coherence": 0.0
+      },
+      "readability": {
+        "flesch_kincaid_grade": 12.9,
+        "gunning_fog_index": 7.47,
+        "flesch_reading_ease": 35.33
+      },
+      "diversity": {
+        "distinct_1": 0.5196374622356495,
+        "distinct_2": 0.8363636363636363,
+        "distinct_3": 0.9270516717325228
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "schizophrenia",
+      "predicted": "The patient has not provided responses to any of the questions on the questionnaire, which suggests a significant level of distress, disengagement, or avoidance. This lack of response is concerning and may indicate that the patient is struggling with <sym>anxiety</sym>, <sym>depression</sym>, or other mental health issues. It's essential to approach this situation with empathy and understanding, acknowledging that the patient's silence may be a coping mechanism or a sign of feeling overwhelmed.\n\n**Diagnosis:** \n<med>Unspecified Mental Health Condition</med>\n\n**Reasoning:** \nThe patient's failure to provide responses to the questionnaire, including critical questions about <sym>suicidal ideation</sym>, <sym>substance use</sym>, and <sym>psychotic symptoms</sym>, suggests a significant level of distress or avoidance. This non-response pattern warrants a cautious and thorough evaluation to ensure patient safety and to identify potential areas of concern. The lack of information makes it challenging to provide a definitive diagnosis; however, it's essential to consider various diagnostic possibilities, including <med>anxiety disorders</med>, <med>mood disorders</med>, and <med>trauma-related disorders</med>.\n\n**Recommended Next Steps/Treatment Options:** \n1. Conduct a comprehensive clinical interview to establish a rapport with the patient and gather more information about their mental health status.\n2. Use alternative assessment tools or methods to evaluate the patient's symptoms and concerns, such as a <med>mental status examination</med> or a <med>psychological assessment</med>.\n3. Consider a <med>provisional diagnosis</med> of <med>Unspecified Mental Health Condition</med> and revisit the diagnosis as more information becomes available.\n4. Develop a treatment plan that addresses potential <sym>anxiety</sym>, <sym>depression</sym>, or other mental health concerns, and involves <med>counseling</med> or <med>psychotherapy</med> as needed.\n5. Ensure patient safety by assessing for <sym>suicidal ideation</sym> and <sym>substance use</sym> in a sensitive and non-judgmental manner.",
+      "matches": false,
+      "classification": "other",
+      "classification_confidence": 5
+    }
+  }
+}

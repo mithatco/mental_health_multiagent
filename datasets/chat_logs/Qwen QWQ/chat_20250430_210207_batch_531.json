@@ -1,0 +1,237 @@
+{
+  "timestamp": "2025-04-30T21:02:21.911138",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm Dr. Lee. Today I'll be using the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult to better understand your current mental health. This will help us track symptoms over time and guide treatment. All your answers are confidential. We'll go through 23 questions about how often you've experienced certain issues in the last two weeks. Ready to begin?"
+    },
+    {
+      "role": "patient",
+      "content": "Okay, sure. I guess I should be honest. But I've had a lot of ups and downs lately, so I'm not sure where to start."
+    },
+    {
+      "role": "assistant",
+      "content": "Take your time. Let's start with the first question about mood. Over the past two weeks, how often have you been bothered by little interest or pleasure in doing things?"
+    },
+    {
+      "role": "patient",
+      "content": "Hmm... It's been inconsistent. Some days I'm hyper-focused on projects, and others I can't muster the energy to leave the house. Recently, though, I've been trying to keep busy. Maybe a couple days felt really flat?"
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. Next, how often have you been bothered by feeling down, depressed, or hopeless?"
+    },
+    {
+      "role": "patient",
+      "content": "That one's harder. When I'm in a low phase, it's crushing\u2014like everything's pointless. But right now, I'm in a middle spot. Maybe a week ago I felt pretty low, but today I'm better. I don't want to focus on that."
+    },
+    {
+      "role": "assistant",
+      "content": "Understood. Now about anger: Over the past two weeks, how often have you felt more irritated, grouchy, or angry than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "Oh, I've snapped a few times. Last week, small things set me off. But I try to control it better now. It's like a switch\u2014I'll go from calm to frustrated in seconds. Probably a few days of that."
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. Next, how often have you been bothered by needing less sleep but still feeling energetic?"
+    },
+    {
+      "role": "patient",
+      "content": "Wait, this month I've been going to bed on time, but I know last spring I'd stay up all night\u2014writing novels, painting, stuff like that. Recently? Maybe like three days ago I only slept four hours and felt great. But I'm trying to sleep normal now."
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, let me tackle this step by step. The user wants a structured assessment based on the patient's responses, following specific formatting and tags. First, I need to ensure I capture the main points from the questionnaire.\n\nThe patient's answers show fluctuating moods: times of high energy with reduced sleep (like writing novels, painting) and periods of low mood with anhedonia. The mention of irritability and the switch from calm to angry quickly points to possible bipolar features. They also talk about feeling hopeless, which is depressive.\n\nThe key here is differentiating between Bipolar II and Bipolar I. Since the patient hasn't been hospitalized, maybe Bipolar II, but the hypomanic episodes might not meet full criteria yet. The mixed features (depressive and hypomanic together) are important. \n\nWait, the DSM-5 criteria for hypomania require at least 4 days with elevated mood and 3 symptoms. The patient mentions recent 4-hour sleep with energy, which fits. The historical episodes last longer, so that's a strong indicator. \n\nThe diagnosis should be Bipolar II Disorder with mixed features, but the user wants to avoid overstepping. Maybe the best bet is a clinical impression of Bipolar II given the hypomanic episodes and depressive symptoms. \n\nIn the reasoning, I need to reference the hypomanic symptoms (decreased need for sleep, increased activity), the mixed features (depressive AND manic symptoms), and the historical episodes. \n\nFor next steps, recommend a full clinical interview, mood charting, and possibly a referral to a psychiatrist for mood stabilizers. \n\nNeed to make sure all parts are addressed, tags are correctly placed, and the structure is exactly as specified. Also, avoid any markdown, just the required formatting. Make sure the diagnosis is under the **Diagnosis:** section with the exact heading. \n\nCheck if any other disorders fit better, but the symptoms align more with bipolar than unipolar depression or anxiety. Also, the patient didn't mention anxiety-specific symptoms beyond irritability. \n\nOkay, putting it all together with the required tags and sections. Ensure empathy in the first paragraph, use the correct terms like <med>Bipolar II</med>, and list the next steps clearly.\n</think>\n\nYour responses paint a picture of significant emotional and behavioral shifts over the past two weeks. <sym>Fluctuations between intense energy and emotional lows</sym>, <sym>irritability</sym>, and struggles with <sym>sleep instability</sym> suggest a struggle to navigate these shifts. It\u2019s clear this has been challenging, and your efforts to \"control\" these patterns reflect both awareness and distress. Many of these symptoms echo a cyclical pattern, which can feel exhausting to manage alone.  \n\n**Diagnosis:** <med>Bipolar II Disorder, Mixed Features</med> (provisional, pending further evaluation)  \n\n**Reasoning:**  \nThe <sym>hypomanic features</sym> (elevated goal-directed activity, decreased need for sleep, irritability) and <sym>depressive symptoms</sym> (anhedonia, hopelessness) suggest a <med>mixed affective state</med>. The <quote>\"switch from calm to frustrated in seconds\"</quote> aligns with <med>affective lability</med>, common in bipolar disorders. Historical episodes of prolonged insomnia with hyperactivity (<quote>\"writing novels, painting\"</quote>) meet criteria for <med>hypomanic episodes</med>, and the current 4-hour sleep with preserved energy supports this.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Comprehensive psychiatric evaluation**: Assess for full <med>bipolar disorder</med> criteria (e.g., hypomanic episode duration, functionality during highs).  \n2. **Mood charting**: Track daily sleep, energy levels, and irritability triggers to identify patterns.  \n3. **Medication review**: Consider <med>lithium</med> or <med>valproate</med> if bipolar is confirmed; SSRIs may worsen mania in this context.  \n4. **Psychoeducation**: Address coping strategies for mood instability and irritability, including grounding techniques.  \n5. **Rule out medical contributors**: Evaluate thyroid dysfunction or substance use (if applicable) that could mimic mood swings.  \n\nIf symptoms escalate or suicidal ideation emerges, initiate emergency care.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf",
+            "score": 0.7177,
+            "highlight": "And while clinicians may have been assigning a BD diagnosis to these  severely irritable youth to ensure their access to treatment resources and services, these children \u2019s  behaviors may not present in an episodic way as is the case with BD.",
+            "excerpt": "iagnosis and Care\nWhile DSM does include two diagnoses with related symptoms to DMDD, oppositional d...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"treatment\", \"not\", \"ensure\", and 8 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Depression-Bereavement-Exclusion.pdf",
+            "score": 0.7034,
+            "highlight": "The presence of symptoms such as feelings of worthlessness, suicidal  ideas (as distinct from wanting to join a deceased loved one), and impairment of overall function sug - gest the presence of major depression, in addition to the normal response to a significant loss.",
+            "excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"distinct\", \"significant\", \"normal\", and 7 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Personality-Disorder.pdf",
+            "score": 0.6938,
+            "highlight": "This approach also includes a diag - nosis of Personality Disorder\u2014 Trait Specified (PD-TS) that could be made when a Personality Disorder is  considered present, but the criteria for a specific personality disorder are not fully met.",
+            "excerpt": "ncluded evaluation of impairments \nin personality functioning (how an individual typically experienc...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"criteria\", \"could\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Sleep-Wake-Disorders.pdf",
+            "score": 0.6932,
+            "highlight": "Sleep-Wake Disorders In the fifth edition of the Diagnostic and Statistical Manual of Mental Disorders  (DSM-5), sleep-wake  disorders encompass 10 conditions manifested by disturbed sleep and causing distress as well as im - pairment in daytime functioning.",
+            "excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"mental\", \"disorders\", and 3 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.6845,
+            "highlight": "The  new narrative text for SSD notes that some patients with physical conditions such as heart disease or  cancer will indeed experience disproportionate and excessive thoughts, feelings, and behaviors related  to their illness, and that these individuals may qualify for a diagnosis of SSD.",
+            "excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"diagnosis\", \"behaviors\", \"these\", and 8 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let's tackle this step by step. The user provided a conversation between a patient and Dr. Lee using a DSM-5 assessment. I need to analyze the patient's answers and structure the response as per the instructions.\n\nFirst, I'll read through all the questions and answers again to make sure I don't miss any key points. The patient's responses seem to fluctuate between different states, which is important to note.\n\nStarting with symptom identification. The first two questions are about mood: lack of interest/pleasure and feeling down. The patient mentions inconsistency in mood, sometimes hyper-focused, other times flat. For Q3, feeling depressed, they mention being in a \"low phase\" which feels crushing but currently in a middle spot. That suggests possible mood swings or fluctuations.\n\nQ4 is about anger. The patient admitted to being irritable, even snapping, but trying to control it. That's a key symptom of irritability, which can be part of several disorders. \n\nQ5 is about needing less sleep yet feeling energetic. The patient references past behavior of staying up all night with high energy (like writing novels, painting), but recently only three days of 4-hour sleep with energy. This is a classic sign of hypomania or mania, especially the historical mention. \n\nNow, looking for patterns. The patient's responses show fluctuating symptoms between low and high energy, which could indicate bipolar disorder. The inconsistency in mood and energy levels is a pattern here. The patient's attempt to control anger and regulate sleep might be a compensatory behavior, but the underlying symptoms are still present.\n\nPotential clinical areas: Bipolar disorder comes to mind, especially considering the hypomanic symptoms mentioned. Also, possible depression given the depressed phases, but the presence of elevated moods complicates that. Anxiety might be there with the irritability, but the main focus is mood swings and energy.\n\nRisk factors: The sleep disturbances, especially the past episodes of all-night activities, are significant. The current reduced sleep with maintained energy is a red flag for bipolar. Also, the patient's self-report of feeling \"crushing\" low periods and the switch to irritability quickly could indicate rapid cycling or mixed states. \n\nNeed to make sure not to jump to conclusions but note the clinical significance of these symptoms. Also, the mention of \"trying to sleep normal now\" suggests some awareness of their sleep patterns fluctuating, which is a point to consider in assessment.\n\nI need to structure this into the five points as per the user's request. Make sure to use clinical terminology but remain concise. Avoid speculation; stick to what's presented. \n\nWait, the user also mentioned \"Note patterns in the patient's responses\". The patient's inconsistency in responses (sometimes high energy, sometimes low) and the variability in mood states over the two-week period is a pattern. Also, the mention of past behaviors (last spring's all-night activities) suggests a history of similar episodes, which is a pattern over time.\n\nHmm, are there any other risk factors? The patient's current low phase might be at risk for suicidal thoughts? The Q3 answer mentions \"everything's pointless\" but the patient doesn't mention suicidal ideation directly. Maybe not a direct risk factor, but the hopelessness is a concern.\n\nPutting it all together: the main symptoms are fluctuating mood, irritability, and disrupted sleep with energy spikes. The pattern is variability in mood and energy levels. Clinical significance points to possible bipolar disorder, specifically hypomanic episodes. The past history of similar behaviors supports that. Risk factors include the hypomanic/hyperactive episodes and the presence of depressive symptoms. The need for further assessment to rule out bipolar disorder is key here.\n\nI need to make sure each section is addressed. Let me outline each part:\n\n1. Main symptoms: Fluctuating mood (hypomanic and depressive phases), irritability, disrupted sleep with preserved energy, inconsistent functioning.\n\n2. Patterns: Fluctuations in mood, energy, and functioning over the 2-week period, with historical episodes of similar issues (the all-night activities last spring). Also, the patient's attempt to self-regulate (trying to control anger, sleep normally) but still experiencing symptoms.\n\n3. Clinical significance: Hypomanic symptoms (elevated mood with decreased need for sleep, increased goal-directed activity), depressive symptoms, irritability. This combination points towards bipolar disorder, possibly Type II. The DSM-5 criteria for bipolar include periods of hypomania and depression.\n\n4. Risk factors: The presence of hypomanic episodes, especially the historical ones, and the current mixed features (depressive and hypomanic symptoms together). The rapid switches (from calm to frustration) might indicate instability. The mention of everything feeling pointless could be a depressive risk, but no direct suicidal thoughts stated. However, the fluctuating episodes could increase risk of impulsive behavior during hypomanic phases.\n\n5. Summary: Use clinical terms like \"fluctuating mood symptoms,\" \"hypomanic features,\" \"depressive episodes,\" etc. \n\nWait, in the self-report for Q5, the patient differentiates between recent sleep patterns and past. The current 4 hours with energy is a recent example, but the past spring has more pronounced episodes. The DSM-5 criteria for hypomanic episodes require a distinct period of elevated mood, lasting at least 4 days, not requiring hospitalization, with 3+ symptoms, including decreased need for sleep. The patient's current 4 hours with energy and high activity (writing novels, painting) fits. \n\nThe depressive symptoms aren't meeting full criteria yet, but the combination with hypomania is critical. The pattern here suggests that the patient might be experiencing a hypo/manic episode with concurrent depressive features, which is a mixed episode. That's a key point for clinical significance.\n\nAlso, the irritability and anger outbursts could be part of the hypomanic episode as per DSM-5 criteria.\n\nNeed to mention hypomanic features, depressive symptoms, irritability, and sleep disturbance as main points.\n\nRisk factors: The historical and current hypomanic episodes, mixed features, and the potential for rapid cycling. The patient's self-awareness (trying to control) might indicate insight, but the symptoms are still present, suggesting possible non-compliance or lack of treatment.\n\nSo, summarizing all this in the required sections without speculation. Ensure each part is covered clearly and concisely.\n</think>\n\n**Clinical Observation Summary**  \n\n**1. Main Symptoms and Concerns**  \n- **Fluctuating mood states**: Alternating between periods of high energy, hyperactivity (e.g., decreased need for sleep, increased goal-directed activity during hypomanic phases) and low energy/anhedonia.  \n- **Mixed features**: Concurrent depressive symptoms (anhedonia, hopelessness) and hypomanic symptoms (elevated mood with reduced need for sleep, irritability).  \n- **Irritability/agitation**: Reports of rapid mood switches (e.g., calm to frustrated in seconds) and recent episodes of reactive anger.  \n- **Sleep disturbance**: Variable sleep patterns with recent episodes of reduced need for sleep (e.g., 4 hours with preserved energy) and historical severe insomnia linked to hyperactivity.  \n\n**2. Patterns in Responses**  \n- **Inconsistency in symptom reporting**: Symptoms fluctuate within the 2-week window, with acknowledgment of historical exacerbations (e.g., past spring\u2019s prolonged insomnia and hyperactivity).  \n- **Self-regulation attempts**: Patient notes efforts to \"control\" irritability and normalize sleep, suggesting awareness of dysregulation but limited functional control.  \n- **Temporal variability**: Describes current mood as \"middle spot\" but acknowledges recent lows and highs, indicating episodicity.  \n\n**3. Potential Areas of Clinical Significance**  \n- **Hypomanic features**: Presence of decreased need for sleep, increased goal-directed activity, and irritability align with DSM-5 criteria for hypomania.  \n- **Depressive symptoms**: Anhedonia and feelings of hopelessness suggest depressive episodes, though duration and severity require further assessment.  \n- **Mixed affective state**: Co-occurrence of elevated and depressed mood features.  \n- **Risk of bipolar spectrum disorder**: Historical and current patterns suggest possible bipolar II disorder or bipolar I with mixed features.  \n\n**4. Risk Factors/Warning Signs**  \n- **Hypomanic/hyperactive episodes**: History of prolonged insomnia and excessive goal-directed behavior (e.g., writing novels, painting) raises concern for a cyclothymic or bipolar disorder.  \n- **Mixed features**: Depressive symptoms alongside hypomania may increase risk for functional impairment and suicidal ideation (though not explicitly stated).  \n- **Impulsivity potential**: Hypomanic phases may impair judgment (e.g., unaddressed sleep disturbances).  \n\n**5. Summary (Clinical Language)**  \nThe patient exhibits **fluctuating mood symptoms with hypomanic features** (e.g., reduced need for sleep, increased activity, irritability) alongside **depressive symptoms** (anhedonia, hopelessness). **Mixed affective features** are evident, with episodic dysregulation over the past two weeks and historical hyperthymic episodes (e.g., prolonged insomnia with hyperactivity last spring). **Risk factors include cyclical mood instability, irritability, and potential bipolar spectrum disorder. Further evaluation is warranted to assess for bipolar I/II disorder, mixed features, and rule out unipolar depression with atypical features. Monitor for functional impairment and suicide risk through expanded assessment.**  \n\n---  \nThis summary adheres to DSM-5 constructs and focuses on observable patterns without diagnostic overreach.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6985
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "Your responses paint a picture of significant emotional and behavioral shifts over the past two weeks. <sym>Fluctuations between intense energy and emotional lows</sym>, <sym>irritability</sym>, and struggles with <sym>sleep instability</sym> suggest a struggle to navigate these shifts. It\u2019s clear this has been challenging, and your efforts to \"control\" these patterns reflect both awareness and distress. Many of these symptoms echo a cyclical pattern, which can feel exhausting to manage alone.  \n\n**Diagnosis:** <med>Bipolar II Disorder, Mixed Features</med> (provisional, pending further evaluation)  \n\n**Reasoning:**  \nThe <sym>hypomanic features</sym> (elevated goal-directed activity, decreased need for sleep, irritability) and <sym>depressive symptoms</sym> (anhedonia, hopelessness) suggest a <med>mixed affective state</med>. The <quote>\"switch from calm to frustrated in seconds\"</quote> aligns with <med>affective lability</med>, common in bipolar disorders. Historical episodes of prolonged insomnia with hyperactivity (<quote>\"writing novels, painting\"</quote>) meet criteria for <med>hypomanic episodes</med>, and the current 4-hour sleep with preserved energy supports this.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Comprehensive psychiatric evaluation**: Assess for full <med>bipolar disorder</med> criteria (e.g., hypomanic episode duration, functionality during highs).  \n2. **Mood charting**: Track daily sleep, energy levels, and irritability triggers to identify patterns.  \n3. **Medication review**: Consider <med>lithium</med> or <med>valproate</med> if bipolar is confirmed; SSRIs may worsen mania in this context.  \n4. **Psychoeducation**: Address coping strategies for mood instability and irritability, including grounding techniques.  \n5. **Rule out medical contributors**: Evaluate thyroid dysfunction or substance use (if applicable) that could mimic mood swings.  \n\nIf symptoms escalate or suicidal ideation emerges, initiate emergency care.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "bipolar",
+    "question_count": 23,
+    "duration": 8558.363994836807,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 5.734359979629517,
+    "diagnosis_generation_time": 8.540375232696533,
+    "rag_evaluation_time": 1.430511474609375e-05,
+    "total_time": 14.27475881576538
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7177,
+        "average_score": 0.7177,
+        "example_excerpt": "iagnosis and Care\nWhile DSM does include two diagnoses with related symptoms to DMDD, oppositional d...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"treatment\", \"not\", \"ensure\", and 8 more matching aspects of your query."
+      },
+      "APA_DSM-5-Depression-Bereavement-Exclusion.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7034,
+        "average_score": 0.7034,
+        "example_excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"distinct\", \"significant\", \"normal\", and 7 more matching aspects of your query."
+      },
+      "APA_DSM-5-Personality-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6938,
+        "average_score": 0.6938,
+        "example_excerpt": "ncluded evaluation of impairments \nin personality functioning (how an individual typically experienc...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"criteria\", \"could\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM-5-Sleep-Wake-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6932,
+        "average_score": 0.6932,
+        "example_excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"mental\", \"disorders\", and 3 more matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6845,
+        "average_score": 0.6845,
+        "example_excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"diagnosis\", \"behaviors\", \"these\", and 8 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 08:02:57",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 08:02:57",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 3,
+        "clinical_relevance": 4,
+        "consistency": 4,
+        "diagnostic_justification": 4,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist addressed several DSM-5 dimensions, including mood, anger, energy/activity, and sleep. However, not all 23 questions from the DSM-5 Level1 Cross-Cutting Symptom Measure were directly addressed. Dimensions such as somatic concerns, suicidality, psychotic symptoms, cognitive function, repetitive thoughts/behaviors, dissociation, identity and relationships, and substance use were either not directly asked or only superficially covered. For example, the therapist did not specifically inquire about the patient's experiences with somatic symptoms, psychosis, or substance use beyond the patient's mention of 'writing novels, painting' during periods of insomnia. A more comprehensive approach would have ensured that all relevant areas were explored.",
+        "clinical_relevance": "The therapist's questions generally aligned with DSM-5 criteria, accurately targeting clinical symptoms. The questions about mood, anger, and sleep were particularly well-phrased and relevant. However, there were moments where the questions could have been more precise or comprehensive. For instance, when discussing 'hypomanic features,' the therapist could have used more specific language from the DSM-5 to guide the inquiry. Overall, the questions were clinically relevant but occasionally lacked the specificity and depth required for a comprehensive assessment.",
+        "consistency": "The dialogue generally flowed logically, with each question building on previous responses. The therapist effectively navigated the conversation through the patient's fluctuating emotional states and behavioral shifts. However, there were minor logical inconsistencies, such as abrupt transitions between topics (e.g., moving from discussing sleep patterns to making a diagnosis without fully exploring other symptoms). These did not significantly disrupt the conversation but detracted from its overall coherence.",
+        "diagnostic_justification": "The diagnosis of Bipolar II Disorder, Mixed Features, was generally supported by the patient's responses. The therapist explicitly linked symptoms such as hypomanic features (elevated goal-directed activity, decreased need for sleep, irritability) and depressive symptoms (anhedonia, hopelessness) to the DSM-5 criteria. However, the justification could have been more comprehensive, including a discussion of alternative diagnoses that were ruled out. The reasoning provided was clinically sound but could have benefited from a more detailed differential diagnosis consideration.",
+        "empathy": "The therapist demonstrated empathy and a natural conversational style, appropriately acknowledging the patient's distress and efforts to 'control' their symptoms. The tone was professional, and the therapist tailored responses to the patient's emotional state. However, there were moments where the interaction felt slightly impersonal or abrupt, such as when discussing sensitive topics like suicidal ideation or hypomanic episodes. A more empathetic approach might have involved deeper emotional validation and exploration of these areas."
+      },
+      "overall_comments": "The conversation demonstrated a good understanding of the patient's symptoms and emotional struggles, but there were areas for improvement. The therapist covered several DSM-5 dimensions but missed or superficially addressed others. The questions were generally clinically relevant, and the diagnostic justification was sound but could have been more comprehensive. The therapist showed empathy and a professional tone, but interactions sometimes felt slightly robotic. Overall, this was a solid but not exceptional performance, warranting a score in the mid-range.",
+      "average_score": 3.8,
+      "diagnosis_accuracy": {
+        "matches_profile": true,
+        "confidence": 4,
+        "explanation": "The diagnosis explicitly mentions 'Bipolar II Disorder, Mixed Features' and provides reasoning that aligns with the expected profile of bipolar disorder, including hypomanic features, depressive symptoms, and affective lability.",
+        "classification": "bipolar"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "bipolar",
+        "classified_as": "bipolar",
+        "match": true,
+        "confidence": 4
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 4.000410079956055
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.5884292417059968,
+        "local_coherence": 0.6110330007401734,
+        "window_coherence": 0.6233923722038285
+      },
+      "readability": {
+        "flesch_kincaid_grade": 10.23,
+        "gunning_fog_index": 5.28,
+        "flesch_reading_ease": 44.82
+      },
+      "diversity": {
+        "distinct_1": 0.5686274509803921,
+        "distinct_2": 0.9044502617801047,
+        "distinct_3": 0.9567496723460026
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "bipolar",
+      "predicted": "Your responses paint a picture of significant emotional and behavioral shifts over the past two weeks. <sym>Fluctuations between intense energy and emotional lows</sym>, <sym>irritability</sym>, and struggles with <sym>sleep instability</sym> suggest a struggle to navigate these shifts. It\u2019s clear this has been challenging, and your efforts to \"control\" these patterns reflect both awareness and distress. Many of these symptoms echo a cyclical pattern, which can feel exhausting to manage alone.  \n\n**Diagnosis:** <med>Bipolar II Disorder, Mixed Features</med> (provisional, pending further evaluation)  \n\n**Reasoning:**  \nThe <sym>hypomanic features</sym> (elevated goal-directed activity, decreased need for sleep, irritability) and <sym>depressive symptoms</sym> (anhedonia, hopelessness) suggest a <med>mixed affective state</med>. The <quote>\"switch from calm to frustrated in seconds\"</quote> aligns with <med>affective lability</med>, common in bipolar disorders. Historical episodes of prolonged insomnia with hyperactivity (<quote>\"writing novels, painting\"</quote>) meet criteria for <med>hypomanic episodes</med>, and the current 4-hour sleep with preserved energy supports this.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Comprehensive psychiatric evaluation**: Assess for full <med>bipolar disorder</med> criteria (e.g., hypomanic episode duration, functionality during highs).  \n2. **Mood charting**: Track daily sleep, energy levels, and irritability triggers to identify patterns.  \n3. **Medication review**: Consider <med>lithium</med> or <med>valproate</med> if bipolar is confirmed; SSRIs may worsen mania in this context.  \n4. **Psychoeducation**: Address coping strategies for mood instability and irritability, including grounding techniques.  \n5. **Rule out medical contributors**: Evaluate thyroid dysfunction or substance use (if applicable) that could mimic mood swings.  \n\nIf symptoms escalate or suicidal ideation emerges, initiate emergency care.",
+      "matches": true,
+      "classification": "bipolar",
+      "classification_confidence": 4
+    }
+  }
+}

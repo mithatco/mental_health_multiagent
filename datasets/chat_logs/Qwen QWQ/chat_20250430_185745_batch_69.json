@@ -1,0 +1,281 @@
+{
+  "timestamp": "2025-04-30T18:58:06.132772",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm Dr. Lee, a mental health professional. Today we'll use the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure to better understand your experience over the past two weeks. This is anonymous and confidential\u2014your answers help me assist you better. I'll ask 23 questions about different aspects of your mental health. Please answer each as honestly as you can. Ready when you are."
+    },
+    {
+      "role": "patient",
+      "content": "Okay, sure. I'll try my best."
+    },
+    {
+      "role": "assistant",
+      "content": "1. Little interest or pleasure in doing things?"
+    },
+    {
+      "role": "patient",
+      "content": "Hmm, I guess sometimes I just don't feel as excited about stuff I used to enjoy. But I blame that on work stress, not anything else."
+    },
+    {
+      "role": "assistant",
+      "content": "2. Feeling down, depressed, or hopeless?"
+    },
+    {
+      "role": "patient",
+      "content": "I've had my off days, but I don't think it's that bad. Maybe a few times a week when everything feels heavy."
+    },
+    {
+      "role": "assistant",
+      "content": "3. Feeling more irritated, grouchy, or angry than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "Not really. I try to keep cool, yeah... I guess if something's bugging me, I might snap a bit, but who doesn't?"
+    },
+    {
+      "role": "assistant",
+      "content": "4. Sleeping less than usual, but still have a lot of energy?"
+    },
+    {
+      "role": "patient",
+      "content": "Well, I stay up late sometimes, but I'm usually tired. Wait, maybe once or twice I've been wired after a drink or something."
+    },
+    {
+      "role": "assistant",
+      "content": "5. Starting lots more projects or doing more risky things than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "Projects? No, not really. But maybe taking risks like\u2026 driving after a drink? Not often. Just trying to stay under the radar, you know?"
+    },
+    {
+      "role": "assistant",
+      "content": "6. Feeling nervous, anxious, worried, or on edge?"
+    },
+    {
+      "role": "patient",
+      "content": "Yeah, a lot. But I just get some drinks and it calms me down. I mean, it's not like I'm paralyzed by it or anything."
+    },
+    {
+      "role": "assistant",
+      "content": "7. Feeling panic or frightened?"
+    },
+    {
+      "role": "patient",
+      "content": "Panic? Maybe once or twice. Like, if I can't get my hands on\u2026 what I need. But that's just stress, right?"
+    },
+    {
+      "role": "assistant",
+      "content": "8. Avoiding situations that make you anxious?"
+    },
+    {
+      "role": "patient",
+      "content": "I might skip some parties or gatherings, but that's just being selective. Not avoiding, I swear."
+    },
+    {
+      "role": "assistant",
+      "content": "9. Unexplained aches and pains?"
+    },
+    {
+      "role": "patient",
+      "content": "Yeah, headaches sometimes, but I figure it's dehydration or stress. My doc already says I'm fine."
+    },
+    {
+      "role": "assistant",
+      "content": "10. Feeling that your illnesses aren't taken seriously enough?"
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, let me start by understanding the user's query. They want a clinical assessment based on the provided questionnaire responses, following a strict structure. First, I need to parse the given answers and extract key points. \n\nThe patient reported some anhedonia and low mood, which could indicate depressive symptoms. They also mentioned significant anxiety, using alcohol to cope, and risky behaviors like driving under the influence. The panic when unable to access alcohol suggests dependence. The somatic symptoms (headaches) are attributed to stress, but need further evaluation.\n\nNext, I need to structure the response as per the instructions. The first paragraph must be compassionate, summarizing the patient's experience. Then the Diagnosis section needs a provisional diagnosis, followed by reasoning, and treatment steps.\n\nFor the diagnosis, considering DSM-5 criteria, the most pressing issue is the alcohol use. The patient uses it to manage anxiety, experiences withdrawal-like panic, and engages in risky behavior. This points to <med>Alcohol Use Disorder</med>. The anxiety and depressive symptoms are present but may be secondary to the substance use or co-occurring. Somatic symptoms are mentioned but not meeting SSD criteria yet, so focus on the substance first.\n\nThe reasoning should connect the symptoms: using alcohol to self-medicate anxiety, risky behaviors, and possible dependence. The depressive symptoms could be part of the substance use withdrawal or a separate issue. \n\nTreatment steps should address substance use as the priority, then anxiety/depression, and include medical evaluation for physical symptoms. The user specified to avoid Somatic Symptom Disorder unless clearly warranted, so I should caution against that. \n\nI need to ensure all sections are in the exact order with correct tags and formatting. Check for any missed symptoms or misinterpretations. Make sure to use the required tags for medical terms, symptoms, and quotes. Avoid assumptions beyond the provided info. \n\nFinally, the diagnosis should be provisional, acknowledging that more info is needed, but highlighting the critical issues like AUD, anxiety, and possible depressive features. The recommendations must be actionable and prioritized.\n</think>\n\n<sym>Little interest or pleasure</sym>, occasional <sym>low mood</sym>, and persistent <sym>anxiety</sym> are clearly affecting your life, but you\u2019re working hard to manage these challenges. It sounds like you feel trapped between stress, the need to stay \"in control,\" and the pressure to hide what\u2019s really going on. Thank you for sharing this\u2014it takes courage to acknowledge these struggles, even if they\u2019re framed as \"just stress.\"  \n\n**Diagnosis:** Provisional concerns for <med>Alcohol Use Disorder</med> with <sym>substance dependence features</sym>, <med>Generalized Anxiety Disorder</med>, and <sym>risky behaviors</sym> exacerbated by self-medication.  \n\n**Reasoning:**  \n- **Alcohol Use Disorder (AUD):** The pattern of using alcohol to manage <sym>anxiety</sym> (Q6/Q7), <sym>panic</sym> when access to alcohol is limited (Q7), and <sym>risky driving</sym> (Q5) align with <med>DSM-5 AUD</med> criteria (e.g., substance use despite harm, tolerance/dependence features). Risky behavior (e.g., driving under influence) supports a **mild-to moderate AUD**, pending further assessment.  \n- **Generalized Anxiety Disorder (GAD):** Persistent <sym>nervousness</sym>, <sym>worry</sym>, and <sym>panic</sym> (Q6/Q7) suggest significant anxiety symptoms not fully accounted for by substance use.  \n- **Substance-Mediated Coping:** The use of alcohol to manage anxiety (Q6) raises concern for a dual diagnosis, as self-medication can worsen both substance use and mood/anxiety symptoms.  \n- **Somatic Symptoms:** <sym>Headaches</sym> (Q10) are reported but may correlate with stress, substance use, or anxiety\u2014requires physical evaluation to rule out organic causes.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Substance Use Evaluation:**  \n   - Refer to a <med>Addiction Medicine Specialist</med> to assess <med>Alcohol Use Disorder</med>. Address risky behaviors (e.g., driving impaired).  \n2. **Anxiety Management:**  \n   - Cognitive-behavioral therapy (CBT) or <med>SSRIs</med> (if anxiety severity warrants) to reduce reliance on alcohol.  \n3. **Medical Workup:**  \n   - Primary care evaluation for unexplained somatic symptoms (e.g., labs, physical exam) to rule out medical causes.  \n4. **Safety Planning:**  \n   - Collaborate on strategies to avoid triggers for substance use and risky decisions.  \n5. **Open Dialogue About Denial/Minimization:**  \n   - Use motivational interviewing techniques to address discrepancies between self-reported \"control\" and reported risks (e.g., drinking and driving).  \n\nProceed with caution regarding <med>Somatic Symptom Disorder</med>\u2014prioritize substance and mood/anxiety concerns first.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Substance-Use-Disorder.pdf",
+            "score": 0.6665,
+            "highlight": "Each specific sub - stance (other than caffeine, which cannot be diagnosed as a substance use disorder) is addressed as a separate use disorder (e.g., alcohol use disorder, stimulant use disorder, etc.), but nearly all substances are diagnosed based on the same overarching criteria.",
+            "excerpt": "     Substance-Related and \nAddictive Disorders\nIn the fifth edition of the Diagnostic and Statistic...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"each\", \"which\", \"use\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.6598,
+            "highlight": "Characteristics of Somatic Symptom Disorder Somatic symptom disorder (SSD) is characterized by somatic symptoms that are either very distressing or result in significant disruption of functioning, as well as excessive and disproportionate thoughts, feelings and behaviors regarding those symptoms.",
+            "excerpt": "   Somatic Symptom Disorder\nThe upcoming fifth edition of the Diagnostic and Statistical Manual of M...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"symptom\", \"significant\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Conduct-Disorder.pdf",
+            "score": 0.657,
+            "highlight": "\u00a9 2013 American Psychiatric Association  2 \u2022 Somatic Symptom Disorder Order DSM-5 and DSM-5 Collection    at www.appi.org.",
+            "excerpt": "and research of mental illnesses, including substance use disorders. Visit the APA at www.psychiatry...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"symptom\", \"somatic\", \"disorder\", and 1 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.6271,
+            "highlight": "The disturbance, regardless of its trigger, causes clinically significant distress or impairment in the indi - vidual\u2019s social interactions, capacity to work or other important areas of functioning.",
+            "excerpt": "actual\nor thr eatened death being either violent or accidental); or\n\u2022e xperiences first-hand repeate...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"significant\", \"its\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Schizophrenia.pdf",
+            "score": 0.6271,
+            "highlight": "Identifying individuals with an increased risk for developing a psychotic disorder is  significant for effective early intervention, but more study is needed to ensure that attenuated psycho - sis syndrome can be reliably diagnosed.",
+            "excerpt": "h before their consideration as formal disorders. This potential category would \nidentify a person w...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"significant\", \"more\", \"identifying\", and 5 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let's tackle this step by step. The user provided the patient's responses to the DSM-5 Level 1 Cross-Cutting Symptom Measure questions and wants me to analyze them.\n\nFirst, I need to read through each question and answer carefully. The patient is answering about their experiences over the past two weeks. Let me start by listing out each symptom and their responses.\n\nStarting with Q2 and A2: The patient mentions having little interest or pleasure in things, but attributes it to work stress. That's a classic depressive symptom, but they downplay it. \n\nQ3: Feeling down or hopeless a few times a week. Again, that's a depressive indicator, but the patient says it's not that bad. \n\nQ4: The answer here is mixed. They mention sometimes having a lot of energy after drinking, but generally tired. That might point to possible mood swings or substance use affecting sleep.\n\nQ5: The patient denies starting more projects but mentions risky behavior like driving under the influence. That's a red flag for possible substance use and impulsive behavior.\n\nQ6: High anxiety, managed with alcohol. They mention using substances to cope, which is a significant concern because it's a maladaptive coping mechanism. \n\nQ7: Panic when unable to access substances? The patient says panic if they can't get what they need. That sounds like possible substance dependence. \n\nQ8: Avoiding social situations but calls it selective. Avoidance due to anxiety is a key sign, so maybe social anxiety or substance-related avoidance.\n\nQ9: Unexplained aches and pains, but they attribute to stress. Could be somatic symptoms related to anxiety or depression.\n\nNow, identifying main symptoms: anhedonia, low mood, anxiety, possible substance use (alcohol), risky behavior, and somatic complaints. The patient is using substances to cope with anxiety, which is a concern. \n\nPatterns in responses: They downplay symptoms (e.g., \"not that bad\", \"just stress\"), externalize issues to work or environment, and rationalize substance use as coping. Denial or minimization is a common defense mechanism here.\n\nClinical significance: Substance use disorder (especially alcohol use disorder given the use to manage anxiety and risky behaviors like driving under the influence). Anxiety disorder (generalized or with panic attacks). Depressive symptoms, though not severe, but present. Risk for self-harm or harm to others due to the risky driving. Somatic symptoms need to be evaluated but likely psychosomatic.\n\nRisk factors: The alcohol use as a coping mechanism is a big one. The mention of driving under the influence is a clear risk. Panic when not accessing their substance points to dependence. The avoidance of social situations could be due to anxiety or substance use.\n\nPutting this into clinical terms: anhedonia, depressed mood, anxiety, substance use with possible dependence, risky behaviors, somatic symptoms. The patient's minimization suggests possible reluctance to address the substance use, which is a barrier to treatment. The combination of using substances to manage anxiety can lead to a cycle of increased use and worse mental health.\n\nI need to make sure not to speculate beyond the given data. For instance, while the patient mentions drinking to calm anxiety, we can note the substance use and its risks without assuming a full diagnosis yet. The panic when not having the substance supports possible withdrawal or dependence.\n\nAlso, the risky behavior (driving under the influence) is a clear danger. The avoidance of social situations might be due to anxiety or substance-related issues. The somatic symptoms like headaches attributed to stress could be part of the anxiety or depressive symptoms.\n\nSo, in the clinical summary, I should list the main symptoms, note the patterns of minimization and externalization, flag the substance use and risky behaviors as significant, and note the anxiety and depressive features. Highlight the drinking as a risk factor and the potential substance dependence. Somatic symptoms need to be evaluated but likely linked to stress.\n\nI have to be careful not to diagnose here, just present the findings. The summary should use terms like \"report of anhedonia,\" \"noted irritability,\" \"alcohol use as coping mechanism,\" \"risky behaviors (e.g., driving under the influence),\" and mention patterns of minimization. Also, the panic when not having access to their substance points to possible substance dependence. The patient's responses about avoiding social situations might indicate social anxiety or avoidance due to intoxication.\n\nPutting this all together into the required sections: main symptoms, patterns, clinical significance, risks, and a summary. Keep it concise and clinical without adding anything not in the data.\n</think>\n\n**Clinical Observation Summary**  \n\n**1. Main Symptoms and Concerns:**  \n- **Anhedonia/Depressed Mood:** Mild-to-moderate report of reduced interest/pleasure (Q2) and intermittent low mood (Q3).  \n- **Anxiety Symptoms:** Notable anxiety (Q6: \"a lot\"), use of alcohol to self-medicate, and situational panic (Q7: linked to substance unavailability).  \n- **Substance Use:** Alcohol use as a coping mechanism, with possible dependency (e.g., panic when unable to access it, Q7). Risky behavior (Q5: driving under the influence).  \n- **Somatic Complaints:** Unexplained aches/pains (Q10) attributed to stress.  \n\n**2. Patterns in Responses:**  \n- **Minimization/Externalization:** Attributes symptoms to stress/work (Q2, Q3, Q10) and downplays severity.  \n- **Substance Use Rationalization:** Normalizes alcohol use (e.g., \"calms me down\") and risky behaviors (\"under the radar\").  \n- **Avoidance:** Social withdrawal (Q8: avoids gatherings, labeled as \"selective\").  \n\n**3. Potential Clinical Significance:**  \n- **Substance Use Disorder (SUD):** High concern for alcohol dependence (craving/panic when unavailable, risky use).  \n- **Generalized Anxiety Disorder (GAD):** Persistent anxiety symptoms (Q6/Q7), self-medicated with alcohol.  \n- **Depressive Features:** Subsyndromal depression (anhedonia, mild hopelessness, Q2/Q3).  \n- **Risk of Harm:** Impaired judgment (driving under influence) and potential escalation of substance use.  \n\n**4. Risk Factors/Warning Signs:**  \n- **Substance-Related Risks:** Alcohol dependence, risky behaviors (e.g., driving impaired).  \n- **Psychological Distress:** Self-soothing via substances, potential for escalation to major depressive episode or worsening anxiety.  \n- **Functional Impairment:** Social avoidance (Q8) and occupational stress (Q2) may impact daily functioning.  \n\n**5. Summary of Observations (Clinical Language):**  \nThe patient exhibits **subsyndromal depressive symptoms** (anhedonia, intermittent low mood), **moderate-to-severe anxiety**, and **substance use with dependency features** (alcohol use to manage anxiety, risky behaviors). Notable **minimization of symptoms** and external attribution (e.g., work stress) suggest potential underreporting. **Impaired social/occupational functioning** is indicated via avoidance and reported work-related stress. **Priority concerns include alcohol use disorder**, escalation of risky behaviors, and inadequate coping mechanisms. Further assessment is warranted to evaluate SUD severity, mood/anxiety disorders, and somatic symptom etiology.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6475
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "<sym>Little interest or pleasure</sym>, occasional <sym>low mood</sym>, and persistent <sym>anxiety</sym> are clearly affecting your life, but you\u2019re working hard to manage these challenges. It sounds like you feel trapped between stress, the need to stay \"in control,\" and the pressure to hide what\u2019s really going on. Thank you for sharing this\u2014it takes courage to acknowledge these struggles, even if they\u2019re framed as \"just stress.\"  \n\n**Diagnosis:** Provisional concerns for <med>Alcohol Use Disorder</med> with <sym>substance dependence features</sym>, <med>Generalized Anxiety Disorder</med>, and <sym>risky behaviors</sym> exacerbated by self-medication.  \n\n**Reasoning:**  \n- **Alcohol Use Disorder (AUD):** The pattern of using alcohol to manage <sym>anxiety</sym> (Q6/Q7), <sym>panic</sym> when access to alcohol is limited (Q7), and <sym>risky driving</sym> (Q5) align with <med>DSM-5 AUD</med> criteria (e.g., substance use despite harm, tolerance/dependence features). Risky behavior (e.g., driving under influence) supports a **mild-to moderate AUD**, pending further assessment.  \n- **Generalized Anxiety Disorder (GAD):** Persistent <sym>nervousness</sym>, <sym>worry</sym>, and <sym>panic</sym> (Q6/Q7) suggest significant anxiety symptoms not fully accounted for by substance use.  \n- **Substance-Mediated Coping:** The use of alcohol to manage anxiety (Q6) raises concern for a dual diagnosis, as self-medication can worsen both substance use and mood/anxiety symptoms.  \n- **Somatic Symptoms:** <sym>Headaches</sym> (Q10) are reported but may correlate with stress, substance use, or anxiety\u2014requires physical evaluation to rule out organic causes.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Substance Use Evaluation:**  \n   - Refer to a <med>Addiction Medicine Specialist</med> to assess <med>Alcohol Use Disorder</med>. Address risky behaviors (e.g., driving impaired).  \n2. **Anxiety Management:**  \n   - Cognitive-behavioral therapy (CBT) or <med>SSRIs</med> (if anxiety severity warrants) to reduce reliance on alcohol.  \n3. **Medical Workup:**  \n   - Primary care evaluation for unexplained somatic symptoms (e.g., labs, physical exam) to rule out medical causes.  \n4. **Safety Planning:**  \n   - Collaborate on strategies to avoid triggers for substance use and risky decisions.  \n5. **Open Dialogue About Denial/Minimization:**  \n   - Use motivational interviewing techniques to address discrepancies between self-reported \"control\" and reported risks (e.g., drinking and driving).  \n\nProceed with caution regarding <med>Somatic Symptom Disorder</med>\u2014prioritize substance and mood/anxiety concerns first.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "substance_abuse",
+    "question_count": 23,
+    "duration": 1102.5855159759521,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 11.727956056594849,
+    "diagnosis_generation_time": 8.807559967041016,
+    "rag_evaluation_time": 1.4066696166992188e-05,
+    "total_time": 20.535541772842407
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Substance-Use-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6665,
+        "average_score": 0.6665,
+        "example_excerpt": "     Substance-Related and \nAddictive Disorders\nIn the fifth edition of the Diagnostic and Statistic...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"each\", \"which\", \"use\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6598,
+        "average_score": 0.6598,
+        "example_excerpt": "   Somatic Symptom Disorder\nThe upcoming fifth edition of the Diagnostic and Statistical Manual of M...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"symptom\", \"significant\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM-5-Conduct-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.657,
+        "average_score": 0.657,
+        "example_excerpt": "and research of mental illnesses, including substance use disorders. Visit the APA at www.psychiatry...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"symptom\", \"somatic\", \"disorder\", and 1 more matching aspects of your query."
+      },
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6271,
+        "average_score": 0.6271,
+        "example_excerpt": "actual\nor thr eatened death being either violent or accidental); or\n\u2022e xperiences first-hand repeate...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"significant\", \"its\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Schizophrenia.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6271,
+        "average_score": 0.6271,
+        "example_excerpt": "h before their consideration as formal disorders. This potential category would \nidentify a person w...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"significant\", \"more\", \"identifying\", and 5 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 08:10:31",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 08:10:30",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 4,
+        "clinical_relevance": 4,
+        "consistency": 4,
+        "diagnostic_justification": 5,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist addressed most of the 23 questions from the DSM-5 Level1 Cross-Cutting Symptom Measure. However, some questions were not fully explored or skipped, such as question 10 regarding feeling that illnesses are not being taken seriously enough. The therapist also didn't probe deeply into certain areas like psychotic symptoms or repetitive thoughts and behaviors. Overall, the coverage was good but not exhaustive.",
+        "clinical_relevance": "The therapist's questions generally aligned with DSM-5 criteria, but there were instances of slight inaccuracies or vague phrasing. For example, when asking about 'sleeping less than usual,' the therapist could have been more precise. Additionally, some questions were not directly derived from DSM-5 language, which slightly reduces the score.",
+        "consistency": "The dialogue mostly flows logically, with each question naturally following from previous responses. However, there were minor logical inconsistencies, such as abrupt transitions between topics. The therapist generally maintained a coherent conversational arc but could have improved with smoother transitions.",
+        "diagnostic_justification": "The diagnoses of Alcohol Use Disorder and Generalized Anxiety Disorder clearly align with DSM-5 responses. The therapist explicitly stated the reasoning behind each diagnostic decision, citing specific symptoms mentioned by the patient. The justification was clinically sound and directly linked to DSM-5 criteria.",
+        "empathy": "The therapist responses mostly showed empathy and a natural conversational style. However, there were minor moments where the interactions seemed slightly robotic or impersonal. The therapist generally acknowledged the patient's distress and tailored responses to their emotional state but could have been more consistently empathetic."
+      },
+      "overall_comments": "The conversation demonstrated a good understanding of the DSM-5 Level1 Cross-Cutting Symptom Measure and effectively identified key areas of concern. The therapist provided a clear and clinically sound justification for the diagnoses. However, there were some minor issues with the completeness of DSM-5 dimension coverage and clinical relevance of questions. Overall, the therapist performed well, but with room for improvement in a few areas.",
+      "average_score": 4.2,
+      "diagnosis_accuracy": {
+        "matches_profile": true,
+        "confidence": 4,
+        "explanation": "The diagnosis explicitly mentions 'Alcohol Use Disorder (AUD)' and 'substance dependence features,' which directly aligns with the expected profile of substance_abuse. The text also discusses self-medication, risky behaviors related to substance use, and the need for an Addiction Medicine Specialist, further supporting the alignment with substance_abuse.",
+        "classification": "substance_abuse"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "substance_abuse",
+        "classified_as": "substance_abuse",
+        "match": true,
+        "confidence": 4
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 1.9382789134979248
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.5304590425763505,
+        "local_coherence": 0.5515431844707072,
+        "window_coherence": 0.5646609853099764
+      },
+      "readability": {
+        "flesch_kincaid_grade": 8.86,
+        "gunning_fog_index": 4.28,
+        "flesch_reading_ease": 50.18
+      },
+      "diversity": {
+        "distinct_1": 0.523590333716916,
+        "distinct_2": 0.9043778801843319,
+        "distinct_3": 0.9677047289504037
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "substance_abuse",
+      "predicted": "<sym>Little interest or pleasure</sym>, occasional <sym>low mood</sym>, and persistent <sym>anxiety</sym> are clearly affecting your life, but you\u2019re working hard to manage these challenges. It sounds like you feel trapped between stress, the need to stay \"in control,\" and the pressure to hide what\u2019s really going on. Thank you for sharing this\u2014it takes courage to acknowledge these struggles, even if they\u2019re framed as \"just stress.\"  \n\n**Diagnosis:** Provisional concerns for <med>Alcohol Use Disorder</med> with <sym>substance dependence features</sym>, <med>Generalized Anxiety Disorder</med>, and <sym>risky behaviors</sym> exacerbated by self-medication.  \n\n**Reasoning:**  \n- **Alcohol Use Disorder (AUD):** The pattern of using alcohol to manage <sym>anxiety</sym> (Q6/Q7), <sym>panic</sym> when access to alcohol is limited (Q7), and <sym>risky driving</sym> (Q5) align with <med>DSM-5 AUD</med> criteria (e.g., substance use despite harm, tolerance/dependence features). Risky behavior (e.g., driving under influence) supports a **mild-to moderate AUD**, pending further assessment.  \n- **Generalized Anxiety Disorder (GAD):** Persistent <sym>nervousness</sym>, <sym>worry</sym>, and <sym>panic</sym> (Q6/Q7) suggest significant anxiety symptoms not fully accounted for by substance use.  \n- **Substance-Mediated Coping:** The use of alcohol to manage anxiety (Q6) raises concern for a dual diagnosis, as self-medication can worsen both substance use and mood/anxiety symptoms.  \n- **Somatic Symptoms:** <sym>Headaches</sym> (Q10) are reported but may correlate with stress, substance use, or anxiety\u2014requires physical evaluation to rule out organic causes.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Substance Use Evaluation:**  \n   - Refer to a <med>Addiction Medicine Specialist</med> to assess <med>Alcohol Use Disorder</med>. Address risky behaviors (e.g., driving impaired).  \n2. **Anxiety Management:**  \n   - Cognitive-behavioral therapy (CBT) or <med>SSRIs</med> (if anxiety severity warrants) to reduce reliance on alcohol.  \n3. **Medical Workup:**  \n   - Primary care evaluation for unexplained somatic symptoms (e.g., labs, physical exam) to rule out medical causes.  \n4. **Safety Planning:**  \n   - Collaborate on strategies to avoid triggers for substance use and risky decisions.  \n5. **Open Dialogue About Denial/Minimization:**  \n   - Use motivational interviewing techniques to address discrepancies between self-reported \"control\" and reported risks (e.g., drinking and driving).  \n\nProceed with caution regarding <med>Somatic Symptom Disorder</med>\u2014prioritize substance and mood/anxiety concerns first.",
+      "matches": false,
+      "classification": "substance_abuse",
+      "classification_confidence": 4
+    }
+  }
+}

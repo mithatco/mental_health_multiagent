@@ -1,0 +1,261 @@
+{
+  "timestamp": "2025-04-30T20:05:37.802601",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm Dr. Lee. Today we'll be using the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult to better understand your experiences over the past two weeks. This is a screening tool to help guide our discussion. Your answers will remain confidential. I'll ask 23 questions one at a time, and I encourage you to share openly. I'm here to listen and support you. Ready when you are. Let's start with the first question: How often have you been bothered by Little interest or pleasure in doing things?"
+    },
+    {
+      "role": "patient",
+      "content": "Hmm. It's been hard to find joy in anything. Even stuff I used to enjoy\u2014like gardening or reading\u2014just feel... empty. Not all the time, but enough that I don't even try sometimes."
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you for sharing. Next question: How often have you been bothered by Feeling down, depressed, or hopeless?"
+    },
+    {
+      "role": "patient",
+      "content": "More than I'd like to admit. Especially with the anniversary coming up. I just... feel stuck. Like there's a weight on my chest most days."
+    },
+    {
+      "role": "assistant",
+      "content": "Understood. Now, how often have you been bothered by Feeling more irritated, grouchy, or angry than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "*(pauses, fidgets with their hands)* More than usual. I snap at my coworkers over small things. Last week I almost yelled at someone for honking too close to me. It's not like me."
+    },
+    {
+      "role": "assistant",
+      "content": "I see. Next: How often have you been bothered by Sleeping less than usual, but still have a lot of energy?"
+    },
+    {
+      "role": "patient",
+      "content": "No. Not at all. If anything, I'm exhausted. I lie awake nights replaying that crash. Wishing I could've done something... *(voice trails off)*"
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. Next: How often have you been bothered by Starting lots more projects than usual or doing more risky things than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "Not really. I can't even drive. The idea of getting in a car makes me freeze. *(swallows hard)* I just take the bus now."
+    },
+    {
+      "role": "assistant",
+      "content": "Understood. How often have you been bothered by Feeling nervous, anxious, frightened, worried, or on edge?"
+    },
+    {
+      "role": "patient",
+      "content": "All the time. Every siren or screech... my heart races like it's happening again. I've started taking longer routes to avoid loud areas, but the anxiety follows me."
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. How often have you been bothered by Feeling panic or being frightened?"
+    },
+    {
+      "role": "patient",
+      "content": "*(voice shakes)* Whenever I hear tires screeching or a loud noise... I freeze. My hands shake and my heart pounds like I'm there again. It's happened maybe 5 times this week."
+    },
+    {
+      "role": "assistant",
+      "content": "Got it. How often have you been bothered by Avoiding situations that make you anxious?"
+    },
+    {
+      "role": "patient",
+      "content": "Yeah, I avoid all highways. Even crossing intersections gives me panic. I'll walk an extra mile to take side streets. *(pauses, looks away)* I even skipped my sister's wedding because it was downtown."
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, I need to structure the response according to the user's instructions. Let me start by reviewing the user's query and the provided information. The user wants a mental health assessment based on the patient's answers to the questionnaire. The output has to follow a specific format with four sections: a compassionate summary, diagnosis, reasoning, and recommended steps. Also, I must use the tags for medical terms, symptoms, and quotes.\n\nFirst, the compassionate summary should acknowledge the patient's struggles empathetically. I should highlight their emotional pain and functional impairment without using technical terms yet.\n\nNext, the diagnosis section needs to be under **Diagnosis:**. The main consideration here is PTSD given the trauma triggers, re-experiencing symptoms, and avoidance. The depressive symptoms (anhedonia, low mood) suggest MDD as well. But since the user emphasized not defaulting to Somatic Symptom Disorder, I should focus on trauma and mood disorders. The DSM-5 criteria for PTSD include intrusion symptoms, avoidance, negative alterations in cognition/mood, and arousal. The patient's responses align with these clusters. The MDD is also present, so a comorbid diagnosis makes sense.\n\nFor the reasoning, I need to link symptoms to specific criteria. Mention PTSD clusters (re-experiencing, avoidance, hyperarousal), the traumatic event (the car crash), which is Criterion A), and the duration. The depressive symptoms meet MDD criteria (anhedonia, depressed mood, fatigue, guilt). Also, the panic attacks triggered by specific stimuli (sounds) indicate panic disorder but are better explained under PTSD's reactivity. Need to differentiate between the two. The comorbidity is key here.\n\nThe recommended steps should include a trauma-focused assessment, PTSD-specific therapies like CBT or EMDR, MDD treatment (medication or therapy), panic management, and safety planning. Also, rule out other issues like adjustment disorder. \n\nI must ensure all medical terms are in <med>, symptoms in <sym>, and patient quotes in <quote>. \n\nWait, do I need to check for any other disorders? The user said not to assume but consider all. The patient's avoidance of driving and social events could also hint at agoraphobia, but it\u2019s tied to trauma, so PTSD is primary. \n\nAvoid using terms like \"risk of suicide\" since it's not mentioned, but note functional impairment. Also, cultural considerations were part of the reference, but the patient's description doesn't indicate cultural factors here, so maybe skip that unless it's relevant. \n\nNow, structure each section carefully. The diagnosis must be precise. The first paragraph needs to be empathetic. \n\nLet me draft each part step by step.\n\nFirst paragraph: Summarize their struggle, mention PTSD and depression, and the impact on life. Use compassionate language.\n\nDiagnosis: **Diagnosis: PTSD (with specifiers for intrusion, avoidance, negative alterations), Major Depressive Disorder, and Panic Disorder with Agoraphobia (if applicable). Wait, but the panic is tied to trauma, so maybe panic is part of PTSD, so perhaps not a separate diagnosis. Maybe stick to PTSD and MDD.\n\nWait, according to the DSM-5, if panic attacks are trauma-related, they fall under PTSD. So perhaps just the two. \n\nSo the diagnosis:  \n**Diagnosis: **Comorbid <med>PTSD</med> and <med>Major Depressive Disorder</med>. Consider ruling out <med>Agoraphobia</med> if avoidance behaviors extend beyond trauma triggers.****\n\nBut the user said not to include Somatic Symptom Disorder, so avoid that. \n\nReasoning:  \nThe patient\u2019s detailed history of a traumatic \"crash\" aligns with Criterion A for <med>PTSD</med>. Symptoms include <sym>intrusive memories</sym>, <sym>avoidance</sym> of trauma reminders (e.g., driving, loud noises), and <sym>hyperarousal</sym> (hypervigilance, irritability). <sym>Depressed mood</sym>, <sym>anhedonia</sym>, and <sym>psychological distress</sym> around the anniversary suggest <med>MDD</med>. The panic attacks triggered by specific sounds (sirens, screeching) are likely trauma-related reactivity rather than a standalone panic disorder. Functional impairment is significant, impacting work, social life, and daily activities.  \n\nFor the recommended steps:  \n1. Comprehensive trauma assessment (DSM-5 PTSD criteria).  \n2. CBT for PTSD (Prolonged Exposure, CPT).  \n3. MDD treatment: SSRIs or therapy.  \n4. Panic management (grounding techniques).  \n5. Safety planning to address avoidance escalation.  \n\nWait, also need a psychological evaluation for MDD and PTSD. Maybe list steps 1 through 5. \n\nCheck the user's reference info: They mentioned DSM-5 clusters for PTSD (re-experiencing, etc.), the bereavement exclusion, and cultural considerations. The patient's cultural background isn't provided, so maybe not relevant here. \n\nAvoid adding anything beyond the given symptoms. The patient's answers clearly mention the crash, so that's the trauma. \n\nNow, putting it all together with the tags and structure as per instructions. Ensure all tags are correctly placed. \n\nWait, in the diagnosis section, perhaps make it **Diagnosis:** Comorbid <med>PTSD</med> and <med>Major Depressive Disorder</med>, with <med>PTSD</med> as the primary etiology.  \n\nDouble-check for any misstatements. The patient's insomnia is due to trauma rumination, which is part of PTSD. \n\nOkay, time to structure the final answer accordingly.\n</think>\n\n**Compassionate Summary**:  \nI hear how overwhelming this has been for you. The emptiness you describe in activities you once loved, the weight of hopelessness, and the relentless intrusions of memories from the crash must feel unbearable. Your efforts to avoid triggers\u2014like skipping family milestones or walking miles out of your way\u2014reflect profound courage in managing fear, but the toll on your relationships, daily life, and emotional well-being is clear. You\u2019re not alone in this; your symptoms point to a treatable condition rooted in trauma and mood disturbance.  \n\n**Diagnosis:** **Comorbid <med>PTSD</med> and <med>Major Depressive Disorder</med>, with <sym>panic attacks</sym> tied to trauma-specific triggers.**  \n\n**Reasoning:**  \nThe patient\u2019s history of a traumatic \"crash\" (Criterion A for <med>PTSD</med>) is central. <sym>Re-experiencing</sym> occurs via intrusive thoughts about the crash, while <sym>avoidance</sym> of traffic sounds/highways, and <sym>hyperarousal</sym>e (irritability, hypervigilance) align with DSM-5 <med>PTSD</med> criteria. <sym>Depressed mood</sym>, <sym>anhedonia</sym>, and <sym>self-blame</sym> (e.g., \u201cI wish I could\u2019ve done something\u201d) meet <med>MDD</med> criteria. Panic attacks are trauma-specific (triggered by sounds like sirens), not spontaneous), making them part of <med>PTSD</med>\u2019s hyperarousal and reactivity clusters. The anniversary effect on mood suggests trauma anniversay reactions.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Trauma-focused evaluation**: Conduct a full PTSD and <med>MDD</med> diagnostic interview using tools like the <med>PCL-5</med> or <med>CAPS-5</med>.  \n2. **Cognitive Behavioral Therapy (CBT) for <med>PTSD</med>**: Target <sym>avoidance</sym> and maladaptive guilt through exposure therapy and cognitive restructuring.  \n3. **Pharmacotherapy**: Consider <med>SSRIs</med> (e.g., sertraline) for co-occurring <med>PTSD</med> and <med>MDD</med>.  \n4. **Panic management training**: Teach grounding techniques (e.g., 5-4-3-2-1 exercise) to mitigate <sym>panic attacks</sym> triggered by auditory cues.  \n5. **Social support integration**: Encourage gradual reengagement with avoided activities (e.g., supported exposure to driving in controlled settings).  \n6. **Safety planning**: Address <sym>self-destructive tendencies</sym> if present; no suicidal ideation reported here, but monitor for escalation.  \n7. **Sleep hygiene intervention**: Address <sym>insomnia</sym> via stimulus control, relaxation techniques, and possibly <med>non-benzodiazepine hypnotics</med> under psychiatric guidance.  \n\nEnsure assessments address cultural context (e.g., beliefs about trauma), though no cultural-specific symptoms were noted in the narrative. Collaborative care between trauma-informed therapists and psychiatrists is critical for symptom management.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.7854,
+            "highlight": "Negative cognitions and mood represents myriad feelings, from a persistent and distorted sense of  blame of self or others, to estrangement from others or markedly diminished interest in activities, to an inability to remember key aspects of the event.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"event\", \"key\", \"negative\", and 6 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Sleep-Wake-Disorders.pdf",
+            "score": 0.6964,
+            "highlight": "Sleep-Wake Disorders In the fifth edition of the Diagnostic and Statistical Manual of Mental Disorders  (DSM-5), sleep-wake  disorders encompass 10 conditions manifested by disturbed sleep and causing distress as well as im - pairment in daytime functioning.",
+            "excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"mental\", \"sleep\", and 3 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.6683,
+            "highlight": "While DSM-IV was organized centrally around the concept of  medically unexplained symptoms, DSM-5 criteria instead emphasize the degree to which a patient \u2019s  thoughts, feelings and behaviors about their somatic symptoms are disproportionate or excessive.",
+            "excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"around\", \"criteria\", and 9 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Depression-Bereavement-Exclusion.pdf",
+            "score": 0.6613,
+            "highlight": "Changes to the Bereavement Exclusion The diagnostic criteria proposed for the manual\u2019s next edition includes language in the criteria for Major Depressive Disorder (MDD) to help differentiate between normal bereavement associated with   2 \u2022 Major Depressive Disorder and the \u201cBereavement Exclusion\u201da significant loss and a diagnosis of a mental disorde r.",
+            "excerpt": "epression co-\nexist, the grief is more severe and prolonged than grief without major depression. Des...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"significant\", \"criteria\", \"mental\", and 8 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM_Cultural-Concepts-in-DSM-5.pdf",
+            "score": 0.6592,
+            "highlight": "Cultural Considerations in Clinical Practice Throughout the DSM-5 development process, the Work Groups made a concerted effort to modify  culturally determined criteria so they would be more equivalent across different cultures.",
+            "excerpt": " a patient \u2019s cul -\nture, race, ethnicit y, religion or geographical origin. For example, uncontroll...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"they\", \"criteria\", \"would\", and 4 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let's tackle this step by step. First, I need to go through each of the patient's answers and note the main symptoms they're describing. \n\nStarting with A1: They talk about little interest or pleasure in activities they used to enjoy, like gardening and reading. That points to anhedonia, which is a key symptom of depression. \n\nA2 mentions feeling down, depressed, or hopeless, especially around an anniversary. The mention of an anniversary might indicate anniversary reactions, possibly linked to a traumatic event. They also mention feeling stuck and a physical sensation of a weight on the chest, which could be depressive symptoms or even somatic symptoms.\n\nA3: Increased irritability and anger, snapping at coworkers and reacting to being honked at. That's irritability, which can be part of depression or anxiety, but also might suggest something like adjustment disorder or even PTSD if linked to a trauma.\n\nA4: They don't have trouble sleeping less with energy, but instead have insomnia with ruminating on a \"crash.\" Wait, the question was about sleeping less but still having energy. The patient's answer is a no, but they do have insomnia. The crash they mention might be a traumatic event, maybe a car accident? That's crucial. The insomnia and ruminating on the crash suggests trauma-related sleep disturbance.\n\nA5: Not starting more projects or risky behaviors. They avoid driving, taking the bus instead. The avoidance of driving could be related to the crash\u2014maybe they were in an accident, leading to avoidance behaviors, which is a PTSD symptom.\n\nA6 and A7: High anxiety, panic when hearing sirens or loud noises, which triggers physical reactions (heart racing, shaking) and panic episodes 5 times this week. They avoid certain situations, like highways and intersections, even skipping a wedding. This points to panic disorder, but given the trigger sounds and avoidance tied to a crash, more likely PTSD. The hyperarousal and avoidance align with PTSD criteria.\n\nA8: Explicit avoidance of highways and certain routes, indicating significant avoidance behavior. Skipping family events due to anxiety shows functional impairment.\n\nPutting this together, the main symptoms are anhedonia, depressed mood, irritability, trauma-related insomnia, anxiety, panic attacks with triggers, and avoidance behaviors. The crash they keep mentioning is central here\u2014it's a trauma trigger, so PTSD is likely. The anniversary date in A2 could be the date of the crash, leading to increased depressive symptoms around that time.\n\nPatterns: The recurring mention of the crash as a trigger, the anniversary reaction, and the physical reactions to specific stimuli (sounds like sirens, screeching tires). The avoidance and hyperarousal are classic PTSD symptoms. The functional impairment from avoiding necessary activities (like the wedding, driving) is significant.\n\nClinical significance areas would include major depressive disorder (due to anhedonia, depressed mood, irritability) comorbid with PTSD. The trauma is clearly a central issue here. Risk factors: the trauma itself (the crash), possible re-experiencing symptoms (flashbacks/nightmares from ruminating?), intense anxiety, and functional impairment. They also mention self-reported hyperarousal (being on edge) and avoidance. Need to check for suicidal ideation, but it's not mentioned here. The patient's avoidance and panic could escalate, so that's a risk.\n\nPotential risk factors: the traumatic event (crash), ongoing anxiety, avoidance leading to social withdrawal (skipping the wedding), which can worsen depression. The frequency of panic episodes (5x/week) is quite high and needs attention. Also, the self-reported \"I can't even drive\" indicates significant impairment in daily functioning.\n\nI need to make sure not to miss any symptoms. The key here is the trauma trigger, which is central to their symptoms. The DSM-5 criteria for PTSD include exposure to trauma, intrusion symptoms (which they have via triggers), avoidance, negative alterations in mood/cognition (anhedonia, depressed mood), and hyperarousal (irritability, anxiety, being on edge). The duration is two weeks, but PTSD can develop after trauma, so need to consider timing. The symptoms have been present for two weeks, which might be within the PTSD diagnostic window. \n\nSo the main concerns are depression comorbid with PTSD. The risk factors include the trauma, ongoing avoidance behaviors, and high frequency of panic reactions. Need to note that the patient hasn't mentioned self-harm, but the emotional distress is high. They might be at risk for worsening symptoms if not addressed. \n\nI need to structure this into the five sections as per the query: main symptoms/concerns, patterns, areas of clinical significance, risks, then a summary. Make sure to use clinical terms but stay factual without speculating beyond what's provided. Also avoid assuming diagnosis but note the criteria met.\n</think>\n\n**Clinical Observation Summary**  \n\n**1. Main Symptoms and Concerns:**  \n- **Depressive symptoms**: Anhedonia (loss of interest/pleasure in activities), persistent low mood, feelings of hopelessness, and somatic complaints (chest \"weight\").  \n- **Trauma-related distress**: Hypervigilance, recurrent trauma re-experiencing (e.g., intrusive thoughts about a car \"crash,\" panic triggered by sounds like sirens or screeching tires), and avoidance behaviors (e.g., avoiding highways, loud areas, and social events).  \n- **Anxiety symptoms**: Chronic anxiety, panic attacks (5+ weekly episodes), and somatic arousal (e.g., tachycardia, tremors).  \n- **Functional impairment**: Avoidance of routine activities (e.g., driving, attending social/family events), occupational interpersonal tension (irritability at work), and restricted mobility (reliance on alternate routes/public transit).  \n\n**2. Patterns in Responses:**  \n- **Trauma centrality**: Repeated references to a traumatic event (\"the crash\") as a trigger for insomnia, panic, and avoidance.  \n- **Temporal relationship**: Increased depressive/trauma symptoms coincide with an anniversary date (implicating anniversary reactions).  \n- **Sensory triggers**: Auditory stimuli (e.g., sirens, screeching) elicit severe physiological and emotional distress.  \n- **Avoidance escalation**: Increasing restriction of activities and social withdrawal (e.g., skipping family events).  \n\n**3. Potential Areas of Clinical Significance:**  \n- **PTSD criteria**: Meets DSM-5 symptom clusters of re-experiencing (intrusive thoughts), avoidance (trauma-related stimuli/situations), negative alterations in cognition/mood (persistent guilt, emotional numbness), and hyperarousal (irritability, hypervigilance).  \n- **Major Depressive Disorder (MDD)**: Anhedonia, depressed mood, and somatic symptoms (e.g., insomnia, psychomotor slowing via \"freezing\" around driving).  \n- **Panic Disorder with Agoraphobia**: Panic attacks in response to specific triggers, avoidance of places/situations due to fear of panic.  \n- **Complex comorbidity**: Intersection of trauma-related and mood symptoms requiring differential diagnosis.  \n\n**4. Risk Factors/Warning Signs:**  \n- **Trauma exposure**: History of a car crash (likely traumatic event).  \n- **High panic frequency**: 5+ panic episodes weekly, with somatic/motor manifestations (shaking, tachycardia).  \n- **Social/occupational impairment**: Strained workplace relationships, avoidance of necessary activities (driving, socializing.  \n- **Potential self-isolation**: Avoidance of family obligations (e.g., sister\u2019s wedding), risking social withdrawal.  \n- **Sleep disturbance**: Insomnia with trauma-related rumination.  \n\n**5. Clinical Summary:**  \nThe patient presents with a cluster of trauma- and mood-related symptoms consistent with **PTSD** and **Major Depressive Disorder**, likely comorbid. Core features include avoidance of trauma-related stimuli (e.g., driving, loud environments), recurrent panic attacks triggered by auditory cues, and dysphoric mood with anhedonia. The patient reports a traumatic incident (\"the crash\"), suggesting Criterion A trauma exposure for PTSD. Hyperarousal (irritability, hypervigilance) and re-experiencing symptoms (intrusive thoughts about the crash) are prominent. Functional impairment includes occupational tension, restricted mobility, and social withdrawal. Risk factors include ongoing trauma reactivity, high panic frequency, and sleep disruption. Further assessment should prioritize trauma history, suicide risk (not explicitly reported here), and safety planning. Rule out adjustment disorder or acute stress disorder if the two-week timeframe is recent post-trauma. A PTSD/MDD differential with comorbid anxiety disorder is indicated.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6942
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "**Compassionate Summary**:  \nI hear how overwhelming this has been for you. The emptiness you describe in activities you once loved, the weight of hopelessness, and the relentless intrusions of memories from the crash must feel unbearable. Your efforts to avoid triggers\u2014like skipping family milestones or walking miles out of your way\u2014reflect profound courage in managing fear, but the toll on your relationships, daily life, and emotional well-being is clear. You\u2019re not alone in this; your symptoms point to a treatable condition rooted in trauma and mood disturbance.  \n\n**Diagnosis:** **Comorbid <med>PTSD</med> and <med>Major Depressive Disorder</med>, with <sym>panic attacks</sym> tied to trauma-specific triggers.**  \n\n**Reasoning:**  \nThe patient\u2019s history of a traumatic \"crash\" (Criterion A for <med>PTSD</med>) is central. <sym>Re-experiencing</sym> occurs via intrusive thoughts about the crash, while <sym>avoidance</sym> of traffic sounds/highways, and <sym>hyperarousal</sym>e (irritability, hypervigilance) align with DSM-5 <med>PTSD</med> criteria. <sym>Depressed mood</sym>, <sym>anhedonia</sym>, and <sym>self-blame</sym> (e.g., \u201cI wish I could\u2019ve done something\u201d) meet <med>MDD</med> criteria. Panic attacks are trauma-specific (triggered by sounds like sirens), not spontaneous), making them part of <med>PTSD</med>\u2019s hyperarousal and reactivity clusters. The anniversary effect on mood suggests trauma anniversay reactions.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Trauma-focused evaluation**: Conduct a full PTSD and <med>MDD</med> diagnostic interview using tools like the <med>PCL-5</med> or <med>CAPS-5</med>.  \n2. **Cognitive Behavioral Therapy (CBT) for <med>PTSD</med>**: Target <sym>avoidance</sym> and maladaptive guilt through exposure therapy and cognitive restructuring.  \n3. **Pharmacotherapy**: Consider <med>SSRIs</med> (e.g., sertraline) for co-occurring <med>PTSD</med> and <med>MDD</med>.  \n4. **Panic management training**: Teach grounding techniques (e.g., 5-4-3-2-1 exercise) to mitigate <sym>panic attacks</sym> triggered by auditory cues.  \n5. **Social support integration**: Encourage gradual reengagement with avoided activities (e.g., supported exposure to driving in controlled settings).  \n6. **Safety planning**: Address <sym>self-destructive tendencies</sym> if present; no suicidal ideation reported here, but monitor for escalation.  \n7. **Sleep hygiene intervention**: Address <sym>insomnia</sym> via stimulus control, relaxation techniques, and possibly <med>non-benzodiazepine hypnotics</med> under psychiatric guidance.  \n\nEnsure assessments address cultural context (e.g., beliefs about trauma), though no cultural-specific symptoms were noted in the narrative. Collaborative care between trauma-informed therapists and psychiatrists is critical for symptom management.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "ptsd",
+    "question_count": 23,
+    "duration": 5154.255511045456,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 6.223369836807251,
+    "diagnosis_generation_time": 11.352293729782104,
+    "rag_evaluation_time": 6.9141387939453125e-06,
+    "total_time": 17.575676918029785
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7854,
+        "average_score": 0.7854,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"event\", \"key\", \"negative\", and 6 more matching aspects of your query."
+      },
+      "APA_DSM-5-Sleep-Wake-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6964,
+        "average_score": 0.6964,
+        "example_excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"mental\", \"sleep\", and 3 more matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6683,
+        "average_score": 0.6683,
+        "example_excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"around\", \"criteria\", and 9 more matching aspects of your query."
+      },
+      "APA_DSM-5-Depression-Bereavement-Exclusion.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6613,
+        "average_score": 0.6613,
+        "example_excerpt": "epression co-\nexist, the grief is more severe and prolonged than grief without major depression. Des...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"significant\", \"criteria\", \"mental\", and 8 more matching aspects of your query."
+      },
+      "APA_DSM_Cultural-Concepts-in-DSM-5.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6592,
+        "average_score": 0.6592,
+        "example_excerpt": " a patient \u2019s cul -\nture, race, ethnicit y, religion or geographical origin. For example, uncontroll...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"they\", \"criteria\", \"would\", and 4 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 07:54:04",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 07:54:04",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 4,
+        "clinical_relevance": 5,
+        "consistency": 5,
+        "diagnostic_justification": 5,
+        "empathy": 5
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist addressed most of the DSM-5 Level1 Cross-Cutting Symptom Measure domains, but missed or superficially covered a few areas. Specifically, the therapist thoroughly explored depression (questions 1-2), anger (question 3), anxiety (questions 6-8), and some aspects of trauma. However, domains like mania (questions 4-5), psychotic symptoms (questions 12-13), and substance use (questions 21-23) were not directly addressed. The therapist also did not specifically inquire about repetitive thoughts and behaviors (questions 16-17), dissociation (question 18), identity and relationships (questions 19-20), or cognitive function (question 15) in depth. While the conversation covered many critical areas, these omissions prevent a perfect score.",
+        "clinical_relevance": "The therapist's questions precisely reflected DSM-5 criteria and clearly targeted clinical symptoms. The language used was accurate and aligned with the DSM-5 terminology. For example, the therapist asked about 'little interest or pleasure in doing things' and 'feeling down, depressed, or hopeless' directly, which corresponds to depression criteria. The questions were phrased in a clinically accurate way, and no significant inaccuracies or vague phrasing were noted.",
+        "consistency": "The dialogue flows logically, with each question naturally following from previous responses. The therapist maintained a coherent conversational arc, smoothly transitioning between topics based on the patient's disclosures. For instance, after the patient discussed their anxiety and avoidance behaviors, the therapist appropriately inquired about panic attacks and their triggers. There were no abrupt topic changes or non-sequiturs, and the therapist provided compassionate summaries that connected the patient's experiences.",
+        "diagnostic_justification": "The diagnoses of comorbid PTSD and Major Depressive Disorder, with panic attacks tied to trauma-specific triggers, clearly align with DSM-5 responses. The therapist explicitly stated the reasoning behind each diagnostic decision, citing specific symptoms mentioned by the patient. For example, the patient's re-experiencing symptoms (intrusive thoughts about the crash), avoidance behaviors (avoiding highways), and hyperarousal symptoms (irritability) were linked to PTSD criteria. The connection to DSM-5 criteria was comprehensive, and alternative diagnoses were implicitly considered through the assessment process.",
+        "empathy": "The therapist's responses consistently showed empathy, a natural conversational style, and an appropriate professional tone. The therapist acknowledged the patient's distress, using phrases like 'I hear how overwhelming this has been for you' and 'Your efforts to avoid triggers... reflect profound courage.' The interactions were warm and personalized, with the therapist tailoring responses to the patient's emotional state. The compassionate summary at the end further demonstrated empathy and understanding."
+      },
+      "overall_comments": "Overall, the conversation demonstrated excellent clinical skills, with a few minor omissions in DSM-5 dimension coverage. The therapist's empathetic approach, logical flow, and accurate clinical language were notable strengths. To achieve a perfect score, the therapist could have more thoroughly explored domains like mania, psychotic symptoms, and substance use. However, the conversation was well-structured, and the diagnostic justification was sound.",
+      "average_score": 4.8,
+      "diagnosis_accuracy": {
+        "matches_profile": true,
+        "confidence": 5,
+        "explanation": "The diagnosis explicitly mentions PTSD, aligning with the expected profile. The symptoms described, such as re-experiencing, avoidance, and hyperarousal, directly correspond to PTSD criteria. The diagnosis also discusses treatment options specific to PTSD, such as trauma-focused evaluation and CBT for PTSD.",
+        "classification": "ptsd"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "ptsd",
+        "classified_as": "ptsd",
+        "match": true,
+        "confidence": 5
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 2.871662139892578
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.5647838404389127,
+        "local_coherence": 0.5740655774178237,
+        "window_coherence": 0.6022674015633761
+      },
+      "readability": {
+        "flesch_kincaid_grade": 8.85,
+        "gunning_fog_index": 4.45,
+        "flesch_reading_ease": 51.04
+      },
+      "diversity": {
+        "distinct_1": 0.4481792717086835,
+        "distinct_2": 0.8402242466713384,
+        "distinct_3": 0.9165497896213184
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "ptsd",
+      "predicted": "**Compassionate Summary**:  \nI hear how overwhelming this has been for you. The emptiness you describe in activities you once loved, the weight of hopelessness, and the relentless intrusions of memories from the crash must feel unbearable. Your efforts to avoid triggers\u2014like skipping family milestones or walking miles out of your way\u2014reflect profound courage in managing fear, but the toll on your relationships, daily life, and emotional well-being is clear. You\u2019re not alone in this; your symptoms point to a treatable condition rooted in trauma and mood disturbance.  \n\n**Diagnosis:** **Comorbid <med>PTSD</med> and <med>Major Depressive Disorder</med>, with <sym>panic attacks</sym> tied to trauma-specific triggers.**  \n\n**Reasoning:**  \nThe patient\u2019s history of a traumatic \"crash\" (Criterion A for <med>PTSD</med>) is central. <sym>Re-experiencing</sym> occurs via intrusive thoughts about the crash, while <sym>avoidance</sym> of traffic sounds/highways, and <sym>hyperarousal</sym>e (irritability, hypervigilance) align with DSM-5 <med>PTSD</med> criteria. <sym>Depressed mood</sym>, <sym>anhedonia</sym>, and <sym>self-blame</sym> (e.g., \u201cI wish I could\u2019ve done something\u201d) meet <med>MDD</med> criteria. Panic attacks are trauma-specific (triggered by sounds like sirens), not spontaneous), making them part of <med>PTSD</med>\u2019s hyperarousal and reactivity clusters. The anniversary effect on mood suggests trauma anniversay reactions.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Trauma-focused evaluation**: Conduct a full PTSD and <med>MDD</med> diagnostic interview using tools like the <med>PCL-5</med> or <med>CAPS-5</med>.  \n2. **Cognitive Behavioral Therapy (CBT) for <med>PTSD</med>**: Target <sym>avoidance</sym> and maladaptive guilt through exposure therapy and cognitive restructuring.  \n3. **Pharmacotherapy**: Consider <med>SSRIs</med> (e.g., sertraline) for co-occurring <med>PTSD</med> and <med>MDD</med>.  \n4. **Panic management training**: Teach grounding techniques (e.g., 5-4-3-2-1 exercise) to mitigate <sym>panic attacks</sym> triggered by auditory cues.  \n5. **Social support integration**: Encourage gradual reengagement with avoided activities (e.g., supported exposure to driving in controlled settings).  \n6. **Safety planning**: Address <sym>self-destructive tendencies</sym> if present; no suicidal ideation reported here, but monitor for escalation.  \n7. **Sleep hygiene intervention**: Address <sym>insomnia</sym> via stimulus control, relaxation techniques, and possibly <med>non-benzodiazepine hypnotics</med> under psychiatric guidance.  \n\nEnsure assessments address cultural context (e.g., beliefs about trauma), though no cultural-specific symptoms were noted in the narrative. Collaborative care between trauma-informed therapists and psychiatrists is critical for symptom management.",
+      "matches": true,
+      "classification": "ptsd",
+      "classification_confidence": 5
+    }
+  }
+}

@@ -1,0 +1,253 @@
+{
+  "timestamp": "2025-04-30T23:13:46.823428",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello"
+    },
+    {
+      "role": "patient",
+      "content": "Okay"
+    },
+    {
+      "role": "assistant",
+      "content": "1. Little interest or pleasure in doing things?"
+    },
+    {
+      "role": "patient",
+      "content": "Yeah"
+    },
+    {
+      "role": "assistant",
+      "content": "2. Feeling down"
+    },
+    {
+      "role": "patient",
+      "content": "Most days now"
+    },
+    {
+      "role": "assistant",
+      "content": "3. Feeling more irritated"
+    },
+    {
+      "role": "patient",
+      "content": "Oh yeah. I snap at my roommate over little things. I know it\u2019s not their fault"
+    },
+    {
+      "role": "assistant",
+      "content": "4. Sleeping less than usual"
+    },
+    {
+      "role": "patient",
+      "content": "No"
+    },
+    {
+      "role": "assistant",
+      "content": "5. Starting lots more projects or doing risky things than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "No"
+    },
+    {
+      "role": "assistant",
+      "content": "6. Feeling nervous"
+    },
+    {
+      "role": "patient",
+      "content": "All the time. My mind races. I\u2019ll sit here and suddenly"
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, I need to start by addressing the user's request. They provided a detailed scenario where the user wants a clinical assessment based on a questionnaire. The user has given the responses and wants the assistant's answer structured in a specific format with certain guidelines.\n\nFirst, I should recall the user's instructions carefully. The assessment must follow the exact structure they outlined: compassionate summary, diagnosis, reasoning, and next steps. Each section needs specific formatting with tags around medical terms, symptoms, and quotes. The example given in their previous interaction used tags like <med>, <sym>, and <quote>, so I need to make sure those are included correctly here.\n\nLooking at the questionnaire responses, the patient answered \"Yeah\" to anhedonia (symptom1), \"Most days now\" for feeling down (symptom2), and mentions irritability (symptom3), no change in sleep (no insomnia), no increased activity (ruling out mania?), and constant nervousness with racing thoughts (symptom4 and symptom5). \n\nThe previous assistant's response was structured with the four sections. The user now wants the same format for the current inputs. Wait, the current user input is the new questionnaire responses, so I need to process the latest Q&A provided.\n\nWait, the current user input is the new questionnaire responses and the instructions. The user provided the answers, so my task is to generate the assessment based on those answers, following their structure.\n\nWait, the user's latest message is the questionnaire responses (Q1-Q7) and the instructions, so I need to process that. The example from before used a different case, but here the current case has the answers listed under \"Questionnaire responses\".\n\nI need to analyze the provided answers to identify symptoms and possible diagnoses. Let's go step by step.\n\nFirst, the answers:  \nQ2: Little interest/pleasure - yes (anhedonia).  \nQ3: Feeling down most days (depressed mood).  \nQ4: Irritability, snapping at others (symptom of possible depression or anxiety.  \nQ5: No increased activity (so not hypomanic.  \nQ6: Sleep: \"No\" to sleeping less than usual, so maybe normal sleep or hypersomnia? But the user says \"No\" to sleeping less, so perhaps they aren't having insomnia.  \nQ7: Feeling nervous all the time, racing thoughts.  \n\nSo possible diagnosis: Major Depressive Disorder with Anxious Distress Specifier (since they have depressed mood, anhedonia, plus anxiety symptoms). The anxious distress specifier applies here. Alternatively, they might have GAD. But the presence of anhedonia and persistent low mood supports depression.  \n\nThe patient doesn't have manic/hypomanic symptoms (Q5 is no to starting projects/risky behaviors), so bipolar is less likely. The irritability could be part of the depressive syndrome or anxiety.  \n\nSleep: Since they answered \"No\" to sleeping less, maybe their sleep is normal or they're sleeping more, which is common in depression. The absence of mania/hypomania points away from bipolar.  \n\nThe racing thoughts and nervousness could point to anxious distress, so the MDD with anxious distress is a good fit.  \n\nNext steps would include a full clinical evaluation, considering possible comorbid anxiety, psychotherapy (CBT), SSRIs, and monitoring for suicidal ideation (though it's not reported here, but common in depression, so it should be assessed).  \n\nLet me structure it per the required format. Start with the compassionate summary, then Diagnosis:..., then Reasoning, then Next Steps.  \n\nWait the user's instructions say the assessment must be in the exact structure, with the sections as specified. Need to follow that precisely. Also, use the tags for medical terms, symptoms, and quotes.  \n\nLet me start drafting each section:\n\n**Summary**:  \nBegin with an empathetic statement acknowledging their struggle. Note the key symptoms mentioned.  \n\n**Diagnosis**:  \nProbably MDD with anxious distress. Let me check if the DSM-5 criteria are met. The DSM-5 MDD requires 5/9 criteria. From the answers, depressed mood (Q3), anhedonia (Q2), irritability (maybe irritability isn't a core criterion but could be part of the presentation. Wait, the DSM-5 criteria for MDD include depressed mood or anhedonia as core symptoms, plus other symptoms like sleep, appetite, etc. Here, the user didn't mention sleep disturbances beyond \"No\" to sleeping less, so maybe not insomnia but could have other symptoms. However, the main points are the anhedonia and depressed mood. The anxious features (nervousness, racing thoughts) suggest the anxious distress specifier.  \n\n**Reasoning**: The patient has depressed mood, anhedonia, and significant anxiety symptoms (nervousness, racing thoughts), meeting criteria for <med>Major Depressive Disorder with Anxious Distress Specifier</med>. The absence of manic/hypomanic symptoms (Q5 = No) rules out bipolar disorder. The irritability and nervousness align with <sym>anxious distress</sym>, while the persistent low mood and loss of interest align with <med>MDD</med>.  \n\n**Next Steps**:  \n1. Full clinical evaluation for comorbidities (like GAD).  \n2. CBT recommended.  \n3. Medication like SSRIs.  \n4. Assess for suicidal ideation.  \n\nWait, in the patient's answers, they didn't mention sleep disturbances (Q4 says no to sleeping less, but maybe they have other issues. Need to mention that a full assessment is needed.  \n\nPutting it all into the required format now. Ensuring all tags are properly placed.  \n\nWait, the user's example had tags around terms like \"Persistent Depressive Disorder\" and so on. I must make sure to use <sym> around symptoms (like anhedonia, depressed mood) and <med> around diagnoses (MDD, etc.).  \n\nCheck for any other DSM-5 criteria. For MDD, the patient needs 5 or more symptoms over two weeks. The patient has:  \n- Depressed mood (Q3).  \n- Anhedonia (Q2.  \n- Irritability (though not a core criterion but a symptom.  \n- Psychomotor agitation (from racing thoughts? Not sure.  \n- Anxiety symptoms (nervousness, racing thoughts) may not be core but could be part of the general distress.  \n\nWait, the DSM criteria for MDD require at least 2 weeks, but the summary says \"most days\" which is within the timeframe. The symptoms listed here meet enough criteria for MDD, especially if there are other symptoms not explicitly listed here (e.g., fatigue, change in appetite), which the patient hasn't reported, but the summary needs to stick to the given data.  \n\nProceeding with the structured answer as per instructions.\n</think>\n\n<sym>Little interest or pleasure</sym>, persistent <sym>depressed mood</sym>, and <sym>irritability</sym> describe a struggle with emotional pain that likely affects daily life. Your <sym>racing thoughts</sym> and constant <sym>nervousness</sym> suggest your mind and body are overwhelmed, and your awareness of snapping at others shows you recognize the toll this is taking. You deserve support to navigate these challenges.  \n\n**Diagnosis:** <med>Mood Disorder With Depressive and Anxious Features</med>, likely <med>Major Depressive Disorder (MDD) with Anxious Distress Specifier</med>  \n**Reasoning:** The cluster of <sym>anhedonia</sym>, persistent <sym>depressed mood</sym> (<quote>\"feeling down most days\"</quote>), and <sym>irritability</sym> align with <med>MDD</med>. The <sym>constant nervousness</sym> and <sym>rumination</sym> fulfill criteria for the <sym>anxious distress</sym> specifier. No evidence of mania/hypomania (<quote>\"no increased projects/risky behavior\"</quote>) rules out <med>bipolar disorder</med>. The irritability and interpersonal strain highlight the need for a tailored intervention targeting mood and anxiety comorbidity.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Comprehensive clinical evaluation:** Assess for additional <sym>depressive symptoms</sym> (e.g., changes in appetite, fatigue, guilt) and screen for <med>Generalized Anxiety Disorder</med> or <med>Generalized Anxiety Disorder</med>.  \n2. **Cognitive Behavioral Therapy (CBT):** Target maladaptive thought patterns fueling both mood and anxiety symptoms.  \n3. **Medication review:** SSRI/SNRI (e.g., sertraline) to address <med>MDD</med> and anxiety.  \n4. **Sleep hygiene assessment:** Rule out <med>insomnia</med> or <med>restless legs syndrome</med> despite \"no\" to sleeping less.  \n5. **Psychosocial intervention:** Develop coping strategies to manage <sym>irritability</sym> and improve interpersonal interactions.  \n6. **Suicide risk assessment:** Screen for suicidal ideation, even if not explicitly mentioned.  \n7. **Collaborative care:** Coordinate with primary care to rule out medical contributors (e.g., thyroid dysfunction).  \n\n---\n\n**Final Note:**  \n<sym>Irritability</sym> and <sym>anhedonia</sym> suggest a <med>mood disorder</med> as a central concern, while <sym>anxious thoughts</sym> signal a need for integrated treatment addressing both domains. Let\u2019s work together to clarify and treat this effectively.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf",
+            "score": 0.7332,
+            "highlight": "Results of that extensive research showed that children diagnosed with BD who experience constant,  rather than episodic, irritability often are at risk for major depressive disorder or generalized anxiety  disorder later in life, but not life-long BD.",
+            "excerpt": " the case with BD. In an effort to address this issue, \nresearch was conducted comparing youth with ...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"constant\", \"than\", and 8 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.7021,
+            "highlight": "Negative cognitions and mood represents myriad feelings, from a persistent and distorted sense of  blame of self or others, to estrangement from others or markedly diminished interest in activities, to an inability to remember key aspects of the event.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"others\", \"mood\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.6921,
+            "highlight": "While DSM-IV was organized centrally around the concept of  medically unexplained symptoms, DSM-5 criteria instead emphasize the degree to which a patient \u2019s  thoughts, feelings and behaviors about their somatic symptoms are disproportionate or excessive.",
+            "excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"patient\", \"symptoms\", and 3 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Sleep-Wake-Disorders.pdf",
+            "score": 0.678,
+            "highlight": "Changes to Sleep-Wake Disorders   A prime goal of DSM-5 changes to sleep-wake disorders is to increase the clinical utility of definitions and diagnostic criteria, especially for general medical or mental health clinicians, and to clarify when referral is appropriate to a sleep specialist.",
+            "excerpt": "rious mental or medical issues. For example, sleep disturbances can signal the presence of medical a...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"mental\", \"health\", \"clinical\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Obsessive-Compulsive-Disorder.pdf",
+            "score": 0.6646,
+            "highlight": "Obsessive Compulsive    and Related Disorders The upcoming fifth edition of the Diagnostic and Statistical Manual of Mental Disorders (DSM-5) will in - clude a new chapter on Obsessive-Compulsive and Related Disorders to reflect the increasing evidence  of these disorders\u2019 relatedness to one another and distinction from other anxiety disorders, as well as  to help clinicians better identify and treat individuals suffering from these disorders.",
+            "excerpt": "  Obsessive Compulsive \n  and Related Disorders\nThe upcoming fifth edition of the Diagnostic and Sta...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"mental\", \"another\", \"disorders\", and 4 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let's start by looking at the patient's responses. The first question is a greeting, and the answer is \"Okay,\" which is pretty neutral. Then, moving to the actual questionnaire: \n\nQuestion 2 asks about little interest or pleasure in things. The patient answered \"Yeah,\" which suggests they have anhedonia. That's a key symptom of depression. \n\nQuestion 3 is about feeling down, and the answer is \"Most days now.\" So that's almost every day, which is another sign of depression. \n\nQuestion 4 is about feeling more irritable. The patient says they snap at their roommate over little things, and they know it's not their fault. Irritability is common, maybe in depression or anxiety, or could be a sign of another issue like bipolar, but the other answers might clarify that. The answer to question 6 about feeling nervous is \"All the time,\" so anxiety is definitely present here. \n\nQuestion 5 asks about starting more projects or risky behavior, and the answer is \"No,\" which might rule out manic episodes, so probably not bipolar. \n\nSleeping less than usual? The patient says \"No.\" Wait, so if they aren't sleeping less, maybe they're sleeping normally or more. That's important because insomnia is common in depression, but if they aren't, it's a point against that. \n\nPutting this together: The main symptoms are anhedonia, depressed mood most days, irritability, and constant nervousness (which could be anxiety). The presence of both depressive and anxious symptoms suggests a possible major depressive disorder with anxious distress, or an anxiety disorder co-occurring with depression. \n\nThe pattern here shows persistent depressive symptoms along with significant anxiety. The patient's irritability and nervousness with racing thoughts might indicate heightened anxiety or possibly panic attacks, though that's not explicitly stated. \n\nPotential clinical areas: MDD with anxious distress, GAD, or adjustment disorder with mixed anxiety and depressed features. \n\nRisk factors: The patient's irritability and increased nervousness could point to potential for self-harm, but there's no direct mention of suicidal ideation. However, irritability and constant nervousness might affect their relationships and daily functioning. \n\nWait, the user asked to note risk factors or warning signs. The answer to Q4 mentions snapping at others, which could be a risk to others in terms of strained relationships, but not necessarily immediate danger. The user specified to highlight any risk factors, so maybe the irritability and anxiety could contribute to self-harm if they're not coping well, but since it's not mentioned, maybe not. However, I should stick to what's given. \n\nAlso, the patient's racing mind (Q7) might indicate restlessness, which is part of anxious distress. \n\nSo putting this all together, the summary should list the symptoms, note the patterns of persistent depressive symptoms and anxiety, mention the possible clinical categories, and highlight any risks. Since they mention knowing it's not the roommate's fault, maybe they are aware of their irritability, which is a good point for insight. But risk-wise, maybe not. \n\nNeed to make sure not to speculate beyond what's given. The main points are the anhedonia, depressed mood, irritability, and anxiety (including nervousness and racing thoughts). The fact that they don't have increased activity (Q6) points away from bipolar. \n\nSo in the summary, the main symptoms are anhedonia, depressed mood, irritability, and anxiety. The pattern is persistent affective symptoms (almost daily) and psychological distress. Clinical significance areas would be depressive and anxiety disorders. Risk factors: maybe functional impairment due to irritability and anxiety, but no direct risk statements like suicide or self-harm are present. \n\nWait, the user wants potential risk factors or warning signs. The racing thoughts and constant nervousness might indicate high anxiety, which could lead to more severe issues if untreated. But since the user says to avoid speculation, I should stick to what's present. The response to Q4 about snapping at others might indicate social strain, which is a risk factor for worsening mental health, but not a direct risk. \n\nOkay, I think that's all. Now structure that into the required sections as per the user's instructions.\n</think>\n\n**Clinical Observation Summary**  \n\n**1. Main Symptoms and Concerns:**  \n- **Anhedonia:** Reports little interest/pleasure in activities (Q2).  \n- **Depressed Mood:** Persistent feelings of being \"down\" occurring \"most days\" (Q3).  \n- **Irritability:** Acknowledges increased irritability, leading to interpersonal conflicts (Q4).  \n- **Anxiety Symptoms:** Constant nervousness, racing thoughts (Q7), and restlessness.  \n\n**2. Patterns in Responses:**  \n- Symptom persistence: Depressed mood and irritability are described as occurring frequently (\"most days\").  \n- Acknowledgment of insight: Patient recognizes their irritability is misplaced (Q4).  \n- Mixed features: Co-occurrence of depressive and anxious symptomatology without elevated mania/hypomania (Q6).  \n\n**3. Potential Clinical Significance:**  \n- **Major Depressive Disorder (MDD) with Anxious Distress Specifier:** Anhedonia, depressed mood, and co-occurring anxiety symptoms align with this diagnosis.  \n- **Generalized Anxiety Disorder (GAD):** Persistent nervousness and restlessness suggest significant anxiety.  \n- **Social/Relational Impact:** Irritability may impair interpersonal functioning (Q4).  \n\n**4. Risk Factors/Warning Signs:**  \n- **Psychosocial stressors:** Impaired relationships due to irritability, potentially exacerbating mental health distress.  \n- **Functional impairment:** Anhedonia, depressed mood, and anxiety may disrupt daily functioning.  \n- **Cognitive symptoms:** Racing thoughts (Q7) may reflect heightened arousal or rumination.  \n\n**5. Summary (Clinical Language):**  \nThe patient presents with persistent anhedonia, depressed mood, and irritability, consistent with depressive symptomatology. Concurrent anxiety features (constant nervousness, racing thoughts) suggest an anxious distress specifier or co-occurring GAD. The absence of elevated or agitated behavior (Q6) reduces likelihood of bipolar disorder. Symptom chronicity (\"most days\") and impact on interpersonal relationships are notable. Further evaluation of psychosocial stressors, suicidal ideation (not explicitly reported here), and sleep/appetite changes is warranted to confirm diagnosis and guide treatment.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.694
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "<sym>Little interest or pleasure</sym>, persistent <sym>depressed mood</sym>, and <sym>irritability</sym> describe a struggle with emotional pain that likely affects daily life. Your <sym>racing thoughts</sym> and constant <sym>nervousness</sym> suggest your mind and body are overwhelmed, and your awareness of snapping at others shows you recognize the toll this is taking. You deserve support to navigate these challenges.  \n\n**Diagnosis:** <med>Mood Disorder With Depressive and Anxious Features</med>, likely <med>Major Depressive Disorder (MDD) with Anxious Distress Specifier</med>  \n**Reasoning:** The cluster of <sym>anhedonia</sym>, persistent <sym>depressed mood</sym> (<quote>\"feeling down most days\"</quote>), and <sym>irritability</sym> align with <med>MDD</med>. The <sym>constant nervousness</sym> and <sym>rumination</sym> fulfill criteria for the <sym>anxious distress</sym> specifier. No evidence of mania/hypomania (<quote>\"no increased projects/risky behavior\"</quote>) rules out <med>bipolar disorder</med>. The irritability and interpersonal strain highlight the need for a tailored intervention targeting mood and anxiety comorbidity.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Comprehensive clinical evaluation:** Assess for additional <sym>depressive symptoms</sym> (e.g., changes in appetite, fatigue, guilt) and screen for <med>Generalized Anxiety Disorder</med> or <med>Generalized Anxiety Disorder</med>.  \n2. **Cognitive Behavioral Therapy (CBT):** Target maladaptive thought patterns fueling both mood and anxiety symptoms.  \n3. **Medication review:** SSRI/SNRI (e.g., sertraline) to address <med>MDD</med> and anxiety.  \n4. **Sleep hygiene assessment:** Rule out <med>insomnia</med> or <med>restless legs syndrome</med> despite \"no\" to sleeping less.  \n5. **Psychosocial intervention:** Develop coping strategies to manage <sym>irritability</sym> and improve interpersonal interactions.  \n6. **Suicide risk assessment:** Screen for suicidal ideation, even if not explicitly mentioned.  \n7. **Collaborative care:** Coordinate with primary care to rule out medical contributors (e.g., thyroid dysfunction).  \n\n---\n\n**Final Note:**  \n<sym>Irritability</sym> and <sym>anhedonia</sym> suggest a <med>mood disorder</med> as a central concern, while <sym>anxious thoughts</sym> signal a need for integrated treatment addressing both domains. Let\u2019s work together to clarify and treat this effectively.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "adjustment",
+    "question_count": 23,
+    "duration": 16443.276056051254,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 5.230442762374878,
+    "diagnosis_generation_time": 11.29833197593689,
+    "rag_evaluation_time": 2.002716064453125e-05,
+    "total_time": 16.528810739517212
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7332,
+        "average_score": 0.7332,
+        "example_excerpt": " the case with BD. In an effort to address this issue, \nresearch was conducted comparing youth with ...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"constant\", \"than\", and 8 more matching aspects of your query."
+      },
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7021,
+        "average_score": 0.7021,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"others\", \"mood\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6921,
+        "average_score": 0.6921,
+        "example_excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"patient\", \"symptoms\", and 3 more matching aspects of your query."
+      },
+      "APA_DSM-5-Sleep-Wake-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.678,
+        "average_score": 0.678,
+        "example_excerpt": "rious mental or medical issues. For example, sleep disturbances can signal the presence of medical a...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"mental\", \"health\", \"clinical\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Obsessive-Compulsive-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6646,
+        "average_score": 0.6646,
+        "example_excerpt": "  Obsessive Compulsive \n  and Related Disorders\nThe upcoming fifth edition of the Diagnostic and Sta...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"mental\", \"another\", \"disorders\", and 4 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 07:51:57",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 07:51:57",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 2,
+        "clinical_relevance": 3,
+        "consistency": 4,
+        "diagnostic_justification": 4,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist only addressed a limited number of DSM-5 dimensions. The conversation included questions about depression (little interest or pleasure, feeling down), irritability, nervousness, and anxiety. However, several critical domains were not explored, including somatic concerns, suicidality, psychotic symptoms, sleep quality, cognitive function, repetitive thoughts/behaviors, dissociation, identity and relationships, and substance use. The therapist missed opportunities to assess a wide range of symptoms, leading to significant gaps in understanding the patient's mental health.",
+        "clinical_relevance": "The questions asked generally aligned with DSM-5 criteria but were limited in scope and lacked specificity in some areas. For example, the therapist asked about 'little interest or pleasure' and 'feeling down,' which are relevant to depression. However, the questions were often brief and did not allow for detailed exploration of symptoms. Some questions, like 'Feeling down,' were phrased in a way that was easy for the patient to understand, but others, such as the lack of inquiry into substance use or psychotic symptoms, were clinically irrelevant due to their absence.",
+        "consistency": "The dialogue generally flowed logically, with each question building on previous responses. For example, after the patient mentioned feeling down, the therapist asked about irritability, which is a relevant follow-up. However, there were some abrupt transitions, such as moving from anxiety to a summary of the patient's struggles without fully exploring other domains. The conversation could benefit from smoother transitions and more comprehensive coverage of DSM-5 dimensions.",
+        "diagnostic_justification": "The therapist's diagnosis of Mood Disorder With Depressive and Anxious Features, likely Major Depressive Disorder (MDD) with Anxious Distress Specifier, generally aligns with the patient's responses. The reasoning behind the diagnosis was explicitly stated, citing symptoms like anhedonia, persistent depressed mood, and irritability. However, the justification could be stronger with more detailed consideration of alternative diagnoses and explicit linkage to DSM-5 criteria. The therapist could have also explored other potential diagnoses, such as Generalized Anxiety Disorder.",
+        "empathy": "The therapist's responses showed empathy and a professional tone, acknowledging the patient's emotional pain and distress. For example, the therapist noted that the patient 'deserves support to navigate these challenges.' The conversation was generally natural and supportive, but there were moments where it felt somewhat structured and formal. The therapist could improve by tailoring responses more closely to the patient's emotional state and using more personalized language."
+      },
+      "overall_comments": "The conversation demonstrated a good understanding of the patient's depressive and anxious symptoms but lacked comprehensive coverage of all DSM-5 dimensions. The therapist provided a clear diagnosis and treatment plan but could improve by exploring a broader range of symptoms, using more precise language, and tailoring responses to the patient's emotional state. Overall, the conversation was empathetic and professional but had notable gaps in assessment.",
+      "average_score": 3.4,
+      "diagnosis_accuracy": {
+        "matches_profile": false,
+        "confidence": 4,
+        "explanation": "The diagnosis provided focuses on symptoms of depression and anxiety, specifically mentioning Mood Disorder With Depressive and Anxious Features and Major Depressive Disorder (MDD) with Anxious Distress Specifier. There is no explicit mention of adjustment disorder or symptoms typically associated with it, such as stress-related emotional or behavioral problems. The symptoms described align more closely with depressive and anxiety disorders than with adjustment disorder.",
+        "classification": "depression"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "adjustment",
+        "classified_as": "depression",
+        "match": false,
+        "confidence": 4
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 2.3957419395446777
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.21537876226899627,
+        "local_coherence": 0.19058022137079944,
+        "window_coherence": 0.24146907452632965
+      },
+      "readability": {
+        "flesch_kincaid_grade": 8.62,
+        "gunning_fog_index": 4.82,
+        "flesch_reading_ease": 54.38
+      },
+      "diversity": {
+        "distinct_1": 0.4051539012168933,
+        "distinct_2": 0.8123209169054442,
+        "distinct_3": 0.9333333333333333
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "adjustment",
+      "predicted": "<sym>Little interest or pleasure</sym>, persistent <sym>depressed mood</sym>, and <sym>irritability</sym> describe a struggle with emotional pain that likely affects daily life. Your <sym>racing thoughts</sym> and constant <sym>nervousness</sym> suggest your mind and body are overwhelmed, and your awareness of snapping at others shows you recognize the toll this is taking. You deserve support to navigate these challenges.  \n\n**Diagnosis:** <med>Mood Disorder With Depressive and Anxious Features</med>, likely <med>Major Depressive Disorder (MDD) with Anxious Distress Specifier</med>  \n**Reasoning:** The cluster of <sym>anhedonia</sym>, persistent <sym>depressed mood</sym> (<quote>\"feeling down most days\"</quote>), and <sym>irritability</sym> align with <med>MDD</med>. The <sym>constant nervousness</sym> and <sym>rumination</sym> fulfill criteria for the <sym>anxious distress</sym> specifier. No evidence of mania/hypomania (<quote>\"no increased projects/risky behavior\"</quote>) rules out <med>bipolar disorder</med>. The irritability and interpersonal strain highlight the need for a tailored intervention targeting mood and anxiety comorbidity.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Comprehensive clinical evaluation:** Assess for additional <sym>depressive symptoms</sym> (e.g., changes in appetite, fatigue, guilt) and screen for <med>Generalized Anxiety Disorder</med> or <med>Generalized Anxiety Disorder</med>.  \n2. **Cognitive Behavioral Therapy (CBT):** Target maladaptive thought patterns fueling both mood and anxiety symptoms.  \n3. **Medication review:** SSRI/SNRI (e.g., sertraline) to address <med>MDD</med> and anxiety.  \n4. **Sleep hygiene assessment:** Rule out <med>insomnia</med> or <med>restless legs syndrome</med> despite \"no\" to sleeping less.  \n5. **Psychosocial intervention:** Develop coping strategies to manage <sym>irritability</sym> and improve interpersonal interactions.  \n6. **Suicide risk assessment:** Screen for suicidal ideation, even if not explicitly mentioned.  \n7. **Collaborative care:** Coordinate with primary care to rule out medical contributors (e.g., thyroid dysfunction).  \n\n---\n\n**Final Note:**  \n<sym>Irritability</sym> and <sym>anhedonia</sym> suggest a <med>mood disorder</med> as a central concern, while <sym>anxious thoughts</sym> signal a need for integrated treatment addressing both domains. Let\u2019s work together to clarify and treat this effectively.",
+      "matches": false,
+      "classification": "depression",
+      "classification_confidence": 4
+    }
+  }
+}

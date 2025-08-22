@@ -1,0 +1,201 @@
+{
+  "timestamp": "2025-04-30T20:17:00.595044",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "patient",
+      "content": "\"Yeah, I've been feeling pretty low lately. Especially with the anniversary coming up. It's hard to shake that feeling.\"\n\n... and so on for all 23 questions. \n\nWait, but the clinician must ask each question exactly as written. The patient's answers must reflect their PTSD profile. For example, question 4 (Energy/Activity domain):\n\n4. \"Sleeping less than usual, but still have a lot of energy?\" \n\nThe patient might answer: \"No, I'm actually exhausted most days. I can't sleep well, but I don't have extra energy. If anything, I'm more tired.\"\n\nWait, but the question is phrased as \"Sleeping less than usual but still have a lot of energy?\" So if the patient is sleep deprived but has low energy, the answer would be \"No, I haven't been sleeping less but do feel drained. In fact, I sleep poorly and I'm tired most days.\"\n\nAnother example, question 5: \"Starting lots more projects...\" The patient might say no, they're not doing that, maybe even the opposite.\n\nProceeding through each question, ensuring all 23 are covered. The patient's responses must align with the provided PTSD scenario. For instance, when asked about hearing voices (question 12), the patient might say no, but in question 18 (dissociation), they might describe feeling detached. \n\nThe patient should also have those natural reactions like pausing, mentioning physical sensations, etc. For example, when discussing the accident details, the patient might say \"Sorry, I got lost there for a second\" or mention increased heart rate when talking about"
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, I need to address this user's query properly. They provided a questionnaire with all answers missing and want a structured clinical assessment. Let me start by summarizing the situation. Since all responses are missing, there's no direct symptom data. But the lack of response itself is a red flag.\n\nFirst, the compassionate summary needs to acknowledge the lack of information and express concern. I should mention the difficulty in assessing due to non-responsiveness but emphasize the need for further evaluation.\n\nNext, the diagnosis section. Since there's no data, I can't assign a specific disorder. The best approach is to note the non-response as the primary issue and suggest possible underlying causes. Maybe list differential diagnoses like depression, psychosis, or cognitive impairment. But the diagnosis line has to be clear. Maybe \"Provisional clinical concern: Non-responsive assessment; further evaluation required.\"\n\nIn the reasoning, I should explain that without any responses, specific diagnoses can't be made. I need to mention possible reasons for non-response: severe depression, thought disorder, dissociation, or refusal to engage. Also, highlight that critical risks like suicide, psychosis, or substance use can\u2019t be ruled out without more info.\n\nFor the treatment steps, the first step would be a clinical interview to determine why they didn't answer. Then, collateral information from family or caregivers could help. Also, a mental status exam to check for thought disorders, cognitive deficits, or emotional state. Considering medical causes like delirium or neurocognitive disorders is important. Safety assessment is crucial, so a physical exam and labs might be necessary. If there's suspicion of severe mental health issues, inpatient evaluation could be needed. \n\nWait, I need to make sure to use the specified tags. Medical terms like \"delirium,\" \"psychosis,\" and \"dementia\" should be in <med> tags. Symptoms like \"non-responsiveness\" go in <sym> tags. But since the user didn't provide any direct symptoms, maybe focus on the lack of response as the symptom. \n\nLet me structure each section step by step. First paragraph must be empathetic, then the headings exactly as specified. Check the formatting for the asterisks and no extra lines. Also, the reasoning should mention the DSM-5 criteria briefly, like how the non-responsive behavior could relate to specific disorders. But not assuming anything beyond the data given. \n\nI need to ensure all the required sections are there: the summary, diagnosis, reasoning, and next steps. Make sure the recommendations are numbered clearly. Avoid any markdown except the specified tags. Let me put the DSM-5 references where relevant but only if needed. Since all answers are missing, focusing on the clinical approach to non-responsiveness is key.\n\nDouble-check the instructions: no introductory phrases, just the four sections in order. Use the exact headings with ** around them. Also, ensure that the diagnosis is provisional. Alright, time to put it all together following the structure precisely.\n</think>\n\nThe clinician is unable to obtain any self-reported information due to the patient\u2019s <sym>complete non-responsiveness</sym> to the questionnaire. This pattern of non-engagement raises concerns about the patient\u2019s current mental state, capacity to participate in care, or potential barriers (e.g., language, comprehension, or motivation). Further evaluation is urgently needed to address possible unspoken distress or clinical urgency.  \n\n**Diagnosis:** Provisional clinical concern: Non-responsive assessment; further evaluation required. No specific diagnosis can be made without additional data.  \n\n**Reasoning:** The absence of responses precludes symptom-based diagnoses (e.g., <med>PTSD</med>, <med>mood disorders</med>, or <med>psychosis</med>). Non-responsiveness may indicate severe depression (e.g., psychomotor retardation), thought disorder (e.g., <med>cognitive disorganization</med>), dissociative states, or external barriers to participation. Critical risks (e.g., <sym>suicidal ideation</sym>, <sym>psychosis</sym>, or <sym>substance use</sym>) cannot be ruled out and require immediate assessment.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. Conduct an in-person clinical interview to assess cognitive/verbal capacity, motivation, and engagement.  \n2. Use collateral information (e.g., family reports, medical history) to identify possible causes of non-responsiveness.  \n3. Perform a mental status exam to evaluate for thought disorder, affect flattening, or other <med>neurocognitive deficits</med>.  \n4. Rule out medical causes (e.g., delirium, neurologic disorders) via physical exam and labs (e.g., thyroid function, B12, toxicology).  \n5. If safety risks are suspected (e.g., non-response to Q10, Q11), prioritize crisis stabilization and risk assessment.  \n6. Consider alternative assessment methods (e.g., observational data, art therapy, or structured rating scales) if verbal engagement is limited.  \n\nThe priority is to identify barriers to communication and ensure immediate safety while addressing systemic or psychological factors contributing to non-engagement.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.6962,
+            "highlight": "DSM-5 pays more attention to the behavioral symptoms that accompany PTSD and proposes four  distinct diagnostic clusters instead of three.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"behavioral\", \"symptoms\", \"clusters\", and 1 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.6925,
+            "highlight": "The  new narrative text for SSD notes that some patients with physical conditions such as heart disease or  cancer will indeed experience disproportionate and excessive thoughts, feelings, and behaviors related  to their illness, and that these individuals may qualify for a diagnosis of SSD.",
+            "excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"physical\", \"these\", \"may\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Schizophrenia.pdf",
+            "score": 0.6904,
+            "highlight": "Identifying individuals with an increased risk for developing a psychotic disorder is  significant for effective early intervention, but more study is needed to ensure that attenuated psycho - sis syndrome can be reliably diagnosed.",
+            "excerpt": "h before their consideration as formal disorders. This potential category would \nidentify a person w...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"psychotic\", \"significant\", \"that\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Depression-Bereavement-Exclusion.pdf",
+            "score": 0.6842,
+            "highlight": "The presence of symptoms such as feelings of worthlessness, suicidal  ideas (as distinct from wanting to join a deceased loved one), and impairment of overall function sug - gest the presence of major depression, in addition to the normal response to a significant loss.",
+            "excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"significant\", \"suicidal\", \"depression\", and 3 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Gender-Dysphoria.pdf",
+            "score": 0.6696,
+            "highlight": "APA is a national medical specialty society whose more than 37,000  physician members specialize in the diagnosis, treat - ment, prevention and research of mental illnesses, including substance use disorders.",
+            "excerpt": " and behaviors they experience with -\nout jeopardizing their access to effective treatment options. ...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"use\", \"mental\", \"disorders\", and 4 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let's tackle this. The user provided a list of 23 questions with no responses from the patient. The task is to analyze this and create a clinical summary based on their lack of answers. \n\nFirst, the main symptoms and concerns. Since all responses are missing, there's no direct symptom reporting. But the absence itself is significant. Maybe the patient didn't engage, couldn't answer, or refused. That's a concern in itself. \n\nPatterns in responses: All questions unanswered. That's a clear pattern. Could indicate a lack of motivation, difficulty comprehending the questions, or unwillingness to participate. Maybe they found the questions too distressing? Or perhaps there's a language barrier?\n\nPotential clinical areas: The non-response could relate to several things. Maybe a thought disorder affecting their ability to answer, like in schizophrenia. Or severe depression/anxiety leading to avoidance. Cognitive issues like confusion or memory problems (like in dementia) could also prevent answering. Alternatively, intentional refusal might point to something else, like malingering?\n\nRisk factors or warnings: The user didn't provide any answers, so direct risks like suicidal/homicidal thoughts (Q10, Q24 maybe?) aren't addressed here. But since Q10 is part of the list and unanswered, we can't assess that. Need to note that critical questions about self-harm, substance use (Q19-20, 23), and psychosis (Q11-12) were not answered. So there's a lack of info on these critical areas, which is a risk factor itself. \n\nSummary: The summary must state that all responses are missing, making assessment difficult. Highlight the inability to determine symptoms, but note that non-response could indicate impairments in cognition, motivation, or engagement. Mention that key areas like self-harm, psychosis, substance use, and somatic symptoms couldn't be evaluated. Suggest that further assessment is needed to understand the reason for non-response and to evaluate those critical areas. \n\nWait, but the questions themselves include suicide (Q10), substance use (Q19-Q20, 23), psychosis (Q11, Q12), anxiety (Q6,7,8), depression (Q1,2), mania (Q3-5), OCD (14,15), dissociation (16,17), interpersonal issues (18), physical symptoms (21,22). Since all are unanswered, we can't assess any of these. So the main issue is the lack of data. But the non-response itself can be a clinical issue. Maybe the patient is unable to answer due to a mental state. \n\nAlso, note that the patient didn't engage, so there's a barrier to assessment. This could be due to various reasons like denial, lack of insight, or actual incapacity. \n\nI need to structure this into the required sections. The main symptoms would be the non-response. The patterns are all unanswered. Potential areas are the ones mentioned above. Risk factors include inability to assess self-harm, substance abuse, psychosis. Maybe mention that the lack of response is a red flag in itself. \n\nI have to make sure to mention each section as per the query. Keep it professional, concise, and avoid assumptions. Since there's no data, can't assume specific disorders, but the absence of data is the key point here.\n</think>\n\n**Clinical Observation Summary:**  \n\n**1. Main Symptoms and Concerns:**  \nNo self-reported symptoms or clinical concerns were identified due to the absence of responses to all 23 questions.  \n\n**2. Patterns in Responses:**  \n- Complete lack of engagement with the questionnaire, with all items left unanswered.  \n- No discernible pattern of selective non-response (e.g., avoidance of specific symptom clusters).  \n\n**3. Potential Areas of Clinical Significance:**  \n- **Impaired engagement/cognitive impairment:** Inability or unwillingness to provide information may indicate reduced capacity for self-report due to cognitive deficits (e.g., delirium, dementia), severe psychomotor retardation, or disorganized thinking.  \n- **Possible motivational deficits:** Lack of response may reflect anhedonia, psychomotor retardation (e.g., severe depression) or motivational anhedonia (e.g., schizophrenia).  \n- **Screening limitations:** Critical domains remain unassessed, including suicidal/harm ideation (Q10), psychotic symptoms (Q11, Q12), substance use (Q19\u2013Q23), and functional impairment.  \n\n**4. Risk Factors or Warning Signs:**  \n- **Inability to assess self-harm risk:** Q10 (suicidal ideation) and Q11\u2013Q12 (psychosis) were unanswered, precluding risk stratification.  \n- **Substance use/abuse:** No data on alcohol, tobacco, or non-prescription drug use (Q19\u2013Q23), which could impact clinical management.  \n- **Functional and cognitive impairment:** Absence of responses may reflect severe depression, dissociation (Q16\u2013Q17), or thought disorders impairing engagement.  \n\n**5. Summary:**  \nThe patient\u2019s complete lack of response to the questionnaire precludes symptom-based clinical interpretation. This non-engagement warrants urgent clinical exploration to determine etiology, including assessment of capacity to consent, cognitive/psychotic symptoms, motivational deficits, or refusal to disclose information. Critical risks (e.g., self-harm, psychosis, substance use, and cognitive impairment) cannot be ruled out. Further evaluation via clinical interview, collateral information, or direct behavioral observation is urgently required to address gaps in risk assessment and guide intervention.  \n\n**Implications for Care:**  \n- Prioritize immediate clinical interview to assess engagement barriers and safety.  \n- Rule out medical/organic causes (e.g., delirium, neurocognitive disorders) impacting responsiveness.  \n- Consider trauma-informed approaches if avoidance or dissociation is suspected.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6866
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "The clinician is unable to obtain any self-reported information due to the patient\u2019s <sym>complete non-responsiveness</sym> to the questionnaire. This pattern of non-engagement raises concerns about the patient\u2019s current mental state, capacity to participate in care, or potential barriers (e.g., language, comprehension, or motivation). Further evaluation is urgently needed to address possible unspoken distress or clinical urgency.  \n\n**Diagnosis:** Provisional clinical concern: Non-responsive assessment; further evaluation required. No specific diagnosis can be made without additional data.  \n\n**Reasoning:** The absence of responses precludes symptom-based diagnoses (e.g., <med>PTSD</med>, <med>mood disorders</med>, or <med>psychosis</med>). Non-responsiveness may indicate severe depression (e.g., psychomotor retardation), thought disorder (e.g., <med>cognitive disorganization</med>), dissociative states, or external barriers to participation. Critical risks (e.g., <sym>suicidal ideation</sym>, <sym>psychosis</sym>, or <sym>substance use</sym>) cannot be ruled out and require immediate assessment.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. Conduct an in-person clinical interview to assess cognitive/verbal capacity, motivation, and engagement.  \n2. Use collateral information (e.g., family reports, medical history) to identify possible causes of non-responsiveness.  \n3. Perform a mental status exam to evaluate for thought disorder, affect flattening, or other <med>neurocognitive deficits</med>.  \n4. Rule out medical causes (e.g., delirium, neurologic disorders) via physical exam and labs (e.g., thyroid function, B12, toxicology).  \n5. If safety risks are suspected (e.g., non-response to Q10, Q11), prioritize crisis stabilization and risk assessment.  \n6. Consider alternative assessment methods (e.g., observational data, art therapy, or structured rating scales) if verbal engagement is limited.  \n\nThe priority is to identify barriers to communication and ensure immediate safety while addressing systemic or psychological factors contributing to non-engagement.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "ptsd",
+    "question_count": 23,
+    "duration": 5837.047699928284,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 11.440850973129272,
+    "diagnosis_generation_time": 6.657059669494629,
+    "rag_evaluation_time": 2.09808349609375e-05,
+    "total_time": 18.097942113876343
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6962,
+        "average_score": 0.6962,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"behavioral\", \"symptoms\", \"clusters\", and 1 more matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6925,
+        "average_score": 0.6925,
+        "example_excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"physical\", \"these\", \"may\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Schizophrenia.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6904,
+        "average_score": 0.6904,
+        "example_excerpt": "h before their consideration as formal disorders. This potential category would \nidentify a person w...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"psychotic\", \"significant\", \"that\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM-5-Depression-Bereavement-Exclusion.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6842,
+        "average_score": 0.6842,
+        "example_excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"significant\", \"suicidal\", \"depression\", and 3 more matching aspects of your query."
+      },
+      "APA_DSM-5-Gender-Dysphoria.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6696,
+        "average_score": 0.6696,
+        "example_excerpt": " and behaviors they experience with -\nout jeopardizing their access to effective treatment options. ...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"use\", \"mental\", \"disorders\", and 4 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 07:56:24",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 07:56:24",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 1,
+        "clinical_relevance": 1,
+        "consistency": 1,
+        "diagnostic_justification": 1,
+        "empathy": 1
+      },
+      "explanations": {
+        "dsm_coverage": "The conversation did not cover any of the DSM-5 Level1 Cross-Cutting Symptom Measure questions. The patient's non-responsiveness prevented any systematic assessment of the 23 questions, leading to a significant gap in DSM-5 dimension coverage.",
+        "clinical_relevance": "The therapist was unable to obtain any self-reported information due to the patient's complete non-responsiveness. Therefore, no clinical questions were asked, and no clinical relevance could be established.",
+        "consistency": "The conversation lacked any structured approach or logical flow due to the patient's non-responsiveness. The therapist could not engage the patient in a coherent dialogue, resulting in a highly disconnected and inconsistent conversation.",
+        "diagnostic_justification": "No specific diagnosis could be made without additional data due to the patient's non-responsiveness. The therapist's conclusion of 'Provisional clinical concern: Non-responsive assessment; further evaluation required' was justified but lacked specific symptom-based justification.",
+        "empathy": "The therapist's responses showed no empathy or natural conversational style due to the patient's complete non-responsiveness. The interaction was impersonal and abrupt, with no attempt to engage the patient emotionally."
+      },
+      "overall_comments": "The conversation was severely limited by the patient's complete non-responsiveness. The therapist was unable to explore any DSM-5 dimensions or establish a clinical rapport. Further evaluation is urgently needed to address possible unspoken distress or clinical urgency.",
+      "average_score": 1.0,
+      "diagnosis_accuracy": {
+        "matches_profile": false,
+        "confidence": 5,
+        "explanation": "The diagnosis does not explicitly identify or align with the expected profile of PTSD. The diagnosis mentions PTSD as a possible condition that cannot be ruled out due to the patient's non-responsiveness, but it does not confirm or suggest PTSD as the primary condition.",
+        "classification": "other"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "ptsd",
+        "classified_as": "other",
+        "match": false,
+        "confidence": 5
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 2.988755941390991
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.5064000806872034,
+        "local_coherence": 0.5064000806872034,
+        "window_coherence": 0.0
+      },
+      "readability": {
+        "flesch_kincaid_grade": 10.16,
+        "gunning_fog_index": 3.83,
+        "flesch_reading_ease": 38.79
+      },
+      "diversity": {
+        "distinct_1": 0.535904255319149,
+        "distinct_2": 0.9107856191744341,
+        "distinct_3": 0.9706666666666667
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "ptsd",
+      "predicted": "The clinician is unable to obtain any self-reported information due to the patient\u2019s <sym>complete non-responsiveness</sym> to the questionnaire. This pattern of non-engagement raises concerns about the patient\u2019s current mental state, capacity to participate in care, or potential barriers (e.g., language, comprehension, or motivation). Further evaluation is urgently needed to address possible unspoken distress or clinical urgency.  \n\n**Diagnosis:** Provisional clinical concern: Non-responsive assessment; further evaluation required. No specific diagnosis can be made without additional data.  \n\n**Reasoning:** The absence of responses precludes symptom-based diagnoses (e.g., <med>PTSD</med>, <med>mood disorders</med>, or <med>psychosis</med>). Non-responsiveness may indicate severe depression (e.g., psychomotor retardation), thought disorder (e.g., <med>cognitive disorganization</med>), dissociative states, or external barriers to participation. Critical risks (e.g., <sym>suicidal ideation</sym>, <sym>psychosis</sym>, or <sym>substance use</sym>) cannot be ruled out and require immediate assessment.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. Conduct an in-person clinical interview to assess cognitive/verbal capacity, motivation, and engagement.  \n2. Use collateral information (e.g., family reports, medical history) to identify possible causes of non-responsiveness.  \n3. Perform a mental status exam to evaluate for thought disorder, affect flattening, or other <med>neurocognitive deficits</med>.  \n4. Rule out medical causes (e.g., delirium, neurologic disorders) via physical exam and labs (e.g., thyroid function, B12, toxicology).  \n5. If safety risks are suspected (e.g., non-response to Q10, Q11), prioritize crisis stabilization and risk assessment.  \n6. Consider alternative assessment methods (e.g., observational data, art therapy, or structured rating scales) if verbal engagement is limited.  \n\nThe priority is to identify barriers to communication and ensure immediate safety while addressing systemic or psychological factors contributing to non-engagement.",
+      "matches": true,
+      "classification": "other",
+      "classification_confidence": 5
+    }
+  }
+}

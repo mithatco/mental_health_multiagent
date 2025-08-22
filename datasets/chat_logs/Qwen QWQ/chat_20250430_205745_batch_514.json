@@ -1,0 +1,321 @@
+{
+  "timestamp": "2025-04-30T20:57:59.422788",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm Dr. Lee, a mental health clinician. Today I'll be using the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure to better understand how you've been feeling over the past two weeks. We'll go through 23 questions one at a time. Your answers will help me identify areas we can address together. Everything you share will be confidential. Ready to begin?"
+    },
+    {
+      "role": "patient",
+      "content": "Okay... I guess so. I just want to figure this out. *sighs lightly*"
+    },
+    {
+      "role": "assistant",
+      "content": "1. Little interest or pleasure in doing things?"
+    },
+    {
+      "role": "patient",
+      "content": "Not... not really. Things I used to enjoy just don't feel like they matter anymore. I watch TV sometimes but it feels pointless. *pauses* It's been like this for months, honestly."
+    },
+    {
+      "role": "assistant",
+      "content": "2. Feeling down, depressed, or hopeless?"
+    },
+    {
+      "role": "patient",
+      "content": "Most days. I wake up and it's just this heavy weight. Like there's no point to anything. *voice softens* Even on good days it's still there in the background."
+    },
+    {
+      "role": "assistant",
+      "content": "3. Feeling more irritated, grouchy, or angry than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "Maybe a little. I snap at my coworkers sometimes... but it's more like numbness. I don't know. *shrugs weakly*"
+    },
+    {
+      "role": "assistant",
+      "content": "4. Sleeping less than usual, but still have a lot of energy?"
+    },
+    {
+      "role": "patient",
+      "content": "No. I can't sleep. Wake up at 4 AM feeling restless, then can't get back to sleep. But I'm tired all day, not energetic."
+    },
+    {
+      "role": "assistant",
+      "content": "5. Starting lots of projects or doing risky things?"
+    },
+    {
+      "role": "patient",
+      "content": "No. I can't even finish emails at work anymore. Just... stuck starting anything. *runs hand through hair*"
+    },
+    {
+      "role": "assistant",
+      "content": "6. Feeling nervous, anxious, frightened, or on edge?"
+    },
+    {
+      "role": "patient",
+      "content": "Not really. More just... empty. But sometimes my chest feels tight when I think about my job. *pauses* Not sure if that counts."
+    },
+    {
+      "role": "assistant",
+      "content": "7. Avoiding situations that make you anxious?"
+    },
+    {
+      "role": "patient",
+      "content": "I guess I avoid going out with friends. It's easier to just stay home. Avoiding the disappointment, I think."
+    },
+    {
+      "role": "assistant",
+      "content": "8. Unexplained aches and pains?"
+    },
+    {
+      "role": "patient",
+      "content": "My back's been sore a lot. Doctors can't find anything. *shrugs* Maybe I'm just getting old."
+    },
+    {
+      "role": "assistant",
+      "content": "9. Feeling that your illnesses aren't taken seriously?"
+    },
+    {
+      "role": "patient",
+      "content": "Hmm. A couple doctors told me to just 'cheer up', so... maybe. But I'm here now."
+    },
+    {
+      "role": "assistant",
+      "content": "10. Thoughts of actually hurting yourself?"
+    },
+    {
+      "role": "patient",
+      "content": "*looks down* Sometimes I think... just wanting to disappear. Not that I'd act on it, though. *voice trembles slightly*"
+    },
+    {
+      "role": "assistant",
+      "content": "11. Hearing things others can't hear?"
+    },
+    {
+      "role": "patient",
+      "content": "No. No voices. Just... silence. *pauses* Wait. Once I thought I heard a phone ring that wasn't there. Maybe stress?"
+    },
+    {
+      "role": "assistant",
+      "content": "12. Problems with memory or concentration?"
+    },
+    {
+      "role": "patient",
+      "content": "Yes. I mix up deadlines at work. Forgets appointments. Feels like my brain's in fog."
+    },
+    {
+      "role": "assistant",
+      "content": "13. Problems with sleep affecting overall quality?"
+    },
+    {
+      "role": "patient",
+      "content": "Yeah. I'm awake at odd hours. Tried melatonin but it doesn't help. *voice tired*"
+    },
+    {
+      "role": "assistant",
+      "content": "14. Unpleasant thoughts or urges entering your mind?"
+    },
+    {
+      "role": "patient",
+      "content": "Nah. Not really... just stuck thinking about how bad everything is."
+    },
+    {
+      "role": "assistant",
+      "content": "15. Feeling detached from yourself or surroundings?"
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, let me start by carefully reviewing the user's query. They provided a detailed scenario where I need to generate a mental health assessment based on a questionnaire and observations. The user wants the response in a specific format with tags and sections. \n\nFirst, I need to ensure I follow the structure exactly as instructed. The user emphasized not to include any introductory text, just the four sections. The first paragraph must be a compassionate summary. I need to use the specified tags: <med>, <sym>, and <quote>. \n\nLooking at the patient's answers: They reported persistent low mood, anhedonia, sleep issues, cognitive problems, and SI. The somatic symptoms like back pain with no medical cause might point to SSD, but the instructions say not to default to that unless clearly warranted. The isolated hallucination (hearing a phone ring) needs attention, but it's a single incident, so maybe not psychosis yet. \n\nThe key here is to diagnose Major Depressive Disorder first due to the pervasive depressive symptoms. The SI is there but non-suicidal intent, so safety assessment is crucial. The SSD isn't the main issue since the primary symptoms align more with depression. \n\nI need to make sure I don't mention Somatic Symptom Disorder unless justified. The patient's comments about doctors not taking them seriously (Q10) should be addressed in the next steps, like validating their experiences. \n\nNow, structuring the response: Start with the compassionate summary, then Diagnosis, Reasoning with tags, and then the numbered recommendations. Check all tags are correctly placed. Ensure no markdown except the specified tags. \n\nWait, the user mentioned \"Do not include raw reference text,\" so avoid citing DSM-5 directly. Focus on the presented symptoms. \n\nDouble-check the headings are exactly as specified with ** before and after, and sections are in order. Make sure the diagnosis is Major Depressive Disorder here. The hallucination is a red flag but with only one instance, maybe environmental or stress-related. \n\nOkay, putting it all together with the correct tags and structure. Ensure empathy in the first paragraph, clear reasoning in the diagnosis, and actionable steps in recommendations. Avoid any formatting errors. Let's make sure the tags enclose the right terms. \n\nFinal check: No markdown except the specified tags. Sections are properly separated with one blank line. All requirements are met. Alright, time to draft the response.\n</think>\n\nYour responses highlight a deeply challenging period marked by profound sadness, <sym>loss of pleasure</sym>, and a persistent sense of <sym>hopelessness</sym>. The <sym>4 AM wakefulness</sym> and <sym>cognitive fog</sym> (<quote>\"my brain's in fog\"</quote>) suggest significant distress impacting daily life. The <sym>isolated auditory hallucination</sym> (<quote>\"heard a phone ring\"</quote>) warrants cautious attention, while your <sym>somatic aches</sym> and history of feeling dismissed (<quote>\"doctors told me to 'cheer up'</quote>) emphasize the need for compassionate validation.  \n\n**Diagnosis:**  \n<med>Major Depressive Disorder (MDD)</med> with <sym>non-suicidal suicidal ideation</sym> and <sym>somatic symptoms</sym> requiring further evaluation.  \n\n**Reasoning:**  \nCriteria for <med>MDD</med> are strongly met: persistent <sym>anhedonia</sym>, <sym>low energy</sym>, <sym>cognitive impairment</sym>, and <sym>hypersomnia/early morning awakening</sym>. The <sym>suicidal ideation</sym> (\"wanting to disappear\") indicates <med>MDD</med> severity. The brief <sym>auditory hallucination</sym> may reflect stress-induced perceptual disturbance rather than psychosis, given its rarity and lack of other psychotic features. <sym>Somatic symptoms</sym> (back pain) align with <med>MDD</med> but require medical screening to rule out organic causes.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Safety Assessment:** Immediate evaluation of suicidal ideation lethality (e.g., access to means, intent specificity).  \n2. **Medical Clearance:** Rule out thyroid dysfunction, anemia, or vitamin deficiencies contributing to fatigue/aches.  \n3. **Psychotherapeutic Approach:**  \n   - **CBT for Depression:** Target negative cognitive patterns and low motivation.  \n   - **Mindfulness-Based Stress Reduction (MBSR):) to address <sym>cognitive fog</sym>.  \n4. **Medication Trial:** Consider <med>SSRIs</med> (e.g., sertraline) for <sym>anhedonia</sym> and <sym>cognitive slowing</sym>.  \n5. **Validation-Oriented Care:** Address historical dismissal with empathic validation and collaborative goal-setting.  \n6. **Monitor Psychotic Symptoms:** Track perceptual changes via structured tools (e.g., Brief Psychiatric Rating Scale) to differentiate stress vs. formal <med>psychosis</med>.  \n\nThis structured yet compassionate approach balances acute risk management with long-term symptom relief.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.757,
+            "highlight": "While DSM-IV was organized centrally around the concept of  medically unexplained symptoms, DSM-5 criteria instead emphasize the degree to which a patient \u2019s  thoughts, feelings and behaviors about their somatic symptoms are disproportionate or excessive.",
+            "excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"criteria\", \"patient\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Schizophrenia.pdf",
+            "score": 0.7153,
+            "highlight": "Identifying individuals with an increased risk for developing a psychotic disorder is  significant for effective early intervention, but more study is needed to ensure that attenuated psycho - sis syndrome can be reliably diagnosed.",
+            "excerpt": "h before their consideration as formal disorders. This potential category would \nidentify a person w...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"psychotic\", \"significant\", \"more\", and 7 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Depression-Bereavement-Exclusion.pdf",
+            "score": 0.7009,
+            "highlight": "The presence of symptoms such as feelings of worthlessness, suicidal  ideas (as distinct from wanting to join a deceased loved one), and impairment of overall function sug - gest the presence of major depression, in addition to the normal response to a significant loss.",
+            "excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"significant\", \"suicidal\", \"one\", and 6 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.6945,
+            "highlight": "Negative cognitions and mood represents myriad feelings, from a persistent and distorted sense of  blame of self or others, to estrangement from others or markedly diminished interest in activities, to an inability to remember key aspects of the event.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"others\", \"mood\", and 3 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Social-Communication-Disorder.pdf",
+            "score": 0.6909,
+            "highlight": "Process for a New Diagnosis New diagnoses were included in DSM-5 only after a comprehensive review of the scientific literature;  full discussion by Work Group members; review by the DSM-5 Task Force, Scientific Review Committee,  and Clinical and Public Health Committee; and, finall y, evaluation by the American Psychiatric Associa- tion\u2019s Board of Trust ees.",
+            "excerpt": "t otherwise specified\u201d la bel to help them get the services and treatment they need. \nCharacteristic...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"health\", \"clinical\", \"trust\", and 4 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, I need to analyze the patient's responses to the DSM-5 questions. Let me read through each answer again and note the key points.\n\nStarting with Q2 and Q3, the patient mentions lack of interest in activities, feeling pleasureless, and persistent depressed mood with a \"heavy weight\" daily. That's classic depressive symptoms. The anhedonia and hopelessness are strong indicators here. \n\nFor Q4, they talk about insomnia (waking at 4 AM, can't get back to sleep) but no increased energy. That's more depressive insomnia rather than the insomnia associated with hypomania. \n\nQ5's response about not starting projects and feeling stuck points to psychomotor retardation, which is common in depression. \n\nQ6 mentions feeling empty but some anxiety in social situations (Q7 and Q8 about avoiding friends). The chest tightness when thinking about work might be anxiety or somatic symptoms. \n\nQ9 indicates previous dismissive medical experiences, which is important for the therapeutic relationship and trust. \n\nQ10 brings up suicidal ideation without intent. That's a significant risk factor, even if they say they wouldn't act on it. Need to note that carefully. \n\nQ11: The one instance of hearing a phone ring that wasn't there. It's a single auditory hallucination, which could be stress-related but needs to be considered for psychosis. Though the patient didn't mention others, so maybe not a persistent symptom. \n\nQ12 and Q13 talk about concentration issues and memory problems, which are common in depression but could also point to anxiety or cognitive dysfunction. \n\nThe patient's physical complaints (back pain, Q9) with no medical cause found might be somatic symptoms related to their mental state. \n\nLooking for patterns: persistent depressive symptoms over months, anhedonia, insomnia, cognitive issues, social withdrawal, and a history of invalidation by previous providers. The SI (suicidal ideation) is a key concern. The possible hallucination is a red flag but needs more assessment to determine if it's stress-related or part of a psychotic disorder. \n\nClinical significance areas would include major depressive disorder, possible adjustment disorder with depressed mood, and the need to assess for psychotic features. The SI needs close monitoring. The somatic symptoms might be non-specific but warrant attention in the context of depression. \n\nRisk factors: Suicidal ideation, even if nonsuicidal, is a warning sign. The history of not being taken seriously by previous doctors could affect treatment adherence. The social withdrawal and work impairment are functional impairments. \n\nPutting it all together, the main diagnosis seems major depressive disorder. The hallucination is a bit concerning but isolated. The cognitive symptoms and insomnia are core features. Need to assess safety first, then consider treatment plan, maybe medications or therapy, and rule out any psychotic features through more detailed history or additional screening.\n</think>\n\n**Clinical Observation Summary**  \n\n**1. Main Symptoms and Concerns:**  \n- Persistent anhedonia (Q2) and low energy.  \n- Depressed mood with hopelessness (Q3) and prolonged duration (>2 months).  \n- Insomnia with early morning awakening (Q4), cognitive impairment (Q12/Q13), and psychomotor retardation (Q5).  \n- Social withdrawal and avoidance of social engagement (Q8).  \n- Non-suicidal suicidal ideation (Q10) with ambivalence about acting.  \n- Isolated possible brief auditory hallucination (Q11.  \n- Somatic complaints (Q9) with unexplained aches/pains.  \n\n**2. Patterns in Responses:**  \n- **Temporal consistency:** Symptoms reported as persistent (>2 months), consistent with chronicity.  \n- **Affective flattening:** Reports of emotional numbness (\"empty,\" \"numbness\") rather than overt anxiety or irritability.  \n- **Functional impairment:** Work and social disruptions (Q5/Q8/Q13.  \n- **Medicalization skepticism:** History of perceived dismissive healthcare interactions (Q10).  \n\n**3. Potential Areas of Clinical Significance:**  \n- **Major Depressive Disorder (MDD):** Core features include anhedonia, depressed mood, cognitive slowing, and fatigue.  \n- **Psychotic Features:** Brief isolated auditory hallucination (false positive phone ring) requires further assessment for possible psychotic depression or stress-related perceptual disturbances.  \n- **Somatic Symptom Disorder:** Unexplained pain (Q9) with health anxiety.  \n- **Adjustment Disorder with Depressed Mood:** If symptoms are stress-related but insufficient for MDD criteria.  \n- **Borderline Personality Traits:** Avoidance of social situations and emotional lability (Q3/Q4/Q8), though limited data.  \n\n**4. Risk Factors/Warning Signs:**  \n- **Suicidal Ideation (SI):** Explicit admission of passive SI (\"wanting to disappear\") warrants lethality assessment.  \n- **Social isolation:** Reduced social support exacerbates risk.  \n- **Medical mistrust:** History of unvalidated symptoms may hinder engagement.  \n- **Cognitive impairment:** Memory/concentration deficits impacting occupational functioning (Q12/Q13.  \n\n**5. Clinical Summary:**  \nThe patient presents with a constellation of symptoms consistent with **Major Depressive Disorder (MDD)**, characterized by anhedonia, persistent low mood, cognitive slowing, and sleep disturbance. Key risk factors include **non-suicidal suicidal ideation**, which necessitates immediate safety evaluation. An isolated brief auditory hallucination (Q11) requires further exploration to rule out psychotic features. Somatic complaints (Q9/Q14) may reflect somaticization or undiagnosed medical issues. The patient\u2019s history of dismissed symptoms (Q10) underscores the importance of validating subjective experiences to build trust. Functional impairment in work and social domains (Q5/Q8/Q13) signals significant distress.  \n\n**Recommendations:**  \n- Prioritize suicide risk assessment and safety planning.  \n- Evaluate for psychotic features via structured assessment (e.g., Mini-International Neuropsychiatric Interview [MINI]).  \n- Screen for medical contributors to somatic symptoms (e.g., thyroid dysfunction, vitamin deficiencies).  \n- Consider psychopharmacologic intervention (e.g., SSRIs) and/or psychotherapy (e.g., CBT for depression).  \n- Address treatment distrust through empathic validation and collaborative goal-setting.  \n\n**Next Steps:**  \n- Formal psychometric evaluation (e.g., PHQ-9, GAD-7).  \n- Referral for medical workup if psychosis or somatic symptoms persist.  \n- Monitor for emerging agitation or SI escalation.  \n\n*Note: Avoid assumptions about psychosis without confirmatory data; focus on patient-reported functional impact and safety.*",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.7117
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "Your responses highlight a deeply challenging period marked by profound sadness, <sym>loss of pleasure</sym>, and a persistent sense of <sym>hopelessness</sym>. The <sym>4 AM wakefulness</sym> and <sym>cognitive fog</sym> (<quote>\"my brain's in fog\"</quote>) suggest significant distress impacting daily life. The <sym>isolated auditory hallucination</sym> (<quote>\"heard a phone ring\"</quote>) warrants cautious attention, while your <sym>somatic aches</sym> and history of feeling dismissed (<quote>\"doctors told me to 'cheer up'</quote>) emphasize the need for compassionate validation.  \n\n**Diagnosis:**  \n<med>Major Depressive Disorder (MDD)</med> with <sym>non-suicidal suicidal ideation</sym> and <sym>somatic symptoms</sym> requiring further evaluation.  \n\n**Reasoning:**  \nCriteria for <med>MDD</med> are strongly met: persistent <sym>anhedonia</sym>, <sym>low energy</sym>, <sym>cognitive impairment</sym>, and <sym>hypersomnia/early morning awakening</sym>. The <sym>suicidal ideation</sym> (\"wanting to disappear\") indicates <med>MDD</med> severity. The brief <sym>auditory hallucination</sym> may reflect stress-induced perceptual disturbance rather than psychosis, given its rarity and lack of other psychotic features. <sym>Somatic symptoms</sym> (back pain) align with <med>MDD</med> but require medical screening to rule out organic causes.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Safety Assessment:** Immediate evaluation of suicidal ideation lethality (e.g., access to means, intent specificity).  \n2. **Medical Clearance:** Rule out thyroid dysfunction, anemia, or vitamin deficiencies contributing to fatigue/aches.  \n3. **Psychotherapeutic Approach:**  \n   - **CBT for Depression:** Target negative cognitive patterns and low motivation.  \n   - **Mindfulness-Based Stress Reduction (MBSR):) to address <sym>cognitive fog</sym>.  \n4. **Medication Trial:** Consider <med>SSRIs</med> (e.g., sertraline) for <sym>anhedonia</sym> and <sym>cognitive slowing</sym>.  \n5. **Validation-Oriented Care:** Address historical dismissal with empathic validation and collaborative goal-setting.  \n6. **Monitor Psychotic Symptoms:** Track perceptual changes via structured tools (e.g., Brief Psychiatric Rating Scale) to differentiate stress vs. formal <med>psychosis</med>.  \n\nThis structured yet compassionate approach balances acute risk management with long-term symptom relief.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "depression",
+    "question_count": 23,
+    "duration": 8295.875602960587,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 6.349538803100586,
+    "diagnosis_generation_time": 7.74504280090332,
+    "rag_evaluation_time": 1.6927719116210938e-05,
+    "total_time": 14.094610929489136
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.757,
+        "average_score": 0.757,
+        "example_excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"criteria\", \"patient\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM-5-Schizophrenia.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7153,
+        "average_score": 0.7153,
+        "example_excerpt": "h before their consideration as formal disorders. This potential category would \nidentify a person w...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"psychotic\", \"significant\", \"more\", and 7 more matching aspects of your query."
+      },
+      "APA_DSM-5-Depression-Bereavement-Exclusion.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7009,
+        "average_score": 0.7009,
+        "example_excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"significant\", \"suicidal\", \"one\", and 6 more matching aspects of your query."
+      },
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6945,
+        "average_score": 0.6945,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"others\", \"mood\", and 3 more matching aspects of your query."
+      },
+      "APA_DSM-5-Social-Communication-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6909,
+        "average_score": 0.6909,
+        "example_excerpt": "t otherwise specified\u201d la bel to help them get the services and treatment they need. \nCharacteristic...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"health\", \"clinical\", \"trust\", and 4 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 07:54:02",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 07:54:01",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 4,
+        "clinical_relevance": 4,
+        "consistency": 4,
+        "diagnostic_justification": 5,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist addressed most of the 23 dimensions from the DSM-5 Level1 Cross-Cutting measure. However, some areas were only superficially covered, such as questions about repetitive thoughts and behaviors (14), dissociation (15), and personality functioning (19), which were not directly asked but somewhat inferred through other questions. The therapist could have probed deeper in areas like substance use and psychotic symptoms.",
+        "clinical_relevance": "The therapist's questions generally aligned with DSM-5 criteria, but there were slight inaccuracies or vague phrasing in some instances. For example, when asking about sleep problems, the therapist could have been more specific about distinguishing between insomnia and hypersomnia. Additionally, some questions could have been more precisely worded to avoid confusion.",
+        "consistency": "The dialogue generally flows logically, with each question building on previous responses. However, there were minor logical inconsistencies, such as abruptly moving from discussing somatic symptoms to asking about psychotic experiences without a clear connection. The therapist could have used transitional phrases to improve coherence.",
+        "diagnostic_justification": "The diagnosis of Major Depressive Disorder (MDD) with non-suicidal suicidal ideation and somatic symptoms is clearly justified by the patient's responses. The therapist explicitly linked symptoms like anhedonia, low energy, cognitive impairment, and early morning awakening to the DSM-5 criteria for MDD. The reasoning behind the diagnosis is sound and well-articulated.",
+        "empathy": "The therapist demonstrated empathy and a natural conversational style, but there were moments where responses seemed slightly impersonal or abrupt. For example, when discussing suicidal ideation, the therapist could have offered more emotional validation and support. Overall, the tone was professional and caring, but could have been more personalized."
+      },
+      "overall_comments": "The conversation demonstrated a strong clinical approach, effectively using the DSM-5 Level1 Cross-Cutting Symptom Measure to assess the patient's symptoms. While most DSM-5 dimensions were covered, some areas could have been explored more deeply. The therapist showed empathy and professionalism, but minor improvements could enhance the natural flow and emotional resonance of the interaction. The diagnosis and recommended next steps are well-justified and clinically sound.",
+      "average_score": 4.2,
+      "diagnosis_accuracy": {
+        "matches_profile": true,
+        "confidence": 5,
+        "explanation": "The diagnosis explicitly mentions 'Major Depressive Disorder (MDD)' and describes symptoms such as profound sadness, loss of pleasure (anhedonia), hopelessness, and cognitive fog, which are characteristic of depression. The presence of suicidal ideation and somatic symptoms further supports this diagnosis. The description closely aligns with the expected profile of depression.",
+        "classification": "depression"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "depression",
+        "classified_as": "depression",
+        "match": true,
+        "confidence": 5
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 1.996901273727417
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.5226202398565936,
+        "local_coherence": 0.5380298892862239,
+        "window_coherence": 0.5484342451198321
+      },
+      "readability": {
+        "flesch_kincaid_grade": 8.14,
+        "gunning_fog_index": 3.76,
+        "flesch_reading_ease": 53.04
+      },
+      "diversity": {
+        "distinct_1": 0.5943820224719101,
+        "distinct_2": 0.9201349831271091,
+        "distinct_3": 0.9718468468468469
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "depression",
+      "predicted": "Your responses highlight a deeply challenging period marked by profound sadness, <sym>loss of pleasure</sym>, and a persistent sense of <sym>hopelessness</sym>. The <sym>4 AM wakefulness</sym> and <sym>cognitive fog</sym> (<quote>\"my brain's in fog\"</quote>) suggest significant distress impacting daily life. The <sym>isolated auditory hallucination</sym> (<quote>\"heard a phone ring\"</quote>) warrants cautious attention, while your <sym>somatic aches</sym> and history of feeling dismissed (<quote>\"doctors told me to 'cheer up'</quote>) emphasize the need for compassionate validation.  \n\n**Diagnosis:**  \n<med>Major Depressive Disorder (MDD)</med> with <sym>non-suicidal suicidal ideation</sym> and <sym>somatic symptoms</sym> requiring further evaluation.  \n\n**Reasoning:**  \nCriteria for <med>MDD</med> are strongly met: persistent <sym>anhedonia</sym>, <sym>low energy</sym>, <sym>cognitive impairment</sym>, and <sym>hypersomnia/early morning awakening</sym>. The <sym>suicidal ideation</sym> (\"wanting to disappear\") indicates <med>MDD</med> severity. The brief <sym>auditory hallucination</sym> may reflect stress-induced perceptual disturbance rather than psychosis, given its rarity and lack of other psychotic features. <sym>Somatic symptoms</sym> (back pain) align with <med>MDD</med> but require medical screening to rule out organic causes.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Safety Assessment:** Immediate evaluation of suicidal ideation lethality (e.g., access to means, intent specificity).  \n2. **Medical Clearance:** Rule out thyroid dysfunction, anemia, or vitamin deficiencies contributing to fatigue/aches.  \n3. **Psychotherapeutic Approach:**  \n   - **CBT for Depression:** Target negative cognitive patterns and low motivation.  \n   - **Mindfulness-Based Stress Reduction (MBSR):) to address <sym>cognitive fog</sym>.  \n4. **Medication Trial:** Consider <med>SSRIs</med> (e.g., sertraline) for <sym>anhedonia</sym> and <sym>cognitive slowing</sym>.  \n5. **Validation-Oriented Care:** Address historical dismissal with empathic validation and collaborative goal-setting.  \n6. **Monitor Psychotic Symptoms:** Track perceptual changes via structured tools (e.g., Brief Psychiatric Rating Scale) to differentiate stress vs. formal <med>psychosis</med>.  \n\nThis structured yet compassionate approach balances acute risk management with long-term symptom relief.",
+      "matches": true,
+      "classification": "depression",
+      "classification_confidence": 5
+    }
+  }
+}

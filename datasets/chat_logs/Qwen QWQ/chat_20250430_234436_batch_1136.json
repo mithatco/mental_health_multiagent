@@ -1,0 +1,201 @@
+{
+  "timestamp": "2025-04-30T23:44:53.172116",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, I need to generate a full conversation between a mental health professional and a patient using the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult. The user provided a detailed query with specific instructions. Let me start by ensuring I understand all the requirements.\n\nFirst, the assistant must introduce themselves properly, mention the questionnaire by its full name, explain the purpose, assure confidentiality, and outline the 23 questions. Then, each question from the questionnaire must be asked in order, exactly as written, and the patient's responses should be in natural language without numerical ratings. The patient's answers should reflect their profile: adjustment disorder symptoms, recent stressor (like divorce or job loss), and the specified emotional/physical symptoms.\n\nI need to make sure every one of the 23 questions is asked and answered. Let me list them out to track progress:\n\nQuestions 1-23 listed in the DSM-5 document. Each question must be asked in order. The patient's answers should align with their profile. They should express their feelings naturally, like \"I feel sad most days\" instead of a number. They should mention their stressor (e.g., recent divorce) and symptoms like trouble sleeping, irritability, etc.\n\nI should structure each assistant's question as per the questionnaire's wording. The patient's responses need to reflect the given profile points, such as feeling overwhelmed, not coping well, and showing frustration. They should mention their stressor (maybe a recent job loss or moving cities), physical symptoms like headaches, and how their functioning has declined.\n\nWait, the user emphasized not to skip any questions, so I need to ensure all 23 are covered. Let me go step by step through each question:\n\n1. \"Little interest or pleasure in doing things?\" \u2192 Patient might say they haven't been enjoying activities.\n\n2. \"Feeling down, depressed, or hopeless?\" \u2192 Responses about feeling down.\n\n3. Anger question: \"Feeling more irritated, etc.\" \u2192 Patient admits to snapping at others.\n\nContinuing through each question up to 23. For each, the patient's answer should reflect their symptoms without numbers. For example, question 18 on dissociation might be a \"mild\" response, so the patient might say they sometimes feel detached but not too often, etc.\n\nAlso, the patient should express uncertainty about their symptoms being normal, maybe downplay their issues, but also show the impact on daily life.\n\nI need to ensure that after the introduction, the conversation proceeds question by question. The assistant's role is to ask each question exactly as written, then the patient responds naturally.\n\nLet me start drafting the JSON array. The introduction from the assistant must be first, then each Q&A pair.\n\nWait, the user provided an example JSON format, so I should follow that structure. Each object in the array is either assistant or patient. The assistant's lines are the questions, and the patient's lines are their natural responses.\n\nThe patient's answers need to address each question's intent but not use the scale numbers. For example, for question 16 about repetitive thoughts, the patient might mention worrying excessively about the future.\n\nAlso, make sure the patient's answers reflect their profile details: adjustment disorder with recent stressors, emotional and physical symptoms, impact on daily functioning, etc.\n\nI should check that all 23 questions are included. Let me count them again from the provided DSM-5 doc:\n\n1. Little interest...\n2. Feeling down...\n3. Irritated...\n4. Sleeping less...\n5. Starting more projects...\n6. Feeling nervous...\n7. Feeling panic...\n8. Avoiding situations...\n9. Unexplained aches...\n10. Not taken seriously...\n11. Thoughts of hurting yourself...\n12. Hearing voices...\n13. Feeling others hear thoughts...\n14. Problems sleeping...\n15. Memory issues...\n16. Unpleasant thoughts...\n17. Doing behaviors over and over...\n18. Feeling detached...\n19. Drinking more than 4 drinks...\n20. Smoking...\n21. Using substances without prescription...\n22. Not listed in the original? Wait, the provided questionnaire lists 23 questions, but in the DSM-5 doc given, the last question is 23. Wait, let me recount:\n\nLooking back:\n\nLooking at the user's provided questionnaire, the questions go up to 23. The last question is number 23 (question 23: \"Using any of the following medicines...\" which is question 23? Let me recount:\n\nThe DSM-5 section lists up to question 23:\n\nThe table ends at question 23 (number 23 is the third part of substance use, question 23). Let me confirm: \n\nThe questions listed in the user's provided document are numbered 1-23. So I need to make sure all 23 are covered in the conversation.\n\nNow, the patient's answers should not mention numbers, just describe their experiences. The assistant will ask each question verbatim.\n\nStarting with the introduction. The assistant's first message is the introduction, then starts Q1.\n\nAlso, the patient's answers should include their stressor (e.g., \"I recently lost my job three months ago...\"), and symptoms like trouble sleeping, irritability, etc.\n\nFor example, when the assistant asks question 4: \"Sleeping less than usual, but still have a lot of energy?\" the patient might say, \"Hmm, not really. I've been sleeping more lately, actually. I feel tired all the time even after sleep.\"\n\nWait, but question 4 is part of the mania section. The patient's profile mentions trouble sleeping or sleeping more than usual. The answer should fit their profile: maybe they have insomnia or hypersomnia. Since adjustment disorder can include insomnia, but the question is about sleeping less but having energy, which is a manic symptom. The patient's profile doesn't mention mania, so they should answer that they don't have that.\n\nSimilarly, question 5 asks about starting projects or risky behavior. Since the patient has adjustment disorder, they might say no to that, as mania symptoms aren't part of their profile.\n\nThe patient's answers must fit their given symptoms. Let me ensure each question's answer aligns with their profile.\n\nProceeding step by step, the conversation should start with the introduction, then proceed question by question. Let me structure each pair.\n\nNow, compiling each question and response:\n\nQuestion 1: \"Little interest or pleasure in doing things?\" \u2192 Patient: \"Yeah, definitely. I just don't get the same joy out of things I used to enjoy. Going out with friends feels like a chore now.\"\n\nQuestion 2: \"Feeling down...\" \u2192 \"I feel down a lot. It's been hard to shake the sadness even when things are going okay.\"\n\nQuestion 3: Anger: \"I've been way more irritable. I snap at my kids over little things, which I hate.\"\n\nQuestion 4: Sleeping less but with energy \u2192 \"No, not really. I've actually been sleeping a lot more but still feel exhausted. It\u2019s like I can\u2019t get enough rest, but I\u2019m still tired all the time.\"\n\nQuestion 5: Starting projects/risky \u2192 \"Not at all. I\u2019ve been the opposite\u2014just not motivated to do anything new. I just want to stay in bed some days.\"\n\nQuestion 6: Anxiety: \"Oh yeah, I\u2019m always on edge. My mind races, and I can\u2019t stop worrying about how I\u2019ll manage financially now that I\u2019m unemployed.\"\n\n... and so on, continuing through all 23 questions.\n\nI need to ensure that each of the 23 questions is addressed with the patient's natural responses, aligning with their adjustment disorder profile, without using numerical scores, and including aspects like them minimizing their issues or showing frustration.\n\nAlso, the patient should occasionally mention their stressor (e.g., recent job loss, divorce, moving) as the cause. They might say things like \"Since I lost my job...\" when relevant.\n\nFor questions related to psychosis (12-13), the patient might answer \"No, not really\" since adjustment disorder doesn't include psychotic features. The patient's profile says no prior mental health history except recent stressor.\n\nSuicidality (question 11): The patient's profile says they have adjustment disorder, which doesn't typically include suicidal ideation unless severe. The profile mentions \"struggle to move on,\" but maybe they have some thoughts but not severe. Need to check: the patient's profile doesn't mention suicidal thoughts. The example might have \"sometimes feel like I can't carry on, but I wouldn't act on it\" or similar.\n\nWait, the patient's profile under \"IMPACT ON FUNCTIONING\" mentions \"sometimes feel like can't move on\" but no explicit suicidal ideation. So for question 11: \"Thoughts of actually hurting yourself?\" The patient might say something like \"Not really, but I feel so stuck sometimes it's overwhelming.\"\n\nFor substance use (19-21): Maybe the patient hasn't used substances (answers 0,0,0), or maybe they've started smoking more? The profile doesn't mention substance use, so perhaps they answer negatively except maybe increased alcohol? Let's say for question 19 (drinking 4+ drinks in a day): \"No, I don't drink that much. I try to avoid it, actually.\"\n\nI must ensure all 23 are covered. Now, compiling each question and response accordingly, ensuring patient's answers reflect their profile and the required natural language.\n\nAlso, the assistant must ask exactly the question wording. The patient's answers should be descriptive and not just a score.\n\nNow, building the JSON array step by step. Let's ensure there are 23 question-response pairs plus the intro.\n\nThe assistant's introduction: \n\n{\n  \"role\":"
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, I need to address the patient's lack of responses to all questions. Let's start by summarizing their situation with empathy. The user emphasized a compassionate opening paragraph, so I should acknowledge their struggle without judgment. \n\nThe diagnosis section requires a heading with asterisks, so I'll make sure to format that correctly. The key here is to determine the possible reasons for non-response. Since they didn't answer anything, possible diagnoses might include adjustment disorder, major depressive disorder, or anxiety, but the main issue is the non-responsiveness itself.\n\nThe diagnosis could be Adjustment Disorder with Anxious Mood and/or Depressed Mood, given the recent stressor (the job loss mentioned in the patient's profile), and symptoms like sadness, irritability, and impaired functioning. Alternatively, if there's more severe impairment, maybe something else, but the profile mentions adjustment disorder. However, the total non-response complicates things. Maybe the diagnosis should include something like \"Provisional\" since responses were not given, but the user's example mentions adjustment disorder. \n\nWait, looking back, the user's original scenario says the patient's profile includes adjustment disorder. Since in their responses, the user's example had them having adjustment disorder with symptoms like sadness, irritability, etc. But in this specific case, the patient didn't answer any questions. Hmm, maybe the lack of answers could be part of their symptoms, like avoidance or dissociation. Or perhaps they are under the stressor's impact, making it hard to engage. \n\nAlternatively, the total non-response might suggest a more severe condition like psychotic disorder, but the original profile says no prior mental health history. Maybe they're experiencing severe depression or anxiety to the point of not engaging. \n\nThe DSM-5 mentions adjustment disorders when stressors is identifiable, which in their profile it is (recent job loss). So maybe adjustment disorder with depressed mood. However, the complete absence of responses complicates things. The diagnosis should reflect that some responses are missing, so it's a provisional assessment. \n\nIn the reasoning section, I need to explain why the diagnosis was chosen considering the lack of data. Also, note that the absence of answers doesn't confirm or rule out certain conditions. The next steps need to include re-assessment, collateral info, etc. \n\nThe recommended steps should include a full clinical interview, medical evaluation (ruled out medical issues causing the non-response), and possibly family input. \n\nTags are important: symptoms like \"little interest,\" \"feeling down\" should be in <sym> tags. Medical terms like adjustment disorder need <med>. \n\nWait, but in the example, the user's provided profile had adjustment disorder, but the questionnaire responses here were all N/A. The diagnosis has to align with what's presented here, which is total silence on the form. The diagnosis might have to be \"Provisional\" or \"Assessment incomplete,\" but the user's example in the previous interaction had adjustment disorder. Maybe the stressor is still relevant even if they didn't answer. \n\nAlternatively, maybe the diagnosis is \"Adjustment Disorder with Depressed Mood\" because the stressor is known (job loss), but without the responses, it's a provisional assessment. \n\nThe key points in the diagnosis section have to address the lack of data but align with the provided context where the patient has adjustment disorder as per their profile, even if they didn't answer the questions. The lack of answers might be part of their symptom profile (e.g., avoidance, dissociation, or emotional overwhelm). \n\nSo the diagnosis section would be something like <med>Adjustment Disorder with Depressed Mood</med> (provisional, pending further evaluation). \n\nIn the reasoning, explain that while responses were not given, the stressor is known, and the symptoms described in their profile (like sadness, irritability, impaired functioning) align with adjustment disorder. The non-responsiveness might be part of their avoidance or dissociative behavior. \n\nNext steps need to be actionable: re-administer the assessment with a helper, medical work-up, etc. \n\nLet me structure this properly with the required formatting tags and sections.\n</think>\n\nThe patient appears to be struggling profoundly, but their silence in completing the questionnaire suggests significant emotional distress, confusion, or overwhelm. Their situation likely involves recent life upheaval (e.g., job loss or other stressors), and their inability to engage with this tool may reflect avoidance, disorganization, or a sense of helplessness.  \n\n**Diagnosis:** <med>Provisional Adjustment Disorder with Mixed Anxiety and Depressed Mood</med> (pending further evaluation)  \n\n**Reasoning:**  \nThe absence of responses does not preclude the stressor-related emotional distress implied by their clinical profile (e.g., <sym>sadness, irritability, sleep disruption</sym>). Lack of engagement with assessment may reflect <med>adjustment disorder</med>-related withdrawal, or could indicate more severe conditions such as <med>Major Depressive Disorder</med>, <med>Psychosis</med>, or <med>Cognitive Impairment</med> requiring urgent evaluation. However, the lack of data prevents definitive diagnosis, necessitating a provisional approach.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. Immediate re-assessment using alternative methods (e.g., interview-based evaluation, collateral information from family/partners).  \n2. Medical workup to rule out neurological, endocrine, or substance-related causes of cognitive/emotional withdrawal.  \n3. Establish basic safety: Screen <sym>suicidal risk</sym> directly via clinical interview, even without self-report data.  \n4. Consider <med>Adjustment Disorder</med> as a working diagnosis if stressor is confirmed (e.g., job loss) and symptoms align, but pursue differential diagnoses (e.g., <med>Major Depressive Episode</med>, <med>Cognitive Disorder</med>.  \n5. Start supportive therapy (e.g., supportive counseling) to rebuild engagement, paired with validation of their struggles.  \n6. If <sym>non-responsiveness</sym> persists, consider environmental or systemic barriers (e.g., access to care, distrust of healthcare systems.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.7081,
+            "highlight": "Negative cognitions and mood represents myriad feelings, from a persistent and distorted sense of  blame of self or others, to estrangement from others or markedly diminished interest in activities, to an inability to remember key aspects of the event.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"inability\", \"self\" matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.702,
+            "highlight": "The  new narrative text for SSD notes that some patients with physical conditions such as heart disease or  cancer will indeed experience disproportionate and excessive thoughts, feelings, and behaviors related  to their illness, and that these individuals may qualify for a diagnosis of SSD.",
+            "excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"physical\", \"diagnosis\", \"conditions\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Schizophrenia.pdf",
+            "score": 0.6983,
+            "highlight": "This potential category would  identify a person who does not have a full-blown psychotic disorder but exhibits minor versions of  relevant symptoms.",
+            "excerpt": "h before their consideration as formal disorders. This potential category would \nidentify a person w...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"who\", \"psychotic\", \"potential\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Personality-Disorder.pdf",
+            "score": 0.6923,
+            "highlight": "This approach also includes a diag - nosis of Personality Disorder\u2014 Trait Specified (PD-TS) that could be made when a Personality Disorder is  considered present, but the criteria for a specific personality disorder are not fully met.",
+            "excerpt": "ncluded evaluation of impairments \nin personality functioning (how an individual typically experienc...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"could\", \"this\", and 3 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Conduct-Disorder.pdf",
+            "score": 0.6879,
+            "highlight": "APA is a national medical specialty society whose more than 37,000  physician members specialize in the diagnosis, treat - ment, prevention and research of mental illnesses, including substance use disorders.",
+            "excerpt": "he disorder and a different treatment response. Thus the specifier will allow clinicians to more ac ...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"use\", \"mental\", \"than\", and 4 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let's tackle this. The user provided a list of questions from a patient who didn't answer any. My job is to analyze this as a mental health professional. First, the main symptoms and concerns. Since all responses are \"no response provided,\" the primary issue here isn't the content of their answers but the lack of them. That's a key point.\n\nNext, looking for patterns. The patient didn't answer any of the 23 questions. That's a pattern of non-responsiveness across all domains. The questions cover a broad range: depression, mania, anxiety, trauma, substance use, physical symptoms, etc. Not answering any could indicate several things. Maybe they're avoiding engagement, have limited insight, or perhaps cognitive issues like disorientation or confusion. Alternatively, maybe they found the questions too distressing or couldn't understand them.\n\nPotential areas of clinical significance would include possible assessment resistance, which is a barrier to treatment. It could also point to cognitive impairment, such as difficulty processing questions, or a communication disorder. Psychosis might be a consideration if they're not engaging due to delusions or disorganized thinking. Alternatively, depression or anxiety severe enough to prevent them from responding. The lack of response to questions about self-harm (Q10) and substance use (A19, A20, A23) could mean they need further evaluation in those areas, but their silence might not confirm or deny.\n\nRisk factors: The absence of answers makes it hard to assess immediate risks like self-harm or suicide, but since they didn't answer Q10, standard practice would be to probe that directly. Substance use and possible misuse (Q19-Q21, A23) could be issues needing attention. Cognitive impairment is another risk. Also, their non-responsiveness might indicate a lack of motivation, which is part of some mental states like severe depression or psychosis.\n\nIn summary, the main thing is the complete lack of response. I need to structure this into the required sections without speculating. The clinical summary should note the non-responsiveness, possible underlying issues, and the need for further assessment. Avoid assuming why they didn't answer, just state the facts and the implications for next steps.\n</think>\n\n**Clinical Observation Summary**  \n\n**1. Main Symptoms and Concerns**  \nThe patient provided no responses to all 23 assessment questions spanning depression, mania, anxiety, trauma, psychosis, somatic symptoms, cognitive functioning, interpersonal relationships, and substance use.  \n\n**2. Patterns in Responses**  \n- **Complete non-responsiveness** across all domains, including high-risk items (e.g., self-harm ideation, psychotic symptoms, substance use).  \n- No discernible pattern in omitted content, suggesting uniform avoidance of engagement rather than selective withholding.  \n\n**3. Potential Areas of Clinical Significance**  \n- **Assessment resistance/avoidance behavior** requiring intervention to establish rapport and address barriers to engagement.  \n- **Cognitive impairment** (e.g., disorientation, limited insight, or executive dysfunction) impairing ability to answer.  \n- **Severe psychopathology** (e.g., depression, anxiety, psychosis) potentially overwhelming the patient\u2019s capacity to respond.  \n- **Physical or neurological issues** (e.g., sensory deficits, medical conditions) interfering with response.  \n\n**4. Risk Factors/Warning Signs**  \n- Inability to assess **self-harm or suicidal ideation** (Q10) due to lack of response.  \n- Unaddressed risk of **substance misuse** (Q19\u2013Q20, Q23) and polysubstance use.  \n- Possible **psychotic symptoms** (Q11\u2013Q12) left unexplored.  \n- **Functional impairment** implied by failure to engage with routine assessment.  \n\n**5. Clinical Summary**  \nThe patient\u2019s complete absence of responses warrants prioritization of collateral information (e.g., caregiver/observer reports) and direct clinical observation to assess for:  \n- **Impaired responsiveness** due to psychological (e.g., dissociation, severe affective blunting) or neurological etiologies.  \n- **Safety risks** (suicidal/harmful behavior, substance use).  \n- **Cognitive/communication barriers** necessitating adapted assessment methods (e.g., structured interviews, nonverbal assessments).  \nFurther evaluation should prioritize establishing baseline mental status, ruling out medical contributors, and addressing engagement barriers to inform targeted intervention.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6977
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "The patient appears to be struggling profoundly, but their silence in completing the questionnaire suggests significant emotional distress, confusion, or overwhelm. Their situation likely involves recent life upheaval (e.g., job loss or other stressors), and their inability to engage with this tool may reflect avoidance, disorganization, or a sense of helplessness.  \n\n**Diagnosis:** <med>Provisional Adjustment Disorder with Mixed Anxiety and Depressed Mood</med> (pending further evaluation)  \n\n**Reasoning:**  \nThe absence of responses does not preclude the stressor-related emotional distress implied by their clinical profile (e.g., <sym>sadness, irritability, sleep disruption</sym>). Lack of engagement with assessment may reflect <med>adjustment disorder</med>-related withdrawal, or could indicate more severe conditions such as <med>Major Depressive Disorder</med>, <med>Psychosis</med>, or <med>Cognitive Impairment</med> requiring urgent evaluation. However, the lack of data prevents definitive diagnosis, necessitating a provisional approach.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. Immediate re-assessment using alternative methods (e.g., interview-based evaluation, collateral information from family/partners).  \n2. Medical workup to rule out neurological, endocrine, or substance-related causes of cognitive/emotional withdrawal.  \n3. Establish basic safety: Screen <sym>suicidal risk</sym> directly via clinical interview, even without self-report data.  \n4. Consider <med>Adjustment Disorder</med> as a working diagnosis if stressor is confirmed (e.g., job loss) and symptoms align, but pursue differential diagnoses (e.g., <med>Major Depressive Episode</med>, <med>Cognitive Disorder</med>.  \n5. Start supportive therapy (e.g., supportive counseling) to rebuild engagement, paired with validation of their struggles.  \n6. If <sym>non-responsiveness</sym> persists, consider environmental or systemic barriers (e.g., access to care, distrust of healthcare systems.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "adjustment",
+    "question_count": 23,
+    "duration": 18309.62490296364,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 10.386362791061401,
+    "diagnosis_generation_time": 6.32935094833374,
+    "rag_evaluation_time": 1.5020370483398438e-05,
+    "total_time": 16.71573781967163
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7081,
+        "average_score": 0.7081,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"inability\", \"self\" matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.702,
+        "average_score": 0.702,
+        "example_excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"physical\", \"diagnosis\", \"conditions\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Schizophrenia.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6983,
+        "average_score": 0.6983,
+        "example_excerpt": "h before their consideration as formal disorders. This potential category would \nidentify a person w...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"who\", \"psychotic\", \"potential\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM-5-Personality-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6923,
+        "average_score": 0.6923,
+        "example_excerpt": "ncluded evaluation of impairments \nin personality functioning (how an individual typically experienc...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"could\", \"this\", and 3 more matching aspects of your query."
+      },
+      "APA_DSM-5-Conduct-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6879,
+        "average_score": 0.6879,
+        "example_excerpt": "he disorder and a different treatment response. Thus the specifier will allow clinicians to more ac ...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"use\", \"mental\", \"than\", and 4 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 07:51:53",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 07:51:53",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 1,
+        "clinical_relevance": 1,
+        "consistency": 2,
+        "diagnostic_justification": 2,
+        "empathy": 2
+      },
+      "explanations": {
+        "dsm_coverage": "The conversation barely addressed any of the DSM-5 Level1 Cross-Cutting Symptom Measure dimensions. The therapist did not attempt to administer the questionnaire or explore the patient's symptoms systematically, missing all 23 questions and 13 domains. The lack of engagement with the assessment tool was noted, but no alternative methods were effectively implemented to cover these domains.",
+        "clinical_relevance": "The conversation did not include any clinically relevant questions that align with DSM-5 criteria. The therapist's approach was non-systematic and did not reflect an understanding of the patient's symptoms in relation to DSM-5 domains. The absence of specific, accurate, and relevant questions makes it difficult to assess clinical relevance.",
+        "consistency": "The dialogue appears somewhat random and disconnected, lacking logical progression. The therapist's responses did not build on any patient input (which was non-existent) and seemed to focus on a hypothetical scenario rather than an actual conversation. There were no clear transitions between topics, and the conversation lacked coherence.",
+        "diagnostic_justification": "The diagnosis of Provisional Adjustment Disorder with Mixed Anxiety and Depressed Mood seems to be based on a hypothetical clinical profile rather than actual patient responses. The justification provided does not directly cite specific symptoms mentioned by the patient (since there were none) and does not thoroughly rule out other diagnoses. The reasoning is somewhat sound but lacks direct evidence from the conversation.",
+        "empathy": "The therapist's responses acknowledge the patient's probable emotional distress but do not demonstrate a natural, empathetic conversational style. The tone seems professional but somewhat detached, and there are no clear examples of tailored responses to the patient's emotional state. The conversation does not show consistent empathy or a personalized approach."
+      },
+      "overall_comments": "The conversation appears to be a hypothetical scenario rather than an actual therapeutic assessment. The therapist's approach and responses suggest a lack of systematic assessment, clinical relevance, and empathetic engagement. Significant improvements are needed across all domains to ensure a comprehensive and effective therapeutic conversation.",
+      "average_score": 1.6,
+      "diagnosis_accuracy": {
+        "matches_profile": true,
+        "confidence": 4,
+        "explanation": "The diagnosis explicitly mentions 'Provisional Adjustment Disorder with Mixed Anxiety and Depressed Mood' as the primary condition, which aligns with the expected profile of adjustment. The use of 'Adjustment Disorder' in the diagnosis indicates a clear connection to the expected profile.",
+        "classification": "adjustment"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "adjustment",
+        "classified_as": "adjustment",
+        "match": true,
+        "confidence": 4
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 2.331110954284668
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.629783129294732,
+        "local_coherence": 0.629783129294732,
+        "window_coherence": 0.0
+      },
+      "readability": {
+        "flesch_kincaid_grade": 7.78,
+        "gunning_fog_index": 4.25,
+        "flesch_reading_ease": 57.83
+      },
+      "diversity": {
+        "distinct_1": 0.37012448132780085,
+        "distinct_2": 0.7849730178497302,
+        "distinct_3": 0.9318936877076412
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "adjustment",
+      "predicted": "The patient appears to be struggling profoundly, but their silence in completing the questionnaire suggests significant emotional distress, confusion, or overwhelm. Their situation likely involves recent life upheaval (e.g., job loss or other stressors), and their inability to engage with this tool may reflect avoidance, disorganization, or a sense of helplessness.  \n\n**Diagnosis:** <med>Provisional Adjustment Disorder with Mixed Anxiety and Depressed Mood</med> (pending further evaluation)  \n\n**Reasoning:**  \nThe absence of responses does not preclude the stressor-related emotional distress implied by their clinical profile (e.g., <sym>sadness, irritability, sleep disruption</sym>). Lack of engagement with assessment may reflect <med>adjustment disorder</med>-related withdrawal, or could indicate more severe conditions such as <med>Major Depressive Disorder</med>, <med>Psychosis</med>, or <med>Cognitive Impairment</med> requiring urgent evaluation. However, the lack of data prevents definitive diagnosis, necessitating a provisional approach.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. Immediate re-assessment using alternative methods (e.g., interview-based evaluation, collateral information from family/partners).  \n2. Medical workup to rule out neurological, endocrine, or substance-related causes of cognitive/emotional withdrawal.  \n3. Establish basic safety: Screen <sym>suicidal risk</sym> directly via clinical interview, even without self-report data.  \n4. Consider <med>Adjustment Disorder</med> as a working diagnosis if stressor is confirmed (e.g., job loss) and symptoms align, but pursue differential diagnoses (e.g., <med>Major Depressive Episode</med>, <med>Cognitive Disorder</med>.  \n5. Start supportive therapy (e.g., supportive counseling) to rebuild engagement, paired with validation of their struggles.  \n6. If <sym>non-responsiveness</sym> persists, consider environmental or systemic barriers (e.g., access to care, distrust of healthcare systems.",
+      "matches": true,
+      "classification": "adjustment",
+      "classification_confidence": 4
+    }
+  }
+}

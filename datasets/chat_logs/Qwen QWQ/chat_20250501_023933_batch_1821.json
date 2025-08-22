@@ -1,0 +1,237 @@
+{
+  "timestamp": "2025-05-01T02:39:45.064718",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello"
+    },
+    {
+      "role": "patient",
+      "content": "Yes"
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. To begin"
+    },
+    {
+      "role": "patient",
+      "content": "Ugh"
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. Next: FEELING DOWN"
+    },
+    {
+      "role": "patient",
+      "content": "I feel empty almost every day. It\u2019s like a heavy weight. Some days I\u2019m okay"
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. Next: FEELING MORE IRRITATED"
+    },
+    {
+      "role": "patient",
+      "content": "Yeah"
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. Next: SLEEPING LESS THAN USUAL"
+    },
+    {
+      "role": "patient",
+      "content": "No"
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, the user wants me to create a structured clinical assessment based on the provided questionnaire responses. Let me start by reviewing the responses again to ensure I don't miss anything.\n\nFirst, the patient answered \"Yes\" to the initial greeting, but then \"Ugh\" when the process began. That \"Ugh\" might indicate frustration or reluctance, which could be part of depressive symptoms like anhedonia or general irritability. \n\nIn Q3, they mention feeling empty almost every day, describing it as a heavy weight. The emptiness is a key symptom of depression, maybe MDD. But they also say \"some days I\u2019m okay,\" so it's not constant, but still frequent enough to be concerning.\n\nQ4's response to increased irritability is a \"Yeah.\" That's a clear yes, which is common in depression but also in other disorders like Bipolar (though no manic symptoms mentioned here). \n\nSleep-wise, they deny sleeping less than usual. That's interesting because insomnia is common in depression. This inconsistency could mean they might be experiencing hypersomnia instead, which can occur in atypical depression. Need to note that discrepancy. \n\nThe user's answers are brief, which might reflect low energy or lack of motivation, another depressive sign. The \"Ugh\" could also suggest frustration or dysphoria. \n\nLooking at DSM-5 criteria for Major Depressive Disorder (MDD), they have at least two weeks of depressed mood or loss of interest, plus other symptoms. The patient\u2019s emptiness and irritability fit. But sleep is conflicting. \n\nPossible diagnoses: Major Depressive Disorder (MDD) with atypical features (since sleep and other symptoms might align here). The denial of insomnia might mean they are sleeping more, which is atypical. But without more info, it's a provisional.\n\nDifferential diagnoses could include dysthymia, but they mention some days feeling okay. Maybe adjustment disorder? But the symptoms seem more severe. \n\nTreatment recommendations should include a thorough assessment, psychotherapy options like CBT, and monitoring for sleep patterns. Also, checking for suicidal ideation, even though it's not mentioned yet.\n\nI need to structure this following the exact format. Start with a compassionate summary, then Diagnosis, Reasoning, and Next Steps with the required tags. Ensure all points are covered, use the tags correctly, and avoid any markdown beyond the specified sections. Let me put it all together now.\n</think>\n\n<sym>Feeling empty</sym> and carrying an <sym>emotional weight</sym> daily, interspersed with fleeting moments of relief, reflects profound distress. The <sym>irritability</sym> and terse communication style suggest emotional reactivity, while the contradiction between reported <sym>stable sleep</sym> and the heaviness of low mood raises important clinical questions. This interplay of sadness, irritability, and unresolved sleep dynamics deserves thoughtful exploration.  \n\n**Diagnosis:** Major Depressive Disorder (MDD), provisional, with possible atypical features pending clarification of sleep patterns  \n**Reasoning:** The <sym>daily emptiness</sym>, <sym>irritability</sym>, and blunted affect (<quote>Ugh</quote>) align with MDD criteria. The denial of <sym>insomnia</sym> may indicate <med>atypical depression</med> (e.g., hypersomnia), a common variant where increased sleep occurs alongside dysphoria. The phrase <quote>some days I\u2019m okay</quote> suggests partial symptom remission, which does not exclude MDD if core depressed mood persists. The terse responses and reluctance (<quote>Ugh</quote>) further support low energy/concentration (common in depression) and warrant evaluation for functional impairment.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. Conduct a full psychiatric evaluation to assess for duration/severity of symptoms, suicidal/ideation, and clarify sleep patterns (e.g., \u201cDo you sleep longer than usual?\u201d).  \n2. Rule out atypical depression features (e.g., <med>weight gain</med>, interpersonal sensitivity) via targeted questions.  \n3. Screen for comorbid conditions (e.g., <med>Adjustment Disorder</med> if recent stressors are present, or <med>Bipolar Spectrum</med> if irritability aligns with hypomanic features.  \n4. If MDD is confirmed, initiate therapy (e.g., CBT for depression) and consider SSRIs/SNRIs if atypical features are confirmed.  \n5. Monitor closely for mood reactivity (improvement in mood with positive events), a hallmark of atypical depression.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Sleep-Wake-Disorders.pdf",
+            "score": 0.7158,
+            "highlight": "Sleep-Wake Disorders In the fifth edition of the Diagnostic and Statistical Manual of Mental Disorders  (DSM-5), sleep-wake  disorders encompass 10 conditions manifested by disturbed sleep and causing distress as well as im - pairment in daytime functioning.",
+            "excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"mental\", \"conditions\", and 3 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Depression-Bereavement-Exclusion.pdf",
+            "score": 0.6967,
+            "highlight": "The presence of symptoms such as feelings of worthlessness, suicidal  ideas (as distinct from wanting to join a deceased loved one), and impairment of overall function sug - gest the presence of major depression, in addition to the normal response to a significant loss.",
+            "excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"significant\", \"normal\", \"suicidal\", and 6 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf",
+            "score": 0.6859,
+            "highlight": "Results of that extensive research showed that children diagnosed with BD who experience constant,  rather than episodic, irritability often are at risk for major depressive disorder or generalized anxiety  disorder later in life, but not life-long BD.",
+            "excerpt": " the case with BD. In an effort to address this issue, \nresearch was conducted comparing youth with ...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"episodic\", \"than\", and 7 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.6694,
+            "highlight": "Negative cognitions and mood represents myriad feelings, from a persistent and distorted sense of  blame of self or others, to estrangement from others or markedly diminished interest in activities, to an inability to remember key aspects of the event.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"diminished\", \"key\", \"mood\", and 3 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.6649,
+            "highlight": "The  new narrative text for SSD notes that some patients with physical conditions such as heart disease or  cancer will indeed experience disproportionate and excessive thoughts, feelings, and behaviors related  to their illness, and that these individuals may qualify for a diagnosis of SSD.",
+            "excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"diagnosis\", \"conditions\", \"may\", and 4 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let's tackle this step by step. The user provided the patient's answers to a questionnaire, and I need to analyze them as a mental health professional. First, I'll go through each response to identify key points.\n\nStarting with Q1: \"Hello\" and the answer was \"Yes\". That's pretty short, but maybe the patient is being terse, or just answering the greeting. Not sure yet.\n\nQ2: \"Thank you. To begin\" answered with \"Ugh\". Hmm, \"Ugh\" sounds like frustration or reluctance. That might indicate the patient is uncomfortable or resistant to starting the assessment. \n\nMoving to Q3: \"FEELING DOWN\" with the response \"I feel empty almost every day. It\u2019s like a heavy weight. Some days I\u2019m okay\". Empty feeling every day, but with some days being okay. That's a classic sign of depression, possibly Major Depressive Disorder. The \"heavy weight\" metaphor suggests significant emotional burden. \n\nQ4: \"FEELING MORE IRRITATED\" answered with \"Yeah\". So irritability is present. That's another symptom often seen in depression or other mood disorders. \n\nQ5: \"SLEEPING LESS THAN USUAL\" response was \"No\". Wait, so they aren't sleeping less. That's interesting because insomnia is common in depression, but here the patient says no. Maybe they have normal sleep or even hypersomnia? Need to note that discrepancy.\n\nNow, the main symptoms: persistent emptiness, irritability, and the \"no\" on sleep. The key concerns would be depression, but the sleep aspect is conflicting. \n\nPatterns in responses: The patient is brief, which might indicate low energy or lack of motivation to elaborate. Also, the mix of emptiness with some days being okay suggests variability, which is common in depression's fluctuating symptoms. The \"Ugh\" in Q2 shows possible resistance or distress at engaging, which could be due to mood issues or reluctance to discuss.\n\nClinical significance areas: Depression is the main one. The irritability adds to that, but also could be a sign of another condition like Bipolar (if there's a manic side, but no info here). The sleep issue is conflicting because decreased sleep is common in depression, but the patient denies it. Need to explore their sleep patterns further to see if it's actually normal or if there's hypersomnia. \n\nRisk factors: The emptiness and weight could signal suicidal ideation, but there's no direct mention. The irritability might affect social or occupational functioning, so that's a concern. The lack of sleep problem might be a red flag if they're actually sleeping too much, which could indicate more severe depression.\n\nPutting this together, the summary should mention depressive symptoms like persistent emptiness, irritability, and the mixed sleep report. Note the brief, terse responses and the initial reluctance. Highlight the need to assess sleep in detail and consider other factors like possible bipolar features or other comorbidities. Also, evaluate for suicide risk even though it's not directly stated, given the emptiness.\n\nI need to make sure I don't miss anything. The key is to stick to what's presented, not assume. The patient's answers are limited, so the summary should reflect only what's there without adding extra. Also, make sure to use proper clinical terms like \"anhedonia\" if applicable, but here the emptiness is more prominent. Maybe \"persistent feelings of emptiness\" is better. \n\nWait, the user wants the summary in clinical language. So terms like \"anhedonia\" or \"dysphoric mood\" might be appropriate. The irritability could be under \"affect\" or \"mood lability\". The sleep answer conflicting with typical depression symptoms needs to be highlighted as an inconsistency requiring further evaluation. \n\nOkay, I think that's covered. Now structure it into the five points as specified. Make sure each section is concise and uses professional terms without being too verbose. Avoid making assumptions beyond the data given.\n</think>\n\n**Clinical Observation Summary**  \n\n**1. Main Symptoms and Concerns**  \n- Persistent feelings of emptiness and emotional heaviness (consistent with dysphoric mood).  \n- Endorsed increased irritability.  \n- Denial of decreased sleep, suggesting either normative sleep patterns or possible hypersomnia (requires further clarification).  \n\n**2. Patterns in Responses**  \n- Brief, terse answers consistent with low energy and diminished motivation to elaborate (consistent with anhedonia or psychomotor retardation).  \n- Mixed temporal endorsement: reports of daily emptiness but acknowledges \"some days [are] okay,\" indicating symptom variability.  \n- Initial reluctance (Q2: \"Ugh\") may reflect dysphoria or resistance to engagement.  \n\n**3. Potential Clinical Significance**  \n- Major Depressive Disorder (MDD): Core symptoms align with persistent low mood, irritability, and impaired functioning.  \n- Sleep disturbance ambiguity: Contradiction between typical depressive insomnia and patient\u2019s denial requires clarification (e.g., hypersomnia in atypical depression, or underreporting).  \n- Possible mood reactivity (fluctuations in reported mood) warranting assessment of episodic features.  \n\n**4. Risk Factors/Warning Signs**  \n- Chronic emotional emptiness may indicate risk for self-neglect or suicidal ideation (not explicitly endorsed but requires direct inquiry).  \n- Irritability may contribute to interpersonal or occupational dysfunction.  \n- Ambiguous sleep pattern necessitates evaluation for comorbid conditions (e.g., atypical depression, bipolar spectrum features).  \n\n**5. Clinical Summary**  \nThe patient presents with core depressive symptoms including persistent emptiness, diminished affective reactivity (\"some days okay\"), and irritability. Sleep disturbance is ambiguous, conflicting with typical depressive insomnia, necessitating further assessment of sleep duration/quality. Brief, restricted responses and initial reluctance (Q2) align with low energy or anhedonia common in MDD. No explicit mention of suicidal/harmful ideation, but emotional numbness and dysphoria necessitate direct inquiry. Further evaluation required to clarify episodic features, sleep patterns, and potential atypical symptom presentation.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6865
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "<sym>Feeling empty</sym> and carrying an <sym>emotional weight</sym> daily, interspersed with fleeting moments of relief, reflects profound distress. The <sym>irritability</sym> and terse communication style suggest emotional reactivity, while the contradiction between reported <sym>stable sleep</sym> and the heaviness of low mood raises important clinical questions. This interplay of sadness, irritability, and unresolved sleep dynamics deserves thoughtful exploration.  \n\n**Diagnosis:** Major Depressive Disorder (MDD), provisional, with possible atypical features pending clarification of sleep patterns  \n**Reasoning:** The <sym>daily emptiness</sym>, <sym>irritability</sym>, and blunted affect (<quote>Ugh</quote>) align with MDD criteria. The denial of <sym>insomnia</sym> may indicate <med>atypical depression</med> (e.g., hypersomnia), a common variant where increased sleep occurs alongside dysphoria. The phrase <quote>some days I\u2019m okay</quote> suggests partial symptom remission, which does not exclude MDD if core depressed mood persists. The terse responses and reluctance (<quote>Ugh</quote>) further support low energy/concentration (common in depression) and warrant evaluation for functional impairment.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. Conduct a full psychiatric evaluation to assess for duration/severity of symptoms, suicidal/ideation, and clarify sleep patterns (e.g., \u201cDo you sleep longer than usual?\u201d).  \n2. Rule out atypical depression features (e.g., <med>weight gain</med>, interpersonal sensitivity) via targeted questions.  \n3. Screen for comorbid conditions (e.g., <med>Adjustment Disorder</med> if recent stressors are present, or <med>Bipolar Spectrum</med> if irritability aligns with hypomanic features.  \n4. If MDD is confirmed, initiate therapy (e.g., CBT for depression) and consider SSRIs/SNRIs if atypical features are confirmed.  \n5. Monitor closely for mood reactivity (improvement in mood with positive events), a hallmark of atypical depression.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "adjustment",
+    "question_count": 23,
+    "duration": 28801.51758003235,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 5.2212889194488525,
+    "diagnosis_generation_time": 6.350574970245361,
+    "rag_evaluation_time": 2.002716064453125e-05,
+    "total_time": 11.571899890899658
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Sleep-Wake-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7158,
+        "average_score": 0.7158,
+        "example_excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"mental\", \"conditions\", and 3 more matching aspects of your query."
+      },
+      "APA_DSM-5-Depression-Bereavement-Exclusion.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6967,
+        "average_score": 0.6967,
+        "example_excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"significant\", \"normal\", \"suicidal\", and 6 more matching aspects of your query."
+      },
+      "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6859,
+        "average_score": 0.6859,
+        "example_excerpt": " the case with BD. In an effort to address this issue, \nresearch was conducted comparing youth with ...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"episodic\", \"than\", and 7 more matching aspects of your query."
+      },
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6694,
+        "average_score": 0.6694,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"diminished\", \"key\", \"mood\", and 3 more matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6649,
+        "average_score": 0.6649,
+        "example_excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"diagnosis\", \"conditions\", \"may\", and 4 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 08:02:20",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 08:02:20",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 2,
+        "clinical_relevance": 3,
+        "consistency": 3,
+        "diagnostic_justification": 4,
+        "empathy": 2
+      },
+      "explanations": {
+        "dsm_coverage": "The conversation only superficially addressed a few DSM-5 dimensions. The therapist primarily focused on feeling down, irritability, and sleep patterns, but largely neglected to explore other critical domains such as anxiety, suicidal ideation, psychotic symptoms, somatic concerns, cognitive function, repetitive thoughts/behaviors, dissociation, identity and relationships, and substance use. This selective attention to only a few symptoms leaves significant gaps in understanding the patient's overall mental health status.",
+        "clinical_relevance": "The therapist's questions generally align with DSM-5 criteria but are limited in scope and sometimes vague. For example, the therapist asked about 'FEELING DOWN' and 'FEELING MORE IRRITATED' but did not use precise DSM-5 language or fully explore the patient's experiences. Additionally, questions about sleep patterns were not thoroughly addressed, which could have provided more insight into potential atypical features of depression. The questions somewhat reflect DSM-5 criteria but with several inaccuracies and lack of depth.",
+        "consistency": "The dialogue has some logical inconsistencies and occasionally disrupts coherence. The therapist abruptly transitioned between topics without fully exploring the patient's responses. For instance, after the patient mentioned feeling empty and irritable, the therapist quickly moved to questions about sleep without delving deeper into the emotional impact. While the conversation is not entirely disconnected, it lacks a smooth, coherent flow that would facilitate a more comprehensive understanding of the patient's condition.",
+        "diagnostic_justification": "The diagnosis of Major Depressive Disorder (MDD) with possible atypical features is generally aligned with the patient's responses. The therapist provided some justification for the diagnosis by citing the patient's reported daily emptiness, irritability, and blunted affect. However, the reasoning could be more comprehensive, and alternative diagnoses were not thoroughly ruled out. The therapist recommended further evaluation to clarify sleep patterns and assess for comorbid conditions, which is a positive step towards a more accurate diagnosis.",
+        "empathy": "The therapist's responses sometimes appear impersonal and abrupt. The use of phrases like 'Thank you' and quickly moving to the next question without acknowledging the patient's distress or providing emotional support detract from the empathetic tone. While the therapist does not display overt hostility or disinterest, the interaction could benefit from more warmth, personalized engagement, and acknowledgment of the patient's emotional state."
+      },
+      "overall_comments": "The conversation demonstrates a foundational understanding of DSM-5 criteria but is limited by its narrow focus and lack of depth in exploring the patient's symptoms. The therapist's questions are generally clinically relevant but could be more precise and comprehensive. The diagnostic justification is reasonable but could be strengthened by more thoroughly ruling out alternative diagnoses and providing clearer links to specific DSM-5 criteria. Empathy and naturalness in the conversation are areas for improvement, as interactions sometimes feel robotic or impersonal. Overall, the conversation requires significant enhancement in several areas to provide a comprehensive and supportive assessment for the patient.",
+      "average_score": 2.8,
+      "diagnosis_accuracy": {
+        "matches_profile": false,
+        "confidence": 4,
+        "explanation": "The diagnosis provided focuses on Major Depressive Disorder (MDD) with possible atypical features, and does not explicitly mention Adjustment Disorder or equivalent clinical terms. Although it suggests ruling out Adjustment Disorder as a comorbid condition, the primary diagnosis is not Adjustment Disorder.",
+        "classification": "depression"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "adjustment",
+        "classified_as": "depression",
+        "match": false,
+        "confidence": 4
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 2.708585023880005
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.14799894103634506,
+        "local_coherence": 0.09663103046884626,
+        "window_coherence": 0.17144928081016525
+      },
+      "readability": {
+        "flesch_kincaid_grade": 9.64,
+        "gunning_fog_index": 4.56,
+        "flesch_reading_ease": 45.81
+      },
+      "diversity": {
+        "distinct_1": 0.5638766519823789,
+        "distinct_2": 0.9235294117647059,
+        "distinct_3": 0.9779086892488954
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "adjustment",
+      "predicted": "<sym>Feeling empty</sym> and carrying an <sym>emotional weight</sym> daily, interspersed with fleeting moments of relief, reflects profound distress. The <sym>irritability</sym> and terse communication style suggest emotional reactivity, while the contradiction between reported <sym>stable sleep</sym> and the heaviness of low mood raises important clinical questions. This interplay of sadness, irritability, and unresolved sleep dynamics deserves thoughtful exploration.  \n\n**Diagnosis:** Major Depressive Disorder (MDD), provisional, with possible atypical features pending clarification of sleep patterns  \n**Reasoning:** The <sym>daily emptiness</sym>, <sym>irritability</sym>, and blunted affect (<quote>Ugh</quote>) align with MDD criteria. The denial of <sym>insomnia</sym> may indicate <med>atypical depression</med> (e.g., hypersomnia), a common variant where increased sleep occurs alongside dysphoria. The phrase <quote>some days I\u2019m okay</quote> suggests partial symptom remission, which does not exclude MDD if core depressed mood persists. The terse responses and reluctance (<quote>Ugh</quote>) further support low energy/concentration (common in depression) and warrant evaluation for functional impairment.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. Conduct a full psychiatric evaluation to assess for duration/severity of symptoms, suicidal/ideation, and clarify sleep patterns (e.g., \u201cDo you sleep longer than usual?\u201d).  \n2. Rule out atypical depression features (e.g., <med>weight gain</med>, interpersonal sensitivity) via targeted questions.  \n3. Screen for comorbid conditions (e.g., <med>Adjustment Disorder</med> if recent stressors are present, or <med>Bipolar Spectrum</med> if irritability aligns with hypomanic features.  \n4. If MDD is confirmed, initiate therapy (e.g., CBT for depression) and consider SSRIs/SNRIs if atypical features are confirmed.  \n5. Monitor closely for mood reactivity (improvement in mood with positive events), a hallmark of atypical depression.",
+      "matches": true,
+      "classification": "depression",
+      "classification_confidence": 4
+    }
+  }
+}

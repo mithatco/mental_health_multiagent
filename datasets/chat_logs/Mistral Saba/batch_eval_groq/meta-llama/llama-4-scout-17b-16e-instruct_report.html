@@ -1,0 +1,135 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Batch Evaluation Report: batch_20250501_082212</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 20px;
+                line-height: 1.6;
+                color: #333;
+            }
+            h1, h2, h3 {
+                color: #2c3e50;
+            }
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            .section {
+                margin-bottom: 30px;
+                padding: 20px;
+                background-color: #f9f9f9;
+                border-radius: 5px;
+            }
+            .metrics-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 20px;
+            }
+            .metrics-table th, .metrics-table td {
+                padding: 12px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+            .metrics-table th {
+                background-color: #f2f2f2;
+            }
+            .plot-container {
+                margin: 20px 0;
+                text-align: center;
+            }
+            .plot-container img {
+                max-width: 100%;
+                height: auto;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+            }
+            .summary-box {
+                padding: 15px;
+                background-color: #e8f4f8;
+                border-left: 5px solid #7cb9e8;
+                margin-bottom: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Batch Evaluation Report: batch_20250501_082212</h1>
+            <p>Generated on: 2025-05-01 14:18:10</p>
+            <p>Provider: <strong>groq</strong>, Model: <strong>meta-llama/llama-4-scout-17b-16e-instruct</strong></p>
+            
+            <div class="summary-box">
+                <h2>Executive Summary</h2>
+                <p>Total conversations evaluated: <strong>2000</strong></p>
+                <p>Diagnosis accuracy: <strong>0.57</strong> (1139/2000)</p>
+            </div>
+            
+            <div class="section">
+                <h2>Diagnosis Evaluation</h2>
+                <div class="plot-container">
+                    <h3>Confusion Matrix</h3>
+                    <img src="plots/confusion_matrix.png" alt="Confusion Matrix">
+                </div>
+                
+                <div class="plot-container">
+                    <h3>ROC AUC by Diagnosis</h3>
+                    <img src="plots/roc_auc.png" alt="ROC AUC">
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>LLM Rubric Evaluation</h2>
+                <table class="metrics-table">
+                    <tr>
+                        <th>Criterion</th>
+                        <th>Score (1-5)</th>
+                    </tr>
+    
+                    <tr>
+                        <td>dsm_coverage</td>
+                        <td>4.37</td>
+                    </tr>
+        
+                    <tr>
+                        <td>clinical_relevance</td>
+                        <td>4.30</td>
+                    </tr>
+        
+                    <tr>
+                        <td>consistency</td>
+                        <td>4.37</td>
+                    </tr>
+        
+                    <tr>
+                        <td>diagnostic_justification</td>
+                        <td>4.41</td>
+                    </tr>
+        
+                    <tr>
+                        <td>empathy</td>
+                        <td>4.31</td>
+                    </tr>
+        
+                </table>
+                
+                <div class="plot-container">
+                    <h3>Rubric Scores Visualization</h3>
+                    <img src="plots/rubric_scores.png" alt="Rubric Scores">
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>NLP Metrics</h2>
+                <div class="plot-container">
+                    <h3>NLP Metrics Overview</h3>
+                    <img src="plots/nlp_metrics.png" alt="NLP Metrics">
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>
+    

@@ -1,0 +1,205 @@
+{
+  "timestamp": "2025-04-30T01:55:54.226567",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm a mental health professional. Today, we'll be using the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult to assess your mental health. This tool helps us identify areas that might be affecting your well-being. Everything discussed here is confidential and a safe space for you to share your thoughts and feelings. We'll go through 23 questions, and I'll ask one at a time. Let's begin. 1. Little interest or pleasure in doing things?"
+    },
+    {
+      "role": "patient",
+      "content": "Honestly, I've been feeling a bit disconnected from things I used to enjoy. It's like, I know I should be excited about stuff, but it just doesn't feel as fulfilling anymore."
+    },
+    {
+      "role": "assistant",
+      "content": "I've heard that you've been feeling disconnected from things that used to bring you joy, and it's like you're going through the motions without much excitement or fulfillment. <quote>It's like, I know I should be excited about stuff, but it just doesn't feel as fulfilling anymore</quote>. It takes a lot of courage to share this, and I want you to know that I'm here to listen and support you without judgment. It's understandable to feel this way, and many people experience similar feelings at some point in their lives.\n\n**Diagnosis:** <med>Major Depressive Disorder (MDD)</med>\n\n**Reasoning:** Your report of decreased interest or pleasure in activities, as described by <sym>anhedonia</sym>, aligns with Criterion A of <med>Major Depressive Disorder (MDD)</med> as per the DSM-5. This symptom is a key feature of depression and can significantly impact daily functioning and overall well-being. While a single symptom is not sufficient for a definitive diagnosis, it is a critical indicator that warrants further exploration of other depressive symptoms and diagnostic criteria.\n\n**Recommended Next Steps/Treatment Options:**\n1. Continue with the DSM-5 Self-Rated Level1 Cross-Cutting Symptom Measure\u2014Adult to gather more comprehensive information on your mental health status, specifically assessing for other depressive symptoms such as changes in appetite or sleep, fatigue, feelings of worthlessness or guilt, and concentration problems.\n2. Consider a thorough diagnostic interview to evaluate for <med>Major Depressive Disorder</med> and other potential psychiatric concerns, including anxiety disorders and trauma-related disorders.\n3. Explore <sym>sleep disturbances</sym> and <sym>changes in appetite</sym> as potential symptoms that could be related to <med>depressive disorders</med> or other conditions.\n4. Discuss the possibility of <med>cognitive-behavioral therapy (CBT)</med> or <med>interpersonal therapy</med> as therapeutic approaches to address depressive symptoms.\n5. Evaluate the need for <med>pharmacological interventions</med>, such as antidepressants, as part of a comprehensive treatment plan.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.7469,
+            "highlight": "It requires clinical training, experience and judgment based on  guidance such as that contained in the DSM-5 text to recognize when a patient \u2019s thoughts feelings and  behaviors are indicative of a mental disorder that can benefit from focused treatment.",
+            "excerpt": "ssive thoughts, feelings, and behaviors related \nto their illness, and that these individuals may qu...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"indicative\", \"mental\", \"disorder\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Depression-Bereavement-Exclusion.pdf",
+            "score": 0.7364,
+            "highlight": "The presence of symptoms such as feelings of worthlessness, suicidal  ideas (as distinct from wanting to join a deceased loved one), and impairment of overall function sug - gest the presence of major depression, in addition to the normal response to a significant loss.",
+            "excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"symptoms\", \"depression\", \"response\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Schizophrenia.pdf",
+            "score": 0.7268,
+            "highlight": "Schizophrenia The upc oming fifth edition of the Diagnostic and Statistical Manual of Mental Disorders  (DSM-5 ) mak es  several key changes to the category of schizophrenia and highlights for future study an area that could  be cri tical for early detection of this often debilitating condition.",
+            "excerpt": "Schizophrenia\nThe upc oming fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"mental\", \"this\", \"changes\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf",
+            "score": 0.721,
+            "highlight": "Process for New Diagnosis A new DSM diagnosis is included only after a comprehensive review of the scientific literature; full discussion by Work Group members; review by the DSM-5 Task Force, Scientific Review Committee, Clinical and Public Health Committee; and, finally, approval by the American Psychiatric Association\u2019s Board of Trustees.",
+            "excerpt": "t be made for the first time before age 6 or after age 18. \nProcess for New Diagnosis\nA new DSM diag...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"health\", \"diagnosis\", \"clinical\", and 3 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Sleep-Wake-Disorders.pdf",
+            "score": 0.7178,
+            "highlight": "Changes to Sleep-Wake Disorders   A prime goal of DSM-5 changes to sleep-wake disorders is to increase the clinical utility of definitions and diagnostic criteria, especially for general medical or mental health clinicians, and to clarify when referral is appropriate to a sleep specialist.",
+            "excerpt": "rious mental or medical issues. For example, sleep disturbances can signal the presence of medical a...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"health\", \"mental\", \"changes\", and 6 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: **Clinical Observation Summary**\n\n**Patient's Responses:** The patient has endorsed experiencing a diminished interest in activities they previously enjoyed, describing feelings of disconnection and reduced fulfillment.\n\n**1. Main Symptoms and Concerns:**\n- The patient reports a decrease in interest or pleasure in doing things, indicating a potential symptom of depression or anhedonia.\n\n**2. Patterns in the Patient's Responses:**\n- The patient's response suggests a possible decrease in positive affectivity, which could be indicative of depressive disorders.\n\n**3. Potential Areas of Clinical Significance:**\n- Depressive symptoms, particularly anhedonia (lack of interest or pleasure in activities).\n- Possible decreased motivation or energy, though not directly assessed in this single question.\n\n**4. Risk Factors or Warning Signs:**\n- The patient's self-reported decrease in interest in previously enjoyed activities could be an early warning sign for depressive disorders.\n\n**5. Summary of Observations in Clinical Language:**\nThe patient presents with a notable decrease in interest or pleasure in activities they used to enjoy, characterized by feelings of disconnection and diminished fulfillment. This symptomatology aligns with Criterion A of Major Depressive Disorder (MDD) as per the DSM-5, specifically anhedonia. Further assessment is warranted to explore the extent and duration of these symptoms, as well as to evaluate for other criteria of MDD and other potential psychiatric concerns. The clinical significance of these symptoms should be further explored through additional questions from the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult and potentially through other diagnostic tools and interviews. \n\n**Next Steps:** \nProceed with the remaining questions of the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult to gather more comprehensive information on the patient's mental health status. Consider assessing for other depressive symptoms, such as changes in appetite or sleep, fatigue, feelings of worthlessness or guilt, and concentration problems. Additionally, evaluating for symptoms of anxiety disorders and other common psychiatric conditions may be warranted given the presenting complaint.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.7298
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "I've heard that you've been feeling disconnected from things that used to bring you joy, and it's like you're going through the motions without much excitement or fulfillment. <quote>It's like, I know I should be excited about stuff, but it just doesn't feel as fulfilling anymore</quote>. It takes a lot of courage to share this, and I want you to know that I'm here to listen and support you without judgment. It's understandable to feel this way, and many people experience similar feelings at some point in their lives.\n\n**Diagnosis:** <med>Major Depressive Disorder (MDD)</med>\n\n**Reasoning:** Your report of decreased interest or pleasure in activities, as described by <sym>anhedonia</sym>, aligns with Criterion A of <med>Major Depressive Disorder (MDD)</med> as per the DSM-5. This symptom is a key feature of depression and can significantly impact daily functioning and overall well-being. While a single symptom is not sufficient for a definitive diagnosis, it is a critical indicator that warrants further exploration of other depressive symptoms and diagnostic criteria.\n\n**Recommended Next Steps/Treatment Options:**\n1. Continue with the DSM-5 Self-Rated Level1 Cross-Cutting Symptom Measure\u2014Adult to gather more comprehensive information on your mental health status, specifically assessing for other depressive symptoms such as changes in appetite or sleep, fatigue, feelings of worthlessness or guilt, and concentration problems.\n2. Consider a thorough diagnostic interview to evaluate for <med>Major Depressive Disorder</med> and other potential psychiatric concerns, including anxiety disorders and trauma-related disorders.\n3. Explore <sym>sleep disturbances</sym> and <sym>changes in appetite</sym> as potential symptoms that could be related to <med>depressive disorders</med> or other conditions.\n4. Discuss the possibility of <med>cognitive-behavioral therapy (CBT)</med> or <med>interpersonal therapy</med> as therapeutic approaches to address depressive symptoms.\n5. Evaluate the need for <med>pharmacological interventions</med>, such as antidepressants, as part of a comprehensive treatment plan.",
+  "metadata": {
+    "assistant_model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "patient_model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "patient_profile": "substance_abuse",
+    "question_count": 23,
+    "duration": 998.367470741272,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 4.5058159828186035,
+    "diagnosis_generation_time": 4.2417778968811035,
+    "rag_evaluation_time": 5.0067901611328125e-06,
+    "total_time": 8.747604846954346
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7469,
+        "average_score": 0.7469,
+        "example_excerpt": "ssive thoughts, feelings, and behaviors related \nto their illness, and that these individuals may qu...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"indicative\", \"mental\", \"disorder\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM-5-Depression-Bereavement-Exclusion.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7364,
+        "average_score": 0.7364,
+        "example_excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"symptoms\", \"depression\", \"response\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Schizophrenia.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7268,
+        "average_score": 0.7268,
+        "example_excerpt": "Schizophrenia\nThe upc oming fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"mental\", \"this\", \"changes\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.721,
+        "average_score": 0.721,
+        "example_excerpt": "t be made for the first time before age 6 or after age 18. \nProcess for New Diagnosis\nA new DSM diag...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"health\", \"diagnosis\", \"clinical\", and 3 more matching aspects of your query."
+      },
+      "APA_DSM-5-Sleep-Wake-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7178,
+        "average_score": 0.7178,
+        "example_excerpt": "rious mental or medical issues. For example, sleep disturbances can signal the presence of medical a...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"health\", \"mental\", \"changes\", and 6 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-04-30 10:11:48",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-04-30 10:11:48",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 1,
+        "clinical_relevance": 2,
+        "consistency": 1,
+        "diagnostic_justification": 2,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The conversation only addressed the first question of the DSM-5 Level1 Cross-Cutting Symptom Measure\u2014Adult, which pertains to 'Little interest or pleasure in doing things.' The therapist did not explore the remaining 22 questions across various domains such as anger, energy/activity, anxiety, somatic concerns, suicidality, psychotic symptoms, sleep quality, cognitive function, repetitive thoughts/behaviors, dissociation, identity and relationships, and substance use. This significant omission indicates a failure to systematically assess most DSM-5 dimensions, warranting a score of 1 for DSM-5 dimension coverage.",
+        "clinical_relevance": "The single question addressed ('Little interest or pleasure in doing things') was phrased in a clinically relevant way. However, the therapist's approach was highly limited, only touching on one aspect of depression without exploring its clinical implications or related symptoms. The lack of follow-up questions or exploration of other domains means that the conversation did not demonstrate a comprehensive clinical assessment. Therefore, a score of 2 is appropriate, indicating poor reflection of DSM-5 criteria beyond a single question.",
+        "consistency": "The conversation was abrupt and lacked logical progression. It began with an introductory statement and then immediately presented a diagnosis based on a single symptom. There was no coherent flow or natural progression in the dialogue, as the therapist failed to engage in a thorough assessment. The conversation seemed highly disconnected, with no effort to explore other symptoms or dimensions. This warrants a score of 1 for consistency and logical flow.",
+        "diagnostic_justification": "The therapist provided a diagnosis of Major Depressive Disorder (MDD) based solely on the patient's report of decreased interest or pleasure in activities (anhedonia). While this symptom aligns with Criterion A of MDD, the justification was superficial. The therapist did not evaluate other diagnostic criteria or rule out alternative diagnoses. The conversation lacked explicit linkage to DSM-5 criteria beyond a single symptom, indicating a need for more comprehensive evaluation. Hence, a score of 2 is assigned.",
+        "empathy": "The therapist's response to the patient's disclosure of feeling disconnected from things that used to bring joy was empathetic. They acknowledged the patient's courage in sharing this and emphasized a non-judgmental stance. However, the overall interaction was brief and limited to a single question, which restricts the opportunity to fully assess the therapist's empathetic engagement. Despite this, the response was warm and professional, meriting a score of 4 for empathy."
+      },
+      "overall_comments": "The conversation demonstrated significant limitations in its approach to assessing the patient's mental health. It only addressed one of the 23 questions from the DSM-5 Level1 Cross-Cutting Symptom Measure\u2014Adult. The therapist's diagnostic conclusion, while based on a relevant symptom, lacked comprehensive evaluation and justification. Future conversations should prioritize a thorough and systematic assessment of DSM-5 dimensions, maintain logical flow, and provide clear diagnostic justification.",
+      "average_score": 2.0,
+      "diagnosis_accuracy": {
+        "matches_profile": false,
+        "confidence": 5,
+        "explanation": "The diagnosis explicitly mentions symptoms of depression, such as anhedonia, and recommends treatment options for depressive disorders, but does not mention substance abuse or related terms. The expected profile of substance abuse is not aligned with the diagnosis provided.",
+        "classification": "depression"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "substance_abuse",
+        "classified_as": "depression",
+        "match": false,
+        "confidence": 5
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 5.679013013839722
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.6196544216934042,
+        "local_coherence": 0.5807592171148589,
+        "window_coherence": 0.6196544216934042
+      },
+      "readability": {
+        "flesch_kincaid_grade": 10.69,
+        "gunning_fog_index": 6.36,
+        "flesch_reading_ease": 46.32
+      },
+      "diversity": {
+        "distinct_1": 0.6071428571428571,
+        "distinct_2": 0.9181585677749361,
+        "distinct_3": 0.9641025641025641
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "substance_abuse",
+      "predicted": "I've heard that you've been feeling disconnected from things that used to bring you joy, and it's like you're going through the motions without much excitement or fulfillment. <quote>It's like, I know I should be excited about stuff, but it just doesn't feel as fulfilling anymore</quote>. It takes a lot of courage to share this, and I want you to know that I'm here to listen and support you without judgment. It's understandable to feel this way, and many people experience similar feelings at some point in their lives.\n\n**Diagnosis:** <med>Major Depressive Disorder (MDD)</med>\n\n**Reasoning:** Your report of decreased interest or pleasure in activities, as described by <sym>anhedonia</sym>, aligns with Criterion A of <med>Major Depressive Disorder (MDD)</med> as per the DSM-5. This symptom is a key feature of depression and can significantly impact daily functioning and overall well-being. While a single symptom is not sufficient for a definitive diagnosis, it is a critical indicator that warrants further exploration of other depressive symptoms and diagnostic criteria.\n\n**Recommended Next Steps/Treatment Options:**\n1. Continue with the DSM-5 Self-Rated Level1 Cross-Cutting Symptom Measure\u2014Adult to gather more comprehensive information on your mental health status, specifically assessing for other depressive symptoms such as changes in appetite or sleep, fatigue, feelings of worthlessness or guilt, and concentration problems.\n2. Consider a thorough diagnostic interview to evaluate for <med>Major Depressive Disorder</med> and other potential psychiatric concerns, including anxiety disorders and trauma-related disorders.\n3. Explore <sym>sleep disturbances</sym> and <sym>changes in appetite</sym> as potential symptoms that could be related to <med>depressive disorders</med> or other conditions.\n4. Discuss the possibility of <med>cognitive-behavioral therapy (CBT)</med> or <med>interpersonal therapy</med> as therapeutic approaches to address depressive symptoms.\n5. Evaluate the need for <med>pharmacological interventions</med>, such as antidepressants, as part of a comprehensive treatment plan.",
+      "matches": false,
+      "classification": "depression",
+      "classification_confidence": 5
+    }
+  }
+}

@@ -1,0 +1,241 @@
+{
+  "timestamp": "2025-04-30T23:22:55.989938",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm Dr. Smith. Today, I'll be using the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult to better understand how you've been feeling over the past two weeks. This will help us identify areas to address together. Your answers are confidential and will guide our discussion. Ready when you are."
+    },
+    {
+      "role": "patient",
+      "content": "Okay... I guess. I'll do my best to answer."
+    },
+    {
+      "role": "assistant",
+      "content": "1. Little interest or pleasure in doing things?"
+    },
+    {
+      "role": "patient",
+      "content": "Not much, honestly. I don't get excited about stuff like I used to. But I'm not totally numb or anything."
+    },
+    {
+      "role": "assistant",
+      "content": "2. Feeling down, depressed, or hopeless?"
+    },
+    {
+      "role": "patient",
+      "content": "Hmm... Maybe a couple days last week. It feels temporary, though. I don't dwell on it."
+    },
+    {
+      "role": "assistant",
+      "content": "3. Feeling more irritated, grouchy, or angry than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "Sometimes. If I'm stressed, yeah. But I try not to let it show too much."
+    },
+    {
+      "role": "assistant",
+      "content": "4. Sleeping less than usual, but still have a lot of energy?"
+    },
+    {
+      "role": "patient",
+      "content": "I've been going to bed late, but I don't feel 'hyper'... Just can't sleep well. Maybe I'm restless?"
+    },
+    {
+      "role": "assistant",
+      "content": "5. Starting lots more projects or doing risky things than usual?"
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, let's start by reviewing the user's responses. The patient seems to be experiencing some symptoms that could point to various mental health conditions. The first question was about anhedonia, and they mentioned not getting much pleasure, which is a key sign of depression. But they downplay it by saying they're not \"totally numb.\" That's a bit conflicting, so I need to note that.\n\nNext, they mentioned feeling down a couple of days, but temporary. That's not enough for a full MDD diagnosis yet, but it's a sign of some distress. The irritability when stressed could be part of an adjustment disorder or anxiety. The sleep issue is tricky because they're sleeping less but not hyper, which is unusual for mania. Maybe it's insomnia related to stress or anxiety.\n\nThey didn't mention trauma, but the DSM-5 criteria for PTSD weren't met here. The sleep issue is more likely insomnia or anxiety-related. The restlessness might be somatic, but not enough for Somatic Symptom Disorder unless there's excessive worry about health, which isn't clear here.\n\nI have to consider possible diagnoses like Major Depressive Disorder, Adjustment Disorder with mixed anxiety and depressed mood, or Generalized Anxiety Disorder. Since symptoms are mild and not meeting full criteria, maybe adjustment disorder is the best fit. Also, the stress trigger is important here. \n\nNext steps should involve a more thorough assessment, maybe track symptoms over time, consider therapy, and lifestyle changes for sleep. Need to make sure to avoid jumping to conclusions and suggest further evaluation.\n\nI have to structure the answer exactly as specified. Start with the compassionate summary, then the diagnosis section with the exact headings. Use the tags properly. Make sure to mention the key symptoms and why the diagnosis fits, then outline the next steps clearly. Avoid any markdown and stick to the format. Let me put it all together now.\n</think>\n\n<sym>Little interest or pleasure</sym> in activities, transient <sym>low mood</sym>, and <sym>restlessness</sym> despite poor sleep suggest a struggle to navigate stress and emotional shifts. It sounds like you\u2019re managing day-to-day but feel \"off,\" with moments where stress amplifies irritability or leaves you feeling disconnected from things you once enjoyed. Your efforts to downplay these changes (\u201ctemporarily,\u201d \u201ctry not to let it show\u201d) highlight a possible disconnect between how you feel and how you present, which is common when adjusting to stress.  \n\n**Diagnosis:** Mixed anxiety and depressive symptoms, currently best captured by <med>Adjustment Disorder with Mixed Anxiety and Depressed Mood</med>, provisional.  \n\n**Reasoning:**  \nThe patient\u2019s <sym>anhedonia</sym> (Q2), intermittent <sym>dysphoria</sym> (Q3), and stress-triggered <sym>irritability</sym> (Q4) align with stress-adaptation struggles rather than a primary mood/anxiety disorder. The lack of sustained symptoms (e.g., <sym>hopelessness</sym> is transient, energy levels are not elevated, and symptoms align with a stressor-driven adjustment pattern. No evidence of PTSD, mania, or somatic preoccupation meets criteria for <med>Somatic Symptom Disorder</med>.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Comprehensive Clinical Interview:** Explore recent stressors, emotional triggers, and sleep patterns. Rule out <med>Insomnia Disorder</med> or <med>Generalized Anxiety Disorder</med>.  \n2. **Two-Week Symptom Tracking:** Use a mood/sleep diary to monitor symptom frequency, triggers, and functional impact.  \n3. **Cognitive-Behavioral Therapy (CBT):** Target stress management, emotional regulation, and sleep hygiene.  \n4. **Lifestyle Adjustments:** Prioritize consistent sleep routines, physical activity, and social support engagement.  \n5. **Rule Out Medical Causes:** Refer for a physical exam to exclude <med>sleep disorders</med> (e.g., sleep apnea) or medical conditions contributing to fatigue/irritability.  \n\n*Diagnosis remains provisional pending further evaluation.*",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.6772,
+            "highlight": "Negative cognitions and mood represents myriad feelings, from a persistent and distorted sense of  blame of self or others, to estrangement from others or markedly diminished interest in activities, to an inability to remember key aspects of the event.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"others\", \"mood\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Sleep-Wake-Disorders.pdf",
+            "score": 0.6704,
+            "highlight": "Changes to Sleep-Wake Disorders   A prime goal of DSM-5 changes to sleep-wake disorders is to increase the clinical utility of definitions and diagnostic criteria, especially for general medical or mental health clinicians, and to clarify when referral is appropriate to a sleep specialist.",
+            "excerpt": "rious mental or medical issues. For example, sleep disturbances can signal the presence of medical a...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"mental\", \"clinical\", \"sleep\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Depression-Bereavement-Exclusion.pdf",
+            "score": 0.6643,
+            "highlight": "The presence of symptoms such as feelings of worthlessness, suicidal  ideas (as distinct from wanting to join a deceased loved one), and impairment of overall function sug - gest the presence of major depression, in addition to the normal response to a significant loss.",
+            "excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"suicidal\", \"symptoms\", \"feelings\", and 2 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.6503,
+            "highlight": "Characteristics of Somatic Symptom Disorder Somatic symptom disorder (SSD) is characterized by somatic symptoms that are either very distressing or result in significant disruption of functioning, as well as excessive and disproportionate thoughts, feelings and behaviors regarding those symptoms.",
+            "excerpt": "   Somatic Symptom Disorder\nThe upcoming fifth edition of the Diagnostic and Statistical Manual of M...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"symptom\", \"disorder\", and 6 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM_Cultural-Concepts-in-DSM-5.pdf",
+            "score": 0.6343,
+            "highlight": "Rather than a simple list of culture-bound syndromes, DSM-5 updates criteria  to reflect cross-cultural variations in presentations, gives more detailed and structured information  about cultural concepts of distress, and includes a clinical interview tool to facilitate comprehensive,  person-centered assessments.",
+            "excerpt": "Cultural Concepts in DSM-5\nIn an effort to improve diagnosis and care to people of all backgrounds, ...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"more\", \"clinical\", \"than\", and 5 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let's tackle this. The user provided the patient's responses to the DSM-5 Level 1 Cross-Cutting Symptom Measure. My job is to analyze these answers step by step. \n\nFirst, I need to identify the main symptoms and concerns. Looking at the answers:\n\nFor Q2 about little interest or pleasure, the patient says there's not much, but they're not totally numb. That suggests anhedonia, which is a key depressive symptom. \n\nQ3 mentions feeling down or hopeless a couple days, but temporary. So maybe mild depressive episodes, but not persistent. \n\nQ4 on irritability and anger: the patient says sometimes when stressed, but tries to hide it. That's irritability, possibly linked to stress or another underlying issue. \n\nQ5: Trouble sleeping but not feeling hyper. The patient mentions restlessness, which could be insomnia with possible anxiety or mixed features.\n\nNow, looking for patterns. The patient is aware of their symptoms but downplays their severity. They use phrases like \"temporarily\" and \"try not to let it show.\" This might indicate some insight but also possible underreporting or minimization of distress.\n\nClinical significance areas would include anhedonia, transient depressive symptoms, irritability linked to stress, and sleep disturbances. The sleep issue isn't typical insomnia or hypersomnia; the restlessness is a bit unique, so that's worth noting.\n\nRisk factors: The patient doesn't mention suicidal thoughts or severe hopelessness, so immediate risk might be low. But persistent anhedonia and chronic sleep issues could be long-term concerns. The irritability might affect interpersonal functioning.\n\nI need to ensure I'm not speculating. For example, not jumping to a diagnosis yet. Just highlighting what's present in the responses.\n\nPutting this into clinical terms: main symptoms are anhedonia, transient depressed mood, irritability, sleep disturbance. Patterns include underreporting severity, stress as a trigger, and somatic restlessness. Clinical areas are depressive and anxiety symptoms, possible adjustment issues. Risk factors are more about functional impairment than acute risks.\n\nWait, the sleep issue: the question was about sleeping less but still having energy. The patient says they sleep less but isn't hyper, just restless. That might indicate insomnia without the energy, which is different from a manic episode. So maybe non-restorative sleep or anxiety-related?\n\nAlso, the patient's responses are guarded, maybe not fully disclosing. The \"try not to let it show\" could imply social withdrawal or concerns about how others perceive them.\n\nNeed to make sure the summary is concise and uses correct terminology without assumptions. Highlight the key points from each question and the patterns.\n</think>\n\n**Clinical Observation Summary**  \n\n**1. Main Symptoms and Concerns**  \n- **Anhedonia**: Reduced interest/pleasure in activities (Q2), indicative of possible depressive or mood symptoms.  \n- **Transient Dysphoria**: Mild depressive feelings (Q3) reported as temporary, but presence of mood fluctuations.  \n- **Irritability/Anger**: Elevated irritability associated with stress (Q4), suggesting potential stress-related emotional dysregulation.  \n- **Sleep Disturbance**: Difficulty initiating/maintaining sleep (Q5) with reported restlessness, inconsistent with typical insomnia or hyperarousal (e.g., mania).  \n\n**2. Patterns in Responses**  \n- **Minimization of Severity**: Patient downplays symptoms (e.g., \"temporarily,\" \"not totally numb\") but acknowledges persistent changes.  \n- **Stress as a Trigger**: Irritability and sleep disturbance linked to stress, suggesting stress vulnerability.  \n- **Somatization of Emotional Distress**: Restlessness (Q5) may reflect somatic manifestation of emotional dysregulation or anxiety.  \n\n**3. Potential Areas of Clinical Significance**  \n- **Depressive Symptoms**: Subthreshold depressive features (anhedonia, transient low mood) warrant further evaluation for MDD or Adjustment Disorder.  \n- **Stress-Induced Emotional Dysregulation**: Irritability and sleep disruption may signal comorbid anxiety or adjustment difficulties.  \n- **Sleep Dysfunction**: Non-restorative sleep could contribute to or exacerbate mood and emotional lability.  \n\n**4. Risk Factors/Warning Signs**  \n- **Functional Impact**: Anhedonia and irritability may impair interpersonal or occupational functioning.  \n- **Chronic Stressor Vulnerability**: Stress-triggered symptoms suggest need for stress-management assessment.  \n- **No Acute Suicidality/Harm Indicated**: Patient does not report self-injurious ideation or severe hopelessness.  \n\n**5. Summary (Clinical Language)**  \nThe patient presents with **subthreshold depressive symptoms** (anhedonia, transient dysphoria) and **stress-related irritability**, alongside **non-restorative sleep** and restlessness. Patterns suggest symptom minimization and stress as a precipitant. Areas requiring deeper exploration include mood continuity, stressors, emotional dysregulation, and sleep quality. Consider differential diagnosis of depressive disorder, adjustment disorder with mixed anxiety/mood features, or generalized anxiety, alongside assessment of social/occupational impact. No acute safety concerns noted; focus on functional impairment and stress coping mechanisms.  \n\n---  \n*Note: Responses align with DSM-5 Level 1 screening; further clinical interview required for diagnostic clarity.*",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6593
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "<sym>Little interest or pleasure</sym> in activities, transient <sym>low mood</sym>, and <sym>restlessness</sym> despite poor sleep suggest a struggle to navigate stress and emotional shifts. It sounds like you\u2019re managing day-to-day but feel \"off,\" with moments where stress amplifies irritability or leaves you feeling disconnected from things you once enjoyed. Your efforts to downplay these changes (\u201ctemporarily,\u201d \u201ctry not to let it show\u201d) highlight a possible disconnect between how you feel and how you present, which is common when adjusting to stress.  \n\n**Diagnosis:** Mixed anxiety and depressive symptoms, currently best captured by <med>Adjustment Disorder with Mixed Anxiety and Depressed Mood</med>, provisional.  \n\n**Reasoning:**  \nThe patient\u2019s <sym>anhedonia</sym> (Q2), intermittent <sym>dysphoria</sym> (Q3), and stress-triggered <sym>irritability</sym> (Q4) align with stress-adaptation struggles rather than a primary mood/anxiety disorder. The lack of sustained symptoms (e.g., <sym>hopelessness</sym> is transient, energy levels are not elevated, and symptoms align with a stressor-driven adjustment pattern. No evidence of PTSD, mania, or somatic preoccupation meets criteria for <med>Somatic Symptom Disorder</med>.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Comprehensive Clinical Interview:** Explore recent stressors, emotional triggers, and sleep patterns. Rule out <med>Insomnia Disorder</med> or <med>Generalized Anxiety Disorder</med>.  \n2. **Two-Week Symptom Tracking:** Use a mood/sleep diary to monitor symptom frequency, triggers, and functional impact.  \n3. **Cognitive-Behavioral Therapy (CBT):** Target stress management, emotional regulation, and sleep hygiene.  \n4. **Lifestyle Adjustments:** Prioritize consistent sleep routines, physical activity, and social support engagement.  \n5. **Rule Out Medical Causes:** Refer for a physical exam to exclude <med>sleep disorders</med> (e.g., sleep apnea) or medical conditions contributing to fatigue/irritability.  \n\n*Diagnosis remains provisional pending further evaluation.*",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "substance_abuse",
+    "question_count": 23,
+    "duration": 16992.44288802147,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 5.967345237731934,
+    "diagnosis_generation_time": 5.732564926147461,
+    "rag_evaluation_time": 6.198883056640625e-06,
+    "total_time": 11.699923276901245
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6772,
+        "average_score": 0.6772,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"others\", \"mood\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM-5-Sleep-Wake-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6704,
+        "average_score": 0.6704,
+        "example_excerpt": "rious mental or medical issues. For example, sleep disturbances can signal the presence of medical a...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"mental\", \"clinical\", \"sleep\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Depression-Bereavement-Exclusion.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6643,
+        "average_score": 0.6643,
+        "example_excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"suicidal\", \"symptoms\", \"feelings\", and 2 more matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6503,
+        "average_score": 0.6503,
+        "example_excerpt": "   Somatic Symptom Disorder\nThe upcoming fifth edition of the Diagnostic and Statistical Manual of M...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"symptom\", \"disorder\", and 6 more matching aspects of your query."
+      },
+      "APA_DSM_Cultural-Concepts-in-DSM-5.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6343,
+        "average_score": 0.6343,
+        "example_excerpt": "Cultural Concepts in DSM-5\nIn an effort to improve diagnosis and care to people of all backgrounds, ...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"more\", \"clinical\", \"than\", and 5 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 08:11:39",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 08:11:39",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 2,
+        "clinical_relevance": 3,
+        "consistency": 4,
+        "diagnostic_justification": 3,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist only addressed a few of the DSM-5 Level1 Cross-Cutting Symptom Measure domains. Questions were limited to: little interest or pleasure (I.1), feeling down/depressed/hopeless (I.2), feeling irritated/angry (II.3), sleeping less but having energy (III.4), and restlessness (implied but not directly asked). Most domains (e.g., anxiety, somatic concerns, suicidality, psychotic symptoms, sleep quality, cognitive function, repetitive thoughts/behaviors, dissociation, identity/relationships, substance use) were not explored. This significant omission leads to a score of 2, as few DSM-5 dimensions were adequately covered.",
+        "clinical_relevance": "The questions asked somewhat reflected DSM-5 criteria but with several inaccuracies or incomplete representations. For example, the therapist asked about 'restlessness' which is not a direct DSM-5 criterion but related to several domains. The questions did not precisely align with DSM-5 language or comprehensively cover the clinical criteria for various domains. This leads to a score of 3, indicating some relevance but with notable inaccuracies.",
+        "consistency": "The dialogue generally flows logically, with each question somewhat following from previous responses. However, there were minor logical inconsistencies due to the limited scope of questions. The therapist did not abruptly change topics or ignore concerning disclosures but was constrained by the brevity and limited focus of the conversation. This results in a score of 4, indicating good flow but with some inconsistencies due to the narrow focus.",
+        "diagnostic_justification": "The diagnosis of Adjustment Disorder with Mixed Anxiety and Depressed Mood was somewhat justified by the patient's symptoms (e.g., anhedonia, transient low mood, irritability). However, the justification was partially flawed due to the limited scope of questions and failure to rule out other potential diagnoses systematically. The diagnosis somewhat aligns with responses but lacks comprehensive differential diagnosis consideration, leading to a score of 3.",
+        "empathy": "The therapist generally displayed empathy and a professional tone. The responses were mostly warm and personalized, with acknowledgment of the patient's distress. However, there were minor moments where the therapist seemed slightly impersonal or focused on clinical assessment over emotional validation. Overall, the therapist maintained a supportive demeanor, leading to a score of 4."
+      },
+      "overall_comments": "The conversation demonstrated a good start in assessing the patient's symptoms but was limited by its narrow focus and failure to explore many DSM-5 domains comprehensively. The therapist showed empathy and professional tone but could improve by systematically addressing all relevant domains and providing more detailed justifications for the diagnosis. Future conversations should prioritize a thorough assessment and differential diagnosis.",
+      "average_score": 3.2,
+      "diagnosis_accuracy": {
+        "matches_profile": false,
+        "confidence": 5,
+        "explanation": "The diagnosis does not explicitly mention substance abuse or related terms. The symptoms described (anhedonia, dysphoria, irritability, restlessness, and sleep issues) are attributed to stress-adaptation struggles and adjustment disorder rather than substance abuse.",
+        "classification": "adjustment"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "substance_abuse",
+        "classified_as": "adjustment",
+        "match": false,
+        "confidence": 5
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 3.146933078765869
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.5238150298417795,
+        "local_coherence": 0.5277870302893617,
+        "window_coherence": 0.5475067802075985
+      },
+      "readability": {
+        "flesch_kincaid_grade": 8.77,
+        "gunning_fog_index": 4.51,
+        "flesch_reading_ease": 51.89
+      },
+      "diversity": {
+        "distinct_1": 0.5911047345767575,
+        "distinct_2": 0.9425287356321839,
+        "distinct_3": 0.9870503597122302
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "substance_abuse",
+      "predicted": "<sym>Little interest or pleasure</sym> in activities, transient <sym>low mood</sym>, and <sym>restlessness</sym> despite poor sleep suggest a struggle to navigate stress and emotional shifts. It sounds like you\u2019re managing day-to-day but feel \"off,\" with moments where stress amplifies irritability or leaves you feeling disconnected from things you once enjoyed. Your efforts to downplay these changes (\u201ctemporarily,\u201d \u201ctry not to let it show\u201d) highlight a possible disconnect between how you feel and how you present, which is common when adjusting to stress.  \n\n**Diagnosis:** Mixed anxiety and depressive symptoms, currently best captured by <med>Adjustment Disorder with Mixed Anxiety and Depressed Mood</med>, provisional.  \n\n**Reasoning:**  \nThe patient\u2019s <sym>anhedonia</sym> (Q2), intermittent <sym>dysphoria</sym> (Q3), and stress-triggered <sym>irritability</sym> (Q4) align with stress-adaptation struggles rather than a primary mood/anxiety disorder. The lack of sustained symptoms (e.g., <sym>hopelessness</sym> is transient, energy levels are not elevated, and symptoms align with a stressor-driven adjustment pattern. No evidence of PTSD, mania, or somatic preoccupation meets criteria for <med>Somatic Symptom Disorder</med>.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Comprehensive Clinical Interview:** Explore recent stressors, emotional triggers, and sleep patterns. Rule out <med>Insomnia Disorder</med> or <med>Generalized Anxiety Disorder</med>.  \n2. **Two-Week Symptom Tracking:** Use a mood/sleep diary to monitor symptom frequency, triggers, and functional impact.  \n3. **Cognitive-Behavioral Therapy (CBT):** Target stress management, emotional regulation, and sleep hygiene.  \n4. **Lifestyle Adjustments:** Prioritize consistent sleep routines, physical activity, and social support engagement.  \n5. **Rule Out Medical Causes:** Refer for a physical exam to exclude <med>sleep disorders</med> (e.g., sleep apnea) or medical conditions contributing to fatigue/irritability.  \n\n*Diagnosis remains provisional pending further evaluation.*",
+      "matches": false,
+      "classification": "adjustment",
+      "classification_confidence": 5
+    }
+  }
+}

@@ -1,0 +1,285 @@
+{
+  "timestamp": "2025-04-30T21:36:12.638993",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm Dr. Lee. I want to thank you for coming in today. I'll be using the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult to better understand how you've been feeling over the past two weeks. This is a standard assessment to help us track your symptoms and plan your care. Your answers will remain confidential. I'll ask each question one at a time, and I'll listen carefully to your responses. There are 23 questions total, and I'll start with the first one now. Are you ready to begin?"
+    },
+    {
+      "role": "patient",
+      "content": "Yeah, I guess so. I... um... I'm a little distracted, but I'll try to focus."
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. 1. Little interest or pleasure in doing things?"
+    },
+    {
+      "role": "patient",
+      "content": "Most days I don't feel like doing much. Like, last week I sat in my room for hours. But sometimes I'll start something and then lose interest quickly. It's hard to explain."
+    },
+    {
+      "role": "assistant",
+      "content": "2. Feeling down, depressed, or hopeless?"
+    },
+    {
+      "role": "patient",
+      "content": "Yeah, I've been feeling this heavy weight a lot lately. Like, even when I try to watch TV or whatever, it's like there's a shadow over everything. But I don't know if other people feel that too?"
+    },
+    {
+      "role": "assistant",
+      "content": "3. Feeling more irritated, grouchy, or angry than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "I've snapped at the cat more than usual\u2026 But I'm not sure if it's really me or if someone's making me mad. Sometimes I just want to be left alone because people annoy me for no reason."
+    },
+    {
+      "role": "assistant",
+      "content": "4. Sleeping less than usual, but still have a lot of energy?"
+    },
+    {
+      "role": "patient",
+      "content": "Hmm. I've been awake a lot at night, but when I do sleep I wake up tired. Wait\u2014no, sometimes I stay up to watch the same shows over again because\u2026 reasons. Not sure how that counts."
+    },
+    {
+      "role": "assistant",
+      "content": "5. Starting lots more projects than usual or doing more risky things than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "I tried rearranging my room twice last week but couldn't finish. And once I left the house without my keys just because\u2026 a voice told me to. I don't know if that counts as risky?"
+    },
+    {
+      "role": "assistant",
+      "content": "6. Feeling nervous, anxious, frightened, worried, or on edge?"
+    },
+    {
+      "role": "patient",
+      "content": "Sometimes. Like, when I'm alone, I get jumpy if there's a noise. But I try not to think about it. Oh, and I keep forgetting where I put my keys. Is that part of this?"
+    },
+    {
+      "role": "assistant",
+      "content": "7. Feeling panic or being frightened?"
+    },
+    {
+      "role": "patient",
+      "content": "There was this time I thought someone was outside my window. I checked, but then forgot later if it really happened. It's confusing."
+    },
+    {
+      "role": "assistant",
+      "content": "8. Avoiding situations that make you anxious?"
+    },
+    {
+      "role": "patient",
+      "content": "I stay home a lot now. The park feels\u2026 too noisy. And I don't trust strangers to look at me the right way."
+    },
+    {
+      "role": "assistant",
+      "content": "9. Unexplained aches and pains (e.g., head, back, joints, abdomen, legs)?"
+    },
+    {
+      "role": "patient",
+      "content": "My head's been throbbing sometimes, but I'm not sure if it's real or just part of\u2026 other stuff. My wrists ache too, like when I'm stressed."
+    },
+    {
+      "role": "assistant",
+      "content": "10. Feeling that your illnesses are not being taken seriously enough?"
+    },
+    {
+      "role": "patient",
+      "content": "Hmm. The doctor said my headaches were just stress, but I know something's wrong. Or maybe not? It's hard to tell."
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, let's start by carefully reading the user's instructions and the provided clinical data. The user wants a structured mental health assessment based on the patient's responses to a questionnaire. The key here is to follow their specific format and tagging requirements precisely.\n\nFirst, I need to ensure the response has four sections: a compassionate summary, diagnosis, reasoning, and next steps. Each must be formatted exactly as specified. Let me parse the patient's answers again to extract symptoms and possible diagnoses.\n\nThe patient reports anhedonia, low mood, and hopelessness, pointing to depression. The mention of hearing a voice telling them to leave without keys suggests possible hallucinations. The uncertainty about the window incident and distrust of medical advice could indicate paranoia or reality distortion. The combination of depression with psychotic features might point towards Major Depressive Disorder with psychotic features. But I have to consider other possibilities like brief psychotic disorder or even anxiety-induced dissociation.\n\nThe somatic symptoms (headaches, aches) could be part of the depressive or anxiety symptomatology or a separate somatic disorder. The guidelines mention not to default to Somatic Symptom Disorder without more evidence, so I should note that. The patient's impulsivity (leaving without keys) and reality testing issues are critical.\n\nFor the first paragraph, I need to show empathy while summarizing their experience. Then, the diagnosis section must use the exact headings with asterisks. I'll list the diagnosis as Major Depressive Disorder with psychotic features but note other possibilities in the reasoning. \n\nIn the reasoning, I'll explain how depressive and psychotic symptoms align, mention the hallucinations and paranoia, and why other conditions like PTSD are less likely here. The next steps should include detailed recommendations like a full psychiatric evaluation, blood work, and monitoring.\n\nNeed to ensure tags are correctly applied: terms like Major Depressive Disorder go in <med> tags, quotes like \"I don\u2019t know if it\u2019s really me\" go in <quote> tags. Also, check for all required sections and proper formatting without markdown.\n\nWait, I must avoid mentioning any assumptions beyond the symptoms given. The patient's description of a voice could be a hallucination, but I should phrase it as \"possible\" in case there's another explanation. Also, the avoidance of social situations and hypervigilance could tie into anxiety, so I should link that in the reasoning.\n\nMake sure the next steps are actionable: structured interviews, lab tests, etc. The patient's mention of distrust in medical advice (Q10) means building rapport is important. Also, the \"voices\" and risky behavior (leaving without keys) are red flags for safety, so a safety assessment is necessary.\n\nI should structure each section step-by-step, ensuring tags are correctly placed. Let me double-check for any required elements the user mentioned, like not defaulting to somatic symptom unless clear. Since the patient questions if aches are real, it's more ambiguous, so maybe list Somatic Symptom Disorder as a \"rule-out\" but not the primary focus.\n\nPutting it all together now, keeping paragraphs concise and adhering to the strict formatting. Make sure all tags are properly used and sections are in order. Alright, time to draft.\n</think>\n\nYou\u2019ve described a deeply challenging time, marked by overwhelming sadness, confusion about your experiences, and a sense of being \u201cstuck\u201d between doubt and distress. Your feelings of isolation, the unsettling voice you heard, and the persistent worry about your health reflect a vulnerable moment where your mental and physical well-being seem intertwined in ways that feel unmanageable. You\u2019re clearly trying hard to make sense of what\u2019s happening, but the uncertainty and the intrusive thoughts are taking a toll. It must feel exhausting to navigate these symptoms alone, and I want to acknowledge how valid your struggles are.  \n\n**Diagnosis:** <med>Mood Disorder With Psychotic Features (provisional)</med> with rule-out of <med>Major Depressive Disorder With Psychotic Features</med>, <med>Anxiety Disorder Due to Another Medical Condition</med>, or early <med>Psychosis Not Otherwise Specified</med>.  \n\n**Reasoning:**  \nThe patient\u2019s responses highlight a cluster of <sym>depressive symptoms</sym> (<sym>anhedonia</sym>, hopelessness, psychomotor changes), alongside <sym>psychotic features</sym> (auditory hallucinations, paranoia about external threats and medical evaluations). The <quote>\u201cvoice\u201d instructing the patient to leave without keys</quote> constitutes a hallucination, while uncertainty about the window incident reflects impaired reality testing. <sym>Psychomotor agitation</sym> (uncompleted projects, restless behaviors) and <sym>hypervigilance</sym> (Q7\u2013Q8) suggest comorbid anxiety or a mixed mood state. The lack of clear trauma history makes <med>PTSD</med> less likely. Somatic symptoms (headaches, aches) may relate to anxiety/depression rather than primary somatic symptom disorder, given their co-occurrence with mood and psychotic symptoms.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Immediate Psychiatric Evaluation**: Conduct a structured interview to clarify psychotic symptoms (e.g., hallucination content/duration) and assess for <med>Major Depressive Disorder With Psychotic Features</med> or early-phase <med>psychosis</med>.  \n2. **Comprehensive Medical Workup**: Rule out organic causes (e.g., thyroid dysfunction, vitamin deficiencies) for somatic and mood symptoms.  \n3. **Safety Assessment**: Evaluate for risk of impulsive decisions (e.g., acting on voices) and ensure a safe environment.  \n4. **Collaborative Care**: Involve primary care provider to reassess somatic complaints and address communication gaps around test results (Q10).  \n5. **Short-term Symptom Management**: Initiate SSRIs (e.g., escitalopram) for mood symptoms and consider low-dose antipsychotics if hallucinations persist.  \n6. **Cognitive-Behavioral Therapy (CBT) or CBTp (for psychosis): Address maladaptive thought patterns and grounding techniques for anxiety/paranoia.  \n7. **Monitor for Mania/Hypomania**: Explore whether energy shifts (Q5\u2013Q6) reflect depression-induced agitation or a bipolar spectrum issue.  \n\nEnsure all recommendations align with the patient\u2019s expressed readiness to engage and prioritize trust-building due to their stated distrust of medical reassurance.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Schizophrenia.pdf",
+            "score": 0.7329,
+            "highlight": "Identifying individuals with an increased risk for developing a psychotic disorder is  significant for effective early intervention, but more study is needed to ensure that attenuated psycho - sis syndrome can be reliably diagnosed.",
+            "excerpt": "h before their consideration as formal disorders. This potential category would \nidentify a person w...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"psychotic\", \"significant\", \"that\", and 3 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.7165,
+            "highlight": "While DSM-IV was organized centrally around the concept of  medically unexplained symptoms, DSM-5 criteria instead emphasize the degree to which a patient \u2019s  thoughts, feelings and behaviors about their somatic symptoms are disproportionate or excessive.",
+            "excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"patient\", \"unexplained\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Sleep-Wake-Disorders.pdf",
+            "score": 0.7059,
+            "highlight": "Sleep-Wake Disorders In the fifth edition of the Diagnostic and Statistical Manual of Mental Disorders  (DSM-5), sleep-wake  disorders encompass 10 conditions manifested by disturbed sleep and causing distress as well as im - pairment in daytime functioning.",
+            "excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"mental\", \"disorders\", and 2 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.6907,
+            "highlight": "Negative cognitions and mood represents myriad feelings, from a persistent and distorted sense of  blame of self or others, to estrangement from others or markedly diminished interest in activities, to an inability to remember key aspects of the event.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"sense\", \"others\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Personality-Disorder.pdf",
+            "score": 0.6845,
+            "highlight": "During the development process of the fifth edition of the Diagnostic and Statistical Manual of Mental  Disorders (DSM-5), several proposed revisions were drafted that would have significantly changed the  method by which individuals with these disorders are diagnosed.",
+            "excerpt": "Personality Disorders\nPersonality disorders are associated with ways of thinking and feeling about o...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"mental\", \"disorders\", and 3 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let's tackle this. The user provided a patient's responses to a DSM-5 questionnaire and wants a clinical summary. First, I need to parse each question and answer to identify the main symptoms.\n\nStarting with Q2: The patient mentions little interest or pleasure, which is anhedonia, a key depressive symptom. They also mention losing interest quickly, which might point to difficulty sustaining activities. \n\nQ3 talks about feeling down, depressed, or hopeless. The patient describes a \"heavy weight\" and a sense of hopelessness, which are classic signs of depression. \n\nOn Q4, they mention sleeping less but still having energy? Wait, the question is about sleeping less than usual but having lots of energy. The patient mentions waking up tired and insomnia, but also staying up doing repetitive things like watching shows. That's confusing. Maybe mixed sleep patterns, but the key here is the mention of insomnia with fatigue. \n\nQ5 asks about starting lots of projects or risky behavior. The patient tried rearranging the room but didn't finish, and leaving the house without keys because of a voice. That voice might be a psychotic symptom. The incomplete projects could indicate poor concentration or distractibility, but the voice is concerning. \n\nQ6: Nervousness, anxiety. The patient is jumpy when alone, forgetful about keys. Anxiety symptoms, but also cognitive issues (forgetfulness). Maybe anxiety contributes to forgetfulness. \n\nQ7: Panic or fear. The patient had an incident thinking someone was outside the window but later doubted it. That could be perceptual disturbances or derealization. \n\nQ8: Avoidance of anxiety-inducing situations. They avoid the park and strangers, indicating social withdrawal possibly due to anxiety or paranoia. \n\nQ9: Unexplained aches and pains. Headaches and wrist pain, possibly somatic symptoms linked to stress or anxiety. \n\nQ10: Feeling their illnesses aren't taken seriously. The patient is skeptical of the doctor's diagnosis, which could indicate poor insight or distrust, maybe related to hypochondriacal symptoms or paranoia. \n\nNow, looking for patterns. The patient has depressive symptoms (anhedonia, low mood, hopelessness) and anxiety (nervousness, panic). The presence of a voice and uncertainty about real events (the window incident) suggests possible psychotic features. The unexplained aches and avoidance behavior add to the complexity. \n\nPotential clinical areas: Major Depressive Disorder with possible psychotic features? The voices and the uncertainty about the window incident could be hallucinations or paranoia. The avoidance and anxiety might point to an anxiety disorder, maybe GAD or social anxiety. The somatic symptoms (headaches, aches) are common with depression/anxiety but could need ruling out somatic symptom disorder. \n\nRisk factors: The voice prompting them to leave without keys is concerning. Leaving without keys might be impulsive or driven by the voice. That could pose a safety risk. The mention of not knowing if the panic was real (the window incident) might indicate reality testing issues. \n\nNeed to check for suicidal/harmful intent? The patient hasn't mentioned that directly, but irritability and impulsive actions could be risk factors. \n\nPutting it all together: The main symptoms are depressive, anxiety, possible psychotic features, somatic issues. The pattern is a mix of mood, anxiety, and psychotic symptoms. Clinical significance includes the possibility of a major depressive episode with psychotic features. The voices and paranoia need to be explored further. The patient's uncertainty about their symptoms and distrust of medical advice might indicate poor insight or delusional thinking. \n\nRisk factors: The voice leading to impulsive acts (leaving without keys) could be dangerous. The reality distortion in the window incident is a red flag. Also, the irritability and social withdrawal could indicate social impairment. \n\nI need to make sure I don't miss anything. The key points are depressive symptoms, possible psychosis, anxiety, somatic complaints, and some disordered thinking. The summary should list these in order, note the possible psychotic features as a priority, and highlight the need for further assessment of those symptoms. Also, the risk factors include the impulsive behavior and reality testing issues. \n\nWait, the voice that told them to leave without keys could be a command hallucination, which is significant. Also, the patient is questioning their own experiences (like the window incident), which might be a sign of paranoia or derealization. The distrust of the doctor's diagnosis could be part of the same issue. \n\nI need to structure the summary into the five parts requested. Main symptoms first: anhedonia, depressed mood, anxiety, somatic symptoms. Then patterns like fluctuating symptoms, uncertainty in experiences. Clinical areas include depression with possible psychosis, anxiety, somatic complaints. Risk factors: command hallucinations leading to unsafe decisions, possible paranoia, and impaired insight. \n\nMake sure not to speculate, just report what's in the answers. Avoid diagnosing, but note the possibilities. The summary should be concise and use clinical terms. Alright, time to put this into the required sections.\n</think>\n\n**Clinical Observation Summary**  \n\n**1. Main Symptoms and Concerns**  \n- **Depressive Symptoms**: Anhedonia (Q2), persistent low mood, hopelessness (Q3), and psychomotor retardation (e.g., uncompleted projects, staying in room for hours).  \n- **Anxiety/Psychomotor Agitation**: Restlessness (Q6\u2013Q7: nervousness, panic, hypervigilance to noises), somatic complaints (headaches, aches; Q9).  \n- **Potential Psychotic Features**: Auditory hallucinations (voice instructing patient to leave home without keys; Q5) and reality distortion (uncertainty about whether a perceived threat [window incident] occurred; Q7).  \n- **Impaired Insight/Reality Testing**: Distrust of medical evaluation (Q10) and uncertainty about the validity of symptoms and experiences.  \n- **Impulsivity/Unusual Behavior**: Incomplete projects, risky actions (leaving without keys per a voice).  \n\n**2. Patterns in Responses**  \n- **Ambivalence/Confusion**: Patient frequently qualifies statements with uncertainty (e.g., \u201cI don\u2019t know if it\u2019s really me\u2026,\u201d \u201cIs that part of this?\u201d) and questions the validity of their experiences.  \n- **Fragmented Symptom Reporting**: Symptoms are described in a non-linear fashion, with some overlapping mood, anxiety, and psychotic features.  \n- **Social Withdrawal**: Avoidance of public spaces (Q8), irritability toward others, and social isolation.  \n\n**3. Potential Clinical Significance**  \n- **Major Depressive Disorder with Psychotic Features**: Hallucinations (voices), delusional ideation (paranoia about strangers, questioning external reality).  \n- **Anxiety Disorders**: Generalized Anxiety Disorder (GAD) or Panic Disorder (hypervigilance, panic about perceived threats).  \n- **Somatic Symptom Disorder**: Persistent somatic complaints (headaches, aches) with health-related anxiety despite medical evaluation (Q10).  \n- **Possible Mixed Mood State**: Insomnia but fatigue, coupled with agitation (incomplete projects).  \n\n**4. Risk Factors/Warning Signs**  \n- **Psychotic Symptoms**: Auditory hallucinations prompting risky behavior (leaving home without keys).  \n- **Reality Testing Impairment**: Uncertainty about the veracity of threatening experiences (window incident).  \n- **Impaired Social Functioning**: Avoidance of social/public spaces and irritability affecting relationships.  \n- **Unresolved Medical Concerns**: Discrepancy between patient\u2019s perception of symptoms and medical reassurance (Q10.  \n\n**5. Clinical Summary**  \nThe patient exhibits significant depressive symptoms (anhedonia, low mood, psychomotor changes) and anxiety (nervousness, panic, somatic complaints). Psychotic features, including auditory hallucinations and possible paranoid ideation (e.g., distrust of strangers, uncertainty about perceived threats), warrant further evaluation. Impaired insight into symptoms (e.g., questioning the validity of experiences) and reality testing are notable. Risk factors include impulsive/risky actions driven by hallucinations and social withdrawal. Further assessment is needed to rule out psychotic disorders (e.g., brief psychotic episode, major depression with psychotic features), delusional disorder, or anxiety-related hypervigilance. Collaboration with primary care is advised to address somatic complaints and resolve discrepancies in medical evaluation.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.7061
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "You\u2019ve described a deeply challenging time, marked by overwhelming sadness, confusion about your experiences, and a sense of being \u201cstuck\u201d between doubt and distress. Your feelings of isolation, the unsettling voice you heard, and the persistent worry about your health reflect a vulnerable moment where your mental and physical well-being seem intertwined in ways that feel unmanageable. You\u2019re clearly trying hard to make sense of what\u2019s happening, but the uncertainty and the intrusive thoughts are taking a toll. It must feel exhausting to navigate these symptoms alone, and I want to acknowledge how valid your struggles are.  \n\n**Diagnosis:** <med>Mood Disorder With Psychotic Features (provisional)</med> with rule-out of <med>Major Depressive Disorder With Psychotic Features</med>, <med>Anxiety Disorder Due to Another Medical Condition</med>, or early <med>Psychosis Not Otherwise Specified</med>.  \n\n**Reasoning:**  \nThe patient\u2019s responses highlight a cluster of <sym>depressive symptoms</sym> (<sym>anhedonia</sym>, hopelessness, psychomotor changes), alongside <sym>psychotic features</sym> (auditory hallucinations, paranoia about external threats and medical evaluations). The <quote>\u201cvoice\u201d instructing the patient to leave without keys</quote> constitutes a hallucination, while uncertainty about the window incident reflects impaired reality testing. <sym>Psychomotor agitation</sym> (uncompleted projects, restless behaviors) and <sym>hypervigilance</sym> (Q7\u2013Q8) suggest comorbid anxiety or a mixed mood state. The lack of clear trauma history makes <med>PTSD</med> less likely. Somatic symptoms (headaches, aches) may relate to anxiety/depression rather than primary somatic symptom disorder, given their co-occurrence with mood and psychotic symptoms.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Immediate Psychiatric Evaluation**: Conduct a structured interview to clarify psychotic symptoms (e.g., hallucination content/duration) and assess for <med>Major Depressive Disorder With Psychotic Features</med> or early-phase <med>psychosis</med>.  \n2. **Comprehensive Medical Workup**: Rule out organic causes (e.g., thyroid dysfunction, vitamin deficiencies) for somatic and mood symptoms.  \n3. **Safety Assessment**: Evaluate for risk of impulsive decisions (e.g., acting on voices) and ensure a safe environment.  \n4. **Collaborative Care**: Involve primary care provider to reassess somatic complaints and address communication gaps around test results (Q10).  \n5. **Short-term Symptom Management**: Initiate SSRIs (e.g., escitalopram) for mood symptoms and consider low-dose antipsychotics if hallucinations persist.  \n6. **Cognitive-Behavioral Therapy (CBT) or CBTp (for psychosis): Address maladaptive thought patterns and grounding techniques for anxiety/paranoia.  \n7. **Monitor for Mania/Hypomania**: Explore whether energy shifts (Q5\u2013Q6) reflect depression-induced agitation or a bipolar spectrum issue.  \n\nEnsure all recommendations align with the patient\u2019s expressed readiness to engage and prioritize trust-building due to their stated distrust of medical reassurance.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "schizophrenia",
+    "question_count": 23,
+    "duration": 10589.091717243195,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 5.594344139099121,
+    "diagnosis_generation_time": 9.316076755523682,
+    "rag_evaluation_time": 2.002716064453125e-05,
+    "total_time": 14.910453081130981
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Schizophrenia.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7329,
+        "average_score": 0.7329,
+        "example_excerpt": "h before their consideration as formal disorders. This potential category would \nidentify a person w...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"psychotic\", \"significant\", \"that\", and 3 more matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7165,
+        "average_score": 0.7165,
+        "example_excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"patient\", \"unexplained\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Sleep-Wake-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7059,
+        "average_score": 0.7059,
+        "example_excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"mental\", \"disorders\", and 2 more matching aspects of your query."
+      },
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6907,
+        "average_score": 0.6907,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"sense\", \"others\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Personality-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6845,
+        "average_score": 0.6845,
+        "example_excerpt": "Personality Disorders\nPersonality disorders are associated with ways of thinking and feeling about o...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"mental\", \"disorders\", and 3 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 07:48:53",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 07:48:53",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 4,
+        "clinical_relevance": 4,
+        "consistency": 4,
+        "diagnostic_justification": 5,
+        "empathy": 5
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist addressed most of the DSM-5 Level1 Cross-Cutting Symptom Measure domains, but with some minor omissions and superficial coverage in a few areas. Specifically, the therapist thoroughly explored domains I (Mood), II (Anger), IV (Anxiety), and IX (Cognitive Function) through direct questions. However, domains such as III (Energy/Activity), V (Somatic Concerns), X (Repetitive Thoughts/Behaviors), XI (Dissociation), XII (Identity and Relationships), and XIII (Substance Use) were either not directly addressed or not probed deeply enough. For example, questions about substance use (items 21-23) were not directly asked, which is a significant omission given the potential impact on treatment and prognosis. Similarly, the domain of repetitive thoughts and behaviors (items 16-17) was not explicitly covered, despite the patient's mention of intrusive thoughts and compulsive behaviors.",
+        "clinical_relevance": "The therapist's questions generally aligned with DSM-5 criteria, but there were instances of slight inaccuracies or vague phrasing. For example, when asking about 'sleeping less than usual but still have a lot of energy' (item 4), the therapist did not precisely capture the DSM-5 criteria for hypomania or mania. Additionally, some questions seemed to conflate multiple symptoms (e.g., anxiety and hypervigilance), which might have led to confusion. However, the therapist demonstrated a good understanding of clinical terminology and mostly adapted questions to fit the patient's responses.",
+        "consistency": "The conversation generally flowed logically, with each question building on previous responses. However, there were minor logical inconsistencies and abrupt transitions. For instance, after discussing auditory hallucinations, the therapist did not follow up with additional questions about the content or frequency of these hallucinations. Similarly, when the patient mentioned somatic symptoms like headaches, the therapist could have explored these symptoms further to understand their impact on daily life. Despite these minor issues, the conversation remained coherent and focused on the patient's symptoms.",
+        "diagnostic_justification": "The therapist provided a clear and well-justified diagnosis of Mood Disorder With Psychotic Features (provisional), with a detailed explanation of the reasoning behind this decision. The therapist explicitly linked the patient's symptoms (e.g., anhedonia, hopelessness, auditory hallucinations) to DSM-5 criteria and considered alternative diagnoses such as Major Depressive Disorder With Psychotic Features and Anxiety Disorder Due to Another Medical Condition. The differential diagnosis was comprehensively discussed, and the therapist outlined a clear plan for further evaluation and treatment.",
+        "empathy": "The therapist consistently demonstrated empathy and a natural conversational style, maintaining an appropriate professional tone throughout the interaction. The therapist acknowledged the patient's distress, validated their experiences, and tailored responses to their emotional state. For example, when the patient expressed feelings of isolation and confusion, the therapist responded with understanding and support, creating a safe and non-judgmental space for the patient to share their concerns."
+      },
+      "overall_comments": "The therapist demonstrated a strong clinical approach, with a clear understanding of the DSM-5 Level1 Cross-Cutting Symptom Measure and its application. While there were minor omissions in DSM-5 dimension coverage and some questions could have been phrased more precisely, the therapist generally provided a comprehensive and empathetic assessment. The diagnostic justification was robust, and the recommended next steps were well-considered. Overall, this was a strong performance, with only minor areas for improvement.",
+      "average_score": 4.4,
+      "diagnosis_accuracy": {
+        "matches_profile": false,
+        "confidence": 2,
+        "explanation": "The diagnosis provided mentions 'Mood Disorder With Psychotic Features (provisional)' and rule-outs 'Major Depressive Disorder With Psychotic Features', 'Anxiety Disorder Due to Another Medical Condition', or early 'Psychosis Not Otherwise Specified'. While it acknowledges psychotic features, it does not explicitly diagnose schizophrenia. The focus seems to be on mood disorders with psychotic features rather than schizophrenia.",
+        "classification": "depression"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "schizophrenia",
+        "classified_as": "depression",
+        "match": false,
+        "confidence": 2
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 2.5838122367858887
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.5191878987863119,
+        "local_coherence": 0.5445474340721591,
+        "window_coherence": 0.5660864425609796
+      },
+      "readability": {
+        "flesch_kincaid_grade": 9.82,
+        "gunning_fog_index": 4.72,
+        "flesch_reading_ease": 45.22
+      },
+      "diversity": {
+        "distinct_1": 0.5428824049513705,
+        "distinct_2": 0.9212389380530973,
+        "distinct_3": 0.975199291408326
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "schizophrenia",
+      "predicted": "You\u2019ve described a deeply challenging time, marked by overwhelming sadness, confusion about your experiences, and a sense of being \u201cstuck\u201d between doubt and distress. Your feelings of isolation, the unsettling voice you heard, and the persistent worry about your health reflect a vulnerable moment where your mental and physical well-being seem intertwined in ways that feel unmanageable. You\u2019re clearly trying hard to make sense of what\u2019s happening, but the uncertainty and the intrusive thoughts are taking a toll. It must feel exhausting to navigate these symptoms alone, and I want to acknowledge how valid your struggles are.  \n\n**Diagnosis:** <med>Mood Disorder With Psychotic Features (provisional)</med> with rule-out of <med>Major Depressive Disorder With Psychotic Features</med>, <med>Anxiety Disorder Due to Another Medical Condition</med>, or early <med>Psychosis Not Otherwise Specified</med>.  \n\n**Reasoning:**  \nThe patient\u2019s responses highlight a cluster of <sym>depressive symptoms</sym> (<sym>anhedonia</sym>, hopelessness, psychomotor changes), alongside <sym>psychotic features</sym> (auditory hallucinations, paranoia about external threats and medical evaluations). The <quote>\u201cvoice\u201d instructing the patient to leave without keys</quote> constitutes a hallucination, while uncertainty about the window incident reflects impaired reality testing. <sym>Psychomotor agitation</sym> (uncompleted projects, restless behaviors) and <sym>hypervigilance</sym> (Q7\u2013Q8) suggest comorbid anxiety or a mixed mood state. The lack of clear trauma history makes <med>PTSD</med> less likely. Somatic symptoms (headaches, aches) may relate to anxiety/depression rather than primary somatic symptom disorder, given their co-occurrence with mood and psychotic symptoms.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Immediate Psychiatric Evaluation**: Conduct a structured interview to clarify psychotic symptoms (e.g., hallucination content/duration) and assess for <med>Major Depressive Disorder With Psychotic Features</med> or early-phase <med>psychosis</med>.  \n2. **Comprehensive Medical Workup**: Rule out organic causes (e.g., thyroid dysfunction, vitamin deficiencies) for somatic and mood symptoms.  \n3. **Safety Assessment**: Evaluate for risk of impulsive decisions (e.g., acting on voices) and ensure a safe environment.  \n4. **Collaborative Care**: Involve primary care provider to reassess somatic complaints and address communication gaps around test results (Q10).  \n5. **Short-term Symptom Management**: Initiate SSRIs (e.g., escitalopram) for mood symptoms and consider low-dose antipsychotics if hallucinations persist.  \n6. **Cognitive-Behavioral Therapy (CBT) or CBTp (for psychosis): Address maladaptive thought patterns and grounding techniques for anxiety/paranoia.  \n7. **Monitor for Mania/Hypomania**: Explore whether energy shifts (Q5\u2013Q6) reflect depression-induced agitation or a bipolar spectrum issue.  \n\nEnsure all recommendations align with the patient\u2019s expressed readiness to engage and prioritize trust-building due to their stated distrust of medical reassurance.",
+      "matches": false,
+      "classification": "depression",
+      "classification_confidence": 2
+    }
+  }
+}

@@ -1,0 +1,297 @@
+{
+  "timestamp": "2025-05-01T00:52:44.901015",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm Dr. Thompson, a mental health professional. Today I'll be using the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult to better understand how you've been feeling over the past two weeks. This will help me tailor your care. Everything we discuss is confidential. I'll ask 23 questions one at a time, and I want you to describe how much or how often you've experienced each problem. Are you ready to begin?"
+    },
+    {
+      "role": "patient",
+      "content": "Okay... sure. I guess so. But I'm a bit nervous about this."
+    },
+    {
+      "role": "assistant",
+      "content": "1. Little interest or pleasure in doing things?"
+    },
+    {
+      "role": "patient",
+      "content": "Hmm... Well, I still find some things fun, but not like before. It's harder to enjoy stuff like hanging out with friends or hobbies. Maybe a few days a week, I feel flat or unmotivated."
+    },
+    {
+      "role": "assistant",
+      "content": "2. Feeling down, depressed, or hopeless?"
+    },
+    {
+      "role": "patient",
+      "content": "I don't feel hopeless, but there are days I feel low. Maybe a couple times a week\u2014I just feel... stuck, I guess."
+    },
+    {
+      "role": "assistant",
+      "content": "3. Feeling more irritated, grouchy, or angry than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "Yeah, I get snappish sometimes, especially when my rituals get interrupted. Not rage, but short-tempered. Maybe a few days a week."
+    },
+    {
+      "role": "assistant",
+      "content": "4. Sleeping less than usual, but still have a lot of energy?"
+    },
+    {
+      "role": "patient",
+      "content": "No, actually. I actually feel drained a lot, and I've been sleeping more lately. Wait, maybe this is the opposite?"
+    },
+    {
+      "role": "assistant",
+      "content": "5. Starting lots more projects than usual or doing more risky things than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "Heh, no. I'm too stuck on... on my thoughts. I don't take risks, actually."
+    },
+    {
+      "role": "assistant",
+      "content": "6. Feeling nervous, anxious, frightened, worried, or on edge?"
+    },
+    {
+      "role": "patient",
+      "content": "This one's bad. I'm always on edge. It's like my mind can't settle. Almost every day, I feel anxious. It's exhausting."
+    },
+    {
+      "role": "assistant",
+      "content": "7. Feeling panic or being frightened?"
+    },
+    {
+      "role": "patient",
+      "content": "Not panic attacks, but I get really scared if I skip my routines. Like, if I don't wash my hands after touching something, I'll get this overwhelming fear something bad will happen."
+    },
+    {
+      "role": "assistant",
+      "content": "8. Avoiding situations that make you anxious?"
+    },
+    {
+      "role": "patient",
+      "content": "Yeah, I avoid places where I can't control the environment. Supermarkets, public restrooms... places where I might feel out of control."
+    },
+    {
+      "role": "assistant",
+      "content": "9. Unexplained aches and pains (e.g., head, back, joints, abdomen, legs)?"
+    },
+    {
+      "role": "patient",
+      "content": "Sometimes my hands are sore from washing so much. Or my back hurts from sitting doing rituals. But I didn't think that's what you meant..."
+    },
+    {
+      "role": "assistant",
+      "content": "10. Feeling that your illnesses are not being taken seriously enough?"
+    },
+    {
+      "role": "patient",
+      "content": "Not really. I've kept this to myself mostly. But when I've mentioned it, people tell me to just 'stop worrying'... which doesn't help."
+    },
+    {
+      "role": "assistant",
+      "content": "11. Thoughts of actually hurting yourself?"
+    },
+    {
+      "role": "patient",
+      "content": "Not really. I'm not suicidal, but... sometimes I feel trapped. It's more like I'd rather not exist because this is so exhausting, but I wouldn't act on that."
+    },
+    {
+      "role": "assistant",
+      "content": "12. Hearing things other people couldn't hear?"
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, let's start by going through the user's responses again to make sure I didn't miss anything. The user is asking for a structured clinical assessment based on the provided questionnaire answers. The key here is to follow the strict format they outlined.\n\nFirst, the compassionate summary needs to acknowledge the patient's struggles without jargon. I should highlight their daily challenges, like the rituals and anxiety, and show empathy for their frustration and exhaustion.\n\nNext, the diagnosis section. The symptoms point to OCD primarily. The compulsions (rituals, hand-washing), obsessions (fear of harm when rituals aren't done), and the physical symptoms linked to compulsions all fit OCD. The anxiety and anhedonia might be part of OCD or comorbid GAD, but OCD is central here. I need to make sure not to jump to Somatic Symptom Disorder since the physical pain is a result of compulsions, not somatic symptoms without a medical explanation.\n\nFor the reasoning, I should tie each symptom to OCD criteria. Obsessions (fear of harm if rituals aren't done), compulsions (rituals like hand-washing), and interference with functioning (avoiding public places, physical pain). The DSM-5 criteria for OCD require both obsessions and compulsions, which are clearly present here.\n\nTreatment steps should include CBT/ERP for OCD, possibly SSRIs, and addressing the social invalidation. Also, ruling out other issues like depression or GAD, but OCD is primary.\n\nI need to use the tags properly. Wrap medical terms like OCD, GAD in <med>, symptoms like anhedonia, compulsions in <sym>, and quotes from answers in <quote>.\n\nWait, the user mentioned the OCD section in their references. The compulsions and the avoidance of places not under control fit OCD. The anxiety is linked to the rituals, so GAD might be secondary. The existential feelings of being trapped aren't primary to OCD but are a significant comorbidity. Need to mention that in the reasoning.\n\nMake sure the diagnosis is OCD first, then note comorbid GAD and mild depressive symptoms. Avoid Somatic Symptom Disorder because the physical pain is from compulsions, which are explained by the rituals.\n\nCheck all points in the answers:  \n- Anhedonia (Q2, Q12)  \n- Compulsions (Q4, Q7, Q9)  \n- Anxiety linked to rituals (Q6, Q7)  \n- Avoidance (Q8, Q9)  \n- Physical symptoms from rituals (Q9, Q10)  \n- Existential distress (Q12)  \n\nDiagnosis should be **Obsessive-Compulsive Disorder (OCD)**. Comorbid **Generalized Anxiety Disorder (GAD)** and mild **depressive symptoms** are possible but secondary.  \n\nTreatment steps: ERP, medication, psychoeducation for support networks, monitoring for depression, and ruling out other issues.  \n\nNow structure everything into the required sections with the tags. Make sure to follow the exact headings and formatting. No markdown, just plain text with the tags where specified.\n</think>\n\n<sym>Feeling trapped by overwhelming rituals, persistent anxiety, and physical strain from compulsions</sym>\u2014this assessment highlights a life disrupted by relentless worry, rigid routines, and the exhausting cycle of trying to \"stay in control.\" The emotional toll of having these experiences dismissed (<quote>\u201cpeople tell me to just 'stop worrying\u2019\"</quote>) underscores a deep need for validation and support to reduce isolation.  \n\n**Diagnosis:** Obsessive-Compulsive Disorder (OCD) with comorbid <med>Generalized Anxiety Disorder (GAD)</med> and mild depressive symptoms.  \n\n**Reasoning:**  \n- **OCD criteria are met:**  \n  1. **Obsessions** (e.g., fear of harm if rituals are interrupted) and **compulsions** (e.g., excessive hand-washing, repetitive rituals). These are time-consuming (<quote>\"starting lots more projects\"</quote> is denied, but compulsions themselves dominate daily life.  \n  2. **Significant distress/impairment**: Avoidance of public spaces (<sym>avoiding supermarkets/restrooms</sym>), physical pain (<sym>sore hands, back pain</sym> from compulsions.  \n  3. **Anxiety escalation when rituals are disrupted** aligns with OCD\u2019s hallmark anxiety-reduction motivation for compulsions.  \n\n- **Comorbidities**:  \n  - **GAD** via persistent <sym>daily nervousness</sym> and avoidance behaviors.  \n  - Mild depressive symptoms (anhedonia, low energy) but no <sym>hopelessness</sym>, reducing risk of major depression.  \n\n- **Not Somatic Symptom Disorder**: Somatic symptoms (<sym>hand pain, back pain</sym> are secondary to compulsions, not misattributed to physical illness.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Cognitive Behavioral Therapy (CBT) with Exposure and Response Prevention (ERP):** Target compulsions and ritual-related anxiety.  \n2. **SSRI medication trial (e.g., fluoxetine, sertraline):** First-line treatment for OCD to reduce compulsion severity.  \n3. **Psychoeducation for the patient and support network:** Address unhelpful dismissals (<quote>\u201cjust stop worrying\"</quote>) to reduce invalidation.  \n4. **Monitor for co-occurring conditions:** Assess GAD severity and depressive symptoms for possible adjunct treatments (e.g., mindfulness for anxiety, SSRIs for mood).  \n5. **Physical health evaluation for ritual-related injury:** Assess hand/back pain to rule out musculoskeletal complications.  \n6. **Support groups for OCD:** Connect with peers to reduce isolation and reinforce coping strategies.  \n\nThis presentsaiton reflects <med>Obsessive-Compulsive Disorder</med> as the primary concern, requiring urgent intervention to break the compulsive cycle and restore functioning.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Obsessive-Compulsive-Disorder.pdf",
+            "score": 0.6986,
+            "highlight": "Obsessive Compulsive    and Related Disorders The upcoming fifth edition of the Diagnostic and Statistical Manual of Mental Disorders (DSM-5) will in - clude a new chapter on Obsessive-Compulsive and Related Disorders to reflect the increasing evidence  of these disorders\u2019 relatedness to one another and distinction from other anxiety disorders, as well as  to help clinicians better identify and treat individuals suffering from these disorders.",
+            "excerpt": "  Obsessive Compulsive \n  and Related Disorders\nThe upcoming fifth edition of the Diagnostic and Sta...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"obsessive\", \"related\", \"other\", and 6 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.6735,
+            "highlight": "Characteristics of Somatic Symptom Disorder Somatic symptom disorder (SSD) is characterized by somatic symptoms that are either very distressing or result in significant disruption of functioning, as well as excessive and disproportionate thoughts, feelings and behaviors regarding those symptoms.",
+            "excerpt": "   Somatic Symptom Disorder\nThe upcoming fifth edition of the Diagnostic and Statistical Manual of M...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"symptom\", \"significant\", and 8 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Sleep-Wake-Disorders.pdf",
+            "score": 0.6509,
+            "highlight": "Sleep-Wake Disorders In the fifth edition of the Diagnostic and Statistical Manual of Mental Disorders  (DSM-5), sleep-wake  disorders encompass 10 conditions manifested by disturbed sleep and causing distress as well as im - pairment in daytime functioning.",
+            "excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"mental\", \"disorders\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Conduct-Disorder.pdf",
+            "score": 0.6345,
+            "highlight": "\u00a9 2013 American Psychiatric Association  2 \u2022 Somatic Symptom Disorder Order DSM-5 and DSM-5 Collection    at www.appi.org.",
+            "excerpt": "and research of mental illnesses, including substance use disorders. Visit the APA at www.psychiatry...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"symptom\", \"somatic\", \"disorder\", and 1 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Paraphilic-Disorders.pdf",
+            "score": 0.6305,
+            "highlight": "The first concerns transvestic disorder, which identifies people who are sexually aroused by dressing asthe opposite sex but who experience significant distress or impairment in their lives\u2014socially or occu - pationally\u2014because of their behavior.",
+            "excerpt": "ism Disorder in DSM-5).\nIt is a subtle but crucial difference that makes it possible for an individu...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"significant\", \"first\", and 6 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, I need to analyze this patient's responses to the DSM-5 self-assessment questions. Let's start by reading through each question and answer carefully. \n\nFirst, the patient's readiness: They agreed to start but were nervous. That's an important point for rapport building.\n\nLooking at Q2 about little interest or pleasure. The patient says they still find some things fun but not like before. So there's a noticeable decrease, which aligns with anhedonia, a symptom of depression or other disorders. The frequency is a few days a week, which is significant but not constant.\n\nQ3 on feeling down or hopeless: They don't feel hopeless, but they have low moods a couple times a week, describing it as \"stuck.\" That still indicates some depressive symptoms but without hopelessness, which is a key point for suicide risk, but they mentioned that in Q12.\n\nQ4 about energy despite sleep: The patient sleeps more and feels drained, so this is more like hypersomnia, which is a depressive symptom. The answer here is opposite of the question's focus, so that's a key point.\n\nQ5: No increase in projects or risk-taking. That rules out hyperactivity, maybe bipolar, but the main issue seems elsewhere.\n\nQ6: Anxiety is high, every day, described as nervous, anxious, on edge. High frequency and intensity here suggest significant anxiety.\n\nQ7: Panic or fear, not panic attacks, but specific to rituals being interrupted. That sounds like OCD-type fears related to compulsions (like washing hands). The avoidance in Q9 supports this\u2014avoiding places they can't control, which is common in OCD or anxiety disorders.\n\nQ8: Avoidance of anxiety-provoking situations, which is part of anxiety disorders. OCD often includes avoidance as part of compulsions.\n\nQ9: Physical symptoms like hand soreness from washing and back pain from rituals. These are somatic symptoms secondary to compulsions.\n\nQ10: They don't feel their issues are taken seriously, which is a social support/risk factor, as others dismiss them. This can exacerbate their condition.\n\nQ12: Thoughts of not existing but not suicidal. They feel trapped, which is a form of distress. Non-suicidal but important to note their feelings of existential entrapment.\n\nMain symptoms: Anhedonia, low mood, irritability, increased anxiety, somatic symptoms from rituals, compulsive behaviors (hand-washing, rituals), avoidance behaviors, and secondary physical pain. The compulsions and avoidance point to OCD. The anxiety and low mood could be comorbid with anxiety disorders or depression, but OCD seems primary here.\n\nPatterns: Responses often mention rituals (interrupted rituals lead to fear), which is a key OCD indicator. The somatic symptoms like hand soreness are from compulsions. The anxiety is both general and situation-specific (rituals not done). The responses about others not taking it seriously show lack of understanding from others, which can worsen symptoms.\n\nClinical significance: OCD is the primary concern here. The compulsions (washing, rituals), avoidance due to anxiety, and the anxiety itself. The anhedonia and low energy might be part of the OCD or comorbid depression. The lack of hopelessness but still feeling trapped is important. The physical symptoms from compulsions are a physical manifestation of the mental disorder.\n\nRisk factors: The patient mentions feeling trapped and existential distress. While no suicidal intent, the chronic nature of OCD can lead to further distress. The lack of social support (others telling them to stop worrying) is a negative factor.\n\nNeed to check if they meet OCD criteria: Obsessions (fear of something bad happening if rituals not done) and compulsions (hand-washing, rituals). The avoidance behaviors like not going places without control. The time spent on rituals would contribute to distress and impairment. \n\nAnxiety is a big part here too\u2014GAD? But the situational nature (rituals) points more to OCD.\n\nDepression symptoms are present but mild, not severe enough unless combined with OCD. \n\nPotential areas: OCD, GAD, possible major depressive episode (but not sure if duration meets criteria, but since it's a two-week assessment, maybe). Need to see more. The main thing is OCD.\n\nI need to structure the answer according to the user's instructions: main symptoms, patterns, potential areas, risk factors, and a summary.\n\nMake sure to use clinical terms: compulsions, obsessions, anhedonia, avoidance behaviors, etc. Also note the physical symptoms from compulsions. The existential distress and feelings of entrapment are important for clinical summary.\n\nAvoid speculation, just list what's evident. For example, the compulsions and avoidance clearly point to OCD. The high anxiety every day, the rituals causing physical pain. The social invalidation (others telling them to stop worrying) is a risk factor.\n\nSo the summary should mention OCD as primary, comorbid anxiety, and depressive symptoms, note the physical effects, and the lack of support. The risk factors include the existential distress and lack of social support, but no suicidal intent.\n</think>\n\n**Clinical Observation Summary**  \n\n**1. Main Symptoms and Concerns:**  \n- **Anhedonia** (reduced pleasure in activities) and **low energy/motivation** (Q2, Q4).  \n- **Persistent anxiety** (daily nervousness, feeling \"on edge,\" and fear linked to ritual interruptions; Q6, Q7, Q8).  \n- **Avoidant behaviors** (e.g., avoiding public spaces to maintain control; Q8, Q9).  \n- **Compulsive rituals** (hand-washing, unmentioned repetitive behaviors; implied by Q4, Q7, Q9, Q10).  \n- **Physical symptoms secondary to compulsions** (hand soreness, back pain from rituals; Q9, Q10.  \n- **Existential distress** (\"trapped,\" \"exhaustion,\" and existential fatigue; Q12, Q11).  \n\n**2. Patterns in Responses:**  \n- **OCD spectrum indicators**: Preoccupation with rituals, fear of harm when rituals are disrupted, and somatic symptoms directly tied to compulsions (Q4, Q7, Q9, Q10).  \n- **Anxiety as a trigger**: Anxiety peaks when routines are disrupted, suggesting maladaptive coping patterns (Q6, Q7, Q8).  \n- **Underreporting of severity**: Subtle hints of functional impairment (e.g., physical pain, avoidance) without overt acknowledgment of symptom impact (Q9, Q10, Q11).  \n\n**3. Potential Clinical Significance:**  \n- **OCD** (compulsions/rituals, obsessions about harm, avoidance behaviors).  \n- **Generalized Anxiety Disorder (GAD)** (persistent, excessive anxiety; Q6, Q7, Q8).  \n- **Possible mild depressive symptoms** (anhedonia, low energy, low mood; Q2, Q3, Q4).  \n- **Psychosocial stressors** (invalidation by others, perceived lack of support; Q11).  \n\n**4. Risk Factors/Warning Signs:**  \n- **Self-reported existential distress** (\"would rather not exist\" due to exhaustion; Q12).  \n- **Functional impairment** (avoidance of social/occupational settings; Q8, Q9).  \n- **Secondary physical symptoms** (musculoskeletal pain from rituals; Q9, Q10.  \n- **Lack of perceived support** (others dismiss symptoms; Q11.  \n\n**5. Clinical Summary:**  \nThe patient presents with prominent **obsessive-compulsive symptoms** (e.g., compulsive washing, ritual-driven behaviors, anxiety about ritual interruption) and **co-occurring anxiety** (persistent restlessness, avoidance behaviors). Anhedonia, low energy, and mild depressive symptoms suggest comorbid **mixed mood dysregulation**, though hopelessness is not endorsed. Somatic complaints (e.g., hand soreness, back pain) align with physical manifestations of compulsions. The patient reports **existential distress** (\"trapped\") and **social invalidation** (Q11, Q12), which may worsen symptom persistence. Risk of harm is low, but impairment in social/occupational functioning is notable. **Primary concerns include OCD with comorbid GAD and mild anhedonia, requiring further evaluation for OCD severity, functional impact, and co-occurring anxiety/depressive symptoms.** Clinical focus should address ritual-driven compulsions, anxiety management, and validation of experiences to mitigate invalidation effects.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6576
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "<sym>Feeling trapped by overwhelming rituals, persistent anxiety, and physical strain from compulsions</sym>\u2014this assessment highlights a life disrupted by relentless worry, rigid routines, and the exhausting cycle of trying to \"stay in control.\" The emotional toll of having these experiences dismissed (<quote>\u201cpeople tell me to just 'stop worrying\u2019\"</quote>) underscores a deep need for validation and support to reduce isolation.  \n\n**Diagnosis:** Obsessive-Compulsive Disorder (OCD) with comorbid <med>Generalized Anxiety Disorder (GAD)</med> and mild depressive symptoms.  \n\n**Reasoning:**  \n- **OCD criteria are met:**  \n  1. **Obsessions** (e.g., fear of harm if rituals are interrupted) and **compulsions** (e.g., excessive hand-washing, repetitive rituals). These are time-consuming (<quote>\"starting lots more projects\"</quote> is denied, but compulsions themselves dominate daily life.  \n  2. **Significant distress/impairment**: Avoidance of public spaces (<sym>avoiding supermarkets/restrooms</sym>), physical pain (<sym>sore hands, back pain</sym> from compulsions.  \n  3. **Anxiety escalation when rituals are disrupted** aligns with OCD\u2019s hallmark anxiety-reduction motivation for compulsions.  \n\n- **Comorbidities**:  \n  - **GAD** via persistent <sym>daily nervousness</sym> and avoidance behaviors.  \n  - Mild depressive symptoms (anhedonia, low energy) but no <sym>hopelessness</sym>, reducing risk of major depression.  \n\n- **Not Somatic Symptom Disorder**: Somatic symptoms (<sym>hand pain, back pain</sym> are secondary to compulsions, not misattributed to physical illness.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Cognitive Behavioral Therapy (CBT) with Exposure and Response Prevention (ERP):** Target compulsions and ritual-related anxiety.  \n2. **SSRI medication trial (e.g., fluoxetine, sertraline):** First-line treatment for OCD to reduce compulsion severity.  \n3. **Psychoeducation for the patient and support network:** Address unhelpful dismissals (<quote>\u201cjust stop worrying\"</quote>) to reduce invalidation.  \n4. **Monitor for co-occurring conditions:** Assess GAD severity and depressive symptoms for possible adjunct treatments (e.g., mindfulness for anxiety, SSRIs for mood).  \n5. **Physical health evaluation for ritual-related injury:** Assess hand/back pain to rule out musculoskeletal complications.  \n6. **Support groups for OCD:** Connect with peers to reduce isolation and reinforce coping strategies.  \n\nThis presentsaiton reflects <med>Obsessive-Compulsive Disorder</med> as the primary concern, requiring urgent intervention to break the compulsive cycle and restore functioning.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "ocd",
+    "question_count": 23,
+    "duration": 22381.35388112068,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 5.190004110336304,
+    "diagnosis_generation_time": 8.498533248901367,
+    "rag_evaluation_time": 9.059906005859375e-06,
+    "total_time": 13.688550233840942
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Obsessive-Compulsive-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6986,
+        "average_score": 0.6986,
+        "example_excerpt": "  Obsessive Compulsive \n  and Related Disorders\nThe upcoming fifth edition of the Diagnostic and Sta...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"obsessive\", \"related\", \"other\", and 6 more matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6735,
+        "average_score": 0.6735,
+        "example_excerpt": "   Somatic Symptom Disorder\nThe upcoming fifth edition of the Diagnostic and Statistical Manual of M...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"symptom\", \"significant\", and 8 more matching aspects of your query."
+      },
+      "APA_DSM-5-Sleep-Wake-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6509,
+        "average_score": 0.6509,
+        "example_excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"mental\", \"disorders\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Conduct-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6345,
+        "average_score": 0.6345,
+        "example_excerpt": "and research of mental illnesses, including substance use disorders. Visit the APA at www.psychiatry...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"symptom\", \"somatic\", \"disorder\", and 1 more matching aspects of your query."
+      },
+      "APA_DSM-5-Paraphilic-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6305,
+        "average_score": 0.6305,
+        "example_excerpt": "ism Disorder in DSM-5).\nIt is a subtle but crucial difference that makes it possible for an individu...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"significant\", \"first\", and 6 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 08:06:47",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 08:06:47",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 4,
+        "clinical_relevance": 4,
+        "consistency": 5,
+        "diagnostic_justification": 5,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist addressed most of the 23 questions from the DSM-5 Level1 Cross-Cutting Symptom Measure\u2014Adult. However, some questions were not explicitly asked or fully explored, such as questions related to psychotic symptoms (questions 12 and 13), memory problems (question 15), and repetitive thoughts/behaviors (questions 16 and 17). While the therapist covered the primary domains, minor omissions exist.",
+        "clinical_relevance": "The therapist's questions generally align with DSM-5 criteria, but there were slight inaccuracies or vague phrasing in some instances. For example, when asking about sleep, the therapist could have been more precise about distinguishing between sleep quality and quantity. However, overall, the questions were clinically relevant and targeted the right symptoms.",
+        "consistency": "The dialogue flows logically, with each question naturally following from previous responses. The therapist effectively used the patient's answers to guide the conversation and explore symptoms in greater depth. There were no abrupt topic changes or non-sequiturs.",
+        "diagnostic_justification": "The diagnoses of Obsessive-Compulsive Disorder (OCD) with comorbid Generalized Anxiety Disorder (GAD) and mild depressive symptoms clearly align with the DSM-5 responses. The reasoning behind each diagnostic decision is explicitly stated and clinically sound, citing specific symptoms mentioned by the patient.",
+        "empathy": "The therapist responses mostly show empathy and a natural conversational style, but there were minor moments that seemed slightly robotic or impersonal. For example, when discussing suicidal thoughts, the therapist could have offered more emotional validation. Overall, the tone was professional and supportive."
+      },
+      "overall_comments": "The conversation demonstrates a strong clinical assessment with a focus on DSM-5 criteria. While minor omissions exist in DSM-5 dimension coverage, the therapist effectively explored most domains and provided a clear diagnostic justification. The conversation could benefit from more explicit exploration of certain domains like psychotic symptoms and repetitive thoughts/behaviors. Overall, the assessment was thorough and professionally conducted.",
+      "average_score": 4.4,
+      "diagnosis_accuracy": {
+        "matches_profile": true,
+        "confidence": 5,
+        "explanation": "The diagnosis explicitly identifies Obsessive-Compulsive Disorder (OCD) as the primary condition, with clear mention of obsessions, compulsions, significant distress, and impairment. The symptoms described, such as overwhelming rituals, persistent anxiety, and physical strain from compulsions, align with the expected profile of OCD.",
+        "classification": "ocd"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "ocd",
+        "classified_as": "ocd",
+        "match": true,
+        "confidence": 5
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 4.110080003738403
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.5348735471239652,
+        "local_coherence": 0.5782859698127631,
+        "window_coherence": 0.5853650538651513
+      },
+      "readability": {
+        "flesch_kincaid_grade": 8.34,
+        "gunning_fog_index": 4.13,
+        "flesch_reading_ease": 53.23
+      },
+      "diversity": {
+        "distinct_1": 0.5270684371807968,
+        "distinct_2": 0.9120654396728016,
+        "distinct_3": 0.9723643807574207
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "ocd",
+      "predicted": "<sym>Feeling trapped by overwhelming rituals, persistent anxiety, and physical strain from compulsions</sym>\u2014this assessment highlights a life disrupted by relentless worry, rigid routines, and the exhausting cycle of trying to \"stay in control.\" The emotional toll of having these experiences dismissed (<quote>\u201cpeople tell me to just 'stop worrying\u2019\"</quote>) underscores a deep need for validation and support to reduce isolation.  \n\n**Diagnosis:** Obsessive-Compulsive Disorder (OCD) with comorbid <med>Generalized Anxiety Disorder (GAD)</med> and mild depressive symptoms.  \n\n**Reasoning:**  \n- **OCD criteria are met:**  \n  1. **Obsessions** (e.g., fear of harm if rituals are interrupted) and **compulsions** (e.g., excessive hand-washing, repetitive rituals). These are time-consuming (<quote>\"starting lots more projects\"</quote> is denied, but compulsions themselves dominate daily life.  \n  2. **Significant distress/impairment**: Avoidance of public spaces (<sym>avoiding supermarkets/restrooms</sym>), physical pain (<sym>sore hands, back pain</sym> from compulsions.  \n  3. **Anxiety escalation when rituals are disrupted** aligns with OCD\u2019s hallmark anxiety-reduction motivation for compulsions.  \n\n- **Comorbidities**:  \n  - **GAD** via persistent <sym>daily nervousness</sym> and avoidance behaviors.  \n  - Mild depressive symptoms (anhedonia, low energy) but no <sym>hopelessness</sym>, reducing risk of major depression.  \n\n- **Not Somatic Symptom Disorder**: Somatic symptoms (<sym>hand pain, back pain</sym> are secondary to compulsions, not misattributed to physical illness.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Cognitive Behavioral Therapy (CBT) with Exposure and Response Prevention (ERP):** Target compulsions and ritual-related anxiety.  \n2. **SSRI medication trial (e.g., fluoxetine, sertraline):** First-line treatment for OCD to reduce compulsion severity.  \n3. **Psychoeducation for the patient and support network:** Address unhelpful dismissals (<quote>\u201cjust stop worrying\"</quote>) to reduce invalidation.  \n4. **Monitor for co-occurring conditions:** Assess GAD severity and depressive symptoms for possible adjunct treatments (e.g., mindfulness for anxiety, SSRIs for mood).  \n5. **Physical health evaluation for ritual-related injury:** Assess hand/back pain to rule out musculoskeletal complications.  \n6. **Support groups for OCD:** Connect with peers to reduce isolation and reinforce coping strategies.  \n\nThis presentsaiton reflects <med>Obsessive-Compulsive Disorder</med> as the primary concern, requiring urgent intervention to break the compulsive cycle and restore functioning.",
+      "matches": true,
+      "classification": "ocd",
+      "classification_confidence": 5
+    }
+  }
+}

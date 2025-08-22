@@ -1,0 +1,201 @@
+{
+  "timestamp": "2025-04-30T02:57:11.573871",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Error communicating with Groq: 503 Server Error: Service Unavailable for url: https://api.groq.com/openai/v1/chat/completions"
+    },
+    {
+      "role": "assistant",
+      "content": "Error communicating with Groq: 503 Server Error: Service Unavailable for url: https://api.groq.com/openai/v1/chat/completions",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Mild-Neurocognitive-Disorder.pdf",
+            "score": 0.6226,
+            "highlight": "and research of mental illnesses, including substance use disorders.",
+            "excerpt": "and research of mental illnesses, including substance use disorders. Visit the APA at www.psychiatry...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"mental\" matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Conduct-Disorder.pdf",
+            "score": 0.6211,
+            "highlight": "and research of mental illnesses, including substance use disorders.",
+            "excerpt": "and research of mental illnesses, including substance use disorders. Visit the APA at www.psychiatry...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"mental\" matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Social-Communication-Disorder.pdf",
+            "score": 0.6093,
+            "highlight": "APA is a national medical specialty society whose more than 3 7,000  physician members specialize in the diagnosis, treat- ment, prevention and research of mental illnesses, including substance use disorders.",
+            "excerpt": "and \npractices. Research shows that communication disorders are amenable to treatment, so identifyin...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"diagnosis\", \"mental\" matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.5989,
+            "highlight": "-5 narrative text description that accompanies the criteria for SSD cautions that it is not appropriate to diagnose individuals with a mental disorder solely because a medical cause can-not be demonstrated.",
+            "excerpt": "-5 narrative text description that accompanies the criteria for SSD cautions that it is not appropri...",
+            "relevance_explanation": "Some relevance: Contains terms \"mental\" that have contextual connection to your query."
+          },
+          {
+            "title": "APA_DSM-5-Internet-Gaming-Disorder.pdf",
+            "score": 0.5973,
+            "highlight": "APA is a national medical specialty society whose more than 37,000  physician members specialize in the diagnosis, treat - ment, prevention and research of mental illnesses, including substance use disorders.",
+            "excerpt": "et, online gambling or social media.\nBy listing Internet Gaming Disorder in DSM\u20195 Section III, A PA ...",
+            "relevance_explanation": "Some relevance: Contains terms \"diagnosis\", \"mental\" that have contextual connection to your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: Error communicating with Groq: 503 Server Error: Service Unavailable for url: https://api.groq.com/openai/v1/chat/completions",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6098
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "Error communicating with Groq: 503 Server Error: Service Unavailable for url: https://api.groq.com/openai/v1/chat/completions",
+  "metadata": {
+    "assistant_model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "patient_model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "patient_profile": "substance_abuse",
+    "question_count": 23,
+    "duration": 4675.7146916389465,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 4.981582880020142,
+    "diagnosis_generation_time": 3.450352907180786,
+    "rag_evaluation_time": 4.887580871582031e-05,
+    "total_time": 8.431994915008545
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Mild-Neurocognitive-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6226,
+        "average_score": 0.6226,
+        "example_excerpt": "and research of mental illnesses, including substance use disorders. Visit the APA at www.psychiatry...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"mental\" matching aspects of your query."
+      },
+      "APA_DSM-5-Conduct-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6211,
+        "average_score": 0.6211,
+        "example_excerpt": "and research of mental illnesses, including substance use disorders. Visit the APA at www.psychiatry...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"mental\" matching aspects of your query."
+      },
+      "APA_DSM-5-Social-Communication-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6093,
+        "average_score": 0.6093,
+        "example_excerpt": "and \npractices. Research shows that communication disorders are amenable to treatment, so identifyin...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"diagnosis\", \"mental\" matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.5989,
+        "average_score": 0.5989,
+        "example_excerpt": "-5 narrative text description that accompanies the criteria for SSD cautions that it is not appropri...",
+        "relevance_explanation": "Some relevance: Contains terms \"mental\" that have contextual connection to your query."
+      },
+      "APA_DSM-5-Internet-Gaming-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.5973,
+        "average_score": 0.5973,
+        "example_excerpt": "et, online gambling or social media.\nBy listing Internet Gaming Disorder in DSM\u20195 Section III, A PA ...",
+        "relevance_explanation": "Some relevance: Contains terms \"diagnosis\", \"mental\" that have contextual connection to your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-04-30 10:13:54",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-04-30 10:13:54",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 1,
+        "clinical_relevance": 1,
+        "consistency": 1,
+        "diagnostic_justification": 1,
+        "empathy": 1
+      },
+      "explanations": {
+        "dsm_coverage": "The conversation completely failed to address any of the DSM-5 Level1 Cross-Cutting Symptom Measure domains. There were no questions asked, and no information was gathered, resulting in a severe lack of coverage of the required dimensions.",
+        "clinical_relevance": "The conversation did not contain any clinically relevant questions or assessments. The therapist failed to engage in any meaningful way, leading to a complete absence of clinical relevance.",
+        "consistency": "The conversation lacked any logical flow or consistency. The therapist did not ask follow-up questions or build on any potential disclosures, resulting in a highly disconnected and random interaction.",
+        "diagnostic_justification": "No diagnosis was provided, and there was no attempt to justify any diagnostic conclusions based on the conversation. The lack of any substantial interaction made it impossible to formulate or justify a diagnosis.",
+        "empathy": "The conversation was completely devoid of empathy or a natural conversational style. The therapist's responses were non-existent, leading to an interaction that was neither empathetic nor professional."
+      },
+      "overall_comments": "The conversation and diagnosis provided were severely lacking. The therapist failed to engage with the patient, ask any questions, or provide any form of assessment or diagnosis. This resulted in a complete inability to evaluate the patient's condition or provide any meaningful clinical insight. Significant improvement is needed across all criteria.",
+      "average_score": 1.0,
+      "diagnosis_accuracy": {
+        "matches_profile": false,
+        "confidence": 5,
+        "explanation": "The diagnosis provided does not mention substance abuse or any related terms. Instead, it appears to be an error message related to a server issue.",
+        "classification": "other"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "substance_abuse",
+        "classified_as": "other",
+        "match": false,
+        "confidence": 5
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 4.059083700180054
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 1.0,
+        "local_coherence": 1.0,
+        "window_coherence": 0.0
+      },
+      "readability": {
+        "flesch_kincaid_grade": 10.66,
+        "gunning_fog_index": 2.84,
+        "flesch_reading_ease": 30.73
+      },
+      "diversity": {
+        "distinct_1": 0.5,
+        "distinct_2": 0.5151515151515151,
+        "distinct_3": 0.53125
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "substance_abuse",
+      "predicted": "Error communicating with Groq: 503 Server Error: Service Unavailable for url: https://api.groq.com/openai/v1/chat/completions",
+      "matches": false,
+      "classification": "other",
+      "classification_confidence": 5
+    }
+  }
+}

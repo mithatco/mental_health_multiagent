@@ -1,0 +1,321 @@
+{
+  "timestamp": "2025-04-30T21:57:32.678746",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm Dr. Lee. Thank you for coming in today. I'd like to conduct a mental health assessment using the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult. This 23-question screening will help us better understand your experiences over the past two weeks. Your answers will guide our conversation and ensure I understand your situation fully. Everything shared here is confidential. I'll start by asking each question one by one, and I encourage you to answer honestly. Are you ready to begin?"
+    },
+    {
+      "role": "patient",
+      "content": "Sure, I guess. I'll do my best."
+    },
+    {
+      "role": "assistant",
+      "content": "Great. First question: Little interest or pleasure in doing things? Please describe how much this has bothered you in the past two weeks."
+    },
+    {
+      "role": "patient",
+      "content": "Hmm, not really. I mean, I still enjoy things... except maybe after I've been drinking. Wait, no, I don't know. Maybe some days I feel kind of numb?"
+    },
+    {
+      "role": "assistant",
+      "content": "Okay. Second question: Feeling down, depressed, or hopeless?"
+    },
+    {
+      "role": "patient",
+      "content": "Not really. I'm usually okay. But... sometimes I feel empty, like I need a drink to feel normal again."
+    },
+    {
+      "role": "assistant",
+      "content": "Third question: Feeling more irritated, grouchy, or angry than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "Maybe. If someone bugs me, I snap quicker, yeah. But it's no different from anyone else's bad days."
+    },
+    {
+      "role": "assistant",
+      "content": "Fourth question: Sleeping less than usual, but still have a lot of energy?"
+    },
+    {
+      "role": "patient",
+      "content": "No, actually... I can't sleep much lately. I stay up late drinking, but I'm usually tired the next day. The energy's gone by morning."
+    },
+    {
+      "role": "assistant",
+      "content": "Fifth question: Starting lots more projects than usual or doing more risky things than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "Risky things? Maybe... I've driven after having a few drinks a couple times. Not a big deal, though. Just... mistakes."
+    },
+    {
+      "role": "assistant",
+      "content": "Sixth question: Feeling nervous, anxious, worried, or on edge?"
+    },
+    {
+      "role": "patient",
+      "content": "Yeah, sometimes. Like, before work? But I take a drink to calm down. Without it, I feel jumpy. But it's manageable most days."
+    },
+    {
+      "role": "assistant",
+      "content": "Seventh question: Feeling panic or being frightened?"
+    },
+    {
+      "role": "patient",
+      "content": "Once last week, actually. I woke up in the middle of the night sweating, heart racing. But that's rare, I think."
+    },
+    {
+      "role": "assistant",
+      "content": "Eighth question: Avoiding situations that make you anxious?"
+    },
+    {
+      "role": "patient",
+      "content": "I guess I avoid stressful events without a drink. Like parties or meetings. But I don't exactly *avoid* life... just adjust how I cope."
+    },
+    {
+      "role": "assistant",
+      "content": "Ninth question: Unexplained aches and pains?"
+    },
+    {
+      "role": "patient",
+      "content": "My head's been sore a lot. Maybe sinus stuff, I don't know. It's been there for weeks."
+    },
+    {
+      "role": "assistant",
+      "content": "Tenth question: Feeling that your illnesses are not being taken seriously enough?"
+    },
+    {
+      "role": "patient",
+      "content": "Not really. Doctors just tell me to rest more. I'm not complaining, though. It's no big deal."
+    },
+    {
+      "role": "assistant",
+      "content": "Eleventh question: Thoughts of actually hurting yourself?"
+    },
+    {
+      "role": "patient",
+      "content": "No, that's... not me. I'd never do that. The panic I had the other night? That's different."
+    },
+    {
+      "role": "assistant",
+      "content": "Twelfth question: Hearing things others couldn't hear, like voices when no one is around?"
+    },
+    {
+      "role": "patient",
+      "content": "No. Never. I'm not crazy. Maybe sometimes I hear music in my head when I'm stressed, but that's it."
+    },
+    {
+      "role": "assistant",
+      "content": "Thirteenth question: Feeling someone could hear your thoughts or you could hear what others think?"
+    },
+    {
+      "role": "patient",
+      "content": "No, nothing like that. I just... get distracted easily sometimes."
+    },
+    {
+      "role": "assistant",
+      "content": "Fourteenth question: Problems with sleep that affected sleep quality overall?"
+    },
+    {
+      "role": "patient",
+      "content": "Yeah, I wake up a lot. Can't fall asleep without a drink, but then I wake up early and can't get back to sleep."
+    },
+    {
+      "role": "assistant",
+      "content": "Fifteenth question: Problems with memory or finding your way home?"
+    },
+    {
+      "role": "patient",
+      "content": "Once I drove past my turn last week. But that's just being tired, right? Not memory issues."
+    },
+    {
+      "role": "assistant",
+      "content": "Sixteenth question: Unpleasant thoughts, urges, or images that repeatedly enter your mind?"
+    },
+    {
+      "role": "patient",
+      "content": "Thoughts about needing a drink? Maybe. I don't see that as a problem. It just... happens."
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, let me start by understanding the user's query. They provided a detailed questionnaire with answers from a patient and want a structured mental health assessment based on DSM-5 criteria. The response needs to follow a strict format with specific sections and tags. \n\nFirst, I need to parse the patient\u2019s answers. The key points are the use of alcohol to cope with anxiety, sleep disturbances, risky behaviors like driving under the influence, and the patient's minimization of their issues. \n\nLooking at the DSM-5 criteria for Alcohol Use Disorder (AUD), the patient's answers align with several symptoms: using alcohol to cope with emotions, recurrent use despite harm (driving), tolerance (needing it to \"feel normal\"), and social/occupational impairment (avoiding events without drinking). They might meet at least 2-3 criteria, but need to count them accurately. \n\nAnxiety is also present, possibly GAD, but the primary issue seems to be the AUD driving the behaviors. The panic attack could be alcohol-induced or comorbid anxiety. The sleep issues are clearly linked to alcohol use, so <med>substance-induced sleep disorder</med> is relevant. \n\nThe patient downplays symptoms (e.g., \"no big deal\"), which is common in addiction. Denial is a key feature of AUD. I need to ensure that the diagnosis is supported by DSM-5 criteria. \n\nThey don't mention trauma, so PTSD isn't indicated. No psychotic symptoms, so that's ruled out. The headaches could be dehydration or withdrawal, but not enough for a separate diagnosis. \n\nNow, structuring the response as per instructions. First paragraph must be compassionate, summarizing their experience. Then the diagnosis section, then reasoning, then next steps. \n\nMake sure to use the tags correctly: medical terms in <med>, symptoms in <sym>, and quotes from the patient. For example, when mentioning \"emotional numbness,\" that's a <sym>symptom</sym>. The diagnosis should be <med>Alcohol Use Disorder (mild to moderate severity)</med>. \n\nCheck each section's requirements: four parts in order, headings with asterisks, proper spacing. Ensure the reasoning explains why AUD is primary, links to anxiety symptoms, and the self-medication aspect. \n\nNext steps should include assessment for AUD, addressing anxiety, sleep hygiene, and risk mitigation. No markdown, just numbered list. \n\nDouble-check that I didn't miss any key points from the questionnaire. The patient's risky driving and emotional numbing are critical for the AUD diagnosis. Also, the sleep disturbance and risky behaviors meet criteria for AUD. \n\nI think that's all. Now, format it properly without any markdown, just the required sections and tags.\n</think>\n\n<sym>Substance Use Concerns</sym> and <sym>emotional numbness</sym> seem to be central to your experience. You described using alcohol to manage stress, cope with <sym>anxiety</sym>, and mask feelings of emptiness, yet you also expressed discomfort with how alcohol disrupts your sleep and affects your judgment. It\u2019s clear you\u2019re struggling to navigate these challenges without adequate support, and your comments like <quote>\u201cI don\u2019t see that as a problem\u201d</quote> highlight a common self-protective stance many face when confronting substance-related struggles. Your insight into wanting to feel <quote>\u201cnormal\u201d</quote> suggests awareness of imbalance, which is a hopeful starting point for care.  \n\n**Diagnosis:** <med>Alcohol Use Disorder (mild to moderate severity)</med> with comorbid <med>Anxiety Disorder</med> (<med>Generalized Anxiety Disorder</med> features) and <med>substance-induced sleep disorder</med>.  \n\n**Reasoning:**  \nThe patient\u2019s pattern of alcohol use aligns with <med>Alcohol Use Disorder</med> criteria:  \n1. **Emotional reliance**: Using alcohol to manage stress/emptiness (DSM-5 criterion: \"use to alleviate psychological distress\").  \n2. **Risky behavior**: Driving under the influence (DSM-5 criterion: \"recurrent use in situations where it is physically hazardous\").  \n3. **Tolerance/dependence**: Reports needing alcohol to \"feel normal\" and disrupted sleep without it (DSM-5 criteria).  \n4. **Impaired functioning**: Avoiding social/occupational situations without alcohol.  \n\nThe <sym>panic episode</sym> and <sym>nervousness</sym> suggest <med>Anxiety Disorder</med>, likely fueling the cycle of self-medication. The sleep <sym>disturbances</sym> and <sym>headaches</sym> are consistent with <med>substance-induced</med> effects. Denial of severity and minimization (e.g., dismissing <quote>\u201dno big deal\u201d</quote>) are hallmark defenses in substance use disorders.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Comprehensive AUD assessment**: Evaluate for <med>Alcohol Use Disorder</med> severity (DSM-5 criteria count) and screen for withdrawal risk.  \n2. **Cognitive-behavioral interventions**: Address maladaptive coping strategies and explore <sym>anxiety</sym> triggers.  \n3. **Sleep hygiene optimization**: Address alcohol\u2019s impact on sleep cycles; recommend a 7-day alcohol abstinence trial to assess baseline mood/sleep.  \n4. **Medical evaluation**: Assess headaches and cardiovascular risks (e.g., blood pressure, liver function tests).  \n5. **Motivational interviewing**: To address ambivalence about reducing/substituting alcohol use.  \n6. **Safe(r) coping strategies**: Teach techniques to manage <sym>nxiety</sym> without substances (e.g., mindfulness, controlled breathing).  \n\nA collaborative approach to reduce harm while validating your efforts to <quote>\u201ddo my best\u201d</quote> will be key to moving forward.  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n  \n  \n\n",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Sleep-Wake-Disorders.pdf",
+            "score": 0.7453,
+            "highlight": "Sleep-Wake Disorders In the fifth edition of the Diagnostic and Statistical Manual of Mental Disorders  (DSM-5), sleep-wake  disorders encompass 10 conditions manifested by disturbed sleep and causing distress as well as im - pairment in daytime functioning.",
+            "excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"mental\", \"disorders\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Substance-Use-Disorder.pdf",
+            "score": 0.6546,
+            "highlight": "Each specific sub - stance (other than caffeine, which cannot be diagnosed as a substance use disorder) is addressed as a separate use disorder (e.g., alcohol use disorder, stimulant use disorder, etc.), but nearly all substances are diagnosed based on the same overarching criteria.",
+            "excerpt": "     Substance-Related and \nAddictive Disorders\nIn the fifth edition of the Diagnostic and Statistic...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"each\", \"which\", \"use\", and 7 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.6494,
+            "highlight": "Negative cognitions and mood represents myriad feelings, from a persistent and distorted sense of  blame of self or others, to estrangement from others or markedly diminished interest in activities, to an inability to remember key aspects of the event.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"interest\", \"mood\", \"key\", and 1 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Internet-Gaming-Disorder.pdf",
+            "score": 0.6068,
+            "highlight": "At this time, the criteria for this condition are limited to Internet gaming and do not  include general use of the Internet, online gambling or social media.",
+            "excerpt": "t online activity results in clinically significant impairment or distress. People with this con -\nd...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"use\", \"criteria\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-ADHD.pdf",
+            "score": 0.6065,
+            "highlight": "s to the Disorder ADHD is characterized by a pattern of behavior, present in multiple settings (e.g., school and home), that can result in performance issues in social, educational, or work settings.",
+            "excerpt": "s to the Disorder\nADHD is characterized by a pattern of behavior, present in multiple settings (e.g....",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"issues\", \"pattern\", \"behavior\", and 5 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, I need to analyze the patient's responses to the questionnaire. Let me start by reading through each question and answer carefully. \n\nFirst, the patient seems a bit hesitant at the start, answering \"Sure, I guess. I'll do my best.\" That might indicate some anxiety or uncertainty about the assessment. \n\nLooking at the first question about lack of interest or pleasure: the patient says not really, but mentions numbness after drinking. That's interesting. Maybe alcohol is affecting their mood? They mention feeling numb some days, which could be a dissociation or emotional numbness linked to substance use.\n\nOn question 3 about feeling down or hopeless, the patient says no, but mentions feeling empty and needing a drink to feel normal. This empty feeling could be part of depression, but the reliance on alcohol to cope is a red flag. The mention of needing a drink to feel normal suggests possible alcohol dependence.\n\nQuestion 4 about irritability: they admit snapping quicker but dismiss it as normal bad days. This might be an underreported symptom, but it's still a concern for possible irritability linked to substance use or stress.\n\nQuestion 5 asks about less sleep but more energy. The patient actually has insomnia but feels tired, which aligns with alcohol's impact on sleep cycles. They mentioned drinking late and being tired, so sleep disruption is likely from alcohol.\n\nQuestion 6: Starting more projects or risky behavior. They mention driving after drinking, which is a clear risk. They downplay it as \"mistakes,\" but that's a significant safety concern, indicating possible impaired judgment.\n\nQuestion 7: Anxiety symptoms. They report feeling nervous but using alcohol to calm down. This suggests using substances to self-medicate anxiety, which is a classic sign of substance use disorder. The mention of \"manageable most days\" might mean they feel in control, but the coping mechanism is harmful.\n\nQuestion 8: Panic episodes. They had one panic attack, which is a symptom of anxiety. The avoidance of situations without a drink indicates possible anxiety-related avoidance behaviors.\n\nQuestion 9: Avoiding anxiety-inducing situations by using alcohol. They admit to avoiding social events without drinking, which shows a pattern of using substances to cope, reinforcing dependency.\n\nQuestion 10: Physical symptoms like headaches. They dismiss it as sinus issues, but chronic headaches could be due to alcohol withdrawal or dehydration, which is common in heavy drinkers.\n\nQuestion 12: Thoughts of self-harm: denies it, so that's a positive point. The panic attack is separate, but no self-harm intent is good.\n\nQuestion 13 and 14: No psychosis, so that's ruled out. The patient is aware of not having hallucinations, so probably not psychotic symptoms.\n\nSleep problems in Q15: They can't fall asleep without a drink, leading to fragmented sleep. This is a classic sign of substance-induced sleep disorder and dependence.\n\nQ16: Memory issues? They had a navigational mistake, but they dismiss it as tiredness. Could be early cognitive effects of substance use, but not clear yet.\n\nQ17: Intrusive thoughts about needing a drink. They downplay this as not a problem, but compulsive thoughts about drinking are a key feature of addiction.\n\nPutting this together, the main symptoms are emotional numbing, anxiety, risky behavior (driving under influence), sleep disruption, and clear signs of alcohol dependence. The patient uses alcohol to cope with anxiety and emotional issues, leading to a cycle of dependence. The denial of the severity (calling it \"no big deal\" or \"mistakes\") is a defense mechanism, common in substance use disorders. \n\nPatterns: Using alcohol to manage emotions (anxiety, feeling empty), downplaying the impact, and developing tolerance or dependence. The sleep issues and physical symptoms (headaches) are likely related to alcohol's effects.\n\nClinical significance areas would include possible alcohol use disorder, anxiety disorder, and related sleep disorder. The risky driving is a clear danger. The patient might be self-medicating anxiety with alcohol, leading to a worsening cycle.\n\nRisk factors: The driving under the influence is a significant risk, potential for increased dependence, and possible escalation of risky behaviors. The panic attack and avoidance behaviors suggest anxiety that's not effectively managed, contributing to substance use. The physical symptoms like headaches might indicate withdrawal or overuse.\n\nNeed to note the patient's minimization of symptoms, which is common in addiction. They downplay their drinking's impact, which is a red flag. The emotional numbness and using alcohol to feel \"normal\" points to possible dependency and emotional dysregulation.\n\nAlso, the avoidance of social situations without drinking shows that the substance use is affecting their functioning. The DSM-5 criteria for substance use disorder include things like using in larger amounts, continued use despite problems, spending a lot of time, craving, so the patient's use to cope with stress and the compulsive thoughts about drinking (Q17) are key indicators.\n\nAnxiety disorder could be comorbid, as they use alcohol to self-medicate anxiety, but the primary issue might be the substance use. Need to assess for AUD and possible generalized anxiety disorder.\n\nThe panic attack and episodes of numbness might also relate to the alcohol's effects on mood and the stress of dependency. The headaches could be due to dehydration from alcohol or withdrawal symptoms.\n\nSo the main concerns are alcohol use disorder with associated anxiety and sleep disturbances, risky behaviors, and possible physical health impacts. The patient's minimization of symptoms is a significant risk factor for under-treatment. The next steps would involve a thorough substance use assessment, possibly screening for anxiety disorders, and addressing the risky behaviors. They might need interventions for AUD and education on the risks.\n</think>\n\n### Clinical Observation Summary  \n\n#### 1. **Main Symptoms and Concerns**:  \n- **Alcohol Use-Related Issues**:  \n  - Use of alcohol to self-medicate anxiety (\"drinking to calm down\"), emotional numbness (\"feel normal again\"), and manage stress.  \n  - Risky behaviors (e.g., driving under the influence, dismissed as \u201cmistakes\u201d).  \n  - Tolerance/dependence patterns (e.g., relying on alcohol for sleep, increased drinking to cope with emptiness).  \n- **Anxiety and Emotional Dysregulation**:  \n  - Recurrent anxiety/nervousness before stressors (e.g., work), requiring alcohol to mitigate.  \n  - Self-reported \u201cempty\u201d affect and emotional numbness, suggesting affective flattening or anhedonia.  \n  - Panic episode (nighttime hyperarousal, sweating, tachycardia).  \n- **Sleep Disturbances**:  \n  - Insomnia with nighttime awakening and poor sleep quality (alcohol-mediated).  \n  - Daytime fatigue despite nighttime drinking.  \n- **Physical Symptoms**:  \n  - Recurrent headaches (possibly alcohol-related dehydration/withdrawal).  \n\n#### 2. **Patterns in Responses**:  \n- **Minimization of Severity**: Downplaying symptoms (e.g., \u201cno big deal,\u201d \u201cnot a problem,\u201d \u201cit\u2019s manageable\u201d).  \n- **Substance as Coping Mechanism**: Alcohol use is consistently described as a solution to emotional/physical distress (anxiety, emptiness, sleep).  \n- **Ambivalence**: Acknowledges issues (e.g., \u201cI don\u2019t know,\u201d \u201cmaybe\u201d) but resists labeling behaviors as problematic.  \n- **Denial of Psychosis/Harm**: Strongly denies suicidal ideation, auditory/visual hallucinations, or thought interference (Q12, Q13, Q14).  \n\n#### 3. **Potential Areas of Clinical Significance**:  \n- **Alcohol Use Disorder (AUD)**:  \n  - Criteria met for:  \n    - Recurrent use despite harm (driving under the influence).  \n    - Continued use despite physical/psychological consequences (sleep disruption, emotional numbness).  \n    - Alcohol as a coping mechanism for anxiety, emotional distress, and sleep.  \n- **Anxiety Disorder**:  \n  - Possible Generalized Anxiety Disorder (GAD) with alcohol-mediated self-medication.  \n  - Panic Disorder (isolated panic attack, but may be alcohol-related or stress-induced.  \n- **Sleep Disturbance**: Likely alcohol-induced sleep disorder (disrupted sleep architecture, dependence on alcohol to initiate sleep).  \n- **Psychosocial Risk Factors**:  \n  - Impaired judgment (risky driving).  \n  - Social withdrawal/avoidance (e.g., avoiding events without alcohol.  \n\n#### 4. **Risk Factors/Warning Signs**:  \n- **Substance-Related Risks**:  \n  - Uncontrolled drinking escalating to hazardous behaviors (e.g., driving impairment).  \n  - Tolerance (needing alcohol to \"feel normal\" suggests dependence.  \n- **Physical Health Risks**: Chronic headaches (dehydration/toxicity), potential liver/organ damage.  \n- **Psychological Risks**: Emotional flattening/anhedonia (may signal comorbid depression masked by substance use.  \n\n#### 5. **Summary (Clinical Terminology):  \nThe patient demonstrates **prolonged alcohol use with maladaptive coping**, likely meeting criteria for **Alcohol Use Disorder (AUD) with associated anxiolytic and mood-modulating misuse**. Symptoms include:  \n- **Emotional dysregulation** (anhedonia, emotional numbness, irritability).  \n- **Anxiety symptoms** (self-soothing via alcohol, avoidance of stressors without substance.  \n- **Repetitive risky behavior** (driving under influence, dismissed as trivial).  \n- **Sleep disturbance** consistent with **substance-induced sleep disruption**.  \n\n**Notable Red Flags**:  \n- Uncontrolled alcohol dependence with denial/minimization of severity.  \n- Presence of **panic episodes** and **physical symptoms** (headaches) unexplained by other etiologies.  \n- **Functional impairment** in social/occupational domains (e.g., avoiding events without alcohol).  \n\n**Recommend",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6525
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "<sym>Substance Use Concerns</sym> and <sym>emotional numbness</sym> seem to be central to your experience. You described using alcohol to manage stress, cope with <sym>anxiety</sym>, and mask feelings of emptiness, yet you also expressed discomfort with how alcohol disrupts your sleep and affects your judgment. It\u2019s clear you\u2019re struggling to navigate these challenges without adequate support, and your comments like <quote>\u201cI don\u2019t see that as a problem\u201d</quote> highlight a common self-protective stance many face when confronting substance-related struggles. Your insight into wanting to feel <quote>\u201cnormal\u201d</quote> suggests awareness of imbalance, which is a hopeful starting point for care.  \n\n**Diagnosis:** <med>Alcohol Use Disorder (mild to moderate severity)</med> with comorbid <med>Anxiety Disorder</med> (<med>Generalized Anxiety Disorder</med> features) and <med>substance-induced sleep disorder</med>.  \n\n**Reasoning:**  \nThe patient\u2019s pattern of alcohol use aligns with <med>Alcohol Use Disorder</med> criteria:  \n1. **Emotional reliance**: Using alcohol to manage stress/emptiness (DSM-5 criterion: \"use to alleviate psychological distress\").  \n2. **Risky behavior**: Driving under the influence (DSM-5 criterion: \"recurrent use in situations where it is physically hazardous\").  \n3. **Tolerance/dependence**: Reports needing alcohol to \"feel normal\" and disrupted sleep without it (DSM-5 criteria).  \n4. **Impaired functioning**: Avoiding social/occupational situations without alcohol.  \n\nThe <sym>panic episode</sym> and <sym>nervousness</sym> suggest <med>Anxiety Disorder</med>, likely fueling the cycle of self-medication. The sleep <sym>disturbances</sym> and <sym>headaches</sym> are consistent with <med>substance-induced</med> effects. Denial of severity and minimization (e.g., dismissing <quote>\u201dno big deal\u201d</quote>) are hallmark defenses in substance use disorders.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Comprehensive AUD assessment**: Evaluate for <med>Alcohol Use Disorder</med> severity (DSM-5 criteria count) and screen for withdrawal risk.  \n2. **Cognitive-behavioral interventions**: Address maladaptive coping strategies and explore <sym>anxiety</sym> triggers.  \n3. **Sleep hygiene optimization**: Address alcohol\u2019s impact on sleep cycles; recommend a 7-day alcohol abstinence trial to assess baseline mood/sleep.  \n4. **Medical evaluation**: Assess headaches and cardiovascular risks (e.g., blood pressure, liver function tests).  \n5. **Motivational interviewing**: To address ambivalence about reducing/substituting alcohol use.  \n6. **Safe(r) coping strategies**: Teach techniques to manage <sym>nxiety</sym> without substances (e.g., mindfulness, controlled breathing).  \n\nA collaborative approach to reduce harm while validating your efforts to <quote>\u201ddo my best\u201d</quote> will be key to moving forward.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "substance_abuse",
+    "question_count": 23,
+    "duration": 11869.102180242538,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 5.615523099899292,
+    "diagnosis_generation_time": 11.429596900939941,
+    "rag_evaluation_time": 1.9073486328125e-05,
+    "total_time": 17.045156002044678
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Sleep-Wake-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7453,
+        "average_score": 0.7453,
+        "example_excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"mental\", \"disorders\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Substance-Use-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6546,
+        "average_score": 0.6546,
+        "example_excerpt": "     Substance-Related and \nAddictive Disorders\nIn the fifth edition of the Diagnostic and Statistic...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"each\", \"which\", \"use\", and 7 more matching aspects of your query."
+      },
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6494,
+        "average_score": 0.6494,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"interest\", \"mood\", \"key\", and 1 more matching aspects of your query."
+      },
+      "APA_DSM-5-Internet-Gaming-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6068,
+        "average_score": 0.6068,
+        "example_excerpt": "t online activity results in clinically significant impairment or distress. People with this con -\nd...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"use\", \"criteria\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-ADHD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6065,
+        "average_score": 0.6065,
+        "example_excerpt": "s to the Disorder\nADHD is characterized by a pattern of behavior, present in multiple settings (e.g....",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"issues\", \"pattern\", \"behavior\", and 5 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 07:59:46",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 07:59:46",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {},
+      "explanations": {},
+      "overall_comments": "Error parsing evaluation results.",
+      "average_score": 0,
+      "diagnosis_accuracy": {
+        "matches_profile": true,
+        "confidence": 4,
+        "explanation": "The diagnosis explicitly mentions 'Alcohol Use Disorder' and 'substance-induced sleep disorder', which align with the expected profile of substance_abuse. The text also highlights the patient's use of alcohol to manage stress, cope with anxiety, and mask feelings of emptiness, indicating a clear substance use issue.",
+        "classification": "substance_abuse"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "substance_abuse",
+        "classified_as": "substance_abuse",
+        "match": true,
+        "confidence": 4
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 4.424779176712036
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.5341803867771652,
+        "local_coherence": 0.5395187081890328,
+        "window_coherence": 0.5688479753336514
+      },
+      "readability": {
+        "flesch_kincaid_grade": 8.91,
+        "gunning_fog_index": 4.58,
+        "flesch_reading_ease": 51.19
+      },
+      "diversity": {
+        "distinct_1": 0.5315398886827458,
+        "distinct_2": 0.904363974001857,
+        "distinct_3": 0.9674721189591078
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "substance_abuse",
+      "predicted": "<sym>Substance Use Concerns</sym> and <sym>emotional numbness</sym> seem to be central to your experience. You described using alcohol to manage stress, cope with <sym>anxiety</sym>, and mask feelings of emptiness, yet you also expressed discomfort with how alcohol disrupts your sleep and affects your judgment. It\u2019s clear you\u2019re struggling to navigate these challenges without adequate support, and your comments like <quote>\u201cI don\u2019t see that as a problem\u201d</quote> highlight a common self-protective stance many face when confronting substance-related struggles. Your insight into wanting to feel <quote>\u201cnormal\u201d</quote> suggests awareness of imbalance, which is a hopeful starting point for care.  \n\n**Diagnosis:** <med>Alcohol Use Disorder (mild to moderate severity)</med> with comorbid <med>Anxiety Disorder</med> (<med>Generalized Anxiety Disorder</med> features) and <med>substance-induced sleep disorder</med>.  \n\n**Reasoning:**  \nThe patient\u2019s pattern of alcohol use aligns with <med>Alcohol Use Disorder</med> criteria:  \n1. **Emotional reliance**: Using alcohol to manage stress/emptiness (DSM-5 criterion: \"use to alleviate psychological distress\").  \n2. **Risky behavior**: Driving under the influence (DSM-5 criterion: \"recurrent use in situations where it is physically hazardous\").  \n3. **Tolerance/dependence**: Reports needing alcohol to \"feel normal\" and disrupted sleep without it (DSM-5 criteria).  \n4. **Impaired functioning**: Avoiding social/occupational situations without alcohol.  \n\nThe <sym>panic episode</sym> and <sym>nervousness</sym> suggest <med>Anxiety Disorder</med>, likely fueling the cycle of self-medication. The sleep <sym>disturbances</sym> and <sym>headaches</sym> are consistent with <med>substance-induced</med> effects. Denial of severity and minimization (e.g., dismissing <quote>\u201dno big deal\u201d</quote>) are hallmark defenses in substance use disorders.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Comprehensive AUD assessment**: Evaluate for <med>Alcohol Use Disorder</med> severity (DSM-5 criteria count) and screen for withdrawal risk.  \n2. **Cognitive-behavioral interventions**: Address maladaptive coping strategies and explore <sym>anxiety</sym> triggers.  \n3. **Sleep hygiene optimization**: Address alcohol\u2019s impact on sleep cycles; recommend a 7-day alcohol abstinence trial to assess baseline mood/sleep.  \n4. **Medical evaluation**: Assess headaches and cardiovascular risks (e.g., blood pressure, liver function tests).  \n5. **Motivational interviewing**: To address ambivalence about reducing/substituting alcohol use.  \n6. **Safe(r) coping strategies**: Teach techniques to manage <sym>nxiety</sym> without substances (e.g., mindfulness, controlled breathing).  \n\nA collaborative approach to reduce harm while validating your efforts to <quote>\u201ddo my best\u201d</quote> will be key to moving forward.",
+      "matches": false,
+      "classification": "substance_abuse",
+      "classification_confidence": 4
+    }
+  }
+}

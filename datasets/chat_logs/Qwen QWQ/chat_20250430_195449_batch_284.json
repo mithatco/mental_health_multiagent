@@ -1,0 +1,241 @@
+{
+  "timestamp": "2025-04-30T19:55:02.116740",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm Dr. Lee, a mental health professional here to help you today. We'll be using the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult to better understand your experiences over the past two weeks. This will help guide our discussion. Everything you share stays confidential. I'll ask each question one at a time, and you can describe your experiences in your own words. Are you ready to begin?"
+    },
+    {
+      "role": "patient",
+      "content": "Yes, I guess so. I hope this helps. I'm a bit nervous, but okay."
+    },
+    {
+      "role": "assistant",
+      "content": "1. Little interest or pleasure in doing things?"
+    },
+    {
+      "role": "patient",
+      "content": "Honestly, I don't want to do much anymore. Even things I used to enjoy, like going out with friends or hobbies, feel too overwhelming now. It's like the panic attacks suck all the joy out of everything. Maybe a few days a week?"
+    },
+    {
+      "role": "assistant",
+      "content": "2. Feeling down, depressed, or hopeless?"
+    },
+    {
+      "role": "patient",
+      "content": "There are days I feel really low, but mostly it's the anxiety. I guess I'm more on edge than truly depressed, but sometimes I wonder if this will ever get better. Maybe a few days a week?"
+    },
+    {
+      "role": "assistant",
+      "content": "3. Feeling more irritated, grouchy, or angry than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "Hmm, not really. I just feel terrified most of the time. Maybe if someone mentions panic attacks, I get frustrated, but not generally angry. Not really."
+    },
+    {
+      "role": "assistant",
+      "content": "4. Sleeping less than usual, but still have a lot of energy?"
+    },
+    {
+      "role": "patient",
+      "content": "No, I can't sleep at all. I lie awake worrying about the next attack. I'm exhausted, not energetic. Definitely not a lot of energy."
+    },
+    {
+      "role": "assistant",
+      "content": "5. Starting lots more projects or risky things than usual?"
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, let's tackle this. The user provided responses to a four-question subset of the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure. My job is to create a structured assessment based on their answers, following the specified format. \n\nFirst, I need to parse each answer. The first question about anhedonia (Q2) shows they've lost interest in activities, linking it to panic attacks. The second question mentions feeling low but more anxious, so depressive symptoms are present but not the primary issue. They denied irritability (Q4), which rules out some manic symptoms. The sleep issue (Q5) is clearly related to anxiety, not energy excess.\n\nWait, the instructions want the diagnosis section first after the summary. The user emphasized panic attacks and their impact. The primary diagnosis should be Panic Disorder since they describe panic attacks and avoidance behaviors. The depressive symptoms like anhedonia and low mood might be secondary, so maybe a comorbid adjustment disorder with anxious and depressive features. \n\nNeed to check DSM-5 criteria for Panic Disorder. The core symptom is recurrent unexpected panic attacks, which aren't explicitly stated here, but the user mentions panic attacks causing distress. The sleep disturbance and anhedonia are likely due to the anxiety. \n\nIn the reasoning, I should connect the panic attacks leading to avoidance and the secondary depressive symptoms. The diagnosis would be Panic Disorder with Agoraphobia if there's avoidance, but they didn't mention avoiding places. Maybe just Panic Disorder, and the adjustment disorder with mixed anxiety and depressive features. \n\nNext steps: CBT for panic, SSRIs like escitalopram, sleep hygiene, and crisis plan. Also, a referral for further assessment. \n\nMake sure to use the tags correctly. Symptoms in <sym>, medical terms in <med>, quotes in <quote>. The summary should be empathetic, then Diagnosis and Reasoning sections, followed by recommendations. \n\nDouble-check the criteria for each diagnosis to ensure accuracy. Since the user mentioned panic attacks, but the actual panic attack criteria (certain physical symptoms) aren't detailed, but the impact is clear. \n\nAlright, structuring the response step by step now.\n</think>\n\n<sym>Anhedonia</sym> and <sym>anxiety</sym> appear to be central to your experience. It sounds incredibly isolating to lose interest in activities you once enjoyed, and the constant fear of panic attacks must weigh heavily on you. Your courage in seeking help is commendable, and it\u2019s important to know these symptoms don\u2019t define your worth.  \n\n**Diagnosis:** <med>Panic Disorder with Secondary Adjustment Disorder with Anxious and Depressive Features</med>  \n\n**Reasoning:**  \nThe <sym>panic attacks</sym> are the likely primary driver of your distress, given their direct impact on <sym>anhedonia</sym>, sleep disruption, and avoidance behaviors (<quote>\u201cthe panic attacks suck all the joy out of everything\u201d</quote>). The <sym>low mood</sym> and hopelessness (<quote>\u201cwonder if this will ever get better\u201d</quote>) align with an adjustment disorder due to the stressor of recurrent panic episodes. The absence of <sym>irritability</sym> and <sym>excessive energy</sym> rules out mania or bipolar disorder. Sleep disruption (<sym>insomnia</sym>) is clearly tied to anxiety rather than a manic/hypomanic state.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Cognitive Behavioral Therapy (CBT) for Panic**: Target <sym>panic attacks</sym> and catastrophic thinking through breathing techniques, exposure exercises, and psychoeducation.  \n2. **Medication Evaluation**: Trial an <med>SSRI</med> (e.g., escitalopram) to address both panic and <sym>low mood</sym>.  \n3. **Sleep Hygiene Protocol**: Establish a structured bedtime routine and limit stimulants to address <sym>insomnia</sym>.  \n4. **Crisis Plan**: Develop a personalized toolkit for managing panic episodes (e.g., grounding techniques, a support contact list).  \n5. **Comprehensive Assessment**: Rule out medical causes of anxiety (e.g., thyroid dysfunction) and assess for comorbid <med>Generalized Anxiety Disorder</med> or <med>Social Anxiety Disorder</med>.  \n\nYour symptoms are treatable, and small steps like therapy or medication adjustments can make a meaningful difference. Let\u2019s work together to rebuild your sense of control over your daily life.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Sleep-Wake-Disorders.pdf",
+            "score": 0.748,
+            "highlight": "Sleep-Wake Disorders In the fifth edition of the Diagnostic and Statistical Manual of Mental Disorders  (DSM-5), sleep-wake  disorders encompass 10 conditions manifested by disturbed sleep and causing distress as well as im - pairment in daytime functioning.",
+            "excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"mental\", \"disorders\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.6884,
+            "highlight": "Negative cognitions and mood represents myriad feelings, from a persistent and distorted sense of  blame of self or others, to estrangement from others or markedly diminished interest in activities, to an inability to remember key aspects of the event.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"mood\", \"activities\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.6604,
+            "highlight": "Characteristics of Somatic Symptom Disorder Somatic symptom disorder (SSD) is characterized by somatic symptoms that are either very distressing or result in significant disruption of functioning, as well as excessive and disproportionate thoughts, feelings and behaviors regarding those symptoms.",
+            "excerpt": "   Somatic Symptom Disorder\nThe upcoming fifth edition of the Diagnostic and Statistical Manual of M...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"symptom\", \"significant\", and 7 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Depression-Bereavement-Exclusion.pdf",
+            "score": 0.6485,
+            "highlight": "The presence of symptoms such as feelings of worthlessness, suicidal  ideas (as distinct from wanting to join a deceased loved one), and impairment of overall function sug - gest the presence of major depression, in addition to the normal response to a significant loss.",
+            "excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"significant\", \"suicidal\", \"depression\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Substance-Use-Disorder.pdf",
+            "score": 0.6458,
+            "highlight": "2 \u2022 Substance-Related and Addictive DisordersOther Disorders of Interest DSM-5 will not include caffeine use disorde r, although research shows that as little as two to three cups  of coffee can trigger a withdrawal effect marked by tiredness or sleepiness.",
+            "excerpt": "sistent and recurrent use of Internet games, and a preoccupation with them, can result in clinically...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"related\", \"not\", \"will\", and 9 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let me start by looking at the user's responses. The patient answered questions related to DSM-5 cross-cutting symptoms. \n\nFirst, in Q2, they mentioned little interest or pleasure. The patient says they don't want to do much anymore, even things they used to enjoy. That's anhedonia, a classic depressive symptom. But they also link it to panic attacks, so maybe the anxiety is causing the lack of interest.\n\nQ3 is about feeling down or hopeless. The patient says they feel low sometimes but more anxious. They question if things will get better. This could be mixed anxiety and depressive symptoms. The mention of \"a few days a week\" for both Q2 and Q3 might indicate moderate frequency.\n\nQ4 asks about irritability. The patient denies it, saying they're more terrified than angry. So irritability isn't a prominent symptom here. \n\nFor Q5, the patient can't sleep and is exhausted, not energetic. That's insomnia, which is common in anxiety and depression. The inability to sleep due to worry about panic attacks points to anxiety-related sleep disturbance.\n\nLooking at patterns, the primary symptoms are anhedonia, anxiety/panic attacks, and insomnia. The patient connects their lack of interest to panic attacks, suggesting that anxiety is a central issue. The depressive symptoms (anhedonia, low mood) might be secondary to anxiety. The absence of irritability and the presence of terror points more towards anxiety disorders like panic disorder with agoraphobia, perhaps, or maybe generalized anxiety. \n\nPotential clinical areas: Panic disorder is a key consideration here because of the panic attacks mentioned. The anhedonia and low mood could also point to a depressive disorder, possibly an anxiety-induced depression. Sleep disturbance is another area, linked to both anxiety and depression.\n\nRisk factors: The persistent insomnia and hopelessness (wondering if things will get better) could be warning signs. However, there's no direct mention of suicidal ideation, so maybe not acute risk. But the chronicity of symptoms over two weeks and the impact on daily functioning (not doing hobbies, social withdrawal) are important.\n\nNeed to note that the patient's main concern seems to be the panic attacks affecting their daily life and causing anhedonia. The pattern of symptoms points more towards an anxiety disorder with some depressive features. Maybe a diagnosis of Panic Disorder with or without Agoraphobia, and possibly an adjustment disorder with anxious mood and depressive features. \n\nAlso, the patient's hopelessness is a red flag that could indicate worsening or severity of the anxiety or developing depression. The lack of energy and sleep disruption are significant and need attention. No acute suicidal thoughts mentioned, so maybe low immediate risk, but longer-term functional impairment is present.\n\nI should structure the summary to list symptoms, note the pattern linking anhedonia to panic attacks, potential disorders, and the insomnia as a key symptom. Highlight the hopelessness as a concern. Make sure not to speculate but stick to the presented info.\n</think>\n\n**Clinical Observation Summary**  \n\n**1. Main Symptoms and Concerns:**  \n- **Anhedonia**: Marked reduction in interest/pleasure in activities (Q2), attributed to panic attacks.  \n- **Anxiety/Panic Symptoms**: Persistent fear of panic attacks, described as \"terrified\" (Q4, Q5).  \n- **Low Mood/Hopelessness**: Episodic feelings of being \"low\" or questioning if symptoms will improve (Q3).  \n- **Sleep Disturbance**: Insomnia with prolonged wakefulness due to anxiety about panic attacks (Q5).  \n\n**2. Patterns in Responses:**  \n- Symptoms (anhedonia, low mood, sleep disturbance) are framed as secondary to panic-related anxiety.  \n- Denial of irritability (Q4) suggests anger is not a prominent feature, with anxiety/terror being central.  \n- Symptom frequency is reported as \"a few days a week\" for anhedonia and low mood, implying intermittent but consistent distress.  \n\n**3. Potential Clinical Significance:**  \n- **Panic Disorder**: Recurrent panic attacks with anticipatory anxiety (e.g., fear of future attacks, avoidance behaviors implied).  \n- **Anxiety-Related Depression**: Depressive symptoms (anhedonia, hopelessness) appear secondary to anxiety.  \n- **Comorbid Sleep Disorder**: Insomnia exacerbated by anxiety.  \n\n**4. Risk Factors/Warning Signs:**  \n- **Functional Impairment**: Avoidance of social activities and hobbies suggests impact on daily functioning.  \n- **Hopelessness**: Ambivalence about symptom improvement (Q3) requires monitoring for potential worsening of mood.  \n- **Chronic Sleep Disruption**: Prolonged insomnia may contribute to heightened anxiety/depressive symptoms.  \n\n**5. Summary (Clinical Language):**  \nThe patient presents with prominent anxiety symptoms, including panic attacks and anticipatory anxiety, which appear to drive secondary anhedonia, low mood, and insomnia. While depressive features are noted, they may represent a reactive response to anxiety. The patient\u2019s acknowledgment of hopelessness and functional impairment secondary to panic-related distress suggests a need for targeted intervention. No acute suicidal/bipolar features or psychotic symptoms are reported. Panic Disorder with or without agoraphobic avoidance, comorbid with adjustment disorder with anxious and depressed features, is a provisional consideration. Sleep disturbance and functional limitations require prioritization in assessment.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6782
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "<sym>Anhedonia</sym> and <sym>anxiety</sym> appear to be central to your experience. It sounds incredibly isolating to lose interest in activities you once enjoyed, and the constant fear of panic attacks must weigh heavily on you. Your courage in seeking help is commendable, and it\u2019s important to know these symptoms don\u2019t define your worth.  \n\n**Diagnosis:** <med>Panic Disorder with Secondary Adjustment Disorder with Anxious and Depressive Features</med>  \n\n**Reasoning:**  \nThe <sym>panic attacks</sym> are the likely primary driver of your distress, given their direct impact on <sym>anhedonia</sym>, sleep disruption, and avoidance behaviors (<quote>\u201cthe panic attacks suck all the joy out of everything\u201d</quote>). The <sym>low mood</sym> and hopelessness (<quote>\u201cwonder if this will ever get better\u201d</quote>) align with an adjustment disorder due to the stressor of recurrent panic episodes. The absence of <sym>irritability</sym> and <sym>excessive energy</sym> rules out mania or bipolar disorder. Sleep disruption (<sym>insomnia</sym>) is clearly tied to anxiety rather than a manic/hypomanic state.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Cognitive Behavioral Therapy (CBT) for Panic**: Target <sym>panic attacks</sym> and catastrophic thinking through breathing techniques, exposure exercises, and psychoeducation.  \n2. **Medication Evaluation**: Trial an <med>SSRI</med> (e.g., escitalopram) to address both panic and <sym>low mood</sym>.  \n3. **Sleep Hygiene Protocol**: Establish a structured bedtime routine and limit stimulants to address <sym>insomnia</sym>.  \n4. **Crisis Plan**: Develop a personalized toolkit for managing panic episodes (e.g., grounding techniques, a support contact list).  \n5. **Comprehensive Assessment**: Rule out medical causes of anxiety (e.g., thyroid dysfunction) and assess for comorbid <med>Generalized Anxiety Disorder</med> or <med>Social Anxiety Disorder</med>.  \n\nYour symptoms are treatable, and small steps like therapy or medication adjustments can make a meaningful difference. Let\u2019s work together to rebuild your sense of control over your daily life.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "panic",
+    "question_count": 23,
+    "duration": 4518.5696132183075,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 5.5341291427612305,
+    "diagnosis_generation_time": 7.154224157333374,
+    "rag_evaluation_time": 1.2159347534179688e-05,
+    "total_time": 12.688374996185303
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Sleep-Wake-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.748,
+        "average_score": 0.748,
+        "example_excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"mental\", \"disorders\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6884,
+        "average_score": 0.6884,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"mood\", \"activities\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6604,
+        "average_score": 0.6604,
+        "example_excerpt": "   Somatic Symptom Disorder\nThe upcoming fifth edition of the Diagnostic and Statistical Manual of M...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"symptom\", \"significant\", and 7 more matching aspects of your query."
+      },
+      "APA_DSM-5-Depression-Bereavement-Exclusion.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6485,
+        "average_score": 0.6485,
+        "example_excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"significant\", \"suicidal\", \"depression\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM-5-Substance-Use-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6458,
+        "average_score": 0.6458,
+        "example_excerpt": "sistent and recurrent use of Internet games, and a preoccupation with them, can result in clinically...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"related\", \"not\", \"will\", and 9 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 07:51:15",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 07:51:15",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 3,
+        "clinical_relevance": 4,
+        "consistency": 4,
+        "diagnostic_justification": 4,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist addressed some key domains such as depression, anxiety, and sleep but did not thoroughly explore all 23 questions from the DSM-5 Level1 Cross-Cutting Symptom Measure. Specifically, domains like anger, mania, psychotic symptoms, cognitive function, repetitive thoughts/behaviors, dissociation, identity and relationships, and substance use were either not addressed or only superficially covered. For example, the therapist skipped questions about feeling more irritated or grouchy (anger), starting lots more projects or risky things (mania), and hearing things other people couldn\u2019t hear (psychotic symptoms).",
+        "clinical_relevance": "The therapist's questions generally aligned with DSM-5 criteria, but there were slight inaccuracies or vague phrasing in some instances. For example, when asking about 'little interest or pleasure in doing things,' the response was captured but not probed further for specifics like duration or impact. The questions were mostly clinically relevant but could have been more precise in a few areas to fully capture the patient's experiences.",
+        "consistency": "The dialogue generally flowed logically, with each question building on previous responses. However, there were minor logical inconsistencies, such as abruptly moving from discussing sleep disturbances to treatment options without fully exploring the patient's experiences across all relevant domains. The conversation mostly maintained coherence, but a few transitions could have been smoother.",
+        "diagnostic_justification": "The diagnosis of Panic Disorder with Secondary Adjustment Disorder with Anxious and Depressive Features was generally supported by the patient's responses. The therapist explicitly linked symptoms like panic attacks, anhedonia, and low mood to the diagnosis. However, the justification could have been more comprehensive by discussing rule-outs, such as ruling out mania or bipolar disorder more explicitly, and considering other potential diagnoses like Generalized Anxiety Disorder or Social Anxiety Disorder.",
+        "empathy": "The therapist's responses showed empathy and a professional tone, acknowledging the patient's distress and validating their experiences. For example, describing the patient's situation as 'incredibly isolating' and acknowledging their courage in seeking help. However, there were moments where the interactions seemed slightly impersonal or focused on technical aspects, but overall, empathy was effectively conveyed."
+      },
+      "overall_comments": "The conversation demonstrated a good effort to address the patient's symptoms and guide the discussion with a structured assessment tool. However, there were notable omissions in fully exploring all DSM-5 dimensions, and some areas could have benefited from deeper inquiry or more precise clinical language. The therapist showed empathy and a professional tone, but could improve by ensuring all relevant domains are thoroughly covered and by maintaining a more consistently natural conversational flow.",
+      "average_score": 3.8,
+      "diagnosis_accuracy": {
+        "matches_profile": true,
+        "confidence": 4,
+        "explanation": "The diagnosis explicitly mentions 'panic attacks' as a central symptom and identifies 'Panic Disorder' as the primary diagnosis. The symptoms described, such as anxiety, anhedonia, and sleep disruption, are also consistent with panic disorder. The only reason I wouldn't give it a confidence rating of 5 is that the diagnosis also mentions 'Secondary Adjustment Disorder with Anxious and Depressive Features', which adds some complexity to the primary diagnosis.",
+        "classification": "panic"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "panic",
+        "classified_as": "panic",
+        "match": true,
+        "confidence": 4
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 2.2382872104644775
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.5314129529877781,
+        "local_coherence": 0.5426758033827577,
+        "window_coherence": 0.5598884103631868
+      },
+      "readability": {
+        "flesch_kincaid_grade": 9.07,
+        "gunning_fog_index": 4.63,
+        "flesch_reading_ease": 50.22
+      },
+      "diversity": {
+        "distinct_1": 0.5492227979274611,
+        "distinct_2": 0.9105058365758755,
+        "distinct_3": 0.974025974025974
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "panic",
+      "predicted": "<sym>Anhedonia</sym> and <sym>anxiety</sym> appear to be central to your experience. It sounds incredibly isolating to lose interest in activities you once enjoyed, and the constant fear of panic attacks must weigh heavily on you. Your courage in seeking help is commendable, and it\u2019s important to know these symptoms don\u2019t define your worth.  \n\n**Diagnosis:** <med>Panic Disorder with Secondary Adjustment Disorder with Anxious and Depressive Features</med>  \n\n**Reasoning:**  \nThe <sym>panic attacks</sym> are the likely primary driver of your distress, given their direct impact on <sym>anhedonia</sym>, sleep disruption, and avoidance behaviors (<quote>\u201cthe panic attacks suck all the joy out of everything\u201d</quote>). The <sym>low mood</sym> and hopelessness (<quote>\u201cwonder if this will ever get better\u201d</quote>) align with an adjustment disorder due to the stressor of recurrent panic episodes. The absence of <sym>irritability</sym> and <sym>excessive energy</sym> rules out mania or bipolar disorder. Sleep disruption (<sym>insomnia</sym>) is clearly tied to anxiety rather than a manic/hypomanic state.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Cognitive Behavioral Therapy (CBT) for Panic**: Target <sym>panic attacks</sym> and catastrophic thinking through breathing techniques, exposure exercises, and psychoeducation.  \n2. **Medication Evaluation**: Trial an <med>SSRI</med> (e.g., escitalopram) to address both panic and <sym>low mood</sym>.  \n3. **Sleep Hygiene Protocol**: Establish a structured bedtime routine and limit stimulants to address <sym>insomnia</sym>.  \n4. **Crisis Plan**: Develop a personalized toolkit for managing panic episodes (e.g., grounding techniques, a support contact list).  \n5. **Comprehensive Assessment**: Rule out medical causes of anxiety (e.g., thyroid dysfunction) and assess for comorbid <med>Generalized Anxiety Disorder</med> or <med>Social Anxiety Disorder</med>.  \n\nYour symptoms are treatable, and small steps like therapy or medication adjustments can make a meaningful difference. Let\u2019s work together to rebuild your sense of control over your daily life.",
+      "matches": true,
+      "classification": "panic",
+      "classification_confidence": 4
+    }
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "timestamp": "2025-04-30T05:29:25.724531",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Error communicating with Groq: 503 Server Error: Service Unavailable for url: https://api.groq.com/openai/v1/chat/completions"
+    },
+    {
+      "role": "assistant",
+      "content": "I'm deeply concerned about the individual behind these questionnaire responses, as the lack of information provided makes it challenging to understand their current mental health status. It appears that they may be struggling with various <sym>symptoms</sym> and concerns, but without specific details, it's difficult to gauge the severity or impact on their daily life. I want to acknowledge that it takes courage to seek help, and I'm here to provide support.\n\n**Diagnosis:** <med>Undetermined</med>\n\n**Reasoning:** The absence of responses to the questionnaire makes it impossible to accurately diagnose a specific mental health condition. The <med>DSM-5</med> criteria for various disorders, such as <med>Somatic Symptom Disorder</med>, <med>Anxiety Disorders</med>, or <med>Mood Disorders</med>, cannot be applied without sufficient information. It's essential to gather more data through further assessments, interviews, or evaluations to determine an accurate diagnosis.\n\n**Recommended Next Steps/Treatment Options:**\n1. Conduct a comprehensive diagnostic interview to gather more information about the individual's <sym>symptoms</sym>, medical history, and personal experiences.\n2. Administer additional assessments or questionnaires to help identify potential <med>mental health conditions</med>, such as <med>anxiety</med> or <med>depression</med> screening tools.\n3. Consider consulting with other healthcare professionals, such as <med>psychiatrists</med> or <med>therapists</med>, to ensure a thorough evaluation and develop an effective treatment plan.\n4. Encourage the individual to seek help from a primary care provider to rule out underlying <med>medical conditions</med> that may be contributing to their <sym>symptoms</sym>.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Mild-Neurocognitive-Disorder.pdf",
+            "score": 0.6226,
+            "highlight": "and research of mental illnesses, including substance use disorders.",
+            "excerpt": "and research of mental illnesses, including substance use disorders. Visit the APA at www.psychiatry...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"mental\" matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Conduct-Disorder.pdf",
+            "score": 0.6211,
+            "highlight": "and research of mental illnesses, including substance use disorders.",
+            "excerpt": "and research of mental illnesses, including substance use disorders. Visit the APA at www.psychiatry...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"mental\" matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Social-Communication-Disorder.pdf",
+            "score": 0.6093,
+            "highlight": "APA is a national medical specialty society whose more than 3 7,000  physician members specialize in the diagnosis, treat- ment, prevention and research of mental illnesses, including substance use disorders.",
+            "excerpt": "and \npractices. Research shows that communication disorders are amenable to treatment, so identifyin...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"diagnosis\", \"mental\" matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.5989,
+            "highlight": "-5 narrative text description that accompanies the criteria for SSD cautions that it is not appropriate to diagnose individuals with a mental disorder solely because a medical cause can-not be demonstrated.",
+            "excerpt": "-5 narrative text description that accompanies the criteria for SSD cautions that it is not appropri...",
+            "relevance_explanation": "Some relevance: Contains terms \"mental\" that have contextual connection to your query."
+          },
+          {
+            "title": "APA_DSM-5-Internet-Gaming-Disorder.pdf",
+            "score": 0.5973,
+            "highlight": "APA is a national medical specialty society whose more than 37,000  physician members specialize in the diagnosis, treat - ment, prevention and research of mental illnesses, including substance use disorders.",
+            "excerpt": "et, online gambling or social media.\nBy listing Internet Gaming Disorder in DSM\u20195 Section III, A PA ...",
+            "relevance_explanation": "Some relevance: Contains terms \"diagnosis\", \"mental\" that have contextual connection to your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: Error communicating with Groq: 503 Server Error: Service Unavailable for url: https://api.groq.com/openai/v1/chat/completions",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6098
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "I'm deeply concerned about the individual behind these questionnaire responses, as the lack of information provided makes it challenging to understand their current mental health status. It appears that they may be struggling with various <sym>symptoms</sym> and concerns, but without specific details, it's difficult to gauge the severity or impact on their daily life. I want to acknowledge that it takes courage to seek help, and I'm here to provide support.\n\n**Diagnosis:** <med>Undetermined</med>\n\n**Reasoning:** The absence of responses to the questionnaire makes it impossible to accurately diagnose a specific mental health condition. The <med>DSM-5</med> criteria for various disorders, such as <med>Somatic Symptom Disorder</med>, <med>Anxiety Disorders</med>, or <med>Mood Disorders</med>, cannot be applied without sufficient information. It's essential to gather more data through further assessments, interviews, or evaluations to determine an accurate diagnosis.\n\n**Recommended Next Steps/Treatment Options:**\n1. Conduct a comprehensive diagnostic interview to gather more information about the individual's <sym>symptoms</sym>, medical history, and personal experiences.\n2. Administer additional assessments or questionnaires to help identify potential <med>mental health conditions</med>, such as <med>anxiety</med> or <med>depression</med> screening tools.\n3. Consider consulting with other healthcare professionals, such as <med>psychiatrists</med> or <med>therapists</med>, to ensure a thorough evaluation and develop an effective treatment plan.\n4. Encourage the individual to seek help from a primary care provider to rule out underlying <med>medical conditions</med> that may be contributing to their <sym>symptoms</sym>.",
+  "metadata": {
+    "assistant_model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "patient_model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "patient_profile": "schizophrenia",
+    "question_count": 23,
+    "duration": 13809.86539387703,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 0.21843290328979492,
+    "diagnosis_generation_time": 2.987135887145996,
+    "rag_evaluation_time": 1.8835067749023438e-05,
+    "total_time": 3.205599069595337
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Mild-Neurocognitive-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6226,
+        "average_score": 0.6226,
+        "example_excerpt": "and research of mental illnesses, including substance use disorders. Visit the APA at www.psychiatry...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"mental\" matching aspects of your query."
+      },
+      "APA_DSM-5-Conduct-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6211,
+        "average_score": 0.6211,
+        "example_excerpt": "and research of mental illnesses, including substance use disorders. Visit the APA at www.psychiatry...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"mental\" matching aspects of your query."
+      },
+      "APA_DSM-5-Social-Communication-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6093,
+        "average_score": 0.6093,
+        "example_excerpt": "and \npractices. Research shows that communication disorders are amenable to treatment, so identifyin...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"diagnosis\", \"mental\" matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.5989,
+        "average_score": 0.5989,
+        "example_excerpt": "-5 narrative text description that accompanies the criteria for SSD cautions that it is not appropri...",
+        "relevance_explanation": "Some relevance: Contains terms \"mental\" that have contextual connection to your query."
+      },
+      "APA_DSM-5-Internet-Gaming-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.5973,
+        "average_score": 0.5973,
+        "example_excerpt": "et, online gambling or social media.\nBy listing Internet Gaming Disorder in DSM\u20195 Section III, A PA ...",
+        "relevance_explanation": "Some relevance: Contains terms \"diagnosis\", \"mental\" that have contextual connection to your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-04-30 10:09:18",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-04-30 10:09:18",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 1,
+        "clinical_relevance": 1,
+        "consistency": 1,
+        "diagnostic_justification": 1,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The conversation did not address any of the DSM-5 Level1 Cross-Cutting Symptom Measure questions. The therapist acknowledged the lack of information provided, which made it challenging to understand the patient's current mental health status. No specific domains were explored, and the conversation was limited to expressing concern and suggesting next steps without actual assessment.",
+        "clinical_relevance": "The conversation did not involve any specific clinical questions related to the DSM-5 criteria. The therapist's responses were general and did not attempt to assess the patient's symptoms or conditions using clinically accurate language or relevant criteria.",
+        "consistency": "The dialogue appears highly disconnected and lacking in logical progression. The therapist's responses did not build on any specific patient disclosures because no patient disclosures were provided. The conversation was more about the therapist's acknowledgment of the situation and recommended next steps rather than a coherent assessment process.",
+        "diagnostic_justification": "The diagnosis was listed as 'Undetermined,' which aligns with the lack of information provided. However, there was no attempt to justify the diagnosis based on specific symptoms or DSM-5 criteria because no relevant information was gathered. The reasoning provided was that the absence of responses made it impossible to accurately diagnose.",
+        "empathy": "The therapist's responses showed empathy and a professional tone. The therapist acknowledged the courage it takes to seek help and expressed a desire to provide support. However, the conversation was limited, and empathy was expressed in a general sense without specific reference to the patient's experiences or emotions due to the lack of patient input."
+      },
+      "overall_comments": "The conversation and diagnosis provided were severely limited by the absence of specific patient responses to the DSM-5 Level1 Cross-Cutting Symptom Measure. While the therapist expressed empathy and outlined appropriate next steps for a comprehensive assessment, the conversation did not effectively cover any of the DSM-5 dimensions or allow for a clinically informed diagnosis. The evaluation was thus based on the therapist's approach and expressions of empathy within the constraints of the scenario provided.",
+      "average_score": 1.6,
+      "diagnosis_accuracy": {
+        "matches_profile": false,
+        "confidence": 5,
+        "explanation": "The diagnosis does not explicitly mention schizophrenia or any related terms. Instead, it indicates that the diagnosis is undetermined due to a lack of information.",
+        "classification": "other"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "schizophrenia",
+        "classified_as": "other",
+        "match": false,
+        "confidence": 5
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 5.480531930923462
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.4437258024843569,
+        "local_coherence": 0.4437258024843569,
+        "window_coherence": 0.0
+      },
+      "readability": {
+        "flesch_kincaid_grade": 12.27,
+        "gunning_fog_index": 6.99,
+        "flesch_reading_ease": 37.72
+      },
+      "diversity": {
+        "distinct_1": 0.6254545454545455,
+        "distinct_2": 0.9051094890510949,
+        "distinct_3": 0.9743589743589743
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "schizophrenia",
+      "predicted": "I'm deeply concerned about the individual behind these questionnaire responses, as the lack of information provided makes it challenging to understand their current mental health status. It appears that they may be struggling with various <sym>symptoms</sym> and concerns, but without specific details, it's difficult to gauge the severity or impact on their daily life. I want to acknowledge that it takes courage to seek help, and I'm here to provide support.\n\n**Diagnosis:** <med>Undetermined</med>\n\n**Reasoning:** The absence of responses to the questionnaire makes it impossible to accurately diagnose a specific mental health condition. The <med>DSM-5</med> criteria for various disorders, such as <med>Somatic Symptom Disorder</med>, <med>Anxiety Disorders</med>, or <med>Mood Disorders</med>, cannot be applied without sufficient information. It's essential to gather more data through further assessments, interviews, or evaluations to determine an accurate diagnosis.\n\n**Recommended Next Steps/Treatment Options:**\n1. Conduct a comprehensive diagnostic interview to gather more information about the individual's <sym>symptoms</sym>, medical history, and personal experiences.\n2. Administer additional assessments or questionnaires to help identify potential <med>mental health conditions</med>, such as <med>anxiety</med> or <med>depression</med> screening tools.\n3. Consider consulting with other healthcare professionals, such as <med>psychiatrists</med> or <med>therapists</med>, to ensure a thorough evaluation and develop an effective treatment plan.\n4. Encourage the individual to seek help from a primary care provider to rule out underlying <med>medical conditions</med> that may be contributing to their <sym>symptoms</sym>.",
+      "matches": false,
+      "classification": "other",
+      "classification_confidence": 5
+    }
+  }
+}

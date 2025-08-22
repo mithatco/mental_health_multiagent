@@ -1,0 +1,237 @@
+{
+  "timestamp": "2025-04-30T19:31:37.057542",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm Dr. Smith, a mental health professional. Today we'll be using the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult to assess your symptoms over the past two weeks. This will help me better understand your experience. All your answers are confidential, and I'll ask 23 questions one at a time. Let me know if you'd like to pause. Ready?"
+    },
+    {
+      "role": "patient",
+      "content": "Okay\u2026 Um, sure, I guess so. I'm a bit nervous, but I'll try to be honest."
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you for sharing. First question: Little interest or pleasure in doing things?"
+    },
+    {
+      "role": "patient",
+      "content": "Well\u2026 I still enjoy things I do alone, like reading or hobbies. But if I have to do something with others, I lose interest. Maybe a few days a week."
+    },
+    {
+      "role": "assistant",
+      "content": "Got it. Next: Feeling down, depressed, or hopeless?"
+    },
+    {
+      "role": "patient",
+      "content": "Only when I think about having to go somewhere social. Like a knot in my stomach, but I push through. Maybe a couple times last week."
+    },
+    {
+      "role": "assistant",
+      "content": "Understood. Three: Feeling more irritated, grouchy, or angry than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "I get a bit snappy if plans change last minute, but not really angry. It's more anxiety, I think."
+    },
+    {
+      "role": "assistant",
+      "content": "Four: Sleeping less than usual, but still have a lot of energy?"
+    },
+    {
+      "role": "patient",
+      "content": "No, actually I can't sleep the night before a meeting. But I'm tired the next day, not energetic."
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, I need to create a professional assessment based on the user's responses. Let me start with the compassionate summary. The patient mentioned feeling anxious in social situations, so I should acknowledge that with empathy. \n\nNext, the diagnosis. The symptoms align with social anxiety. Let me check the DSM-5 criteria for Social Anxiety Disorder. The patient's lack of interest in social activities, feeling down when facing social events, and the context-specific irritability and sleep issues all fit. Need to ensure I don't mention Somatic Symptom Disorder unless warranted, but the sleep issues are tied to anxiety, not somatic focus.\n\nFor the reasoning, I should connect each symptom to the diagnosis. The situational nature of symptoms points away from generalized disorders. The patient's self-reported anxiety as the root cause supports the social anxiety angle.\n\nTreatment steps: CBT is the first-line for social anxiety. Maybe recommend relaxation techniques for the insomnia. Screening for depression is important since they feel down in social contexts. Collaborative care with a therapist makes sense. I need to list these clearly.\n\nWait, did I miss anything? The patient's answers don't mention trauma, so trauma-related disorders are less likely. The somatic symptoms are tied to anxiety, so SSD doesn't fit. Adjustment disorder is possible, but the focus on social interactions leans more towards social anxiety. \n\nI need to ensure the structure is exactly as specified. Check the tags: medical terms like Social Anxiety Disorder in <med>, symptoms like insomnia in <sym>, and quotes. Make sure each section is properly formatted without extra spaces. Alright, putting it all together now.\n</think>\n\n<sym>Little interest in social activities</sym>, <sym>socially triggered dysphoria</sym>, and <sym>sleep disruption</sym> were described in the context of social anticipation. Your responses highlight a pattern of distress tied to interpersonal obligations, yet you continue to engage in solitary activities that bring you comfort. This courage to navigate these challenges while acknowledging the toll it takes is significant.  \n\n**Diagnosis:** Social Anxiety Disorder, Provisional  \n\n**Reasoning:** The patient\u2019s symptoms align closely with <med>Social Anxiety Disorder</med> as per DSM-5 criteria:  \n- <sym>anhedonia</sym> in social contexts but preserved interest in solitary activities,  \n- <sym>negative affect</sym> (depressed mood, irritability) triggered by anticipated social interactions, and  \n- <sym>avoidance-related behaviors</sym> (e.g., reduced social engagement).  \nThere is no evidence of pervasive mood or trauma-related symptoms outside social contexts. The <sym>insomnia</sym> and <sym>fatigue</sym> correlate with anticipatory anxiety rather than primary sleep pathology.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Cognitive Behavioral Therapy (CBT):** Target social anxiety via exposure-based exercises and cognitive restructuring for social fears.  \n2. **Mindfulness-based stress reduction:** To address <sym>anticipatory anxiety</sym> and improve coping with <sym>sleep disruption</sym>.  \n3. **Collaborative care:**  \n   - Monitor for comorbid <med>Major Depressive Disorder</med> if symptoms persist beyond social triggers.  \n   - Rule out <med>Adjustment Disorder</med> if stressors are time-limited.  \n4. **Sleep hygiene intervention:** Address <sym>insomnia</sym> tied to social anticipation through structured pre-sleep routines.  \n\nA provisional diagnosis of <med>Social Anxiety Disorder</med> is supported by the pattern of distress being reliably tied to social demands. Further assessment of functional impact and symptom triggers will refine this formulation.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM_Cultural-Concepts-in-DSM-5.pdf",
+            "score": 0.6998,
+            "highlight": "For example, the crite- ria for social anxiety disorder now include the fear of \u201coffending others\u201d to reflect the Japanese concept  in which avoiding harm to others is emphasized rather than harm to onesel f.",
+            "excerpt": " a patient \u2019s cul -\nture, race, ethnicit y, religion or geographical origin. For example, uncontroll...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"fear\", \"harm\", \"which\", and 7 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.696,
+            "highlight": "Negative cognitions and mood represents myriad feelings, from a persistent and distorted sense of  blame of self or others, to estrangement from others or markedly diminished interest in activities, to an inability to remember key aspects of the event.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"activities\", \"feelings\", and 3 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.6835,
+            "highlight": "Characteristics of Somatic Symptom Disorder Somatic symptom disorder (SSD) is characterized by somatic symptoms that are either very distressing or result in significant disruption of functioning, as well as excessive and disproportionate thoughts, feelings and behaviors regarding those symptoms.",
+            "excerpt": "   Somatic Symptom Disorder\nThe upcoming fifth edition of the Diagnostic and Statistical Manual of M...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"symptom\", \"disorder\", and 7 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Sleep-Wake-Disorders.pdf",
+            "score": 0.6741,
+            "highlight": "Sleep-Wake Disorders In the fifth edition of the Diagnostic and Statistical Manual of Mental Disorders  (DSM-5), sleep-wake  disorders encompass 10 conditions manifested by disturbed sleep and causing distress as well as im - pairment in daytime functioning.",
+            "excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"mental\", \"disorders\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Conduct-Disorder.pdf",
+            "score": 0.6685,
+            "highlight": "People with conduct disorder who show  this specifier display limited empathy and little concern for the feelings,  wishes, and well-being of others.",
+            "excerpt": ". To be diagnosed with conduct disorde r, the symptoms must cause sig -\nnificant impairment in socia...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"this\", \"well\", \"feelings\", and 2 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let's tackle this. The user provided the patient's responses to the first five questions of the DSM-5 Cross-Cutting Symptom Measure. My job is to analyze these and structure the clinical summary as requested.\n\nFirst, I need to identify the main symptoms from the answers. The patient mentions losing interest in social activities, feeling depressed when thinking about social situations, irritability related to changes in plans, and sleep disturbances before meetings. These all point towards possible depression or anxiety, maybe social anxiety?\n\nLooking for patterns, the patient's symptoms seem to be triggered by social interactions. They enjoy solitary activities but struggle with social scenarios. The responses also show a tendency to downplay the severity\u2014like saying \"not really angry\" but acknowledging irritability. They mention anxiety as the root, which might explain the irritability and depression in social contexts.\n\nPotential clinical areas: Social anxiety disorder comes to mind. The sleep issues linked to anticipation of social events could be part of an anxiety response. There's also a possible depressive component, but it's context-specific. Need to note that the depressive feelings aren't constant but tied to social stressors.\n\nRisk factors: The patient is nervous and might be avoiding social interactions, which could lead to isolation. The statement about pushing through the knot in the stomach suggests they're managing it, but maybe not effectively. There's no mention of suicidal ideation here, so maybe low risk there, but ongoing stress could be an issue.\n\nIn terms of clinical significance, the key points are the social anxiety triggers, context-specific depressive symptoms, and sleep disruption related to social stress. The pattern of symptoms tied to social situations is important, as well as their acknowledgment of anxiety as a root cause. The patient's self-report of managing through might indicate coping mechanisms that could be either adaptive or maladaptive, but we don't have enough info yet.\n\nI need to make sure not to speculate. Stick to what's reported. So in the summary, I'll list the symptoms, note the pattern of social triggers, possible anxiety and depressive symptoms, sleep issues tied to social events, and the patient's awareness of anxiety as a cause. Potential areas could include social anxiety, adjustment disorder, or maybe generalized anxiety with social triggers. Risk factors would be the social withdrawal and sleep disturbances as stress indicators.\n\nWait, the user specified avoiding speculation, so maybe stick to observed data. The summary should be concise, using clinical terms like anhedonia (though partial, since they do enjoy solitary activities), dysphoric mood, irritability, sleep disturbance. The context is crucial here\u2014symptoms are situationally bound to social interactions, which points to social anxiety rather than a general disorder.\n\nAlso, note that the patient is somewhat hesitant (their initial response shows nervousness) but trying to be honest. The answers are specific, so that's a good sign. Need to highlight that the symptoms are not pervasive but tied to social contexts. The lack of energy post-sleep issues might indicate some fatigue from anxiety.\n\nOkay, putting this all together into the required sections: main symptoms, patterns, clinical areas, risks, and the summary. Make sure it's in professional language without adding anything beyond the provided info.\n</think>\n\n**Clinical Observation Summary**  \n\n---\n\n**1. Main Symptoms and Concerns:**  \n- **Anhedonia (social context):** Reduced interest/pleasure in social activities, but preserved interest in solitary hobbies.  \n- **Situational dysphoria:** Depressed mood and hopelessness specifically associated with anticipatory social interactions.  \n- **Irritability:** Mild, triggered by perceived disruptions to plans (e.g., last-minute changes).  \n- **Sleep disturbance:** Insomnia and next-day fatigue linked to anticipation of social obligations (e.g., meetings).  \n\n---\n\n**2. Patterns in Responses:**  \n- Symptoms are **socially context-bound**, intensifying when considering or engaging in interpersonal interactions.  \n- Patient distinguishes between internal distress (e.g., \"knot in stomach\") and external behavior (\"push through\"), suggesting effortful coping.  \n- Denies severe anger but acknowledges anxiety as a primary driver of irritability.  \n- Self-reported symptoms are **moderate in frequency** (e.g., \"a few days,\" \"a couple times\").  \n\n---\n\n**3. Potential Areas of Clinical Significance:**  \n- **Social Anxiety Disorder:** Symptoms align with fear of social situations and avoidance (loss of interest in social activities).  \n- **Generalized Anxiety Disorder (GAD):** Context-specific worry (e.g., social obligations) and somatic symptoms (anxiety described as a \"knot in the stomach\").  \n- **Adjustment Disorder with Anxious Mood:** Distress may be reactive to social stressors, though chronicity is unclear.  \n\n---\n\n**4. Risk Factors/Warning Signs:**  \n- **Social withdrawal:** Reduced participation in social activities may contribute to isolation.  \n- **Functional impairment:** Sleep disruption and irritability could impact work/interpersonal functioning (e.g., meetings).  \n- **Coping mechanisms:** \"Pushing through\" distress without stated support may indicate maladaptive strategies.  \n- No acute self-harm/suicidality reported.  \n\n---\n\n**5. Clinical Summary:**  \nThe patient reports **moderate, socially triggered symptoms** consistent with anxiety-driven distress. Key themes include:  \n- **Socially mediated anhedonia and dysphoria**, with intact interest in solitary activities.  \n- **Irritability** linked to perceived loss of control (e.g., sudden plan changes), framed as anxiety-mediated.  \n- **Insomnia and fatigue** secondary to anticipatory anxiety about social obligations.  \nSymptoms are situationally bounded, suggesting **social anxiety** as a primary focus. Further assessment is needed to evaluate anxiety severity, functional impact, and potential comorbid adjustment or mood disorders. Monitoring for escalation of avoidance or withdrawal is advised.  \n\n---  \n*Note: Observations are based on self-reported, non-pervasive symptoms. Cultural, contextual, and longitudinal factors require deeper exploration.*",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6844
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "<sym>Little interest in social activities</sym>, <sym>socially triggered dysphoria</sym>, and <sym>sleep disruption</sym> were described in the context of social anticipation. Your responses highlight a pattern of distress tied to interpersonal obligations, yet you continue to engage in solitary activities that bring you comfort. This courage to navigate these challenges while acknowledging the toll it takes is significant.  \n\n**Diagnosis:** Social Anxiety Disorder, Provisional  \n\n**Reasoning:** The patient\u2019s symptoms align closely with <med>Social Anxiety Disorder</med> as per DSM-5 criteria:  \n- <sym>anhedonia</sym> in social contexts but preserved interest in solitary activities,  \n- <sym>negative affect</sym> (depressed mood, irritability) triggered by anticipated social interactions, and  \n- <sym>avoidance-related behaviors</sym> (e.g., reduced social engagement).  \nThere is no evidence of pervasive mood or trauma-related symptoms outside social contexts. The <sym>insomnia</sym> and <sym>fatigue</sym> correlate with anticipatory anxiety rather than primary sleep pathology.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Cognitive Behavioral Therapy (CBT):** Target social anxiety via exposure-based exercises and cognitive restructuring for social fears.  \n2. **Mindfulness-based stress reduction:** To address <sym>anticipatory anxiety</sym> and improve coping with <sym>sleep disruption</sym>.  \n3. **Collaborative care:**  \n   - Monitor for comorbid <med>Major Depressive Disorder</med> if symptoms persist beyond social triggers.  \n   - Rule out <med>Adjustment Disorder</med> if stressors are time-limited.  \n4. **Sleep hygiene intervention:** Address <sym>insomnia</sym> tied to social anticipation through structured pre-sleep routines.  \n\nA provisional diagnosis of <med>Social Anxiety Disorder</med> is supported by the pattern of distress being reliably tied to social demands. Further assessment of functional impact and symptom triggers will refine this formulation.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "social_anxiety",
+    "question_count": 23,
+    "duration": 3113.5104570388794,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 5.811345100402832,
+    "diagnosis_generation_time": 6.345657110214233,
+    "rag_evaluation_time": 7.152557373046875e-06,
+    "total_time": 12.157016277313232
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM_Cultural-Concepts-in-DSM-5.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6998,
+        "average_score": 0.6998,
+        "example_excerpt": " a patient \u2019s cul -\nture, race, ethnicit y, religion or geographical origin. For example, uncontroll...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"fear\", \"harm\", \"which\", and 7 more matching aspects of your query."
+      },
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.696,
+        "average_score": 0.696,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"activities\", \"feelings\", and 3 more matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6835,
+        "average_score": 0.6835,
+        "example_excerpt": "   Somatic Symptom Disorder\nThe upcoming fifth edition of the Diagnostic and Statistical Manual of M...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"symptom\", \"disorder\", and 7 more matching aspects of your query."
+      },
+      "APA_DSM-5-Sleep-Wake-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6741,
+        "average_score": 0.6741,
+        "example_excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"mental\", \"disorders\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Conduct-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6685,
+        "average_score": 0.6685,
+        "example_excerpt": ". To be diagnosed with conduct disorde r, the symptoms must cause sig -\nnificant impairment in socia...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"this\", \"well\", \"feelings\", and 2 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 07:51:24",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 07:51:24",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 2,
+        "clinical_relevance": 4,
+        "consistency": 4,
+        "diagnostic_justification": 4,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist only addressed a limited number of DSM-5 Level1 Cross-Cutting Symptom Measure domains. The conversation primarily focused on social anxiety symptoms, such as little interest in social activities, feeling down or depressed in social contexts, and sleep disruption. However, several critical domains were not explored, including anger, mania, psychotic symptoms, somatic concerns, suicidal ideation, cognitive function, repetitive thoughts/behaviors, dissociation, identity and relationships, and substance use. The therapist missed opportunities to comprehensively assess the patient's symptoms across various domains.",
+        "clinical_relevance": "The therapist's questions generally aligned with DSM-5 criteria, particularly focusing on symptoms relevant to social anxiety disorder. The questions were phrased in a clinically accurate way, and the therapist adapted the questions to fit the patient's responses. However, the limited scope of domains addressed may have led to minor inaccuracies or vague phrasing in the overall assessment. The therapist could have benefited from exploring a broader range of symptoms to ensure comprehensive coverage.",
+        "consistency": "The dialogue generally flowed logically, with each question building on previous responses. The therapist maintained a coherent conversational arc, particularly when discussing social anxiety symptoms. However, the abrupt transition to diagnosis and treatment recommendations without fully exploring other DSM-5 domains may be considered a minor logical inconsistency. The conversation could have benefited from smoother transitions between topics and more comprehensive exploration of symptoms.",
+        "diagnostic_justification": "The diagnosis of Social Anxiety Disorder, Provisional, aligns with the patient's responses, and the reasoning behind this decision is explicitly stated. The therapist linked the diagnosis to specific DSM-5 criteria, such as anhedonia in social contexts, negative affect triggered by anticipated social interactions, and avoidance-related behaviors. However, the justification could have been strengthened by discussing alternative diagnoses that were considered and ruled out. The therapist provided a clear and clinically sound rationale for the diagnosis.",
+        "empathy": "The therapist's responses showed empathy and a natural conversational style, particularly when discussing the patient's social anxiety symptoms. The therapist acknowledged the patient's distress and discomfort in social situations. However, there were minor instances where the therapist's responses seemed slightly impersonal or abrupt, such as when transitioning to the diagnosis and treatment recommendations. Overall, the therapist maintained an appropriate professional tone and showed understanding of the patient's experiences."
+      },
+      "overall_comments": "The conversation demonstrated a good understanding of social anxiety disorder symptoms but lacked comprehensive coverage of all DSM-5 Level1 Cross-Cutting Symptom Measure domains. The therapist could have benefited from exploring a broader range of symptoms to ensure a more thorough assessment. Despite this, the therapist provided a clear and clinically sound diagnosis and treatment recommendations. With some refinement in addressing all critical domains and ensuring smoother transitions, the conversation could be considered exceptional.",
+      "average_score": 3.6,
+      "diagnosis_accuracy": {
+        "matches_profile": true,
+        "confidence": 5,
+        "explanation": "The diagnosis explicitly mentions 'Social Anxiety Disorder, Provisional' and provides symptoms that align with social anxiety, such as little interest in social activities, socially triggered dysphoria, and sleep disruption in the context of social anticipation. These symptoms and the recommended treatment options directly correspond to the expected profile of social anxiety.",
+        "classification": "social_anxiety"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "social_anxiety",
+        "classified_as": "social_anxiety",
+        "match": true,
+        "confidence": 5
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 2.1687917709350586
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.5043367653021091,
+        "local_coherence": 0.5412506263022371,
+        "window_coherence": 0.5516897360193525
+      },
+      "readability": {
+        "flesch_kincaid_grade": 10.01,
+        "gunning_fog_index": 4.61,
+        "flesch_reading_ease": 43.42
+      },
+      "diversity": {
+        "distinct_1": 0.5738724727838258,
+        "distinct_2": 0.9003115264797508,
+        "distinct_3": 0.9734789391575663
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "social_anxiety",
+      "predicted": "<sym>Little interest in social activities</sym>, <sym>socially triggered dysphoria</sym>, and <sym>sleep disruption</sym> were described in the context of social anticipation. Your responses highlight a pattern of distress tied to interpersonal obligations, yet you continue to engage in solitary activities that bring you comfort. This courage to navigate these challenges while acknowledging the toll it takes is significant.  \n\n**Diagnosis:** Social Anxiety Disorder, Provisional  \n\n**Reasoning:** The patient\u2019s symptoms align closely with <med>Social Anxiety Disorder</med> as per DSM-5 criteria:  \n- <sym>anhedonia</sym> in social contexts but preserved interest in solitary activities,  \n- <sym>negative affect</sym> (depressed mood, irritability) triggered by anticipated social interactions, and  \n- <sym>avoidance-related behaviors</sym> (e.g., reduced social engagement).  \nThere is no evidence of pervasive mood or trauma-related symptoms outside social contexts. The <sym>insomnia</sym> and <sym>fatigue</sym> correlate with anticipatory anxiety rather than primary sleep pathology.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Cognitive Behavioral Therapy (CBT):** Target social anxiety via exposure-based exercises and cognitive restructuring for social fears.  \n2. **Mindfulness-based stress reduction:** To address <sym>anticipatory anxiety</sym> and improve coping with <sym>sleep disruption</sym>.  \n3. **Collaborative care:**  \n   - Monitor for comorbid <med>Major Depressive Disorder</med> if symptoms persist beyond social triggers.  \n   - Rule out <med>Adjustment Disorder</med> if stressors are time-limited.  \n4. **Sleep hygiene intervention:** Address <sym>insomnia</sym> tied to social anticipation through structured pre-sleep routines.  \n\nA provisional diagnosis of <med>Social Anxiety Disorder</med> is supported by the pattern of distress being reliably tied to social demands. Further assessment of functional impact and symptom triggers will refine this formulation.",
+      "matches": false,
+      "classification": "social_anxiety",
+      "classification_confidence": 5
+    }
+  }
+}

@@ -1,0 +1,237 @@
+{
+  "timestamp": "2025-04-30T23:31:42.542084",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm Dr. Alvarez. Today I'll be using the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure to better understand your experiences. This will help us identify patterns and track any changes over time. Your responses will remain confidential. I'll ask 23 questions about how you've felt over the past two weeks. Would you like to start?"
+    },
+    {
+      "role": "patient",
+      "content": "Sure, okay. I guess I can try to answer."
+    },
+    {
+      "role": "assistant",
+      "content": "1. Little interest or pleasure in doing things?"
+    },
+    {
+      "role": "patient",
+      "content": "It's been up and down. When I'm down, nothing feels fun. But when I'm 'on,' I'm so busy I don't even notice, you know? Like, last month I was working on three projects at once and didn't care about hobbies... but now I feel kind of flat."
+    },
+    {
+      "role": "assistant",
+      "content": "2. Feeling down, depressed, or hopeless?"
+    },
+    {
+      "role": "patient",
+      "content": "Yeah, like a heavy blanket for weeks sometimes. I've canceled plans a lot lately, just can't shake that feeling. But then\u2014wham!\u2014I'll suddenly be full of energy again. It's exhausting."
+    },
+    {
+      "role": "assistant",
+      "content": "3. Feeling more irritated, grouchy, or angry than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "Hmm, depends. I'll snap at people when I'm 'up,' like I can't slow down and they're holding me back. But when I'm down, I'm more... numb. My girlfriend says I'm all over the place."
+    },
+    {
+      "role": "assistant",
+      "content": "4. Sleeping less than usual, but still have a lot of energy?"
+    },
+    {
+      "role": "patient",
+      "content": "Oh totally! Like last week I only slept 3 hours for days but I was buzzing. Felt like I didn't need sleep, just kept going. Now I'm crashing, but I'll probably bounce again soon..."
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, I need to process the user's query and the provided information. The user wants a structured assessment based on the questionnaire responses. Let me break down the steps.\n\nFirst, the patient's answers show fluctuating moods: periods of high energy with reduced sleep (hypo-manic) and then crashing into depression. The key points here are the cycling between these states. The DSM-5 mentions bipolar disorders, so that's a primary consideration. The user's instructions specify using the structure with specific sections and tags. I must make sure I don't mention Somatic Symptom Disorder unless it fits, which it doesn't here.\n\nThe first paragraph needs to be compassionate, summarizing the patient's experience. I'll highlight the emotional swings and the toll it takes on their life. \n\nNext, the diagnosis section. The symptoms align with Bipolar II Disorder because of the hypomanic episodes (4+ days of elevated mood, reduced need for sleep, increased activity) alternating with depressive periods. But I need to check if the hypomanic episodes meet the criteria. The patient mentions 3 hours of sleep for days, which is under 4 days? Wait, the hypomanic episode requires at least 4 days. The answer says \"last week\" which might be 4-6 days. So Bipolar II (if depressive episodes meet criteria) or Cyclothymic Disorder if not severe enough. Alternatively, Bipolar Disorder Unspecified if criteria aren't fully met. \n\nWait, the question's answer says \"3 hours for days\"\u2014the exact duration isn't clear, but \"days\" could be 4+, so maybe Bipolar II. But the depressive symptoms are present, so Bipolar II (with hypomanic and major depressive episodes). Alternatively, if the hypomanic episodes don't meet full criteria, then maybe Bipolar Disorder Not Otherwise Specified (NOS) or Unspecified. But in DSM-5, Bipolar II requires a full major depressive episode and at least one hypomanic episode without psychosis. The patient's depressive symptoms (item 2: feeling down, anhedonia, hopelessness) might meet major depression criteria. The self-reported \"crashing\" suggests depressive episodes following hypomania. \n\nThe diagnosis should be Bipolar II Disorder unless there's a better fit. However, the rapid cycling within two weeks might raise questions about rapid-cycling specifier. But the key is hypomanic and depressive episodes. \n\nIn the reasoning section, I need to explain linking symptoms to Bipolar II, noting hypo-manic episodes and depressive episodes, and why other disorders like Major Depressive Disorder with mixed features or Borderline Personality Disorder are less likely. \n\nNext steps: recommend a full clinical interview, mood tracking, maybe depression and bipolar scales, rule out substance use, and consider therapy. \n\nWait, the user's instructions require wrapping terms in tags. Symptoms like \"sleep disturbances\" and \"irritability\" need to be in <sym> tags. Medical terms like Bipolar II in <med> tag. Patient quotes like \"I don\u2019t need sleep\" should be in <quote> tags. \n\nI need to ensure the empathy is there in the first paragraph, highlighting the emotional toll. The diagnosis section must be precise. The reasoning must explain why Bipolar II is the best fit and rule out alternatives. Next steps are practical recommendations. \n\nAlso, the user specified to not include Somatic Symptom Disorder unless warranted, which it's not here. Trauma or anxiety disorders? The symptoms don't point to PTSD or GAD, so those are less likely. \n\nDouble-checking DSM-5 criteria: Hypomanic episodes require at least 4 days. The patient mentions \"last week\" which might be 4-7 days. If it's 4 days, then Bipolar II fits if there's a prior depressive episode. \n\nSo the final diagnosis is Bipolar II Disorder. \n\nNow structuring the response per the exact format, with proper tags. Make sure each section is correctly labeled, with no markdown. Use the specified tags accurately. \n\nWait, the patient's answer to Q5 says \"crashing\" and \"bounce again soon\" which suggests recurrence, implying a pattern. Also, the mood swings are affecting relationships. \n\nAlright, time to structure it all correctly, ensuring empathy, proper tags, and adherence to formatting. Avoid any assumptions beyond the given data. \n\nI think that's covered. Time to put it all together.\n</think>\n\n<sym>Fluctuating mood states</sym> have painted your experience as a rollercoaster\u2014one moment, you\u2019re racing through projects with a <sym>reduced need for sleep</sym> and relentless energy, only to <sym>crash</sym> into a <sym>hopeless, flat affect</sym> afterward. This seesaw between extremes sounds exhausting, and it\u2019s clear how these shifts could leave you and your relationships feeling destabilized.  \n\n<diag><med>Bipolar II Disorder</med> (provisional)</diag>  \n\n<reason>  \nThe pattern strongly aligns with <med>bipolar spectrum pathology</med>:  \n1. **Hypo-manic episodes**: <sym>Increased goal-directed activity (3 projects simultaneously), reduced need for sleep (3 hours/night for days), and irritability during elevated phases</sym> meet <med>bipolar II</med> criteria for hypo-manic episodes (\u22654 days of elevated mood + 3+ symptoms).  \n2. **Depressive symptoms**: <sym>Anhedonia, social withdrawal (\"canceled plans\"), and hopelessness</sym> suggest <med>major depressive episodes</med>.  \n3. **Interpersonal impact**: Your <quote>\u201ccrashing\u201d</quote> and <quote>\u201call over the place\u201d</quote> description corroborates mood-congruent dysphoria and dysregulation.  \n4. **Exclusion of alternatives**: Symptoms lack the episodicity of <med>PTSD</med> or the chronic irritability of <med>DMDD</med>; substance use isn\u2019t reported.  \n\n<next>  \n1. **Complete diagnostic workup**:  \n   - Structured interview with <med>Mood Disorder Questionnaire</med> and <med>Structured Clinical Interview for DSM-5 (SCID-5)</med>.  \n   - Screen for <med>major depressive disorder with mixed features</med> (if depressive and hypo-manic symptoms overlap).  \n   - Rule out <med>substance/medication-induced mood disorder</med>.  \n\n2. **Mood tracking**:  \n   - Daily journaling of energy levels, sleep duration, and affect; use apps like Daylio or DBT diary cards.  \n\n3. **Safety assessment**:  \n   - Evaluate for <sym>suicidality</sym> (not reported here, but cyclical patterns increase risk over time.  \n   - Assess for <sym>risk behaviors</sym> during hypo-manic phases (e.g., reckless decisions, impulsivity).  \n\n4. **Treatment planning**:  \n   - **Pharmaceutical**: Stabilizers (lithium, valproate) if hypo-mania confirmed; antidepressants cautiously (to avoid mood swings).  \n   - **Psychoeducation**: Teach mood-regulation strategies to mitigate future crashes.  \n   - **Collateral data**: Involve your girlfriend in sessions to validate self-report and address relational strain.  \n\nAlways keep language accessible, and ensure the structure matches exactly as per instructions. Ensure all tags are properly placed. Make sure diagnosis is provisional, and next steps are actionable. Avoid any markdown.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Sleep-Wake-Disorders.pdf",
+            "score": 0.6843,
+            "highlight": "Sleep-Wake Disorders In the fifth edition of the Diagnostic and Statistical Manual of Mental Disorders  (DSM-5), sleep-wake  disorders encompass 10 conditions manifested by disturbed sleep and causing distress as well as im - pairment in daytime functioning.",
+            "excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"mental\", \"disorders\", \"sleep\", and 3 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf",
+            "score": 0.6702,
+            "highlight": "iagnosis and Care While DSM does include two diagnoses with related symptoms to DMDD, oppositional defiant disor- der (ODD) and Bipolar Disorder (BD), the symptoms described in DMDD are significantly different than  these two diagnoses.",
+            "excerpt": "iagnosis and Care\nWhile DSM does include two diagnoses with related symptoms to DMDD, oppositional d...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"bipolar\", \"than\", \"while\", and 7 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.6591,
+            "highlight": "Negative cognitions and mood represents myriad feelings, from a persistent and distorted sense of  blame of self or others, to estrangement from others or markedly diminished interest in activities, to an inability to remember key aspects of the event.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"mood\", \"feelings\", and 3 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Schizophrenia.pdf",
+            "score": 0.6513,
+            "highlight": "This potential category would  identify a person who does not have a full-blown psychotic disorder but exhibits minor versions of  relevant symptoms.",
+            "excerpt": "h before their consideration as formal disorders. This potential category would \nidentify a person w...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"exhibits\", \"potential\", \"not\", and 6 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.6503,
+            "highlight": "While DSM-IV was organized centrally around the concept of  medically unexplained symptoms, DSM-5 criteria instead emphasize the degree to which a patient \u2019s  thoughts, feelings and behaviors about their somatic symptoms are disproportionate or excessive.",
+            "excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"criteria\", \"behaviors\", and 7 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let's see. The user provided the patient's answers to the first five questions of the DSM-5 cross-cutting symptom measure. My job is to analyze these responses based on the instructions given.\n\nFirst, I need to identify the main symptoms and concerns. The patient mentions fluctuating interest and pleasure, which relates to anhedonia. They have episodes of high energy and low need for sleep, which could be manic or hypomanic symptoms. Also, they talk about feeling down with hopelessness, which is depressive. The irritability when up and numbness when down could indicate mood swings between elevated and depressed states. \n\nNext, identifying patterns. The patient describes cycling between periods of high energy (with reduced sleep, increased activity, and irritability) and periods of low energy (anhedonia, depression, social withdrawal). The variability in symptoms over time suggests instability, which might point towards a bipolar spectrum issue rather than unipolar depression. The mention of alternating states and the contrast between being \"on\" versus \"flat\" is key here.\n\nPotential clinical areas: Bipolar II Disorder comes to mind because of the hypomanic episodes (as they mention not needing much sleep, being productive, but not necessarily causing major impairment as in full mania). But I should also consider Bipolar I if the hypomanic episodes were more severe. However, the patient's description of \"buzzing\" with 3 hours of sleep for days might fit hypomania. \n\nAlso, the mixed features are possible since they experience symptoms of both depression and elevated mood at different times. Rapid cycling? The patient mentions \"probably bounce again soon\" which suggests cyclothymia or rapid cycling if episodes are frequent. But the time frame here is two weeks, so maybe the pattern is within the past two weeks. \n\nRisk factors: The sudden energy spikes could lead to reckless behavior, though the patient hasn't mentioned any, but it's a possibility. The fluctuating mood and irritability might affect relationships, as noted by the girlfriend's comment. The self-reported \"crashing\" could indicate the end of a hypomanic phase leading to depression, which is common in bipolar. \n\nI need to make sure not to speculate, just list the observed symptoms. Also, check for any suicidal thoughts, but they didn't mention those here. The key points are the mood swings between elevated and depressed states, the sleep disturbances (both reduced need and crashing), the irritability during high phases, and the alternating anhedonia. \n\nI should structure the summary into the five sections as specified, using clinical terms like \"fluctuating mood states,\" \"hypomanic symptoms,\" \"depressive symptoms,\" \"irritability,\" \"sleep disturbances,\" \"cyclical pattern,\" \"bipolar spectrum disorder,\" \"mixed features,\" \"interpersonal impairment,\" \"potential for functional impairment,\" \"psycho-education needs,\" \"substance misuse risk,\" and \"suicidality screening.\" \n\nWait, the user didn't mention substance use or suicidal ideation, so I shouldn't include those unless inferred. The response should avoid speculation. The patient's girlfriend's comment about being \"all over the place\" points to instability. The cyclical pattern over two weeks is important but the DSM criteria for bipolar require episodes lasting days. Hypomania requires at least four days, so if they have four days of hypomanic symptoms, that could meet criteria. But since the assessment is over two weeks, maybe they had a hypomanic episode and a depressive episode in that time, which could indicate a mixed or rapid cycling. But the questions are about the past two weeks, so maybe they had a hypomanic episode and then a depressive, but that's a bit quick. Alternatively, they might be describing typical fluctuations within that period. \n\nAlso, the patient's self-awareness about their cycles is noted, which is helpful. The main thing is to present the observed symptoms without jumping to a diagnosis, just highlighting clinical significance areas.\n\nSo, putting it all together, the main points are the cyclical mood swings between depressive and hypomanic states, sleep changes, irritability, and the cyclical nature pointing towards a possible bipolar disorder. The patterns show alternating symptoms, which is key. The clinical areas would include bipolar spectrum, mood instability, mixed features, possible substance use isn't mentioned, so maybe not. Risk factors include potential functional impairment in work (since they were working on three projects, maybe too much or too little?), interpersonal strain, and the need for psychoeducation on mood disorders. \n\nI need to make sure all points are directly from the answers. The user wants a clinical summary, so I need to use terms like \"fluctuating affective symptoms,\" \"hypomanic episodes,\" \"depressed mood,\" \"interpersonal conflict,\" \"cyclical sleep-wake patterns,\" etc. Also, note the self-reported \"crashing\" which might indicate a return to depression after a hypomanic phase, and the girlfriend's observation about mood swings is an external validation of their symptoms. \n\nOkay, time to structure each section step by step as per the instructions.\n</think>\n\n### Clinical Observation Summary  \n\n**1. Main Symptoms and Concerns:**  \n- **Fluctuating mood states:** Alternating between periods of elevated energy/activity (hypomanic symptoms) and depressed mood with anhedonia.  \n- **Hypomanic symptoms:** Reduced need for sleep (e.g., 3 hours/night for days), increased goal-directed activity (e.g., working on three projects simultaneously), irritability, and grandiosity (e.g., feeling \"I don\u2019t need sleep\").  \n- **Depressive symptoms:** Persistent low energy, anhedonia, social withdrawal (canceling plans), and feelings of hopelessness.  \n- **Cyclical sleep-wake disturbances:** Episodes of reduced sleep during elevated phases followed by \"crashing\" (potential return to depressive phases).  \n- **Interpersonal reactivity:** Mood-congruent irritability during elevated phases, reported by girlfriend as \"all over the place.\"  \n\n**2. Noted Patterns:**  \n- **Biphasic patterns:** Clear alternation between hypo-manic and depressive symptom clusters within the past two weeks, suggesting a rhythmicity consistent with bipolar spectrum disorders.  \n- **Reactivity of symptoms to mood state:** Anhedonia and social withdrawal occur during depressive phases, while irritability and impulsivity emerge during hypo-manic phases.  \n- **Self-awareness of cyclicity:** Patient acknowledges predictable cycles of energy \"crashing\" and \"bouncing back,\" implying a recognized pattern.  \n\n**3. Potential Areas of Clinical Significance:**  \n- **Bipolar Spectrum Disorder:** Hypo-manic episodes (meeting criteria for hypomania: \u22654 days of elevated mood with increased energy/activity, impaired judgment, and reduced need for sleep) alternating with depressive symptoms.  \n- **Mixed Features:** Concurrent or alternating presence of hypo-manic/depressive symptoms (e.g., \"heavy blanket\" feelings during hypo-manic phases).  \n- **Functional Impairment Risk:** Variable work output (e.g., overcommitting during hypo-manic phases vs. withdrawal during depression).  \n- **Interpersonal Strain:** Mood-congruent irritability and inconsistency in affect, evidenced by girlfriend\u2019s observations.  \n\n**4. Risk Factors/Warning Signs:**  \n- **Impaired insight regarding hypo-manic episodes:** Patient describes hypo-manic episodes as productive (e.g., \"kept going\") but acknowledges interpersonal conflict and exhaustion.  \n- **Potential for dysregulation:** Sudden energy spikes may precede risky behaviors (not explicitly reported but inferred from \"buzzing\" and decreased sleep).  \n- **Lack of stability:** Rapid shifts in mood and energy may exacerbate stress or functional disruption.  \n\n**5. Summary (Clinical Language):**  \nThe patient exhibits a cyclical presentation of fluctuating mood, energy, and affect consistent with **bipolar disorder, possibly bipolar II or unspecified**, marked by alternating hypo-manic (elevated energy, reduced sleep, irritability) and depressive symptoms (anhedonia, hopelessness, social withdrawal). **Mixed/affective lability** is evident, with self-reported cyclicity within the past two weeks. **Interpersonal and occupational impairment** risks arise from mood-congruent behaviors and energy instability. Further assessment is warranted for mood disorder specifiers, including history of manic/hypo-manic episodes, substance use, and suicidal ideation.  \n\n---  \nThis summary adheres to patient-reported data, avoiding assumptions beyond documented symptoms. Next steps should include a full clinical interview, mood charting, and collateral information from the girlfriend to triangulate symptom patterns.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.663
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "<sym>Fluctuating mood states</sym> have painted your experience as a rollercoaster\u2014one moment, you\u2019re racing through projects with a <sym>reduced need for sleep</sym> and relentless energy, only to <sym>crash</sym> into a <sym>hopeless, flat affect</sym> afterward. This seesaw between extremes sounds exhausting, and it\u2019s clear how these shifts could leave you and your relationships feeling destabilized.  \n\n<diag><med>Bipolar II Disorder</med> (provisional)</diag>  \n\n<reason>  \nThe pattern strongly aligns with <med>bipolar spectrum pathology</med>:  \n1. **Hypo-manic episodes**: <sym>Increased goal-directed activity (3 projects simultaneously), reduced need for sleep (3 hours/night for days), and irritability during elevated phases</sym> meet <med>bipolar II</med> criteria for hypo-manic episodes (\u22654 days of elevated mood + 3+ symptoms).  \n2. **Depressive symptoms**: <sym>Anhedonia, social withdrawal (\"canceled plans\"), and hopelessness</sym> suggest <med>major depressive episodes</med>.  \n3. **Interpersonal impact**: Your <quote>\u201ccrashing\u201d</quote> and <quote>\u201call over the place\u201d</quote> description corroborates mood-congruent dysphoria and dysregulation.  \n4. **Exclusion of alternatives**: Symptoms lack the episodicity of <med>PTSD</med> or the chronic irritability of <med>DMDD</med>; substance use isn\u2019t reported.  \n\n<next>  \n1. **Complete diagnostic workup**:  \n   - Structured interview with <med>Mood Disorder Questionnaire</med> and <med>Structured Clinical Interview for DSM-5 (SCID-5)</med>.  \n   - Screen for <med>major depressive disorder with mixed features</med> (if depressive and hypo-manic symptoms overlap).  \n   - Rule out <med>substance/medication-induced mood disorder</med>.  \n\n2. **Mood tracking**:  \n   - Daily journaling of energy levels, sleep duration, and affect; use apps like Daylio or DBT diary cards.  \n\n3. **Safety assessment**:  \n   - Evaluate for <sym>suicidality</sym> (not reported here, but cyclical patterns increase risk over time.  \n   - Assess for <sym>risk behaviors</sym> during hypo-manic phases (e.g., reckless decisions, impulsivity).  \n\n4. **Treatment planning**:  \n   - **Pharmaceutical**: Stabilizers (lithium, valproate) if hypo-mania confirmed; antidepressants cautiously (to avoid mood swings).  \n   - **Psychoeducation**: Teach mood-regulation strategies to mitigate future crashes.  \n   - **Collateral data**: Involve your girlfriend in sessions to validate self-report and address relational strain.  \n\nAlways keep language accessible, and ensure the structure matches exactly as per instructions. Ensure all tags are properly placed. Make sure diagnosis is provisional, and next steps are actionable. Avoid any markdown.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "bipolar",
+    "question_count": 23,
+    "duration": 17518.994025945663,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 10.478462934494019,
+    "diagnosis_generation_time": 9.019024848937988,
+    "rag_evaluation_time": 0.00017213821411132812,
+    "total_time": 19.497704029083252
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Sleep-Wake-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6843,
+        "average_score": 0.6843,
+        "example_excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"mental\", \"disorders\", \"sleep\", and 3 more matching aspects of your query."
+      },
+      "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6702,
+        "average_score": 0.6702,
+        "example_excerpt": "iagnosis and Care\nWhile DSM does include two diagnoses with related symptoms to DMDD, oppositional d...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"bipolar\", \"than\", \"while\", and 7 more matching aspects of your query."
+      },
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6591,
+        "average_score": 0.6591,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"mood\", \"feelings\", and 3 more matching aspects of your query."
+      },
+      "APA_DSM-5-Schizophrenia.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6513,
+        "average_score": 0.6513,
+        "example_excerpt": "h before their consideration as formal disorders. This potential category would \nidentify a person w...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"exhibits\", \"potential\", \"not\", and 6 more matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6503,
+        "average_score": 0.6503,
+        "example_excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"criteria\", \"behaviors\", and 7 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 08:15:33",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 08:15:32",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 4,
+        "clinical_relevance": 4,
+        "consistency": 4,
+        "diagnostic_justification": 5,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist addressed most of the DSM-5 Level1 Cross-Cutting Symptom Measure domains, but with some limitations. Questions 1-4, 6, and 8 were directly asked, covering depression, anger, energy/activity, and anxiety. However, some domains like somatic concerns, suicidality, psychotic symptoms, sleep quality, cognitive function, repetitive thoughts/behaviors, dissociation, identity and relationships, and substance use were either not directly addressed or only superficially covered. For example, the therapist did not specifically inquire about substance use or psychotic symptoms, which are crucial for a comprehensive diagnosis.",
+        "clinical_relevance": "The therapist's questions generally aligned with DSM-5 criteria, but there were minor inaccuracies and vague phrasing in some instances. For example, when asking about 'sleeping less than usual,' the therapist could have specified 'but still have a lot of energy' to better align with the DSM-5 criteria. Additionally, questions about irritability and anger could have been more precise. Overall, the questions were clinically relevant but could have been more precise.",
+        "consistency": "The dialogue generally flows logically, with each question building on previous responses. However, there were minor logical inconsistencies. For instance, the therapist quickly transitioned from discussing depressive symptoms to hypo-manic episodes without fully exploring the patient's experiences during depressive phases. Additionally, some concerning disclosures, such as 'crashing' and 'all over the place,' could have been probed further for better understanding.",
+        "diagnostic_justification": "The diagnosis of Bipolar II Disorder (provisional) clearly aligns with the patient's responses, and the reasoning behind the diagnostic decision is explicitly stated and clinically sound. The therapist provided a detailed justification, citing specific symptoms like hypo-manic episodes, depressive symptoms, and interpersonal impact. The differential diagnosis was also considered, ruling out PTSD, DMDD, and substance/medication-induced mood disorder. The next steps, including a complete diagnostic workup, mood tracking, safety assessment, and treatment planning, were clearly outlined.",
+        "empathy": "The therapist responses mostly showed empathy and a natural conversational style, but there were minor instances where the interactions seemed slightly robotic or impersonal. For example, the therapist could have acknowledged the patient's distress more explicitly when they mentioned feeling 'exhausted' and experiencing 'heavy blanket' feelings. Overall, the therapist maintained a professional tone and showed understanding, but could have been more empathetic in certain moments."
+      },
+      "overall_comments": "The conversation demonstrated a good understanding of the DSM-5 Level1 Cross-Cutting Symptom Measure and effectively identified key symptoms for a Bipolar II Disorder diagnosis. However, some domains were not fully explored, and minor issues with clinical phrasing and logical flow existed. The therapist provided a clear and justified diagnosis with a comprehensive plan for next steps. With some refinement in addressing all DSM-5 dimensions and improving empathy, the conversation could be considered exceptional.",
+      "average_score": 4.2,
+      "diagnosis_accuracy": {
+        "matches_profile": true,
+        "confidence": 5,
+        "explanation": "The diagnosis explicitly mentions 'Bipolar II Disorder (provisional)' and outlines symptoms that align with bipolar spectrum pathology, including hypo-manic episodes and depressive symptoms. The description and reasoning provided strongly support the diagnosis of a bipolar condition.",
+        "classification": "bipolar"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "bipolar",
+        "classified_as": "bipolar",
+        "match": true,
+        "confidence": 5
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 2.7443790435791016
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.5272082293437681,
+        "local_coherence": 0.548586511375509,
+        "window_coherence": 0.5597066092019922
+      },
+      "readability": {
+        "flesch_kincaid_grade": 9.44,
+        "gunning_fog_index": 4.73,
+        "flesch_reading_ease": 48.0
+      },
+      "diversity": {
+        "distinct_1": 0.4875444839857651,
+        "distinct_2": 0.8949243098842387,
+        "distinct_3": 0.9759358288770054
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "bipolar",
+      "predicted": "<sym>Fluctuating mood states</sym> have painted your experience as a rollercoaster\u2014one moment, you\u2019re racing through projects with a <sym>reduced need for sleep</sym> and relentless energy, only to <sym>crash</sym> into a <sym>hopeless, flat affect</sym> afterward. This seesaw between extremes sounds exhausting, and it\u2019s clear how these shifts could leave you and your relationships feeling destabilized.  \n\n<diag><med>Bipolar II Disorder</med> (provisional)</diag>  \n\n<reason>  \nThe pattern strongly aligns with <med>bipolar spectrum pathology</med>:  \n1. **Hypo-manic episodes**: <sym>Increased goal-directed activity (3 projects simultaneously), reduced need for sleep (3 hours/night for days), and irritability during elevated phases</sym> meet <med>bipolar II</med> criteria for hypo-manic episodes (\u22654 days of elevated mood + 3+ symptoms).  \n2. **Depressive symptoms**: <sym>Anhedonia, social withdrawal (\"canceled plans\"), and hopelessness</sym> suggest <med>major depressive episodes</med>.  \n3. **Interpersonal impact**: Your <quote>\u201ccrashing\u201d</quote> and <quote>\u201call over the place\u201d</quote> description corroborates mood-congruent dysphoria and dysregulation.  \n4. **Exclusion of alternatives**: Symptoms lack the episodicity of <med>PTSD</med> or the chronic irritability of <med>DMDD</med>; substance use isn\u2019t reported.  \n\n<next>  \n1. **Complete diagnostic workup**:  \n   - Structured interview with <med>Mood Disorder Questionnaire</med> and <med>Structured Clinical Interview for DSM-5 (SCID-5)</med>.  \n   - Screen for <med>major depressive disorder with mixed features</med> (if depressive and hypo-manic symptoms overlap).  \n   - Rule out <med>substance/medication-induced mood disorder</med>.  \n\n2. **Mood tracking**:  \n   - Daily journaling of energy levels, sleep duration, and affect; use apps like Daylio or DBT diary cards.  \n\n3. **Safety assessment**:  \n   - Evaluate for <sym>suicidality</sym> (not reported here, but cyclical patterns increase risk over time.  \n   - Assess for <sym>risk behaviors</sym> during hypo-manic phases (e.g., reckless decisions, impulsivity).  \n\n4. **Treatment planning**:  \n   - **Pharmaceutical**: Stabilizers (lithium, valproate) if hypo-mania confirmed; antidepressants cautiously (to avoid mood swings).  \n   - **Psychoeducation**: Teach mood-regulation strategies to mitigate future crashes.  \n   - **Collateral data**: Involve your girlfriend in sessions to validate self-report and address relational strain.  \n\nAlways keep language accessible, and ensure the structure matches exactly as per instructions. Ensure all tags are properly placed. Make sure diagnosis is provisional, and next steps are actionable. Avoid any markdown.",
+      "matches": true,
+      "classification": "bipolar",
+      "classification_confidence": 5
+    }
+  }
+}

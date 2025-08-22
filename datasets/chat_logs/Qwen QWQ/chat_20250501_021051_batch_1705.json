@@ -1,0 +1,257 @@
+{
+  "timestamp": "2025-05-01T02:11:04.087135",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm Dr. Adams, a mental health professional. Today I'll be administering the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult. This assessment will help us understand your symptoms and support your treatment. Your answers will be confidential, and there are no right or wrong answers. We'll go through 23 questions about your experiences over the past two weeks. I'll ask each question, and you can share your thoughts in your own words. Let's begin with the first question when you're ready."
+    },
+    {
+      "role": "patient",
+      "content": "Alright, okay. I'll try to be honest..."
+    },
+    {
+      "role": "assistant",
+      "content": "1. Little interest or pleasure in doing things?"
+    },
+    {
+      "role": "patient",
+      "content": "Hmm... Well, I mean, I don't really enjoy things like I used to. It's hard to explain. Like, if I try to watch a movie or hang out with friends, I'm distracted by these thoughts. I end up avoiding stuff because I'm too anxious. So maybe not a lot of interest lately."
+    },
+    {
+      "role": "assistant",
+      "content": "2. Feeling down, depressed, or hopeless?"
+    },
+    {
+      "role": "patient",
+      "content": "...Sometimes. It's not like I'm sad all the time, but when I can't get my mind off these thoughts, I just feel stuck. Like there's no way out of this cycle. But I don't know if that's really 'depressed'?"
+    },
+    {
+      "role": "assistant",
+      "content": "3. Feeling more irritated, grouchy, or angry than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "Yeah, when I'm interrupted while doing my... routines. Like, if I'm mid-ritual and someone talks to me, I get really on edge. But I try not to show it most of the time. It's more frustration than actual anger, I guess."
+    },
+    {
+      "role": "assistant",
+      "content": "4. Sleeping less than usual, but still have a lot of energy?"
+    },
+    {
+      "role": "patient",
+      "content": "No, actually I can't sleep well most nights. I lay there thinking, and when I do sleep, I'm exhausted when I wake up. It's the opposite, really."
+    },
+    {
+      "role": "assistant",
+      "content": "5. Starting lots more projects or doing more risky things than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "No, not at all. I'm actually stuck doing the same things over and over. It's more like... stuck in place, not doing anything new. My boss says I'm slow at work because I keep re-doing tasks."
+    },
+    {
+      "role": "assistant",
+      "content": "6. Feeling nervous, anxious, worried, or on edge?"
+    },
+    {
+      "role": "patient",
+      "content": "Yeah, constantly. It's like a low-level panic that ramps up when I think I missed something. Like, if I didn't wash my hands the right number of times, I get a cold sweat. But I try to hide it so people don't think I'm weird."
+    },
+    {
+      "role": "assistant",
+      "content": "7. Feeling panic or being frightened?"
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, let's start by reading the user's query carefully. They provided a detailed scenario where I need to generate a clinical assessment based on a patient's responses to a questionnaire. The user specified a strict structure with particular formatting tags and sections. \n\nFirst, I need to ensure I follow the exact structure they outlined. The response must have four sections: a compassionate summary, diagnosis, reasoning, and recommended steps, each with specific formatting. I must use the tags for medical terms, symptoms, and quotes as instructed. \n\nLooking at the patient's answers, they mentioned anhedonia, compulsive handwashing rituals, anxiety when routines are disrupted, and work impairment. The key here is to identify the primary diagnosis. The compulsions and anxiety around rituals are strongly pointing towards obsessive-compulsive disorder (OCD). The anhedonia and depressed mood could be part of OCD's emotional impact or a separate mood disorder, but the compulsions are central here.\n\nI need to make sure the diagnosis section uses <med>Obsessive-Compulsive Disorder (OCD)</med>. In the reasoning, I'll link the symptoms like compulsions (<sym>ritualized handwashing</sym>), anxiety (<sym>cold sweats</sym>), and functional impairment. \n\nFor the compassionate summary, I should acknowledge their struggle with rituals and anxiety, showing empathy. The recommended steps should include CBT, SSRIs, mindfulness, occupational support, and screening for depression. \n\nI must avoid any mention of other disorders unless supported. The user emphasized not defaulting to somatic symptom disorder, so OCD is the primary here. Also, check that all required tags are used correctly, and the structure matches exactly. Need to ensure no markdown is used except the specified tags. \n\nWait, the user specified \"Do NOT include any introductory statements...\" so I start directly with the summary. Also, the sections must be in order with correct headings. Let me structure each part step by step.\n\nDouble-checking the symptoms align with OCD criteria: compulsions (handwashing), obsessions (intrusive thoughts leading to rituals), significant distress. The functional impairment at work is clear. The anhedonia could be secondary to OCD but should be noted. \n\nOkay, putting it all together now, making sure each part is concise and follows the format precisely. Use the tags properly. Make sure the reasoning addresses all key symptoms and ties them to OCD. Avoid jargon but stay professional. \n\nI think that covers it. Now format each section with the required tags and structure. Let me review again to ensure no markdown except the specified tags and correct spacing.\n</think>\n\nThe patient describes a profound struggle with persistent <sym>ritualized behaviors</sym> and <sym>intrusive thoughts</sym> that disrupt daily life, coupled with <sym>anhedonia</sym>, social withdrawal, and <sym>sleep disturbances</sym>. Their narrative reflects distress tied to rigid routines (e.g., \"handwashing the right number of times\") and efforts to conceal their <sym>anxiety</sym> (<quote>\"try to hide it so people don\u2019t think I\u2019m weird\"</quote>). The repetitive task redoing at work and avoidance of social interactions underscore the pervasive impact of these struggles.  \n\n**Diagnosis:** Obsessive-Compulsive Disorder (OCD) with <med>comorbid generalized anxiety symptoms</med> and <med>functional impairment</med>.  \n**Reasoning:**  \n- Core <med>obsessive-compulsive features</med> dominate: compulsions (e.g., ritualized washing), distress when routines are disrupted (<sym>cold sweats, irritability</sym>), and <sym>intrusive thoughts</sym> driving behaviors.  \n- <sym>Anhedonia</sym> and <sym>hopelessness</sym> could reflect <med>mood dysregulation</med> secondary to OCD-driven distress, though further evaluation is needed to rule out <med>major depressive disorder</med>.  \n- <sym>Insomnia</sym> and <sym>fatigue</sym> align with <med>nonrestorative sleep</med> due to intrusive thoughts.  \n- No evidence of <med>hypomanic/manicix symptoms</med> (e.g., increased energy or risky behavior; <sym>negative response to Q5 rules out bipolar spectrum).  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Cognitive-Behavioral Therapy (CBT) with Exposure and Response Prevention (ERP):** Target compulsions and obsessive thoughts (e.g., graded exposure to ritual interruption, cognitive restructuring).  \n2. **Medication evaluation:** Consider <med>SSRIs</med> (e.g., sertraline, fluvoxamine) as first-line OCD treatments.  \n3. **Sleep hygiene intervention:** Address <sym>insomnia</sym> via structured bedtime routines and, if needed, short-term sleep medications (e.g., melatonin).  \n4. **Occupational support:** Collaborate with workplace to reduce task pressure and accommodate ritual management.  \n5. **Further assessment for comorbid <med>mood disorders</med>:** Screen for major depression via PHQ-9 and GAD-7 to clarify if <sym>anhedonia</sym> is OCD-driven or a separate depressive process.  \n6. **Psychoeducation:** Normalize symptoms, reduce shame, and emphasize OCD\u2019s neurobiological basis to encourage treatment engagement.  \n\nThis approach prioritizes addressing OCD\u2019s core mechanisms while addressing secondary distress (anxiety, sleep, occupational challenges). Regular monitoring for symptom escalation or comorbid conditions is critical.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Obsessive-Compulsive-Disorder.pdf",
+            "score": 0.6705,
+            "highlight": "Obsessive Compulsive    and Related Disorders The upcoming fifth edition of the Diagnostic and Statistical Manual of Mental Disorders (DSM-5) will in - clude a new chapter on Obsessive-Compulsive and Related Disorders to reflect the increasing evidence  of these disorders\u2019 relatedness to one another and distinction from other anxiety disorders, as well as  to help clinicians better identify and treat individuals suffering from these disorders.",
+            "excerpt": "  Obsessive Compulsive \n  and Related Disorders\nThe upcoming fifth edition of the Diagnostic and Sta...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"increasing\", \"obsessive\", \"help\", and 7 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Sleep-Wake-Disorders.pdf",
+            "score": 0.6565,
+            "highlight": "Sleep-Wake Disorders In the fifth edition of the Diagnostic and Statistical Manual of Mental Disorders  (DSM-5), sleep-wake  disorders encompass 10 conditions manifested by disturbed sleep and causing distress as well as im - pairment in daytime functioning.",
+            "excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"mental\", \"disorders\", and 3 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.6359,
+            "highlight": "Characteristics of Somatic Symptom Disorder Somatic symptom disorder (SSD) is characterized by somatic symptoms that are either very distressing or result in significant disruption of functioning, as well as excessive and disproportionate thoughts, feelings and behaviors regarding those symptoms.",
+            "excerpt": "   Somatic Symptom Disorder\nThe upcoming fifth edition of the Diagnostic and Statistical Manual of M...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"symptom\", \"significant\", and 9 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-ADHD.pdf",
+            "score": 0.6011,
+            "highlight": "s to the Disorder ADHD is characterized by a pattern of behavior, present in multiple settings (e.g., school and home), that can result in performance issues in social, educational, or work settings.",
+            "excerpt": "s to the Disorder\nADHD is characterized by a pattern of behavior, present in multiple settings (e.g....",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"result\", \"performance\", \"issues\", and 7 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Substance-Use-Disorder.pdf",
+            "score": 0.5988,
+            "highlight": "2 \u2022 Substance-Related and Addictive DisordersOther Disorders of Interest DSM-5 will not include caffeine use disorde r, although research shows that as little as two to three cups  of coffee can trigger a withdrawal effect marked by tiredness or sleepiness.",
+            "excerpt": "sistent and recurrent use of Internet games, and a preoccupation with them, can result in clinically...",
+            "relevance_explanation": "Some relevance: Contains terms \"not\", \"little\", \"disorders\", and 6 more that have contextual connection to your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let's tackle this. The user provided a patient's responses to the first seven questions of the DSM-5 self-assessment. My job is to analyze these and structure the response as a clinical summary. First, I need to read through each question and answer carefully.\n\nStarting with the main symptoms. The patient mentions little interest in activities, which points to anhedonia. They also talk about feeling down when overwhelmed by thoughts, which could relate to depression. The irritability when interrupted during routines might hint at obsessive-compulsive tendencies. The sleep disturbances\u2014trouble sleeping and feeling tired\u2014could be insomnia or a sleep disorder linked to anxiety. The repetition of tasks at work suggests possible compulsive behaviors or ritualistic actions. The constant nervousness and anxiety, especially around not completing rituals, is a key point here. The mention of washing hands a certain number of times is classic OCD behavior. \n\nNow, looking for patterns. The patient's symptoms seem interconnected. The anxiety and on-edge feeling drive the repetitive behaviors. The avoidance of social activities because of anxiety and intrusive thoughts is another pattern. The emotional numbing (like not enjoying things) and the physical symptoms (cold sweat) when rituals aren't followed are recurring themes. The patient also reports trying to hide their symptoms, indicating possible shame or fear of stigma.\n\nPotential clinical areas: OCD is a strong candidate here, given the compulsions around washing and rituals, the anxiety when those aren't done, and the distress caused. The anhedonia and depressed mood might overlap with depressive disorder, but it's important to note if the depression is primary or a result of OCD. The irritability during disruptions of routines could also suggest obsessive-compulsive personality disorder, but that's different from OCD itself. The sleep issues could be secondary to anxiety or OCD symptoms. The avoidance of social interactions might touch on social anxiety or agoraphobia, but again, context matters. The repetitive task redoing at work points to possible obsessive-compulsive symptoms affecting occupational functioning.\n\nRisk factors or warning signs: The patient mentioned avoiding social interactions, which can lead to social withdrawal and isolation. The intrusive thoughts and rituals might escalate, leading to more severe impairment. The attempts to hide symptoms might indicate shame, which could prevent help-seeking behavior. There's no direct mention of suicidal thoughts, but the hopelessness mentioned in Q3 could be a concern. However, the user didn't include that in the provided answers beyond question 3, so maybe focus on what's there. The compulsions might interfere with daily life, so functional impairment is a risk.\n\nClinical summary needs to be in professional terms. I should structure it as per the user's instructions: main symptoms, patterns, areas of significance, risks, and a summary.\n\nWait, in the responses, the patient talks about \"rituals\" and \"routines,\" especially in A2, A4, A6, and A7. That's a big red flag for OCD. The compulsions (handwashing a certain number of times) and the anxiety when not performed\u2014this is classic OCD. The anhedonia and depressed mood could be part of the OCD or a co-occurring depression. The irritability when routines are interrupted is common in OCD, as disrupting compulsions often causes distress. The sleep issues are likely comorbid insomnia due to anxiety/OCD. The repetitive work tasks (redoing tasks) also point to compulsions or perfectionism, which is part of OCD. The patient's avoidance of social activities due to anxiety is a behavioral response to their intrusive thoughts.\n\nI need to make sure I don't miss the key points. The user wants no speculation, so stick strictly to what's presented. The compulsions, the anxiety tied to those, the anhedonia, the irritability, the sleep issues, the functional impairment at work. \n\nFor the summary, structure each section clearly. Main symptoms: anhedonia, depressed mood, irritability, insomnia, compulsions, functional impairment. Patterns: symptoms interconnected with anxiety and compulsions; avoidance and social withdrawal. Clinical areas: OCD, possible comorbid depression, anxiety, insomnia, and occupational impairment. Risk factors: social withdrawal, functional decline, possible exacerbation of symptoms if not addressed.\n\nI should avoid mentioning anything not directly stated. The patient didn't mention suicidal thoughts, so not including that. The key is to highlight OCD as the primary concern here. The compulsions, the rituals, the anxiety when not performed, the interference in daily functioning. The summary should clearly outline these points in clinical terms without overstepping the provided data.\n</think>\n\n**Clinical Observation Summary**  \n\n**1. Main Symptoms and Concerns**  \n- **Anhedonia**: Reduced interest/pleasure in activities (Q2, Q6).  \n- **Depressed mood with cyclical hopelessness**: Transient but persistent feelings of being \"stuck\" (Q3).  \n- **Irritability**: Triggered by disruptions to routines/rituals (Q4).  \n- **Insomnia with fatigue**: Difficulty initiating/maintaining sleep, non-restorative sleep (Q5.  \n- **Anxiety-driven compulsions**: Preoccupation with ritualistic behaviors (e.g., handwashing \"the right number of times\") and associated physiological arousal (e.g., cold sweats) when routines are interrupted (Q7.  \n- **Functional impairment**: Repeated task repletion at work and avoidance of social engagement (Q2, Q6, Q7.  \n\n**2. Patterns in Responses**  \n- **Interplay of anxiety and compulsions**: Symptoms cluster around ritualistic behavior, with anxiety escalating when routines are disrupted.  \n- **Avoidance behavior**: Social withdrawal and task avoidance as coping mechanisms.  \n- **Discrepancy between self-perception and external observation**: Reports of internal distress (e.g., \"cold sweat\") vs. efforts to mask symptoms (\"try not to show it\").  \n\n**3. Potential Clinical Significance**  \n- **Obsessive-Compulsive Disorder (OCD)**: Compulsions (e.g., ritualized washing), intrusive thoughts, and associated anxiety align with OCD criteria.  \n- **Anxiety Disorder**: Persistent nervousness, on-edge sensations, and hypervigilance.  \n- **Major Depressive Disorder (MDD) features**: Anhedonia and cyclical hopelessness require further exploration for depression vs. OCD-driven distress.  \n- **Insomnia Disorder**: Sleep disruption linked to intrusive thoughts.  \n- **Functional impairment**: Occupational and social withdrawal impacting daily life.  \n\n**4. Risk Factors/Warning Signs**  \n- **Ritual-driven distress**: Rituals may escalate or generalize, worsening functioning.  \n- **Social isolation**: Avoidance of social interactions risks further psychological withdrawal.  \n- **Work performance decline**: Repeated task redoing suggests increasing impairment.  \n\n**5. Clinical Summary**  \nThe patient presents with core symptoms of **anhedonia**, **ritualistic/compulsive behaviors**, and **anxiety-driven physiological arousal**, strongly suggestive of **Obsessive-Compulsive Disorder (OCD)**. Comorbid features include **insomnia**, **intermittent dysphoric mood**, and **irritability triggered by disruptions to rigid routines**. Patterns of behavioral avoidance (e.g., social withdrawal, work impairment) and internalized distress (e.g., masking symptoms) indicate significant functional and psychosocial impairment. Risk factors include escalating ritualization and potential for worsening occupational/social dysfunction if unaddressed. Further evaluation is warranted to assess depressive symptom severity and rule out comorbid anxiety or adjustment disorders.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6326
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "The patient describes a profound struggle with persistent <sym>ritualized behaviors</sym> and <sym>intrusive thoughts</sym> that disrupt daily life, coupled with <sym>anhedonia</sym>, social withdrawal, and <sym>sleep disturbances</sym>. Their narrative reflects distress tied to rigid routines (e.g., \"handwashing the right number of times\") and efforts to conceal their <sym>anxiety</sym> (<quote>\"try to hide it so people don\u2019t think I\u2019m weird\"</quote>). The repetitive task redoing at work and avoidance of social interactions underscore the pervasive impact of these struggles.  \n\n**Diagnosis:** Obsessive-Compulsive Disorder (OCD) with <med>comorbid generalized anxiety symptoms</med> and <med>functional impairment</med>.  \n**Reasoning:**  \n- Core <med>obsessive-compulsive features</med> dominate: compulsions (e.g., ritualized washing), distress when routines are disrupted (<sym>cold sweats, irritability</sym>), and <sym>intrusive thoughts</sym> driving behaviors.  \n- <sym>Anhedonia</sym> and <sym>hopelessness</sym> could reflect <med>mood dysregulation</med> secondary to OCD-driven distress, though further evaluation is needed to rule out <med>major depressive disorder</med>.  \n- <sym>Insomnia</sym> and <sym>fatigue</sym> align with <med>nonrestorative sleep</med> due to intrusive thoughts.  \n- No evidence of <med>hypomanic/manicix symptoms</med> (e.g., increased energy or risky behavior; <sym>negative response to Q5 rules out bipolar spectrum).  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Cognitive-Behavioral Therapy (CBT) with Exposure and Response Prevention (ERP):** Target compulsions and obsessive thoughts (e.g., graded exposure to ritual interruption, cognitive restructuring).  \n2. **Medication evaluation:** Consider <med>SSRIs</med> (e.g., sertraline, fluvoxamine) as first-line OCD treatments.  \n3. **Sleep hygiene intervention:** Address <sym>insomnia</sym> via structured bedtime routines and, if needed, short-term sleep medications (e.g., melatonin).  \n4. **Occupational support:** Collaborate with workplace to reduce task pressure and accommodate ritual management.  \n5. **Further assessment for comorbid <med>mood disorders</med>:** Screen for major depression via PHQ-9 and GAD-7 to clarify if <sym>anhedonia</sym> is OCD-driven or a separate depressive process.  \n6. **Psychoeducation:** Normalize symptoms, reduce shame, and emphasize OCD\u2019s neurobiological basis to encourage treatment engagement.  \n\nThis approach prioritizes addressing OCD\u2019s core mechanisms while addressing secondary distress (anxiety, sleep, occupational challenges). Regular monitoring for symptom escalation or comorbid conditions is critical.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "ocd",
+    "question_count": 23,
+    "duration": 27080.539909124374,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 5.161932945251465,
+    "diagnosis_generation_time": 7.475819110870361,
+    "rag_evaluation_time": 1.621246337890625e-05,
+    "total_time": 12.63777494430542
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Obsessive-Compulsive-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6705,
+        "average_score": 0.6705,
+        "example_excerpt": "  Obsessive Compulsive \n  and Related Disorders\nThe upcoming fifth edition of the Diagnostic and Sta...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"increasing\", \"obsessive\", \"help\", and 7 more matching aspects of your query."
+      },
+      "APA_DSM-5-Sleep-Wake-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6565,
+        "average_score": 0.6565,
+        "example_excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"mental\", \"disorders\", and 3 more matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6359,
+        "average_score": 0.6359,
+        "example_excerpt": "   Somatic Symptom Disorder\nThe upcoming fifth edition of the Diagnostic and Statistical Manual of M...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"symptom\", \"significant\", and 9 more matching aspects of your query."
+      },
+      "APA_DSM-5-ADHD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6011,
+        "average_score": 0.6011,
+        "example_excerpt": "s to the Disorder\nADHD is characterized by a pattern of behavior, present in multiple settings (e.g....",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"result\", \"performance\", \"issues\", and 7 more matching aspects of your query."
+      },
+      "APA_DSM-5-Substance-Use-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.5988,
+        "average_score": 0.5988,
+        "example_excerpt": "sistent and recurrent use of Internet games, and a preoccupation with them, can result in clinically...",
+        "relevance_explanation": "Some relevance: Contains terms \"not\", \"little\", \"disorders\", and 6 more that have contextual connection to your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 08:13:40",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 08:13:40",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 3,
+        "clinical_relevance": 4,
+        "consistency": 4,
+        "diagnostic_justification": 5,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist addressed several DSM-5 dimensions, including depression, anxiety, and sleep disturbances, but failed to thoroughly explore or omitted questions related to psychosis (questions 12-13), repetitive thoughts/behaviors (questions 16-17), dissociation (question 18), identity and relationships (questions 19-20), and substance use (questions 21-23). The conversation primarily focused on OCD symptoms and anxiety, with less attention to other critical domains.",
+        "clinical_relevance": "The therapist's questions generally aligned with DSM-5 criteria, accurately targeting clinical symptoms such as intrusive thoughts, compulsions, and anxiety. However, some questions could have been phrased more precisely to fully capture the DSM-5 definitions, and a few symptoms (e.g., psychosis, substance use) were not explored in depth.",
+        "consistency": "The dialogue generally flows logically, with each question building on previous responses. However, there are minor inconsistencies, such as not following up on the patient's mention of 'intrusive thoughts' with more specific questions about their nature and impact. Overall, the conversation maintains coherence but could benefit from smoother transitions and more probing questions.",
+        "diagnostic_justification": "The diagnosis of Obsessive-Compulsive Disorder (OCD) with comorbid generalized anxiety symptoms and functional impairment is clearly justified by the patient's symptoms, such as ritualized behaviors, intrusive thoughts, and distress when routines are disrupted. The therapist explicitly linked the diagnosis to DSM-5 criteria and provided a comprehensive differential diagnosis consideration.",
+        "empathy": "The therapist demonstrated empathy and a professional tone, acknowledging the patient's distress and efforts to conceal their anxiety. However, there were moments where the interactions seemed somewhat structured and formal, potentially limiting a deeper emotional connection. The therapist could have explored the patient's feelings more deeply, especially regarding their social withdrawal and sleep disturbances."
+      },
+      "overall_comments": "The conversation effectively addressed core OCD symptoms and anxiety but showed gaps in coverage of other DSM-5 dimensions. The therapist demonstrated clinical competence and empathy but could improve by systematically exploring all relevant domains, refining question precision, and fostering a more natural conversational flow. The diagnostic justification was strong, but future assessments should aim for more comprehensive coverage of the DSM-5 Level1 Cross-Cutting Symptom Measure.",
+      "average_score": 4.0,
+      "diagnosis_accuracy": {
+        "matches_profile": true,
+        "confidence": 5,
+        "explanation": "The diagnosis explicitly mentions Obsessive-Compulsive Disorder (OCD) as the primary condition, highlighting core features such as compulsions (e.g., ritualized washing), distress when routines are disrupted, and intrusive thoughts driving behaviors. These characteristics align with the expected profile of OCD.",
+        "classification": "ocd"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "ocd",
+        "classified_as": "ocd",
+        "match": true,
+        "confidence": 5
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 2.0597591400146484
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.5153344514610239,
+        "local_coherence": 0.5436424920846932,
+        "window_coherence": 0.5555927381883518
+      },
+      "readability": {
+        "flesch_kincaid_grade": 9.09,
+        "gunning_fog_index": 4.28,
+        "flesch_reading_ease": 48.54
+      },
+      "diversity": {
+        "distinct_1": 0.5380434782608695,
+        "distinct_2": 0.9249183895538629,
+        "distinct_3": 0.9836601307189542
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "ocd",
+      "predicted": "The patient describes a profound struggle with persistent <sym>ritualized behaviors</sym> and <sym>intrusive thoughts</sym> that disrupt daily life, coupled with <sym>anhedonia</sym>, social withdrawal, and <sym>sleep disturbances</sym>. Their narrative reflects distress tied to rigid routines (e.g., \"handwashing the right number of times\") and efforts to conceal their <sym>anxiety</sym> (<quote>\"try to hide it so people don\u2019t think I\u2019m weird\"</quote>). The repetitive task redoing at work and avoidance of social interactions underscore the pervasive impact of these struggles.  \n\n**Diagnosis:** Obsessive-Compulsive Disorder (OCD) with <med>comorbid generalized anxiety symptoms</med> and <med>functional impairment</med>.  \n**Reasoning:**  \n- Core <med>obsessive-compulsive features</med> dominate: compulsions (e.g., ritualized washing), distress when routines are disrupted (<sym>cold sweats, irritability</sym>), and <sym>intrusive thoughts</sym> driving behaviors.  \n- <sym>Anhedonia</sym> and <sym>hopelessness</sym> could reflect <med>mood dysregulation</med> secondary to OCD-driven distress, though further evaluation is needed to rule out <med>major depressive disorder</med>.  \n- <sym>Insomnia</sym> and <sym>fatigue</sym> align with <med>nonrestorative sleep</med> due to intrusive thoughts.  \n- No evidence of <med>hypomanic/manicix symptoms</med> (e.g., increased energy or risky behavior; <sym>negative response to Q5 rules out bipolar spectrum).  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Cognitive-Behavioral Therapy (CBT) with Exposure and Response Prevention (ERP):** Target compulsions and obsessive thoughts (e.g., graded exposure to ritual interruption, cognitive restructuring).  \n2. **Medication evaluation:** Consider <med>SSRIs</med> (e.g., sertraline, fluvoxamine) as first-line OCD treatments.  \n3. **Sleep hygiene intervention:** Address <sym>insomnia</sym> via structured bedtime routines and, if needed, short-term sleep medications (e.g., melatonin).  \n4. **Occupational support:** Collaborate with workplace to reduce task pressure and accommodate ritual management.  \n5. **Further assessment for comorbid <med>mood disorders</med>:** Screen for major depression via PHQ-9 and GAD-7 to clarify if <sym>anhedonia</sym> is OCD-driven or a separate depressive process.  \n6. **Psychoeducation:** Normalize symptoms, reduce shame, and emphasize OCD\u2019s neurobiological basis to encourage treatment engagement.  \n\nThis approach prioritizes addressing OCD\u2019s core mechanisms while addressing secondary distress (anxiety, sleep, occupational challenges). Regular monitoring for symptom escalation or comorbid conditions is critical.",
+      "matches": true,
+      "classification": "ocd",
+      "classification_confidence": 5
+    }
+  }
+}

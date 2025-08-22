@@ -1,0 +1,193 @@
+{
+  "timestamp": "2025-04-30T05:38:08.378603",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm a mental health professional. Today, we'll be using the DSM-5 Self-Rated Level1 Cross-Cutting Symptom Measure\u2014Adult to discuss your mental health. This assessment helps us understand various aspects of your well-being. Everything discussed here is confidential and a safe space for you to share your thoughts and feelings. The assessment consists of 23 questions, and I'll ask them one at a time. Let's begin. 1. Little interest or pleasure in doing things?"
+    },
+    {
+      "role": "patient",
+      "content": "Honestly, I've been feeling a bit disconnected from things I used to enjoy. It's not that I don't have interest, but it seems like I've been preoccupied with other stuff lately."
+    },
+    {
+      "role": "assistant",
+      "content": "I've been listening to your concerns, and it seems like you've been feeling a bit disconnected from things that used to bring you joy. You mentioned that it's not that you don't have interest, but it seems like you've been preoccupied with other stuff lately. <quote>I've been feeling a bit disconnected from things I used to enjoy. It's not that I don't have interest, but it seems like I've been preoccupied with other stuff lately</quote>. This takes a lot of courage to share, and I want you to know that I'm here to listen and support you.\n\n**Diagnosis:** <med>Depressive Disorder</med> \n\n**Reasoning:** The patient's report of feeling disconnected from previously enjoyed activities aligns with <sym>decreased interest or pleasure</sym> in activities, a core symptom of <med>Major Depressive Disorder (MDD)</med> as outlined in the DSM-5. The patient's attribution of their disconnection to being preoccupied with other things suggests that <sym>anxiety</sym> or <sym>stress</sym> might also be playing a role. However, with only one symptom presented, a definitive diagnosis cannot be made at this time. Further evaluation is needed to assess for other symptoms of <med>MDD</med> and other potential diagnoses.\n\n**Recommended Next Steps/Treatment Options:**\n1. Continue with the DSM-5 Self-Rated Level1 Cross-Cutting Symptom Measure\u2014Adult to assess for other symptoms across various domains, such as <sym>anxiety</sym>, <sym>manic</sym> or <sym>hypomanic</sym> symptoms, and <sym>trauma-related</sym> symptoms.\n2. Explore the nature of the patient's preoccupations and their potential impact on daily functioning to understand potential triggers and stressors.\n3. Evaluate for other <med>depressive</med> symptoms, such as changes in appetite, sleep disturbances, fatigue, and suicidal ideation or behavior.\n4. Consider a comprehensive treatment plan that may include <med>psychotherapy</med>, <med>pharmacotherapy</med>, or a combination of both, depending on the patient's specific needs and diagnosis.\n5. Schedule a follow-up appointment to review the results of the continued assessment and discuss potential treatment options.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.7485,
+            "highlight": "It requires clinical training, experience and judgment based on  guidance such as that contained in the DSM-5 text to recognize when a patient \u2019s thoughts feelings and  behaviors are indicative of a mental disorder that can benefit from focused treatment.",
+            "excerpt": "ssive thoughts, feelings, and behaviors related \nto their illness, and that these individuals may qu...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"indicative\", \"mental\", \"disorder\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Depression-Bereavement-Exclusion.pdf",
+            "score": 0.7316,
+            "highlight": "The presence of symptoms such as feelings of worthlessness, suicidal  ideas (as distinct from wanting to join a deceased loved one), and impairment of overall function sug - gest the presence of major depression, in addition to the normal response to a significant loss.",
+            "excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"symptoms\", \"one\", \"loss\", and 3 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Schizophrenia.pdf",
+            "score": 0.7202,
+            "highlight": "Schizophrenia The upc oming fifth edition of the Diagnostic and Statistical Manual of Mental Disorders  (DSM-5 ) mak es  several key changes to the category of schizophrenia and highlights for future study an area that could  be cri tical for early detection of this often debilitating condition.",
+            "excerpt": "Schizophrenia\nThe upc oming fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"mental\", \"that\", \"this\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf",
+            "score": 0.718,
+            "highlight": "2 \u2022 Disruptive Mood Disregulation DisorderImproving Diagnosis and Care While DSM does include two diagnoses with related symptoms to DMDD, oppositional defiant disor- der (ODD) and Bipolar Disorder (BD), the symptoms described in DMDD are significantly.",
+            "excerpt": "t be made for the first time before age 6 or after age 18. \nProcess for New Diagnosis\nA new DSM diag...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"symptoms\", \"mood\", \"diagnoses\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Sleep-Wake-Disorders.pdf",
+            "score": 0.7086,
+            "highlight": "Changes to Sleep-Wake Disorders   A prime goal of DSM-5 changes to sleep-wake disorders is to increase the clinical utility of definitions and diagnostic criteria, especially for general medical or mental health clinicians, and to clarify when referral is appropriate to a sleep specialist.",
+            "excerpt": "rious mental or medical issues. For example, sleep disturbances can signal the presence of medical a...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"health\", \"mental\", \"clinical\", and 2 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: **Clinical Observation Summary**\n\n**Patient's Response to Initial Assessment:**\n\nThe patient has reported a recent sense of disconnection from activities they previously enjoyed, indicating a decrease in interest or pleasure in doing things. This response suggests potential concerns related to anhedonia, a core symptom of depressive disorders.\n\n**1. Main Symptoms and Concerns:**\n- Decreased interest or pleasure in activities, suggesting possible depressive symptoms.\n\n**2. Patterns in Patient's Responses:**\n- The patient acknowledges a change in their level of interest in activities but attributes it to being preoccupied with other things. This might indicate a potential link between their current mental state and external stressors or internal preoccupations.\n\n**3. Potential Areas of Clinical Significance:**\n- Depressive symptoms: The patient's report of feeling disconnected from previously enjoyed activities could be indicative of a depressive episode.\n- Anxiety or stress: The mention of being preoccupied suggests that anxiety or stress might be playing a role in their current mental state.\n\n**4. Risk Factors or Warning Signs:**\n- Early signs of potential depressive disorder, given the patient's report of decreased interest in activities they used to enjoy.\n\n**5. Summary of Observations in Clinical Language:**\nThe patient presents with self-reported decreased interest in activities they previously enjoyed, which could be indicative of a developing depressive episode. Their current mental state appears to be influenced by preoccupations, which may or may not be related to specific stressors or internal factors. Further assessment is warranted to explore the extent of depressive symptoms, potential triggers, and the impact of these preoccupations on their daily functioning.\n\n**DSM-5 Considerations:**\n- The patient's response aligns with Criterion A of Major Depressive Disorder (MDD), which requires at least one of the following: depressed mood or loss of interest or pleasure in nearly all activities.\n- Further evaluation is needed to assess for other symptoms of MDD and other potential diagnoses.\n\n**Next Steps:**\n- Continue with the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult to assess for other symptoms across various domains.\n- Explore the nature of the patient's preoccupations and their potential impact on daily functioning.\n- Evaluate for other depressive symptoms and assess for suicidal ideation or behavior.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.7254
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "I've been listening to your concerns, and it seems like you've been feeling a bit disconnected from things that used to bring you joy. You mentioned that it's not that you don't have interest, but it seems like you've been preoccupied with other stuff lately. <quote>I've been feeling a bit disconnected from things I used to enjoy. It's not that I don't have interest, but it seems like I've been preoccupied with other stuff lately</quote>. This takes a lot of courage to share, and I want you to know that I'm here to listen and support you.\n\n**Diagnosis:** <med>Depressive Disorder</med> \n\n**Reasoning:** The patient's report of feeling disconnected from previously enjoyed activities aligns with <sym>decreased interest or pleasure</sym> in activities, a core symptom of <med>Major Depressive Disorder (MDD)</med> as outlined in the DSM-5. The patient's attribution of their disconnection to being preoccupied with other things suggests that <sym>anxiety</sym> or <sym>stress</sym> might also be playing a role. However, with only one symptom presented, a definitive diagnosis cannot be made at this time. Further evaluation is needed to assess for other symptoms of <med>MDD</med> and other potential diagnoses.\n\n**Recommended Next Steps/Treatment Options:**\n1. Continue with the DSM-5 Self-Rated Level1 Cross-Cutting Symptom Measure\u2014Adult to assess for other symptoms across various domains, such as <sym>anxiety</sym>, <sym>manic</sym> or <sym>hypomanic</sym> symptoms, and <sym>trauma-related</sym> symptoms.\n2. Explore the nature of the patient's preoccupations and their potential impact on daily functioning to understand potential triggers and stressors.\n3. Evaluate for other <med>depressive</med> symptoms, such as changes in appetite, sleep disturbances, fatigue, and suicidal ideation or behavior.\n4. Consider a comprehensive treatment plan that may include <med>psychotherapy</med>, <med>pharmacotherapy</med>, or a combination of both, depending on the patient's specific needs and diagnosis.\n5. Schedule a follow-up appointment to review the results of the continued assessment and discuss potential treatment options.",
+  "metadata": {
+    "assistant_model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "patient_model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "patient_profile": "substance_abuse",
+    "question_count": 23,
+    "duration": 14332.51944565773,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 2.2668662071228027,
+    "diagnosis_generation_time": 4.890218257904053,
+    "rag_evaluation_time": 1.7881393432617188e-05,
+    "total_time": 7.157114028930664
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7485,
+        "average_score": 0.7485,
+        "example_excerpt": "ssive thoughts, feelings, and behaviors related \nto their illness, and that these individuals may qu...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"indicative\", \"mental\", \"disorder\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM-5-Depression-Bereavement-Exclusion.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7316,
+        "average_score": 0.7316,
+        "example_excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"symptoms\", \"one\", \"loss\", and 3 more matching aspects of your query."
+      },
+      "APA_DSM-5-Schizophrenia.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7202,
+        "average_score": 0.7202,
+        "example_excerpt": "Schizophrenia\nThe upc oming fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"mental\", \"that\", \"this\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.718,
+        "average_score": 0.718,
+        "example_excerpt": "t be made for the first time before age 6 or after age 18. \nProcess for New Diagnosis\nA new DSM diag...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"symptoms\", \"mood\", \"diagnoses\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Sleep-Wake-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7086,
+        "average_score": 0.7086,
+        "example_excerpt": "rious mental or medical issues. For example, sleep disturbances can signal the presence of medical a...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"health\", \"mental\", \"clinical\", and 2 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-04-30 10:04:00",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-04-30 10:04:00",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {},
+      "explanations": {},
+      "overall_comments": "Error occurred during evaluation: 'str' object has no attribute 'get'",
+      "average_score": 0,
+      "diagnosis_accuracy": {
+        "matches_profile": false,
+        "confidence": 5,
+        "explanation": "The diagnosis does not explicitly mention substance abuse or related terms. The symptoms described, such as feeling disconnected from previously enjoyed activities and being preoccupied with other things, are more closely aligned with depressive symptoms.",
+        "classification": "depression"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "substance_abuse",
+        "classified_as": "depression",
+        "match": false,
+        "confidence": 5
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 5.292146921157837
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.6481691751046607,
+        "local_coherence": 0.6114633602984323,
+        "window_coherence": 0.6481691751046607
+      },
+      "readability": {
+        "flesch_kincaid_grade": 9.42,
+        "gunning_fog_index": 6.11,
+        "flesch_reading_ease": 54.35
+      },
+      "diversity": {
+        "distinct_1": 0.5282555282555282,
+        "distinct_2": 0.8645320197044335,
+        "distinct_3": 0.9259259259259259
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "substance_abuse",
+      "predicted": "I've been listening to your concerns, and it seems like you've been feeling a bit disconnected from things that used to bring you joy. You mentioned that it's not that you don't have interest, but it seems like you've been preoccupied with other stuff lately. <quote>I've been feeling a bit disconnected from things I used to enjoy. It's not that I don't have interest, but it seems like I've been preoccupied with other stuff lately</quote>. This takes a lot of courage to share, and I want you to know that I'm here to listen and support you.\n\n**Diagnosis:** <med>Depressive Disorder</med> \n\n**Reasoning:** The patient's report of feeling disconnected from previously enjoyed activities aligns with <sym>decreased interest or pleasure</sym> in activities, a core symptom of <med>Major Depressive Disorder (MDD)</med> as outlined in the DSM-5. The patient's attribution of their disconnection to being preoccupied with other things suggests that <sym>anxiety</sym> or <sym>stress</sym> might also be playing a role. However, with only one symptom presented, a definitive diagnosis cannot be made at this time. Further evaluation is needed to assess for other symptoms of <med>MDD</med> and other potential diagnoses.\n\n**Recommended Next Steps/Treatment Options:**\n1. Continue with the DSM-5 Self-Rated Level1 Cross-Cutting Symptom Measure\u2014Adult to assess for other symptoms across various domains, such as <sym>anxiety</sym>, <sym>manic</sym> or <sym>hypomanic</sym> symptoms, and <sym>trauma-related</sym> symptoms.\n2. Explore the nature of the patient's preoccupations and their potential impact on daily functioning to understand potential triggers and stressors.\n3. Evaluate for other <med>depressive</med> symptoms, such as changes in appetite, sleep disturbances, fatigue, and suicidal ideation or behavior.\n4. Consider a comprehensive treatment plan that may include <med>psychotherapy</med>, <med>pharmacotherapy</med>, or a combination of both, depending on the patient's specific needs and diagnosis.\n5. Schedule a follow-up appointment to review the results of the continued assessment and discuss potential treatment options.",
+      "matches": false,
+      "classification": "depression",
+      "classification_confidence": 5
+    }
+  }
+}

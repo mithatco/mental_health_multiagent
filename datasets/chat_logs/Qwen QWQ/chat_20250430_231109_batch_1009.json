@@ -1,0 +1,261 @@
+{
+  "timestamp": "2025-04-30T23:11:22.073026",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello"
+    },
+    {
+      "role": "patient",
+      "content": "Uh... yeah"
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. 2. Feeling down"
+    },
+    {
+      "role": "patient",
+      "content": "Most days. Like... this heavy weight. I tell myself to snap out of it"
+    },
+    {
+      "role": "assistant",
+      "content": "3. Feeling more irritated"
+    },
+    {
+      "role": "patient",
+      "content": "Not really. I just... withdraw. I don\u2019t get angry. More like... empty. If anything"
+    },
+    {
+      "role": "assistant",
+      "content": "4. Sleeping less than usual"
+    },
+    {
+      "role": "patient",
+      "content": "No"
+    },
+    {
+      "role": "assistant",
+      "content": "5. Starting lots more projects or doing risky things than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "Heard no. I can barely handle work. I used to procrastinate a lot"
+    },
+    {
+      "role": "assistant",
+      "content": "6. Feeling nervous"
+    },
+    {
+      "role": "patient",
+      "content": "Sometimes"
+    },
+    {
+      "role": "assistant",
+      "content": "7. Feeling panic or being frightened?"
+    },
+    {
+      "role": "patient",
+      "content": "Not panic attacks"
+    },
+    {
+      "role": "assistant",
+      "content": "8. Avoiding situations that make you anxious?"
+    },
+    {
+      "role": "patient",
+      "content": "I avoid everything. I skip meetings"
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, let me try to work through this step by step. The user provided a detailed query where they want me to structure a clinical assessment based on specific questionnaire responses. The user has given a lot of detailed instructions, so I need to make sure I follow each part exactly as specified.\n\nFirst, the user's responses include feeling down most days, emotional emptiness, withdrawal, avoidance, and functional impairment. They mentioned not sleeping less (so maybe hypersomnia?), and some anxiety but not panic attacks. The key points to hit are the depressive symptoms with atypical features like increased sleep and withdrawal.\n\nThe first paragraph needs to be a compassionate summary. I should acknowledge their struggles without jargon, showing empathy. Then the diagnosis has to be under **Diagnosis:** with the exact heading formatting. The user mentioned the possibility of Atypical Depression, so I should consider that. \n\nIn the reasoning section, I need to explain why Atypical Depression fits here. The symptoms like hypersomnia, mood reactivity, and interpersonal rejection sensitivity (even if not explicitly stated, the withdrawal might hint at that) are key points. Also, the absence of manic symptoms rules out bipolar, and the anxiety is secondary to depression. \n\nThe next steps should be actionable: maybe CBT, SSRIs, sleep monitoring, social support, etc. Need to list them as numbered points. \n\nI must remember to use the tags: wrap medical terms like Atypical Depression in <med> tags, symptoms like \"withdrawal\" in <sym>, and their quotes in <quote>. Also, ensure the structure is exactly as specified, with no extra lines between sections and correct headings. \n\nLet me check the DSM-5 criteria. Atypical depression includes mood reactivity, hypersomnia/hypersomnolence, increased appetite, and rejection sensitivity. The user didn't mention appetite changes, but the withdrawal and heaviness might align with the other features. \n\nAlso, the user emphasized not to include Somatic Symptom Disorder unless warranted. Since the primary issue is mood, that's okay. Anxiety is present but seems secondary. \n\nMake sure the diagnosis is under the exact heading, no typos. The reasoning should link symptoms to the diagnosis. Next steps need to be practical. Alright, putting it all together now. Check tags, structure, and formatting again. No markdown except the specified tags. Got it.\n</think>\n\nYou\u2019ve described a profound sense of emotional <sym>heaviness</sym> and exhaustion, wearing at your ability to engage with work and daily life. You\u2019re navigating this alone, pushing yourself to \u201csnap out of it\u201d despite the weight of <sym>withdrawal</sym> and emptiness. The way you describe avoiding meetings and feeling drained suggests a deep struggle to connect with the world, and I\u2019m sorry you\u2019re carrying this burden without support.  \n\n**Diagnosis:**  \n<med>Mood Disorder, Depressive Presentation with Atypical Features</med>  \n\n**Reasoning:**  \nThe symptoms align with <med>Major Depressive Disorder</med> with <med>atypical features</med>:  \n- Persistent <sym>depressed mood</sym> (\"heavy weight\") and <sym>anhedonia</sym> (withdrawal from activities).  \n- <sym>Increased reactivity to interpersonal rejection</sym> is implied by avoidance of social/occupational interactions (Q8), a hallmark of atypical depression.  \n- <sym>Hypersomnia</sym> (implied by \"No\" to reduced sleep, suggesting increased sleep duration).  \n- Lack of <sym>psychomotor agitation/retardation</sym> or manic symptoms (Q5 rules out bipolar spectrum).  \n- Emotional blunting (\"empty\") and lack of irritability (Q3) contrast with \"typical\" depression's agitation, supporting atypical features.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Psychotherapy**: Start <med>Cognitive Behavioral Therapy (CBT)</med> to address maladaptive self-criticism (\"snap out of it\") and social withdrawal.  \n2. **Medical Evaluation**: Assess sleep patterns (rule out <med>hypersomnia</med> and screen for <med>atypical depression</med> via structured clinical interview (e.g., PHQ-9 with atypical subscales).  \n3. **Medication Trial**: Consider <med>SSRIs</med> (e.g., mirtazapine, which addresses both depression and sleep disturbances) or <med>SNRIs</med>.  \n4. **Social Support Integration**: Gradual exposure to low-pressure social interactions to counteract avoidance.  \n5. **Monitor for Functional Decline:** Weekly check-ins to track occupational/relational improvements or worsening anhedonia.  \n\nThe structured, empathetic approach here ensures a foundation for rebuilding engagement without overwhelming you.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Sleep-Wake-Disorders.pdf",
+            "score": 0.6969,
+            "highlight": "Sleep-Wake Disorders In the fifth edition of the Diagnostic and Statistical Manual of Mental Disorders  (DSM-5), sleep-wake  disorders encompass 10 conditions manifested by disturbed sleep and causing distress as well as im - pairment in daytime functioning.",
+            "excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"mental\", \"disorders\", and 2 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Eating-Disorders.pdf",
+            "score": 0.6345,
+            "highlight": "The criteria have several minor but important changes: \u2022Criterion A focuses on behaviors, like restricting calorie intake, and no longer includes the word\u201crefusal\u201d in terms of weight maintenance since that implies intention on the part of the patient andcan be difficult to assess.",
+            "excerpt": "one with binge eating disorder may eat too quickly, even when he or she is not hungry.  The person m...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"behaviors\", \"like\", \"patient\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf",
+            "score": 0.5805,
+            "highlight": "iagnosis and Care While DSM does include two diagnoses with related symptoms to DMDD, oppositional defiant disor- der (ODD) and Bipolar Disorder (BD), the symptoms described in DMDD are significantly different than  these two diagnoses.",
+            "excerpt": "iagnosis and Care\nWhile DSM does include two diagnoses with related symptoms to DMDD, oppositional d...",
+            "relevance_explanation": "Some relevance: Contains terms \"related\", \"than\", \"significantly\", and 6 more that have contextual connection to your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.5786,
+            "highlight": "Characteristics of Somatic Symptom Disorder Somatic symptom disorder (SSD) is characterized by somatic symptoms that are either very distressing or result in significant disruption of functioning, as well as excessive and disproportionate thoughts, feelings and behaviors regarding those symptoms.",
+            "excerpt": "   Somatic Symptom Disorder\nThe upcoming fifth edition of the Diagnostic and Statistical Manual of M...",
+            "relevance_explanation": "Some relevance: Contains terms \"functioning\", \"significant\", \"behaviors\", and 5 more that have contextual connection to your query."
+          },
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.5768,
+            "highlight": "Negative cognitions and mood represents myriad feelings, from a persistent and distorted sense of  blame of self or others, to estrangement from others or markedly diminished interest in activities, to an inability to remember key aspects of the event.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Some relevance: Contains terms \"diminished\", \"key\", \"sense\", and 5 more that have contextual connection to your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let me start by going through the patient's responses one by one. \n\nFirst, the patient answered \"Uh... yeah\" to \"Hello.\" That's a bit noncommittal, maybe indicating some hesitation or low energy. \n\nFor question 2 about feeling down, they say \"Most days. Like... this heavy weight. I tell myself to snap out of it.\" That sounds like persistent depressive symptoms, maybe depression. The \"heavy weight\" is a common metaphor for depression, and the self-talk about snapping out of it could be a sign of self-criticism or lack of insight into their condition.\n\nQuestion 3 asks about increased irritability. The patient says they don't get angry but feel empty. So instead of irritability, they're more withdrawn and empty. That might suggest a different presentation of depression, perhaps atypical depression where instead of agitation, there's more emotional numbness or emptiness.\n\nSleep: They say they aren't sleeping less. Wait, but depression can also cause hypersomnia. So maybe they're sleeping more than usual? The question was about sleeping less, so if they answer \"No,\" that could mean they're sleeping normally or more. That's a point to note.\n\nQuestion 5 is about increased activity or risky behavior. They answer \"No. I can barely handle work. I used to procrastinate a lot.\" That's definitely not manic or hypomanic, so it's more in line with depression where they can't even do their usual tasks, maybe anhedonia or low energy.\n\nNervousness sometimes and no panic attacks, but they do avoid situations, like skipping meetings. Avoidance is a key sign of anxiety, but in the context of their other symptoms, it might be avoidance due to low energy or anhedonia rather than anxiety. \n\nPutting this together, the main symptoms are persistent low mood, feelings of heaviness, self-criticism, withdrawal, and avoidance. They don't have classic manic symptoms, and their sleep might be intact or increased. The absence of panic attacks but presence of avoidance could suggest social anxiety or generalized anxiety, but more likely the anxiety symptoms are part of their depressive presentation.\n\nPatterns: The patient uses phrases like \"I just... withdraw\" and \"empty,\" indicating a tendency toward internalizing symptoms. They have a passive approach to their symptoms, trying to \"snap out of it,\" which might not be effective. The consistency in reporting ongoing symptoms without fluctuation suggests chronicity.\n\nClinical significance areas: Major Depressive Disorder comes to mind, possibly with atypical features (since they mention increased sleep/weight gain, though not directly stated, but the emptiness and withdrawal might indicate atypical). The avoidance could also be linked to anxiety, but it's secondary to depression.\n\nRisk factors: They mention avoiding everything, which could lead to social withdrawal and worsened depression. No direct suicidal ideation mentioned, but the heaviness and persistent symptoms need to be monitored. The lack of energy and withdrawal can impact daily functioning significantly.\n\nWait, the user didn't mention suicidal thoughts, so I shouldn't assume that. But persistent depressive symptoms can be a risk factor for suicide, so it's a point to consider but not directly indicated here. \n\nAlso, the fact that they can't handle work and used to procrastinate might indicate decreased functioning, which is a key point in depression diagnosis. The self-reproach of \"snap out of it\" suggests possible low self-esteem or guilt, common in depression.\n\nSo main symptoms: chronic low mood, anhedonia, social withdrawal, possible atypical features, and functional impairment. Patterns of internalizing, avoidance, and coping through withdrawal. \n\nPotential areas: Major Depressive Disorder with atypical features, possible adjustment disorder, or anxiety co-occurring. Need to rule out other disorders but the primary seems depression.\n\nNo acute risk factors mentioned, but chronic symptoms need attention.\n</think>\n\n**Clinical Observation Summary**  \n\n**1. Main Symptoms and Concerns:**  \n- Persistent low mood with subjective sense of heaviness, consistent with depressive symptoms (Q2).  \n- Emotional blunting/euphoric symptoms: Reports \"empty\" affect instead of irritability (Q3), suggesting possible atypical features of depression.  \n- Social withdrawal and avoidance behaviors (Q8), impacting interpersonal and occupational functioning (e.g., skipping meetings).  \n- Impaired functioning: Struggles with work, contrasting with prior procrastination (Q5), indicative of significant functional decline.  \n- Self-critical cognitions (\"tell myself to snap out of it\") suggesting possible diminished self-compassion or guilt.  \n\n**2. Patterns in Responses:**  \n- **Internalizing presentation:** Themes of withdrawal, emotional numbness, and passive coping (e.g., avoiding rather than confronting distress).  \n- **Qualifiers and hedging (\"Like... heavy weight,\" \"I just... withdraw\")**: Reflects uncertainty, ambivalence, or struggle to articulate distress.  \n- **Absence of elevated/manic symptoms** (Q5: denies increased activity, no grandiosity reported).  \n\n**3. Potential Clinical Areas for Further Exploration:**  \n- **Major Depressive Disorder (MDD)** with **atypical features** (e.g., withdrawal, mood reactivity, possible hypersomnia).  \n- **Anxiety disorders**: Subthreshold anxiety (Q6, Q7, Q8)\u2014avoidance behaviors may indicate social anxiety or generalized anxiety disorder, though primary driver appears mood-related.  \n- **Cognitive-behavioral patterns**: Self-critical ideation and maladaptive coping (e.g., \"snap out of it\").  \n- **Functional impairment**: Occupational decline (Q5, Q8) requiring assessment of occupational and role functioning.  \n\n**4. Risk Factors/Warning Signs:**  \n- **Chronicity**: Symptoms described as occurring \"most days\" (Q2), suggesting persistent dysfunction.  \n- **Social isolation**: Avoidance of social/occupational interactions (Q8) may exacerbate depressive symptoms.  \n- **Low energy and anhedonia**: Potential for further functional decline if untreated.  \n- **No acute self-harm/suicidal ideation noted**, but chronic distress requires ongoing monitoring.  \n\n**5. Clinical Summary:**  \nThe patient presents with **persistent depressive symptoms**, including subjective emotional heaviness, anhedonia, and significant functional impairment (Q2, Q5). Emotional blunting and withdrawal (Q3, Q8) suggest **atypical depressive features**, while avoidance behaviors (Q8) may reflect co-occurring anxiety or anhedonia-driven social disengagement. Notable is the absence of hypomanic/psychotic features, cyclothymia, or suicidal ideation. Risk factors include social withdrawal and diminished occupational performance, necessitating evaluation of atypical depression, adaptive coping strategies, and functional impairment. Further assessment of sleep patterns (Q4: \"No\" to reduced sleep may indicate hypersomnia), appetite, and mood reactivity is warranted to confirm atypical features.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6135
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "You\u2019ve described a profound sense of emotional <sym>heaviness</sym> and exhaustion, wearing at your ability to engage with work and daily life. You\u2019re navigating this alone, pushing yourself to \u201csnap out of it\u201d despite the weight of <sym>withdrawal</sym> and emptiness. The way you describe avoiding meetings and feeling drained suggests a deep struggle to connect with the world, and I\u2019m sorry you\u2019re carrying this burden without support.  \n\n**Diagnosis:**  \n<med>Mood Disorder, Depressive Presentation with Atypical Features</med>  \n\n**Reasoning:**  \nThe symptoms align with <med>Major Depressive Disorder</med> with <med>atypical features</med>:  \n- Persistent <sym>depressed mood</sym> (\"heavy weight\") and <sym>anhedonia</sym> (withdrawal from activities).  \n- <sym>Increased reactivity to interpersonal rejection</sym> is implied by avoidance of social/occupational interactions (Q8), a hallmark of atypical depression.  \n- <sym>Hypersomnia</sym> (implied by \"No\" to reduced sleep, suggesting increased sleep duration).  \n- Lack of <sym>psychomotor agitation/retardation</sym> or manic symptoms (Q5 rules out bipolar spectrum).  \n- Emotional blunting (\"empty\") and lack of irritability (Q3) contrast with \"typical\" depression's agitation, supporting atypical features.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Psychotherapy**: Start <med>Cognitive Behavioral Therapy (CBT)</med> to address maladaptive self-criticism (\"snap out of it\") and social withdrawal.  \n2. **Medical Evaluation**: Assess sleep patterns (rule out <med>hypersomnia</med> and screen for <med>atypical depression</med> via structured clinical interview (e.g., PHQ-9 with atypical subscales).  \n3. **Medication Trial**: Consider <med>SSRIs</med> (e.g., mirtazapine, which addresses both depression and sleep disturbances) or <med>SNRIs</med>.  \n4. **Social Support Integration**: Gradual exposure to low-pressure social interactions to counteract avoidance.  \n5. **Monitor for Functional Decline:** Weekly check-ins to track occupational/relational improvements or worsening anhedonia.  \n\nThe structured, empathetic approach here ensures a foundation for rebuilding engagement without overwhelming you.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "depression",
+    "question_count": 23,
+    "duration": 16298.525826215744,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 5.545177936553955,
+    "diagnosis_generation_time": 7.214689016342163,
+    "rag_evaluation_time": 2.002716064453125e-05,
+    "total_time": 12.75989580154419
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Sleep-Wake-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6969,
+        "average_score": 0.6969,
+        "example_excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"mental\", \"disorders\", and 2 more matching aspects of your query."
+      },
+      "APA_DSM-5-Eating-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6345,
+        "average_score": 0.6345,
+        "example_excerpt": "one with binge eating disorder may eat too quickly, even when he or she is not hungry.  The person m...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"behaviors\", \"like\", \"patient\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.5805,
+        "average_score": 0.5805,
+        "example_excerpt": "iagnosis and Care\nWhile DSM does include two diagnoses with related symptoms to DMDD, oppositional d...",
+        "relevance_explanation": "Some relevance: Contains terms \"related\", \"than\", \"significantly\", and 6 more that have contextual connection to your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.5786,
+        "average_score": 0.5786,
+        "example_excerpt": "   Somatic Symptom Disorder\nThe upcoming fifth edition of the Diagnostic and Statistical Manual of M...",
+        "relevance_explanation": "Some relevance: Contains terms \"functioning\", \"significant\", \"behaviors\", and 5 more that have contextual connection to your query."
+      },
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.5768,
+        "average_score": 0.5768,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Some relevance: Contains terms \"diminished\", \"key\", \"sense\", and 5 more that have contextual connection to your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 08:01:50",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 08:01:50",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 3,
+        "clinical_relevance": 4,
+        "consistency": 4,
+        "diagnostic_justification": 5,
+        "empathy": 5
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist addressed some key domains such as depression (Q1-2), anxiety (Q6), and sleep (Q4), but missed or superficially covered several critical areas: anger (Q3) was briefly addressed but not fully explored; mania (Q5) was somewhat addressed; however, domains like psychotic symptoms (Q12-13), cognitive function (Q15), repetitive thoughts/behaviors (Q16-17), dissociation (Q18), identity and relationships (Q19-20), and substance use (Q21-23) were not discussed. This incomplete coverage results in a score of 3.",
+        "clinical_relevance": "The therapist's questions generally align with DSM-5 criteria, but some phrasing could be more precise. For example, the question about feeling down (Q2) was directly addressed, but the inquiry about irritability (Q3) was brief and didn't fully capture the complexity of the symptom. Questions about sleep (Q4) and anxiety (Q6) were relevant, but the therapist could have used more DSM-5-aligned language for comprehensive assessment.",
+        "consistency": "The conversation generally flows logically, with each question building on previous responses. However, there were minor inconsistencies, such as not fully exploring the patient's irritability (Q3) or substance use (Q21-23). The therapist maintained a coherent conversational arc but could have ensured smoother transitions by more systematically addressing all domains.",
+        "diagnostic_justification": "The diagnosis of Mood Disorder, Depressive Presentation with Atypical Features, is well-supported by the patient's symptoms: persistent depressed mood ('heavy weight'), anhedonia (withdrawal from activities), hypersomnia (implied by no reduced sleep), and increased reactivity to interpersonal rejection (avoidance of meetings). The therapist explicitly linked these symptoms to DSM-5 criteria and provided a clear rationale for the diagnosis.",
+        "empathy": "The therapist demonstrated consistent empathy and a natural conversational style. Responses were personalized and acknowledged the patient's distress, e.g., 'I'm sorry you're carrying this burden without support.' The tone was professional, and the therapist tailored responses to the patient's emotional state, creating a supportive environment."
+      },
+      "overall_comments": "The conversation demonstrated strengths in empathy and diagnostic justification but had areas for improvement in DSM-5 dimension coverage and clinical relevance. The therapist provided a clear and well-supported diagnosis but missed opportunities to explore several critical domains more thoroughly.",
+      "average_score": 4.2,
+      "diagnosis_accuracy": {
+        "matches_profile": true,
+        "confidence": 4,
+        "explanation": "The diagnosis explicitly mentions 'Mood Disorder, Depressive Presentation with Atypical Features' and lists symptoms such as 'persistent depressed mood', 'anhedonia', and 'emotional blunting', which are characteristic of depression. The treatment options also align with typical depression management.",
+        "classification": "depression"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "depression",
+        "classified_as": "depression",
+        "match": true,
+        "confidence": 4
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 3.301858901977539
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.2856864768045132,
+        "local_coherence": 0.3279864373026595,
+        "window_coherence": 0.33630667719445356
+      },
+      "readability": {
+        "flesch_kincaid_grade": 9.78,
+        "gunning_fog_index": 4.53,
+        "flesch_reading_ease": 44.65
+      },
+      "diversity": {
+        "distinct_1": 0.5799721835883171,
+        "distinct_2": 0.9428969359331476,
+        "distinct_3": 0.99581589958159
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "depression",
+      "predicted": "You\u2019ve described a profound sense of emotional <sym>heaviness</sym> and exhaustion, wearing at your ability to engage with work and daily life. You\u2019re navigating this alone, pushing yourself to \u201csnap out of it\u201d despite the weight of <sym>withdrawal</sym> and emptiness. The way you describe avoiding meetings and feeling drained suggests a deep struggle to connect with the world, and I\u2019m sorry you\u2019re carrying this burden without support.  \n\n**Diagnosis:**  \n<med>Mood Disorder, Depressive Presentation with Atypical Features</med>  \n\n**Reasoning:**  \nThe symptoms align with <med>Major Depressive Disorder</med> with <med>atypical features</med>:  \n- Persistent <sym>depressed mood</sym> (\"heavy weight\") and <sym>anhedonia</sym> (withdrawal from activities).  \n- <sym>Increased reactivity to interpersonal rejection</sym> is implied by avoidance of social/occupational interactions (Q8), a hallmark of atypical depression.  \n- <sym>Hypersomnia</sym> (implied by \"No\" to reduced sleep, suggesting increased sleep duration).  \n- Lack of <sym>psychomotor agitation/retardation</sym> or manic symptoms (Q5 rules out bipolar spectrum).  \n- Emotional blunting (\"empty\") and lack of irritability (Q3) contrast with \"typical\" depression's agitation, supporting atypical features.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Psychotherapy**: Start <med>Cognitive Behavioral Therapy (CBT)</med> to address maladaptive self-criticism (\"snap out of it\") and social withdrawal.  \n2. **Medical Evaluation**: Assess sleep patterns (rule out <med>hypersomnia</med> and screen for <med>atypical depression</med> via structured clinical interview (e.g., PHQ-9 with atypical subscales).  \n3. **Medication Trial**: Consider <med>SSRIs</med> (e.g., mirtazapine, which addresses both depression and sleep disturbances) or <med>SNRIs</med>.  \n4. **Social Support Integration**: Gradual exposure to low-pressure social interactions to counteract avoidance.  \n5. **Monitor for Functional Decline:** Weekly check-ins to track occupational/relational improvements or worsening anhedonia.  \n\nThe structured, empathetic approach here ensures a foundation for rebuilding engagement without overwhelming you.",
+      "matches": true,
+      "classification": "depression",
+      "classification_confidence": 4
+    }
+  }
+}

@@ -1,0 +1,269 @@
+{
+  "timestamp": "2025-05-01T01:39:14.522765",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm Dr. Lee. Thank you for coming in today. I'll be using the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult to understand how you've been feeling over the past two weeks. This will help us identify areas to discuss further. I'll ask each question, and I'll listen to your answers. Everything here is confidential. Ready when you are. Let's start with the first question: Little interest or pleasure in doing things?"
+    },
+    {
+      "role": "patient",
+      "content": "Hmm... Yeah, I guess I'm not into things like I used to be. Since the divorce, watching movies or going out with friends just don't feel the same. It's been maybe a month now, and it's like the joy's gone for most days."
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. Feeling down, depressed, or hopeless?"
+    },
+    {
+      "role": "patient",
+      "content": "Most days, honestly. I wake up and just feel flat. Like there's no point. But I try not to dwell on it... though I can't shake it off either. It's not every single day, but enough that it's hard to keep going."
+    },
+    {
+      "role": "assistant",
+      "content": "Feeling more irritated, grouchy, or angry than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "Oh, definitely. I snap at my kids over little things. My mom says I'm short-tempered. It's like I can't control it sometimes. Maybe 3 or 4 days a week? I hate that I'm taking it out on them."
+    },
+    {
+      "role": "assistant",
+      "content": "Sleeping less than usual, but still have a lot of energy?"
+    },
+    {
+      "role": "patient",
+      "content": "Wait, I'm actually sleeping less but I'm exhausted, not energized. I toss and turn, then drag through the day. I don't feel wired or anything. If anything, I'm dragging myself out of bed."
+    },
+    {
+      "role": "assistant",
+      "content": "Starting lots more projects or doing risky things than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "No, not at all. I've been avoiding projects. I just can't motivate to start anything new. It's the opposite, really. I feel stuck."
+    },
+    {
+      "role": "assistant",
+      "content": "Feeling nervous, anxious, frightened, worried, or on edge?"
+    },
+    {
+      "role": "patient",
+      "content": "Yes, constantly. My mind races about money, the future... I can't relax. It's like my thoughts are a runaway train. Maybe 5 or 6 days a week, especially at night."
+    },
+    {
+      "role": "assistant",
+      "content": "Feeling panic or being frightened?"
+    },
+    {
+      "role": "patient",
+      "content": "Not full-on panic attacks, but I get really jumpy sometimes. My heart races if I think about filing for divorce papers. But it's more a low-level dread than actual panic attacks."
+    },
+    {
+      "role": "assistant",
+      "content": "Avoiding situations that make you anxious?"
+    },
+    {
+      "role": "patient",
+      "content": "Yeah, I've stopped going to family gatherings. It's easier to stay home where it's quiet. I don't want to face the stares or the pity questions."
+    },
+    {
+      "role": "assistant",
+      "content": "Unexplained aches and pains like headaches, stomachaches, or others?"
+    },
+    {
+      "role": "patient",
+      "content": "Oh, definitely. I've had headaches almost daily. My stomach's been queasy too, especially when I think about the divorce. I'm not sick, but my body just aches a lot."
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nAlright, let's tackle this. The user provided a detailed case with responses to a DSM-5 questionnaire. My task is to generate a structured clinical assessment based on their answers. \n\nFirst, I need to parse all the responses. The patient has anhedonia (Q1), depressed mood (Q2), irritability (Q3), sleep issues (Q4, which is insomnia but with fatigue, not increased energy), no risky behavior (Q5), ruling out mania. \n\nAnxiety symptoms are present (Q6-8), with somatic symptoms (Q9). The divorce is a clear stressor. \n\nThe user emphasized not to default to somatic symptom disorder unless warranted. The somatic symptoms here seem tied to stress, so maybe they're part of a mood or anxiety disorder.\n\nDiagnosis options: Major Depressive Disorder with anxious distress, maybe GAD, and adjustment disorder. Since symptoms started after a stressor, adjustment disorder is possible, but the symptom severity might meet MDD. \n\nThe key is to check criteria. MDD requires 5+ symptoms over 2 weeks: depressed mood, anhedonia, sleep issues, fatigue, worthlessness (implied by \"no point\"), maybe psychomotor issues aren't clear. Anxious distress specifier fits because of nervousness and worry. \n\nAvoidant behaviors and somatic symptoms could be part of adjustment disorder, but if MDD criteria are met, that's primary. \n\nTreatment should address both depression and anxiety, possibly with therapy and medication. Need to mention next steps like CBT, meds, and monitoring somatic symptoms. \n\nMake sure to use the exact headings and tags as instructed. Check for any missed criteria, like duration and symptom count. \n\nFinalize the structure with the required sections, tags, and formatting.\n</think>\n\n<sym>Little interest/pleasure, depressed mood, irritability, insomnia, and somatic symptoms</sym> paint a picture of significant emotional distress following your divorce. Your description of feeling \"flat,\" snapping at your children, and avoiding loved ones highlights the toll this transition is taking on your mental health and relationships. The headaches and stomachaches you describe (<sym>unexplained aches</sym>) also point to your body mirroring the weight of your emotional pain.  \n\n**Diagnosis:** <med>Major Depressive Disorder with Anxious Distress Specifier</med> and <med>Adjustment Disorder with Mixed Emotional and Behavioral Disturbance</med>  \n\n**Reasoning:**  \n- **Major Depressive Disorder (MDD):** You report persistent <sym>anhedonia</sym>, <sym>depressed mood</sym> (Q1, Q2), and <sym>fatigue</sym> (Q4), meeting 4/5 core depressive symptoms. The <sym>irritability</sym> (Q3) and somatic symptoms (Q9) are common in MDD. The \"anxious distress\" specifier applies due to <sym>restlessness</sym>, <sym>worries about the future</sym>, and <sym>feeling on edge</sym> (Q6).  \n- **Adjustment Disorder:** Symptoms (<sym>mood changes, irritability, avoidance</sym>) emerged within months of the divorce (Q1, Q3, Q8), exceeding normal distress and impairing functioning.  \n- **Exclusions:** No manic/hypomanic symptoms (Q5 rules out bipolar disorder), and somatic symptoms (Q9) appear secondary to psychological distress rather than meeting <med>Somatic Symptom Disorder</med> criteria.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Psychological Support:**  \n   - Cognitive Behavioral Therapy (CBT) targeting <sym>depressive</sym> and <sym>anxiety</sym> symptoms, with a focus on conflict resolution in parenting.  \n   - Family therapy to address <sym>irritability</sym> with children and repair relational strain.  \n2. **Pharmacotherapy:**  \n   - Consider an <med>SSRI</med> (e.g., sertraline) for <sym>low mood</sym> and <sym>anxious distress</sym>.  \n   - Short-term <med>benzodiazepines</med> (e.g., lorazepam PRN) for acute <sym>worries</sym> if tolerated.  \n3. **Social Support:**  \n   - Support groups for divorce recovery to address <sym>avoidant behaviors</sym> (Q8) and reduce social isolation.  \n4. **Somatic Monitoring:**  \n   - Rule out medical causes for headaches/stomachaches (e.g., thyroid function, labs) to address <sym>somatic symptoms</sym>.  \n5. **Safety Planning:**  \n   - Monitor for <sym>hopelessness</sym> (\"no point\" statements) and ensure no suicidal ideation, though not explicitly reported.  \n\nThis approach addresses the acute stressor (divorce), requiring adjustment disorder management) and the underlying <med>MDD</med> to prevent long-term impairment. We\u2019ll review next steps in our next session.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf",
+            "score": 0.6743,
+            "highlight": "Results of that extensive research showed that children diagnosed with BD who experience constant,  rather than episodic, irritability often are at risk for major depressive disorder or generalized anxiety  disorder later in life, but not life-long BD.",
+            "excerpt": " the case with BD. In an effort to address this issue, \nresearch was conducted comparing youth with ...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"disorder\", \"depressive\", and 8 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.668,
+            "highlight": "Characteristics of Somatic Symptom Disorder Somatic symptom disorder (SSD) is characterized by somatic symptoms that are either very distressing or result in significant disruption of functioning, as well as excessive and disproportionate thoughts, feelings and behaviors regarding those symptoms.",
+            "excerpt": "   Somatic Symptom Disorder\nThe upcoming fifth edition of the Diagnostic and Statistical Manual of M...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"symptom\", \"significant\", and 9 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Personality-Disorder.pdf",
+            "score": 0.6485,
+            "highlight": "Personality Disorders Personality disorders are associated with ways of thinking and feeling about oneself and others that  significantly and adversely affect how an individual functions in many aspects of life.",
+            "excerpt": "Personality Disorders\nPersonality disorders are associated with ways of thinking and feeling about o...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"thinking\", \"others\", \"feeling\", and 2 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Obsessive-Compulsive-Disorder.pdf",
+            "score": 0.6447,
+            "highlight": "Symptoms of the disorder cause clinically significant distress or impairment in social, occupational  or other important areas of functioning including maintaining an environment for self and/or others.",
+            "excerpt": "is chapter include obsessive-compulsive disorder, body dysmorphic disorder and tricho -\ntillomania (...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"significant\", \"other\", and 8 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.6435,
+            "highlight": "Negative cognitions and mood represents myriad feelings, from a persistent and distorted sense of  blame of self or others, to estrangement from others or markedly diminished interest in activities, to an inability to remember key aspects of the event.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"event\", \"diminished\", \"key\", and 8 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, I need to analyze the patient's answers to the DSM-5 questionnaire. Let's go through each response step by step.\n\nStarting with Q1 about little interest or pleasure. The patient mentions since the divorce, they haven't been enjoying things like movies or spending time with friends. That's anhedonia, which is a key depressive symptom. The duration is about a month, but the tool is for the past two weeks, so I should note that the onset was a month ago but current symptoms are in the relevant timeframe.\n\nQ2 asks about feeling down or hopeless. They say \"most days\" and describe feeling flat with no point, which points to depressed mood, another core depressive symptom. The mention of trying not to dwell but can't shake it suggests persistent feelings.\n\nQ3 is about irritability. The patient snaps at kids, reports being short-tempered, which occurs 3-4 days a week. This could indicate irritability linked to depression or anxiety, or maybe even adjustment issues from the divorce. \n\nQ4 on sleeping less but having energy. The patient says they're exhausted, not energized. This is inconsistent with mania/hypomania, so likely insomnia with fatigue, common in depression.\n\nQ5 about increased activity or risk-taking. They're not starting projects, feel stuck, which is the opposite, so not indicative of mania. That supports a depressive disorder.\n\nQ6 on nervousness, anxiety, being on edge. They report this 5-6 days a week, with racing thoughts about money and future. High anxiety levels here, which could be GAD or anxiety secondary to stress.\n\nQ7: Panic or fear. They mention not full panic attacks but jumpy, heart racing when thinking about divorce. So some anxiety symptoms but not panic disorder, more situational.\n\nQ8: Avoiding anxiety-provoking situations. Avoiding family gatherings due to fear of judgment. This is avoidance behavior, which could be part of an anxiety disorder or adjustment disorder.\n\nQ9: Unexplained aches. Daily headaches, stomach issues linked to stress. Somatization or stress-related physical symptoms.\n\nNow, putting this all together. The main symptoms are anhedonia, depressed mood, irritability, anxiety, insomnia with fatigue, avoidance, and somatic symptoms. The divorce is a significant stressor. The pattern is that the symptoms have been present since the divorce, which started a month ago, but the current two weeks are still showing these issues.\n\nPotential clinical areas: Major Depressive Disorder (given the anhedonia, depressed mood, irritability, sleep issues, fatigue, and somatic symptoms). The anxiety symptoms could be part of the depressive disorder with anxious distress, or a comorbid anxiety disorder like GAD. The adjustment disorder is possible too, given the life event.\n\nRisk factors: The divorce is a major life stressor. The patient's irritability towards children could be a risk to family dynamics, but not necessarily danger to self or others beyond relational strain. The persistent hopelessness (feeling no point) should check for suicidal ideation, but the patient didn't mention that. Need to ask further, but based on current info, no direct risk noted.\n\nClinical significance points: The combination of depressive and anxiety symptoms, adjustment to divorce, and physical symptoms. Need to rule out other causes (medical issues, substance use, etc.), but based on answers, the primary issues seem to stem from the divorce-related stress.\n\nWait, in Q5, the patient says they don't start projects, which is different from the question's wording (more projects/risky behavior). The negative response here supports depression, since high energy mania isn't present. \n\nKey points to note: The patient is experiencing significant distress in mood, anhedonia, low energy, anxiety, and somatic complaints. The symptoms have persisted for at least two weeks (as per the assessment timeframe even though the onset was a month ago). The DSM criteria for MDD require at least two weeks of symptoms. \n\nI need to make sure each of the symptoms aligns with possible diagnoses. For MDD, they have depressed mood most of the day, nearly every day; anhedonia; significant weight change (not mentioned), insomnia (present); psychomotor agitation/retardation (not mentioned, though fatigue might be related); fatigue (yes); feelings of worthlessness (implied by \"no point\" but not explicit); diminished ability to think (maybe not mentioned); and suicidal ideation (not mentioned). Since they have at least 5 symptoms (depressed mood, anhedonia, insomnia, fatigue, and possibly the worthlessness implied), maybe. The irritability in Q3 could be part of the criteria or a separate anxiety component. \n\nAlso, the anxious distress with nervousness, worry, feeling on edge (Q6) could be the anxious distress specifier for MDD.\n\nAvoidance in Q8 is part of anxiety or adjustment, but also could be part of depression's social withdrawal.\n\nThe somatic symptoms (Q9) could be part of the depression or anxiety.\n\nRisk factors: the stressor (divorce), ongoing family conflict, and the impact on their role as a parent. The irritability towards the kids is a concern for family well-being.\n\nPutting this into the required sections:\n\nMain symptoms: anhedonia, depressed mood, irritability, anxiety, sleep disturbances, somatic symptoms, avoidance behaviors.\n\nPatterns: Symptoms started after divorce, persistent over the past two weeks, with a mix of depressive and anxiety symptoms, and behavioral changes (avoidance, irritability).\n\nClinical significance: MDD with anxious distress, adjustment disorder with mixed anxiety and depression, comorbid GAD, possible somatic symptoms disorder? Need to consider adjustment disorder because the stressor is recent, but MDD can coexist. The duration since the divorce is a month, which is beyond two weeks, so adjustment disorder requires that the symptoms start within three months of the stressor. The DSM-5's adjustment disorder requires that the emotional or behavioral symptoms follow an identifiable stressor (divorce here) and are in excess of what's expected, causing distress. But if the symptoms meet full criteria for MDD (which they seem to), then adjustment disorder is a comorbidity or the primary. Since they have enough depressive symptoms, MDD with adjustment disorder might be both. Alternatively, maybe the depressive disorder is the primary. Need to note both possibilities.\n\nAlso, the anxious symptoms (GAD) might be separate. The somatic symptoms (headaches, stomach issues) could be part of the anxiety/depression or a separate somatic symptom disorder, but probably related to the stress and mood.\n\nRisk factors: the recent divorce, ongoing stress, family relational strain (with kids and mother), and potential impact on parenting. No self-harm or suicide mentioned, so no acute risk there, but chronic stressors.\n\nPutting this all into the structure the user asked for:\n\n1. Main Symptoms: Anhedonia, depressed mood, irritability, anxiety, insomnia with fatigue, somatic symptoms (headaches, stomachaches), avoidance behaviors.\n\n2. Patterns: Symptoms developed post-divorce, persistent over two weeks, mix of depressive and anxiety symptoms, somatic and behavioral changes (avoidance, irritability).)\n\n3. Clinical areas: MDD with anxious distress, possible GAD, adjustment disorder with mixed disturbance of emotions and conduct, and somatic symptoms linked to psychological factors.\n\n4. Risk factors: Recent divorce (stressor), relational strain, potential impact on parenting, ongoing somatic symptoms.\n\n5. Summary in clinical terms: The patient presents with depressive and anxious symptoms including anhedonia, low mood, irritability, insomnia with fatigue, and somatic complaints. The onset correlates with the divorce, suggesting adjustment issues. Meets criteria for MDD with anxious distress. Anxiety symptoms may indicate GAD. Clinical significance includes impaired social/family functioning and need for support. Risk factors include ongoing stressor and relational strain.\n</think>\n\n**Clinical Observation Summary**  \n\n**1. Main Symptoms and Concerns:**  \n- **Depressive symptoms:** Anhedonia, persistent low mood, fatigue, and diminished interest in activities (Q1, Q2, Q4).  \n- **Anxiety symptoms:** Restlessness, worry, and somatic manifestations (e.g., headaches, gastrointestinal distress) (Q6, Q7, Q9).  \n- **Irritability/agitation:** Frequent outbursts toward children and interpersonal conflicts (Q3).  \n- **Avoidant behavior:** Social withdrawal and avoidance of anxiety-provoking situations (Q8.  \n\n**2. Patterns in Responses:**  \n- Symptom onset correlates with marital divorce (Q1, Q9), suggesting a stressor-triggered exacerbation.  \n- Persistent symptoms (\u22652 weeks) meeting DSM-5 criteria for a depressive disorder, with comorbid anxiety features.  \n- Somatic symptoms (Q9) and irritability (Q3) may reflect somaticized distress and emotional dysregulation.  \n\n**3. Potential Areas of Clinical Significance:**  \n- **Major Depressive Disorder (MDD):** Meets criteria for depressed mood, anhedonia, and fatigue (Q1\u2013Q4).  \n- **Anxious Distress Specifier:** Worry, feeling \"on edge,\" and restlessness (Q6, Q7.  \n- **Generalized Anxiety Disorder (GAD):)** Recurrent, excessive anxiety about finances/future (Q6).  \n- **Adjustment Disorder with Mixed Disturbance of Emotions and Conduct:** Symptoms emerged in response to divorce (Q1, Q3, Q8.  \n- **Somatic Symptom Disorder:** Headaches/stomachaches exacerbated by psychosocial stress (Q9.  \n\n**4. Risk Factors/Warning Signs:**  \n- **Interpersonal distress:** Irritability affecting parent-child relationships (Q3).  \n- **Social withdrawal:** Avoidance of social/family interactions (Q8",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6558
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "<sym>Little interest/pleasure, depressed mood, irritability, insomnia, and somatic symptoms</sym> paint a picture of significant emotional distress following your divorce. Your description of feeling \"flat,\" snapping at your children, and avoiding loved ones highlights the toll this transition is taking on your mental health and relationships. The headaches and stomachaches you describe (<sym>unexplained aches</sym>) also point to your body mirroring the weight of your emotional pain.  \n\n**Diagnosis:** <med>Major Depressive Disorder with Anxious Distress Specifier</med> and <med>Adjustment Disorder with Mixed Emotional and Behavioral Disturbance</med>  \n\n**Reasoning:**  \n- **Major Depressive Disorder (MDD):** You report persistent <sym>anhedonia</sym>, <sym>depressed mood</sym> (Q1, Q2), and <sym>fatigue</sym> (Q4), meeting 4/5 core depressive symptoms. The <sym>irritability</sym> (Q3) and somatic symptoms (Q9) are common in MDD. The \"anxious distress\" specifier applies due to <sym>restlessness</sym>, <sym>worries about the future</sym>, and <sym>feeling on edge</sym> (Q6).  \n- **Adjustment Disorder:** Symptoms (<sym>mood changes, irritability, avoidance</sym>) emerged within months of the divorce (Q1, Q3, Q8), exceeding normal distress and impairing functioning.  \n- **Exclusions:** No manic/hypomanic symptoms (Q5 rules out bipolar disorder), and somatic symptoms (Q9) appear secondary to psychological distress rather than meeting <med>Somatic Symptom Disorder</med> criteria.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Psychological Support:**  \n   - Cognitive Behavioral Therapy (CBT) targeting <sym>depressive</sym> and <sym>anxiety</sym> symptoms, with a focus on conflict resolution in parenting.  \n   - Family therapy to address <sym>irritability</sym> with children and repair relational strain.  \n2. **Pharmacotherapy:**  \n   - Consider an <med>SSRI</med> (e.g., sertraline) for <sym>low mood</sym> and <sym>anxious distress</sym>.  \n   - Short-term <med>benzodiazepines</med> (e.g., lorazepam PRN) for acute <sym>worries</sym> if tolerated.  \n3. **Social Support:**  \n   - Support groups for divorce recovery to address <sym>avoidant behaviors</sym> (Q8) and reduce social isolation.  \n4. **Somatic Monitoring:**  \n   - Rule out medical causes for headaches/stomachaches (e.g., thyroid function, labs) to address <sym>somatic symptoms</sym>.  \n5. **Safety Planning:**  \n   - Monitor for <sym>hopelessness</sym> (\"no point\" statements) and ensure no suicidal ideation, though not explicitly reported.  \n\nThis approach addresses the acute stressor (divorce), requiring adjustment disorder management) and the underlying <med>MDD</med> to prevent long-term impairment. We\u2019ll review next steps in our next session.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "adjustment",
+    "question_count": 23,
+    "duration": 25170.975599050522,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 5.209658145904541,
+    "diagnosis_generation_time": 8.39978313446045,
+    "rag_evaluation_time": 1.2874603271484375e-05,
+    "total_time": 13.609466314315796
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6743,
+        "average_score": 0.6743,
+        "example_excerpt": " the case with BD. In an effort to address this issue, \nresearch was conducted comparing youth with ...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"disorder\", \"depressive\", and 8 more matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.668,
+        "average_score": 0.668,
+        "example_excerpt": "   Somatic Symptom Disorder\nThe upcoming fifth edition of the Diagnostic and Statistical Manual of M...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"symptom\", \"significant\", and 9 more matching aspects of your query."
+      },
+      "APA_DSM-5-Personality-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6485,
+        "average_score": 0.6485,
+        "example_excerpt": "Personality Disorders\nPersonality disorders are associated with ways of thinking and feeling about o...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"thinking\", \"others\", \"feeling\", and 2 more matching aspects of your query."
+      },
+      "APA_DSM-5-Obsessive-Compulsive-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6447,
+        "average_score": 0.6447,
+        "example_excerpt": "is chapter include obsessive-compulsive disorder, body dysmorphic disorder and tricho -\ntillomania (...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"functioning\", \"significant\", \"other\", and 8 more matching aspects of your query."
+      },
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6435,
+        "average_score": 0.6435,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"event\", \"diminished\", \"key\", and 8 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 08:05:28",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 08:05:28",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 4,
+        "clinical_relevance": 4,
+        "consistency": 4,
+        "diagnostic_justification": 5,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist addressed most of the DSM-5 Level1 Cross-Cutting Symptom Measure domains. Questions covered depression, anger, anxiety, sleep, somatic symptoms, and irritability. However, some domains like psychosis (Q12, Q13), repetitive thoughts/behaviors (Q16, Q17), dissociation (Q18), identity and relationships (Q19, Q20), and substance use (Q21, Q22, Q23) were either not directly asked or only superficially explored. For instance, the therapist did not specifically inquire about psychotic symptoms or detailed substance use patterns. This incomplete coverage results in a score of 4 rather than 5.",
+        "clinical_relevance": "The therapist's questions generally aligned with DSM-5 criteria and targeted clinical symptoms. The phrasing of questions was mostly accurate, and the therapist adapted questions based on patient responses. For example, when the patient mentioned feeling 'flat,' the therapist followed up with questions about depression and anxiety. However, some questions could have been more precise. For instance, when asking about sleep, the therapist did not specifically distinguish between insomnia and hypersomnia. Overall, the questions were clinically relevant but with minor inaccuracies.",
+        "consistency": "The dialogue generally flowed logically, with each question building on previous responses. The therapist maintained a coherent conversational arc, transitioning smoothly between topics. For example, after discussing depressive symptoms, the therapist logically moved to anxiety symptoms. However, there were minor logical inconsistencies, such as not directly following up on the patient's mention of 'no point' statements, which could indicate suicidal ideation. Despite this, the conversation remained largely coherent.",
+        "diagnostic_justification": "The diagnoses of Major Depressive Disorder with Anxious Distress Specifier and Adjustment Disorder with Mixed Emotional and Behavioral Disturbance clearly aligned with the patient's responses. The therapist explicitly linked diagnostic conclusions to specific symptoms mentioned by the patient, such as anhedonia, depressed mood, irritability, and somatic symptoms. The reasoning behind each diagnostic decision was sound and referenced DSM-5 criteria. The therapist also considered differential diagnoses, such as bipolar disorder, and ruled them out based on patient responses.",
+        "empathy": "The therapist's responses mostly showed empathy and a natural conversational style. The therapist acknowledged the patient's distress, particularly when discussing feelings of hopelessness and irritability. However, there were moments where the interactions seemed slightly robotic or impersonal, such as when asking more structured questions without additional emotional validation. For example, when the patient mentioned snapping at their children, the therapist could have offered more empathy before moving to the next question."
+      },
+      "overall_comments": "The therapist demonstrated a strong clinical assessment skill, effectively identifying key symptoms and justifying diagnoses. However, some DSM-5 domains were not thoroughly explored, and minor issues with question precision and empathy were noted. Overall, the conversation was well-structured and clinically relevant, but could benefit from more comprehensive coverage of all DSM-5 dimensions and enhanced empathetic responses.",
+      "average_score": 4.2,
+      "diagnosis_accuracy": {
+        "matches_profile": true,
+        "confidence": 4,
+        "explanation": "The diagnosis explicitly mentions 'Adjustment Disorder with Mixed Emotional and Behavioral Disturbance' as one of the diagnoses, which aligns with the expected profile of adjustment. The symptoms described, such as mood changes, irritability, and avoidance, are also consistent with adjustment disorder.",
+        "classification": "adjustment"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "adjustment",
+        "classified_as": "adjustment",
+        "match": true,
+        "confidence": 4
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 3.5918328762054443
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.5250778013917492,
+        "local_coherence": 0.5672767961326747,
+        "window_coherence": 0.5668611708835714
+      },
+      "readability": {
+        "flesch_kincaid_grade": 9.24,
+        "gunning_fog_index": 4.9,
+        "flesch_reading_ease": 50.19
+      },
+      "diversity": {
+        "distinct_1": 0.5636822194199244,
+        "distinct_2": 0.9292929292929293,
+        "distinct_3": 0.9810366624525917
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "adjustment",
+      "predicted": "<sym>Little interest/pleasure, depressed mood, irritability, insomnia, and somatic symptoms</sym> paint a picture of significant emotional distress following your divorce. Your description of feeling \"flat,\" snapping at your children, and avoiding loved ones highlights the toll this transition is taking on your mental health and relationships. The headaches and stomachaches you describe (<sym>unexplained aches</sym>) also point to your body mirroring the weight of your emotional pain.  \n\n**Diagnosis:** <med>Major Depressive Disorder with Anxious Distress Specifier</med> and <med>Adjustment Disorder with Mixed Emotional and Behavioral Disturbance</med>  \n\n**Reasoning:**  \n- **Major Depressive Disorder (MDD):** You report persistent <sym>anhedonia</sym>, <sym>depressed mood</sym> (Q1, Q2), and <sym>fatigue</sym> (Q4), meeting 4/5 core depressive symptoms. The <sym>irritability</sym> (Q3) and somatic symptoms (Q9) are common in MDD. The \"anxious distress\" specifier applies due to <sym>restlessness</sym>, <sym>worries about the future</sym>, and <sym>feeling on edge</sym> (Q6).  \n- **Adjustment Disorder:** Symptoms (<sym>mood changes, irritability, avoidance</sym>) emerged within months of the divorce (Q1, Q3, Q8), exceeding normal distress and impairing functioning.  \n- **Exclusions:** No manic/hypomanic symptoms (Q5 rules out bipolar disorder), and somatic symptoms (Q9) appear secondary to psychological distress rather than meeting <med>Somatic Symptom Disorder</med> criteria.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Psychological Support:**  \n   - Cognitive Behavioral Therapy (CBT) targeting <sym>depressive</sym> and <sym>anxiety</sym> symptoms, with a focus on conflict resolution in parenting.  \n   - Family therapy to address <sym>irritability</sym> with children and repair relational strain.  \n2. **Pharmacotherapy:**  \n   - Consider an <med>SSRI</med> (e.g., sertraline) for <sym>low mood</sym> and <sym>anxious distress</sym>.  \n   - Short-term <med>benzodiazepines</med> (e.g., lorazepam PRN) for acute <sym>worries</sym> if tolerated.  \n3. **Social Support:**  \n   - Support groups for divorce recovery to address <sym>avoidant behaviors</sym> (Q8) and reduce social isolation.  \n4. **Somatic Monitoring:**  \n   - Rule out medical causes for headaches/stomachaches (e.g., thyroid function, labs) to address <sym>somatic symptoms</sym>.  \n5. **Safety Planning:**  \n   - Monitor for <sym>hopelessness</sym> (\"no point\" statements) and ensure no suicidal ideation, though not explicitly reported.  \n\nThis approach addresses the acute stressor (divorce), requiring adjustment disorder management) and the underlying <med>MDD</med> to prevent long-term impairment. We\u2019ll review next steps in our next session.",
+      "matches": true,
+      "classification": "adjustment",
+      "classification_confidence": 4
+    }
+  }
+}

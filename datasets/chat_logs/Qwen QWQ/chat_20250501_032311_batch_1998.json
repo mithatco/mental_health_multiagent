@@ -1,0 +1,245 @@
+{
+  "timestamp": "2025-05-01T03:23:23.391130",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello"
+    },
+    {
+      "role": "patient",
+      "content": "Yes"
+    },
+    {
+      "role": "assistant",
+      "content": "1. Little interest or pleasure in doing things?"
+    },
+    {
+      "role": "patient",
+      "content": "Hmm"
+    },
+    {
+      "role": "assistant",
+      "content": "2. Feeling down"
+    },
+    {
+      "role": "patient",
+      "content": "Not all the time"
+    },
+    {
+      "role": "assistant",
+      "content": "3. Feeling more irritated"
+    },
+    {
+      "role": "patient",
+      "content": "Oh yeah"
+    },
+    {
+      "role": "assistant",
+      "content": "4. Sleeping less than usual"
+    },
+    {
+      "role": "patient",
+      "content": "No"
+    },
+    {
+      "role": "assistant",
+      "content": "5."
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, let me tackle this step by step. The user provided a structured response to the clinical assessment prompt, and I need to generate a compliant, empathetic, and accurate mental health evaluation based on the given data. \n\nFirst, I'll start by summarizing the patient's answers. The patient answered \"Hmm\" to anhedonia, \"Not all the time\" to feeling down, \"Oh yeah\" to irritability, and \"No\" to decreased sleep. The clinical notes highlighted partial endorsement of anhedonia, intermittent dysphoria, and noticeable irritability, with possible underreporting of symptoms.\n\nThe diagnosis needs to be tentative since the data is limited. Since the symptoms don't fully meet DSM-5 criteria for a major disorder yet, but there's enough to suggest something is going on. The key here is to use the information given without adding extra assumptions. The user mentioned in the reference info that DMDD is a consideration for chronic irritability, but the patient's responses don't clearly fit that yet. However, the \"Oh yeah\" to irritability and intermittent low mood might point towards an adjustment disorder or depressive symptoms not meeting full criteria. \n\nWait, the reference info also talked about BD vs DMDD. But the patient's answers don't indicate episodic symptoms, and they don't report sleep disturbances like insomnia (they said no to sleeping less), which might not align with BD's mania/hypomania. \n\nThe symptoms here: anhedonia, intermittent depressed mood, irritability, and possible underreporting. Since the sleep isn't an issue, and the depression symptoms aren't full criteria, maybe Adjustment Disorder with Mixed Emotional Disturbance or Depressive Disorder Not Otherwise Specified (DD-NOS) could work. Alternatively, consider an adjustment to stressors affecting mood.\n\nThe diagnosis needs to be provisional. Let me check DSM-5 criteria for adjustment disorders. Adjustment disorder requires stressors and symptoms in response, but if the patient hasn't mentioned stressors, maybe it's not the best fit. Alternatively, the DSM-5 has Depressive Disorder Not Otherwise Specified (now called Depressive Disorder, Unspecified) if symptoms don't meet full criteria. \n\nAlternatively, the irritability and anhedonia could hint at dysthymia, but that requires chronic symptoms. Since the data is limited, it's best to go with an unspecified or provisional diagnosis.\n\nNow, for the reasoning: The partial anhedonia (symptom) and intermittent depressed mood (symptom) suggest subthreshold depressive symptoms. The marked irritability (symptom) could indicate emotional dysregulation or adjustment to stressors. The patient's terse answers may reflect difficulty discussing distress or underreporting. Not meeting full criteria for a specific disorder, so a provisional diagnosis is appropriate.\n\nNext steps: Encourage elaboration on stressors, explore symptom duration, rule out bipolar (since no sleep issues but irritability alone isn't enough), consider therapy, and maybe monitor for worsening of symptoms.\n\nI need to ensure all sections are present: compassionate summary, diagnosis heading, reasoning, and next steps with tags. Also, make sure to use the specified tags for medical terms, symptoms, and quotes.\n\nCheck the user's instructions again: avoid mentioning Somatic Symptom Disorder unless warranted. Since the patient's responses don't focus on somatic symptoms, so probably not applicable here. \n\nFinal check: The diagnosis should be the most fitting one given the data. Unspecified Depressive Disorder or Adjustment Disorder seem best. Let's go with Depressive Disorder, Unspecified, to capture subthreshold depression, and include Adjustment Disorder as a possibility in reasoning.\n\nAlright, structure the sections accordingly. Make sure the tags are correctly placed around medical terms (e.g., <med>Depressive Disorder, Unspecified</med>), symptoms (anhedonia, irritability), and patient responses in quotes.\n\nDouble-check the formatting: headings with exactly the asterisks, no extra lines between sections, and proper tags. Avoid markdown beyond the specified tags. Ensure the tone stays professional yet empathetic. Alright, let's put it all together.\n</think>\n\nIt sounds like you're experiencing moments where life feels less enjoyable and your mood shifts unexpectedly, which can be really tough to navigate. Your description of feeling irritable and \"not all the time\" down suggests this might be a challenging phase, and I want you to know it\u2019s valid to feel this way even if it\u2019s not constant.  \n\n**Diagnosis:** Depressive Disorder, Unspecified  \n\n**Reasoning:**  \nThe responses suggest **symptoms of anhedonia** (\"Hmm\" to reduced interest in activities), intermittent **symptoms of depressed mood** (\"Not all the time\"), and persistent **symptoms of irritability** (\"Oh yeah\"). These align with subthreshold criteria for a depressive disorder, as there\u2019s insufficient information to confirm duration, severity, or full symptom count. The absence of <sym>sleep disturbances</sym> (<quote>\"No\"</quote> to reduced sleep) contrasts with classic depression, but anhedonia and irritability remain core concerns. The terse responses may reflect underreporting or emotional avoidance, warranting further exploration of potential stressors (e.g., life changes, interpersonal struggles).  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Therapeutic Exploration**: Initiate a structured assessment of symptom duration, triggers, and functional impairment using tools like the PHQ-9 or GAD-7 to clarify diagnostic boundaries.  \n2. **Psychoeducation**: Discuss stress management techniques to address <sym>irritability</sym>, such as mindfulness or cognitive-behavioral coping strategies.  \n3. **Monitor for Bipolar Traits**: Rule out <med>Bipolar Disorder</med> by assessing for manic/hypomanic episodes (e.g., elevated mood, impulsivity) despite current lack of sleep disturbances.  \n4. **Collateral Information**: Request input from family/friends to validate symptom consistency across settings.  \n5. **Follow-Up**: Schedule a follow-up in 2\u20133 weeks to reassess symptom severity and consider whether criteria for <med>Major Depressive Disorder</med>, <med>Adjustment Disorder</med>, or other conditions are now met.  \n6. **Lifestyle Review**: Assess sleep hygiene, exercise, and social engagement to address potential contributors to mood dysregulation.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf",
+            "score": 0.7047,
+            "highlight": "Results of that extensive research showed that children diagnosed with BD who experience constant,  rather than episodic, irritability often are at risk for major depressive disorder or generalized anxiety  disorder later in life, but not life-long BD.",
+            "excerpt": " the case with BD. In an effort to address this issue, \nresearch was conducted comparing youth with ...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"depressive\", \"that\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-ADHD.pdf",
+            "score": 0.6767,
+            "highlight": "As in DSM-IV, symptoms will be divided into two categories of inattention and hyperactivity and impulsivity that include behav - iors like failure to pay close attention to details, difficulty organizing tasks and activities, excessive talk - ing, fidgeting, or an inability to remain seated in appropriate situations.",
+            "excerpt": "s to the Disorder\nADHD is characterized by a pattern of behavior, present in multiple settings (e.g....",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"like\", \"activities\", \"that\", and 2 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.6708,
+            "highlight": "Negative cognitions and mood represents myriad feelings, from a persistent and distorted sense of  blame of self or others, to estrangement from others or markedly diminished interest in activities, to an inability to remember key aspects of the event.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"others\", \"activities\", and 2 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Conduct-Disorder.pdf",
+            "score": 0.666,
+            "highlight": "People with conduct disorder who show  this specifier display limited empathy and little concern for the feelings,  wishes, and well-being of others.",
+            "excerpt": ". To be diagnosed with conduct disorde r, the symptoms must cause sig -\nnificant impairment in socia...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"little\", \"others\", \"limited\", and 2 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.657,
+            "highlight": "The  new narrative text for SSD notes that some patients with physical conditions such as heart disease or  cancer will indeed experience disproportionate and excessive thoughts, feelings, and behaviors related  to their illness, and that these individuals may qualify for a diagnosis of SSD.",
+            "excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"related\", \"conditions\", \"may\", and 4 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let's see. The user provided the patient's responses, and I need to analyze them. First, I'll go through each question and answer to identify symptoms.\n\nQ1 is just a greeting, so not a symptom. The real questions start at Q2. \n\nQ2 asks about little interest or pleasure in activities. The patient answered \"Hmm.\" That's vague but might indicate some level of anhedonia. Anhedonia is a key symptom of depression, so that's important.\n\nQ3 is about feeling down, and the answer is \"Not all the time.\" So they do feel down sometimes but not constantly. Still, intermittent low mood can be part of depression or dysthymia, maybe.\n\nQ4 is about feeling more irritated. The patient says \"Oh yeah,\" which is an affirmative. Irritability can be a sign of depression, anxiety, or even something else like adjustment disorder. \n\nQ5 is about sleeping less. The answer is \"No,\" so they aren't sleeping less. That's interesting because sleep disturbances are common in depression, but if they're not sleeping less, maybe they have other sleep issues like trouble falling asleep or poor sleep quality, or maybe they're sleeping more, which can also happen. \n\nNow, looking for patterns in responses. The patient's answers are short and non-committal except for Q4 where they agreed to irritability. They might be minimizing symptoms or not fully engaging, which could indicate reluctance to discuss, or maybe they're just being brief. \n\nPotential clinical areas: The main issues here are anhedonia (maybe), intermittent depressed mood, and irritability. Since they aren't sleeping less, that might rule out some things but still... need to consider other symptoms. \n\nRisk factors or warning signs? The patient isn't reporting suicidal thoughts here, but irritability can sometimes be a sign of underlying distress. Also, the vague answers might suggest some ambivalence or not wanting to disclose more. \n\nWait, need to avoid speculation. The instructions say to avoid that. So stick to what's given. \n\nPutting it all together: The key points are the anhedonia, intermittent low mood, and irritability. The lack of sleep disturbance is a point to note. Possible conditions might be depression, but not meeting full criteria yet, or adjustment disorder. Also, the response patterns could indicate possible reluctance or under-reporting, which is a clinical concern because it might mean the patient isn't fully open, requiring further exploration.\n\nHmm, should I mention possible bipolar? Since irritability can be part of that, but without more info, maybe not. Stick to what's present. \n\nAlso, \"Hmm\" for anhedonia. Maybe they're uncertain or just short, but it's a response that's not a clear \"no.\" Need to consider that as a possible symptom. \n\nSo in the summary, list the symptoms as identified, note the response patterns like brevity and partial admission of symptoms, highlight clinical areas like depression, adjustment disorder, or other mood disorders. Risk factors might include the presence of irritability which can affect functioning, and the possible under-reporting could be a concern. \n\nI need to make sure not to mention things not in the data. For example, not enough info on sleep, so focus on what they answered. The summary should be concise and clinical. Alright, structure it step by step as per the user's instructions.\n</think>\n\n**Clinical Observation Summary**  \n\n1. **Main Symptoms and Concerns**:  \n   - **Anhedonia**: Partial endorsement of reduced interest/pleasure in activities (\"Hmm\") suggests possible subthreshold anhedonia.  \n   - **Dysphoric Mood**: Intermittent depressed mood (\"Not all the time\"), indicating fluctuating emotional distress.  \n   - **Irritability**: Clear affirmation of increased irritability (\"Oh yeah\"), which may reflect emotional dysregulation or stress.  \n\n2. **Patterns in Responses**:  \n   - **Brevity and Ambivalence**: Responses are terse (e.g., \"Hmm,\" \"No\"), potentially reflecting reluctance to elaborate or minimize distress.  \n   - **Partial Endorsement of Symptoms**: Acknowledgment of some symptoms (irritability, intermittent sadness) but hedging in others (e.g., anhedonia).  \n\n3. **Potential Clinical Significance**:  \n   - **Depressive Disorder**: Partial anhedonia and dysphoric mood align with depressive symptomatology, though symptom severity or duration is unclear.  \n   - **Adjustment Disorder with Mixed Emotional Disturbance**: Possible link to recent stressors given irritability and intermittent low mood.  \n   - **Emotional Dysregulation**: Irritability may indicate underlying stress, personality factors, or early mood disturbance.  \n\n4. **Risk Factors/Warning Signs**:  \n   - **Irritability**: May signal impaired social/occupational functioning or heightened distress.  \n   - **Ambiguous Reporting**: Limited elaboration on symptoms may indicate coping mechanisms (e.g., avoidance) or underreporting of severity.  \n\n5. **Summary (Clinical Language)**:  \n   The patient demonstrates **partial endorsement of anhedonia**, **intermittent dysphoric mood**, and **prominent irritability**, consistent with subthreshold depressive symptoms or adjustment-related emotional distress. Brevity in responses and hedging (e.g., \"Hmm,\" \"Not all the time\") suggest potential reluctance to fully disclose or minimization of symptom severity. Further assessment is warranted to evaluate mood disorder criteria, stressors, and emotional regulation patterns. No acute safety concerns are explicitly noted, but irritability may warrant exploration of interpersonal or environmental triggers.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.675
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "It sounds like you're experiencing moments where life feels less enjoyable and your mood shifts unexpectedly, which can be really tough to navigate. Your description of feeling irritable and \"not all the time\" down suggests this might be a challenging phase, and I want you to know it\u2019s valid to feel this way even if it\u2019s not constant.  \n\n**Diagnosis:** Depressive Disorder, Unspecified  \n\n**Reasoning:**  \nThe responses suggest **symptoms of anhedonia** (\"Hmm\" to reduced interest in activities), intermittent **symptoms of depressed mood** (\"Not all the time\"), and persistent **symptoms of irritability** (\"Oh yeah\"). These align with subthreshold criteria for a depressive disorder, as there\u2019s insufficient information to confirm duration, severity, or full symptom count. The absence of <sym>sleep disturbances</sym> (<quote>\"No\"</quote> to reduced sleep) contrasts with classic depression, but anhedonia and irritability remain core concerns. The terse responses may reflect underreporting or emotional avoidance, warranting further exploration of potential stressors (e.g., life changes, interpersonal struggles).  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Therapeutic Exploration**: Initiate a structured assessment of symptom duration, triggers, and functional impairment using tools like the PHQ-9 or GAD-7 to clarify diagnostic boundaries.  \n2. **Psychoeducation**: Discuss stress management techniques to address <sym>irritability</sym>, such as mindfulness or cognitive-behavioral coping strategies.  \n3. **Monitor for Bipolar Traits**: Rule out <med>Bipolar Disorder</med> by assessing for manic/hypomanic episodes (e.g., elevated mood, impulsivity) despite current lack of sleep disturbances.  \n4. **Collateral Information**: Request input from family/friends to validate symptom consistency across settings.  \n5. **Follow-Up**: Schedule a follow-up in 2\u20133 weeks to reassess symptom severity and consider whether criteria for <med>Major Depressive Disorder</med>, <med>Adjustment Disorder</med>, or other conditions are now met.  \n6. **Lifestyle Review**: Assess sleep hygiene, exercise, and social engagement to address potential contributors to mood dysregulation.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "anxiety",
+    "question_count": 23,
+    "duration": 31419.844006061554,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 5.293576002120972,
+    "diagnosis_generation_time": 6.625016927719116,
+    "rag_evaluation_time": 1.1205673217773438e-05,
+    "total_time": 11.918612003326416
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Disruptive-Mood-Disregulation-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7047,
+        "average_score": 0.7047,
+        "example_excerpt": " the case with BD. In an effort to address this issue, \nresearch was conducted comparing youth with ...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"not\", \"depressive\", \"that\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-ADHD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6767,
+        "average_score": 0.6767,
+        "example_excerpt": "s to the Disorder\nADHD is characterized by a pattern of behavior, present in multiple settings (e.g....",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"like\", \"activities\", \"that\", and 2 more matching aspects of your query."
+      },
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6708,
+        "average_score": 0.6708,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"others\", \"activities\", and 2 more matching aspects of your query."
+      },
+      "APA_DSM-5-Conduct-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.666,
+        "average_score": 0.666,
+        "example_excerpt": ". To be diagnosed with conduct disorde r, the symptoms must cause sig -\nnificant impairment in socia...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"little\", \"others\", \"limited\", and 2 more matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.657,
+        "average_score": 0.657,
+        "example_excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"related\", \"conditions\", \"may\", and 4 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 07:48:17",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 07:48:17",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 1,
+        "clinical_relevance": 2,
+        "consistency": 2,
+        "diagnostic_justification": 3,
+        "empathy": 3
+      },
+      "explanations": {
+        "dsm_coverage": "The conversation only superficially addressed a few symptoms from the DSM-5 Level1 Cross-Cutting measure. The therapist only asked a few questions (1. Little interest or pleasure in doing things?, 2. Feeling down, depressed, or hopeless?, 3. Feeling more irritated, grouchy, or angry than usual?, 4. Sleeping less than usual) and did not explore other critical domains such as anxiety, somatic concerns, suicidality, psychotic symptoms, sleep quality, cognitive function, repetitive thoughts/behaviors, dissociation, identity and relationships, and substance use. This limited coverage fails to meet the criteria for a comprehensive assessment.",
+        "clinical_relevance": "The questions asked by the therapist were very basic and did not precisely reflect DSM-5 criteria. For example, the therapist asked 'Little interest or pleasure in doing things?' and 'Feeling down, depressed, or hopeless?' but did not use the full DSM-5 language or explore the severity and frequency of these symptoms. The questions were somewhat relevant but lacked specificity and clarity, leading to potential misinterpretation of patient responses.",
+        "consistency": "The conversation had noticeable logical inconsistencies and abrupt transitions. The therapist did not follow up on concerning disclosures (e.g., irritability) and moved on to the next question without exploring the patient's responses in depth. For instance, when the patient responded with 'Hmm' to little interest in doing things, the therapist did not probe further to clarify the patient's feelings. This led to a disjointed and superficial conversation.",
+        "diagnostic_justification": "The diagnosis of Depressive Disorder, Unspecified, somewhat aligns with the patient's reported symptoms of anhedonia and intermittent depressed mood. However, the justification provided by the therapist was partially flawed due to the limited scope of questions asked. The therapist did not rule out other potential diagnoses or fully consider the DSM-5 criteria for other depressive disorders, which may have been warranted given the patient's terse responses and potential underreporting of symptoms.",
+        "empathy": "The therapist showed occasional empathy and maintained a professional tone but had moments where the interaction seemed somewhat robotic or impersonal. For example, the therapist acknowledged the patient's struggles with irritability and mood shifts but did not provide a warm or personalized response. The conversation could have benefited from more tailored responses to the patient's emotional state and more explicit acknowledgment of their distress."
+      },
+      "overall_comments": "The conversation demonstrated significant gaps in assessing the patient's mental health across various DSM-5 dimensions. The therapist's approach was superficial and failed to explore critical symptoms in depth, leading to a potentially inaccurate or incomplete diagnosis. The conversation lacked a coherent flow, and the therapist's responses often seemed impersonal or robotic. While the therapist showed some empathy, it was not consistently applied throughout the conversation. Overall, the assessment was inadequate, and a more comprehensive approach is needed to accurately diagnose and treat the patient.",
+      "average_score": 2.2,
+      "diagnosis_accuracy": {
+        "matches_profile": false,
+        "confidence": 4,
+        "explanation": "The diagnosis does not explicitly mention anxiety or equivalent clinical terms. Instead, it focuses on symptoms of depressive disorder, such as anhedonia, depressed mood, and irritability. Although the diagnosis considers stressors and emotional avoidance, which could be related to anxiety, the primary condition being diagnosed appears to be a depressive disorder.",
+        "classification": "depression"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "anxiety",
+        "classified_as": "depression",
+        "match": false,
+        "confidence": 4
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 2.474278211593628
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.09618196413426013,
+        "local_coherence": 0.12444415076574206,
+        "window_coherence": 0.11501972071476602
+      },
+      "readability": {
+        "flesch_kincaid_grade": 11.86,
+        "gunning_fog_index": 5.5,
+        "flesch_reading_ease": 34.05
+      },
+      "diversity": {
+        "distinct_1": 0.510752688172043,
+        "distinct_2": 0.9085037674919269,
+        "distinct_3": 0.9762931034482759
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "anxiety",
+      "predicted": "It sounds like you're experiencing moments where life feels less enjoyable and your mood shifts unexpectedly, which can be really tough to navigate. Your description of feeling irritable and \"not all the time\" down suggests this might be a challenging phase, and I want you to know it\u2019s valid to feel this way even if it\u2019s not constant.  \n\n**Diagnosis:** Depressive Disorder, Unspecified  \n\n**Reasoning:**  \nThe responses suggest **symptoms of anhedonia** (\"Hmm\" to reduced interest in activities), intermittent **symptoms of depressed mood** (\"Not all the time\"), and persistent **symptoms of irritability** (\"Oh yeah\"). These align with subthreshold criteria for a depressive disorder, as there\u2019s insufficient information to confirm duration, severity, or full symptom count. The absence of <sym>sleep disturbances</sym> (<quote>\"No\"</quote> to reduced sleep) contrasts with classic depression, but anhedonia and irritability remain core concerns. The terse responses may reflect underreporting or emotional avoidance, warranting further exploration of potential stressors (e.g., life changes, interpersonal struggles).  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Therapeutic Exploration**: Initiate a structured assessment of symptom duration, triggers, and functional impairment using tools like the PHQ-9 or GAD-7 to clarify diagnostic boundaries.  \n2. **Psychoeducation**: Discuss stress management techniques to address <sym>irritability</sym>, such as mindfulness or cognitive-behavioral coping strategies.  \n3. **Monitor for Bipolar Traits**: Rule out <med>Bipolar Disorder</med> by assessing for manic/hypomanic episodes (e.g., elevated mood, impulsivity) despite current lack of sleep disturbances.  \n4. **Collateral Information**: Request input from family/friends to validate symptom consistency across settings.  \n5. **Follow-Up**: Schedule a follow-up in 2\u20133 weeks to reassess symptom severity and consider whether criteria for <med>Major Depressive Disorder</med>, <med>Adjustment Disorder</med>, or other conditions are now met.  \n6. **Lifestyle Review**: Assess sleep hygiene, exercise, and social engagement to address potential contributors to mood dysregulation.",
+      "matches": false,
+      "classification": "depression",
+      "classification_confidence": 4
+    }
+  }
+}

@@ -1,0 +1,317 @@
+{
+  "timestamp": "2025-04-30T21:50:11.402653",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Good morning. My name is Dr. Martinez"
+    },
+    {
+      "role": "patient",
+      "content": "Uh... I guess I don\u2019t enjoy things like I used to. Movies"
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. Next: Feeling down"
+    },
+    {
+      "role": "patient",
+      "content": "Yeah... I\u2019ve been feeling really low. Especially with the anniversary of the accident coming up. I keep thinking about that guy I couldn\u2019t save. Sometimes it feels like I\u2019ll never get out of this fog."
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. Next question: Feeling more irritated"
+    },
+    {
+      "role": "patient",
+      "content": "Oh god"
+    },
+    {
+      "role": "assistant",
+      "content": "Understood. Next: Sleeping less than usual but still have a lot of energy?"
+    },
+    {
+      "role": "patient",
+      "content": "No. I can\u2019t sleep because of the nightmares"
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. Next: Starting lots of projects or doing risky things more than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "No"
+    },
+    {
+      "role": "assistant",
+      "content": "Understood. Next: Feeling nervous"
+    },
+    {
+      "role": "patient",
+      "content": "All the time. My heart races when I hear car sounds. Even the fire truck siren this morning made me shake. I\u2019ve been avoiding the highway entirely."
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. Next question: Feeling panic or frightened?"
+    },
+    {
+      "role": "patient",
+      "content": "Yeah"
+    },
+    {
+      "role": "assistant",
+      "content": "Understood. Next: Avoiding situations that make you anxious?"
+    },
+    {
+      "role": "patient",
+      "content": "Definitely. I won\u2019t take cars"
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. Next question: Unexplained aches or pains?"
+    },
+    {
+      "role": "patient",
+      "content": "My head hurts constantly. My doctor can\u2019t find anything wrong. I\u2019ve had back pain since the accident too"
+    },
+    {
+      "role": "assistant",
+      "content": "Understood. Next: Feeling your health concerns aren\u2019t taken seriously?"
+    },
+    {
+      "role": "patient",
+      "content": "Yeah"
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. Next question: Thoughts of actually hurting yourself?"
+    },
+    {
+      "role": "patient",
+      "content": "No. I just... want it to stop. But I\u2019d never do that. I have to be here for my family. [Voice cracks]"
+    },
+    {
+      "role": "assistant",
+      "content": "Understood. Next question: Hearing things others can\u2019t"
+    },
+    {
+      "role": "patient",
+      "content": "Um... just the accident sounds. Like"
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. Next question: Feeling that someone can hear your thoughts"
+    },
+    {
+      "role": "patient",
+      "content": "No"
+    },
+    {
+      "role": "assistant",
+      "content": "Understood. Next question: Problems with sleep affecting sleep quality?"
+    },
+    {
+      "role": "patient",
+      "content": "Every night. I wake up screaming sometimes. The nightmares about the guy\u2019s face... I can\u2019t explain it. [Voice breaks; pauses]"
+    },
+    {
+      "role": "assistant",
+      "content": "Thank you. Next question: Problems with memory or finding your way?"
+    },
+    {
+      "role": "patient",
+      "content": "Yeah"
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, let's tackle this. The user provided a detailed scenario where a patient is responding to a questionnaire, and I need to generate a structured clinical assessment. The key points from the patient's answers are trauma-related symptoms like flashbacks, nightmares, avoidance, and depressive elements. First, I have to start with a compassionate summary. I need to acknowledge their experience and suffering.\n\nThe next part is the diagnosis. The main symptoms point to PTSD because of the re-experiencing, avoidance, hypervigilance, and negative mood. The DSM-5 criteria for PTSD include the four clusters: re-experiencing, avoidance, negative alterations in cognition/mood, and arousal. The patient has all of these. The depression symptoms (anhedonia, low mood) suggest Major Depressive Disorder as well, possibly comorbid with PTSD. But I should check if the depressive symptoms are part of the PTSD or separate. Since the depression started post-accident, it could be part of the PTSD, but it's worth noting both.\n\nThe anxiety and panic symptoms (hypervigilance, avoidance, panic attacks) are part of PTSD. The somatic symptoms (headaches, back pain) without medical explanation could be linked to trauma. The DSM-5 notes somatic symptoms in PTSD, so that fits. \n\nFor the diagnosis, need to make sure PTSD is primary here. Somatic Symptom Disorder is less likely since the pain is tied to trauma and not excessive worry beyond the trauma context. The patient mentions \"wanting it to stop\" but no suicide intent, so not Somatic Symptom Disorder. \n\nThe diagnosis should be PTSD with depressive features. Maybe Major Depressive Episode in the context of PTSD. \n\nTreatment steps would involve trauma-focused therapies like CBT-PTSD, EMDR, medications like SSRIs, sleep interventions, and monitoring somatic symptoms. \n\nWait, the user wants exactly four sections: compassionate summary, diagnosis, reasoning, and next steps. Also, tags on medical terms, symptoms, and quotes. Let me make sure to use the correct tags. \n\nSymptoms like \"intrusive memories\" and \"flashbacks\" should be in <sym>, \"PTSD\" in <med>, and quotes from the patient in <quote>. \n\nThe diagnosis should be PTSD, likely with depressive features. The reasoning must connect symptoms to DSM-5 criteria for PTSD, emphasizing the trauma trigger (accident), avoidance, re-experiencing, hyperarousal, cognitive changes (blame, guilt). The depressive symptoms are part of the PTSD or comorbid. \n\nNext steps should include trauma-focused therapy, antidepressants, sleep interventions, etc. \n\nDouble-checking the structure and tags. Make sure the diagnosis is clear and the reasoning aligns with DSM-5 criteria. The somatic symptoms are part of the trauma response, not a separate disorder here. The patient's physical pain is tied to the accident, so maybe not Somatic Symptom Disorder unless they're excessively worried beyond the trauma context. Since they mentioned the doctor couldn't find a cause, but the pain is linked to trauma, so it's more likely PTSD's somatic symptoms. \n\nAlright, putting it all together with the required formatting and tags. Ensure no markdown, just the specified sections and tags.\n</think>\n\nThe patient describes profound distress tied to a traumatic accident, including recurring nightmares, intrusive memories of failing to save another person, and a pervasive sense of emotional numbness. Their avoidance of driving, hypervigilance to environmental triggers (e.g., car sirens), and persistent physical and emotional pain reflect a struggle to process unresolved trauma. Your courage in seeking support despite feeling unheard is evident, and it is clear how deeply this experience has impacted your daily life and self-worth.  \n\n**Diagnosis:** <med>Post-Traumatic Stress Disorder (PTSD)</med>, with <sym>depressive symptoms</sym> in the context of trauma exposure, and <sym>acute stress-related somatic complaints</sym>.  \n\n**Reasoning:**  \n- <sym>Re-experiencing symptoms</sym> (e.g., nightmares, flashbacks of the accident; <quote>\"the guy\u2019s face\"</quote>) align with DSM-5 PTSD\u2019s **re-experiencing cluster**.  \n- <sym>Avoidance</sym> of reminders (e.g., highways) and <sym>hyperarousal</sym> (hypervigilance to sirens, sleep disturbances) fulfill the **avoidance and arousal clusters**.  \n- <sym>Negative cognition/mood</sym> (e.g., self-blame, diminished interest in activities) satisfy the **negative alterations in cognition/mood cluster**.  \n- <sym>Depressive symptoms</sym> (anhedonia, low energy) are contextualized within PTSD but may warrant evaluation for <med>Major Depressive Disorder (MDD)</med> if criteria are fully met.  \n- Somatic pain (head/back pain) is likely trauma-related <sym>somatization</sym>, consistent with PTSD rather than a standalone somatic disorder.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Trauma-focused therapy**: Start <med>Cognitive Processing Therapy (CPT)</med> or <med>EMDR</med> for PTSD symptom management.  \n2. **Medical evaluation**: Rule out neurological causes for memory/wayfinding issues, but prioritize trauma-informed care for somatic symptoms.  \n3. **Medication**: Consider <med>SSRIs</med> (e.g., sertraline) for co-occurring depression and PTSD symptoms.  \n4. **Sleep intervention**: Address nightmares with <med>prazosin</med> or sleep hygiene strategies.  \n5. **Safety planning**: Reassure of nonjudgmental care and validate trauma narrative to reduce feelings of being \"unheard.\"  \n6. **Functional restoration**: Gradual exposure therapy for driving avoidance to rebuild autonomy.  \n\nThis plan prioritizes validating your trauma experience while addressing both mental and physical symptoms. You\u2019re not alone in this\u2014this condition is treatable, and your resilience is evident in seeking help.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.7893,
+            "highlight": "Re-experiencing covers spontaneous memories of the traumatic event, recurrent dreams related to it,  flashbacks or other intense or prolonged psychological distress.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"event\", \"related\", \"traumatic\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.6899,
+            "highlight": "Characteristics of Somatic Symptom Disorder Somatic symptom disorder (SSD) is characterized by somatic symptoms that are either very distressing or result in significant disruption of functioning, as well as excessive and disproportionate thoughts, feelings and behaviors regarding those symptoms.",
+            "excerpt": "   Somatic Symptom Disorder\nThe upcoming fifth edition of the Diagnostic and Statistical Manual of M...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"symptom\", \"significant\", \"behaviors\", and 6 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Depression-Bereavement-Exclusion.pdf",
+            "score": 0.6896,
+            "highlight": "The presence of symptoms such as feelings of worthlessness, suicidal  ideas (as distinct from wanting to join a deceased loved one), and impairment of overall function sug - gest the presence of major depression, in addition to the normal response to a significant loss.",
+            "excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"significant\", \"suicidal\", \"one\", and 6 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Sleep-Wake-Disorders.pdf",
+            "score": 0.664,
+            "highlight": "Sleep-Wake Disorders In the fifth edition of the Diagnostic and Statistical Manual of Mental Disorders  (DSM-5), sleep-wake  disorders encompass 10 conditions manifested by disturbed sleep and causing distress as well as im - pairment in daytime functioning.",
+            "excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"mental\", \"disorders\", \"sleep\", and 1 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Schizophrenia.pdf",
+            "score": 0.634,
+            "highlight": "Schizophrenia The upc oming fifth edition of the Diagnostic and Statistical Manual of Mental Disorders  (DSM-5 ) mak es  several key changes to the category of schizophrenia and highlights for future study an area that could  be cri tical for early detection of this often debilitating condition.",
+            "excerpt": "Schizophrenia\nThe upc oming fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"could\", \"mental\", and 3 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, I need to process the patient's responses to the questionnaire and structure the clinical summary as per the user's instructions. Let me start by going through each part step by step.\n\nFirst, the user wants the main symptoms and concerns. Looking at the answers:\n\nThe patient mentions not enjoying things (anhedonia), low mood related to an anniversary of an accident, intrusive thoughts about failing to save someone. That points to depression and trauma. They have nightmares, insomnia, hypervigilance to car sounds (like siren sensitivity), avoidance of driving, which suggests PTSD. The physical symptoms like headaches and back pain, which are unexplained and not taken seriously by their doctor could be somatic symptoms related to stress. They also have panic symptoms (racing heart, wanting the pain to stop), but no suicidal intent, though they mention family responsibility. The hearing accident sounds might be a flashback or auditory hallucination related to trauma, but they clarify it's accident-related, so likely intrusive memories. Memory issues and getting lost could be cognitive symptoms of PTSD or anxiety.\n\nPatterns in responses: The patient consistently references the accident anniversary, which is a trigger. Their responses show a chronological or thematic link between the accident and current symptoms. They use phrases like \"since the accident,\" indicating a temporal relationship.\n\nClinical significance areas: PTSD is the big one here. Major depressive disorder with anhedonia and low mood. Anxiety disorders (panic, GAD).) Possible adjustment disorder? But PTSD seems primary. The avoidance, hypervigilance, re-experiencing symptoms (nightmares, intrusive thoughts) all fit PTSD. The somatic symptoms (headaches, back pain) may be psychosomatic or related to trauma. The panic attacks triggered by car sounds, the hyperarousal symptoms (nervousness, startled easily implied), and the intrusive thoughts. The cognitive issues (memory, wayfinding) could be due to PTSD's cognitive deficits or anxiety's impact on concentration.\n\nRisk factors: The patient has an accident trauma, which is a significant stressor. They have a history of trauma exposure. The avoidance of driving is a functional impairment. The family obligation as a protective factor against self-harm, so low suicide risk but still trauma-related distress.\n\nNow, making sure not to miss anything. They mentioned not starting projects (so no mania/hypomania), so that rules out bipolar. The lack of energy and sleep issues (insomnia from nightmares) point more towards depression and PTSD. The nightmares and startle responses are classic PTSD. The hypervigilance to sounds (sirens, car noises) is a key PTSD symptom. The avoidance of highways is clear avoidance behavior. The memory and wayfinding issues might be dissociation or PTSD-related cognitive deficits.\n\nPotential areas of clinical significance: PTSD, major depression, panic disorder, possible adjustment disorder. The somatic symptoms need monitoring, as they might be psychosomatic or require medical follow-up despite previous doctor's findings. The patient's perception that their concerns aren't taken seriously could affect their trust in providers, so that's a social/therapeutic consideration.\n\nRisk factors: The trauma of the accident, ongoing anxiety, possible social withdrawal due to avoidance. The back pain since the accident could be physical, but the headaches are unexplained. The patient's family responsibility as a protective factor against self-harm is important to note. They are at risk of worsening PTSD symptoms if not treated, but no imminent danger to self.\n\nWait, in Q11, they said no to suicidal thoughts but mention wanting it to stop. That's a cry for help, but they explicitly deny intent, so it's important to note that they have distress but no current plan. However, their emotional state is severe enough to consider ongoing monitoring for changes in that.\n\nAlso, the \"hearing things others can't\" in Q12: the patient mentions accident sounds, so it's more of a re-experiencing symptom (auditory intrusions) rather than a hallucination, which is more characteristic of psychotic disorders. But since they recognize the sounds are from the accident, it's likely PTSD-related. So I should note that as a re-experiencing symptom.\n\nPutting it all together now for each section. Let me structure it as per the user's points 1-5. Need to be concise and use clinical terms. Make sure not to include speculation, just what's in the answers.\n</think>\n\n**Clinical Observation Summary**  \n\n**1. Main Symptoms and Concerns:**  \n- **Depressive symptoms**: Anhedonia (\"don\u2019t enjoy things like I used to\"), persistent low mood, and fatigue.  \n- **Trauma-related distress**: Hypervigilance (startle response to car/fire truck sirens), intrusive thoughts regarding a life-threatening accident, dissociative \"fog,\" and nightmares (re-experiencing trauma).  \n- **Anxiety symptoms**: Panic (racing heart, avoidance of highways), generalized nervousness, and somatic complaints (head/neck pain with unexplained etiology).  \n- **Avoidance behavior**: Avoidance of driving and trauma triggers.  \n- **Cognitive deficits**: Memory difficulties and trouble with wayfinding.  \n- **Physical symptoms**: Chronic headaches and back pain post-accident.  \n\n**2. Patterns in Responses:**  \n- Themes of trauma recurrence (e.g., anniversary of accident intensifying symptoms, intrusive memories of an event involving perceived failure to save someone).  \n- Hyperarousal and avoidance behaviors directly tied to accident-related stimuli (e.g., sirens, highways).  \n- Emotional dysregulation linked to guilt and survivor\u2019s guilt (\"I couldn\u2019t save that guy\").  \n- Persistent somatic symptoms with perceived medical dismissal.  \n\n**3. Potential Clinical Significance:**  \n- **Post-Traumatic Stress Disorder (PTSD)**: Acute symptoms (intrusive memories, nightmares, avoidance, hyperarousal, negative affect, and functional impairment.  \n- **Major Depressive Disorder**: Anhedonia, persistent low mood, and fatigue.  \n- **Anxiety Disorders**: Panic attacks, generalized anxiety, and situational phobia (e.g., avoiding highways).  \n- **Trauma-related cognitive deficits**: Possible dissociation or PTSD-associated memory impairments.  \n- **Somatoform symptoms**: Persistent pain with medical unexplained etiology, suggesting a psychosomatic component.  \n\n**4. Risk Factors/Warning Signs:**  \n- **Trauma history**: Life-threatening accident with survivor\u2019s guilt.  \n- **Functional impairment**: Avoidance of driving and potential social withdrawal.  \n- **Chronic sleep disturbances** (nightmares, disrupted sleep).  \n- **Unexplained somatic complaints** with perceived medical dismissal, risking mistrust in healthcare.  \n- **Emotional dysregulation**: Hypervigilance and panic triggers (e.g., sirens).  \n- **Low distress tolerance**: Reports of wanting the pain to stop, though no suicidal intent is expressed.  \n\n**5. Clinical Summary:**  \nThe patient presents with a complex clinical picture consistent with **prolonged grief/trauma-related distress** and **PTSD**, likely complicated by **major depressive symptoms** (anhedonia, low energy). Hypervigilance, nightmares, avoidance, and re-experiencing trauma (e.g., intrusive memories of the accident) strongly support PTSD diagnosis. Panic symptoms (autonomic arousal, situational phobia of driving) and cognitive deficits (memory, navigation difficulties) align with trauma sequelae. Somatic symptoms (head/neck pain) may reflect psychosomatic distress or unresolved physical injury sequelae. The patient exhibits protective factors (e.g., family responsibility, no current suicidal intent), but significant functional impairment in daily activities (e.g., driving avoidance). Care should prioritize trauma-focused interventions (e.g., EMDR, CBT for PTSD), mood stabilization, and validation of somatic symptoms to address medical mistrust. Monitoring for anxiety escalation or emerging dissociative symptoms is warranted.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6933
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "The patient describes profound distress tied to a traumatic accident, including recurring nightmares, intrusive memories of failing to save another person, and a pervasive sense of emotional numbness. Their avoidance of driving, hypervigilance to environmental triggers (e.g., car sirens), and persistent physical and emotional pain reflect a struggle to process unresolved trauma. Your courage in seeking support despite feeling unheard is evident, and it is clear how deeply this experience has impacted your daily life and self-worth.  \n\n**Diagnosis:** <med>Post-Traumatic Stress Disorder (PTSD)</med>, with <sym>depressive symptoms</sym> in the context of trauma exposure, and <sym>acute stress-related somatic complaints</sym>.  \n\n**Reasoning:**  \n- <sym>Re-experiencing symptoms</sym> (e.g., nightmares, flashbacks of the accident; <quote>\"the guy\u2019s face\"</quote>) align with DSM-5 PTSD\u2019s **re-experiencing cluster**.  \n- <sym>Avoidance</sym> of reminders (e.g., highways) and <sym>hyperarousal</sym> (hypervigilance to sirens, sleep disturbances) fulfill the **avoidance and arousal clusters**.  \n- <sym>Negative cognition/mood</sym> (e.g., self-blame, diminished interest in activities) satisfy the **negative alterations in cognition/mood cluster**.  \n- <sym>Depressive symptoms</sym> (anhedonia, low energy) are contextualized within PTSD but may warrant evaluation for <med>Major Depressive Disorder (MDD)</med> if criteria are fully met.  \n- Somatic pain (head/back pain) is likely trauma-related <sym>somatization</sym>, consistent with PTSD rather than a standalone somatic disorder.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Trauma-focused therapy**: Start <med>Cognitive Processing Therapy (CPT)</med> or <med>EMDR</med> for PTSD symptom management.  \n2. **Medical evaluation**: Rule out neurological causes for memory/wayfinding issues, but prioritize trauma-informed care for somatic symptoms.  \n3. **Medication**: Consider <med>SSRIs</med> (e.g., sertraline) for co-occurring depression and PTSD symptoms.  \n4. **Sleep intervention**: Address nightmares with <med>prazosin</med> or sleep hygiene strategies.  \n5. **Safety planning**: Reassure of nonjudgmental care and validate trauma narrative to reduce feelings of being \"unheard.\"  \n6. **Functional restoration**: Gradual exposure therapy for driving avoidance to rebuild autonomy.  \n\nThis plan prioritizes validating your trauma experience while addressing both mental and physical symptoms. You\u2019re not alone in this\u2014this condition is treatable, and your resilience is evident in seeking help.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "ptsd",
+    "question_count": 23,
+    "duration": 11427.855640172958,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 5.660092115402222,
+    "diagnosis_generation_time": 9.589104175567627,
+    "rag_evaluation_time": 5.0067901611328125e-06,
+    "total_time": 15.249206066131592
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7893,
+        "average_score": 0.7893,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"event\", \"related\", \"traumatic\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6899,
+        "average_score": 0.6899,
+        "example_excerpt": "   Somatic Symptom Disorder\nThe upcoming fifth edition of the Diagnostic and Statistical Manual of M...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"symptom\", \"significant\", \"behaviors\", and 6 more matching aspects of your query."
+      },
+      "APA_DSM-5-Depression-Bereavement-Exclusion.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6896,
+        "average_score": 0.6896,
+        "example_excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"significant\", \"suicidal\", \"one\", and 6 more matching aspects of your query."
+      },
+      "APA_DSM-5-Sleep-Wake-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.664,
+        "average_score": 0.664,
+        "example_excerpt": "Sleep-Wake Disorders\nIn the fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"mental\", \"disorders\", \"sleep\", and 1 more matching aspects of your query."
+      },
+      "APA_DSM-5-Schizophrenia.pdf": {
+        "access_count": 1,
+        "highest_score": 0.634,
+        "average_score": 0.634,
+        "example_excerpt": "Schizophrenia\nThe upc oming fifth edition of the Diagnostic and Statistical Manual of Mental Disorde...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"could\", \"mental\", and 3 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 08:06:40",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 08:06:39",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 4,
+        "clinical_relevance": 4,
+        "consistency": 5,
+        "diagnostic_justification": 5,
+        "empathy": 5
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist addressed most DSM-5 Level1 dimensions, but with some notable omissions or superficial coverage. Specifically, the therapist thoroughly explored depression (questions 1-2), anxiety (questions 6-8), and somatic symptoms (questions 9-10). However, domains like mania (questions 4-5), psychotic symptoms (questions 12-13), and repetitive thoughts/behaviors (question 16) were either not directly addressed or only briefly touched upon. The therapist also didn't probe deeply into substance use (question 21-23) or dissociation (question 18), which could have provided more insight into the patient's experience. Overall, while most critical areas were covered, a few important dimensions were not fully explored, warranting a score of 4 rather than 5.",
+        "clinical_relevance": "The therapist's questions generally aligned with DSM-5 criteria, but there were instances of slight inaccuracies or vague phrasing. For example, when asking about 'Feeling down, depressed, or hopeless?', the therapist could have used more precise language to capture the full spectrum of depressive symptoms. Additionally, questions about sleep disturbances were somewhat limited, focusing primarily on nightmares without exploring other aspects of sleep quality. However, the therapist did adapt questions to the patient's responses, showing a good understanding of clinical relevance. The questions were mostly clear and targeted, but could have benefited from more specificity in a few areas.",
+        "consistency": "The dialogue flows logically, with each question naturally following from previous responses. The therapist demonstrated a clear understanding of the patient's narrative and built upon their disclosures to guide the conversation. There were no abrupt topic changes or non-sequiturs. The therapist also appropriately followed up on concerning disclosures, such as the patient's thoughts of self-harm and somatic complaints. The conversational arc was coherent and smooth, indicating a high level of consistency and logical flow.",
+        "diagnostic_justification": "The diagnoses clearly align with DSM-5 responses, and the reasoning behind each diagnostic decision is explicitly stated and clinically sound. The therapist provided a detailed explanation for the PTSD diagnosis, citing specific symptoms like re-experiencing, avoidance, and hyperarousal. The therapist also considered co-occurring depressive symptoms and somatic complaints, demonstrating a comprehensive differential diagnosis. The justification for the diagnosis was thorough, well-supported by the patient's responses, and clearly linked to DSM-5 criteria.",
+        "empathy": "The therapist responses show consistent empathy, a natural conversational style, and an appropriate professional tone. The therapist acknowledged the patient's distress, validated their trauma narrative, and provided a supportive environment for disclosure. The use of phrases like 'Your courage in seeking support despite feeling unheard is evident' demonstrates empathy and understanding. The therapist also tailored responses to the patient's emotional state, adapting their approach to address sensitive topics with care. Overall, the interaction was warm, personalized, and professional."
+      },
+      "overall_comments": "The conversation demonstrated a strong clinical approach, with a clear focus on assessing PTSD symptoms and related domains. While some areas could have been explored more deeply, the therapist generally provided a comprehensive evaluation. The diagnostic justification was robust, and the empathetic approach was commendable. However, minor issues in DSM-5 dimension coverage and clinical relevance suggest areas for improvement. Overall, this was a strong performance, but not without some minor flaws.",
+      "average_score": 4.6,
+      "diagnosis_accuracy": {
+        "matches_profile": true,
+        "confidence": 5,
+        "explanation": "The diagnosis explicitly mentions Post-Traumatic Stress Disorder (PTSD) and provides detailed reasoning based on DSM-5 PTSD clusters, including re-experiencing symptoms, avoidance, hyperarousal, and negative alterations in cognition/mood. This aligns perfectly with the expected profile of PTSD.",
+        "classification": "ptsd"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "ptsd",
+        "classified_as": "ptsd",
+        "match": true,
+        "confidence": 5
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 2.959163188934326
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.33631454418449835,
+        "local_coherence": 0.2966856511902413,
+        "window_coherence": 0.32187620202985434
+      },
+      "readability": {
+        "flesch_kincaid_grade": 8.94,
+        "gunning_fog_index": 4.21,
+        "flesch_reading_ease": 49.22
+      },
+      "diversity": {
+        "distinct_1": 0.48704663212435234,
+        "distinct_2": 0.8713692946058091,
+        "distinct_3": 0.9511941848390446
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "ptsd",
+      "predicted": "The patient describes profound distress tied to a traumatic accident, including recurring nightmares, intrusive memories of failing to save another person, and a pervasive sense of emotional numbness. Their avoidance of driving, hypervigilance to environmental triggers (e.g., car sirens), and persistent physical and emotional pain reflect a struggle to process unresolved trauma. Your courage in seeking support despite feeling unheard is evident, and it is clear how deeply this experience has impacted your daily life and self-worth.  \n\n**Diagnosis:** <med>Post-Traumatic Stress Disorder (PTSD)</med>, with <sym>depressive symptoms</sym> in the context of trauma exposure, and <sym>acute stress-related somatic complaints</sym>.  \n\n**Reasoning:**  \n- <sym>Re-experiencing symptoms</sym> (e.g., nightmares, flashbacks of the accident; <quote>\"the guy\u2019s face\"</quote>) align with DSM-5 PTSD\u2019s **re-experiencing cluster**.  \n- <sym>Avoidance</sym> of reminders (e.g., highways) and <sym>hyperarousal</sym> (hypervigilance to sirens, sleep disturbances) fulfill the **avoidance and arousal clusters**.  \n- <sym>Negative cognition/mood</sym> (e.g., self-blame, diminished interest in activities) satisfy the **negative alterations in cognition/mood cluster**.  \n- <sym>Depressive symptoms</sym> (anhedonia, low energy) are contextualized within PTSD but may warrant evaluation for <med>Major Depressive Disorder (MDD)</med> if criteria are fully met.  \n- Somatic pain (head/back pain) is likely trauma-related <sym>somatization</sym>, consistent with PTSD rather than a standalone somatic disorder.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Trauma-focused therapy**: Start <med>Cognitive Processing Therapy (CPT)</med> or <med>EMDR</med> for PTSD symptom management.  \n2. **Medical evaluation**: Rule out neurological causes for memory/wayfinding issues, but prioritize trauma-informed care for somatic symptoms.  \n3. **Medication**: Consider <med>SSRIs</med> (e.g., sertraline) for co-occurring depression and PTSD symptoms.  \n4. **Sleep intervention**: Address nightmares with <med>prazosin</med> or sleep hygiene strategies.  \n5. **Safety planning**: Reassure of nonjudgmental care and validate trauma narrative to reduce feelings of being \"unheard.\"  \n6. **Functional restoration**: Gradual exposure therapy for driving avoidance to rebuild autonomy.  \n\nThis plan prioritizes validating your trauma experience while addressing both mental and physical symptoms. You\u2019re not alone in this\u2014this condition is treatable, and your resilience is evident in seeking help.",
+      "matches": true,
+      "classification": "ptsd",
+      "classification_confidence": 5
+    }
+  }
+}

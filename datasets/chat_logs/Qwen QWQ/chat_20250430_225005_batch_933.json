@@ -1,0 +1,233 @@
+{
+  "timestamp": "2025-04-30T22:50:25.101747",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm Dr. Lee, a mental health professional. Today, I'll be using the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult to better understand how you've been feeling over the past two weeks. This will help us track symptoms and identify areas needing attention. All your answers are confidential, and there are no right or wrong responses. I'll ask each question one at a time, and I'm here to listen. Ready when you are."
+    },
+    {
+      "role": "patient",
+      "content": "Okay... sure. I'll try to answer as honestly as I can."
+    },
+    {
+      "role": "assistant",
+      "content": "1. Little interest or pleasure in doing things? How has that been for you?"
+    },
+    {
+      "role": "patient",
+      "content": "Honestly, I've been avoiding things I used to enjoy. Like, I used to love hiking, but now just the thought of being outside alone makes me dread having a panic attack. I end up staying home most days."
+    },
+    {
+      "role": "assistant",
+      "content": "2. Feeling down, depressed, or hopeless?"
+    },
+    {
+      "role": "patient",
+      "content": "There are days I feel so low I can't shake it. Like, after a bad panic attack, I just feel... stuck. But sometimes I'm okay. Not every single day, but often enough that it's exhausting."
+    },
+    {
+      "role": "assistant",
+      "content": "3. Feeling more irritated, grouchy, or angry than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "I snap at small things more than I used to. If someone cancels plans last minute, I get really worked up. Not angry all the time, but little frustrations feel magnified."
+    },
+    {
+      "role": "assistant",
+      "content": "4. Sleeping less than usual, but still have a lot of energy?"
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, I need to address the user's query properly. Let me start by recalling the instructions. The user wants a structured assessment based on the provided questionnaire responses, which were all unanswered. The key here is to follow the exact format they specified, including the sections with asterisks and using the required tags.\n\nFirst, the compassionate summary. Since the patient didn\u2019t answer any questions, I have to express concern and empathy. Maybe something like acknowledging their difficulty in engaging with the assessment and the stress they might be experiencing. I need to make sure it's gentle but professional.\n\nNext, the diagnosis section. The user mentioned not to default to Somatic Symptom Disorder unless warranted. Since there's no data, I can't assign a specific diagnosis. The best fit here would be an \"Inability to Assess\" or \"Unassessable\" because we can't evaluate symptoms without responses. I have to check if \"Inability to Complete Assessment\" is a valid term. Maybe phrase it as \"Unassessable due to lack of self-reported symptoms.\"  \n\nIn the reasoning section, I need to explain why the diagnosis was chosen. Since no responses were given, we can't rule out or confirm any disorders. It's important to note that the lack of information itself is a concern that requires further evaluation. I should mention that without data, we can't proceed, so the diagnosis is about the inability to assess properly.\n\nFor the next steps, the recommendations should include re-administering the assessment in a different way, like an in-person interview. Also, exploring reasons for non-response (e.g., cognitive impairment, anxiety, language barriers). Then, a comprehensive evaluation by a clinician, and monitoring for acute risks. Need to list them as numbered points.\n\nI have to ensure that medical terms are wrapped in <med> tags, symptoms in <sym> tags, and quotes (but there are no direct quotes here). Wait, the user didn't provide any quotes from the patient, so maybe that's not needed here. Just stick to the structure.\n\nCheck the required sections again: compassionate summary, diagnosis with heading, reasoning, then next steps. Make sure there are no markdown elements, just plain text with the specified tags. Also, avoid any mention of Somatic Symptom Disorder unless it's justified, which it isn't here.\n\nWait, in the reasoning, maybe mention that because all questions were unanswered, we can't confirm any disorders, hence the \"unassessable\" label. Also, the next steps should emphasize alternative assessment methods and ensuring safety.\n\nLet me structure each part step by step, ensuring all sections are present and formatted correctly. Make sure to avoid any speculation beyond what's indicated by the lack of responses. The key is to highlight the inability to assess and the need for further evaluation.\n\nAlright, putting it all together following the exact structure. Check for correct tags and headings. Make sure the tone is empathetic yet clinical. Ensure that each section flows logically without any extra content. Alright, time to draft the final response.\n</think>\n\nThe clinician recognizes the difficulty in completing this assessment and would like to acknowledge how challenging it must be to engage with these questions at this time. We cannot fully understand your experience without your input, and we want to ensure you feel supported in this process.\n\n**Diagnosis:** <med>Inability to complete symptom self-report due to lack of engagement</med>  \n\n**Reasoning:**  \nWithout any responses to self-report items, no diagnostic criteria can be evaluated. This lack of engagement may stem from <sym>emotional avoidance</sym>, <sym>cognitive impairment</sym>, or <sym>communication barriers</sym>. A formal diagnosis cannot be determined until further clinical evaluation clarifies the cause of non-response.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Re-administer assessment via clinician-led interview:** Use direct questioning in a low-pressure setting to explore symptoms, ensuring cultural/linguistic accessibility.  \n2. **Assess for <med>cognitive impairment</med> or communication barriers:** Evaluate for impairments in attention, understanding, or motivation that may hinder self-report.  \n3. **Prioritize safety assessment:** Screen for <sym>suicidal ideation</sym>, <sym>psychosis</sym>, or <sym>acute distress</sym> via direct inquiry, observing non-verbal cues.  \n4. **Explore engagement barriers:** Investigate factors contributing to non-response (e.g., stigma, trauma, mistrust of medical systems).  \n5. **Initiate supportive care:** Offer collaborative goal-setting to build trust, alongside monitoring for emergent risks (e.g., self-harm, decompensation.  \n\nFurther evaluation is critical to identify underlying issues and guide appropriate intervention.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.68,
+            "highlight": "The  new narrative text for SSD notes that some patients with physical conditions such as heart disease or  cancer will indeed experience disproportionate and excessive thoughts, feelings, and behaviors related  to their illness, and that these individuals may qualify for a diagnosis of SSD.",
+            "excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"related\", \"these\", \"may\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Conduct-Disorder.pdf",
+            "score": 0.6689,
+            "highlight": "APA is a national medical specialty society whose more than 37,000  physician members specialize in the diagnosis, treat - ment, prevention and research of mental illnesses, including substance use disorders.",
+            "excerpt": "he disorder and a different treatment response. Thus the specifier will allow clinicians to more ac ...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"use\", \"mental\", \"more\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Mild-Neurocognitive-Disorder.pdf",
+            "score": 0.6688,
+            "highlight": "Process for a New Diagnosis New diagnoses were included in DSM-5 only after a comprehensive review of the scientific literature;  full discussion by Work Group members; review by the DSM-5 Task Force, Scientific Review Committee,  and Clinical and Public Health Committee; and, finally, evaluation by the American Psychiatric Associa - tion\u2019s Board of Trust ees.",
+            "excerpt": "ment and may prevent or slow progression. Researchers \nwill evaluate how well the new diagnostic cri...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"comprehensive\", \"clinical\", \"health\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Depression-Bereavement-Exclusion.pdf",
+            "score": 0.6667,
+            "highlight": "The presence of symptoms such as feelings of worthlessness, suicidal  ideas (as distinct from wanting to join a deceased loved one), and impairment of overall function sug - gest the presence of major depression, in addition to the normal response to a significant loss.",
+            "excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"significant\", \"suicidal\", \"depression\", and 3 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Schizophrenia.pdf",
+            "score": 0.6639,
+            "highlight": "Identifying individuals with an increased risk for developing a psychotic disorder is  significant for effective early intervention, but more study is needed to ensure that attenuated psycho - sis syndrome can be reliably diagnosed.",
+            "excerpt": "h before their consideration as formal disorders. This potential category would \nidentify a person w...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"psychotic\", \"significant\", \"ensure\", and 5 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, I need to help the user by analyzing the patient's questionnaire responses. The user provided a list of 23 questions, all of which were left unanswered by the patient. My task is to generate a clinical assessment based on these non-responses. Let me start by breaking down each part of the query.\n\nFirst, the instructions ask to identify main symptoms and concerns. Since all responses are missing, the absence of information itself is significant. The lack of response might indicate several things: perhaps the patient didn't complete the form, had difficulty understanding it, or there's some reluctance to engage. But from a clinical standpoint, I should note that the missing data prevents assessment of common psychiatric symptoms like depression, anxiety, mania, psychosis, etc.\n\nNext, the user wants patterns in the responses. Well, the pattern here is a complete lack of responses. All 23 questions were skipped. That's a clear pattern, but I need to interpret what that might mean. Maybe the patient refused to answer, didn't have the capacity to respond, or there was an administrative error? I should mention that all items were unaddressed, which is a notable pattern.\n\nPotential areas of clinical significance would involve the inability to assess for various disorders because of no data. For example, without answers, I can't evaluate symptoms of depression (Q1, Q2), mania (Q3, Q4, Q5), anxiety (Q6-8, 14-15), psychotic features (Q11-12), dissociation (Q16-17), substance use (A19-20, 23), self-harm (Q10), or somatic symptoms (Q21-22). All these areas are critical, so not having info is a big issue.\n\nRisk factors or warning signs: Since there are no answers, I can't confirm risks like suicidal ideation (Q10) or substance misuse (Q19-20, 23). But the absence of response might itself be a red flag. Maybe the patient is avoiding discussing certain topics, or there's a cognitive impairment affecting their ability to respond? Also, if a patient didn't answer about self-harm or psychosis, that's a problem because those are serious.\n\nThe summary needs to be in clinical terms, concise. I should mention the non-responsiveness as the primary concern, note that it hinders assessment, and list the areas where data is missing. Also, highlight the need for further evaluation to understand why they didn't respond\u2014maybe cognitive issues, lack of engagement, or language barriers. I should avoid guessing why they didn't answer but note the implications of the missing data.\n\nWait, but the user specified not to speculate, so I can't assume reasons. Just state that the non-response prevents assessment and suggest that this lack itself is clinically significant. I need to structure each part as per the instructions: symptoms, patterns, areas of significance, risks, then a summary.\n\nAlso, I need to make sure I use the right terms. For example, \"absence of self-reported symptoms cannot be confirmed or ruled out,\" which is important. The key here is that the lack of data is the main issue. So, in the main symptoms section, it's that there's no data. The patterns are all non-responses. Clinical areas are all the disorders the questions were meant to assess. The risks are the inability to assess for critical issues like suicide or psychosis. \n\nI should also consider if there's any possible reason for non-response that's clinically relevant. For instance, a patient with severe anxiety might avoid answering, or someone with cognitive impairment can't complete it. But again, without more info, I can't say for sure. So, in the summary, I need to state that the lack of responses prevents evaluation of various key areas and recommend further assessment to determine the reason for non-response and address possible undetected issues.\n\nAlso, check if I missed any questions. Let me count: Q1 to Q23 (wait, the user listed up to Q23? Wait, in the given data, Q23 is number 23, so all 23 are unanswered. The user listed 23 questions, all with \"no response.\" So all areas are non-responded. \n\nI should structure each numbered section as per the user's request. The summary needs to be in clinical language, concise. Make sure not to infer too much, just state the facts of the non-responses and their implications. Alright, putting it all together now.\n</think>\n\n**Clinical Observation Summary**  \n\n**1. Main Symptoms and Concerns:**  \nThe patient did not provide responses to **all 23 items** of the questionnaire, precluding the assessment of key psychiatric symptom domains (e.g., depressive, manic, anxious, psychotic, dissociative, somatic, or substance-related symptoms).  \n\n**2. Patterns in Responses:**  \n- **Complete non-engagement** with the assessment tool, with no responses to any questions.  \n- No identifiable pattern of selective avoidance or selective disclosure.  \n\n**3. Potential Areas of Clinical Significance:**  \n- **Depressive symptoms (Q1, Q2):** Absence of self-reported symptoms cannot be confirmed or ruled out.  \n- **Manic/hypomanic symptoms (Q3\u2013Q5):** Potential for undetected elevated mood or psychomotor agitation cannot be assessed.  \n- **Anxiety/panic (Q6\u2013Q8, Q14\u2013Q15):** Risk of unaddressed anxiety or obsessive-compulsive symptoms.  \n- **Psychotic symptoms (Q11\u2013Q12):** Absence of data limits evaluation of hallucinations or delusions.  \n- **Suicidal/harmful ideation (Q10):** Risk of self-harm cannot be ruled out.  \n- **Substance use (Q19, Q20, Q23):** No information to assess substance misuse or abuse.  \n- **Dissociation (Q16\u2013Q17) or interpersonal/identity concerns (Q18):** Potential dysregulation in these domains cannot be evaluated.  \n- **Cognitive/functional impairment (Q22):** Memory or executive dysfunction risk remains unassessed.  \n\n**4. Risk Factors/Warning Signs:**  \n- **Non-response as a clinical concern:** May reflect limited engagement, cognitive impairment, deliberate avoidance of disclosure, or inability to comprehend the questionnaire (e.g., due to language barriers, executive dysfunction, or acute distress).  \n- **Undetermined risk of self-harm/psychosis/substance use:** Critical clinical concerns remain unassessed.  \n\n**5. Summary (Clinical Language):**  \nThe patient\u2019s failure to respond to **all items** of the assessment tool precludes a comprehensive psychiatric symptom evaluation. Key clinical domains, including mood disturbance, psychotic symptoms, suicidal ideation, substance use, and cognitive/functional impairment, remain unassessed. This non-responsiveness may indicate:  \n- **Limited engagement with the assessment process,**  \n- **Cognitive/communication barriers,** or  \n- **Deliberate omission of critical information.**  \nFurther clinical evaluation is urgently required to explore the etiology of non-response (e.g., impaired decision-making capacity, treatment resistance, or acute psychological distress) and to address potential unmet clinical needs in high-risk domains (e.g., self-harm, psychosis, or substance misuse). Immediate clinical intervention is warranted to ensure safety and secure reliable clinical data.  \n\n**Recommendation:** Re-administer the assessment via direct clinician-patient dialogue, employ alternative assessment tools (e.g., clinical interviews, collateral information), and prioritize evaluation of suicide risk, cognitive functioning, and psychosocial stressors.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6697
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "The clinician recognizes the difficulty in completing this assessment and would like to acknowledge how challenging it must be to engage with these questions at this time. We cannot fully understand your experience without your input, and we want to ensure you feel supported in this process.\n\n**Diagnosis:** <med>Inability to complete symptom self-report due to lack of engagement</med>  \n\n**Reasoning:**  \nWithout any responses to self-report items, no diagnostic criteria can be evaluated. This lack of engagement may stem from <sym>emotional avoidance</sym>, <sym>cognitive impairment</sym>, or <sym>communication barriers</sym>. A formal diagnosis cannot be determined until further clinical evaluation clarifies the cause of non-response.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Re-administer assessment via clinician-led interview:** Use direct questioning in a low-pressure setting to explore symptoms, ensuring cultural/linguistic accessibility.  \n2. **Assess for <med>cognitive impairment</med> or communication barriers:** Evaluate for impairments in attention, understanding, or motivation that may hinder self-report.  \n3. **Prioritize safety assessment:** Screen for <sym>suicidal ideation</sym>, <sym>psychosis</sym>, or <sym>acute distress</sym> via direct inquiry, observing non-verbal cues.  \n4. **Explore engagement barriers:** Investigate factors contributing to non-response (e.g., stigma, trauma, mistrust of medical systems).  \n5. **Initiate supportive care:** Offer collaborative goal-setting to build trust, alongside monitoring for emergent risks (e.g., self-harm, decompensation.  \n\nFurther evaluation is critical to identify underlying issues and guide appropriate intervention.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "panic",
+    "question_count": 23,
+    "duration": 15041.554555177689,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 11.393086910247803,
+    "diagnosis_generation_time": 7.746342897415161,
+    "rag_evaluation_time": 1.5735626220703125e-05,
+    "total_time": 19.13945698738098
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.68,
+        "average_score": 0.68,
+        "example_excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"related\", \"these\", \"may\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Conduct-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6689,
+        "average_score": 0.6689,
+        "example_excerpt": "he disorder and a different treatment response. Thus the specifier will allow clinicians to more ac ...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"use\", \"mental\", \"more\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Mild-Neurocognitive-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6688,
+        "average_score": 0.6688,
+        "example_excerpt": "ment and may prevent or slow progression. Researchers \nwill evaluate how well the new diagnostic cri...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"comprehensive\", \"clinical\", \"health\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM-5-Depression-Bereavement-Exclusion.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6667,
+        "average_score": 0.6667,
+        "example_excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"significant\", \"suicidal\", \"depression\", and 3 more matching aspects of your query."
+      },
+      "APA_DSM-5-Schizophrenia.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6639,
+        "average_score": 0.6639,
+        "example_excerpt": "h before their consideration as formal disorders. This potential category would \nidentify a person w...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"psychotic\", \"significant\", \"ensure\", and 5 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 08:04:24",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 08:04:23",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 1,
+        "clinical_relevance": 2,
+        "consistency": 2,
+        "diagnostic_justification": 1,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist only asked a few questions from the DSM-5 Level1 Cross-Cutting Symptom Measure\u2014Adult, specifically questions 1, 2, and 3. The conversation abruptly stopped without addressing the remaining 20 questions. This significant omission means that most DSM-5 dimensions were not explored, leading to a lack of comprehensive coverage.",
+        "clinical_relevance": "The questions asked by the therapist (e.g., 'Little interest or pleasure in doing things?', 'Feeling down, depressed, or hopeless?', 'Feeling more irritated, grouchy, or angry than usual?') generally align with DSM-5 criteria but are limited in scope. The phrasing is mostly accurate but does not capture the full range of symptoms. The lack of follow-up questions or exploration of other domains reduces the clinical relevance.",
+        "consistency": "The conversation starts well, with a logical introduction and initial questions. However, it abruptly stops without a clear progression or follow-up on previous responses. The lack of continuity and unexplored areas disrupt the logical flow and conversational coherence.",
+        "diagnostic_justification": "The diagnosis of 'Inability to complete symptom self-report due to lack of engagement' is justified, but it is based on a very limited assessment. The therapist did not systematically evaluate diagnostic criteria beyond the initial questions. The reasoning provided for the diagnosis is sound but incomplete due to the limited scope of the conversation.",
+        "empathy": "The therapist starts with empathy and acknowledges the challenge of engaging with the questions. The responses are generally supportive, and the therapist expresses understanding of the patient's difficulties. However, the abrupt stop in the conversation may indicate a missed opportunity to further acknowledge and address the patient's distress."
+      },
+      "overall_comments": "The conversation demonstrates a good start with empathetic engagement and relevant initial questions. However, it falls short due to the abrupt termination without comprehensive coverage of the DSM-5 dimensions. Future conversations should prioritize completing the assessment and ensuring a smooth, coherent flow.",
+      "average_score": 2.0,
+      "diagnosis_accuracy": {
+        "matches_profile": false,
+        "confidence": 4,
+        "explanation": "The diagnosis does not explicitly mention panic or any equivalent clinical terms. Instead, it focuses on the inability to complete a symptom self-report due to lack of engagement, which may be related to various underlying issues, including emotional avoidance, cognitive impairment, or communication barriers.",
+        "classification": "other"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "panic",
+        "classified_as": "other",
+        "match": false,
+        "confidence": 4
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 2.980490207672119
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.523827008007962,
+        "local_coherence": 0.5309123894044268,
+        "window_coherence": 0.5483268693564585
+      },
+      "readability": {
+        "flesch_kincaid_grade": 9.11,
+        "gunning_fog_index": 4.49,
+        "flesch_reading_ease": 49.34
+      },
+      "diversity": {
+        "distinct_1": 0.55622009569378,
+        "distinct_2": 0.9221556886227545,
+        "distinct_3": 0.9796163069544365
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "panic",
+      "predicted": "The clinician recognizes the difficulty in completing this assessment and would like to acknowledge how challenging it must be to engage with these questions at this time. We cannot fully understand your experience without your input, and we want to ensure you feel supported in this process.\n\n**Diagnosis:** <med>Inability to complete symptom self-report due to lack of engagement</med>  \n\n**Reasoning:**  \nWithout any responses to self-report items, no diagnostic criteria can be evaluated. This lack of engagement may stem from <sym>emotional avoidance</sym>, <sym>cognitive impairment</sym>, or <sym>communication barriers</sym>. A formal diagnosis cannot be determined until further clinical evaluation clarifies the cause of non-response.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. **Re-administer assessment via clinician-led interview:** Use direct questioning in a low-pressure setting to explore symptoms, ensuring cultural/linguistic accessibility.  \n2. **Assess for <med>cognitive impairment</med> or communication barriers:** Evaluate for impairments in attention, understanding, or motivation that may hinder self-report.  \n3. **Prioritize safety assessment:** Screen for <sym>suicidal ideation</sym>, <sym>psychosis</sym>, or <sym>acute distress</sym> via direct inquiry, observing non-verbal cues.  \n4. **Explore engagement barriers:** Investigate factors contributing to non-response (e.g., stigma, trauma, mistrust of medical systems).  \n5. **Initiate supportive care:** Offer collaborative goal-setting to build trust, alongside monitoring for emergent risks (e.g., self-harm, decompensation.  \n\nFurther evaluation is critical to identify underlying issues and guide appropriate intervention.",
+      "matches": false,
+      "classification": "other",
+      "classification_confidence": 4
+    }
+  }
+}

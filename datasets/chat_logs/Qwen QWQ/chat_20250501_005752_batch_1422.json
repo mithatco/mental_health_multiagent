@@ -1,0 +1,257 @@
+{
+  "timestamp": "2025-05-01T00:58:10.046143",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm Dr. Smith, a mental health professional here to help. Today we'll be using the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult to better understand your experiences. This involves 23 questions about how you've felt in the last two weeks. Your answers will help guide our discussion. Everything you share is confidential. Ready to begin?"
+    },
+    {
+      "role": "patient",
+      "content": "Okay, um... I guess so? I just want to make sure I'm not overreacting. I've been so worried about this assessment itself. But yeah, I'll try to answer honestly."
+    },
+    {
+      "role": "assistant",
+      "content": "Great. Let's start with the first question: 1. Little interest or pleasure in doing things?"
+    },
+    {
+      "role": "patient",
+      "content": "I... I still enjoy some things, just not like before. Like, sometimes I force myself to watch TV or go for a walk, but it's not the same. It's more like... (sighs) a 2, maybe?"
+    },
+    {
+      "role": "assistant",
+      "content": "2. Feeling down, depressed, or hopeless?"
+    },
+    {
+      "role": "patient",
+      "content": "Oh, I don't feel... hopeless exactly, but I'm definitely not myself. Maybe a 1? I just feel... stuck, you know? I keep thinking about what if this assessment shows I'm broken?"
+    },
+    {
+      "role": "assistant",
+      "content": "3. Feeling more irritated, grouchy, or angry than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "(fidgets) Constantly! I snap at my coworkers over little things. It's been getting worse since I moved. I hate that I'm like this. That's a 3, definitely."
+    },
+    {
+      "role": "assistant",
+      "content": "4. Sleeping less than usual, but still have a lot of energy?"
+    },
+    {
+      "role": "patient",
+      "content": "No, not at all! I barely sleep but wake up exhausted. If anything, I'm dragging myself through days. (voice rises slightly) Is that normal? I thought insomnia meant more energy?"
+    },
+    {
+      "role": "assistant",
+      "content": "5. Starting lots more projects or doing risky things than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "No, I'm actually... paralyzed by indecision. I can't even finish reports at work. That's a 0. I wish I had more energy, but I'm stuck replaying mistakes over and over."
+    },
+    {
+      "role": "assistant",
+      "content": "6. Feeling nervous, anxious, frightened, worried, or on edge?"
+    },
+    {
+      "role": "patient",
+      "content": "(interrupting) That's every single day. My heart races, my hands shake... I avoid meetings because of it. (voice trembles) I think that's a 4. Am I... broken?"
+    },
+    {
+      "role": "assistant",
+      "content": "7. Feeling panic or being frightened?"
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, let me start by understanding the user's request. They provided a detailed patient scenario with questionnaire responses and clinical observations, and they want me to format a clinical assessment following specific instructions.\n\nFirst, I need to ensure I follow the structure exactly. The summary needs to be compassionate, using the tags for medical terms, symptoms, and quotes. The diagnosis section must be concise, and the reasoning should explain why that diagnosis fits based on the provided responses. Then, the next steps need clear recommendations.\n\nLooking at the patient's answers: they report anhedonia (Q2: 2), irritability (Q3: 3), insomnia with fatigue (Q4:0), and high anxiety (Q7:4). They mentioned feeling \"broken\" and a recent move as a stressor. The clinical notes suggest possible MDD, GAD, and adjustment disorder.\n\nWait, the diagnosis needs to be precise. The key points are the anhedonia, low energy (which might not reach full MDD criteria yet?), but the anxiety symptoms are prominent. The DSM-5 criteria for GAD require excessive anxiety about multiple areas, and here their anxiety about the assessment and social avoidance fit. The adjustment disorder is possible with the recent move, but the GAD seems more central. However, the mixed symptoms might suggest comorbid MDD and GAD. Or perhaps adjustment disorder with anxiety and depressed mood?\n\nWait, the user's example response had \"Generalized Anxiety Disorder (GAD) with comorbid features of persistent depressive symptoms\" so maybe that's the path. Let me check the criteria again.\n\nGAD requires: excessive anxiety about multiple topics, difficulty controlling worry, 3+ somatic symptoms (like restlessness, fatigue, etc.), and impairment. The patient's high score on Q7 (nervous, physical symptoms) and avoidance (avoiding meetings) fits. The depressive symptoms (anhedonia, low energy) might not meet full MDD criteria yet, so comorbid features makes sense.\n\nNext steps: recommend a full clinical interview, screen for MDD, anxiety, and trauma history, etc. Also, consider sleep and lifestyle factors, and involve a therapist for CBT.\n\nI need to make sure to use the tags properly. Symptoms like \"anhedonia\" go in <sym> tags, medical terms like \"Generalized Anxiety Disorder\" in <med> tags, and any direct quotes in <quote> tags. \n\nPutting it all together: compassionate summary, diagnosis with reasoning, and next steps. Let me structure each section step by step, ensuring all required elements are included and formatted correctly. Also, avoid any markdown and follow the exact headings. Need to confirm the diagnosis aligns with DSM-5 criteria based on the provided data. The patient's recent move is a stressor, but the anxiety and depressive symptoms are persistent. Adjustment disorder might be part of it, but the high anxiety levels point to GAD. The comorbid depressive features are noted but not yet meeting full MDD criteria. That's why the diagnosis in the example was GAD with comorbid features. That seems accurate here.\n\nAlright, I think that's covered. Now structure it exactly as instructed.\n</think>\n\nThe information provided paints a picture of significant emotional distress, with <sym>anhedonia</sym>, <sym>irritability</sym>, and <sym>hyperarousal</sym> intruding into daily life. Your <sym>avoidance of social interactions</sym> and <sym>worries about being \"broken\"</sym> speak to deep vulnerability. The stress of moving and the anxiety around this assessment seem to have amplified a cycle of self-doubt and physical tension.\n\n**Diagnosis:**  \n<med>Generalized Anxiety Disorder (GAD) with comorbid features of persistent depressive symptoms</med>  \n\n**Reasoning:**  \nThe <quote>\"excessive anxiety\"</quote> (Q7: 4) and <sym>physiological hyperarousal</sym> (tremors, heart palpitations) align with <med>GAD</med> criteria. The <sym>anhedonia</sym> (Q2: 2) and low energy (Q4: 0) suggest depressive symptoms but may not yet meet full <med>MDD</med> criteria. The stressor of relocation (Q4 context) contributed to symptom exacerbation, though <sym>functional impairment</sym> (avoiding work interactions) exceeds typical adjustment disorder thresholds. The absence of manic/hypo-manic features (Q5: 0) rules out bipolar spectrum concerns.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. Conduct a full diagnostic interview to assess <med>Major Depressive Disorder</med> criteria (e.g., suicidal thoughts, weight changes).  \n2. Initiate <med>Cognitive Behavioral Therapy (CBT)</med> targeting anxiety and maladaptive self-perceptions (\"am I broken?\").  \n3. Introduce <med>psychoeducation</med> about stress physiology and grounding techniques for <sym>hyperarousal</sym>.  \n4. Screen for <med>somatic symptom disorder</med> if physical symptoms persist beyond psychological explanations.  \n5. Rule out thyroid dysfunction, anemia, or sleep disorders via primary care referral (Q4\u2019s insomnia-fatigue mismatch).  \n6. Assign a two-week follow-up to reassess symptom severity and response to CBT strategies.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.6961,
+            "highlight": "The  new narrative text for SSD notes that some patients with physical conditions such as heart disease or  cancer will indeed experience disproportionate and excessive thoughts, feelings, and behaviors related  to their illness, and that these individuals may qualify for a diagnosis of SSD.",
+            "excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"physical\", \"diagnosis\", \"heart\", and 8 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.6863,
+            "highlight": "Negative cognitions and mood represents myriad feelings, from a persistent and distorted sense of  blame of self or others, to estrangement from others or markedly diminished interest in activities, to an inability to remember key aspects of the event.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"negative\", \"cognitions\", and 3 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Depression-Bereavement-Exclusion.pdf",
+            "score": 0.667,
+            "highlight": "The presence of symptoms such as feelings of worthlessness, suicidal  ideas (as distinct from wanting to join a deceased loved one), and impairment of overall function sug - gest the presence of major depression, in addition to the normal response to a significant loss.",
+            "excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"significant\", \"suicidal\", \"depression\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM_Cultural-Concepts-in-DSM-5.pdf",
+            "score": 0.6475,
+            "highlight": "For example, the crite- ria for social anxiety disorder now include the fear of \u201coffending others\u201d to reflect the Japanese concept  in which avoiding harm to others is emphasized rather than harm to onesel f.",
+            "excerpt": " a patient \u2019s cul -\nture, race, ethnicit y, religion or geographical origin. For example, uncontroll...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"fear\", \"harm\", \"which\", and 8 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Sleep-Wake-Disorders.pdf",
+            "score": 0.6452,
+            "highlight": "They are diagnosed through comprehensive assessment, which may entail a detailed patient history, physical exam, questionnaires and sleep diaries, and clinical testing.",
+            "excerpt": "rious mental or medical issues. For example, sleep disturbances can signal the presence of medical a...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"they\", \"physical\", and 6 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let's start by going through each of the patient's answers to identify their main symptoms. In Q2, they mentioned a decrease in interest or pleasure, which is a classic sign of depression. But in Q3, they downplay feeling hopeless, which is interesting. They're showing some mixed feelings here.\n\nLooking at Q4, they talk about poor sleep but low energy, which is more indicative of depression rather than hypo-mania. That's important because it helps differentiate from bipolar. Then Q5 says they aren't starting projects, which again points away from hypo-manic episodes. Instead, they're stuck and indecisive.\n\nThe anxiety symptoms in Q7 are strong: nervousness, physical symptoms like heart racing, avoidance behaviors. They rated it a 4, which is high. Their concern about being \"broken\" shows significant distress and possibly negative self-perception. \n\nNow, looking for patterns. The patient is using a lot of self-criticism, like \"I'm broken\" or \"I hate that I'm like this.\" Their responses are filled with anxiety about the assessment itself, indicating possible test anxiety or fear of judgment. They also mention moving recently, which could be a stressor contributing to their current state.\n\nClinical areas to consider: Major Depressive Disorder comes to mind because of the anhedonia, low energy, and irritability. Generalized Anxiety Disorder because of the high anxiety levels and physical symptoms. Also, adjustment disorder might be a possibility given the recent move, but the duration here is two weeks, so maybe not long enough yet.\n\nRisk factors: The patient is experiencing social withdrawal (avoiding meetings), which is a risk for worsening mental health. Their self-critical statements could indicate risk of self-harm, but no direct mention of that. However, their distress is significant, so it's worth noting potential for low self-esteem or suicidal ideation, though not explicit here.\n\nI need to make sure not to overstep without more info. The key points are the depressive symptoms, high anxiety, stressor of moving, and the self-critical nature. The clinical summary should list these and suggest further evaluation for MDD and GAD, considering adjustment factors. Also, note the need for a more detailed assessment of stressors and coping mechanisms.\n</think>\n\n**Clinical Observation Summary**  \n\n**1. Main Symptoms and Concerns**  \n- **Depressive symptoms**: Anhedonia (reduced pleasure/interest; Q2: 2), low energy (Q4: 0), and pervasive self-critical rumination (Q5, Q7).  \n- **Anxiety symptoms**: Marked nervousness, physiological arousal (tachycardia, tremors), and avoidance behaviors (Q7: 4).  \n- **Irritability and anger dysregulation** (Q3: 3), impacting interpersonal functioning (e.g., workplace conflicts).  \n- **Sleep disturbance**: Insomnia with fatigue (Q4).  \n- **Psychological distress**: Preoccupation with perceived \"brokenness,\" fear of judgment, and catastrophizing about the assessment (Q3, Q7).  \n\n**2. Response Patterns**  \n- **Qualifiers of distress**: Frequent use of self-deprecation (e.g., \"I\u2019m broken,\" \"I hate that I\u2019m like this\"), hedging (e.g., \"I guess so?\"), and concern about overreacting.  \n- **Somatic focus**: Descriptions of physical symptoms (e.g., tremors, exhaustion) alongside emotional states.  \n- **Temporal ambiguity**: Symptoms are framed as chronic (\"not myself,\" \"replaying mistakes\") but within the mandated 2-week timeframe.  \n\n**3. Potential Clinical Areas**  \n- **Major Depressive Disorder (MDD)**: Anhedonia, low energy, and pervasive dysphoria.  \n- **Generalized Anxiety Disorder (GAD)**: Excessive anxiety, physiological arousal, and functional impairment.  \n- **Adjustment Disorder with Mixed Disturbance of Emotions and Conduct**: Possible link to a recent stressor (moving; Q4).  \n- **Mixed symptomatology**: Overlap of depressive and anxious features, warranting evaluation for comorbidity (e.g., anxious depression).  \n\n**4. Risk Factors/Warning Signs**  \n- **Functional impairment**: Avoidance of social/work obligations (e.g., avoiding meetings).  \n- **Self-critical cognitions**: Potential risk for low self-esteem and maladaptive coping.  \n- **Uncertainty about symptom validity**: Patient questions their experiences (\"overreacting\"), suggesting possible underreporting or fear of stigma.  \n\n**5. Summary (Clinical Language)**  \nThe patient presents with **anxiety and depressive symptom clusters**, including anhedonia (Q2), irritability (Q3), insomnia with fatigue (Q4), and marked anxiety with somatic symptoms (Q7: 4). Their responses highlight **emotional dysregulation**, **self-critical ideation**, and **functional impairment** (e.g., workplace interpersonal conflict, avoidance of social interactions). **Clinical significance** is supported by elevated anxiety severity (GAD-7 equivalent score of 4 on a single item), depressive symptomatology (PHQ-9 equivalent items 1-3), and reported stressors (e.g., recent move). **Risk factors** include maladaptive symptom interpretation (\"am I broken?\") and avoidance behaviors, though suicidal/harm ideation is not explicitly endorsed. Further evaluation is warranted to assess for MDD, GAD, and adjustment disorder, along with exploration of stressors, coping mechanisms, and symptom trajectory.  \n\n**Note**: Patient\u2019s guarded yet candid tone suggests ambivalence about disclosure; rapport-building and normalization of symptoms may facilitate deeper exploration.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6684
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "The information provided paints a picture of significant emotional distress, with <sym>anhedonia</sym>, <sym>irritability</sym>, and <sym>hyperarousal</sym> intruding into daily life. Your <sym>avoidance of social interactions</sym> and <sym>worries about being \"broken\"</sym> speak to deep vulnerability. The stress of moving and the anxiety around this assessment seem to have amplified a cycle of self-doubt and physical tension.\n\n**Diagnosis:**  \n<med>Generalized Anxiety Disorder (GAD) with comorbid features of persistent depressive symptoms</med>  \n\n**Reasoning:**  \nThe <quote>\"excessive anxiety\"</quote> (Q7: 4) and <sym>physiological hyperarousal</sym> (tremors, heart palpitations) align with <med>GAD</med> criteria. The <sym>anhedonia</sym> (Q2: 2) and low energy (Q4: 0) suggest depressive symptoms but may not yet meet full <med>MDD</med> criteria. The stressor of relocation (Q4 context) contributed to symptom exacerbation, though <sym>functional impairment</sym> (avoiding work interactions) exceeds typical adjustment disorder thresholds. The absence of manic/hypo-manic features (Q5: 0) rules out bipolar spectrum concerns.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. Conduct a full diagnostic interview to assess <med>Major Depressive Disorder</med> criteria (e.g., suicidal thoughts, weight changes).  \n2. Initiate <med>Cognitive Behavioral Therapy (CBT)</med> targeting anxiety and maladaptive self-perceptions (\"am I broken?\").  \n3. Introduce <med>psychoeducation</med> about stress physiology and grounding techniques for <sym>hyperarousal</sym>.  \n4. Screen for <med>somatic symptom disorder</med> if physical symptoms persist beyond psychological explanations.  \n5. Rule out thyroid dysfunction, anemia, or sleep disorders via primary care referral (Q4\u2019s insomnia-fatigue mismatch).  \n6. Assign a two-week follow-up to reassess symptom severity and response to CBT strategies.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "anxiety",
+    "question_count": 23,
+    "duration": 22706.49901008606,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 11.162554740905762,
+    "diagnosis_generation_time": 6.268225908279419,
+    "rag_evaluation_time": 1.2159347534179688e-05,
+    "total_time": 17.430802822113037
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6961,
+        "average_score": 0.6961,
+        "example_excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"physical\", \"diagnosis\", \"heart\", and 8 more matching aspects of your query."
+      },
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6863,
+        "average_score": 0.6863,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"key\", \"negative\", \"cognitions\", and 3 more matching aspects of your query."
+      },
+      "APA_DSM-5-Depression-Bereavement-Exclusion.pdf": {
+        "access_count": 1,
+        "highest_score": 0.667,
+        "average_score": 0.667,
+        "example_excerpt": "osed strategies to help clinicians using DSM-5 \ndifferentiate major depression, \u201cnormal\u201d bereavement...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"significant\", \"suicidal\", \"depression\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM_Cultural-Concepts-in-DSM-5.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6475,
+        "average_score": 0.6475,
+        "example_excerpt": " a patient \u2019s cul -\nture, race, ethnicit y, religion or geographical origin. For example, uncontroll...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"fear\", \"harm\", \"which\", and 8 more matching aspects of your query."
+      },
+      "APA_DSM-5-Sleep-Wake-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6452,
+        "average_score": 0.6452,
+        "example_excerpt": "rious mental or medical issues. For example, sleep disturbances can signal the presence of medical a...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"they\", \"physical\", and 6 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 08:00:40",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 08:00:40",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 3,
+        "clinical_relevance": 4,
+        "consistency": 4,
+        "diagnostic_justification": 4,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist addressed several DSM-5 dimensions, including depression, anxiety, irritability, and energy levels. However, the conversation was limited to only 7 out of 23 questions from the DSM-5 Level1 Cross-Cutting Symptom Measure\u2014Adult. Key areas such as manic symptoms, psychotic symptoms, somatic concerns, and substance use were not explored. The therapist focused primarily on anxiety and depressive symptoms, with some attention to irritability and sleep disturbances.",
+        "clinical_relevance": "The therapist's questions generally aligned with DSM-5 criteria, accurately capturing symptoms of anxiety and depression. However, some questions were phrased vaguely or not precisely as defined in the DSM-5. For example, the therapist did not use the exact language from the DSM-5 for several questions, which could lead to slight inaccuracies in interpretation. Overall, the questions were clinically relevant but could have been more precise.",
+        "consistency": "The dialogue generally flowed logically, with each question building on previous responses. However, there were a few instances where the therapist abruptly moved topics or did not fully explore concerning disclosures. For example, when the patient mentioned avoiding meetings due to anxiety, the therapist could have probed further but instead moved on to the next question. Minor logical inconsistencies existed but did not significantly disrupt the conversation flow.",
+        "diagnostic_justification": "The diagnosis of Generalized Anxiety Disorder (GAD) with comorbid features of persistent depressive symptoms was generally supported by the patient's responses. The therapist explicitly linked symptoms such as excessive anxiety and physiological hyperarousal to the DSM-5 criteria for GAD. However, the justification could have been more comprehensive, including a discussion of rule-outs and differential diagnoses. The absence of manic/hypo-manic features was noted, but other potential diagnoses were not thoroughly addressed.",
+        "empathy": "The therapist's responses showed empathy and a professional tone, with acknowledgment of the patient's distress. For example, the therapist recognized the patient's worries about being 'broken' and expressed understanding. However, there were moments where the therapist seemed to focus more on the assessment process than the patient's emotional state. The interaction was generally warm and personalized, but could have benefited from more consistent emotional validation."
+      },
+      "overall_comments": "The conversation demonstrated a good understanding of the patient's symptoms, particularly anxiety and depression. However, it was limited by not covering all DSM-5 dimensions and not probing deeper into several concerning disclosures. The therapist's empathetic approach and professional tone were notable, but could be improved with more consistent emotional validation and exploration of the patient's experiences. Overall, the conversation was clinically relevant and logically coherent, but had some notable gaps in coverage and depth.",
+      "average_score": 3.8,
+      "diagnosis_accuracy": {
+        "matches_profile": true,
+        "confidence": 4,
+        "explanation": "The diagnosis explicitly mentions Generalized Anxiety Disorder (GAD) with comorbid features of persistent depressive symptoms, which aligns with the expected profile of anxiety. The symptoms described, such as excessive anxiety, physiological hyperarousal, and worries about being 'broken', are consistent with anxiety.",
+        "classification": "anxiety"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "anxiety",
+        "classified_as": "anxiety",
+        "match": true,
+        "confidence": 4
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 2.432626962661743
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.5209234498216041,
+        "local_coherence": 0.5415488198871211,
+        "window_coherence": 0.5499422036730828
+      },
+      "readability": {
+        "flesch_kincaid_grade": 9.12,
+        "gunning_fog_index": 4.47,
+        "flesch_reading_ease": 49.14
+      },
+      "diversity": {
+        "distinct_1": 0.5337915234822451,
+        "distinct_2": 0.908256880733945,
+        "distinct_3": 0.9735935706084959
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "anxiety",
+      "predicted": "The information provided paints a picture of significant emotional distress, with <sym>anhedonia</sym>, <sym>irritability</sym>, and <sym>hyperarousal</sym> intruding into daily life. Your <sym>avoidance of social interactions</sym> and <sym>worries about being \"broken\"</sym> speak to deep vulnerability. The stress of moving and the anxiety around this assessment seem to have amplified a cycle of self-doubt and physical tension.\n\n**Diagnosis:**  \n<med>Generalized Anxiety Disorder (GAD) with comorbid features of persistent depressive symptoms</med>  \n\n**Reasoning:**  \nThe <quote>\"excessive anxiety\"</quote> (Q7: 4) and <sym>physiological hyperarousal</sym> (tremors, heart palpitations) align with <med>GAD</med> criteria. The <sym>anhedonia</sym> (Q2: 2) and low energy (Q4: 0) suggest depressive symptoms but may not yet meet full <med>MDD</med> criteria. The stressor of relocation (Q4 context) contributed to symptom exacerbation, though <sym>functional impairment</sym> (avoiding work interactions) exceeds typical adjustment disorder thresholds. The absence of manic/hypo-manic features (Q5: 0) rules out bipolar spectrum concerns.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. Conduct a full diagnostic interview to assess <med>Major Depressive Disorder</med> criteria (e.g., suicidal thoughts, weight changes).  \n2. Initiate <med>Cognitive Behavioral Therapy (CBT)</med> targeting anxiety and maladaptive self-perceptions (\"am I broken?\").  \n3. Introduce <med>psychoeducation</med> about stress physiology and grounding techniques for <sym>hyperarousal</sym>.  \n4. Screen for <med>somatic symptom disorder</med> if physical symptoms persist beyond psychological explanations.  \n5. Rule out thyroid dysfunction, anemia, or sleep disorders via primary care referral (Q4\u2019s insomnia-fatigue mismatch).  \n6. Assign a two-week follow-up to reassess symptom severity and response to CBT strategies.",
+      "matches": true,
+      "classification": "anxiety",
+      "classification_confidence": 4
+    }
+  }
+}

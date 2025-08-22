@@ -1,0 +1,289 @@
+{
+  "timestamp": "2025-04-30T21:15:07.327417",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Good morning, I'm Dr. Lee, a mental health professional. Today we'll be using the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult to better understand your experiences over the past two weeks. This is a 23-question assessment that helps us identify areas where you might need support. Your responses will be confidential and will guide our discussion. I'll ask each question one at a time\u2014you can answer in your own words, and I'll listen carefully. Ready when you are. Let's start with the first question: 1. Little interest or pleasure in doing things?"
+    },
+    {
+      "role": "patient",
+      "content": "Uh, right. Well, I still enjoy some things like reading or walks, but... it's just not as fun as it used to be. Maybe I'm just not pushing myself enough? I feel like I should be able to enjoy things more."
+    },
+    {
+      "role": "assistant",
+      "content": "2. Feeling down, depressed, or hopeless?"
+    },
+    {
+      "role": "patient",
+      "content": "Hmm. There are days, especially in the morning, when I just feel... flat. Like life's manageable but also heavy. I don't *despair* all the time\u2014maybe a couple days a week? But it's not like I'm crying every day or anything. Wait, am I overthinking this?"
+    },
+    {
+      "role": "assistant",
+      "content": "3. Feeling more irritated, grouchy, or angry than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "Oh, this one's a yes. I snap at my coworkers over tiny things. Like, yesterday someone asked for a report five minutes early and I almost yelled. I get so frustrated with myself for getting so worked up over little stuff. It's exhausting."
+    },
+    {
+      "role": "assistant",
+      "content": "4. Sleeping less than usual, but still have a lot of energy?"
+    },
+    {
+      "role": "patient",
+      "content": "No, actually I'm often tired. I lie awake at night worrying, so when I *do* sleep, I crash hard. Wait, is that what this means? I might be mixing up the questions\u2026 I'm sorry, my mind keeps jumping around."
+    },
+    {
+      "role": "assistant",
+      "content": "5. Starting lots more projects than usual or doing more risky things than usual?"
+    },
+    {
+      "role": "patient",
+      "content": "No, I'm the opposite. I get so stuck worrying I can't even finish small tasks. Like, I'll start cleaning and then panic I'm doing it wrong and stop. Risky things? No, I avoid most things that make me anxious."
+    },
+    {
+      "role": "assistant",
+      "content": "6. Feeling nervous, anxious, worried, or on edge?"
+    },
+    {
+      "role": "patient",
+      "content": "Oh god, *this* one. Nearly every day. My palms get sweaty just thinking about work emails. I check my phone nonstop, and my heart races when I'm in crowded places. I told myself I'd stop overreacting, but it's like a loop I can't break."
+    },
+    {
+      "role": "assistant",
+      "content": "7. Feeling panic or being frightened?"
+    },
+    {
+      "role": "patient",
+      "content": "Panics? Not full-on panic attacks, but\u2026 sudden jolts of fear. Like, walking home alone and suddenly feeling like something's wrong. My breath gets shallow and I have to stop and focus on breathing. It's happened a few times a week."
+    },
+    {
+      "role": "assistant",
+      "content": "8. Avoiding situations that make you anxious?"
+    },
+    {
+      "role": "patient",
+      "content": "Yes. I've skipped social events, even with friends. Last weekend I canceled plans because I was too worried about traffic and being late. I feel trapped by little things\u2014like, avoiding the grocery store because I might run into someone I know and have to chat."
+    },
+    {
+      "role": "assistant",
+      "content": "9. Unexplained aches and pains (head, back, joints, abdomen)?"
+    },
+    {
+      "role": "patient",
+      "content": "Oh yeah, my shoulders are always tight, like a knot. My stomach hurts after stressful days, and my chest feels tight sometimes. My doctor says there's nothing medically wrong, but it's real to me. I keep Googling my symptoms to check if I'm dying\u2026 but that just makes me more anxious."
+    },
+    {
+      "role": "assistant",
+      "content": "10. Feeling that your illnesses are not being taken seriously enough?"
+    },
+    {
+      "role": "patient",
+      "content": "Maybe a little. My doctor said to just 'get more sleep,' but that's not helpful. It's like people think I'm just 'worried' or overreacting. But I know I'm not *crazy*, right?"
+    },
+    {
+      "role": "assistant",
+      "content": "11. Thoughts of actually hurting yourself?"
+    },
+    {
+      "role": "patient",
+      "content": "No, never! I just want the anxiety to stop. But sometimes I'll think, 'What if I can't handle this forever?'\u2014but I'd never act on it. Wait, does that count? I'm so confused about what's normal."
+    },
+    {
+      "role": "assistant",
+      "content": "12. Hearing things other people couldn't hear (voices, sounds)?"
+    },
+    {
+      "role": "assistant",
+      "content": "Error communicating with Groq: 400 Client Error: Bad Request for url: https://api.groq.com/openai/v1/chat/completions",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.7284,
+            "highlight": "While DSM-IV was organized centrally around the concept of  medically unexplained symptoms, DSM-5 criteria instead emphasize the degree to which a patient \u2019s  thoughts, feelings and behaviors about their somatic symptoms are disproportionate or excessive.",
+            "excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"criteria\", \"behaviors\", and 8 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Conduct-Disorder.pdf",
+            "score": 0.6744,
+            "highlight": "In addition to treatment, the specifier will impact the research on persons with  conduct disorder by designating groups of patients with more similar causal factors.",
+            "excerpt": "he disorder and a different treatment response. Thus the specifier will allow clinicians to more ac ...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"treatment\", \"more\", \"impact\", and 2 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-PTSD.pdf",
+            "score": 0.6619,
+            "highlight": "Negative cognitions and mood represents myriad feelings, from a persistent and distorted sense of  blame of self or others, to estrangement from others or markedly diminished interest in activities, to an inability to remember key aspects of the event.",
+            "excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"diminished\", \"key\", \"mood\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Sleep-Wake-Disorders.pdf",
+            "score": 0.6614,
+            "highlight": "Changes to Sleep-Wake Disorders   A prime goal of DSM-5 changes to sleep-wake disorders is to increase the clinical utility of definitions and diagnostic criteria, especially for general medical or mental health clinicians, and to clarify when referral is appropriate to a sleep specialist.",
+            "excerpt": "rious mental or medical issues. For example, sleep disturbances can signal the presence of medical a...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"criteria\", \"mental\", \"clinical\", and 7 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Social-Communication-Disorder.pdf",
+            "score": 0.6566,
+            "highlight": "Process for a New Diagnosis New diagnoses were included in DSM-5 only after a comprehensive review of the scientific literature;  full discussion by Work Group members; review by the DSM-5 Task Force, Scientific Review Committee,  and Clinical and Public Health Committee; and, finall y, evaluation by the American Psychiatric Associa- tion\u2019s Board of Trust ees.",
+            "excerpt": "t otherwise specified\u201d la bel to help them get the services and treatment they need. \nCharacteristic...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"full\", \"health\", \"clinical\", and 4 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let's tackle this. The user provided the patient's answers to the DSM-5 Level 1 Cross-Cutting Symptom Measure and wants me to analyze it. First, I need to go through each response carefully.\n\nStarting with Q1, the patient mentions they still have some interest in activities like reading and walks but feel less pleasure. That's anhedonia, which is common in depression. But they also question themselves, which might indicate some insight or self-doubt.\n\nQ2 addresses depression symptoms. They report feeling flat and heavy, but not daily. The note about overthinking suggests possible rumination, a cognitive symptom of depression or anxiety. The \"am I overthinking\" part might show metacognitive concerns.\n\nQ3 is about irritability. The patient snaps at coworkers, which is clear irritability. The self-criticism here points to possible guilt or shame about their behavior.\n\nQ4 is about sleep. They have insomnia with nighttime worry, leading to excessive sleepiness. The confusion about the question shows possible cognitive fog, which could be from anxiety or sleep deprivation.\n\nQ5 asks about increased activity or risk-taking. The patient is the opposite, having difficulty starting or finishing tasks. This suggests psychomotor retardation or anxiety-induced avoidance.\n\nQ6 and Q7 focus on anxiety and panic. The patient experiences daily nervousness, sweating, and physical symptoms (palms, heart racing). Panic-like symptoms but not full panic attacks. They feel a loop of anxiety, indicating possible anxiety disorder.\n\nQ8 talks about avoidance behaviors due to anxiety. They're avoiding social situations and places, which is a classic avoidance behavior seen in anxiety disorders like social anxiety or generalized anxiety disorder.\n\nQ9: Unexplained aches. The physical symptoms despite medical clearance point to somatic symptoms, which are often linked with anxiety. The Googling for reassurance could be part of health anxiety or somatic symptom disorder.\n\nQ10: Feeling their issues aren't taken seriously. This might indicate previous dismissive experiences, leading to frustration. It's important for treatment planning to acknowledge their valid concerns.\n\nQ11: Suicidal thoughts. The patient denies any intent or plan, but the question about \"what if I can't handle this\" might be existential distress. Need to clarify this as passive suicidal ideation versus active, but they say they wouldn't act on it.\n\nNow compiling the main symptoms: anhedonia, depressed mood, irritability, insomnia with fatigue, anxiety, somatic symptoms, avoidance, and some suicidal ideation. The patterns show a mix of depressive and anxiety symptoms with significant impairment in daily functioning.\n\nClinical significance areas would be major depressive disorder, generalized anxiety disorder, possible adjustment disorder with anxious mood, somatic symptoms. The risk factors are the anxiety-related symptoms and the mention of suicidal thoughts, but since they deny intent, it's more of a concern for their overall distress level. Need to note the functional impact on work and social life, plus the physical symptoms adding to the burden.\n\nWait, need to check for accuracy. The patient didn't have increased energy (Q4) but fatigue, so that's more depression. The avoidance and anxiety are significant. The somatic symptoms with health anxiety are part of the anxiety presentation. The suicidal ideation is non-suicidal, so no active risk but still a sign of distress. They need to be assessed for disorders like GAD, MDD, and possible somatic symptom disorder. The key is to present this in clinical terms without speculation, just based on their answers.\n</think>\n\n**Clinical Observation Summary**  \n\n**1. Main Symptoms and Concerns**  \n- **Anhedonia (Reduced pleasure/interest)**: Diminished enjoyment of previously pleasurable activities (Q1).  \n- **Depressed mood**: Episodes of flattening, hopelessness, and somatic complaints (Q2, Q10).  \n- **Anxiety symptoms**: Daily nervousness, restlessness, and somatic manifestations (e.g., sweating, tachycardia, GI distress) (Q6, Q9).  \n- **Irritability/agitation**: Increased interpersonal reactivity and frustration (Q3).  \n- **Sleep disturbance**: Difficulty initiating sleep, daytime fatigue, and non-restorative sleep (Q4, Q9.  \n- **Avoidance behaviors**: Social withdrawal and circumstantial avoidance (Q8.  \n- **Health anxiety**: Somatization and excessive preoccupation with perceived illness (Q9, Q10.  \n- **Cognitive dysfunction**: Difficulty initiating/following through on tasks, metacognitive rumination (Q5, Q6.  \n\n**2. Patterns in Responses**  \n- **Cyclical symptomatology**: Alternating between self-reproach (\"I should be able to enjoy things more\") and external validation-seeking (\"am I overthinking this?\").  \n- **Functional impairment**: Work disruption (e.g., irritability at work, avoidance of tasks/social obligations), impacting occupational and relational functioning.  \n- **Autonomic arousal**: Persistent physiologic markers of anxiety (e.g., sweating, tachycardia) (Q6, Q7, Q9.  \n- **Health-care distrust**: Perceived dismissal by medical providers, contributing to frustration and somatic preoccupation (Q9, Q10.  \n\n**3. Potential Clinical Significance**  \n- **Generalized Anxiety Disorder (GAD)**: Persistent anxiety, hyperarousal, and functional impairment.  \n- **Major Depressive Disorder (MDD)**: Depressed mood, anhedonia, and fatigue.  \n- **Somatic Symptom Disorder**: Excessive somatic focus (aches/pains) with health anxiety.  \n- **Adjustment Disorder with Anxious/Mixed Disturbance**: Possible temporal onset linked to stressors (unspecified).  \n- **Social Anxiety/Phobia**: Avoidance of social situations due to anticipatory anxiety (Q8.  \n\n**4. Risk Factors/Warning Signs**  \n- **Non-suicidal ideation**: Existential concerns (\"What if I can\u2019t handle this?\") without intent/planning (Q11).  \n- **Social isolation**: Avoidance of relationships exacerbating mood symptoms.  \n- **Occupational dysfunction**: Impaired job performance due to irritability and avoidance.  \n- **Poor self-efficacy**: Self-blame for symptoms (\"I should be able to\u2026\").  \n\n**5. Clinical Summary**  \nThe patient exhibits a constellation of **mixed anxiety/depressive symptoms** with prominent **generalized anxiety**, **anhedonia**, **interpersonal reactivity**, and **somatic symptom amplification** consistent with DSM-5 criteria for **Generalized Anxiety Disorder** and **Major Depressive Disorder (mild to moderate severity)**. **Somatic Symptom Disorder** is supported by persistent somatic complaints with health anxiety. **Avoidance behaviors** suggest **social anxiety** or **adjustment disorder**.  \n\n**Critical Considerations**:  \n- **Functional impact**: Occupational and social impairment due to anxiety and avoidance.  \n- **Treatment engagement barriers**: Perceived medical dismissal (Q10) may require collaborative validation.  \n- **Monitoring**: Track cyclical symptoms and health anxiety to assess for **health anxiety disorder** or **panic disorder** (subthreshold panic symptoms noted in Q7).  \n\n**Recommendations**:  \n- Formal diagnostic evaluation for GAD, MDD, and somatic symptom disorder.  \n- Prioritize CBT for anxiety management, interoceptive exposure for somatic symptoms, and collaborative care to address medical mistrust.  \n- Monitor metacognitive distortions (e.g., catastrophizing) and self-critical attributions (e.g., \"I should be able to\u2026\") as potential CBT targets.  \n\n---  \n**Note**: This analysis is based on self-reported symptoms and requires clinical follow-up for diagnostic confirmation.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6765
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "Error communicating with Groq: 400 Client Error: Bad Request for url: https://api.groq.com/openai/v1/chat/completions",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "anxiety",
+    "question_count": 23,
+    "duration": 9323.780378103256,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 5.571754217147827,
+    "diagnosis_generation_time": 5.560796022415161,
+    "rag_evaluation_time": 2.09808349609375e-05,
+    "total_time": 11.13258409500122
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7284,
+        "average_score": 0.7284,
+        "example_excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"which\", \"criteria\", \"behaviors\", and 8 more matching aspects of your query."
+      },
+      "APA_DSM-5-Conduct-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6744,
+        "average_score": 0.6744,
+        "example_excerpt": "he disorder and a different treatment response. Thus the specifier will allow clinicians to more ac ...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"treatment\", \"more\", \"impact\", and 2 more matching aspects of your query."
+      },
+      "APA_DSM-5-PTSD.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6619,
+        "average_score": 0.6619,
+        "example_excerpt": "n proved to have no utility in predicting the onset of PTSD.\nDSM-5 pays more attention to the behavi...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"diminished\", \"key\", \"mood\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM-5-Sleep-Wake-Disorders.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6614,
+        "average_score": 0.6614,
+        "example_excerpt": "rious mental or medical issues. For example, sleep disturbances can signal the presence of medical a...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"criteria\", \"mental\", \"clinical\", and 7 more matching aspects of your query."
+      },
+      "APA_DSM-5-Social-Communication-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6566,
+        "average_score": 0.6566,
+        "example_excerpt": "t otherwise specified\u201d la bel to help them get the services and treatment they need. \nCharacteristic...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"full\", \"health\", \"clinical\", and 4 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 07:56:15",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 07:56:15",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 4,
+        "clinical_relevance": 4,
+        "consistency": 4,
+        "diagnostic_justification": 2,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist addressed most of the DSM-5 Level1 Cross-Cutting Symptom Measure domains, but there were a few areas that could have been explored more deeply or were not directly addressed. Questions 1-11 and 14 were directly covered, but some domains like psychosis (questions 12-13), memory (question 15), repetitive thoughts/behaviors (questions 16-17), dissociation (question 18), identity and relationships (questions 19-20), and substance use (questions 21-23) were either skipped or not adequately probed. For example, the therapist did not directly ask about psychotic symptoms or substance use, which are critical areas to assess.",
+        "clinical_relevance": "The therapist's questions generally aligned with DSM-5 criteria, but there were a few instances where the phrasing could have been more precise or clinically accurate. For example, when asking about sleep, the therapist could have directly referenced 'problems with sleep that affected your sleep quality overall' as per the DSM-5 measure. Additionally, some questions were rephrased in a way that might slightly alter their clinical meaning, but overall, they remained clinically relevant.",
+        "consistency": "The conversation generally flowed logically, with each question building on previous responses. However, there were a few moments where the therapist could have followed up more closely on concerning disclosures, such as when the patient mentioned suicidal ideation ('What if I can't handle this forever?'). The therapist could have explored this further but moved on relatively quickly. Overall, the dialogue was coherent, but a few transitions could have been smoother.",
+        "diagnostic_justification": "The provided conversation did not result in a clear diagnosis or justification based on the DSM-5 criteria. The therapist did not explicitly link the patient's symptoms to a specific DSM-5 diagnosis or provide a clear rationale for any diagnostic considerations. The conversation seemed to focus more on data collection than on integrating the information to reach a diagnosis. A comprehensive differential diagnosis was not presented or discussed.",
+        "empathy": "The therapist generally displayed empathy and a professional tone, acknowledging the patient's distress and validating their experiences. For example, when the patient discussed feeling anxious, the therapist responded with understanding. However, there were moments where the therapist could have been more empathetic, such as when the patient expressed feeling overwhelmed but the therapist quickly moved to the next question without further acknowledgment of their emotional state."
+      },
+      "overall_comments": "The conversation demonstrated a good effort to cover various DSM-5 domains and showed empathy towards the patient. However, there were areas for improvement, particularly in thoroughly addressing all domains, providing clear diagnostic justification, and ensuring a seamless logical flow. The therapist could benefit from more systematically exploring all 23 questions, providing precise clinical language, and explicitly linking symptoms to DSM-5 criteria for diagnosis. Overall, the performance was good but had notable areas for growth.",
+      "average_score": 3.6,
+      "diagnosis_accuracy": {
+        "matches_profile": false,
+        "confidence": 5,
+        "explanation": "The diagnosis provided does not mention anxiety or any related terms. Instead, it appears to be an error message related to a technical issue with an API request.",
+        "classification": "other"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "anxiety",
+        "classified_as": "other",
+        "match": false,
+        "confidence": 5
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 2.3453171253204346
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.5355722205039228,
+        "local_coherence": 0.5734574838484181,
+        "window_coherence": 0.5837293448002804
+      },
+      "readability": {
+        "flesch_kincaid_grade": 4.24,
+        "gunning_fog_index": 2.52,
+        "flesch_reading_ease": 75.68
+      },
+      "diversity": {
+        "distinct_1": 0.8142857142857143,
+        "distinct_2": 0.9952153110047847,
+        "distinct_3": 1.0
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "anxiety",
+      "predicted": "Error communicating with Groq: 400 Client Error: Bad Request for url: https://api.groq.com/openai/v1/chat/completions",
+      "matches": false,
+      "classification": "other",
+      "classification_confidence": 5
+    }
+  }
+}

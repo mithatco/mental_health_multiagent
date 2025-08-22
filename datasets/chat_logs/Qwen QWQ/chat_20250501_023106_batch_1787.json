@@ -1,0 +1,205 @@
+{
+  "timestamp": "2025-05-01T02:31:24.291228",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello, I'm here to help with your assessment. We'll be using the DSM-5 Self-Rated Level 1 Cross-Cutting Symptom Measure\u2014Adult to better understand your current mental health. This is a standard questionnaire to evaluate various symptoms over the past two weeks. Your responses will guide our discussion. I'll go through each question, and you can share your experiences in your own words. All information is confidential. Let's begin with the first question."
+    },
+    {
+      "role": "patient",
+      "content": "Okay, I guess that's fine. I'll try to answer to the best of my ability. I just hope this helps figure out what's going on."
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, I need to help the user by creating a clinical assessment based on their provided information. The user didn't answer any of the questionnaire questions. Let me start by reading through the instructions again to make sure I follow them exactly.\n\nFirst, the user wants a compassionate summary. Since all responses are missing, the summary should acknowledge that the patient didn't provide answers but emphasizes understanding and concern. I need to make sure to not assume reasons but still express empathy.\n\nNext, the diagnosis section. The instructions say to use the DSM-5 criteria. Since there's no data, the diagnosis can't be determined, so maybe a \"Diagnosis Pending\" or \"Assessment Not Completed\" note. Wait, but maybe the lack of response itself could indicate a specific issue? The references provided earlier mention Mild Neurocognitive Disorder and other conditions. Hmm, but without answers, it's hard to diagnose. The task says not to assume, so probably \"Provisional\" or \"Evaluation Required.\"\n\nIn the reasoning section, I must explain why the diagnosis is provisional. I should mention that without responses, we can't pinpoint an exact diagnosis, but list possible reasons like cognitive impairment, acute mental state, or refusal to engage. Need to use medical terms in tags like <med>Cognitive Impairment</med>.\n\nFor next steps, the user wants specific recommendations. Suggest in-person evaluation, collateral info from others, cognitive screening, and engagement strategies. Number them clearly.\n\nWait, the instructions also require wrapping terms in tags. Medical terms like \"Major Depressive Disorder\" if applicable, but since there's no data, maybe terms like \"self-report assessment\" or \"clinical interview.\"\n\nWait, but the user's question had a block of information about DSM-5 changes, including Mild Neurocognitive Disorder, which involves cognitive changes affecting daily functioning. The lack of response could be linked to cognitive issues. But I have to be careful not to assume. The user's instructions say to base diagnosis on presented symptoms. Since there are no symptoms reported, maybe the diagnosis should be \"Provisional\" with possible options listed in reasoning.\n\nAlso, the user mentioned the reference info includes SCD (Social Communication Disorder), but in the given case, the issue is non-response, which might relate to something else. Wait, the reference text also mentions Mild Neurocognitive Disorder (MCI) where cognitive changes affect functioning. If the patient can't complete the form, maybe that's a symptom of cognitive decline. However, without data, it's speculative. The instructions say not to assume, so better to state that the diagnosis is pending further evaluation.\n\nThe user's own provided reference notes that for Mild Neurocognitive Disorder, cognitive changes must be observed. Since the lack of response may indicate such impairment, but it's not confirmed here. Alternatively, acute psychosis or severe depression could prevent participation.\n\nThe user\u2019s instructions emphasize not to include assumptions, so the diagnosis must reflect the unknown status. The DSM-5 mentions that for some disorders like Mild Neurocognitive Disorder, symptoms are observed by others. Since the questionnaire is self-report, the non-response might be due to external factors. \n\nPutting it all together, the diagnosis section should note that a definitive diagnosis can\u2019t be made yet. The \"Diagnosis:\" should be something like \"Provisional: Evaluation Required for Cognitive or Psychiatric Distress\" or a more neutral term. \n\nFor next steps, recommend in-person assessment, collateral information from family, and standardized testing. Maybe mention neuropsychological evaluation if cognitive impairment is a possibility. \n\nI must ensure all medical terms like \"Neurocognitive Disorder\", \"Major Depressive Disorder\", etc., are in <med> tags if applicable, but since no symptoms are given, perhaps not. The symptoms listed in the references include those for SCD, but with no responses, I can\u2019t link them here. So the main issue is the lack of data leading to impaired assessment.\n\nThe \"Reasoning\" section needs to explain that without data, a diagnosis isn't possible. It could be due to several factors like acute mental state, cognitive deficits, or refusal to engage. The clinician needs to explore these possibilities via other methods.\n\nI need to structure all parts precisely, following the user's exact format. Make sure each section is properly labeled with the asterisks, and tags where necessary. Also, ensure that no markdown is used except the specified tags. \n\nDouble-check that I'm not making up symptoms. Since all answers are missing, the diagnosis must be tentative. The key is to acknowledge the lack of data and the need for further evaluation through alternative methods. The reasoning should align with the reference's points about early detection and the need for comprehensive evaluation when self-report is impossible. \n\nAlright, time to structure this step by step following all guidelines precisely. Make sure to avoid any speculation beyond what the data shows. The reference info on Mild Neurocognitive Disorder mentions that symptoms are observed by others, so maybe in the next steps, suggest collateral history checks. \n\nYes, this makes sense. Now, draft each section carefully.\n</think>\n\n<sym>Non-response to all questions</sym>  \nYour situation highlights a significant barrier to standard mental health evaluation. I\u2019ve observed a complete lack of engagement with the assessment tool, which can make it difficult to understand your current struggles. My hope is that this reflects a temporary challenge, and I encourage you to share any thoughts or concerns in your own words if possible. You deserve care that meets your needs, and we\u2019ll work together using alternative methods to ensure your voice is heard.  \n\n**Diagnosis:** Provisional: Unspecified Mental Health Evaluation Required  \n\n**Reasoning:**  \nThe inability to complete the questionnaire limits definitive diagnosis. Possible explanations include:  \n- <med>Cognitive impairment</med> (e.g., <med>Mild Neurocognitive Disorder</med>) impairing comprehension or self-report capacity.  \n- Acute psychiatric crisis (e.g., <med>psychosis</med>, <sym>mutism</sym>, severe dissociation).  \n- Refusal to engage due to distrust, denial of distress, or external barriers (e.g., literacy challenges, language barriers).  \n- Functional or emotional impairment preventing task participation (e.g., <sym>anhedonia</sym>, <sym>psychomotor retardation</sym>).  \n\n**Recommended Next Steps/Treatment Options:**  \n1. Conduct an **in-person clinical interview** using collateral information (e.g., family/friend reports) to identify barriers to engagement.  \n2. Perform a **neurological/cognitive screening** (e.g., Mini-Mental State Exam) to evaluate for <med>Mild Neurocognitive Disorder</med> or aphasia.  \n3. Rule out acute conditions via direct observation (e.g., motor activity, speech patterns, emotional expression) to assess for <med>psychosis</med>, <med>major depressive disorder</med> with psychomotor retardation, or <med>catatonia</med>.  \n4. Use alternative assessment tools (e.g., caregiver-rated scales, behavioral observation, or objective testing) if self-report remains unfeasible.  \n5. Prioritize safety: Screen for <sym>self-harm risk</sym> via direct questioning about Q10 and Q11 topics (e.g., \"Are you having thoughts about harming yourself?\").  \n\nThis evaluation requires urgent in-person assessment to clarify your clinical status and address potential risks.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Mild-Neurocognitive-Disorder.pdf",
+            "score": 0.639,
+            "highlight": "The impact of these problems is noticeable, but clinicians have lacked a reliable  diagnosis by which to assess symptoms or understand the most appropriate treatment or services.",
+            "excerpt": "ory strategies and accommodations to help maintain independence and \nperform activities of daily liv...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"treatment\", \"which\", \"most\", and 4 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Social-Communication-Disorder.pdf",
+            "score": 0.6077,
+            "highlight": "Process for a New Diagnosis New diagnoses were included in DSM-5 only after a comprehensive review of the scientific literature;  full discussion by Work Group members; review by the DSM-5 Task Force, Scientific Review Committee,  and Clinical and Public Health Committee; and, finall y, evaluation by the American Psychiatric Associa- tion\u2019s Board of Trust ees.",
+            "excerpt": "t otherwise specified\u201d la bel to help them get the services and treatment they need. \nCharacteristic...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"health\", \"clinical\", \"psychiatric\", and 3 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Specific-Learning-Disorder.pdf",
+            "score": 0.5961,
+            "highlight": "Because of the changes in DSM-5, clinicians will be able to make this diagnosis by identifying whether  patients are unable to perform academically at a level appropriate to their intelligence and age.",
+            "excerpt": "agnosed through a clinical review of the individual\u2019s developmental, medical, educational, and famil...",
+            "relevance_explanation": "Some relevance: Contains terms \"perform\", \"this\", \"their\", and 2 more that have contextual connection to your query."
+          },
+          {
+            "title": "APA_DSM-5-Conduct-Disorder.pdf",
+            "score": 0.5935,
+            "highlight": "In addition to treatment, the specifier will impact the research on persons with  conduct disorder by designating groups of patients with more similar causal factors.",
+            "excerpt": "he disorder and a different treatment response. Thus the specifier will allow clinicians to more ac ...",
+            "relevance_explanation": "Some relevance: Contains terms \"treatment\", \"impact\", \"factors\" that have contextual connection to your query."
+          },
+          {
+            "title": "APA_DSM-5-Schizophrenia.pdf",
+            "score": 0.5862,
+            "highlight": "Identifying individuals with an increased risk for developing a psychotic disorder is  significant for effective early intervention, but more study is needed to ensure that attenuated psycho - sis syndrome can be reliably diagnosed.",
+            "excerpt": "h before their consideration as formal disorders. This potential category would \nidentify a person w...",
+            "relevance_explanation": "Some relevance: Contains terms \"psychotic\", \"significant\", \"that\", and 4 more that have contextual connection to your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, let's tackle this. The user provided a list of questions from a mental health questionnaire where the patient didn't answer any of them. My task is to analyze this and structure the response as per the instructions.\n\nFirst, I need to identify the main symptoms and concerns. Since all responses are missing, the lack of answers is the key issue here. But maybe there's an underlying reason for non-response. Could it be due to refusal to engage, difficulty in self-reporting, or even a communication barrier? I should consider possible reasons like resistance, lack of insight, or severe symptoms affecting their ability to respond.\n\nNext, note the patterns. The patient didn't answer any questions. That's a pattern of non-engagement. Maybe they're avoiding the assessment or there's a cognitive issue preventing them from answering. It's important to consider consistency here\u2014every question was left blank, so it's not just selective non-response.\n\nPotential clinical areas of significance include assessment credibility. Without data, it's hard to proceed. There might be issues with patient collaboration, which is critical for diagnosis. Also, could there be a psychotic episode where they can't connect with reality, leading to non-response? Or maybe severe depression or anxiety making it hard to engage.\n\nRisk factors or warning signs: Non-response might indicate a severe mental state where they can't participate, like a psychotic break, severe depression, or anxiety exacerbation. It could also signal a lack of motivation, which might point to depression or other conditions. Additionally, the inability to respond might suggest cognitive impairment or an acute crisis.\n\nSummary needs to be clinical, so I'll mention non-response to all items, possible explanations like treatment resistance, cognitive impairment, or acute psychiatric crisis. Also, note the impact on clinical evaluation and the need for further assessment through alternative methods.\n\nWait, but the instructions say to avoid speculation. I should make sure not to assume the reasons but present the facts. The main point is the absence of responses. So I need to frame it in terms of the clinical significance without assuming why they didn't answer. Maybe highlight that the lack of data prevents standard assessment and that further evaluation is needed to determine the cause of non-response. Also, mention possible areas where the non-response might indicate something (e.g., if they didn't answer questions about self-harm, but since all are blank, it's tricky).\n\nHmm, the user wants the most relevant clinical info without speculation. So stick to what's given: all answers missing, which is a significant concern because it blocks standard screening. Possible issues include unwillingness to engage, cognitive impairment, severe psychiatric symptoms preventing participation, or external factors like language barriers. But again, need to be careful not to guess. The summary should note the absence of data and the implications for diagnosis and next steps. Maybe suggest alternative assessment methods or clinical interviews to address non-response.\n\nI need to structure the answer as per the points listed. Let's go step by step.\n\n1. Main symptoms and concerns: The primary issue is the absence of responses to all questions, which hinders symptom identification. The lack of data makes it hard to assess common mental health issues like depression, anxiety, or psychosis.\n\n2. Patterns: All 23 questions unanswered, indicating a consistent refusal or inability to engage with the questionnaire. No partial responses, so it's a complete lack of interaction.\n\n3. Potential clinical significance: Inability to perform self-report assessment, which is a key part of diagnosis. This might indicate an acute crisis, severe symptoms (like catatonia, mutism, or severe dissociation), or cognitive deficits affecting comprehension. Alternatively, it could be resistance to treatment or lack of engagement.\n\n4. Risk factors: Without answers, can't assess for suicide risk (Q10, Q11), psychosis (Q11-Q12), substance misuse (A19, A20, A23), etc. The non-response itself is a red flag as it prevents standard risk assessment.\n\n5. Summary: Must be concise, clinical language. Highlight the absence of all responses, impact on assessment, and need for alternative approaches. Emphasize that the lack of data creates uncertainty about symptom severity, risks, and cognitive state. Recommend in-person evaluation to explore reasons for non-response.\n\nI need to make sure not to overinterpret. The main point is that no responses were given, so anything beyond that is conjecture unless there's a way to phrase it as possibilities without assuming. The instructions say to avoid speculation, so the summary must stick to what's directly observable: all items unanswered, which limits assessment. The clinical significance is the inability to proceed with standard screening, so next steps involve other methods. That's probably the best way to frame it.\n</think>\n\n**Clinical Observation Summary**  \n\n**1. Main Symptoms and Concerns:**  \nThe patient provided no responses to all 23 questionnaire items, precluding standard symptom-based assessment. This absence of engagement limits evaluation of depression, anxiety, psychotic symptoms, cognitive disturbances, or behavioral risks (e.g., self-harm, substance use, compulsions).  \n\n**2. Patterns in Responses:**  \nComplete non-engagement with all items across mood, anxiety, psychotic, trauma-related, dissociative, substance use, and somatic symptom domains. No partial or inconsistent responses observed.  \n\n**3. Potential Areas of Clinical Significance:**  \n- **Assessment Validity:** Inability to complete self-report measures raises questions about the patient\u2019s capacity for self-assessment or willingness to engage.  \n- **Acute Psychiatric Crisis:** Non-response may signal an acute state (e.g., mutism, catatonia, dissociation, or severe agitation) interfering with participation.  \n- **Cognitive Impairment:** Potential cognitive deficits (e.g., aphasia, confusion, or memory impairment) could impede task comprehension.  \n\n**4. Risk Factors/Warning Signs:**  \n- **Undetermined Suicide Risk:** Absence of response to Q10 (self-harm ideation) precludes assessment of this critical risk.  \n- **Untested Psychotic Symptoms:** No data on hallucinations (Q11), delusions (Q12), or severe dissociation (Q16\u2013Q17).  \n- **Substance Use Concerns:** No information on substance use (Q19\u2013Q20, Q23) or possible medication misuse.  \n- **Functional Impairment:** Inability to engage may reflect severe distress or disengagement from care.  \n\n**5. Summary (Clinical Language):**  \nThe patient\u2019s failure to respond to all assessment items precludes symptom-based clinical evaluation. Consider differential etiologies such as acute psychiatric decompensation (e.g., mutism, catatonia, severe dissociation), cognitive impairment (e.g., aphasia, global confusion), or refusal to engage due to distrust or denial of distress. Critical risks (e.g., suicidal ideation, psychosis, substance use) cannot be ruled out. Immediate clinical intervention is required to explore barriers to engagement (e.g., via clinical interview, collateral information, or collateral sources) and determine acuity. Further assessment should prioritize safety, cognitive status, and capacity for collaboration.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.6045
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "<sym>Non-response to all questions</sym>  \nYour situation highlights a significant barrier to standard mental health evaluation. I\u2019ve observed a complete lack of engagement with the assessment tool, which can make it difficult to understand your current struggles. My hope is that this reflects a temporary challenge, and I encourage you to share any thoughts or concerns in your own words if possible. You deserve care that meets your needs, and we\u2019ll work together using alternative methods to ensure your voice is heard.  \n\n**Diagnosis:** Provisional: Unspecified Mental Health Evaluation Required  \n\n**Reasoning:**  \nThe inability to complete the questionnaire limits definitive diagnosis. Possible explanations include:  \n- <med>Cognitive impairment</med> (e.g., <med>Mild Neurocognitive Disorder</med>) impairing comprehension or self-report capacity.  \n- Acute psychiatric crisis (e.g., <med>psychosis</med>, <sym>mutism</sym>, severe dissociation).  \n- Refusal to engage due to distrust, denial of distress, or external barriers (e.g., literacy challenges, language barriers).  \n- Functional or emotional impairment preventing task participation (e.g., <sym>anhedonia</sym>, <sym>psychomotor retardation</sym>).  \n\n**Recommended Next Steps/Treatment Options:**  \n1. Conduct an **in-person clinical interview** using collateral information (e.g., family/friend reports) to identify barriers to engagement.  \n2. Perform a **neurological/cognitive screening** (e.g., Mini-Mental State Exam) to evaluate for <med>Mild Neurocognitive Disorder</med> or aphasia.  \n3. Rule out acute conditions via direct observation (e.g., motor activity, speech patterns, emotional expression) to assess for <med>psychosis</med>, <med>major depressive disorder</med> with psychomotor retardation, or <med>catatonia</med>.  \n4. Use alternative assessment tools (e.g., caregiver-rated scales, behavioral observation, or objective testing) if self-report remains unfeasible.  \n5. Prioritize safety: Screen for <sym>self-harm risk</sym> via direct questioning about Q10 and Q11 topics (e.g., \"Are you having thoughts about harming yourself?\").  \n\nThis evaluation requires urgent in-person assessment to clarify your clinical status and address potential risks.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "adjustment",
+    "question_count": 23,
+    "duration": 28300.744108200073,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 10.342942953109741,
+    "diagnosis_generation_time": 7.8246169090271,
+    "rag_evaluation_time": 6.9141387939453125e-06,
+    "total_time": 18.167573928833008
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Mild-Neurocognitive-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.639,
+        "average_score": 0.639,
+        "example_excerpt": "ory strategies and accommodations to help maintain independence and \nperform activities of daily liv...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"treatment\", \"which\", \"most\", and 4 more matching aspects of your query."
+      },
+      "APA_DSM-5-Social-Communication-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6077,
+        "average_score": 0.6077,
+        "example_excerpt": "t otherwise specified\u201d la bel to help them get the services and treatment they need. \nCharacteristic...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"health\", \"clinical\", \"psychiatric\", and 3 more matching aspects of your query."
+      },
+      "APA_DSM-5-Specific-Learning-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.5961,
+        "average_score": 0.5961,
+        "example_excerpt": "agnosed through a clinical review of the individual\u2019s developmental, medical, educational, and famil...",
+        "relevance_explanation": "Some relevance: Contains terms \"perform\", \"this\", \"their\", and 2 more that have contextual connection to your query."
+      },
+      "APA_DSM-5-Conduct-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.5935,
+        "average_score": 0.5935,
+        "example_excerpt": "he disorder and a different treatment response. Thus the specifier will allow clinicians to more ac ...",
+        "relevance_explanation": "Some relevance: Contains terms \"treatment\", \"impact\", \"factors\" that have contextual connection to your query."
+      },
+      "APA_DSM-5-Schizophrenia.pdf": {
+        "access_count": 1,
+        "highest_score": 0.5862,
+        "average_score": 0.5862,
+        "example_excerpt": "h before their consideration as formal disorders. This potential category would \nidentify a person w...",
+        "relevance_explanation": "Some relevance: Contains terms \"psychotic\", \"significant\", \"that\", and 4 more that have contextual connection to your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 07:57:14",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 07:57:14",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 1,
+        "clinical_relevance": 1,
+        "consistency": 1,
+        "diagnostic_justification": 2,
+        "empathy": 2
+      },
+      "explanations": {
+        "dsm_coverage": "The therapist failed to systematically assess most DSM-5 dimensions. The patient did not respond to any questions, and the therapist did not attempt to explore any specific domains through alternative methods or direct inquiry. The conversation was limited to an introduction and a statement about the patient's non-response, without any meaningful exploration of the patient's symptoms or mental health status.",
+        "clinical_relevance": "The therapist's questions were not provided, as the patient did not respond to any questions. However, the therapist's approach and phrasing were not observed to be clinically accurate or relevant. The conversation lacked any structured clinical assessment.",
+        "consistency": "The dialogue appeared highly disconnected and lacking in logical progression. The therapist introduced the assessment tool but did not proceed with questioning due to the patient's non-response. The conversation abruptly ended without exploring any specific symptoms or domains.",
+        "diagnostic_justification": "The diagnosis of 'Unspecified Mental Health Evaluation Required' was provided, but it was not clearly justified through specific symptoms mentioned by the patient. The reasoning section listed possible explanations for the patient's non-response but did not directly link these to DSM-5 criteria or the patient's specific experiences.",
+        "empathy": "The therapist acknowledged the patient's situation and expressed a desire to help, but the conversation was limited. The therapist did not demonstrate consistent empathy or a natural conversational style due to the patient's non-response. The therapist's responses seemed more procedural than personalized."
+      },
+      "overall_comments": "The conversation was highly limited due to the patient's complete non-response to the assessment questions. The therapist acknowledged this barrier and expressed a plan to use alternative methods, but the conversation did not progress to meaningful symptom exploration. The diagnosis and reasoning provided were based on potential explanations for the patient's non-response rather than specific symptoms or DSM-5 criteria.",
+      "average_score": 1.4,
+      "diagnosis_accuracy": {
+        "matches_profile": false,
+        "confidence": 4,
+        "explanation": "The diagnosis does not explicitly mention 'adjustment' or equivalent clinical terms. Instead, it suggests an unspecified mental health evaluation is required, and considers various possible explanations for the non-response, such as cognitive impairment, acute psychiatric crisis, or functional/emotional impairment.",
+        "classification": "other"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "adjustment",
+        "classified_as": "other",
+        "match": false,
+        "confidence": 4
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 2.9914419651031494
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": 0.6092628033351032,
+        "local_coherence": 0.559226008891238,
+        "window_coherence": 0.6092628033351032
+      },
+      "readability": {
+        "flesch_kincaid_grade": 9.93,
+        "gunning_fog_index": 4.64,
+        "flesch_reading_ease": 44.09
+      },
+      "diversity": {
+        "distinct_1": 0.46683459277917716,
+        "distinct_2": 0.8722689075630252,
+        "distinct_3": 0.9646761984861227
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "adjustment",
+      "predicted": "<sym>Non-response to all questions</sym>  \nYour situation highlights a significant barrier to standard mental health evaluation. I\u2019ve observed a complete lack of engagement with the assessment tool, which can make it difficult to understand your current struggles. My hope is that this reflects a temporary challenge, and I encourage you to share any thoughts or concerns in your own words if possible. You deserve care that meets your needs, and we\u2019ll work together using alternative methods to ensure your voice is heard.  \n\n**Diagnosis:** Provisional: Unspecified Mental Health Evaluation Required  \n\n**Reasoning:**  \nThe inability to complete the questionnaire limits definitive diagnosis. Possible explanations include:  \n- <med>Cognitive impairment</med> (e.g., <med>Mild Neurocognitive Disorder</med>) impairing comprehension or self-report capacity.  \n- Acute psychiatric crisis (e.g., <med>psychosis</med>, <sym>mutism</sym>, severe dissociation).  \n- Refusal to engage due to distrust, denial of distress, or external barriers (e.g., literacy challenges, language barriers).  \n- Functional or emotional impairment preventing task participation (e.g., <sym>anhedonia</sym>, <sym>psychomotor retardation</sym>).  \n\n**Recommended Next Steps/Treatment Options:**  \n1. Conduct an **in-person clinical interview** using collateral information (e.g., family/friend reports) to identify barriers to engagement.  \n2. Perform a **neurological/cognitive screening** (e.g., Mini-Mental State Exam) to evaluate for <med>Mild Neurocognitive Disorder</med> or aphasia.  \n3. Rule out acute conditions via direct observation (e.g., motor activity, speech patterns, emotional expression) to assess for <med>psychosis</med>, <med>major depressive disorder</med> with psychomotor retardation, or <med>catatonia</med>.  \n4. Use alternative assessment tools (e.g., caregiver-rated scales, behavioral observation, or objective testing) if self-report remains unfeasible.  \n5. Prioritize safety: Screen for <sym>self-harm risk</sym> via direct questioning about Q10 and Q11 topics (e.g., \"Are you having thoughts about harming yourself?\").  \n\nThis evaluation requires urgent in-person assessment to clarify your clinical status and address potential risks.",
+      "matches": false,
+      "classification": "other",
+      "classification_confidence": 4
+    }
+  }
+}

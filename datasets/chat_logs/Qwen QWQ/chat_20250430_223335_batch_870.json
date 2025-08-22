@@ -1,0 +1,201 @@
+{
+  "timestamp": "2025-04-30T22:33:53.853462",
+  "questionnaire": "cleaned_questionnaire.txt",
+  "conversation": [
+    {
+      "role": "assistant",
+      "content": "Hello"
+    },
+    {
+      "role": "assistant",
+      "content": "\n<think>\nOkay, I need to start by addressing the user's query properly. They want a mental health assessment based on the provided questionnaire, but all responses are missing. The user specified a strict structure, so I must follow it exactly.\n\nFirst, the compassionate summary. I need to acknowledge the lack of responses without judgment, showing empathy. Maybe mention the difficulty in assessing due to non-response, but express concern and a commitment to support.\n\nNext, the diagnosis section. Since there's no data, I can't assign a definitive diagnosis. The APA's DSM-5 mentions \"attenuated psychosis syndrome\" as a potential category under consideration, but since it's not formal yet, maybe use a provisional term like \"Provisional Clinical Impression: Unspecified Disorder\" or something similar. Wait, the user mentioned not to assume Somatic Symptom Disorder unless clearly warranted. Since there's no data, maybe go with a general \"Unspecified Neurodevelopmental/Mental Disorder\" or \"Rule-Out\" categories. Alternatively, the instructions say not to default to SSD, so perhaps a more neutral term. The DSM-5 has \"Other Specified Mental Disorder\" or \"Unspecified\" categories. Let me confirm DSM-5 codes. Yes, <med>Other Specified Mental Disorder (OSD)</med> or <med>Unspecified Mental Disorder (UMD)</med> could fit here because insufficient info. Since the patient didn't answer, it's best to use an unspecified category.\n\nReasoning section: Explain that the non-responsiveness prevents symptom-based diagnosis. Note that possible conditions like psychotic spectrum issues, severe depression, anxiety, or thought disorders could explain the lack of response, but no data to confirm. Mention that the APA\u2019s attenuated psychosis criteria (from the provided ref) involve minor symptoms before full disorder, but without answers, can't apply. Emphasize need for in-person evaluation.\n\nTreatment steps: Suggest in-person clinical interview, collateral info from others, observational assessments. Maybe mention motivational interviewing to engage the patient. Also, rule out medical causes for non-responsiveness (like neuro conditions). Check for substance use via blood tests since the patient didn't answer Q19-23. Follow APA guidelines on early intervention if psychosis is suspected.\n\nMake sure to use the required tags: medical terms in <med>, symptoms in <sym>, and quotes where needed. Avoid markdown, just plain text. Check structure: four sections, correct headings, no extra lines between sections except where specified. No speculation, just what data allows. Since all responses are missing, focus on the impact of non-response on diagnosis. Use the term \"unspecified\" as per DSM-5. Ensure empathy in the first paragraph, like acknowledging the difficulty of answering and expressing support.\n\nDouble-check for any markdown tags and formatting. The diagnosis line must be exactly after the **Diagnosis:** line without line breaks. Same for the other sections. Use bullet points in next steps with numbers. Alright, putting it all together now.\n</think>\n\nI understand how challenging it can be to share personal struggles, and I want you to know that your experience is valid and important. Even without specific answers, it\u2019s clear that engaging with these questions may feel overwhelming or inaccessible right now. My priority is to ensure you receive the support you need, whether that involves exploring barriers to communication, addressing underlying concerns, or connecting you with resources that prioritize your comfort and safety.  \n\n**Diagnosis:**  \n<med>Unspecified Neurodevelopmental/Mental Disorder</med> pending further evaluation  \n\n**Reasoning:**  \nThe complete absence of responses precludes the identification of specific <sym>psychiatric symptoms</sym>, making definitive diagnosis impossible. Non-responsiveness may reflect <med>psychotic spectrum</med> issues (e.g., thought disorders, <sym>anhedonia</sym>, or <sym>psychomotor retardation</sym>), severe <med>mood disorder</med> with psychomotor inhibition, or conditions affecting <sym>executive functioning</sym> (e.g., <med>cognitive disorders</med>). The APA\u2019s proposed <med>attenuated psychosis syndrome</med> criteria (DSM-5 notes) suggest that early intervention could be critical if symptoms like minimal psychotic-like experiences exist, but this cannot be confirmed here.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. Conduct an in-person clinical interview with collateral information from family/healthcare providers to clarify symptom presentation.  \n2. Rule out organic causes via bloodwork (e.g., electrolyte imbalances, thyroid dysfunction) and neurological evaluation.  \n3. Use observational assessments (e.g.,\u6d3c\u7530\u996e\u6c34\u8bd5\u9a8c for swallowing, behavioral observations) to identify <sym>disorganized speech</sym> or <sym>catatonic features</sym> if present.  \n4. If substance use is suspected (due to unaddressed Q19\u201323), screen for <med>Substance-Related and Addictive Disorders</med> via urine toxicology.  \n5. Consider motivational interviewing techniques to build rapport and explore barriers to self-reporting.  \n\nThis approach aligns with APA guidelines for <med>unspecified disorder</med> evaluations, emphasizing safety, engagement, and multimodal assessment to avoid premature diagnostic assumptions.",
+      "rag_usage": {
+        "documents": [
+          {
+            "title": "APA_DSM-5-Schizophrenia.pdf",
+            "score": 0.7232,
+            "highlight": "Identifying individuals with an increased risk for developing a psychotic disorder is  significant for effective early intervention, but more study is needed to ensure that attenuated psycho - sis syndrome can be reliably diagnosed.",
+            "excerpt": "h before their consideration as formal disorders. This potential category would \nidentify a person w...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"psychotic\", \"significant\", \"ensure\", and 5 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Somatic-Symptom-Disorder.pdf",
+            "score": 0.6961,
+            "highlight": "The  new narrative text for SSD notes that some patients with physical conditions such as heart disease or  cancer will indeed experience disproportionate and excessive thoughts, feelings, and behaviors related  to their illness, and that these individuals may qualify for a diagnosis of SSD.",
+            "excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"physical\", \"diagnosis\", \"conditions\", and 6 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Substance-Use-Disorder.pdf",
+            "score": 0.6952,
+            "highlight": "Each specific sub - stance (other than caffeine, which cannot be diagnosed as a substance use disorder) is addressed as a separate use disorder (e.g., alcohol use disorder, stimulant use disorder, etc.), but nearly all substances are diagnosed based on the same overarching criteria.",
+            "excerpt": "     Substance-Related and \nAddictive Disorders\nIn the fifth edition of the Diagnostic and Statistic...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"each\", \"based\", \"which\", and 8 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Intellectual-Disability.pdf",
+            "score": 0.6937,
+            "highlight": "APA is a national medical specialty society whose more than 37,000  physician members specialize in the diagnosis, treat - ment, prevention and research of mental illnesses, including substance use disorders.",
+            "excerpt": "linicians base their diagnosis on the impact of the deficit in general mental abilities on functioni...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"use\", \"mental\", \"more\", and 3 more matching aspects of your query."
+          },
+          {
+            "title": "APA_DSM-5-Mild-Neurocognitive-Disorder.pdf",
+            "score": 0.6928,
+            "highlight": "Process for a New Diagnosis New diagnoses were included in DSM-5 only after a comprehensive review of the scientific literature;  full discussion by Work Group members; review by the DSM-5 Task Force, Scientific Review Committee,  and Clinical and Public Health Committee; and, finally, evaluation by the American Psychiatric Associa - tion\u2019s Board of Trust ees.",
+            "excerpt": "ment and may prevent or slow progression. Researchers \nwill evaluate how well the new diagnostic cri...",
+            "relevance_explanation": "Moderate relevance: Contains related terms \"clinical\", \"health\", \"evaluation\", and 3 more matching aspects of your query."
+          }
+        ],
+        "stats": {
+          "query": "mental health diagnosis for patient with symptoms: \n<think>\nOkay, I need to review the patient's questionnaire responses. All questions from Q1 to Q23 were left unanswered. Let me start by going through each part of the user's query.\n\nFirst, the user wants the main symptoms and concerns. Since there are no responses, I can't identify specific symptoms. But maybe the lack of response itself is significant. The patient didn't answer any questions, which could indicate avoidance, lack of engagement, or possibly an inability to respond. That's a key point.\n\nNext, patterns in responses. All are \"No response provided.\" That's a clear pattern. It might suggest resistance to assessment, difficulties with communication, or even a possible thought disorder that prevents them from answering. But I should be careful not to assume without more info.\n\nPotential clinical areas: Non-response could relate to several issues. Maybe they're unwilling to engage in the process, which is a concern in itself. Alternatively, it might point to conditions like depression or anxiety where they can't articulate their feelings. Also, possible thought disorders or dissociation might hinder their ability to answer. Need to list these possibilities but note that they're based on non-responsiveness.\n\nRisk factors or warning signs: Non-response might signal a risk if they're not communicating distress. For example, if they didn't answer Q10 about self-harm, we don't know their actual risk. Similarly, Q11 and Q12 on hallucinations or delusions are unanswered. Substance use (Q19, Q20, Q23) also unknown. This lack of info is a risk because it leaves possible dangers unassessed.\n\nClinical summary must be concise, using professional terms. Emphasize that the absence of responses is the main issue. Mention that this limits assessment but note areas where critical info is missing. Also, consider possible underlying reasons for non-response.\n\nWait, need to ensure I'm not speculating. The instructions say avoid speculation. So stick to the facts: all questions unanswered. Then, in the areas of significance, note that the lack of data prevents determining symptoms but highlights the need for further evaluation. Risk factors would include inability to assess for self-harm, psychosis, substance use, etc. But also note that the non-response itself is a concern for engagement.\n\nI should structure the answer as per the user's points: 1 to 5 as listed. Need to make sure each section addresses the query without adding assumptions. Use terms like \"non-responsiveness,\" \"inability to assess for...\" and \"limitation in clinical evaluation.\"\n\nAlso, in the summary, need to use clinical language, maybe mention \"patient\u2019s absence of responses precludes symptom identification\" and note critical domains that are unassessed. Highlight the need for further assessment through alternative methods.\n\nAlright, putting it all together now. Make sure it's clear and follows the required format without markdown.\n</think>\n\n**Clinical Observation Summary**  \n\n**1. Main Symptoms and Concerns:**  \nNo specific symptoms or concerns can be identified due to the absence of responses to all assessment items.  \n\n**2. Patterns in Responses:**  \nComplete non-engagement with the questionnaire, with all items left unanswered. This pattern suggests an inability or unwillingness to self-report symptoms or engage in assessment.  \n\n**3. Potential Areas of Clinical Significance:**  \n- **Impaired engagement in clinical assessment:** May indicate resistance, lack of insight, or motivation.  \n- **Unassessable symptom severity:** Critical domains such as mood (Q1\u2013Q2, Q10), psychosis (Q11\u2013Q12), trauma/avoidance (Q8, Q16\u201318), cognition (Q22), and substance use (Q19\u201320, Q23) cannot be evaluated.  \n- **Physical or somatic symptoms (Q21):** Unclear if unreported but clinically relevant.  \n\n**4. Risk Factors/Warning Signs:**  \n- **Unassessed suicidal ideation (Q10):** Risk of self-harm cannot be ruled out.  \n- **Unassessed psychotic symptoms (Q11\u2013Q12):** Potential for delusions/hallucinations unaddressed.  \n- **Substance use (Q19\u201323):** No data on use/abuse of alcohol, nicotine, or illicit/prescription drugs.  \n- **Cognitive/functional impairment (Q22):** Memory or executive dysfunction may be present but unassessed.  \n\n**5. Clinical Summary:**  \nThe patient\u2019s complete failure to provide responses precludes symptom-based diagnosis or risk assessment. Non-engagement may reflect psychological avoidance, disorganization, or external barriers to participation. Critical domains (e.g., psychosis, self-harm, substance use, cognitive functioning) remain unassessed, necessitating urgent clinical follow-up via direct clinical interview or observational methods. Prioritize risk assessment for suicide, psychosis, and substance misuse in subsequent evaluations.",
+          "results_count": 5,
+          "requested_count": 5,
+          "avg_score": 0.7002
+        },
+        "count": 5
+      }
+    }
+  ],
+  "diagnosis": "I understand how challenging it can be to share personal struggles, and I want you to know that your experience is valid and important. Even without specific answers, it\u2019s clear that engaging with these questions may feel overwhelming or inaccessible right now. My priority is to ensure you receive the support you need, whether that involves exploring barriers to communication, addressing underlying concerns, or connecting you with resources that prioritize your comfort and safety.  \n\n**Diagnosis:**  \n<med>Unspecified Neurodevelopmental/Mental Disorder</med> pending further evaluation  \n\n**Reasoning:**  \nThe complete absence of responses precludes the identification of specific <sym>psychiatric symptoms</sym>, making definitive diagnosis impossible. Non-responsiveness may reflect <med>psychotic spectrum</med> issues (e.g., thought disorders, <sym>anhedonia</sym>, or <sym>psychomotor retardation</sym>), severe <med>mood disorder</med> with psychomotor inhibition, or conditions affecting <sym>executive functioning</sym> (e.g., <med>cognitive disorders</med>). The APA\u2019s proposed <med>attenuated psychosis syndrome</med> criteria (DSM-5 notes) suggest that early intervention could be critical if symptoms like minimal psychotic-like experiences exist, but this cannot be confirmed here.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. Conduct an in-person clinical interview with collateral information from family/healthcare providers to clarify symptom presentation.  \n2. Rule out organic causes via bloodwork (e.g., electrolyte imbalances, thyroid dysfunction) and neurological evaluation.  \n3. Use observational assessments (e.g.,\u6d3c\u7530\u996e\u6c34\u8bd5\u9a8c for swallowing, behavioral observations) to identify <sym>disorganized speech</sym> or <sym>catatonic features</sym> if present.  \n4. If substance use is suspected (due to unaddressed Q19\u201323), screen for <med>Substance-Related and Addictive Disorders</med> via urine toxicology.  \n5. Consider motivational interviewing techniques to build rapport and explore barriers to self-reporting.  \n\nThis approach aligns with APA guidelines for <med>unspecified disorder</med> evaluations, emphasizing safety, engagement, and multimodal assessment to avoid premature diagnostic assumptions.",
+  "metadata": {
+    "assistant_model": "qwen-qwq-32b",
+    "patient_model": "qwen-qwq-32b",
+    "patient_profile": "substance_abuse",
+    "question_count": 23,
+    "duration": 14050.306192159653,
+    "full_conversation": true
+  },
+  "timing_metrics": {
+    "conversation_generation_time": 12.195586919784546,
+    "diagnosis_generation_time": 6.40817403793335,
+    "rag_evaluation_time": 1.7881393432617188e-05,
+    "total_time": 18.603790998458862
+  },
+  "rag_summary": {
+    "total_rag_queries": 1,
+    "total_documents_accessed": 5,
+    "documents_accessed": {
+      "APA_DSM-5-Schizophrenia.pdf": {
+        "access_count": 1,
+        "highest_score": 0.7232,
+        "average_score": 0.7232,
+        "example_excerpt": "h before their consideration as formal disorders. This potential category would \nidentify a person w...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"psychotic\", \"significant\", \"ensure\", and 5 more matching aspects of your query."
+      },
+      "APA_DSM-5-Somatic-Symptom-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6961,
+        "average_score": 0.6961,
+        "example_excerpt": "to make the criteria more useful to non-psychiatric care providers. \nTo ensure that the new criteria...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"physical\", \"diagnosis\", \"conditions\", and 6 more matching aspects of your query."
+      },
+      "APA_DSM-5-Substance-Use-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6952,
+        "average_score": 0.6952,
+        "example_excerpt": "     Substance-Related and \nAddictive Disorders\nIn the fifth edition of the Diagnostic and Statistic...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"each\", \"based\", \"which\", and 8 more matching aspects of your query."
+      },
+      "APA_DSM-5-Intellectual-Disability.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6937,
+        "average_score": 0.6937,
+        "example_excerpt": "linicians base their diagnosis on the impact of the deficit in general mental abilities on functioni...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"use\", \"mental\", \"more\", and 3 more matching aspects of your query."
+      },
+      "APA_DSM-5-Mild-Neurocognitive-Disorder.pdf": {
+        "access_count": 1,
+        "highest_score": 0.6928,
+        "average_score": 0.6928,
+        "example_excerpt": "ment and may prevent or slow progression. Researchers \nwill evaluate how well the new diagnostic cri...",
+        "relevance_explanation": "Moderate relevance: Contains related terms \"clinical\", \"health\", \"evaluation\", and 3 more matching aspects of your query."
+      }
+    },
+    "rag_disabled": false,
+    "evaluation_metrics": {
+      "contextual_relevancy": {
+        "average_score": null
+      },
+      "faithfulness": {
+        "average_score": null
+      },
+      "answer_relevancy": {
+        "average_score": null
+      },
+      "overall": {
+        "average_score": null
+      }
+    }
+  },
+  "evaluation": {
+    "timestamp": "2025-05-01 08:08:36",
+    "provider": "groq",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "llm_evaluation": {
+      "timestamp": "2025-05-01 08:08:36",
+      "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "rubric_scores": {
+        "dsm_coverage": 1,
+        "clinical_relevance": 2,
+        "consistency": 3,
+        "diagnostic_justification": 2,
+        "empathy": 4
+      },
+      "explanations": {
+        "dsm_coverage": "The conversation barely addressed any of the DSM-5 Level1 Cross-Cutting Symptom Measure domains. The therapist did not attempt to gather specific information related to the 23 questions provided in the DSM-5 Level1 Cross-Cutting Symptom Measure. The complete absence of responses from the patient precluded the identification of specific psychiatric symptoms, but the therapist could have explored other avenues such as collateral information or observational assessments earlier in the process.",
+        "clinical_relevance": "The therapist's questions and statements did not precisely reflect DSM-5 criteria. The conversation lacked specific queries related to psychiatric symptoms, and the language used was not clinically accurate or targeted. The discussion seemed more focused on establishing a rapport and ensuring patient comfort rather than conducting a structured clinical assessment.",
+        "consistency": "The dialogue had noticeable logical inconsistencies and occasionally disrupted coherence and understanding. For example, the therapist quickly moved to discussing potential next steps and treatment options without adequately exploring the patient's symptoms or current mental state. While the conversation had a logical flow in some parts, it lacked depth and coherence in addressing the patient's specific needs and symptoms.",
+        "diagnostic_justification": "The diagnosis of Unspecified Neurodevelopmental/Mental Disorder was proposed, but the justification provided was not directly linked to specific symptoms mentioned by the patient (as there were none). The reasoning mentioned potential psychotic spectrum issues, severe mood disorders, or cognitive disorders but did not provide a clear connection to the patient's presentation. Alternative diagnoses were not adequately ruled out based on the information provided.",
+        "empathy": "The therapist showed consistent empathy and a professional tone. The responses acknowledged the challenge of sharing personal struggles and prioritized the patient's comfort and safety. However, there were minor moments where the conversation seemed somewhat robotic or impersonal due to the lack of specific patient disclosures and the therapist's reliance on general statements."
+      },
+      "overall_comments": "The conversation demonstrated a non-standard approach to clinical assessment, prioritizing patient comfort over systematic symptom evaluation. While the therapist showed empathy and professionalism, the complete absence of specific DSM-5 dimension coverage and clinical inquiries limits the usefulness of the interaction for diagnostic purposes. Significant improvements are needed in addressing all DSM-5 domains, clinical relevance, and diagnostic justification.",
+      "average_score": 2.4,
+      "diagnosis_accuracy": {
+        "matches_profile": false,
+        "confidence": 4,
+        "explanation": "The diagnosis does not explicitly identify substance_abuse as the primary condition. Although it mentions the possibility of substance use in the context of unaddressed questions (Q19-23) and suggests screening for Substance-Related and Addictive Disorders, the primary diagnosis is listed as Unspecified Neurodevelopmental/Mental Disorder.",
+        "classification": "other"
+      },
+      "diagnosis_classification": {
+        "expected_profile": "substance_abuse",
+        "classified_as": "other",
+        "match": false,
+        "confidence": 4
+      },
+      "question_evaluation": {
+        "total_questions": 0,
+        "questions_asked": 0,
+        "percentage_asked": 0,
+        "quality_score": 0,
+        "explanation": "Could not evaluate question coverage due to technical issues.",
+        "question_analysis": []
+      },
+      "evaluation_time": 3.8892033100128174
+    },
+    "extended_metrics": {
+      "coherence": {
+        "global_coherence": -0.014684669241703181,
+        "local_coherence": -0.014684669241703181,
+        "window_coherence": 0.0
+      },
+      "readability": {
+        "flesch_kincaid_grade": 11.72,
+        "gunning_fog_index": 4.93,
+        "flesch_reading_ease": 32.45
+      },
+      "diversity": {
+        "distinct_1": 0.5844504021447721,
+        "distinct_2": 0.9355704697986578,
+        "distinct_3": 0.9838709677419355
+      }
+    },
+    "diagnosis_evaluation": {
+      "expected": "substance_abuse",
+      "predicted": "I understand how challenging it can be to share personal struggles, and I want you to know that your experience is valid and important. Even without specific answers, it\u2019s clear that engaging with these questions may feel overwhelming or inaccessible right now. My priority is to ensure you receive the support you need, whether that involves exploring barriers to communication, addressing underlying concerns, or connecting you with resources that prioritize your comfort and safety.  \n\n**Diagnosis:**  \n<med>Unspecified Neurodevelopmental/Mental Disorder</med> pending further evaluation  \n\n**Reasoning:**  \nThe complete absence of responses precludes the identification of specific <sym>psychiatric symptoms</sym>, making definitive diagnosis impossible. Non-responsiveness may reflect <med>psychotic spectrum</med> issues (e.g., thought disorders, <sym>anhedonia</sym>, or <sym>psychomotor retardation</sym>), severe <med>mood disorder</med> with psychomotor inhibition, or conditions affecting <sym>executive functioning</sym> (e.g., <med>cognitive disorders</med>). The APA\u2019s proposed <med>attenuated psychosis syndrome</med> criteria (DSM-5 notes) suggest that early intervention could be critical if symptoms like minimal psychotic-like experiences exist, but this cannot be confirmed here.  \n\n**Recommended Next Steps/Treatment Options:**  \n1. Conduct an in-person clinical interview with collateral information from family/healthcare providers to clarify symptom presentation.  \n2. Rule out organic causes via bloodwork (e.g., electrolyte imbalances, thyroid dysfunction) and neurological evaluation.  \n3. Use observational assessments (e.g.,\u6d3c\u7530\u996e\u6c34\u8bd5\u9a8c for swallowing, behavioral observations) to identify <sym>disorganized speech</sym> or <sym>catatonic features</sym> if present.  \n4. If substance use is suspected (due to unaddressed Q19\u201323), screen for <med>Substance-Related and Addictive Disorders</med> via urine toxicology.  \n5. Consider motivational interviewing techniques to build rapport and explore barriers to self-reporting.  \n\nThis approach aligns with APA guidelines for <med>unspecified disorder</med> evaluations, emphasizing safety, engagement, and multimodal assessment to avoid premature diagnostic assumptions.",
+      "matches": false,
+      "classification": "other",
+      "classification_confidence": 4
+    }
+  }
+}
