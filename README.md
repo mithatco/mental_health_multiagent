@@ -1,6 +1,22 @@
 # Mental Health Multi-Agent System
 
-A sophisticated system that simulates mental health assessments using AI agents, with one agent acting as a mental health professional and another simulating a client with specific psychiatric conditions.
+A research framework accompanying the CIKM 2025 paper:
+
+**Trustworthy AI Psychotherapy: Multi-Agent LLM Workflow for Counseling and Explainable Mental Disorder Diagnosis**
+
+This repository provides the source code, datasets, and evaluation resources to reproduce the results from the paper.
+
+## Datasets
+
+The `datasets/` directory contains the evaluation dataset used in the CIKM 2025 paper:
+
+- **`datasets/chat_logs/`**: Contains conversation logs from the evaluation experiments, organized by different LLM providers and models
+- **`datasets/profiles/`**: Client profiles used to simulate various psychiatric conditions during evaluation
+- **`datasets/documents/`**: Reference documents and questionnaires used in the evaluation process
+
+This dataset enables reproduction of the paper's results and provides a foundation for further research in AI-assisted mental health assessment.
+
+---
 
 ## Table of Contents
 
